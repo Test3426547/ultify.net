@@ -1,3 +1,5 @@
+import { defineNuxtConfig } from 'nuxt'
+
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
   ssr: false, // Enable SPA mode
@@ -35,11 +37,7 @@ export default defineNuxtConfig({
     serveStatic: true,
   },
 
-  modules: ['@vite-pwa/nuxt', '@nuxtjs/axios'],
-
-  axios: {
-    baseURL: '/', // Can be configured to your API URL
-  },
+  modules: ['@vite-pwa/nuxt'],
 
   pwa: {
     registerType: 'autoUpdate',
@@ -141,4 +139,4 @@ export default defineNuxtConfig({
   },
 
   compatibilityDate: '2024-07-29',
-});
+})
