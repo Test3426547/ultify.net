@@ -60,10 +60,4 @@
         "destination": "/index.html"
       }
     ],
-    "builds": [
-      {
-        "src": "nuxt.config.ts",
-        "use": "@nuxt/vercel-builder"
-      }
-    ]
-  }  
+    "build  
