@@ -44,7 +44,7 @@
   </template>
   
   <script setup>
-  import { NuxtLink } from 'nuxt/app'
+  import { NuxtLink } from '#components'
   </script>
   
   <style scoped>
