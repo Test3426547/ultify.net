@@ -1,3 +1,6 @@
+import { defineNuxtConfig } from 'nuxt'
+
+// https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
   head: {
     titleTemplate: '%s - Unify Net',
@@ -30,6 +33,7 @@ export default defineNuxtConfig({
     prerender: {
       routes: ['/'],
     },
+    serveStatic: true,
   },
 
   modules: ['@vite-pwa/nuxt'],
