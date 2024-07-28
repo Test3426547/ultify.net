@@ -50,6 +50,15 @@
           {
             "key": "X-XSS-Protection",
             "value": "1; mode=block"
+          },
+          {
+            "key": "Content-Type",
+            "value": "text/javascript",
+            "condition": {
+              "matches": {
+                "url": ".*\\.js$"
+              }
+            }
           }
         ]
       }
@@ -65,8 +74,5 @@
         "src": "nuxt.config.ts",
         "use": "@nuxt/vercel-builder"
       }
-    ],
-    "routes": [
-      { "src": "/(.*)", "dest": "/" }
     ]
   }  
