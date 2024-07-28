@@ -10,13 +10,17 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@vite-pwa/assets-generator": "^0.2.4",
+    "@ai-sdk/openai": "^0.0.40",
+    "@ai-sdk/vue": "^0.0.24",
     "@vite-pwa/nuxt": "^0.7.0",
+    "ai": "^3.2.37",
+    "axios": "^1.7.2",
     "nuxt": "^3.12.4",
     "vite-plugin-pwa": "^0.20.0",
     "vue": "latest",
     "workbox-build": "^7.1.0",
-    "workbox-window": "^7.1.0"
+    "workbox-window": "^7.1.0",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "typescript": "^5.4.5",
