@@ -3,17 +3,21 @@
   </template>
   
   <script setup>
-  import { ref, onMounted } from 'vue';
+  import { ref, onMounted } from 'vue'
+  import axios from 'axios'
   
-  const content = ref('');
+  const content = ref('')
   
   onMounted(async () => {
     try {
-      const { $axios } = useNuxtApp();
-      const response = await $axios.get('/contact-us.html');
-      content.value = response.data;
+      const response = await axios.get('/contact-us.html')
+      content.value = response.data
     } catch (error) {
-      console.error(error);
+      console.error('Error fetching HTML content:', error)
     }
-  });
-  </script>  
+  })
+  </script>
+  
+  <style scoped>
+  /* Add your styles here */
+  </style>  

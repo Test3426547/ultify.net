@@ -35,7 +35,11 @@ export default defineNuxtConfig({
     serveStatic: true,
   },
 
-  modules: ['@vite-pwa/nuxt'],
+  modules: ['@vite-pwa/nuxt', '@nuxtjs/axios'],
+
+  axios: {
+    baseURL: '/', // Can be configured to your API URL
+  },
 
   pwa: {
     registerType: 'autoUpdate',
