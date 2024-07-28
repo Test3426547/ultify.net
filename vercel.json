@@ -59,4 +59,6 @@
         "source": "/(.*)",
         "destination": "/index.html"
       }
-    ],
+    ]
+  }
+  
