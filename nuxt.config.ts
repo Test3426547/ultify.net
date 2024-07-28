@@ -37,19 +37,12 @@ export default defineNuxtConfig({
   pwa: {
     registerType: 'prompt',
     injectRegister: false,
-
-    pwaAssets: {
-      disabled: false,
-      config: true,
-    },
-
     manifest: {
       name: 'ultify.net',
       short_name: 'ultify.net',
       description: 'A Modern Digital Marketing Agency Progressive Web App Single Page Application',
       theme_color: '#ffffff',
     },
-
     icons: [
       {
         src: 'pwa-64x64.png',
@@ -73,13 +66,11 @@ export default defineNuxtConfig({
         purpose: 'maskable',
       },
     ],
-
     workbox: {
       globPatterns: ['**/*.{js,css,html,svg,png,ico}'],
       cleanupOutdatedCaches: true,
       clientsClaim: true,
     },
-
     devOptions: {
       enabled: false,
       suppressWarnings: true,
@@ -87,9 +78,7 @@ export default defineNuxtConfig({
       navigateFallbackAllowlist: [/^\/$/],
       type: 'module',
     },
-
     registerWebManifestInRouteRules: true,
-
     client: {
       periodicSyncForUpdates: 3600,
       installPrompt: true,

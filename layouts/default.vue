@@ -1,5 +1,6 @@
 <script setup lang="ts">
 // you can extract the <ClientOnly> component to a separate file
+import Navigation from '~/components/Navigation.vue'
 </script>
 
 <template>
