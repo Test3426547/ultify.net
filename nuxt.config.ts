@@ -1,6 +1,6 @@
 // nuxt.config.ts
 export default defineNuxtConfig({
-  ssr: true, // Enable SPA mode
+  ssr: false, // Enable SPA mode
   target: 'static', // Enable SSG mode
   head: {
     titleTemplate: '%s - Ultify Solutions',
