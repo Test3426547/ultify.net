@@ -1,20 +1,18 @@
-import { defineNuxtPlugin } from '#app'
+// plugins/axios.js
+import axios from 'axios'
 
-export default defineNuxtPlugin((nuxtApp) => {
-  return new Promise((resolve, reject) => {
-    const script = document.createElement('script')
-    script.src = 'https://cdn.jsdelivr.net/npm/axios@latest/dist/axios.min.js'
-    script.onload = () => {
-      const axiosInstance = axios.create({
-        baseURL: process.env.NODE_ENV === 'production'
-          ? 'https://secret-shore-04461-19d2043c008b.herokuapp.com/https://mcdonaldsz.com/'
-          : 'http://localhost:3000/'
-      })
+export default defineNuxtPlugin(nuxtApp => {
+  const baseURL = process.env.NODE_ENV === 'production'
+    ? 'https://secret-shore-04461-19d2043c008b.herokuapp.com/https://mcdonaldsz.com/'
+    : 'http://localhost:3000/'
 
-      nuxtApp.provide('axios', axiosInstance)
-      resolve()
+  const axiosInstance = axios.create({
+    baseURL: 'https://secret-shore-04461-19d2043c008b.herokuapp.com/https://api.mcdonaldsz.com',
+    headers: {
+      'Content-Type': 'application/json',
     }
-    script.onerror = reject
-    document.head.appendChild(script)
   })
+
+  // Inject axios to the context as $axios
+  nuxtApp.provide('axios', axiosInstance)
 })

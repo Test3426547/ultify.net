@@ -1,7 +1,8 @@
+// nuxt.config.ts
 export default defineNuxtConfig({
-  ssr: false,
+  ssr: false, // Enable SPA mode
   head: {
-    titleTemplate: '%s - Unify Net',
+    titleTemplate: '%s - Ultify Solutions',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1, shrink-to-fit=no' },
@@ -129,9 +130,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      edgeConfig: process.env.EDGE_CONFIG,
-      useEdgeConfig: process.env.USE_EDGE_CONFIG === 'true',
-      apiBaseURL: 'https://secret-shore-04461-19d2043c008b.herokuapp.com/https://mcdonaldsz.com'
+      apiBaseURL: 'https://secret-shore-04461-19d2043c008b.herokuapp.com/https://api.mcdonaldsz.com',
     },
     openaiApiKey: process.env.OPENAI_API_KEY,
   },

@@ -1,7 +1,10 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Dashboard Builder</title>
+    <title>Ultify Solutions - Digital Marketing Made Easy</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/gh/creativetimofficial/public-assets@master/soft-ui-design-system-builder/v1.0.7/assets/css/nucleo-icons.css" rel="stylesheet" />
@@ -9,55 +12,64 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/theme.css">
     <link rel="stylesheet" href="./assets/css/loopple/loopple.css">
+    <link rel="preload" href="/_payload.json" as="fetch">
 </head>
-
-<body class="null">
-    <div class="container position-sticky z-index-sticky top-0">
-        <div class="row">
-            <div class="col-12">
-                <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                    <div class="container-fluid">
-                      <a class="navbar-brand" href="/">Ultify Solutions</a>
-                      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                      </button>
-                      <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav">
-                          <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/">Home</a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link" href="/about-us">About Us</a>
-                          </li>
-                          <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownServices" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                              Services
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownServices">
-                              <li><a class="dropdown-item" href="/services/website">Website</a></li>
-                              <li><a class="dropdown-item" href="/services/social-media">Social Media</a></li>
-                              <li><a class="dropdown-item" href="/services/seo">SEO</a></li>
-                              <li><a class="dropdown-item" href="/services/paid-media">Paid Media</a></li>
-                              <li><a class="dropdown-item" href="/services/content-creation">Content Creation</a></li>
-                              <li><a class="dropdown-item" href="/services/print-advertising">Print Advertising</a></li>
-                            </ul>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link" href="/consultation">Consultation</a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link" href="/contact-us">Contact Us</a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </nav>
+<!-- Navbar Light -->
+<div class="container position-sticky z-index-sticky top-0 bg-gradient-primary min-vh-100">
+    <div class="row">
+      <div class="col-12">
+        <nav
+          class="navbar navbar-expand-lg blur blur-rounded position-absolute my-3 top-0 border-bottom py-3 z-index-3 shadow my-3 py-2 start-0 end-0 mx-4">
+          <div class="container">
+            <a class="navbar-brand" href="/" rel="tooltip" title="Designed and Coded by Creative Tim" data-placement="bottom" target="_blank">
+              Ultify Solutions
+            </a>
+  
+            <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon mt-2">
+                <span class="navbar-toggler-bar bar1"></span>
+                <span class="navbar-toggler-bar bar2"></span>
+                <span class="navbar-toggler-bar bar3"></span>
+              </span>
+            </button>
+            <div class="collapse navbar-collapse w-100 pt-3 pb-2 py-lg-0" id="navigation">
+              <ul class="navbar-nav navbar-nav-hover mx-auto">
+                <li class="nav-item mx-2">
+                  <a class="nav-link ps-2 d-flex justify-content-between align-items-center" href="/home">Home</a>
+                </li>
+                <li class="nav-item dropdown dropdown-hover mx-2">
+                  <a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center" id="dropdownMenuServices" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Services
+                    <img src="../../assets/img/down-arrow-dark.svg" alt="down-arrow" class="arrow ms-1">
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-animation dropdown-md p-3 border-radius-lg mt-0 mt-lg-3" aria-labelledby="dropdownMenuServices">
+                    <li><a href="/website" class="dropdown-item border-radius-md">Website</a></li>
+                    <li><a href="/social-media" class="dropdown-item border-radius-md">Social Media</a></li>
+                    <li><a href="/seo" class="dropdown-item border-radius-md">SEO</a></li>
+                    <li><a href="/paid-media" class="dropdown-item border-radius-md">Paid Media</a></li>
+                    <li><a href="/content-creation" class="dropdown-item border-radius-md">Content Creation</a></li>
+                    <li><a href="/print-advertising" class="dropdown-item border-radius-md">Print Advertising</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item mx-2">
+                  <a class="nav-link ps-2 d-flex justify-content-between align-items-center" href="/about-us">About Us</a>
+                </li>
+                <li class="nav-item mx-2">
+                  <a class="nav-link ps-2 d-flex justify-content-between align-items-center" href="/consultation">Consultation</a>
+                </li>
+                <li class="nav-item mx-2">
+                  <a class="nav-link ps-2 d-flex justify-content-between align-items-center" href="/contact-us">Contact Us</a>
+                </li>
+              </ul>
             </div>
-        </div>
+          </div>
+        </nav>
+      </div>
     </div>
-    <header class="">
+  </div>
+    <header>
         <div class="page-header min-vh-100">
-            <div class="position-absolute fixed-top ms-auto w-50 h-100 z-index-0 d-none d-sm-none d-md-block" style="background-image: url(https://demos.creative-tim.com/soft-ui-design-system-pro/assets/img/curved-images/curved8.jpg); background-size:cover;"></div>
+            <div class="position-absolute fixed-top ms-auto w-50 h-100 z-index-0 d-none d-sm-none d-md-block" style="background-image: url(/image-01.jpg); background-size:cover;"></div>
             <div class="container">
                 <div class="row">
                     <div class="col-lg-7 d-flex justify-content-center flex-column">
@@ -74,6 +86,7 @@
             </div>
         </div>
     </header>
+
     <section class="py-5">
         <div class="container-fluid px-0">
             <div class="row justify-content-center text-center">
@@ -112,8 +125,7 @@
                                                     </g>
                                                 </svg>
                                             </div>
-                                            <h5 class="mt-3">Guaranteed Leads
-                                            </h5>
+                                            <h5 class="mt-3">Guaranteed Leads</h5>
                                             <p>Our digital marketing agency will help you masterplan and put to action an effective and efficient strategy for lead generation.</p>
                                         </div>
                                     </div>
@@ -166,12 +178,13 @@
                             </div>
                             <div class="col-md-1"></div>
                         </div>
-                        <img class="w-10 end-10 position-absolute mt-n6" src="https://demos.creative-tim.com/soft-ui-design-system-pro/assets/img/pattern-points.png" alt="image">
+                        <img class="w-10 end-10 position-absolute mt-n6" src="/image-02.png" alt="image">
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
     <section class="py-5">
         <div class="container">
             <div class="row text-center">
@@ -229,7 +242,7 @@
                                         <g transform="translate(1716.000000, 291.000000)">
                                             <g transform="translate(4.000000, 301.000000)">
                                                 <path class="color-foreground" d="M39.3,0.706666667 C38.9660984,0.370464027 38.5048767,0.192278529 38.0316667,0.216666667 C14.6516667,1.43666667 6.015,22.2633333 5.93166667,22.4733333 C5.68236407,23.0926189 5.82664679,23.8009159 6.29833333,24.2733333 L15.7266667,33.7016667 C16.2013871,34.1756798 16.9140329,34.3188658 17.535,34.065 C17.7433333,33.98 38.4583333,25.2466667 39.7816667,1.97666667 C39.8087196,1.50414529 39.6335979,1.04240574 39.3,0.706666667 Z M25.69,19.0233333 C24.7367525,19.9768687 23.3029475,20.2622391 22.0572426,19.7463614 C20.8115377,19.2304837 19.9992882,18.0149658 19.9992882,16.6666667 C19.9992882,15.3183676 20.8115377,14.1028496 22.0572426,13.5869719 C23.3029475,13.0710943 24.7367525,13.3564646 25.69,14.31 C26.9912731,15.6116662 26.9912731,17.7216672 25.69,19.0233333 L25.69,19.0233333 Z"></path>
-                                                <path class="color-foreground" d="M1.855,31.4066667 C3.05106558,30.2024182 4.79973884,29.7296005 6.43969145,30.1670277 C8.07964407,30.6044549 9.36054508,31.8853559 9.7979723,33.5253085 C10.2353995,35.1652612 9.76258177,36.9139344 8.55833333,38.11 C6.70666667,39.9616667 0,40 0,40 C0,40 0,33.2566667 1.855,31.4066667 Z"></path>
+                                                <path d="M1.855,31.4066667 C3.05106558,30.2024182 4.79973884,29.7296005 6.43969145,30.1670277 C8.07964407,30.6044549 9.36054508,31.8853559 9.7979723,33.5253085 C10.2353995,35.1652612 9.76258177,36.9139344 8.55833333,38.11 C6.70666667,39.9616667 0,40 0,40 C0,40 0,33.2566667 1.855,31.4066667 Z"></path>
                                                 <path class="color-background" d="M17.2616667,3.90166667 C12.4943643,3.07192755 7.62174065,4.61673894 4.20333333,8.04166667 C3.31200265,8.94126033 2.53706177,9.94913142 1.89666667,11.0416667 C1.5109569,11.6966059 1.61721591,12.5295394 2.155,13.0666667 L5.47,16.3833333 C8.55036617,11.4946947 12.5559074,7.25476565 17.2616667,3.90166667 L17.2616667,3.90166667 Z" opacity="0.598539807"></path>
                                                 <path class="color-background" d="M36.0983333,22.7383333 C36.9280725,27.5056357 35.3832611,32.3782594 31.9583333,35.7966667 C31.0587397,36.6879974 30.0508686,37.4629382 28.9583333,38.1033333 C28.3033941,38.4890431 27.4704606,38.3827841 26.9333333,37.845 L23.6166667,34.53 C28.5053053,31.4496338 32.7452344,27.4440926 36.0983333,22.7383333 L36.0983333,22.7383333 Z" id="color-3" opacity="0.598539807"></path>
                                             </g>
@@ -267,6 +280,7 @@
             </div>
         </div>
     </section>
+
     <section class="py-5">
         <div class="container">
             <div class="row align-items-center">
@@ -312,13 +326,14 @@
             </div>
         </div>
     </section>
+
     <section class="py-5">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-md-8 order-2 order-md-2 order-lg-1">
                     <div class="position-relative ms-md-5 mb-0 mb-md-7 mb-lg-0 d-none d-md-block d-lg-block d-xl-block h-75">
                         <div class="bg-gradient-info w-100 h-100 border-radius-xl position-absolute" alt=""></div>
-                        <img src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/soft-ui-design-system/assets/img/color-city.jpg" class="w-100 border-radius-xl mt-6 ms-5 position-absolute" alt="">
+                        <img src="/image-03.jpg" class="w-100 border-radius-xl mt-6 ms-5 position-absolute" alt="">
                     </div>
                 </div>
                 <div class="col-lg-5 col-md-12 ms-auto order-1 order-md-1 order-lg-1">
@@ -352,12 +367,13 @@
                 <div class="col-lg-6 col-md-8">
                     <div class="position-relative ms-md-5 d-none d-md-block d-lg-block d-xl-block h-75">
                         <div class="w-100 h-100 bg-gradient-warning border-radius-xl position-absolute" alt=""></div>
-                        <img src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/soft-ui-design-system/assets/img/arena.jpg" class="w-100 border-radius-xl mt-6 ms-n5 position-absolute" alt="">
+                        <img src="/image-04.jpg" class="w-100 border-radius-xl mt-6 ms-n5 position-absolute" alt="">
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
     <section class="py-4">
         <div class="container">
             <div class="row my-5">
@@ -377,8 +393,8 @@
                                     <i class="collapse-open fa fa-minus text-xs pt-1 position-absolute end-0 me-3" aria-hidden="true"></i>
                                 </button>
                             </h5>
-                            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionRental" style="">
-                                <div class="accordion-body text-dark text-sm opacity-8" contenteditable="true">
+                            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionRental">
+                                <div class="accordion-body text-dark text-sm opacity-8">
                                     <div>To ULTIFY, digital marketing is more than just following a simple-step solution. We truly stand where our mouth is and know that digital marketing is all about being able to reach targeted audiences through dominating digital resources; such as social media platforms, the online webspace and other digital marketing capabilities.</div>
                                     <div><br></div>
                                     <div>Digital marketing is all about being able to build and integrate custom tailored systems that pioneer the transition from a average business to a successful business.</div>
@@ -394,12 +410,12 @@
                         <div class="accordion-item mb-3">
                             <h5 class="accordion-header" id="headingTwo">
                                 <button class="accordion-button border-bottom font-weight-bold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    How can i make the payment?
+                                    How can I make the payment?
                                     <i class="collapse-close fa fa-plus text-xs pt-1 position-absolute end-0 me-3" aria-hidden="true"></i>
                                     <i class="collapse-open fa fa-minus text-xs pt-1 position-absolute end-0 me-3" aria-hidden="true"></i>
                                 </button>
                             </h5>
-                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionRental" style="">
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionRental">
                                 <div class="accordion-body text-dark text-sm opacity-8">
                                     It really matters and then like it really doesn’t matter. What matters is the people who are sparked by it. And the people who are like offended by it, it doesn’t matter. Because it's about motivating the doers. Because I’m here to follow my dreams and inspire other people to follow their dreams, too.
                                     <br>
@@ -415,8 +431,8 @@
                                     <i class="collapse-open fa fa-minus text-xs pt-1 position-absolute end-0 me-3" aria-hidden="true"></i>
                                 </button>
                             </h5>
-                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionRental" style="">
-                                <div class="accordion-body text-dark text-sm opacity-8" contenteditable="true">
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionRental">
+                                <div class="accordion-body text-dark text-sm opacity-8">
                                     <div>The world is a fast-paced rapidly changing dynamic that we all live in, with growing standards, improving strategies and new ideas that we try our best to stay updated about. Just like the world evolves, digital marketing is constructed of constantly changing algorithms and it is our agencies duty to stay one step ahead regarding such developments.</div>
                                     <div><br></div>
                                     <div>Simply put, what worked last year does not work this year for numerous elements in digital marketing. While, key marketing factors never change, it is idiotic to think all marketing factorcs never change. Just in a one year span, google changes their SEO systems 500-600 times, alongside numerous key changes throughout the same 365.</div>
@@ -433,7 +449,7 @@
                                     <i class="collapse-open fa fa-minus text-xs pt-1 position-absolute end-0 me-3" aria-hidden="true"></i>
                                 </button>
                             </h5>
-                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionRental" style="">
+                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionRental">
                                 <div class="accordion-body text-dark text-sm opacity-8">
                                     I always felt like I could do anything. That’s the main thing people are controlled by! Thoughts- their perception of themselves! They're slowed down by their perception of themselves. If you're taught you can’t do anything, you won’t do anything. I was taught I could do everything.
                                     <br><br>
@@ -449,8 +465,8 @@
                                     <i class="collapse-open fa fa-minus text-xs pt-1 position-absolute end-0 me-3" aria-hidden="true"></i>
                                 </button>
                             </h5>
-                            <div id="collapseFifth" class="accordion-collapse collapse show" aria-labelledby="headingFifth" data-bs-parent="#accordionRental" style="">
-                                <div class="accordion-body text-dark text-sm opacity-8" contenteditable="true">
+                            <div id="collapseFifth" class="accordion-collapse collapse show" aria-labelledby="headingFifth" data-bs-parent="#accordionRental">
+                                <div class="accordion-body text-dark text-sm opacity-8">
                                     <div>At ULTIFY, our door are open to like-minded individuals that share same goal as us; elevating their business. Unlike other agencies who pick and choose, finding their most guaranteed profitable projects, we respect and value projects we find interesting.</div>
                                     <div><br></div>
                                     <div>This resembles our believe in our work as we know we can take you to the next level, otherwise there will be no money in it for us if you don't grow.</div>
@@ -464,80 +480,102 @@
             </div>
         </div>
     </section>
+
     <footer class="footer py-5">
         <div class="container">
-          <div class="row">
-            <div class="col-lg-2 col-md-2 col-4">
-              <h6 class="text-sm">Main</h6>
-              <ul class="flex-column ms-n3 nav">
-                <li class="nav-item">
-                  <a class="nav-link text-body" href="/">Home</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link text-body" href="/about-us">About Us</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link text-body" href="/consultation">Consultation</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link text-body" href="/contact-us">Contact Us</a>
-                </li>
-              </ul>
-            </div>
-            <div class="col-lg-3 col-md-3 col-4">
-              <h6 class="text-sm">Services</h6>
-              <ul class="flex-column ms-n3 nav">
-                <li class="nav-item">
-                  <a class="nav-link text-body" href="/services">All Services</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link text-body" href="/services/website">Website</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link text-body" href="/services/social-media">Social Media</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link text-body" href="/services/seo">SEO</a>
-                </li>
-              </ul>
-            </div>
-            <div class="col-lg-3 col-md-3 col-4">
-              <h6 class="text-sm">Other Services</h6>
-              <ul class="flex-column ms-n3 nav">
-                <li class="nav-item">
-                  <a class="nav-link text-body" href="/services/paid-media">Paid Media</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link text-body" href="/services/content-creation">Content Creation</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link text-body" href="/services/print-advertising">Print Advertising</a>
-                </li>
-              </ul>
-            </div>
-            <div class="col-lg-4 col-md-5 col-sm-6 col-12 ms-auto mt-4 mt-sm-0">
-              <h6>Subscribe</h6>
-              <p class="text-sm">Get access to subscriber exclusive deals and be the first who gets informed about fresh sales.</p>
-              <div class="row">
-                <div class="col-md-8 col-7">
-                  <div class="form-group">
-                    <div class="input-group input-group-alternative mb-4">
-                      <input class="form-control" placeholder="Enter your e-mail" type="text">
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4 col-5 ps-0">
-                  <button type="button" class="btn bg-gradient-info">Subscribe</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
+            <div class="row ">
+                <div class="col-lg-2 col-md-2 col-4">
+                    <h6 class="text-sm">Company</h6>
+                    <ul class="flex-column ms-n3 nav">
+                        <li class="nav-item">
+                            <a class="nav-link text-body" href="javascript:;">
+                                Marketing
+                            </a>
+                        </li>
 
+                        <li class="nav-item">
+                            <a class="nav-link text-body" href="javascript:;">
+                                Analytics
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-body" href="javascript:;">
+                                Insights
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-2 col-4">
+                    <h6 class="text-sm">Support</h6>
+                    <ul class="flex-column ms-n3 nav">
+                        <li class="nav-item">
+                            <a class="nav-link text-body" href="javascript:;">
+                                Pricing
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-body" href="javascript:;">
+                                Docs
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-body" href="javascript:;">
+                                Guides
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-2 col-4">
+                    <h6 class="text-sm">Company</h6>
+                    <ul class="flex-column ms-n3 nav">
+                        <li class="nav-item">
+                            <a class="nav-link text-muted" href="javascript:;">
+                                About Us
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-muted" href="javascript:;">
+                                Blog
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-muted" href="javascript:;">
+                                Jobs
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+
+                <div class="col-lg-4 col-md-5 col-sm-6 col-12 ms-auto mt-4 mt-sm-0">
+                    <h6>Subscribe</h6>
+                    <p class="text-sm">Get access to subscriber exclusive deals and be the first who gets informed about fresh sales.</p>
+                    <div class="row">
+                        <div class="col-md-8 col-7">
+                            <div class="form-group">
+                                <div class="input-group input-group-alternative mb-4">
+                                    <input class="form-control" placeholder="Enter your e-mail" type="text">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-5 ps-0">
+                            <button type="button" class="btn bg-gradient-info">Subscribe</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Include Bootstrap's JS library for the navbar -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script
     <script src="https://cdn.jsdelivr.net/gh/creativetimofficial/public-assets@master/soft-ui-design-system-builder/v1.0.7/assets/js/core/bootstrap.min.js" type="text/javascript"></script>
     <script src="https://cdn.jsdelivr.net/gh/creativetimofficial/public-assets@master/soft-ui-design-system-builder/v1.0.7/assets/js/soft-design-system.js" type="text/javascript"></script>
     <script src="https://cdn.jsdelivr.net/gh/creativetimofficial/public-assets@master/soft-ui-design-system-builder/v1.0.7/assets/js/plugins/countup.min.js" type="text/javascript"></script>
@@ -545,49 +583,50 @@
     <script src="https://cdn.jsdelivr.net/gh/creativetimofficial/public-assets@master/soft-ui-design-system-builder/v1.0.7/assets/js/plugins/typedjs.js"></script>
     <script>
         if (document.getElementById("state1")) {
-                    const countUp = new CountUp("state1", document.getElementById("state1").getAttribute("countTo"));
-                    if (!countUp.error) {
-                      countUp.start();
-                    } else {
-                      console.error(countUp.error);
-                    }
-                  }
-                  if (document.getElementById("state2")) {
-                    const countUp1 = new CountUp("state2", document.getElementById("state2").getAttribute("countTo"));
-                    if (!countUp1.error) {
-                      countUp1.start();
-                    } else {
-                      console.error(countUp1.error);
-                    }
-                  }
-                  if (document.getElementById("state3")) {
-                    const countUp2 = new CountUp("state3", document.getElementById("state3").getAttribute("countTo"));
-                    if (!countUp2.error) {
-                      countUp2.start();
-                    } else {
-                      console.error(countUp2.error);
-                    };
-                  }
-        
-         if (document.querySelector('.datepicker-1')) {
-              flatpickr('.datepicker-1', {
-              }); // flatpickr
-            } 
-        
-         if (document.querySelector('.datepicker-2')) {
-              flatpickr('.datepicker-2', {
-              }); // flatpickr
+            const countUp = new CountUp("state1", document.getElementById("state1").getAttribute("countTo"));
+            if (!countUp.error) {
+                countUp.start();
+            } else {
+                console.error(countUp.error);
             }
+        }
+        if (document.getElementById("state2")) {
+            const countUp1 = new CountUp("state2", document.getElementById("state2").getAttribute("countTo"));
+            if (!countUp1.error) {
+                countUp1.start();
+            } else {
+                console.error(countUp1.error);
+            }
+        }
+        if (document.getElementById("state3")) {
+            const countUp2 = new CountUp("state3", document.getElementById("state3").getAttribute("countTo"));
+            if (!countUp2.error) {
+                countUp2.start();
+            } else {
+                console.error(countUp2.error);
+            }
+        }
+
+        if (document.querySelector('.datepicker-1')) {
+            flatpickr('.datepicker-1', {}); // flatpickr
+        }
+
+        if (document.querySelector('.datepicker-2')) {
+            flatpickr('.datepicker-2', {}); // flatpickr
+        }
+
         if (document.getElementById("typed")) {
             var typed = new Typed("#typed", {
-              stringsElement: "#typed-strings",
-              typeSpeed: 70,
-              backSpeed: 50,
-              backDelay: 200,
-              startDelay: 500,
-              loop: true
+                stringsElement: "#typed-strings",
+                typeSpeed: 70,
+                backSpeed: 50,
+                backDelay: 200,
+                startDelay: 500,
+                loop: true
             });
-          }
+        }
     </script>
     <script src="./assets/js/loopple/loopple.js"></script>
 </body>
+
+</html>
