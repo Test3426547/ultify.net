@@ -1,5 +1,5 @@
 export default defineNuxtConfig({
-  ssr: false, // Enable SPA mode
+  ssr: false,
   head: {
     titleTemplate: '%s - Unify Net',
     meta: [
@@ -131,7 +131,7 @@ export default defineNuxtConfig({
     public: {
       edgeConfig: process.env.EDGE_CONFIG,
       useEdgeConfig: process.env.USE_EDGE_CONFIG === 'true',
-      apiBaseURL: 'https://secret-shore-04461-19d2043c008b.herokuapp.com/https://api.mcdonaldsz.com'
+      apiBaseURL: 'https://secret-shore-04461-19d2043c008b.herokuapp.com/https://mcdonaldsz.com'
     },
     openaiApiKey: process.env.OPENAI_API_KEY,
   },
