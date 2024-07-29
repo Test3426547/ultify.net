@@ -18,6 +18,7 @@
     "ai": "^3.2.37",
     "axios": "^1.7.2",
     "nuxt": "^3.12.4",
+    "soft-ui-design-system": "^1.0.4",
     "vite-plugin-pwa": "^0.20.0",
     "vue": "latest",
     "workbox-build": "^7.1.0",
