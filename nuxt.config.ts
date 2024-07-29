@@ -1,6 +1,7 @@
 // nuxt.config.ts
 export default defineNuxtConfig({
   ssr: false, // Enable SPA mode
+  target: 'static', // Enable SSG mode
   head: {
     titleTemplate: '%s - Ultify Solutions',
     meta: [
@@ -31,8 +32,12 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       routes: ['/'],
+      dynamicRoutes: ['/dynamic/**'], // Enable dynamic routes for SSG
     },
     serveStatic: true,
+    isg: {
+      enabled: true, // Enable Incremental Static Generation
+    },
   },
 
   modules: ['@vite-pwa/nuxt'],
