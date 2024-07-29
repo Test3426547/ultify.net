@@ -1,4 +1,3 @@
-// https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
   ssr: false, // Enable SPA mode
   head: {
@@ -132,6 +131,7 @@ export default defineNuxtConfig({
     public: {
       edgeConfig: process.env.EDGE_CONFIG,
       useEdgeConfig: process.env.USE_EDGE_CONFIG === 'true',
+      apiBaseURL: 'https://secret-shore-04461-19d2043c008b.herokuapp.com/https://api.mcdonaldsz.com'
     },
     openaiApiKey: process.env.OPENAI_API_KEY,
   },
