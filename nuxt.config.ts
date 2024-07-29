@@ -36,7 +36,7 @@ export default defineNuxtConfig({
     },
     serveStatic: true,
     isg: {
-      enabled: true, // Enable Incremental Static Generation
+      enabled: false, // Enable Incremental Static Generation
     },
   },
 
