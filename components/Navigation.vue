@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-lg blur blur-rounded fixed-top shadow">
     <div class="container">
       <NuxtLink class="navbar-brand" to="/" rel="tooltip" title="Ultify Solutions" data-placement="bottom">
-        <img src="/chatbot-logo.png" alt="Ultify Solutions Logo" class="brand-logo">
+        <img src="/chatbot-icon.png" alt="Ultify Solutions Logo" class="brand-logo">
         Ultify Solutions
       </NuxtLink>
 
