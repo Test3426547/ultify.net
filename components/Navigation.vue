@@ -169,10 +169,10 @@
   }
   
   /* Adjustments for mobile menu positioning */
-  .translate-y-1/2 {
-    transform: translateY(50%);
-  }
-  .translate-y-full {
-    transform: translateY(-100%);
-  }
+.translate-open {
+  transform: translateY(50%);
+}
+.translate-closed {
+  transform: translateY(-100%);
+}
   </style>  
