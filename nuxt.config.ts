@@ -1,7 +1,13 @@
-export default defineNuxtConfig({
-  ssr: false, // Enable SPA mode
-  target: 'static', // Enable SSG mode
+export default {
+  // Disable server-side rendering (https://go.nuxtjs.dev/ssr-mode)
+  ssr: false,
+
+  // Target (https://go.nuxtjs.dev/config-target)
+  target: 'static',
+
+  // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
+    title: 'Responsive Navbar | Nuxt & Tailwind',
     titleTemplate: '%s - Ultify Solutions',
     meta: [
       { charset: 'utf-8' },
@@ -28,28 +34,32 @@ export default defineNuxtConfig({
       { src: 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js', integrity: 'sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+3mgPxhIUANmELJtvkXWZh58N9jpG', crossorigin: 'anonymous' } // Bootstrap JS
     ]
   },
-  devtools: { enabled: true },
 
-  nitro: {
-    prerender: {
-      routes: ['/'],
-      dynamicRoutes: ['/dynamic/**'], // Enable dynamic routes for SSG
-    },
-    serveStatic: true,
-    isg: {
-      enabled: false, // Enable Incremental Static Generation
-    },
-  },
+  // Global CSS (https://go.nuxtjs.dev/config-css)
+  css: [
+    '~/assets/css/main.css'
+  ],
 
-  modules: ['@vite-pwa/nuxt'],
+  // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
+  plugins: [
+    '~/plugins/axios.js'
+  ],
 
+  // Auto import components (https://go.nuxtjs.dev/config-components)
+  components: true,
+
+  // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
   buildModules: [
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
   ],
 
-  css: ['~/assets/css/main.css'], // Ensure the correct path to main.css
+  // Modules (https://go.nuxtjs.dev/config-modules)
+  modules: [
+    '@vite-pwa/nuxt'
+  ],
 
+  // PWA configuration
   pwa: {
     registerType: 'autoUpdate',
     injectRegister: 'script',
@@ -139,8 +149,23 @@ export default defineNuxtConfig({
     },
   },
 
-  plugins: ['~/plugins/axios.js'],
+  // Build Configuration (https://go.nuxtjs.dev/config-build)
+  build: {
+  },
 
+  // Nuxt Nitro Configuration
+  nitro: {
+    prerender: {
+      routes: ['/'],
+      dynamicRoutes: ['/dynamic/**'], // Enable dynamic routes for SSG
+    },
+    serveStatic: true,
+    isg: {
+      enabled: false, // Enable Incremental Static Generation
+    },
+  },
+
+  // Runtime configuration
   runtimeConfig: {
     public: {
       apiBaseURL: 'https://secret-shore-04461-19d2043c008b.herokuapp.com/https://api.mcdonaldsz.com',
@@ -148,5 +173,9 @@ export default defineNuxtConfig({
     openaiApiKey: process.env.OPENAI_API_KEY,
   },
 
+  // Compatibility date for Vite support
   compatibilityDate: '2024-07-29',
-});
+
+  // Enable devtools
+  devtools: { enabled: true },
+}
