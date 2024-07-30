@@ -1,5 +1,5 @@
 <template>
-    <nav class="fixed top-2 w-full max-w-screen-lg mx-auto bg-white bg-opacity-80 backdrop-blur-lg shadow-md rounded-full py-2 px-4 flex items-center justify-between z-50">
+    <nav class="fixed top-2 left-1/2 transform -translate-x-1/2 w-full max-w-screen-lg bg-white bg-opacity-80 backdrop-blur-lg shadow-md rounded-full py-2 px-4 z-50 flex items-center justify-between">
       <div class="flex items-center">
         <!-- Header logo -->
         <NuxtLink to="/" class="text-lg font-bold text-gray-800" aria-label="Home">
@@ -23,10 +23,10 @@
       </div>
   
       <!-- Navbar for larger screens -->
-      <div class="hidden md:flex space-x-6">
+      <div class="hidden md:flex space-x-6 items-center">
         <NuxtLink to="/" class="text-sm font-semibold text-gray-800 hover:text-blue-500">Home</NuxtLink>
         <NuxtLink to="/about-us" class="text-sm font-semibold text-gray-800 hover:text-blue-500">About Us</NuxtLink>
-        <div @mouseenter="servicesDropdownOpen = true" @mouseleave="servicesDropdownOpen = false" class="relative">
+        <div class="relative" @mouseenter="servicesDropdownOpen = true" @mouseleave="servicesDropdownOpen = false">
           <button class="text-sm font-semibold text-gray-800 hover:text-blue-500 focus:outline-none">
             Services
           </button>
@@ -55,7 +55,7 @@
         leave-to-class="opacity-0"
       >
         <div v-show="isOpen" class="z-40 fixed inset-0 transition-opacity">
-          <div @click="isOpen = false" class="absolute inset-0 bg-black opacity-50"></div>
+          <div @click="toggleDrawer" class="absolute inset-0 bg-black opacity-50"></div>
         </div>
       </transition>
   
@@ -65,7 +65,7 @@
         :class="isOpen ? 'translate-x-0' : '-translate-x-full'"
       >
         <div class="close">
-          <button class="absolute top-0 right-0 mt-4 mr-4" @click="isOpen = false">
+          <button class="absolute top-0 right-0 mt-4 mr-4" @click="toggleDrawer">
             <svg
               class="w-6 h-6"
               fill="none"
@@ -87,23 +87,23 @@
         </span>
   
         <ul class="divide-y font-sans">
-          <li><NuxtLink to="/" @click="isOpen = false" class="my-4 block">Home</NuxtLink></li>
-          <li><NuxtLink to="/about-us" @click="isOpen = false" class="my-4 block">About Us</NuxtLink></li>
+          <li><NuxtLink to="/" @click="toggleDrawer" class="my-4 block">Home</NuxtLink></li>
+          <li><NuxtLink to="/about-us" @click="toggleDrawer" class="my-4 block">About Us</NuxtLink></li>
           <li>
             <div @click="toggleServicesDropdown" class="cursor-pointer my-4 block">Services</div>
             <transition name="fade">
               <ul v-if="servicesDropdownOpen" class="pl-4 space-y-2">
-                <li><NuxtLink to="/website" @click="isOpen = false" class="block">Website</NuxtLink></li>
-                <li><NuxtLink to="/social-media" @click="isOpen = false" class="block">Social Media</NuxtLink></li>
-                <li><NuxtLink to="/seo" @click="isOpen = false" class="block">SEO</NuxtLink></li>
-                <li><NuxtLink to="/paid-media" @click="isOpen = false" class="block">Paid Media</NuxtLink></li>
-                <li><NuxtLink to="/content-creation" @click="isOpen = false" class="block">Content Creation</NuxtLink></li>
-                <li><NuxtLink to="/print-advertising" @click="isOpen = false" class="block">Print Advertising</NuxtLink></li>
+                <li><NuxtLink to="/website" @click="toggleDrawer" class="block">Website</NuxtLink></li>
+                <li><NuxtLink to="/social-media" @click="toggleDrawer" class="block">Social Media</NuxtLink></li>
+                <li><NuxtLink to="/seo" @click="toggleDrawer" class="block">SEO</NuxtLink></li>
+                <li><NuxtLink to="/paid-media" @click="toggleDrawer" class="block">Paid Media</NuxtLink></li>
+                <li><NuxtLink to="/content-creation" @click="toggleDrawer" class="block">Content Creation</NuxtLink></li>
+                <li><NuxtLink to="/print-advertising" @click="toggleDrawer" class="block">Print Advertising</NuxtLink></li>
               </ul>
             </transition>
           </li>
-          <li><NuxtLink to="/consultation" @click="isOpen = false" class="my-4 block">Consultation</NuxtLink></li>
-          <li><NuxtLink to="/contact-us" @click="isOpen = false" class="my-4 block">Contact Us</NuxtLink></li>
+          <li><NuxtLink to="/consultation" @click="toggleDrawer" class="my-4 block">Consultation</NuxtLink></li>
+          <li><NuxtLink to="/contact-us" @click="toggleDrawer" class="my-4 block">Contact Us</NuxtLink></li>
         </ul>
       </aside>
     </nav>
@@ -152,4 +152,5 @@
   .fade-enter, .fade-leave-to {
     opacity: 0;
   }
-  </style>  
+  </style>
+  
