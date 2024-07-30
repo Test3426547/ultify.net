@@ -42,8 +42,9 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: ['@vite-pwa/nuxt', 'bootstrap-vue/nuxt'],
-
+module.exports = {
+  modules: ['@vite-pwa/nuxt'],
+}
   pwa: {
     registerType: 'autoUpdate',
     injectRegister: 'script',
