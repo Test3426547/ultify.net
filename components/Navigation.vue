@@ -1,13 +1,13 @@
 <template>
-    <nav class="fixed w-full top-2 left-1/2 transform -translate-x-1/2 p-3 bg-white bg-opacity-80 backdrop-blur-lg shadow-md rounded-full z-50 md:w-10/12">
+    <nav class="fixed w-full top-2 left-1/2 transform -translate-x-1/2 p-3 bg-white bg-opacity-50 backdrop-blur-lg shadow-md rounded-full z-50 md:w-9/12">
       <div class="flex items-center justify-between max-w-screen-lg mx-auto">
         <!-- Header logo -->
         <NuxtLink to="/" class="text-lg font-bold text-gray-800" aria-label="Home">
           Ultify Solutions
         </NuxtLink>
   
-        <!-- Mobile toggle -->
-        <div class="md:hidden">
+        <!-- Mobile toggle (Hamburger icon) -->
+        <div class="md:hidden ml-auto">
           <button @click="toggleDrawer" aria-label="Toggle navigation">
             <svg
               class="h-8 w-8 fill-current text-black"
@@ -28,7 +28,7 @@
               Services
             </button>
             <transition name="fade">
-              <div v-if="servicesDropdownOpen" class="absolute left-0 mt-2 bg-white shadow-lg rounded-lg p-2 z-50">
+              <div v-if="servicesDropdownOpen" class="absolute left-0 mt-2 bg-white bg-opacity-50 shadow-lg rounded-lg p-2 z-50" @mouseenter="servicesDropdownOpen = true" @mouseleave="servicesDropdownOpen = false">
                 <NuxtLink to="/website" class="block px-4 py-2 text-gray-800 hover:text-blue-500">Website</NuxtLink>
                 <NuxtLink to="/social-media" class="block px-4 py-2 text-gray-800 hover:text-blue-500">Social Media</NuxtLink>
                 <NuxtLink to="/seo" class="block px-4 py-2 text-gray-800 hover:text-blue-500">SEO</NuxtLink>
@@ -49,7 +49,7 @@
         leave-active-class="ease-out duration-300"
       >
         <div v-show="isOpen" class="z-50 fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 transition-opacity" @click="toggleDrawer">
-          <aside class="w-full max-w-md p-6 bg-white rounded-lg shadow-lg transform transition-transform duration-300" @click.stop :class="{ 'translate-y-1/4': isOpen, '-translate-y-full': !isOpen }">
+          <aside class="w-full max-w-md p-6 bg-white bg-opacity-50 rounded-lg shadow-lg transform transition-transform duration-300" @click.stop :class="{ 'translate-y-1/3': isOpen, '-translate-y-full': !isOpen }">
             <div class="flex justify-end">
               <button @click="toggleDrawer" aria-label="Close menu">
                 <svg
@@ -129,13 +129,13 @@
     padding: 0.75rem;
   }
   
-  /* Pill shape and reduced width */
+  /* Pill shape and further reduced width */
   .md\:rounded-lg {
     border-radius: 9999px;
   }
   
-  .md\:w-11\/12 {
-    width: 83.333333%;
+  .md\:w-9\/12 {
+    width: 75%;
   }
   
   /* Nav items */
@@ -163,7 +163,7 @@
   }
   
   /* Adjustments for mobile menu positioning */
-  .translate-y-1/4 {
-    transform: translateY(25%);
+  .translate-y-1/2 {
+    transform: translateY(50%);
   }
   </style>  
