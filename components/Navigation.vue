@@ -2,7 +2,7 @@
     <nav class="bg-white bg-opacity-50 backdrop-blur-md border-b shadow-md py-3 px-4 rounded-full sticky top-2 mx-auto max-w-screen-lg z-50">
       <div class="flex items-center justify-between">
         <div class="flex items-center">
-          <img src="/path-to-your-icon.png" alt="Logo" class="h-10 max-h-10 mr-2" />
+          <img src="/chatbot-icon.png" alt="Logo" class="h-10 max-h-10 mr-2" />
           <NuxtLink to="/" class="text-lg font-bold text-gray-800">Ultify Solutions</NuxtLink>
         </div>
         <button class="lg:hidden block" @click="toggleMobileMenu">
