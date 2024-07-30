@@ -2,6 +2,7 @@
   <nav class="navbar navbar-expand-lg blur blur-rounded fixed-top shadow">
     <div class="container">
       <NuxtLink class="navbar-brand" to="/" rel="tooltip" title="Ultify Solutions" data-placement="bottom">
+        <img src="/path/to/logo.png" alt="Ultify Solutions Logo" class="brand-logo">
         Ultify Solutions
       </NuxtLink>
 
@@ -17,7 +18,7 @@
           <li class="nav-item dropdown mx-2">
             <a class="nav-link dropdown-toggle ps-2 d-flex justify-content-between align-items-center" role="button" id="servicesDropdown" data-bs-toggle="dropdown" aria-expanded="false">
               Services
-              <img src="/chatbot-icon.png" alt="down-arrow" class="arrow ms-1">
+              <img src="/path/to/icon.png" alt="down-arrow" class="arrow ms-1">
             </a>
             <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
               <li><NuxtLink class="dropdown-item" to="/website">Website</NuxtLink></li>
@@ -51,10 +52,18 @@ import { NuxtLink } from '#components'
 .navbar {
   background-color: #fff;
   z-index: 1030;
+  height: 60px; /* Ensures navbar height consistency */
 }
 
 .navbar-brand {
   font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+.brand-logo {
+  max-height: 40px; /* Limits the logo height */
+  margin-right: 10px; /* Adds some space between logo and text */
 }
 
 .navbar-nav-hover .nav-link:hover,
