@@ -41,7 +41,12 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: ['@vite-pwa/nuxt', '@nuxtjs/tailwindcss'],
+  modules: ['@vite-pwa/nuxt'],
+
+  buildModules: [
+    // https://go.nuxtjs.dev/tailwindcss
+    '@nuxtjs/tailwindcss',
+  ],
 
   css: ['~/assets/css/main.css'], // Ensure the correct path to main.css
 

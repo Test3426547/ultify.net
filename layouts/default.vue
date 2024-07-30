@@ -12,29 +12,31 @@ function toggleChatbot() {
 </script>
 
 <template>
-  <main>
+  <div>
     <Navigation />
-    <slot />
-    <ClientOnly>
-      <div v-if="$pwa?.needRefresh" class="pwa-toast" role="alert" aria-labelledby="toast-message">
-        <div class="message">
-          <span id="toast-message">New content available, click on reload button to update</span>
+    <main>
+      <slot />
+      <ClientOnly>
+        <div v-if="$pwa?.needRefresh" class="pwa-toast" role="alert" aria-labelledby="toast-message">
+          <div class="message">
+            <span id="toast-message">New content available, click on reload button to update</span>
+          </div>
+          <div class="buttons">
+            <button @click="$pwa.updateServiceWorker()">Reload</button>
+            <button @click="$pwa.cancelPrompt()">Close</button>
+          </div>
         </div>
-        <div class="buttons">
-          <button @click="$pwa.updateServiceWorker()">Reload</button>
-          <button @click="$pwa.cancelPrompt()">Close</button>
+      </ClientOnly>
+      <ClientOnly>
+        <div class="chatbot-icon" @click="toggleChatbot">
+          <img src="/chatbot-icon.png" alt="Chatbot Icon" />
         </div>
-      </div>
-    </ClientOnly>
-    <ClientOnly>
-      <div class="chatbot-icon" @click="toggleChatbot">
-        <img src="/chatbot-icon.png" alt="Chatbot Icon" />
-      </div>
-      <div v-if="showChatbot" class="chatbot-window">
-        <Chatbot @close="toggleChatbot" />
-      </div>
-    </ClientOnly>
-  </main>
+        <div v-if="showChatbot" class="chatbot-window">
+          <Chatbot @close="toggleChatbot" />
+        </div>
+      </ClientOnly>
+    </main>
+  </div>
 </template>
 
 <style>
@@ -89,5 +91,24 @@ function toggleChatbot() {
   background-color: white;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   z-index: 1000;
+}
+
+html {
+  font-family:
+    'Source Sans Pro',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    'Helvetica Neue',
+    Arial,
+    sans-serif;
+  font-size: 16px;
+  word-spacing: 1px;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
 }
 </style>
