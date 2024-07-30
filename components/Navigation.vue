@@ -170,7 +170,7 @@
   
   /* Adjustments for mobile menu positioning */
   .translate-open {
-    transform: translateY(50%);
+    transform: translateY(75%);
   }
   .translate-closed {
     transform: translateY(-100%);
