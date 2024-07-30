@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar navbar-expand-lg bg-white bg-opacity-80 backdrop-blur-2xl border-bottom shadow-md my-3 py-3 position-absolute start-0 end-0 mx-4 z-index-3 rounded-full sticky top-2">
+    <nav class="navbar navbar-expand-lg bg-white bg-opacity-80 backdrop-blur-2xl border-bottom shadow-md my-3 py-3 position-absolute start-0 end-0 mx-4 z-index-3 rounded-lg sticky top-2">
       <div class="container">
         <NuxtLink to="/" class="navbar-brand d-flex align-items-center" aria-label="Home">
           <span :class="['font-bold', { 'text-lg': !isMobileView, 'text-sm': isMobileView }]">Ultify Solutions</span>
@@ -16,12 +16,12 @@
         <div class="collapse navbar-collapse" :class="{ show: mobileMenuOpen }">
           <ul class="navbar-nav mx-auto d-none d-lg-flex">
             <li class="nav-item mx-2">
-              <NuxtLink to="/about-us" class="nav-link d-flex align-items-center text-blue-gray-700 hover:text-pink-500">
+              <NuxtLink to="/about-us" class="nav-link d-flex align-items-center text-blue-gray-700 hover:text-blue-900">
                 About Us
               </NuxtLink>
             </li>
-            <li class="nav-item mx-2 relative" @mouseleave="servicesDropdownOpen = false">
-              <button @click="toggleServicesDropdown" class="nav-link d-flex align-items-center text-blue-gray-700 hover:text-pink-500 bg-transparent border-0 focus:outline-none">
+            <li class="nav-item mx-2 relative">
+              <button @click="toggleServicesDropdown" class="nav-link d-flex align-items-center text-blue-gray-700 hover:text-blue-900 bg-transparent border-0 focus:outline-none">
                 Services
               </button>
               <transition name="fade">
@@ -36,12 +36,12 @@
               </transition>
             </li>
             <li class="nav-item mx-2">
-              <NuxtLink to="/consultation" class="nav-link d-flex align-items-center text-blue-gray-700 hover:text-pink-500">
+              <NuxtLink to="/consultation" class="nav-link d-flex align-items-center text-blue-gray-700 hover:text-blue-900">
                 Consultation
               </NuxtLink>
             </li>
             <li class="nav-item mx-2">
-              <NuxtLink to="/contact-us" class="nav-link d-flex align-items-center text-blue-gray-700 hover:text-pink-500">
+              <NuxtLink to="/contact-us" class="nav-link d-flex align-items-center text-blue-gray-700 hover:text-blue-900">
                 Contact Us
               </NuxtLink>
             </li>
@@ -49,12 +49,12 @@
           
           <ul class="navbar-nav d-lg-none d-block mt-3">
             <li class="nav-item">
-              <NuxtLink to="/about-us" class="nav-link text-blue-gray-700 hover:text-pink-500">
+              <NuxtLink to="/about-us" class="nav-link text-blue-gray-700 hover:text-blue-900">
                 About Us
               </NuxtLink>
             </li>
             <li class="nav-item">
-              <div class="nav-link text-blue-gray-700 hover:text-pink-500 font-bold" @click="toggleMobileServicesDropdown">
+              <div class="nav-link text-blue-gray-700 hover:text-blue-900 font-bold" @click="toggleMobileServicesDropdown">
                 Services
               </div>
               <transition name="fade">
@@ -69,12 +69,12 @@
               </transition>
             </li>
             <li class="nav-item">
-              <NuxtLink to="/consultation" class="nav-link text-blue-gray-700 hover:text-pink-500">
+              <NuxtLink to="/consultation" class="nav-link text-blue-gray-700 hover:text-blue-900">
                 Consultation
               </NuxtLink>
             </li>
             <li class="nav-item">
-              <NuxtLink to="/contact-us" class="nav-link text-blue-gray-700 hover:text-pink-500">
+              <NuxtLink to="/contact-us" class="nav-link text-blue-gray-700 hover:text-blue-900">
                 Contact Us
               </NuxtLink>
             </li>
@@ -119,7 +119,6 @@
   </script>
   
   <style scoped>
-  /* Tailwind and Bootstrap integration */
   .navbar-toggler-icon {
     display: inline-block;
     width: 1.25em;
@@ -152,12 +151,13 @@
     color: #212529;
     text-decoration: none;
   }
-  .mt-2.rounded-lg {
+  .nav-link:hover {
+    color: #1a202c;
+  }
+  .rounded-lg {
     border-radius: 0.5rem;
   }
   .bg-white.bg-opacity-80 {
     backdrop-filter: blur(2xl);
-    border-radius: 9999px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
   </style>  
