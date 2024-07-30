@@ -51,7 +51,7 @@
           <aside class="fixed inset-y-0 left-0 w-full md:w-64 bg-white p-6 transition-transform duration-300 z-50" :class="{'translate-x-0': isOpen, '-translate-x-full': !isOpen}" @click.stop>
             <div class="flex justify-between items-center mb-4">
               <div class="flex items-center">
-                <img src="/path-to-logo.png" alt="Ultify Logo" class="h-10 w-10 mr-2" /> <!-- Replace with your logo path -->
+                <img src="/chatbot-icon" alt="Ultify Logo" class="h-10 w-10 mr-2" /> <!-- Replace with your logo path -->
                 <NuxtLink to="/" class="text-lg font-bold text-gray-800">Ultify Solutions</NuxtLink>
               </div>
               <button @click="drawer" aria-label="Close menu">
