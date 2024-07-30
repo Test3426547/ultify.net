@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar navbar-expand-lg bg-white bg-opacity-50 backdrop-blur-2xl border-bottom shadow-md my-3 py-3 position-fixed start-0 end-0 mx-4 z-index-3 rounded-pill">
+    <nav class="navbar navbar-expand-lg bg-white bg-opacity-80 backdrop-blur-2xl border-bottom shadow-md my-3 py-3 position-absolute start-0 end-0 mx-4 z-index-3">
       <div class="container">
         <router-link to="/" class="navbar-brand d-flex align-items-center" aria-label="Home">
           <span :class="['font-bold', { 'text-lg': !isMobileView, 'text-sm': isMobileView }]">Ultify Solutions</span>
@@ -21,7 +21,7 @@
               </router-link>
             </li>
             <li class="nav-item mx-2 position-relative">
-              <button class="nav-link d-flex justify-content-between cursor-pointer align-items-center text-blue-gray-700 font-bold" @click="toggleServicesDropdown">
+              <button class="nav-link d-flex justify-content-between cursor-pointer align-items-center text-blue-gray-700 font-bold bg-transparent border-0" @click="toggleServicesDropdown">
                 Services
               </button>
               <transition name="fade">
@@ -47,19 +47,18 @@
             </li>
           </ul>
           
-          <!-- Mobile Menu -->
-          <ul v-if="mobileMenuOpen" class="navbar-nav d-lg-none d-block mt-3">
+          <ul class="navbar-nav d-lg-none d-block mt-3">
             <li class="nav-item">
               <router-link to="/about-us" class="nav-link text-blue-gray-700">
                 About Us
               </router-link>
             </li>
             <li class="nav-item">
-              <button class="nav-link text-blue-gray-700 font-bold" @click="toggleMobileServicesDropdown">
+              <div class="nav-link text-blue-gray-700 font-bold" @click="toggleMobileServicesDropdown">
                 Services
-              </button>
+              </div>
               <transition name="fade">
-                <div v-if="mobileServicesDropdownOpen" class="mt-2">
+                <div v-if="mobileServicesDropdownOpen" class="mt-2 rounded-lg bg-white shadow-md">
                   <router-link to="/website" class="dropdown-item">Website</router-link>
                   <router-link to="/social-media" class="dropdown-item">Social Media</router-link>
                   <router-link to="/seo" class="dropdown-item">SEO</router-link>
@@ -120,11 +119,7 @@
   </script>
   
   <style scoped>
-  /* Styling for the Navbar */
-  .navbar {
-    border-radius: 1.5rem; /* Rounded corners for the navbar */
-  }
-  
+  /* Tailwind and Bootstrap integration */
   .navbar-toggler-icon {
     display: inline-block;
     width: 1.25em;
@@ -156,5 +151,13 @@
     padding: 0.25rem 1.5rem;
     color: #212529;
     text-decoration: none;
+  }
+  .mt-2.rounded-lg {
+    border-radius: 0.5rem;
+  }
+  .bg-white.bg-opacity-80 {
+    backdrop-filter: blur(2xl);
+    border-radius: 9999px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
   </style>  
