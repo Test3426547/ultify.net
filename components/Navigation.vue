@@ -3,7 +3,7 @@
     <div class="container flex items-center justify-between mx-auto">
       <router-link to="/" class="flex items-center space-x-2">
         <!-- Company Logo -->
-        <img src="/path-to-logo.png" alt="Ultify Solutions Logo" class="w-10 h-10"/>
+        <img src="/chatbot-icon.png" alt="Ultify Solutions Logo" class="w-10 h-10"/>
         <!-- Company Name -->
         <p class="font-bold text-lg text-blue-gray-900">Ultify Solutions</p>
       </router-link>
