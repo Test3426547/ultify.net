@@ -1,23 +1,23 @@
 <template>
     <div>
-      <nav class="bg-white shadow-md rounded-full py-2 px-4 md:px-8 mx-4 my-3 flex items-center justify-between">
+      <nav class="bg-white shadow-md rounded-full py-2 px-4 md:px-8 mx-4 my-3 flex items-center justify-between z-50 relative">
         <NuxtLink to="/" class="text-lg font-bold text-gray-800" aria-label="Home">
           Ultify Solutions
         </NuxtLink>
   
         <button
-          class="p-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 md:hidden"
+          class="p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 md:hidden"
           @click="toggleSidebar"
           aria-label="Toggle navigation"
         >
-          <span class="block w-6 h-0.5 bg-gray-700 mb-1"></span>
-          <span class="block w-6 h-0.5 bg-gray-700 mb-1"></span>
-          <span class="block w-6 h-0.5 bg-gray-700"></span>
+          <span class="block w-8 h-1 bg-gray-700 mb-1"></span>
+          <span class="block w-8 h-1 bg-gray-700 mb-1"></span>
+          <span class="block w-8 h-1 bg-gray-700"></span>
         </button>
       </nav>
   
       <div
-        :class="['fixed top-0 right-0 h-full bg-white shadow-lg transition-transform transform', sidebarOpen ? 'translate-x-0' : 'translate-x-full']"
+        :class="['fixed top-0 right-0 h-full bg-white shadow-lg transition-transform transform z-40', sidebarOpen ? 'translate-x-0' : 'translate-x-full']"
         style="width: 300px;"
       >
         <div class="flex items-center justify-between p-4 border-b">
@@ -55,40 +55,21 @@
           <NuxtLink to="/consultation" class="block py-2 text-gray-800 hover:text-blue-500" @click="toggleSidebar">Consultation</NuxtLink>
           <NuxtLink to="/contact-us" class="block py-2 text-gray-800 hover:text-blue-500" @click="toggleSidebar">Contact Us</NuxtLink>
         </nav>
-        <div class="p-4 border-t">
-          <NuxtLink to="/sign-up" class="block w-full bg-blue-500 text-white text-center py-2 rounded-md hover:bg-blue-600">
-            Sign Up
-          </NuxtLink>
-          <div class="mt-4 text-gray-600 text-sm">
-            <p class="mb-2">Follow us:</p>
-            <div class="flex space-x-4">
-              <NuxtLink to="#" class="hover:text-gray-800">
-                <i class="fab fa-twitter"></i>
-              </NuxtLink>
-              <NuxtLink to="#" class="hover:text-gray-800">
-                <i class="fab fa-facebook"></i>
-              </NuxtLink>
-              <NuxtLink to="#" class="hover:text-gray-800">
-                <i class="fab fa-instagram"></i>
-              </NuxtLink>
-              <NuxtLink to="#" class="hover:text-gray-800">
-                <i class="fab fa-youtube"></i>
-              </NuxtLink>
-            </div>
-          </div>
-        </div>
       </div>
   
       <div
         v-if="sidebarOpen"
-        class="fixed inset-0 bg-black bg-opacity-50"
+        class="fixed inset-0 bg-black bg-opacity-50 z-30"
         @click="toggleSidebar"
       ></div>
+  
+      <Chatbot class="fixed bottom-0 right-0 z-50" />
     </div>
   </template>
   
   <script setup>
   import { ref } from 'vue';
+  import Chatbot from '~/components/Chatbot.vue'; // Assuming you have a Chatbot component
   
   const sidebarOpen = ref(false);
   const servicesDropdownOpen = ref(false);
