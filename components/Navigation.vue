@@ -1,83 +1,34 @@
 <template>
-    <nav class="navbar navbar-expand-lg bg-white bg-opacity-80 backdrop-blur-2xl border-bottom shadow-md my-3 py-3 position-absolute start-0 end-0 mx-4 z-index-3">
-      <div class="container">
-        <router-link to="/" class="navbar-brand d-flex align-items-center" aria-label="Home">
-          <span :class="['font-bold', { 'text-lg': !isMobileView, 'text-sm': isMobileView }]">Ultify Solutions</span>
-        </router-link>
-        
-        <button class="navbar-toggler shadow-none" type="button" @click="toggleMobileMenu">
-          <span class="navbar-toggler-icon mt-2">
-            <span class="navbar-toggler-bar bar1"></span>
-            <span class="navbar-toggler-bar bar2"></span>
-            <span class="navbar-toggler-bar bar3"></span>
-          </span>
+    <nav class="bg-white bg-opacity-50 backdrop-blur-md border-b shadow-md py-3 px-4 rounded-full sticky top-2 mx-auto max-w-screen-lg z-50">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center">
+          <img src="/path-to-your-icon.png" alt="Logo" class="h-10 max-h-10 mr-2" />
+          <NuxtLink to="/" class="text-lg font-bold text-gray-800">Ultify Solutions</NuxtLink>
+        </div>
+        <button class="lg:hidden block" @click="toggleMobileMenu">
+          <span class="material-icons">menu</span>
         </button>
-        
-        <div class="collapse navbar-collapse" :class="{ show: mobileMenuOpen }">
-          <ul class="navbar-nav mx-auto d-none d-lg-flex">
-            <li class="nav-item mx-2">
-              <router-link to="/about-us" class="nav-link d-flex align-items-center text-blue-gray-700">
-                About Us
-              </router-link>
-            </li>
-            <li class="nav-item mx-2 position-relative">
-              <button class="nav-link d-flex justify-content-between cursor-pointer align-items-center text-blue-gray-700 font-bold bg-transparent border-0" @click="toggleServicesDropdown">
+        <div :class="['lg:flex items-center', mobileMenuOpen ? 'block' : 'hidden']">
+          <ul class="lg:flex items-center space-x-4 text-gray-700 mt-4 lg:mt-0">
+            <li><NuxtLink to="/about-us" class="hover:text-pink-500">About Us</NuxtLink></li>
+            <li class="relative" @mouseenter="servicesDropdownOpen = true" @mouseleave="servicesDropdownOpen = false">
+              <button @click="toggleServicesDropdown" class="flex items-center hover:text-pink-500">
                 Services
+                <span class="material-icons">expand_more</span>
               </button>
               <transition name="fade">
-                <div v-if="servicesDropdownOpen" class="dropdown-menu position-absolute bg-white shadow rounded p-2 mt-2">
-                  <router-link to="/website" class="dropdown-item">Website</router-link>
-                  <router-link to="/social-media" class="dropdown-item">Social Media</router-link>
-                  <router-link to="/seo" class="dropdown-item">SEO</router-link>
-                  <router-link to="/paid-media" class="dropdown-item">Paid Media</router-link>
-                  <router-link to="/content-creation" class="dropdown-item">Content Creation</router-link>
-                  <router-link to="/print-advertising" class="dropdown-item">Print Advertising</router-link>
+                <div v-if="servicesDropdownOpen" class="absolute bg-white shadow-lg rounded-lg p-2 mt-2 z-10">
+                  <NuxtLink to="/website" class="block px-4 py-2 hover:bg-gray-100">Website</NuxtLink>
+                  <NuxtLink to="/social-media" class="block px-4 py-2 hover:bg-gray-100">Social Media</NuxtLink>
+                  <NuxtLink to="/seo" class="block px-4 py-2 hover:bg-gray-100">SEO</NuxtLink>
+                  <NuxtLink to="/paid-media" class="block px-4 py-2 hover:bg-gray-100">Paid Media</NuxtLink>
+                  <NuxtLink to="/content-creation" class="block px-4 py-2 hover:bg-gray-100">Content Creation</NuxtLink>
+                  <NuxtLink to="/print-advertising" class="block px-4 py-2 hover:bg-gray-100">Print Advertising</NuxtLink>
                 </div>
               </transition>
             </li>
-            <li class="nav-item mx-2">
-              <router-link to="/consultation" class="nav-link d-flex align-items-center text-blue-gray-700">
-                Consultation
-              </router-link>
-            </li>
-            <li class="nav-item mx-2">
-              <router-link to="/contact-us" class="nav-link d-flex align-items-center text-blue-gray-700">
-                Contact Us
-              </router-link>
-            </li>
-          </ul>
-          
-          <ul class="navbar-nav d-lg-none d-block mt-3">
-            <li class="nav-item">
-              <router-link to="/about-us" class="nav-link text-blue-gray-700">
-                About Us
-              </router-link>
-            </li>
-            <li class="nav-item">
-              <div class="nav-link text-blue-gray-700 font-bold" @click="toggleMobileServicesDropdown">
-                Services
-              </div>
-              <transition name="fade">
-                <div v-if="mobileServicesDropdownOpen" class="mt-2 rounded-lg bg-white shadow-md">
-                  <router-link to="/website" class="dropdown-item">Website</router-link>
-                  <router-link to="/social-media" class="dropdown-item">Social Media</router-link>
-                  <router-link to="/seo" class="dropdown-item">SEO</router-link>
-                  <router-link to="/paid-media" class="dropdown-item">Paid Media</router-link>
-                  <router-link to="/content-creation" class="dropdown-item">Content Creation</router-link>
-                  <router-link to="/print-advertising" class="dropdown-item">Print Advertising</router-link>
-                </div>
-              </transition>
-            </li>
-            <li class="nav-item">
-              <router-link to="/consultation" class="nav-link text-blue-gray-700">
-                Consultation
-              </router-link>
-            </li>
-            <li class="nav-item">
-              <router-link to="/contact-us" class="nav-link text-blue-gray-700">
-                Contact Us
-              </router-link>
-            </li>
+            <li><NuxtLink to="/consultation" class="hover:text-pink-500">Consultation</NuxtLink></li>
+            <li><NuxtLink to="/contact-us" class="hover:text-pink-500">Contact Us</NuxtLink></li>
           </ul>
         </div>
       </div>
@@ -90,8 +41,6 @@
       return {
         mobileMenuOpen: false,
         servicesDropdownOpen: false,
-        mobileServicesDropdownOpen: false,
-        isMobileView: false,
       };
     },
     methods: {
@@ -100,64 +49,19 @@
       },
       toggleServicesDropdown() {
         this.servicesDropdownOpen = !this.servicesDropdownOpen;
-      },
-      toggleMobileServicesDropdown() {
-        this.mobileServicesDropdownOpen = !this.mobileServicesDropdownOpen;
-      },
-      checkMobileView() {
-        this.isMobileView = window.innerWidth <= 768;
       }
-    },
-    mounted() {
-      this.checkMobileView();
-      window.addEventListener('resize', this.checkMobileView);
-    },
-    beforeDestroy() {
-      window.removeEventListener('resize', this.checkMobileView);
     }
   };
   </script>
   
   <style scoped>
-  /* Tailwind and Bootstrap integration */
-  .navbar-toggler-icon {
-    display: inline-block;
-    width: 1.25em;
-    height: 1.25em;
-  }
-  .navbar-toggler-bar {
-    display: block;
-    width: 100%;
-    height: 0.2em;
-    margin-top: 0.3em;
-    background-color: #333;
+  nav {
+    transition: background-color 0.3s, box-shadow 0.3s;
   }
   .fade-enter-active, .fade-leave-active {
     transition: opacity 0.5s;
   }
   .fade-enter, .fade-leave-to {
     opacity: 0;
-  }
-  .dropdown-menu {
-    position: absolute;
-    background: white;
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-    border-radius: 0.25rem;
-    padding: 0.5rem 0;
-    margin-top: 0.5rem;
-    left: 0;
-  }
-  .dropdown-item {
-    padding: 0.25rem 1.5rem;
-    color: #212529;
-    text-decoration: none;
-  }
-  .mt-2.rounded-lg {
-    border-radius: 0.5rem;
-  }
-  .bg-white.bg-opacity-80 {
-    backdrop-filter: blur(2xl);
-    border-radius: 9999px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
   </style>  
