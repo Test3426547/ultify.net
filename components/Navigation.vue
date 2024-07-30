@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-lg blur blur-rounded position-absolute my-3 top-0 border-bottom py-3 z-index-3 shadow my-3 py-2 start-0 end-0 mx-4">
     <div class="container">
       <router-link to="/" class="navbar-brand" aria-label="Home">
-        <span class="text-lg font-bold">Ultify Solutions</span>
+        <span :class="['text-lg font-bold', { 'text-sm': isMobileView }]">Ultify Solutions</span>
       </router-link>
       
       <button class="navbar-toggler shadow-none ms-2" type="button" @click="toggleMobileMenu">
@@ -50,6 +50,13 @@
           </li>
         </ul>
         
+        <ul class="navbar-nav d-lg-block d-none">
+          <li class="nav-item">
+            <a href="https://www.creative-tim.com/product/soft-ui-design-system-pro#pricingCard" class="btn btn-sm bg-gradient-primary btn-round mb-0 me-1" role="button">
+              Buy Now
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
   </nav>
@@ -61,6 +68,7 @@ export default {
     return {
       mobileMenuOpen: false,
       servicesDropdownOpen: false,
+      isMobileView: false,
     };
   },
   methods: {
@@ -69,7 +77,17 @@ export default {
     },
     toggleServicesDropdown() {
       this.servicesDropdownOpen = !this.servicesDropdownOpen;
+    },
+    checkMobileView() {
+      this.isMobileView = window.innerWidth <= 768;
     }
+  },
+  mounted() {
+    this.checkMobileView();
+    window.addEventListener('resize', this.checkMobileView);
+  },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.checkMobileView);
   }
 };
 </script>
