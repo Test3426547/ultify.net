@@ -1,56 +1,66 @@
 <template>
-  <nav class="bg-white bg-opacity-80 backdrop-blur-2xl py-4 px-4 border-b border-white/80">
-    <div class="container flex items-center justify-between mx-auto">
-      <router-link to="/" class="flex items-center space-x-2">
-        <!-- Company Logo -->
-        <img src="/chatbot-icon.png" alt="Ultify Solutions Logo" class="w-8 h-8"/>
-        <!-- Company Name -->
-        <p class="font-bold text-lg text-blue-gray-900">Ultify Solutions</p>
+  <nav class="navbar navbar-expand-lg blur blur-rounded position-absolute my-3 top-0 border-bottom py-3 z-index-3 shadow my-3 py-2 start-0 end-0 mx-4">
+    <div class="container">
+      <router-link to="/" class="navbar-brand" aria-label="Home">
+        <img src="/path-to-logo.png" alt="Ultify Solutions Logo" class="w-8 h-8 inline-block mr-2"/>
+        Ultify Solutions
       </router-link>
-      <div class="hidden lg:flex items-center space-x-6">
-        <a href="/about-us" class="text-blue-gray-700">About Us</a>
-        <div class="relative group">
-          <span class="text-blue-gray-700 cursor-default">Services</span>
-          <div class="absolute left-0 mt-2 w-48 bg-white shadow-md rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-            <a href="/website" class="block px-4 py-2 hover:bg-gray-100">Website</a>
-            <a href="/social-media" class="block px-4 py-2 hover:bg-gray-100">Social Media</a>
-            <a href="/seo" class="block px-4 py-2 hover:bg-gray-100">SEO</a>
-            <a href="/paid-media" class="block px-4 py-2 hover:bg-gray-100">Paid Media</a>
-            <a href="/content-creation" class="block px-4 py-2 hover:bg-gray-100">Content Creation</a>
-            <a href="/print-advertising" class="block px-4 py-2 hover:bg-gray-100">Print Advertising</a>
-          </div>
-        </div>
-        <a href="/contact-us" class="text-blue-gray-700">Contact Us</a>
-        <a href="/consultation" class="text-blue-gray-700">Consultation</a>
-      </div>
-      <button class="lg:hidden p-2 rounded text-gray-900 border border-gray-300" @click="toggleMobileMenu">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-16 6h16" />
-        </svg>
+      
+      <button class="navbar-toggler shadow-none ms-2" type="button" @click="toggleMobileMenu">
+        <span class="navbar-toggler-icon mt-2">
+          <span class="navbar-toggler-bar bar1"></span>
+          <span class="navbar-toggler-bar bar2"></span>
+          <span class="navbar-toggler-bar bar3"></span>
+        </span>
       </button>
-    </div>
-    <transition name="slide-fade">
-      <div v-if="mobileMenuOpen" class="lg:hidden mt-4 border-t border-gray-200">
-        <div class="flex flex-col space-y-4 p-4">
-          <a href="/about-us" class="text-blue-gray-700">About Us</a>
-          <div>
-            <span class="text-blue-gray-700" @click="toggleServicesDropdown">Services</span>
+      
+      <div class="collapse navbar-collapse w-100 pt-3 pb-2 py-lg-0" :class="{ show: mobileMenuOpen }">
+        <ul class="navbar-nav navbar-nav-hover mx-auto">
+          <li class="nav-item mx-2">
+            <router-link to="/about-us" class="nav-link ps-2 d-flex align-items-center">
+              About Us
+            </router-link>
+          </li>
+
+          <li class="nav-item mx-2">
+            <div class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center" @click="toggleServicesDropdown">
+              Services
+              <img src="/down-arrow.svg" alt="down-arrow" class="arrow ms-1"/>
+            </div>
             <transition name="fade">
-              <div v-if="servicesDropdownOpen" class="mt-2 ml-4">
-                <a href="/website" class="block px-4 py-2">Website</a>
-                <a href="/social-media" class="block px-4 py-2">Social Media</a>
-                <a href="/seo" class="block px-4 py-2">SEO</a>
-                <a href="/paid-media" class="block px-4 py-2">Paid Media</a>
-                <a href="/content-creation" class="block px-4 py-2">Content Creation</a>
-                <a href="/print-advertising" class="block px-4 py-2">Print Advertising</a>
+              <div v-if="servicesDropdownOpen" class="dropdown-menu">
+                <router-link to="/website" class="dropdown-item">Website</router-link>
+                <router-link to="/social-media" class="dropdown-item">Social Media</router-link>
+                <router-link to="/seo" class="dropdown-item">SEO</router-link>
+                <router-link to="/paid-media" class="dropdown-item">Paid Media</router-link>
+                <router-link to="/content-creation" class="dropdown-item">Content Creation</router-link>
+                <router-link to="/print-advertising" class="dropdown-item">Print Advertising</router-link>
               </div>
             </transition>
-          </div>
-          <a href="/contact-us" class="text-blue-gray-700">Contact Us</a>
-          <a href="/consultation" class="text-blue-gray-700">Consultation</a>
-        </div>
+          </li>
+
+          <li class="nav-item mx-2">
+            <router-link to="/contact-us" class="nav-link ps-2 d-flex align-items-center">
+              Contact Us
+            </router-link>
+          </li>
+
+          <li class="nav-item mx-2">
+            <router-link to="/consultation" class="nav-link ps-2 d-flex align-items-center">
+              Consultation
+            </router-link>
+          </li>
+        </ul>
+        
+        <ul class="navbar-nav d-lg-block d-none">
+          <li class="nav-item">
+            <a href="https://www.creative-tim.com/product/soft-ui-design-system-pro#pricingCard" class="btn btn-sm bg-gradient-primary btn-round mb-0 me-1" role="button">
+              Buy Now
+            </a>
+          </li>
+        </ul>
       </div>
-    </transition>
+    </div>
   </nav>
 </template>
 
@@ -74,18 +84,35 @@ export default {
 </script>
 
 <style scoped>
-/* Transition styles for menu animations */
-.slide-fade-enter-active, .slide-fade-leave-active {
-  transition: opacity 0.5s, transform 0.5s;
+.navbar-toggler-icon {
+  display: inline-block;
+  width: 1.25em;
+  height: 1.25em;
 }
-.slide-fade-enter, .slide-fade-leave-to /* .slide-fade-leave-active in <2.1.8 */ {
-  opacity: 0;
-  transform: translateY(-10px);
+.navbar-toggler-bar {
+  display: block;
+  width: 100%;
+  height: 0.2em;
+  margin-top: 0.3em;
+  background-color: #333;
 }
 .fade-enter-active, .fade-leave-active {
-  transition: opacity 0.3s;
+  transition: opacity 0.5s;
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
   opacity: 0;
+}
+.dropdown-menu {
+  position: absolute;
+  background: white;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  border-radius: 0.25rem;
+  padding: 0.5rem 0;
+  margin-top: 0.5rem;
+  left: 0;
+}
+.dropdown-item {
+  padding: 0.25rem 1.5rem;
+  color: #212529;
 }
 </style>
