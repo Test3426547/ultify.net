@@ -21,19 +21,14 @@
               </router-link>
             </li>
             <li class="nav-item mx-2 position-relative">
-              <button class="nav-link d-flex justify-content-between cursor-pointer align-items-center text-blue-gray-700 font-bold bg-transparent border-0" @click="toggleServicesDropdown">
-                Services
-              </button>
-              <transition name="fade">
-                <div v-if="servicesDropdownOpen" class="dropdown-menu position-absolute bg-white shadow rounded p-2 mt-2">
-                  <router-link to="/website" class="dropdown-item">Website</router-link>
-                  <router-link to="/social-media" class="dropdown-item">Social Media</router-link>
-                  <router-link to="/seo" class="dropdown-item">SEO</router-link>
-                  <router-link to="/paid-media" class="dropdown-item">Paid Media</router-link>
-                  <router-link to="/content-creation" class="dropdown-item">Content Creation</router-link>
-                  <router-link to="/print-advertising" class="dropdown-item">Print Advertising</router-link>
-                </div>
-              </transition>
+              <b-dropdown text="Services" variant="link" right class="nav-link d-flex align-items-center text-blue-gray-700 font-bold">
+                <b-dropdown-item href="/website">Website</b-dropdown-item>
+                <b-dropdown-item href="/social-media">Social Media</b-dropdown-item>
+                <b-dropdown-item href="/seo">SEO</b-dropdown-item>
+                <b-dropdown-item href="/paid-media">Paid Media</b-dropdown-item>
+                <b-dropdown-item href="/content-creation">Content Creation</b-dropdown-item>
+                <b-dropdown-item href="/print-advertising">Print Advertising</b-dropdown-item>
+              </b-dropdown>
             </li>
             <li class="nav-item mx-2">
               <router-link to="/consultation" class="nav-link d-flex align-items-center text-blue-gray-700">
@@ -85,11 +80,16 @@
   </template>
   
   <script>
+  import { BDropdown, BDropdownItem } from 'bootstrap-vue';
+  
   export default {
+    components: {
+      BDropdown,
+      BDropdownItem,
+    },
     data() {
       return {
         mobileMenuOpen: false,
-        servicesDropdownOpen: false,
         mobileServicesDropdownOpen: false,
         isMobileView: false,
       };
@@ -97,9 +97,6 @@
     methods: {
       toggleMobileMenu() {
         this.mobileMenuOpen = !this.mobileMenuOpen;
-      },
-      toggleServicesDropdown() {
-        this.servicesDropdownOpen = !this.servicesDropdownOpen;
       },
       toggleMobileServicesDropdown() {
         this.mobileServicesDropdownOpen = !this.mobileServicesDropdownOpen;
