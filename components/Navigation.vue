@@ -49,7 +49,7 @@
         leave-active-class="ease-out duration-300"
       >
         <div v-show="isOpen" class="z-50 fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 transition-opacity" @click="toggleDrawer">
-          <aside class="w-full max-w-md p-6 bg-white bg-opacity-50 rounded-lg shadow-lg transform transition-transform duration-300" @click.stop :class="{ 'translate-y-1/3': isOpen, '-translate-y-full': !isOpen }">
+          <aside class="w-full max-w-md p-6 bg-white bg-opacity-50 rounded-lg shadow-lg transform transition-transform duration-300" @click.stop :class="{ 'translate-open': isOpen, 'translate-closed': !isOpen }">
             <div class="flex justify-end">
               <button @click="toggleDrawer" aria-label="Close menu">
                 <svg
@@ -163,7 +163,10 @@
   }
   
   /* Adjustments for mobile menu positioning */
-  .translate-y-1/2 {
+  .translate-open {
     transform: translateY(50%);
+  }
+  .translate-closed {
+    transform: translateY(-100%);
   }
   </style>  
