@@ -4,10 +4,10 @@
         <div class="flex justify-between h-16">
           <div class="flex">
             <div class="flex-shrink-0 flex items-center">
-              <img class="h-8 w-8" src="/chatbot-icon.png" alt="Company Logo">
+              <img class="h-8 w-8" src="/chatbot-icon.png" alt="Company Logo" />
               <span class="ml-2 text-xl font-bold">Ultify Solutions</span>
             </div>
-            <div class="hidden md:ml-6 md:flex md:space-x-8">
+            <div class="hidden md:flex md:ml-6 md:space-x-8">
               <a href="/about-us" class="text-blue-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium">About Us</a>
               <div class="relative">
                 <button @click="toggleServices" class="text-blue-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium">
@@ -107,4 +107,4 @@
       font-size: 1rem; /* Adjust font size for mobile view */
     }
   }
-  </style>  
+  </style>
