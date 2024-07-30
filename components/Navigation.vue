@@ -48,8 +48,9 @@
         enter-active-class="ease-out duration-300"
         leave-active-class="ease-out duration-300"
       >
-        <div v-show="isOpen" class="z-50 fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 transition-opacity" @click="toggleDrawer">
-          <aside class="w-full max-w-md p-6 bg-white bg-opacity-50 rounded-lg shadow-lg transform transition-transform duration-300" @click.stop :class="{ 'translate-open': isOpen, 'translate-closed': !isOpen }">
+        <div v-show="isOpen" class="fixed inset-0 z-50 flex items-center justify-center" @click="handleOutsideClick">
+          <div class="fixed inset-0 bg-black bg-opacity-50 transition-opacity"></div>
+          <aside class="w-full max-w-md p-6 bg-white bg-opacity-50 rounded-lg shadow-lg transform transition-transform duration-300 z-50" @click.stop :class="{ 'translate-y-1/2': isOpen, 'translate-y-full': !isOpen }">
             <div class="flex justify-end">
               <button @click="toggleDrawer" aria-label="Close menu">
                 <svg
@@ -102,6 +103,11 @@
       },
       toggleServicesDropdown() {
         this.servicesDropdownOpen = !this.servicesDropdownOpen;
+      },
+      handleOutsideClick(e) {
+        if (!this.$refs.drawer.contains(e.target)) {
+          this.isOpen = false;
+        }
       },
     },
     watch: {
@@ -163,10 +169,10 @@
   }
   
   /* Adjustments for mobile menu positioning */
-  .translate-open {
+  .translate-y-1/2 {
     transform: translateY(50%);
   }
-  .translate-closed {
+  .translate-y-full {
     transform: translateY(-100%);
   }
   </style>  
