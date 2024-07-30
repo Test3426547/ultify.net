@@ -4,7 +4,7 @@
         <div class="flex justify-between h-16">
           <div class="flex">
             <div class="flex-shrink-0 flex items-center">
-              <img class="h-8 w-auto" src="/chatbot-icon.png" alt="Company Logo">
+              <img class="h-8 w-8" src="/chatbot-icon.png" alt="Company Logo">
               <span class="ml-2 text-xl font-bold">Ultify Solutions</span>
             </div>
             <div class="hidden md:ml-6 md:flex md:space-x-8">
@@ -98,11 +98,13 @@
   .text-blue-gray-700 {
     color: #374151;
   }
-  .border-b {
-  border-bottom-width: 1px;
-}
-
-.border-white-80 {
-  border-color: rgba(255, 255, 255, 0.8);
-}
-</style>
+  .border-b.border-white-80 {
+    border-bottom-width: 1px;
+    border-color: rgba(255, 255, 255, 0.8);
+  }
+  @media (max-width: 768px) {
+    .navbar-brand {
+      font-size: 1rem; /* Adjust font size for mobile view */
+    }
+  }
+  </style>  
