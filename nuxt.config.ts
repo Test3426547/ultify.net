@@ -1,4 +1,3 @@
-// nuxt.config.ts
 export default defineNuxtConfig({
   ssr: false, // Enable SPA mode
   target: 'static', // Enable SSG mode
@@ -42,7 +41,9 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: ['@vite-pwa/nuxt'],
+  modules: ['@vite-pwa/nuxt', '@nuxtjs/tailwindcss'],
+
+  css: ['~/assets/css/main.css'], // Ensure the correct path to main.css
 
   pwa: {
     registerType: 'autoUpdate',
