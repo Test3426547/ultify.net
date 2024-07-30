@@ -1,5 +1,5 @@
 <template>
-    <nav class="fixed w-full top-2 left-1/2 transform -translate-x-1/2 p-6 bg-white bg-opacity-80 backdrop-blur-lg shadow-md rounded-full z-50">
+    <nav class="fixed w-full top-2 left-1/2 transform -translate-x-1/2 p-2 bg-white bg-opacity-80 backdrop-blur-lg shadow-md rounded-full z-50">
       <div class="flex items-center justify-between max-w-screen-lg mx-auto">
         <!-- Header logo -->
         <NuxtLink to="/" class="text-lg font-bold text-gray-800" aria-label="Home">
@@ -52,7 +52,7 @@
   
         <!-- Drawer Menu -->
         <aside
-          class="p-5 transform top-0 left-0 w-64 bg-white fixed h-full overflow-auto ease-in-out transition-all duration-300 z-50"
+          class="p-5 transform top-0 left-0 w-full max-w-md bg-white fixed h-full overflow-auto ease-in-out transition-all duration-300 z-50"
           :class="isOpen ? 'translate-x-0' : '-translate-x-full'"
         >
           <div class="close">
