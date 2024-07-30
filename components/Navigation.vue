@@ -1,10 +1,10 @@
 <template>
     <nav class="navbar navbar-expand-lg bg-white bg-opacity-80 backdrop-blur-2xl border-bottom shadow-md my-3 py-3 position-absolute start-0 end-0 mx-4 z-index-3 rounded-full sticky top-2">
       <div class="container">
-        <router-link to="/" class="navbar-brand d-flex align-items-center" aria-label="Home">
+        <NuxtLink to="/" class="navbar-brand d-flex align-items-center" aria-label="Home">
           <span :class="['font-bold', { 'text-lg': !isMobileView, 'text-sm': isMobileView }]">Ultify Solutions</span>
-        </router-link>
-  
+        </NuxtLink>
+        
         <button class="navbar-toggler shadow-none" type="button" @click="toggleMobileMenu">
           <span class="navbar-toggler-icon mt-2">
             <span class="navbar-toggler-bar bar1"></span>
@@ -12,46 +12,46 @@
             <span class="navbar-toggler-bar bar3"></span>
           </span>
         </button>
-  
+        
         <div class="collapse navbar-collapse" :class="{ show: mobileMenuOpen }">
           <ul class="navbar-nav mx-auto d-none d-lg-flex">
             <li class="nav-item mx-2">
-              <router-link to="/about-us" class="nav-link d-flex align-items-center text-blue-gray-700 hover:text-pink-500">
+              <NuxtLink to="/about-us" class="nav-link d-flex align-items-center text-blue-gray-700 hover:text-pink-500">
                 About Us
-              </router-link>
+              </NuxtLink>
             </li>
-            <li class="nav-item mx-2 relative">
+            <li class="nav-item mx-2 relative" @mouseleave="servicesDropdownOpen = false">
               <button @click="toggleServicesDropdown" class="nav-link d-flex align-items-center text-blue-gray-700 hover:text-pink-500 bg-transparent border-0 focus:outline-none">
                 Services
               </button>
               <transition name="fade">
                 <div v-if="servicesDropdownOpen" class="dropdown-menu absolute bg-white shadow-lg rounded-lg p-2 mt-2 z-10">
-                  <router-link to="/website" class="dropdown-item hover:bg-gray-100">Website</router-link>
-                  <router-link to="/social-media" class="dropdown-item hover:bg-gray-100">Social Media</router-link>
-                  <router-link to="/seo" class="dropdown-item hover:bg-gray-100">SEO</router-link>
-                  <router-link to="/paid-media" class="dropdown-item hover:bg-gray-100">Paid Media</router-link>
-                  <router-link to="/content-creation" class="dropdown-item hover:bg-gray-100">Content Creation</router-link>
-                  <router-link to="/print-advertising" class="dropdown-item hover:bg-gray-100">Print Advertising</router-link>
+                  <NuxtLink to="/website" class="block px-4 py-2 hover:bg-gray-100">Website</NuxtLink>
+                  <NuxtLink to="/social-media" class="block px-4 py-2 hover:bg-gray-100">Social Media</NuxtLink>
+                  <NuxtLink to="/seo" class="block px-4 py-2 hover:bg-gray-100">SEO</NuxtLink>
+                  <NuxtLink to="/paid-media" class="block px-4 py-2 hover:bg-gray-100">Paid Media</NuxtLink>
+                  <NuxtLink to="/content-creation" class="block px-4 py-2 hover:bg-gray-100">Content Creation</NuxtLink>
+                  <NuxtLink to="/print-advertising" class="block px-4 py-2 hover:bg-gray-100">Print Advertising</NuxtLink>
                 </div>
               </transition>
             </li>
             <li class="nav-item mx-2">
-              <router-link to="/consultation" class="nav-link d-flex align-items-center text-blue-gray-700 hover:text-pink-500">
+              <NuxtLink to="/consultation" class="nav-link d-flex align-items-center text-blue-gray-700 hover:text-pink-500">
                 Consultation
-              </router-link>
+              </NuxtLink>
             </li>
             <li class="nav-item mx-2">
-              <router-link to="/contact-us" class="nav-link d-flex align-items-center text-blue-gray-700 hover:text-pink-500">
+              <NuxtLink to="/contact-us" class="nav-link d-flex align-items-center text-blue-gray-700 hover:text-pink-500">
                 Contact Us
-              </router-link>
+              </NuxtLink>
             </li>
           </ul>
-  
+          
           <ul class="navbar-nav d-lg-none d-block mt-3">
             <li class="nav-item">
-              <router-link to="/about-us" class="nav-link text-blue-gray-700 hover:text-pink-500">
+              <NuxtLink to="/about-us" class="nav-link text-blue-gray-700 hover:text-pink-500">
                 About Us
-              </router-link>
+              </NuxtLink>
             </li>
             <li class="nav-item">
               <div class="nav-link text-blue-gray-700 hover:text-pink-500 font-bold" @click="toggleMobileServicesDropdown">
@@ -59,24 +59,24 @@
               </div>
               <transition name="fade">
                 <div v-if="mobileServicesDropdownOpen" class="mt-2 rounded-lg bg-white shadow-md">
-                  <router-link to="/website" class="dropdown-item">Website</router-link>
-                  <router-link to="/social-media" class="dropdown-item">Social Media</router-link>
-                  <router-link to="/seo" class="dropdown-item">SEO</router-link>
-                  <router-link to="/paid-media" class="dropdown-item">Paid Media</router-link>
-                  <router-link to="/content-creation" class="dropdown-item">Content Creation</router-link>
-                  <router-link to="/print-advertising" class="dropdown-item">Print Advertising</router-link>
+                  <NuxtLink to="/website" class="dropdown-item">Website</NuxtLink>
+                  <NuxtLink to="/social-media" class="dropdown-item">Social Media</NuxtLink>
+                  <NuxtLink to="/seo" class="dropdown-item">SEO</NuxtLink>
+                  <NuxtLink to="/paid-media" class="dropdown-item">Paid Media</NuxtLink>
+                  <NuxtLink to="/content-creation" class="dropdown-item">Content Creation</NuxtLink>
+                  <NuxtLink to="/print-advertising" class="dropdown-item">Print Advertising</NuxtLink>
                 </div>
               </transition>
             </li>
             <li class="nav-item">
-              <router-link to="/consultation" class="nav-link text-blue-gray-700 hover:text-pink-500">
+              <NuxtLink to="/consultation" class="nav-link text-blue-gray-700 hover:text-pink-500">
                 Consultation
-              </router-link>
+              </NuxtLink>
             </li>
             <li class="nav-item">
-              <router-link to="/contact-us" class="nav-link text-blue-gray-700 hover:text-pink-500">
+              <NuxtLink to="/contact-us" class="nav-link text-blue-gray-700 hover:text-pink-500">
                 Contact Us
-              </router-link>
+              </NuxtLink>
             </li>
           </ul>
         </div>
