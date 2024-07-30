@@ -1,8 +1,8 @@
 <template>
-    <nav class="navbar navbar-expand-lg bg-white bg-opacity-80 backdrop-blur-2xl border-bottom shadow-md my-3 py-3 position-absolute start-0 end-0 mx-4 z-index-3">
+    <nav class="navbar fixed-top navbar-expand-lg bg-white bg-opacity-75 backdrop-blur-2xl border-bottom shadow-md py-3 z-index-3 rounded-lg mx-4">
       <div class="container">
         <router-link to="/" class="navbar-brand d-flex align-items-center" aria-label="Home">
-          <span :class="['font-bold', { 'text-lg': !isMobileView, 'text-sm': isMobileView }]">Ultify Solutions</span>
+          <span class="font-bold text-lg">Ultify Solutions</span>
         </router-link>
         
         <button class="navbar-toggler shadow-none" type="button" @click="toggleMobileMenu">
@@ -14,51 +14,18 @@
         </button>
         
         <div class="collapse navbar-collapse" :class="{ show: mobileMenuOpen }">
-          <ul class="navbar-nav mx-auto d-none d-lg-flex">
-            <li class="nav-item mx-2">
-              <router-link to="/about-us" class="nav-link d-flex align-items-center text-blue-gray-700">
-                About Us
-              </router-link>
-            </li>
-            <li class="nav-item mx-2 position-relative">
-              <div class="nav-link d-flex justify-content-between cursor-pointer align-items-center text-blue-gray-700" @click="toggleServicesDropdown">
-                Services
-              </div>
-              <transition name="fade">
-                <div v-if="servicesDropdownOpen" class="dropdown-menu position-absolute bg-white shadow rounded p-2 mt-2">
-                  <router-link to="/website" class="dropdown-item">Website</router-link>
-                  <router-link to="/social-media" class="dropdown-item">Social Media</router-link>
-                  <router-link to="/seo" class="dropdown-item">SEO</router-link>
-                  <router-link to="/paid-media" class="dropdown-item">Paid Media</router-link>
-                  <router-link to="/content-creation" class="dropdown-item">Content Creation</router-link>
-                  <router-link to="/print-advertising" class="dropdown-item">Print Advertising</router-link>
-                </div>
-              </transition>
-            </li>
-            <li class="nav-item mx-2">
-              <router-link to="/consultation" class="nav-link d-flex align-items-center text-blue-gray-700">
-                Consultation
-              </router-link>
-            </li>
-            <li class="nav-item mx-2">
-              <router-link to="/contact-us" class="nav-link d-flex align-items-center text-blue-gray-700">
-                Contact Us
-              </router-link>
-            </li>
-          </ul>
-          
-          <ul class="navbar-nav d-lg-none d-block mt-3">
+          <ul class="navbar-nav mx-auto">
             <li class="nav-item">
               <router-link to="/about-us" class="nav-link text-blue-gray-700">
                 About Us
               </router-link>
             </li>
-            <li class="nav-item">
-              <div class="nav-link text-blue-gray-700" @click="toggleMobileServicesDropdown">
+            <li class="nav-item position-relative">
+              <div class="nav-link text-blue-gray-700 font-semibold cursor-pointer" @click="toggleServicesDropdown">
                 Services
               </div>
               <transition name="fade">
-                <div v-if="mobileServicesDropdownOpen" class="mt-2">
+                <div v-if="servicesDropdownOpen" class="dropdown-menu position-absolute bg-white shadow rounded p-2 mt-2">
                   <router-link to="/website" class="dropdown-item">Website</router-link>
                   <router-link to="/social-media" class="dropdown-item">Social Media</router-link>
                   <router-link to="/seo" class="dropdown-item">SEO</router-link>
@@ -90,8 +57,6 @@
       return {
         mobileMenuOpen: false,
         servicesDropdownOpen: false,
-        mobileServicesDropdownOpen: false,
-        isMobileView: false,
       };
     },
     methods: {
@@ -100,43 +65,26 @@
       },
       toggleServicesDropdown() {
         this.servicesDropdownOpen = !this.servicesDropdownOpen;
-      },
-      toggleMobileServicesDropdown() {
-        this.mobileServicesDropdownOpen = !this.mobileServicesDropdownOpen;
-      },
-      checkMobileView() {
-        this.isMobileView = window.innerWidth <= 768;
       }
-    },
-    mounted() {
-      this.checkMobileView();
-      window.addEventListener('resize', this.checkMobileView);
-    },
-    beforeDestroy() {
-      window.removeEventListener('resize', this.checkMobileView);
     }
   };
   </script>
   
   <style scoped>
-  /* Tailwind and Bootstrap integration */
-  .navbar-toggler-icon {
-    display: inline-block;
-    width: 1.25em;
-    height: 1.25em;
+  /* Updated styles */
+  .navbar {
+    backdrop-filter: blur(2xl);
+    border-radius: 0.75rem; /* rounded-lg */
+    background-color: rgba(255, 255, 255, 0.75); /* bg-opacity-75 */
   }
-  .navbar-toggler-bar {
-    display: block;
-    width: 100%;
-    height: 0.2em;
-    margin-top: 0.3em;
-    background-color: #333;
+  .shadow-md {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
-  .fade-enter-active, .fade-leave-active {
-    transition: opacity 0.5s;
+  .text-blue-gray-700 {
+    color: #374151;
   }
-  .fade-enter, .fade-leave-to {
-    opacity: 0;
+  .font-semibold {
+    font-weight: 600;
   }
   .dropdown-menu {
     position: absolute;
