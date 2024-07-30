@@ -15,9 +15,13 @@
       </button>
       <div class="collapse navbar-collapse w-100 pt-3 pb-2 py-lg-0" id="navigation">
         <ul class="navbar-nav navbar-nav-hover mx-auto">
+          <li class="nav-item mx-2">
+            <NuxtLink class="nav-link ps-2 d-flex justify-content-between align-items-center" to="/about-us">About Us</NuxtLink>
+          </li>
           <li class="nav-item dropdown mx-2">
             <a class="nav-link dropdown-toggle ps-2 d-flex justify-content-between align-items-center" role="button" id="servicesDropdown" data-bs-toggle="dropdown" aria-expanded="false">
               Services
+              <img src="https://img.icons8.com/material-rounded/24/000000/expand-arrow.png" alt="down-arrow" class="arrow ms-1">
             </a>
             <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
               <li><NuxtLink class="dropdown-item" to="/website">Website</NuxtLink></li>
@@ -29,13 +33,10 @@
             </ul>
           </li>
           <li class="nav-item mx-2">
-            <NuxtLink class="nav-link ps-2 d-flex justify-content-between align-items-center" to="/about-us">About Us</NuxtLink>
+            <NuxtLink class="nav-link ps-2 d-flex justify-content-between align-items-center" to="/contact-us">Contact Us</NuxtLink>
           </li>
           <li class="nav-item mx-2">
             <NuxtLink class="nav-link ps-2 d-flex justify-content-between align-items-center" to="/consultation">Consultation</NuxtLink>
-          </li>
-          <li class="nav-item mx-2">
-            <NuxtLink class="nav-link ps-2 d-flex justify-content-between align-items-center" to="/contact-us">Contact Us</NuxtLink>
           </li>
         </ul>
       </div>
@@ -65,9 +66,8 @@ import { NuxtLink } from '#components'
   margin-right: 10px; /* Adds some space between logo and text */
 }
 
-.navbar-nav-hover .nav-link:hover,
-.navbar-nav-hover .nav-link:focus {
-  text-decoration: underline;
+.navbar-nav-hover .nav-link {
+  text-decoration: none; /* Removes underline on hover */
 }
 
 .dropdown-menu {
