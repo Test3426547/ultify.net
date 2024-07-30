@@ -98,8 +98,11 @@
   .text-blue-gray-700 {
     color: #374151;
   }
-  .border-b.border-white/80 {
-    border-bottom-width: 1px;
-    border-color: rgba(255, 255, 255, 0.8);
-  }
-  </style>  
+  .border-b {
+  border-bottom-width: 1px;
+}
+
+.border-white-80 {
+  border-color: rgba(255, 255, 255, 0.8);
+}
+</style>
