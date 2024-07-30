@@ -50,13 +50,6 @@
           </li>
         </ul>
         
-        <ul class="navbar-nav d-lg-block d-none">
-          <li class="nav-item">
-            <a href="https://www.creative-tim.com/product/soft-ui-design-system-pro#pricingCard" class="btn btn-sm bg-gradient-primary btn-round mb-0 me-1" role="button">
-              Buy Now
-            </a>
-          </li>
-        </ul>
       </div>
     </div>
   </nav>
