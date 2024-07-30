@@ -1,5 +1,5 @@
 <template>
-    <nav class="fixed w-full top-2 left-1/2 transform -translate-x-1/2 p-2 bg-white bg-opacity-80 backdrop-blur-lg shadow-md rounded-full z-50 md:rounded-lg md:w-11/12 lg:w-10/12">
+    <nav class="fixed w-full top-2 left-1/2 transform -translate-x-1/2 p-3 bg-white bg-opacity-80 backdrop-blur-lg shadow-md rounded-full z-50 md:w-10/12">
       <div class="flex items-center justify-between max-w-screen-lg mx-auto">
         <!-- Header logo -->
         <NuxtLink to="/" class="text-lg font-bold text-gray-800" aria-label="Home">
@@ -13,17 +13,17 @@
               class="h-8 w-8 fill-current text-black"
               viewBox="0 0 24 24"
               stroke="currentColor">
-                <path d="M4 6h16M4 12h16M4 18h16" />
+              <path d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </button>
         </div>
   
         <!-- Navbar for larger screens -->
         <div class="hidden md:flex space-x-8 text-sm font-sans items-center">
-          <NuxtLink to="/" class="nav-item">Home</NuxtLink>
+          <!-- Removed Home link for Desktop -->
           <NuxtLink to="/about-us" class="nav-item">About Us</NuxtLink>
-          <div class="relative group">
-            <button class="nav-item" @click="toggleServicesDropdown" @mouseleave="servicesDropdownOpen = false">
+          <div class="relative group" @mouseenter="servicesDropdownOpen = true" @mouseleave="servicesDropdownOpen = false">
+            <button class="nav-item" @click="toggleServicesDropdown">
               Services
             </button>
             <transition name="fade">
@@ -61,7 +61,6 @@
             </div>
             <nav class="mt-6">
               <ul class="space-y-6">
-                <li><NuxtLink to="/" @click="toggleDrawer" class="text-lg font-medium text-gray-900">Home</NuxtLink></li>
                 <li><NuxtLink to="/about-us" @click="toggleDrawer" class="text-lg font-medium text-gray-900">About Us</NuxtLink></li>
                 <li>
                   <button @click="toggleServicesDropdown" class="text-lg font-medium text-gray-900 w-full text-left">
@@ -124,31 +123,35 @@
   </script>
   
   <style scoped>
-  /* For pill-shaped navbar on desktop, adjust the width */
+  /* Adjusting the navbar styling */
+  nav {
+    padding: 0.75rem;
+  }
+  
+  /* Pill shape and reduced width */
   .md\:rounded-lg {
-    border-radius: 0.375rem; /* Adjust if needed */
+    border-radius: 9999px;
   }
+  
   .md\:w-11\/12 {
-    width: 91.666667%;
-  }
-  .lg\:w-10\/12 {
     width: 83.333333%;
   }
   
+  /* Nav items */
   .nav-item {
-  font-size: 0.875rem; /* Tailwind text-sm */
-  font-weight: 600; /* Tailwind font-semibold */
-  color: #1f2937; /* Tailwind text-gray-800 */
-  padding-bottom: 0.25rem; /* Tailwind pb-1 */
-  border-bottom-width: 2px; /* Tailwind border-b-2 */
-  border-color: transparent; /* Tailwind border-transparent */
-  transition: color 0.3s, border-color 0.3s;
-}
-
-.nav-item:hover {
-  color: #3b82f6; /* Tailwind hover:text-blue-500 */
-  border-color: #3b82f6; /* Tailwind hover:border-blue-500 */
-}
+    font-size: 0.875rem; /* Tailwind text-sm */
+    font-weight: 600; /* Tailwind font-semibold */
+    color: #1f2937; /* Tailwind text-gray-800 */
+    padding-bottom: 0.25rem; /* Tailwind pb-1 */
+    border-bottom-width: 2px; /* Tailwind border-b-2 */
+    border-color: transparent; /* Tailwind border-transparent */
+    transition: color 0.3s, border-color 0.3s;
+  }
+  
+  .nav-item:hover {
+    color: #3b82f6; /* Tailwind hover:text-blue-500 */
+    border-color: #3b82f6; /* Tailwind hover:border-blue-500 */
+  }
   
   .fade-enter-active, .fade-leave-active {
     transition: opacity 0.3s ease;
