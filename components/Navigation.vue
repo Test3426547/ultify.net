@@ -18,7 +18,7 @@
           <li class="nav-item dropdown mx-2">
             <a class="nav-link dropdown-toggle ps-2 d-flex justify-content-between align-items-center" role="button" id="servicesDropdown" data-bs-toggle="dropdown" aria-expanded="false">
               Services
-              <img src="/path/to/icon.png" alt="down-arrow" class="arrow ms-1">
+              <img src="/chatbot-icon.png" alt="down-arrow" class="arrow ms-1">
             </a>
             <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
               <li><NuxtLink class="dropdown-item" to="/website">Website</NuxtLink></li>
