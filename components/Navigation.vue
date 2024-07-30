@@ -3,7 +3,7 @@
     <div class="container flex items-center justify-between mx-auto">
       <router-link to="/" class="flex items-center space-x-2">
         <!-- Company Logo -->
-        <img src="/chatbot-icon.png" alt="Ultify Solutions Logo" class="w-10 h-10"/>
+        <img src="/chatbot-icon.png" alt="Ultify Solutions Logo" class="w-8 h-8"/>
         <!-- Company Name -->
         <p class="font-bold text-lg text-blue-gray-900">Ultify Solutions</p>
       </router-link>
@@ -23,30 +23,34 @@
         <a href="/contact-us" class="text-blue-gray-700">Contact Us</a>
         <a href="/consultation" class="text-blue-gray-700">Consultation</a>
       </div>
-      <button class="lg:hidden p-2 rounded text-gray-900" @click="toggleMobileMenu">
+      <button class="lg:hidden p-2 rounded text-gray-900 border border-gray-300" @click="toggleMobileMenu">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-16 6h16" />
         </svg>
       </button>
     </div>
-    <div v-if="mobileMenuOpen" class="lg:hidden mt-4">
-      <div class="flex flex-col space-y-4">
-        <a href="/about-us" class="text-blue-gray-700">About Us</a>
-        <div>
-          <span class="text-blue-gray-700" @click="toggleServicesDropdown">Services</span>
-          <div v-if="servicesDropdownOpen" class="mt-2 ml-4">
-            <a href="/website" class="block px-4 py-2">Website</a>
-            <a href="/social-media" class="block px-4 py-2">Social Media</a>
-            <a href="/seo" class="block px-4 py-2">SEO</a>
-            <a href="/paid-media" class="block px-4 py-2">Paid Media</a>
-            <a href="/content-creation" class="block px-4 py-2">Content Creation</a>
-            <a href="/print-advertising" class="block px-4 py-2">Print Advertising</a>
+    <transition name="slide-fade">
+      <div v-if="mobileMenuOpen" class="lg:hidden mt-4 border-t border-gray-200">
+        <div class="flex flex-col space-y-4 p-4">
+          <a href="/about-us" class="text-blue-gray-700">About Us</a>
+          <div>
+            <span class="text-blue-gray-700" @click="toggleServicesDropdown">Services</span>
+            <transition name="fade">
+              <div v-if="servicesDropdownOpen" class="mt-2 ml-4">
+                <a href="/website" class="block px-4 py-2">Website</a>
+                <a href="/social-media" class="block px-4 py-2">Social Media</a>
+                <a href="/seo" class="block px-4 py-2">SEO</a>
+                <a href="/paid-media" class="block px-4 py-2">Paid Media</a>
+                <a href="/content-creation" class="block px-4 py-2">Content Creation</a>
+                <a href="/print-advertising" class="block px-4 py-2">Print Advertising</a>
+              </div>
+            </transition>
           </div>
+          <a href="/contact-us" class="text-blue-gray-700">Contact Us</a>
+          <a href="/consultation" class="text-blue-gray-700">Consultation</a>
         </div>
-        <a href="/contact-us" class="text-blue-gray-700">Contact Us</a>
-        <a href="/consultation" class="text-blue-gray-700">Consultation</a>
       </div>
-    </div>
+    </transition>
   </nav>
 </template>
 
@@ -70,5 +74,18 @@ export default {
 </script>
 
 <style scoped>
-/* Add custom styles if needed */
+/* Transition styles for menu animations */
+.slide-fade-enter-active, .slide-fade-leave-active {
+  transition: opacity 0.5s, transform 0.5s;
+}
+.slide-fade-enter, .slide-fade-leave-to /* .slide-fade-leave-active in <2.1.8 */ {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.3s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
+  opacity: 0;
+}
 </style>
