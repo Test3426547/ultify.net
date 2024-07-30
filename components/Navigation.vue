@@ -18,8 +18,8 @@
         <!-- Navbar for larger screens -->
         <div class="hidden md:flex space-x-8 text-sm font-sans items-center">
           <NuxtLink to="/about-us" class="nav-item">About Us</NuxtLink>
-          <div class="relative group">
-            <button class="nav-item" @click="toggleServicesDropdown" @mouseleave="servicesDropdownOpen = false">
+          <div class="relative group" @mouseenter="servicesDropdownOpen = true" @mouseleave="handleMouseLeave">
+            <button class="nav-item" @click="toggleServicesDropdown">
               Services
             </button>
             <transition name="fade">
@@ -40,8 +40,8 @@
   
       <!-- Dark Background Transition for overlay -->
       <transition enter-active-class="ease-out duration-300" leave-active-class="ease-out duration-300">
-        <div v-show="isOpen" class="z-50 fixed inset-0 flex items-center bg-black bg-opacity-50 transition-opacity" @click="toggleDrawer">
-          <aside class="w-64 p-6 bg-white h-full overflow-auto shadow-lg transform transition-transform duration-300 z-30" @click.stop :class="{ 'translate-x-0': isOpen, '-translate-x-full': !isOpen }">
+        <div v-show="isOpen" class="z-50 fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 transition-opacity" @click="toggleDrawer">
+          <aside class="w-full max-w-md p-6 bg-white h-full shadow-lg transform transition-transform duration-300 z-50" @click.stop :class="{ 'translate-x-0': isOpen, '-translate-x-full': !isOpen }">
             <div class="flex justify-end">
               <button @click="toggleDrawer" aria-label="Close menu">
                 <svg class="w-6 h-6" viewBox="0 0 24 24" stroke="currentColor">
@@ -84,6 +84,7 @@
       return {
         isOpen: false,
         servicesDropdownOpen: false,
+        dropdownTimeout: null,
       };
     },
     methods: {
@@ -92,6 +93,11 @@
       },
       toggleServicesDropdown() {
         this.servicesDropdownOpen = !this.servicesDropdownOpen;
+      },
+      handleMouseLeave() {
+        this.dropdownTimeout = setTimeout(() => {
+          this.servicesDropdownOpen = false;
+        }, 200); // Delay before closing
       },
     },
     watch: {
