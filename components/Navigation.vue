@@ -50,7 +50,7 @@
       >
         <div v-show="isOpen" class="fixed inset-0 z-50 flex items-center justify-center" @click="handleOutsideClick">
           <div class="fixed inset-0 bg-black bg-opacity-50 transition-opacity"></div>
-          <aside class="w-full max-w-md p-6 bg-white bg-opacity-50 rounded-lg shadow-lg transform transition-transform duration-300 z-50" @click.stop :class="{ 'translate-y-1/2': isOpen, 'translate-y-full': !isOpen }">
+          <aside ref="drawer" class="w-full max-w-md p-6 bg-white bg-opacity-50 rounded-lg shadow-lg transform transition-transform duration-300 z-50" @click.stop :class="{ 'translate-open': isOpen, 'translate-closed': !isOpen }">
             <div class="flex justify-end">
               <button @click="toggleDrawer" aria-label="Close menu">
                 <svg
@@ -169,10 +169,10 @@
   }
   
   /* Adjustments for mobile menu positioning */
-.translate-open {
-  transform: translateY(50%);
-}
-.translate-closed {
-  transform: translateY(-100%);
-}
+  .translate-open {
+    transform: translateY(50%);
+  }
+  .translate-closed {
+    transform: translateY(-100%);
+  }
   </style>  
