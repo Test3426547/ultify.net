@@ -1,34 +1,62 @@
 <template>
-  <b-navbar toggleable="lg" type="light" variant="light" fixed="top" class="blur blur-rounded shadow">
-    <b-container>
-      <b-navbar-brand to="/" rel="tooltip" title="Ultify Solutions">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top blur blur-rounded shadow">
+    <div class="container">
+      <NuxtLink class="navbar-brand" to="/" title="Ultify Solutions">
         <img src="/chatbot-icon.png" alt="Ultify Solutions Logo" class="brand-logo">
         Ultify Solutions
-      </b-navbar-brand>
+      </NuxtLink>
 
-      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-      <b-collapse id="nav-collapse" is-nav>
-        <b-navbar-nav class="mx-auto">
-          <b-nav-item to="/about-us">About Us</b-nav-item>
-          <b-nav-item-dropdown text="Services" right>
-            <b-dropdown-item to="/website">Website</b-dropdown-item>
-            <b-dropdown-item to="/social-media">Social Media</b-dropdown-item>
-            <b-dropdown-item to="/seo">SEO</b-dropdown-item>
-            <b-dropdown-item to="/paid-media">Paid Media</b-dropdown-item>
-            <b-dropdown-item to="/content-creation">Content Creation</b-dropdown-item>
-            <b-dropdown-item to="/print-advertising">Print Advertising</b-dropdown-item>
-          </b-nav-item-dropdown>
-          <b-nav-item to="/contact-us">Contact Us</b-nav-item>
-          <b-nav-item to="/consultation">Consultation</b-nav-item>
-        </b-navbar-nav>
-      </b-collapse>
-    </b-container>
-  </b-navbar>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item">
+            <NuxtLink class="nav-link" to="/about-us">About Us</NuxtLink>
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="servicesDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Services
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
+              <li><NuxtLink class="dropdown-item" to="/website">Website</NuxtLink></li>
+              <li><NuxtLink class="dropdown-item" to="/social-media">Social Media</NuxtLink></li>
+              <li><NuxtLink class="dropdown-item" to="/seo">SEO</NuxtLink></li>
+              <li><NuxtLink class="dropdown-item" to="/paid-media">Paid Media</NuxtLink></li>
+              <li><NuxtLink class="dropdown-item" to="/content-creation">Content Creation</NuxtLink></li>
+              <li><NuxtLink class="dropdown-item" to="/print-advertising">Print Advertising</NuxtLink></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <NuxtLink class="nav-link" to="/contact-us">Contact Us</NuxtLink>
+          </li>
+          <li class="nav-item">
+            <NuxtLink class="nav-link" to="/consultation">Consultation</NuxtLink>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 </template>
 
 <script setup>
-import { BNavbar, BNavbarBrand, BNavbarToggle, BCollapse, BNavbarNav, BNavItem, BNavItemDropdown, BDropdownItem, BContainer } from 'bootstrap-vue-3';
+import { NuxtLink } from '#components'
 </script>
 
 <style scoped>
@@ -49,8 +77,8 @@ import { BNavbar, BNavbarBrand, BNavbarToggle, BCollapse, BNavbarNav, BNavItem, 
   margin-right: 10px; /* Adds some space between logo and text */
 }
 
-.navbar-nav-hover .nav-link {
-  text-decoration: none; /* Removes underline on hover */
+.nav-link {
+  text-decoration: none; /* Removes underline */
 }
 
 .dropdown-menu {
