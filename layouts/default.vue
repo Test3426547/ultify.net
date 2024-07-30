@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import Navigation from '~/components/Navigation.vue'
 import Chatbot from '~/components/Chatbot.vue'
+import { SpeedInsights } from "@vercel/speed-insights/nuxt"
 
 const showChatbot = ref(false)
 
