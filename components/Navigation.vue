@@ -11,6 +11,7 @@
           <button @click="toggleDrawer" aria-label="Toggle navigation">
             <svg
               class="h-8 w-8 fill-current text-black"
+              xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
               stroke="currentColor">
               <path d="M4 6h16M4 12h16M4 18h16" />
@@ -48,7 +49,7 @@
         leave-active-class="ease-out duration-300"
       >
         <div v-show="isOpen" class="z-50 fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 transition-opacity" @click="toggleDrawer">
-          <aside class="w-full max-w-md p-6 bg-white rounded-lg shadow-lg transform transition-transform duration-300" @click.stop :class="{ 'translate-x-0': isOpen, 'translate-x-full': !isOpen }">
+          <aside class="w-full max-w-md p-6 bg-white rounded-lg shadow-lg transform transition-transform duration-300" @click.stop :class="{ 'translate-y-1/4': isOpen, '-translate-y-full': !isOpen }">
             <div class="flex justify-end">
               <button @click="toggleDrawer" aria-label="Close menu">
                 <svg
@@ -153,10 +154,16 @@
     border-color: #3b82f6; /* Tailwind hover:border-blue-500 */
   }
   
+  /* Transition styles for fade effect */
   .fade-enter-active, .fade-leave-active {
     transition: opacity 0.3s ease;
   }
   .fade-enter, .fade-leave-to {
     opacity: 0;
+  }
+  
+  /* Adjustments for mobile menu positioning */
+  .translate-y-1/4 {
+    transform: translateY(25%);
   }
   </style>  
