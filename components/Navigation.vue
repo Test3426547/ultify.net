@@ -1,5 +1,5 @@
 <template>
-    <nav class="fixed w-full top-2 left-1/2 transform -translate-x-1/2 p-2 bg-white bg-opacity-80 backdrop-blur-lg shadow-md rounded-full z-50 md:rounded-lg md:w-11/12 lg:w-10/12">
+    <nav class="fixed w-full top-2 left-1/2 transform -translate-x-1/2 p-2 bg-white bg-opacity-80 backdrop-blur-lg shadow-md rounded-full z-1000 md:rounded-lg md:w-11/12 lg:w-10/12">
       <div class="flex items-center justify-between max-w-screen-lg mx-auto">
         <!-- Header logo -->
         <NuxtLink to="/" class="text-lg font-bold text-gray-800" aria-label="Home">
@@ -9,10 +9,7 @@
         <!-- Mobile toggle -->
         <div class="md:hidden">
           <button @click="toggleDrawer" aria-label="Toggle navigation">
-            <svg
-              class="h-8 w-8 fill-current text-black"
-              viewBox="0 0 24 24"
-              stroke="currentColor">
+            <svg class="h-8 w-8 fill-current text-black" viewBox="0 0 24 24" stroke="currentColor">
               <path d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </button>
@@ -21,12 +18,10 @@
         <!-- Navbar for larger screens -->
         <div class="hidden md:flex space-x-8 text-sm font-sans items-center">
           <NuxtLink to="/about-us" class="nav-item">About Us</NuxtLink>
-          <div class="relative group" @mouseenter="servicesDropdownOpen = true" @mouseleave="servicesDropdownOpen = false">
-            <button class="nav-item">
-              Services
-            </button>
+          <div class="relative group" @mouseenter="openDropdown('services')" @mouseleave="closeDropdown('services')">
+            <button class="nav-item">Services</button>
             <transition name="fade">
-              <div v-if="servicesDropdownOpen" class="absolute left-0 mt-2 bg-white shadow-lg rounded-lg p-2 z-50">
+              <div v-if="servicesDropdownOpen" class="absolute left-0 mt-2 bg-white shadow-lg rounded-lg p-2 z-1000">
                 <NuxtLink to="/website" class="block px-4 py-2 text-gray-800 hover:text-blue-500">Website</NuxtLink>
                 <NuxtLink to="/social-media" class="block px-4 py-2 text-gray-800 hover:text-blue-500">Social Media</NuxtLink>
                 <NuxtLink to="/seo" class="block px-4 py-2 text-gray-800 hover:text-blue-500">SEO</NuxtLink>
@@ -42,18 +37,12 @@
       </div>
   
       <!-- Dark Background Transition for overlay -->
-      <transition
-        enter-active-class="ease-out duration-300"
-        leave-active-class="ease-out duration-300"
-      >
-        <div v-show="isOpen" class="z-50 fixed inset-0 bg-black bg-opacity-50 transition-opacity flex items-center justify-center" @click="toggleDrawer">
-          <aside class="w-full max-w-md p-6 bg-white rounded-lg shadow-lg transform transition-transform duration-300" @click.stop :class="{ 'translate-y-0': isOpen, '-translate-y-full': !isOpen }">
+      <transition enter-active-class="ease-out duration-300" leave-active-class="ease-out duration-300">
+        <div v-show="isOpen" class="z-1000 fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 transition-opacity" @click="toggleDrawer">
+          <aside class="w-full max-w-md p-6 bg-white rounded-lg shadow-lg transform transition-transform duration-300 z-1001" @click.stop :class="{ 'translate-y-0': isOpen, '-translate-y-full': !isOpen }">
             <div class="flex justify-end">
               <button @click="toggleDrawer" aria-label="Close menu">
-                <svg
-                  class="w-6 h-6"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" stroke="currentColor">
                   <path d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
@@ -93,6 +82,7 @@
       return {
         isOpen: false,
         servicesDropdownOpen: false,
+        activeDropdown: null,
       };
     },
     methods: {
@@ -102,10 +92,17 @@
       toggleServicesDropdown() {
         this.servicesDropdownOpen = !this.servicesDropdownOpen;
       },
+      openDropdown(dropdown) {
+        this.activeDropdown = dropdown;
+        if (dropdown === 'services') this.servicesDropdownOpen = true;
+      },
+      closeDropdown(dropdown) {
+        if (dropdown === 'services') this.servicesDropdownOpen = false;
+      },
     },
     watch: {
-      isOpen(isOpen) {
-        if (isOpen) {
+      isOpen(val) {
+        if (val) {
           document.body.style.overflow = 'hidden';
         } else {
           document.body.style.overflow = '';
