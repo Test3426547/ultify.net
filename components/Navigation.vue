@@ -1,18 +1,11 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-white z-index-3 py-3 fixed-top">
+  <nav class="navbar navbar-expand-lg blur blur-rounded fixed-top shadow">
     <div class="container">
       <NuxtLink class="navbar-brand" to="/" rel="tooltip" title="Ultify Solutions" data-placement="bottom">
         Ultify Solutions
       </NuxtLink>
-      <button
-        class="navbar-toggler shadow-none ms-2"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navigation"
-        aria-controls="navigation"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
+
+      <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon mt-2">
           <span class="navbar-toggler-bar bar1"></span>
           <span class="navbar-toggler-bar bar2"></span>
@@ -21,26 +14,18 @@
       </button>
       <div class="collapse navbar-collapse w-100 pt-3 pb-2 py-lg-0" id="navigation">
         <ul class="navbar-nav navbar-nav-hover mx-auto">
-          <li class="nav-item mx-2">
-            <NuxtLink class="nav-link ps-2 d-flex justify-content-between align-items-center" to="/">Home</NuxtLink>
-          </li>
           <li class="nav-item dropdown mx-2">
-            <a
-              class="nav-link ps-2 d-flex justify-content-between align-items-center dropdown-toggle"
-              id="navbarDropdown"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
+            <a class="nav-link dropdown-toggle ps-2 d-flex justify-content-between align-items-center" role="button" id="servicesDropdown" data-bs-toggle="dropdown" aria-expanded="false">
               Services
+              <img src="/chatbot-icon.png" alt="down-arrow" class="arrow ms-1">
             </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><NuxtLink class="dropdown-item" to="/services/website">Website</NuxtLink></li>
-              <li><NuxtLink class="dropdown-item" to="/services/social-media">Social Media</NuxtLink></li>
-              <li><NuxtLink class="dropdown-item" to="/services/seo">SEO</NuxtLink></li>
-              <li><NuxtLink class="dropdown-item" to="/services/paid-media">Paid Media</NuxtLink></li>
-              <li><NuxtLink class="dropdown-item" to="/services/content-creation">Content Creation</NuxtLink></li>
-              <li><NuxtLink class="dropdown-item" to="/services/print-advertising">Print Advertising</NuxtLink></li>
+            <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
+              <li><NuxtLink class="dropdown-item" to="/website">Website</NuxtLink></li>
+              <li><NuxtLink class="dropdown-item" to="/social-media">Social Media</NuxtLink></li>
+              <li><NuxtLink class="dropdown-item" to="/seo">SEO</NuxtLink></li>
+              <li><NuxtLink class="dropdown-item" to="/paid-media">Paid Media</NuxtLink></li>
+              <li><NuxtLink class="dropdown-item" to="/content-creation">Content Creation</NuxtLink></li>
+              <li><NuxtLink class="dropdown-item" to="/print-advertising">Print Advertising</NuxtLink></li>
             </ul>
           </li>
           <li class="nav-item mx-2">
@@ -64,23 +49,31 @@ import { NuxtLink } from '#components'
 
 <style scoped>
 .navbar {
-  background-color: white;
-}
-
-.navbar-nav-hover .nav-link:hover,
-.navbar-nav-hover .dropdown-toggle:hover {
-  color: #5e72e4;
-}
-
-.fixed-top {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  background-color: #fff;
   z-index: 1030;
 }
 
+.navbar-brand {
+  font-weight: bold;
+}
+
+.navbar-nav-hover .nav-link:hover,
+.navbar-nav-hover .nav-link:focus {
+  text-decoration: underline;
+}
+
 .dropdown-menu {
-  z-index: 2000;
+  background-color: #fff;
+  border-radius: 0.375rem;
+}
+
+@media (max-width: 991px) {
+  .navbar-nav {
+    text-align: left;
+  }
+
+  .navbar-collapse {
+    justify-content: space-between;
+  }
 }
 </style>

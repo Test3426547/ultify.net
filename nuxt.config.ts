@@ -15,7 +15,8 @@ export default defineNuxtConfig({
       { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/gh/creativetimofficial/public-assets@master/soft-ui-design-system-builder/v1.0.7/assets/css/nucleo-icons.css' },
       { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/gh/creativetimofficial/public-assets@master/soft-ui-design-system-builder/v1.0.7/assets/css/nucleo-svg.css' },
       { rel: 'stylesheet', href: '/assets/css/theme.css' },
-      { rel: 'stylesheet', href: '/assets/css/loopple/loopple.css' }
+      { rel: 'stylesheet', href: '/assets/css/loopple/loopple.css' },
+      { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css' } // Bootstrap CSS
     ],
     script: [
       { src: 'https://kit.fontawesome.com/42d5adcbca.js', crossorigin: 'anonymous' },
@@ -24,7 +25,8 @@ export default defineNuxtConfig({
       { src: 'https://cdn.jsdelivr.net/gh/creativetimofficial/public-assets@master/soft-ui-design-system-builder/v1.0.7/assets/js/plugins/countup.min.js', type: 'text/javascript' },
       { src: 'https://cdn.jsdelivr.net/gh/creativetimofficial/public-assets@master/soft-ui-design-system-builder/v1.0.7/assets/js/plugins/flatpickr.min.js' },
       { src: 'https://cdn.jsdelivr.net/gh/creativetimofficial/public-assets@master/soft-ui-design-system-builder/v1.0.7/assets/js/plugins/typedjs.js' },
-      { src: '/assets/js/custom.js', type: 'text/javascript' }
+      { src: 'https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js', integrity: 'sha384-oBqDVmMz4fnFO9gyb4LrW3r7nEQHmxM19M5Dix5R8fA3fn0ZlO8ABo6Nu6vfqI5y', crossorigin: 'anonymous' }, // Popper.js
+      { src: 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js', integrity: 'sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+3mgPxhIUANmELJtvkXWZh58N9jpG', crossorigin: 'anonymous' } // Bootstrap JS
     ]
   },
   devtools: { enabled: true },
