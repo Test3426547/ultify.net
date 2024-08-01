@@ -13,6 +13,27 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/theme.css">
     <link rel="stylesheet" href="./assets/css/loopple/loopple.css">
+    <style>
+        /* Internal CSS */
+        .bg-light {
+          background-color: #f8f9fa !important;
+        }
+    
+        .container-fluid {
+          margin: 0;
+          padding: 0;
+        }
+    
+        .col-xl-4 .position-relative img {
+          position: relative;
+          top: 0;
+          transform: translate(0, 0);
+        }
+    
+        .col-xl-4 .position-relative {
+          margin-top: 0;
+        }
+    </style>
 </head>
 
 <body>
@@ -32,19 +53,19 @@
               </div>
             </div>
           </div>
-          <div class="position-absolute w-100 z-index-1 bottom-0 bg-light">
+          <div class="position-absolute w-100 z-index-1 bottom-0" style="background-color: #f8f9fa;">
             <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-            viewBox="0 24 150 40" preserveAspectRatio="none" shape-rendering="auto">
+              viewBox="0 24 150 40" preserveAspectRatio="none" shape-rendering="auto">
               <defs>
                 <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
               </defs>
               <g class="moving-waves">
-                <use xlink:href="#gentle-wave" x="48" y="-1" fill="rgba(248,249,250,0.40)" />
-                <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(248,249,250,0.35)" />
-                <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(248,249,250,0.25)" />
-                <use xlink:href="#gentle-wave" x="48" y="8" fill="rgba(248,249,250,0.20)" />
-                <use xlink:href="#gentle-wave" x="48" y="13" fill="rgba(248,249,250,0.15)" />
-                <use xlink:href="#gentle-wave" x="48" y="16" fill="rgba(248,249,250,1)" />
+                <use xlink:href="#gentle-wave" x="48" y="-1" fill="rgba(255,255,255,0.40)" />
+                <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.35)" />
+                <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.25)" />
+                <use xlink:href="#gentle-wave" x="48" y="8" fill="rgba(255,255,255,0.20)" />
+                <use xlink:href="#gentle-wave" x="48" y="13" fill="rgba(255,255,255,0.15)" />
+                <use xlink:href="#gentle-wave" x="48" y="16" fill="rgba(255,255,255,1)" />
               </g>
             </svg>
           </div>
@@ -188,7 +209,6 @@
                   </div>
                   <div class="col-lg-5 position-relative bg-cover px-0" style="background-image: url('home-05.png');">
                     <div class="position-absolute z-index-2 w-100 h-100 top-0 start-0 d-lg-block d-none">
-                      <img src="wave-1.svg" class="h-100 ms-n2">
                     </div>
                     <div class="z-index-2 text-center d-flex h-100 w-100 justify-content-center">
                       <div class="mask bg-gradient-primary opacity-9"></div>
@@ -473,7 +493,7 @@
                   <a href="/contact-us" class="btn btn-outline-primary btn-lg rounded-pill">Talk to an Expert Today</a>
                 </div>
                 <div class="col-xl-4 position-relative">
-                  <img class="w-100 border-radius-section border-top-end-radius-0 border-bottom-end-radius-0 end-0 position-absolute max-width-300 mt-n10 d-xl-block d-none" src="curved13.jpg" alt="image">
+                  <img class="w-100 border-radius-section border-top-end-radius-0 border-bottom-end-radius-0 end-0 max-width-300 d-xl-block d-none" src="curved13.jpg" alt="image">
                 </div>
               </div>
             </div>
@@ -484,73 +504,73 @@
     <!-- Footer -->
     <footer class="footer py-5 bg-light">
         <div class="container">
-          <div class="row">
-            <div class="col-lg-4 col-md-5 col-sm-6 col-12 mb-4">
-              <h5 class="text-primary">ULTIFY SOLUTIONS</h5>
-              <div class="d-flex align-items-center mb-3">
-                <i class="fas fa-phone text-primary me-2"></i><span class="text-primary">1800 ULTIFY</span>
-              </div>
-              <div class="d-flex align-items-center mb-3">
-                <i class="fas fa-envelope text-primary me-2"></i><span class="text-primary">admin@ultify.net</span>
-              </div>
-              <div class="d-flex">
-                <a href="https://www.instagram.com" class="me-3 text-primary" aria-label="Instagram">
-                  <i class="fab fa-instagram"></i>
-                </a>
-                <a href="https://www.facebook.com" class="me-3 text-primary" aria-label="Facebook">
-                  <i class="fab fa-facebook"></i>
-                </a>
-                <a href="https://www.linkedin.com" class="text-primary" aria-label="LinkedIn">
-                  <i class="fab fa-linkedin"></i>
-                </a>
-              </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-5 col-sm-6 col-12 mb-4 text-center">
+                    <h5 class="text-primary">Ultify Solutions</h5>
+                    <div class="mb-3">
+                        <i class="fas fa-phone text-primary me-2"></i><span class="text-primary">1800 ULTIFY</span>
+                    </div>
+                    <div class="mb-3">
+                        <i class="fas fa-envelope text-primary me-2"></i><span class="text-primary">admin@ultify.net</span>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <a href="https://www.instagram.com" class="me-3 text-primary" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.facebook.com" class="me-3 text-primary" aria-label="Facebook">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="https://www.linkedin.com" class="text-primary" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-2 col-4">
+                    <h6 class="text-sm text-primary">Company</h6>
+                    <ul class="flex-column ms-n3 nav">
+                        <li class="nav-item">
+                            <a class="nav-link text-body" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-body" href="/about-us">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-body" href="/consultation">Consultation</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-body" href="/contact-us">Contact Us</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-3 col-4">
+                    <h6 class="text-sm text-primary">Core Services</h6>
+                    <ul class="flex-column ms-n3 nav">
+                        <li class="nav-item">
+                            <a class="nav-link text-body" href="/website">Website</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-body" href="/social-media">Social Media</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-body" href="/seo">SEO</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-3 col-4">
+                    <h6 class="text-sm text-primary">More Services</h6>
+                    <ul class="flex-column ms-n3 nav">
+                        <li class="nav-item">
+                            <a class="nav-link text-body" href="/paid-media">Paid Media</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-body" href="/content-creation">Content Creation</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-body" href="/print-advertising">Print Advertising</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div class="col-lg-2 col-md-2 col-4">
-              <h6 class="text-sm text-primary">Company</h6>
-              <ul class="flex-column ms-n3 nav">
-                <li class="nav-item">
-                  <a class="nav-link text-body" href="/">Home</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link text-body" href="/about-us">About Us</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link text-body" href="/consultation">Consultation</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link text-body" href="/contact-us">Contact Us</a>
-                </li>
-              </ul>
-            </div>
-            <div class="col-lg-3 col-md-3 col-4">
-              <h6 class="text-sm text-primary">Core Services</h6>
-              <ul class="flex-column ms-n3 nav">
-                <li class="nav-item">
-                  <a class="nav-link text-body" href="/website">Website</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link text-body" href="/social-media">Social Media</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link text-body" href="/seo">SEO</a>
-                </li>
-              </ul>
-            </div>
-            <div class="col-lg-3 col-md-3 col-4">
-              <h6 class="text-sm text-primary">More Services</h6>
-              <ul class="flex-column ms-n3 nav">
-                <li class="nav-item">
-                  <a class="nav-link text-body" href="/paid-media">Paid Media</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link text-body" href="/content-creation">Content Creation</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link text-body" href="/print-advertising">Print Advertising</a>
-                </li>
-              </ul>
-            </div>
-          </div>
         </div>
     </footer>
 
