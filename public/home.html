@@ -16,280 +16,460 @@
 </head>
 
 <body>
-    <!-- Sticky Container -->
-    <div class="container position-sticky z-index-sticky top-0">
-        <div class="row">
-            <div class="col-12">
-                <!-- Add your sticky navigation or other components here -->
-            </div>
-        </div>
-    </div>
-
     <!-- Header Section -->
     <header class="position-relative">
-        <div class="page-header min-vh-100 d-flex align-items-center">
-            <div class="position-absolute top-0 end-0 w-50 h-100 z-index-0 d-none d-md-block" style="background-image: url('https://demos.creative-tim.com/soft-ui-design-system-pro/assets/img/curved-images/curved8.jpg'); background-size: cover; background-position: center;"></div>
-            <div class="container position-relative z-index-1">
-                <div class="row align-items-center">
-                    <div class="col-lg-7 d-flex justify-content-center flex-column">
-                        <div class="card card-body blur shadow-lg p-5 mt-5 border-radius-xl">
-                            <h1 class="text-gradient text-primary">Capitalize on digital</h1>
-                            <h1 class="mb-4">resources with ULTIFY</h1>
-                            <p class="lead">Our agency utilizes digital resources and our working strategies to elevate your business operations. Start now and maximize your digital reach.</p>
-                            <div class="mt-4">
-                                <a href="contact.html" class="btn bg-gradient-primary rounded-pill">Get Started</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-5 d-none d-lg-block">
-                        <div class="position-relative">
-                            <img src="home-03.png" class="img-fluid rounded border-radius-xl" alt="Illustration of digital resources">
-                        </div>
-                    </div>
+        <div class="page-header min-vh-100 position-relative" style="background-image: url(https://raw.githubusercontent.com/creativetimofficial/public-assets/master/soft-ui-design-system/assets/img/nightsky.jpg); background-size: cover;">
+          <span class="mask bg-gradient-dark opacity-6"></span>
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-lg-6 text-center mx-auto mt-n7">
+                <h4 class="text-gradient text-primary fadeIn1 fadeInBottom">Capitalize on digital</h4>
+                <h1 class="text-white fadeIn2 fadeInBottom">resources with ULTIFY</h1>
+                <p class="lead mb-5 fadeIn3 fadeInBottom text-white opacity-8">Our agency utilizes digital resources and our working strategies to elevate your business operations. Start now and maximize your digital reach.</p>
+                <div class="mt-4">
+                  <a href="contact.html" class="btn bg-white btn-rounded me-2 fadeIn1 fadeInBottom">Get started</a>
+                  <a href="#" class="btn bg-white btn-icon-only rounded-circle fadeIn1 fadeInBottom"><i class="fas fa-play"></i></a>
                 </div>
+              </div>
             </div>
+          </div>
+          <div class="position-absolute w-100 z-index-1 bottom-0">
+            <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+            viewBox="0 24 150 40" preserveAspectRatio="none" shape-rendering="auto">
+              <defs>
+                <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+              </defs>
+              <g class="moving-waves">
+                <use xlink:href="#gentle-wave" x="48" y="-1" fill="rgba(255,255,255,0.40)" />
+                <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.35)" />
+                <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.25)" />
+                <use xlink:href="#gentle-wave" x="48" y="8" fill="rgba(255,255,255,0.20)" />
+                <use xlink:href="#gentle-wave" x="48" y="13" fill="rgba(255,255,255,0.15)" />
+                <use xlink:href="#gentle-wave" x="48" y="16" fill="rgba(255,255,255,1)" />
+              </g>
+            </svg>
+          </div>
         </div>
-    </header>
+      </header>
+      
+      <div class="container my-5">
+        <div class="row">
+          <div class="col-lg-2 col-md-6 col-6 mb-4" style="height: 100px;"></div> <!-- Placeholder for logo section spacing -->
+        </div>
+      </div>
 
     <!-- Services Section -->
     <section class="py-5 bg-primary position-relative text-white">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <h1 class="display-4 fw-bold">GET A WEBSITE EXACTLY THE WAY YOU NEED!</h1>
-                    <p class="lead">You have high standards. We have the expertise to meet them.</p>
-                </div>
-                <div class="col-lg-6 text-end">
-                    <img src="home-01.png" alt="Responsive Website" class="img-fluid">
-                </div>
+          <div class="row align-items-center justify-content-center">
+            <div class="col-lg-6 text-center">
+              <h1 class="display-4 fw-bold">GET A WEBSITE EXACTLY THE WAY YOU NEED!</h1>
+              <p class="lead">You have high standards. We have the expertise to meet them.</p>
             </div>
+            <div class="col-lg-6 mt-5 mt-lg-0">
+              <div id="featureCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="home-01.png" class="d-block w-100 rounded border-radius-lg shadow" alt="Responsive Website">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="home-06.png" class="d-block w-100 rounded border-radius-lg shadow" alt="Website Development">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="home-07.png" class="d-block w-100 rounded border-radius-lg shadow" alt="SEO Optimization">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="home-08.png" class="d-block w-100 rounded border-radius-lg shadow" alt="Digital Marketing">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </section>
+      
+    <div style="height: 100px;"></div>
+      
+    <section class="py-5 position-relative" style="background-image: url('home-02.png'); background-size: cover; background-position: center;">
+        <div class="container position-relative z-index-2 text-center text-dark">
+          <h1 class="fw-bold mb-3">GAIN A <span class="text-info">LEAD,</span> WITHOUT THE <span class="text-info">SWEAT</span></h1>
+          <p class="lead">We understand that the digital marketing aspect of things is rather complicated, especially while running a business. Our SEO, SEM and PPC strategies have been proven to work and are constantly aligned with current algorithms. We are so confident, that if we don’t deliver, we’ll refund you. Whether you need leads, a website, content or a professional to help, we are ready and remove the hard work from your path.</p>
+        </div>
+    </section>
+      
+    <div style="height: 100px;"></div>
+      
+    <section class="py-10 bg-light">
+        <div class="container">
+          <div class="row text-center">
+            <div class="col-lg-3 col-md-6 mb-5">
+              <div class="card shadow border-radius-lg p-4">
+                <div class="card-body">
+                  <div class="icon icon-shape icon-md bg-gradient-primary shadow-primary mx-auto mb-3">
+                    <i class="ni ni-chart-bar-32 text-white"></i>
+                  </div>
+                  <h5 class="text-primary">Guaranteed Leads</h5>
+                  <p class="text-muted">Our digital marketing agency will help you masterplan and put into action an effective strategy for lead generation.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-5">
+              <div class="card shadow border-radius-lg p-4">
+                <div class="card-body">
+                  <div class="icon icon-shape icon-md bg-gradient-primary shadow-primary mx-auto mb-3">
+                    <i class="ni ni-delivery-fast text-white"></i>
+                  </div>
+                  <h5 class="text-primary">Guaranteed Traffic</h5>
+                  <p class="text-muted">Drive traffic with our comprehensive digital marketing strategies.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-5">
+              <div class="card shadow border-radius-lg p-4">
+                <div class="card-body">
+                  <div class="icon icon-shape icon-md bg-gradient-primary shadow-primary mx-auto mb-3">
+                    <i class="ni ni-world-2 text-white"></i>
+                  </div>
+                  <h5 class="text-primary">Guaranteed Rankings</h5>
+                  <p class="text-muted">Our SEO services are designed to boost your rankings, or you don't pay!</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-5">
+              <div class="card shadow border-radius-lg p-4">
+                <div class="card-body">
+                  <div class="icon icon-shape icon-md bg-gradient-primary shadow-primary mx-auto mb-3">
+                    <i class="ni ni-satisfied text-white"></i>
+                  </div>
+                  <h5 class="text-primary">Guaranteed Growth</h5>
+                  <p class="text-muted">Our commitment is to ensure your sustained growth.</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
     </section>
 
-    <section class="py-10 bg-light">
-        <div class="container">
-            <div class="row text-center">
-                <div class="col-lg-3 col-md-6 mb-5">
-                    <div class="card shadow border-radius-lg p-4">
-                        <div class="card-body">
-                            <div class="icon icon-shape icon-md bg-gradient-primary shadow-primary mx-auto mb-3">
-                                <i class="ni ni-chart-bar-32 text-white"></i>
-                            </div>
-                            <h5 class="text-primary">Guaranteed Leads</h5>
-                            <p class="text-muted">Our digital marketing agency will help you masterplan and put to action an effective and efficient strategy for lead generation.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 mb-5">
-                    <div class="card shadow border-radius-lg p-4">
-                        <div class="card-body">
-                            <div class="icon icon-shape icon-md bg-gradient-primary shadow-primary mx-auto mb-3">
-                                <i class="ni ni-delivery-fast text-white"></i>
-                            </div>
-                            <h5 class="text-primary">Guaranteed Traffic</h5>
-                            <p class="text-muted">Drive traffic with our comprehensive digital marketing strategies.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 mb-5">
-                    <div class="card shadow border-radius-lg p-4">
-                        <div class="card-body">
-                            <div class="icon icon-shape icon-md bg-gradient-primary shadow-primary mx-auto mb-3">
-                                <i class="ni ni-world-2 text-white"></i>
-                            </div>
-                            <h5 class="text-primary">Guaranteed Rankings</h5>
-                            <p class="text-muted">Our SEO services are designed to boost your rankings, or you don't pay!</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 mb-5">
-                    <div class="card shadow border-radius-lg p-4">
-                        <div class="card-body">
-                            <div class="icon icon-shape icon-md bg-gradient-primary shadow-primary mx-auto mb-3">
-                                <i class="ni ni-satisfied text-white"></i>
-                            </div>
-                            <h5 class="text-primary">Guaranteed Growth</h5>
-                            <p class="text-muted">Our commitment is to ensure your sustained growth.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <div style="height: 100px;"></div>
 
     <!-- Consultation Section -->
     <section class="py-7">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-7 position-relative bg-cover p-0 rounded-start" style="background-image: url('home-05.png');">
-                    <div class="overlay bg-gradient-primary"></div>
-                    <div class="d-flex h-100 justify-content-center align-items-center">
-                        <img src="path-to-runner-image.png" class="img-fluid rounded-circle shadow">
-                    </div>
-                </div>
-                <div class="col-lg-5 d-flex align-items-center">
-                    <div class="card card-body blur shadow-lg p-5 border-radius-xl">
-                        <h3 class="text-dark mb-4">Book a Free Consultation Now</h3>
-                        <form id="consultation-form" method="post">
-                            <div class="form-group mb-3">
-                                <label for="businessName">URL/Business Name (if applicable)</label>
-                                <input type="text" class="form-control" id="businessName" placeholder="Enter your business name">
-                            </div>
-                            <div class="form-group mb-3">
-                                <label for="name">Name</label>
-                                <input type="text" class="form-control" id="name" placeholder="Enter your name">
-                            </div>
-                            <div class="form-group mb-3">
-                                <label for="email">Email</label>
-                                <input type="email" class="form-control" id="email" placeholder="Enter your email">
-                            </div>
-                            <div class="form-group mb-3">
-                                <label for="phone">Phone</label>
-                                <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number">
-                            </div>
-                            <button type="submit" class="btn btn-info w-100 rounded-pill">Lead Without a Sweat</button>
-                        </form>
-                        <p class="text-muted mt-4">Book a free consultation with no time limit. We will call you at our earliest convenience.</p>
-                    </div>
-                </div>
+          <div class="row">
+            <div class="col-lg-7 position-relative bg-cover p-0 rounded-start" style="background-image: url('home-05.png');">
+              <div class="overlay bg-gradient-primary opacity-9"></div>
+              <div class="d-flex h-100 justify-content-center align-items-center">
+                <img src="image-01.jpg" class="img-fluid rounded-circle shadow" alt="Consultation Image">
+              </div>
             </div>
+            <div class="col-lg-5 d-flex align-items-center">
+              <div class="card card-body blur shadow-lg p-5 border-radius-xl">
+                <h3 class="text-dark mb-4">Book a Free Consultation Now</h3>
+                <form id="consultation-form" method="post">
+                  <div class="form-group mb-3">
+                    <label for="businessName">URL/Business Name (if applicable)</label>
+                    <input type="text" class="form-control" id="businessName" placeholder="Enter your business name">
+                  </div>
+                  <div class="form-group mb-3">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Enter your name">
+                  </div>
+                  <div class="form-group mb-3">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                  </div>
+                  <div class="form-group mb-3">
+                    <label for="phone">Phone</label>
+                    <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number">
+                  </div>
+                  <div class="form-group mb-3">
+                    <label for="message">Message</label>
+                    <textarea class="form-control" id="message" rows="4" placeholder="Enter your message"></textarea>
+                  </div>
+                  <button type="submit" class="btn btn-info w-100 rounded-pill">Lead Without a Sweat</button>
+                </form>
+                <p class="text-muted mt-4">Book a free consultation with no time limit. We will call you at our earliest convenience.</p>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-5">
+            <div class="col-lg-7 mx-auto text-center">
+              <h3>Contact Information</h3>
+              <p>If you need results, you need Ultify.</p>
+              <div class="d-flex justify-content-center align-items-center text-dark mb-2">
+                <i class="fas fa-phone me-2"></i><span>1800 ULTIFY</span>
+              </div>
+              <div class="d-flex justify-content-center align-items-center text-dark mb-2">
+                <i class="fas fa-envelope me-2"></i><span>admin@ultify.net</span>
+              </div>
+              <div class="d-flex justify-content-center align-items-center text-dark mb-4">
+                <i class="fas fa-map-marker-alt me-2"></i><span>Level 25, 50 Clarent St, Wynyard, Sydney, NSW, 2000, Australia</span>
+              </div>
+              <div>
+                <a href="https://www.instagram.com" class="btn btn-icon-only btn-link text-dark me-2" aria-label="Instagram">
+                  <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.facebook.com" class="btn btn-icon-only btn-link text-dark me-2" aria-label="Facebook">
+                  <i class="fab fa-facebook"></i>
+                </a>
+                <a href="https://www.linkedin.com" class="btn btn-icon-only btn-link text-dark" aria-label="LinkedIn">
+                  <i class="fab fa-linkedin"></i>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
     </section>
+
+    <div style="height: 100px;"></div>
+
+    <!-- Services Section -->
+    <section class="py-5 bg-gray-200">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8 ms-auto me-auto text-center">
+              <h3>Our Services</h3>
+              <p>Explore our comprehensive range of expert services designed to meet your diverse needs.</p>
+            </div>
+          </div>
+          <div class="row mt-5">
+            <div class="col-lg-4 col-md-6 mb-5">
+              <div class="card">
+                <div class="card-body border-radius-lg position-relative overflow-hidden pb-4 px-5">
+                  <img class="w-25 mb-3 ms-n2" src="home-09.png" alt="Website Service">
+                  <h5 class="mt-2">Website</h5>
+                  <p class="mb-3">Our website services include custom design, development, and maintenance to help you establish a strong online presence.</p>
+                  <a href="javascript:;" class="font-weight-bold text-xs text-uppercase text-info">
+                    Explore Now
+                    <i class="fas fa-arrow-right text-xs ms-1"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-5">
+              <div class="card">
+                <div class="card-body border-radius-lg position-relative overflow-hidden pb-4 px-5">
+                  <img class="w-25 mb-3 ms-n2" src="home-10.png" alt="Social Media Service">
+                  <h5 class="mt-2">Social Media</h5>
+                  <p class="mb-3">Engage and grow your audience with our comprehensive social media strategies and management services.</p>
+                  <a href="javascript:;" class="font-weight-bold text-xs text-uppercase text-info">
+                    Explore Now
+                    <i class="fas fa-arrow-right text-xs ms-1"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-5">
+              <div class="card">
+                <div class="card-body border-radius-lg position-relative overflow-hidden pb-4 px-5">
+                  <img class="w-25 mb-3 ms-n2" src="home-11.png" alt="Content Creation Service">
+                  <h5 class="mt-2">Content Creation</h5>
+                  <p class="mb-3">We provide high-quality content creation services including writing, video production, and graphic design.</p>
+                  <a href="javascript:;" class="font-weight-bold text-xs text-uppercase text-info">
+                    Explore Now
+                    <i class="fas fa-arrow-right text-xs ms-1"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-5">
+              <div class="card">
+                <div class="card-body border-radius-lg position-relative overflow-hidden pb-4 px-5">
+                  <img class="w-25 mb-3 ms-n2" src="home-12.png" alt="Graphic Design & Animation">
+                  <h5 class="mt-2">Graphic Design & Animation</h5>
+                  <p class="mb-3">Transform your ideas into stunning visuals with our creative graphic design and animation services.</p>
+                  <a href="javascript:;" class="font-weight-bold text-xs text-uppercase text-info">
+                    Explore Now
+                    <i class="fas fa-arrow-right text-xs ms-1"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-5">
+              <div class="card">
+                <div class="card-body border-radius-lg position-relative overflow-hidden pb-4 px-5">
+                  <img class="w-25 mb-3 ms-n2" src="home-13.png" alt="SEO Service">
+                  <h5 class="mt-2">SEO</h5>
+                  <p class="mb-3">Optimize your website to rank higher in search engines and attract more visitors with our SEO services.</p>
+                  <a href="javascript:;" class="font-weight-bold text-xs text-uppercase text-info">
+                    Explore Now
+                    <i class="fas fa-arrow-right text-xs ms-1"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-5">
+              <div class="card">
+                <div class="card-body border-radius-lg position-relative overflow-hidden pb-4 px-5">
+                  <img class="w-25 mb-3 ms-n2" src="home-14.png" alt="SEM Service">
+                  <h5 class="mt-2">SEM</h5>
+                  <p class="mb-3">Leverage our SEM strategies to improve your online visibility and increase traffic.</p>
+                  <a href="javascript:;" class="font-weight-bold text-xs text-uppercase text-info">
+                    Explore Now
+                    <i class="fas fa-arrow-right text-xs ms-1"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </section>
+
+    <div style="height: 100px;"></div>
 
     <!-- FAQ Section -->
-    <section class="py-5 bg-dark text-light">
+    <section class="py-4">
         <div class="container">
-            <div class="row my-5 text-center">
-                <div class="col-md-8 mx-auto">
-                    <h2 class="fw-bold">Frequently Asked Questions</h2>
-                    <p>If you have any questions that aren't addressed here, please feel free to contact our customer support team.</p>
-                </div>
+          <div class="row my-5">
+            <div class="col-md-6 mx-auto text-center">
+              <h2>Frequently Asked Questions</h2>
+              <p>We address common questions to help you understand our services and how we can assist you.</p>
             </div>
-            <div class="row">
-                <div class="col-md-10 mx-auto">
-                    <div class="accordion" id="faqAccordion">
-                        <div class="accordion-item mb-3">
-                            <h5 class="accordion-header" id="headingOne">
-                                <button class="accordion-button collapsed text-light bg-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    What is digital marketing?
-                                    <i class="fas fa-chevron-down text-light ms-auto"></i>
-                                </button>
-                            </h5>
-                            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body text-light">
-                                    Digital marketing refers to the use of digital channels, such as search engines, social media, email, and websites, to promote a product or service.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item mb-3">
-                            <h5 class="accordion-header" id="headingTwo">
-                                <button class="accordion-button collapsed text-light bg-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    How do I get started?
-                                    <i class="fas fa-chevron-down text-light ms-auto"></i>
-                                </button>
-                            </h5>
-                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body text-light">
-                                    Getting started with digital marketing involves understanding your business goals, identifying your target audience, and selecting the right digital channels to reach them.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item mb-3">
-                            <h5 class="accordion-header" id="headingThree">
-                                <button class="accordion-button collapsed text-light bg-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                    Why is ULTIFY the best digital marketing agency in Australia?
-                                    <i class="fas fa-chevron-down text-light ms-auto"></i>
-                                </button>
-                            </h5>
-                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body text-light">
-                                    ULTIFY is renowned for its comprehensive digital strategies, a team of experts, and a proven track record in delivering exceptional results across various industries.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item mb-3">
-                            <h5 class="accordion-header" id="headingFour">
-                                <button class="accordion-button collapsed text-light bg-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                    What type of clients does ULTIFY work with?
-                                    <i class="fas fa-chevron-down text-light ms-auto"></i>
-                                </button>
-                            </h5>
-                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body text-light">
-                                    We work with a wide range of clients, from startups to established businesses, across various industries, helping them achieve their digital marketing goals.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item mb-3">
-                            <h5 class="accordion-header" id="headingFive">
-                                <button class="accordion-button collapsed text-light bg-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                                    What digital marketing trends does ULTIFY know?
-                                    <i class="fas fa-chevron-down text-light ms-auto"></i>
-                                </button>
-                            </h5>
-                            <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body text-light">
-                                    ULTIFY stays ahead of the curve by continuously researching and implementing the latest trends, such as AI-driven marketing, voice search optimization, and influencer marketing.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item mb-3">
-                            <h5 class="accordion-header" id="headingSix">
-                                <button class="accordion-button collapsed text-light bg-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-                                    How do I find the right digital marketing agency for my company?
-                                    <i class="fas fa-chevron-down text-light ms-auto"></i>
-                                </button>
-                            </h5>
-                            <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body text-light">
-                                    Finding the right agency involves assessing your business needs, researching potential agencies' expertise, and reviewing case studies and testimonials.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item mb-3">
-                            <h5 class="accordion-header" id="headingSeven">
-                                <button class="accordion-button collapsed text-light bg-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-                                    What can a digital marketing agency do for my business?
-                                    <i class="fas fa-chevron-down text-light ms-auto"></i>
-                                </button>
-                            </h5>
-                            <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body text-light">
-                                    A digital marketing agency can help you build brand awareness, increase online presence, generate leads, and ultimately grow your business through various digital strategies.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item mb-3">
-                            <h5 class="accordion-header" id="headingEight">
-                                <button class="accordion-button collapsed text-light bg-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
-                                    Which industries benefit most from digital marketing?
-                                    <i class="fas fa-chevron-down text-light ms-auto"></i>
-                                </button>
-                            </h5>
-                            <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body text-light">
-                                    While all industries can benefit from digital marketing, those in e-commerce, tech, healthcare, and entertainment often see significant growth and ROI.
-                                </div>
-                            </div>
-                        </div>
+          </div>
+          <div class="row">
+            <div class="col-md-10 mx-auto">
+              <div class="accordion" id="accordionFaq">
+                <div class="accordion-item mb-3">
+                  <h5 class="accordion-header" id="headingOne">
+                    <button class="accordion-button border-bottom font-weight-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                      What is digital marketing?
+                      <i class="collapse-close fa fa-plus text-xs pt-1 position-absolute end-0 me-3"></i>
+                      <i class="collapse-open fa fa-minus text-xs pt-1 position-absolute end-0 me-3"></i>
+                    </button>
+                  </h5>
+                  <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionFaq">
+                    <div class="accordion-body text-sm opacity-8">
+                      Digital marketing refers to the use of digital channels, such as search engines, social media, email, and websites, to promote a product or service.
                     </div>
+                  </div>
                 </div>
+                <div class="accordion-item mb-3">
+                  <h5 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button border-bottom font-weight-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                      How do I get started?
+                      <i class="collapse-close fa fa-plus text-xs pt-1 position-absolute end-0 me-3"></i>
+                      <i class="collapse-open fa fa-minus text-xs pt-1 position-absolute end-0 me-3"></i>
+                    </button>
+                  </h5>
+                  <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionFaq">
+                    <div class="accordion-body text-sm opacity-8">
+                      Getting started with digital marketing involves understanding your business goals, identifying your target audience, and selecting the right digital channels to reach them.
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item mb-3">
+                  <h5 class="accordion-header" id="headingThree">
+                    <button class="accordion-button border-bottom font-weight-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                      Why is ULTIFY the best digital marketing agency in Australia?
+                      <i class="collapse-close fa fa-plus text-xs pt-1 position-absolute end-0 me-3"></i>
+                      <i class="collapse-open fa fa-minus text-xs pt-1 position-absolute end-0 me-3"></i>
+                    </button>
+                  </h5>
+                  <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionFaq">
+                    <div class="accordion-body text-sm opacity-8">
+                      ULTIFY is renowned for its comprehensive digital strategies, a team of experts, and a proven track record in delivering exceptional results across various industries.
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item mb-3">
+                  <h5 class="accordion-header" id="headingFour">
+                    <button class="accordion-button border-bottom font-weight-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                      What type of clients does ULTIFY work with?
+                      <i class="collapse-close fa fa-plus text-xs pt-1 position-absolute end-0 me-3"></i>
+                      <i class="collapse-open fa fa-minus text-xs pt-1 position-absolute end-0 me-3"></i>
+                    </button>
+                  </h5>
+                  <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionFaq">
+                    <div class="accordion-body text-sm opacity-8">
+                      We work with a wide range of clients, from startups to established businesses, across various industries, helping them achieve their digital marketing goals.
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item mb-3">
+                  <h5 class="accordion-header" id="headingFive">
+                    <button class="accordion-button border-bottom font-weight-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                      What digital marketing trends does ULTIFY know?
+                      <i class="collapse-close fa fa-plus text-xs pt-1 position-absolute end-0 me-3"></i>
+                      <i class="collapse-open fa fa-minus text-xs pt-1 position-absolute end-0 me-3"></i>
+                    </button>
+                  </h5>
+                  <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionFaq">
+                    <div class="accordion-body text-sm opacity-8">
+                      ULTIFY stays ahead of the curve by continuously researching and implementing the latest trends, such as AI-driven marketing, voice search optimization, and influencer marketing.
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item mb-3">
+                  <h5 class="accordion-header" id="headingSix">
+                    <button class="accordion-button border-bottom font-weight-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                      How do I find the right digital marketing agency for my company?
+                      <i class="collapse-close fa fa-plus text-xs pt-1 position-absolute end-0 me-3"></i>
+                      <i class="collapse-open fa fa-minus text-xs pt-1 position-absolute end-0 me-3"></i>
+                    </button>
+                  </h5>
+                  <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionFaq">
+                    <div class="accordion-body text-sm opacity-8">
+                      Finding the right agency involves assessing your business needs, researching potential agencies' expertise, and reviewing case studies and testimonials.
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item mb-3">
+                  <h5 class="accordion-header" id="headingSeven">
+                    <button class="accordion-button border-bottom font-weight-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                      What can a digital marketing agency do for my business?
+                      <i class="collapse-close fa fa-plus text-xs pt-1 position-absolute end-0 me-3"></i>
+                      <i class="collapse-open fa fa-minus text-xs pt-1 position-absolute end-0 me-3"></i>
+                    </button>
+                  </h5>
+                  <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionFaq">
+                    <div class="accordion-body text-sm opacity-8">
+                      A digital marketing agency can help you build brand awareness, increase online presence, generate leads, and ultimately grow your business through various digital strategies.
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item mb-3">
+                  <h5 class="accordion-header" id="headingEight">
+                    <button class="accordion-button border-bottom font-weight-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                      Which industries benefit most from digital marketing?
+                      <i class="collapse-close fa fa-plus text-xs pt-1 position-absolute end-0 me-3"></i>
+                      <i class="collapse-open fa fa-minus text-xs pt-1 position-absolute end-0 me-3"></i>
+                    </button>
+                  </h5>
+                  <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionFaq">
+                    <div class="accordion-body text-sm opacity-8">
+                      While all industries can benefit from digital marketing, those in e-commerce, tech, healthcare, and entertainment often see significant growth and ROI.
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
     </section>
 
-    <!-- Call to Action Section -->
-    <section class="py-5 bg-gradient-primary text-center text-white">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-9 mx-auto">
-                    <h2 class="display-5 fw-bold mb-3">Ready to get started with your own digital journey?</h2>
-                    <p class="mb-5">Our team is here to help you every step of the way. Contact us today to begin your transformation.</p>
-                    <a href="#" class="btn btn-outline-light btn-lg rounded-pill">Talk to an Expert Today</a>
+    <div style="height: 100px;"></div>
+
+    <!-- CTA Section -->
+    <section class="py-7 mt-1">
+        <div class="container-fluid px-0">
+          <div class="row justify-content-center text-center">
+            <div class="col-12 position-relative">
+              <div class="row bg-gradient-primary bottom-0 py-7">
+                <div class="col-xl-8 text-center mx-auto text-white">
+                  <h2 class="display-5 fw-bold mb-3">Ready to get started with your own digital journey?</h2>
+                  <p class="mb-4">Our team is here to help you every step of the way. Contact us today to begin your transformation.</p>
+                  <a href="contact-us.html" class="btn btn-outline-light btn-lg rounded-pill">Talk to an Expert Today</a>
                 </div>
+                <div class="col-xl-4 position-relative">
+                  <img class="w-100 border-radius-section border-top-end-radius-0 border-bottom-end-radius-0 end-0 position-absolute max-width-300 mt-n10 d-xl-block d-none" src="../../assets/img/curved-images/curved13.jpg" alt="image">
+                </div>
+              </div>
             </div>
+          </div>
         </div>
     </section>
+
+    <div style="height: 100px;"></div>
 
     <!-- Footer -->
     <footer class="footer py-5">
@@ -412,6 +592,15 @@
                 loop: true
             });
         }
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          // Initialize carousel with fade transition
+          var featureCarousel = new bootstrap.Carousel(document.getElementById('featureCarousel'), {
+            interval: 1000,
+            ride: 'carousel'
+          });
+        });
     </script>
     <script src="./assets/js/loopple/loopple.js"></script>
 </body>
