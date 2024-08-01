@@ -33,39 +33,33 @@
         .col-xl-4 .position-relative {
           margin-top: 0;
         }
+
+        .cta-image {
+          max-height: calc(100% - 2rem); /* Prevent the image from extending into the footer */
+          margin-top: -2rem; /* Align the image properly without affecting other sections */
+        }
     </style>
 </head>
 
 <body>
     <!-- Header Section -->
-    <header class="header-rounded-images">
+    <header>
         <div class="page-header min-vh-100">
+          <div class="position-absolute fixed-top ms-auto w-50 h-100 z-index-0 d-none d-sm-none d-md-block" style="background-image: url(../../assets/img/curved-images/curved8.jpg); background-size:cover;"></div>
           <div class="container">
             <div class="row">
-              <div class="col-lg-6 text-lg-start text-center py-sm-0 py-7">
-                <h1 class="text-primary">Capitalize on digital</h1>
-                <p class="text-muted text-lg-start text-center pe-5 mt-4">Our agency utilizes digital resources and our working strategies to elevate your business operations. Start now and maximize your digital reach.</p>
-                <br />
-                <div class="buttons">
-                  <a href="/contact-us" class="btn btn-lg bg-primary text-white btn-rounded">Get started</a>
-                  <a href="/about-us" class="btn btn-lg btn-outline-primary btn-rounded ms-xl-3">Read More</a>
-                </div>
-              </div>
-              <div class="col-lg-6 text-end position-relative">
-                <div class="position-absolute top-0 w-100">
-                  <img src="../../assets/img/team-2.jpg" class="position-absolute rounded-circle img-1 d-lg-block d-none z-index-3" alt="avatar">
-                  <img src="../../assets/img/shapes/shape-3.svg" class="top-0 end-0 position-absolute shape-3 d-lg-block d-none" alt="shape">
-                  <img src="../../assets/img/shapes/shape-2.svg" class="mt-4 position-absolute shape-2 d-lg-block d-none" alt="shape">
-                  <img src="../../assets/img/shapes/shape-1.svg" class="mt-n6 position-absolute shape-1 d-lg-block d-none" alt="shape">
-                  <img src="../../assets/img/team-3.jpg" class="position-absolute rounded-circle img-2 d-lg-block d-none z-index-3" alt="avatar">
+              <div class="col-lg-7 d-flex justify-content-center flex-column">
+                <div class="card card-body blur d-flex justify-content-center shadow-lg p-5 mt-5">
+                  <h1 class="text-gradient text-primary">Capitalise on digital</h1>
+                  <h1 class="mb-4">resources with Ultify</h1>
+                  <p class="lead pe-5 me-5">Our agency utilises digital resources and our working strategies to elevate your business operations. Start now and maximise your digital reach.</p>
+                  <div class="buttons">
+                    <button type="button" href="/contact-us" class="btn bg-gradient-primary mt-4">Get Started</button>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="min-vh-100 w-100 position-absolute mt-sm-n11 top-0 d-lg-none d-block" style="background: #f8f9fa;"></div>
-      
-          <div class="min-vh-100 w-75 position-absolute border-radius-section ms-n10 mt-n10 top-0 d-lg-block d-none" style="background: #f8f9fa;"></div>
-          <div class="min-vh-75 w-50 blur-section blur-gradient-primary position-absolute border-top-start-radius-0 border-top-end-radius-0 border-bottom-end-radius-0 border-radius-section mt-n8 me-n4 top-0 end-0 d-lg-block d-none"></div>
         </div>
     </header>
 
@@ -490,7 +484,7 @@
                   <a href="/contact-us" class="btn btn-outline-primary btn-lg rounded-pill">Talk to an Expert Today</a>
                 </div>
                 <div class="col-xl-4 position-relative">
-                  <img class="w-100 border-radius-section border-top-end-radius-0 border-bottom-end-radius-0 position-absolute end-0 top-0 max-width-300" src="curved13.jpg" alt="image">
+                  <img class="cta-image w-100 border-radius-section border-top-end-radius-0 border-bottom-end-radius-0 position-absolute end-0 top-0 max-width-300" src="curved13.jpg" alt="image">
                 </div>
               </div>
             </div>
