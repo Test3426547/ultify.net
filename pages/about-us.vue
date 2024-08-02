@@ -1,23 +1,35 @@
 <template>
-    <div v-html="content"></div>
-  </template>
-  
-  <script setup>
-  import { ref, onMounted } from 'vue'
-  import axios from 'axios'
-  
-  const content = ref('')
-  
-  onMounted(async () => {
-    try {
-      const response = await axios.get('/about-us.html')
-      content.value = response.data
-    } catch (error) {
-      console.error('Error fetching HTML content:', error)
-    }
-  })
-  </script>
-  
-  <style scoped>
-  /* Add your styles here */
-  </style>  
+  <div>
+    <HeaderAboutUs />
+    <AboutUs />
+    <HistoricalTimeline />
+    <Consultation />
+    <FAQ />
+    <CTA />
+  </div>
+</template>
+
+<script>
+import HeaderAboutUs from '~/components/HeaderAboutUs.vue';
+import AboutUs from '~/components/AboutUs.vue';
+import HistoricalTimeline from '~/components/HistoricalTimeline.vue';
+import Consultation from '~/components/Consultation.vue';
+import FAQ from '~/components/FAQ.vue';
+import CTA from '~/components/CTA.vue';
+
+export default {
+  name: 'AboutUsPage',
+  components: {
+    HeaderAboutUs,
+    AboutUs,
+    HistoricalTimeline,
+    Consultation,
+    FAQ,
+    CTA
+  }
+};
+</script>
+
+<style scoped>
+/* Add any additional styling specific to the About Us page here */
+</style>
