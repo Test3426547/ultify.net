@@ -1,8 +1,8 @@
 export default defineNuxtConfig({
-  // Using Single Page Application mode
+  // Single Page Application mode
   ssr: false,
 
-  // Using Static Site Generation
+  // Static Site Generation
   target: 'static',
 
   app: {
@@ -35,7 +35,15 @@ export default defineNuxtConfig({
     }
   },
 
-  css: ['~/assets/css/main.css'],
+  // Global CSS files
+  css: [
+    '~/assets/css/main.css', // Existing project styles
+    '~/assets/css/nucleo-icons.css', // Nucleo Icons
+    '~/assets/css/nucleo-svg.css', // Nucleo SVG
+    '~/assets/css/soft-design-system-pro.css', // Soft Design System Pro
+    '~/assets/css/soft-design-system-pro.min.css', // Soft Design System Pro Minified
+    '~/assets/css/theme.css' // Additional theme-specific styles
+  ],
 
   modules: [
     '@nuxtjs/tailwindcss',
@@ -50,7 +58,14 @@ export default defineNuxtConfig({
   },
 
   vite: {
-    // Vite specific configurations
+    css: {
+      // Disable CSS source maps
+      devSourcemap: false,
+    },
+    // Remove any source map references in production builds
+    build: {
+      sourcemap: false,
+    },
   },
 
   pwa: {

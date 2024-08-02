@@ -1,32 +1,35 @@
 <template>
-  <div class="container">
-    <div v-html="content"></div>
+  <div>
+    <HeaderHome />
+    <Services />
+    <Consultation />
+    <OurServices />
+    <FAQ />
+    <CTA />
   </div>
 </template>
 
-<script setup>
-import { ref, onMounted } from 'vue'
-import axios from 'axios'
+<script>
+import HeaderHome from '@/components/HeaderHome.vue';
+import Services from '@/components/Services.vue';
+import Consultation from '@/components/Consultation.vue';
+import OurServices from '@/components/OurServices.vue';
+import FAQ from '@/components/FAQ.vue';
+import CTA from '@/components/CTA.vue';
 
-const content = ref('')
-
-onMounted(async () => {
-  try {
-    const response = await axios.get('/home.html')
-    content.value = response.data
-  } catch (error) {
-    console.error('Error fetching HTML content:', error)
-  }
-})
+export default {
+  name: 'Home',
+  components: {
+    HeaderHome,
+    Services,
+    Consultation,
+    OurServices,
+    FAQ,
+    CTA,
+  },
+};
 </script>
 
 <style scoped>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-</style>
+/* Add any additional scoped styles here if needed */
+</style>  

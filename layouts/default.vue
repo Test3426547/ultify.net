@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import Navigation from '~/components/Navigation.vue'
+import Navbar from '~/components/Navigation.vue'
+import Footer from '~/components/Footer.vue'
 import Chatbot from '~/components/Chatbot.vue'
-import { SpeedInsights } from "@vercel/speed-insights/nuxt"
+import { SpeedInsights } from '@vercel/speed-insights/nuxt'
 
 const showChatbot = ref(false)
 
@@ -13,7 +14,7 @@ function toggleChatbot() {
 
 <template>
   <div>
-    <Navigation />
+    <Navbar />
     <main>
       <slot />
       <ClientOnly>
@@ -36,6 +37,7 @@ function toggleChatbot() {
         </div>
       </ClientOnly>
     </main>
+    <Footer />
   </div>
 </template>
 
