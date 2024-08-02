@@ -1,23 +1,32 @@
 <template>
-    <div v-html="content"></div>
-  </template>
-  
-  <script setup>
-  import { ref, onMounted } from 'vue'
-  import axios from 'axios'
-  
-  const content = ref('')
-  
-  onMounted(async () => {
-    try {
-      const response = await axios.get('/contact-us.html')
-      content.value = response.data
-    } catch (error) {
-      console.error('Error fetching HTML content:', error)
-    }
-  })
-  </script>
-  
-  <style scoped>
-  /* Add your styles here */
-  </style>  
+  <div>
+    <HeaderContact />
+    <Contact />
+    <Consultation />
+    <FAQ />
+    <CTA />
+  </div>
+</template>
+
+<script>
+import HeaderContact from '~/components/HeaderContact.vue';
+import Contact from '~/components/Contact.vue';
+import Consultation from '~/components/Consultation.vue';
+import FAQ from '~/components/FAQ.vue';
+import CTA from '~/components/CTA.vue';
+
+export default {
+  name: 'ContactUs',
+  components: {
+    HeaderContact,
+    Contact,
+    Consultation,
+    FAQ,
+    CTA,
+  },
+};
+</script>
+
+<style scoped>
+/* You can add specific styles for the contact-us page here if needed */
+</style>

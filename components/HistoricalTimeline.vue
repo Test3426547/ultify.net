@@ -19,7 +19,7 @@
             </div>
           </div>
           <div class="col-md-4 d-flex justify-content-center align-items-center">
-            <img src="chatbot-icon.png" alt="Company Logo" class="img-fluid" style="max-height: 400px;">
+            <img src="/chatbot-icon.png" alt="Company Logo" class="img-fluid" style="max-height: 400px;">
           </div>
         </div>
       </div>
