@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-md-8 ms-auto me-auto text-center">
           <h3 class="text-primary">Our Services</h3>
-          <p>Explore our comprehensive range of expert services designed to meet your diverse needs.</p>
+          <p class="text-muted">Explore our comprehensive range of expert services designed to meet your diverse needs.</p>
         </div>
       </div>
       <div class="row mt-5">
@@ -62,6 +62,26 @@ export default {
 
 <style scoped>
 .bg-light {
-  background-color: var(--bs-light, #f8f9fa) !important;
+  background-color: var(--bs-light-bg, #f8f9fa) !important;
+}
+
+.text-primary {
+  color: var(--bs-primary);
+}
+
+.text-muted {
+  color: var(--bs-body-color-muted);
+}
+
+.dark-mode .bg-light {
+  background-color: var(--bs-dark-bg, #121212) !important;
+}
+
+.dark-mode .text-primary {
+  color: var(--bs-primary-dark);
+}
+
+.dark-mode .text-muted {
+  color: var(--bs-body-color-muted-dark);
 }
 </style>

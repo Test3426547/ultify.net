@@ -1,19 +1,18 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { SpeedInsights } from '@vercel/speed-insights/nuxt'
-import Navbar from '~/components/Navbar.vue'
-import Footer from '~/components/Footer.vue'
-import Chatbot from '~/components/Chatbot.vue'
+import { ref } from 'vue';
+import Navbar from '~/components/Navbar.vue';
+import Footer from '~/components/Footer.vue';
+import Chatbot from '~/components/Chatbot.vue';
 
-const showChatbot = ref(false)
+const showChatbot = ref(false);
 
 function toggleChatbot() {
-  showChatbot.value = !showChatbot.value
+  showChatbot.value = !showChatbot.value;
 }
 </script>
 
 <template>
-  <div>
+  <div :class="darkModeClass">
     <Navbar />
     <main>
       <slot />
@@ -41,33 +40,38 @@ function toggleChatbot() {
   </div>
 </template>
 
-<style>
-.pwa-toast {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  margin: 16px;
-  padding: 12px;
-  border: 1px solid #8885;
-  border-radius: 4px;
-  z-index: 1;
-  text-align: left;
-  box-shadow: 3px 4px 5px 0 #8885;
-  background-color: white;
+<style scoped>
+/* Base styles */
+html, body {
+  background-color: var(--bs-light, #f8f9fa);
+  color: var(--bs-body-color, #343a40);
 }
 
-.pwa-toast .message {
-  margin-bottom: 8px;
+.dark-mode html, .dark-mode body {
+  background-color: var(--bs-dark-bg, #121212);
+  color: var(--bs-light-text, #e1e1e1);
+}
+
+/* PWA Toast Styles */
+.pwa-toast {
+  background-color: var(--bs-toast-bg, white);
+  border: 1px solid #8885;
+}
+
+.dark-mode .pwa-toast {
+  background-color: var(--bs-toast-dark-bg, #333);
+  border-color: #6665;
 }
 
 .pwa-toast button {
   border: 1px solid #8885;
-  outline: none;
-  margin-right: 5px;
-  border-radius: 2px;
-  padding: 3px 10px;
 }
 
+.dark-mode .pwa-toast button {
+  border-color: #6665;
+}
+
+/* Chatbot Styles */
 .chatbot-icon {
   position: fixed;
   bottom: 20px;
@@ -75,11 +79,20 @@ function toggleChatbot() {
   width: 50px;
   height: 50px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: var(--bs-light, #f8f9fa);
+}
+
+.dark-mode .chatbot-icon {
+  background-color: var(--bs-dark-bg, #121212);
 }
 
 .chatbot-icon img {
-  width: 100%;
-  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .chatbot-window {
@@ -95,16 +108,26 @@ function toggleChatbot() {
   z-index: 1000;
 }
 
+.dark-mode .chatbot-window {
+  background-color: var(--bs-dark-bg, #121212);
+  border-color: #444;
+}
+
+.dark-mode .chatbot-window img {
+  filter: invert(1);
+}
+
+.dark-mode .message {
+  color: var(--bs-light-text, #e1e1e1);
+}
+
+.dark-mode .buttons button {
+  color: var(--bs-light-text, #e1e1e1);
+}
+
+/* General styles */
 html {
-  font-family:
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
+  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-size: 16px;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;

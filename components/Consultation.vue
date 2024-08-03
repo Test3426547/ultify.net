@@ -1,5 +1,5 @@
 <template>
-  <section class="py-7 bg-light">
+  <section class="py-7 bg-light dark-mode-bg">
     <div class="container">
       <div class="row">
         <div class="col">
@@ -9,18 +9,18 @@
               <div class="col-lg-7">
                 <form class="p-3" id="contact-form" @submit.prevent="handleSubmit">
                   <div class="card-header px-4 py-sm-5 py-3">
-                    <h2 class="text-primary">Book a Free</h2>
-                    <h2 class="text-primary">Consultation Now</h2>
-                    <p class="lead">
+                    <h2 class="text-primary dark-mode-text-primary">Book a Free</h2>
+                    <h2 class="text-primary dark-mode-text-primary">Consultation Now</h2>
+                    <p class="lead dark-mode-text">
                       We heard you are ready to begin your digital journey! Get talking to a suited expert for free, now!
                     </p>
                   </div>
                   <div class="card-body pt-1">
                     <div class="row">
                       <div class="col-md-12 pe-2 mb-3">
-                        <label for="businessName">URL/Business Name (if applicable)</label>
+                        <label for="businessName" class="dark-mode-text">URL/Business Name (if applicable)</label>
                         <input
-                          class="form-control"
+                          class="form-control dark-mode-input"
                           id="businessName"
                           v-model="form.businessName"
                           placeholder="Enter your business name"
@@ -28,9 +28,9 @@
                         />
                       </div>
                       <div class="col-md-12 pe-2 mb-3">
-                        <label for="name">Name</label>
+                        <label for="name" class="dark-mode-text">Name</label>
                         <input
-                          class="form-control"
+                          class="form-control dark-mode-input"
                           id="name"
                           v-model="form.name"
                           placeholder="Enter your name"
@@ -38,9 +38,9 @@
                         />
                       </div>
                       <div class="col-md-12 pe-2 mb-3">
-                        <label for="email">Email</label>
+                        <label for="email" class="dark-mode-text">Email</label>
                         <input
-                          class="form-control"
+                          class="form-control dark-mode-input"
                           id="email"
                           v-model="form.email"
                           placeholder="Enter your email"
@@ -48,9 +48,9 @@
                         />
                       </div>
                       <div class="col-md-12 pe-2 mb-3">
-                        <label for="phone">Phone</label>
+                        <label for="phone" class="dark-mode-text">Phone</label>
                         <input
-                          class="form-control"
+                          class="form-control dark-mode-input"
                           id="phone"
                           v-model="form.phone"
                           placeholder="Enter your phone number"
@@ -58,10 +58,10 @@
                         />
                       </div>
                       <div class="col-md-12 pe-2 mb-3">
-                        <label for="message">Your message</label>
+                        <label for="message" class="dark-mode-text">Your message</label>
                         <textarea
                           name="message"
-                          class="form-control"
+                          class="form-control dark-mode-input"
                           id="message"
                           v-model="form.message"
                           rows="6"
@@ -87,7 +87,7 @@
                 <div class="position-absolute z-index-2 w-100 h-100 top-0 start-0 d-lg-block d-none"></div>
                 <div class="z-index-2 text-center d-flex h-100 w-100 justify-content-center">
                   <div class="mask bg-gradient-primary opacity-9"></div>
-                  <div class="p-5 ps-sm-8 position-relative text-start my-auto text-white">
+                  <div class="p-5 ps-sm-8 position-relative text-start my-auto text-white dark-mode-text">
                     <h3>Contact Information</h3>
                     <p class="opacity-8 mb-4">
                       Fill up the form and our team will get back to you within 24 hours.
@@ -151,9 +151,36 @@ export default {
 </script>
 
 <style scoped>
-.bg-cover {
-  background-size: cover;
-  background-position: center;
+/* Light Mode Styles */
+.bg-light {
+  background-color: var(--bs-light-bg, #f8f9fa) !important;
+}
+
+.text-primary {
+  color: var(--bs-primary);
+}
+
+.lead, .text-primary, .card-header, .card-body {
+  color: var(--bs-body-color);
+}
+
+/* Dark Mode Styles */
+.dark-mode-bg {
+  background-color: var(--bs-dark-bg, #343a40) !important;
+}
+
+.dark-mode-text-primary {
+  color: var(--bs-primary-dark) !important;
+}
+
+.dark-mode-input {
+  background-color: var(--bs-dark-input-bg) !important;
+  color: var(--bs-dark-input-text) !important;
+  border: 1px solid var(--bs-dark-input-border) !important;
+}
+
+.dark-mode-text {
+  color: var(--bs-light);
 }
 
 .mask {
@@ -164,8 +191,9 @@ export default {
   bottom: 0;
 }
 
-.text-primary {
-  color: var(--bs-primary); /* Bootstrap variable for primary color */
+.bg-cover {
+  background-size: cover;
+  background-position: center;
 }
 
 .btn-primary {

@@ -1,6 +1,9 @@
 export default defineNuxtConfig({
-  ssr: false, // Single Page Application mode
-  target: 'static', // Static Site Generation
+  // Single Page Application mode
+  ssr: false,
+
+  // Target for static site generation
+  target: 'static',
 
   // Global CSS files
   css: [
@@ -11,27 +14,31 @@ export default defineNuxtConfig({
     '~/assets/css/nucleo-svg.css',
     '~/assets/css/soft-design-system-pro.css',
     '~/assets/css/soft-design-system-pro.min.css',
-    '~/assets/css/theme.css'
+    '~/assets/css/theme.css',
+    '~/assets/css/dark-mode.css' // Dark mode styles
   ],
 
   // Import plugins
   plugins: [
-    { src: '~/plugins/bootstrap.client.js', mode: 'client' }
+    { src: '~/plugins/bootstrap.client.js', mode: 'client' },
   ],
 
+  // Application head settings
   app: {
     head: {
       titleTemplate: '%s - Ultify Solutions',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { hid: 'description', name: 'description', content: 'Ultify Solutions - Digital Marketing Made Easy' }
+        { hid: 'description', name: 'description', content: 'Ultify Solutions - Digital Marketing Made Easy' },
+        { name: 'theme-color', content: '#ffffff' }, // Light mode color
+        { name: 'theme-color', content: '#121212', media: '(prefers-color-scheme: dark)' } // Dark mode color
       ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
         { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' },
         { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/gh/creativetimofficial/public-assets@master/soft-ui-design-system-builder/v1.0.7/assets/css/nucleo-icons.css' },
-        { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/gh/creativetimofficial/public-assets@master/soft-ui-design-system-builder/v1.0.7/assets/css/nucleo-svg.css' },
+        { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/gh/creativetimofficial/public-assets@master/soft-ui-design-system-builder/v1.0.7/assets/css/nucleo-svg.css' }
       ],
       script: [
         { src: 'https://kit.fontawesome.com/42d5adcbca.js', crossorigin: 'anonymous' },
@@ -45,11 +52,13 @@ export default defineNuxtConfig({
     }
   },
 
+  // Nuxt modules
   modules: [
     '@nuxtjs/tailwindcss',
     '@vite-pwa/nuxt'
   ],
 
+  // PostCSS configuration for TailwindCSS and Autoprefixer
   postcss: {
     plugins: {
       tailwindcss: {},
@@ -57,15 +66,17 @@ export default defineNuxtConfig({
     }
   },
 
+  // Vite-specific configurations
   vite: {
     css: {
-      devSourcemap: false, // Disable CSS source maps
+      devSourcemap: false, // Disable CSS source maps in development
     },
     build: {
-      sourcemap: false, // Remove any source map references in production builds
+      sourcemap: false, // Disable source maps in production
     },
   },
 
+  // PWA configuration
   pwa: {
     registerType: 'autoUpdate',
     manifest: {
@@ -123,6 +134,7 @@ export default defineNuxtConfig({
     }
   },
 
+  // Runtime configuration
   runtimeConfig: {
     public: {
       apiBaseURL: 'https://secret-shore-04461-19d2043c008b.herokuapp.com/https://api.mcdonaldsz.com',
@@ -130,6 +142,7 @@ export default defineNuxtConfig({
     openaiApiKey: process.env.OPENAI_API_KEY
   },
 
+  // Nitro configuration
   nitro: {
     prerender: {
       routes: ['/']
@@ -137,5 +150,7 @@ export default defineNuxtConfig({
     serveStatic: true
   },
 
-  devtools: { enabled: true }
+  // Devtools settings
+  devtools: { enabled: true },
+  compatibilityDate: '2024-08-03'
 });

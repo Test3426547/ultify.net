@@ -1,19 +1,19 @@
 <template>
-  <div class="faq-section py-4 bg-light">
+  <div class="faq-section py-4 bg-light dark-mode-bg">
     <div class="container">
       <div class="row my-5">
         <div class="col-md-6 mx-auto text-center">
-          <h2 class="text-primary">Frequently Asked Questions</h2>
-          <p>We address common questions to help you understand our services and how we can assist you.</p>
+          <h2 class="text-primary dark-mode-text-primary">Frequently Asked Questions</h2>
+          <p class="dark-mode-text">We address common questions to help you understand our services and how we can assist you.</p>
         </div>
       </div>
       <div class="row">
         <div class="col-md-10 mx-auto">
           <div v-for="(faq, index) in faqs" :key="index" class="faq-item mb-3">
-            <p class="faq-question mb-1 cursor-pointer" @click="toggleAnswer(index)">
+            <p class="faq-question mb-1 cursor-pointer dark-mode-question" @click="toggleAnswer(index)">
               {{ faq.question }}
             </p>
-            <p v-if="faq.showAnswer" class="faq-answer">
+            <p v-if="faq.showAnswer" class="faq-answer dark-mode-answer">
               {{ faq.answer }}
             </p>
           </div>
@@ -43,28 +43,42 @@ const toggleAnswer = (index) => {
 </script>
 
 <style scoped>
-.faq-section {
-  padding: 20px;
+/* Light Mode Styles */
+.bg-light {
+  background-color: var(--bs-light, #f8f9fa) !important;
 }
 
-.faq-item {
-  margin-bottom: 10px;
+.text-primary {
+  color: var(--bs-primary) !important;
 }
 
 .faq-question {
   cursor: pointer;
-  font-weight: 600; /* Increased weight for prominence */
-  color: #343a40; /* Slightly darker color for better visibility */
-  font-size: 1.1rem; /* Slightly larger font size for emphasis */
+  font-weight: 600;
+  color: #343a40;
+  font-size: 1.1rem;
 }
 
 .faq-answer {
   margin: 0;
-  color: #6c757d; /* Use Bootstrap's text-muted color */
-  font-size: 1rem; /* Consistent size for readability */
+  color: #6c757d;
+  font-size: 1rem;
 }
 
-.bg-light {
-  background-color: var(--bs-light, #f8f9fa) !important;
+/* Dark Mode Styles */
+.dark-mode .bg-light {
+  background-color: var(--bs-dark-bg, #343a40) !important;
+}
+
+.dark-mode .text-primary {
+  color: var(--bs-primary-dark, #0d6efd) !important;
+}
+
+.dark-mode .faq-question {
+  color: var(--bs-body-color-dark, #adb5bd);
+}
+
+.dark-mode .faq-answer {
+  color: var(--bs-body-color-dark, #adb5bd);
 }
 </style>

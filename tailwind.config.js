@@ -7,7 +7,11 @@ module.exports = {
     './plugins/**/*.{js,ts}',
     './nuxt.config.{js,ts}',
   ],
+  darkMode: 'class', // Enable dark mode using the 'class' strategy
   theme: {
+    extend: {},
+  },
+  variants: {
     extend: {},
   },
   plugins: [],
