@@ -1,6 +1,6 @@
 <template>
   <header class="navbar navbar-expand-lg sticky-top py-2">
-    <div class="container">
+    <div class="container-fluid">
       <NuxtLink to="/" class="navbar-brand d-flex align-items-center">
         <img src="/ultify.svg" width="30" alt="Ultify Solutions" />
         <span class="ms-2">Ultify Solutions</span>
@@ -16,7 +16,11 @@
       >
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarNav">
+      <div
+        class="offcanvas offcanvas-end transparent-bg"
+        tabindex="-1"
+        id="navbarNav"
+      >
         <div class="offcanvas-header">
           <h5 class="offcanvas-title">Menu</h5>
           <button
@@ -27,7 +31,7 @@
           ></button>
         </div>
         <div class="offcanvas-body">
-          <ul class="navbar-nav">
+          <ul class="navbar-nav ms-auto">
             <li class="nav-item">
               <NuxtLink to="/about-us" class="nav-link">About Us</NuxtLink>
             </li>
@@ -43,12 +47,24 @@
                 Services
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><NuxtLink to="/website" class="dropdown-item">Website</NuxtLink></li>
-                <li><NuxtLink to="/social-media" class="dropdown-item">Social Media</NuxtLink></li>
-                <li><NuxtLink to="/seo" class="dropdown-item">SEO</NuxtLink></li>
-                <li><NuxtLink to="/paid-media" class="dropdown-item">Paid Media</NuxtLink></li>
-                <li><NuxtLink to="/content-creation" class="dropdown-item">Content Creation</NuxtLink></li>
-                <li><NuxtLink to="/print-advertising" class="dropdown-item">Print Advertising</NuxtLink></li>
+                <li>
+                  <NuxtLink to="/website" class="dropdown-item">Website</NuxtLink>
+                </li>
+                <li>
+                  <NuxtLink to="/social-media" class="dropdown-item">Social Media</NuxtLink>
+                </li>
+                <li>
+                  <NuxtLink to="/seo" class="dropdown-item">SEO</NuxtLink>
+                </li>
+                <li>
+                  <NuxtLink to="/paid-media" class="dropdown-item">Paid Media</NuxtLink>
+                </li>
+                <li>
+                  <NuxtLink to="/content-creation" class="dropdown-item">Content Creation</NuxtLink>
+                </li>
+                <li>
+                  <NuxtLink to="/print-advertising" class="dropdown-item">Print Advertising</NuxtLink>
+                </li>
               </ul>
             </li>
             <li class="nav-item">
@@ -58,8 +74,8 @@
               <NuxtLink to="/contact-us" class="nav-link">Contact Us</NuxtLink>
             </li>
           </ul>
-          <div class="mt-3 d-flex align-items-center">
-            <label class="form-check-label" for="darkModeSwitch">
+          <div class="mt-3 d-flex align-items-center justify-content-end">
+            <label class="form-switch" for="darkModeSwitch">
               <input
                 type="checkbox"
                 class="form-check-input"
@@ -68,7 +84,7 @@
               />
               <i
                 :class="darkMode ? 'fas fa-sun' : 'fas fa-moon'"
-                class="ms-2"
+                class="icon ms-2"
               ></i>
             </label>
           </div>
@@ -110,22 +126,26 @@ export default {
 }
 
 .offcanvas {
-  background-color: transparent;
+  background-color: transparent !important;
 }
 
-.offcanvas-header, .offcanvas-body {
+.offcanvas-header,
+.offcanvas-body {
   background-color: var(--bs-body-bg);
 }
 
-.btn-close {
-  filter: invert(1);
+.form-switch {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  font-size: 1.5rem;
+  margin-left: 0.5rem;
 }
 
 .dark-mode .offcanvas-header,
-.dark-mode .offcanvas-body {
-  background-color: var(--bs-dark);
-}
-
+.dark-mode .offcanvas-body,
 .dark-mode .navbar-brand,
 .dark-mode .nav-link,
 .dark-mode .offcanvas-title {
