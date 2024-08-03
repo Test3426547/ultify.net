@@ -1,5 +1,5 @@
 <template>
-  <header class="navbar navbar-expand-lg sticky-top py-2">
+  <header class="navbar navbar-expand-lg sticky-top py-2 transparent-nav">
     <div class="container-fluid">
       <NuxtLink to="/" class="navbar-brand d-flex align-items-center">
         <img src="/ultify.svg" width="30" alt="Ultify Solutions" />
@@ -14,21 +14,14 @@
         aria-expanded="false"
         aria-label="Toggle navigation"
       >
-        <span class="navbar-toggler-icon"></span>
+        <span class="navbar-toggler-icon">
+          <i class="bi bi-list" style="font-size: 1.5rem;"></i>
+        </span>
       </button>
-      <div
-        class="offcanvas offcanvas-end transparent-bg"
-        tabindex="-1"
-        id="navbarNav"
-      >
+      <div class="offcanvas offcanvas-end transparent-bg" tabindex="-1" id="navbarNav">
         <div class="offcanvas-header">
           <h5 class="offcanvas-title">Menu</h5>
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="offcanvas"
-            aria-label="Close"
-          ></button>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
           <ul class="navbar-nav ms-auto">
@@ -36,35 +29,16 @@
               <NuxtLink to="/about-us" class="nav-link">About Us</NuxtLink>
             </li>
             <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="navbarDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Services
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li>
-                  <NuxtLink to="/website" class="dropdown-item">Website</NuxtLink>
-                </li>
-                <li>
-                  <NuxtLink to="/social-media" class="dropdown-item">Social Media</NuxtLink>
-                </li>
-                <li>
-                  <NuxtLink to="/seo" class="dropdown-item">SEO</NuxtLink>
-                </li>
-                <li>
-                  <NuxtLink to="/paid-media" class="dropdown-item">Paid Media</NuxtLink>
-                </li>
-                <li>
-                  <NuxtLink to="/content-creation" class="dropdown-item">Content Creation</NuxtLink>
-                </li>
-                <li>
-                  <NuxtLink to="/print-advertising" class="dropdown-item">Print Advertising</NuxtLink>
-                </li>
+                <li><NuxtLink to="/website" class="dropdown-item">Website</NuxtLink></li>
+                <li><NuxtLink to="/social-media" class="dropdown-item">Social Media</NuxtLink></li>
+                <li><NuxtLink to="/seo" class="dropdown-item">SEO</NuxtLink></li>
+                <li><NuxtLink to="/paid-media" class="dropdown-item">Paid Media</NuxtLink></li>
+                <li><NuxtLink to="/content-creation" class="dropdown-item">Content Creation</NuxtLink></li>
+                <li><NuxtLink to="/print-advertising" class="dropdown-item">Print Advertising</NuxtLink></li>
               </ul>
             </li>
             <li class="nav-item">
@@ -83,7 +57,7 @@
                 @change="toggleDarkMode"
               />
               <i
-                :class="darkMode ? 'fas fa-sun' : 'fas fa-moon'"
+                :class="isDarkMode ? 'bi bi-sun-fill' : 'bi bi-moon-fill'"
                 class="icon ms-2"
               ></i>
             </label>
@@ -98,19 +72,20 @@
 export default {
   data() {
     return {
-      darkMode: false,
+      isDarkMode: false,
     };
   },
   methods: {
     toggleDarkMode() {
-      this.darkMode = !this.darkMode;
+      this.isDarkMode = !this.isDarkMode;
       document.body.classList.toggle('dark-mode');
-    },
-  },
+    }
+  }
 };
 </script>
 
 <style scoped>
+/* General navbar styling */
 .navbar {
   background-color: transparent !important;
   padding: 0.5rem 1rem;
@@ -121,17 +96,27 @@ export default {
   border: none;
 }
 
-.navbar-toggler {
-  border: none;
+.sticky-top {
+  position: sticky;
+  top: 0;
+  z-index: 1020;
+}
+
+.transparent-nav {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.navbar-toggler-icon i {
+  font-size: 1.5rem;
+  color: #333; /* Ensure icon is visible */
+}
+
+.navbar-nav .nav-link {
+  color: #333;
 }
 
 .offcanvas {
-  background-color: transparent !important;
-}
-
-.offcanvas-header,
-.offcanvas-body {
-  background-color: var(--bs-body-bg);
+  background-color: rgba(255, 255, 255, 0.9) !important;
 }
 
 .form-switch {
@@ -144,15 +129,25 @@ export default {
   margin-left: 0.5rem;
 }
 
-.dark-mode .offcanvas-header,
-.dark-mode .offcanvas-body,
-.dark-mode .navbar-brand,
-.dark-mode .nav-link,
-.dark-mode .offcanvas-title {
-  color: var(--bs-light);
+/* Dark mode styling */
+.dark-mode .transparent-nav,
+.dark-mode .offcanvas {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+.dark-mode .navbar-nav .nav-link {
+  color: #fff;
+}
+
+.dark-mode .navbar-toggler-icon i {
+  color: #fff; /* Ensure icon is visible in dark mode */
+}
+
+.dark-mode .icon {
+  color: #fff;
 }
 
 .dark-mode .btn-close {
-  filter: invert(0);
+  filter: invert(1);
 }
 </style>
