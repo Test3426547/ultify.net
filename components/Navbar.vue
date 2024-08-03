@@ -85,6 +85,7 @@ export default {
 <style scoped>
 .navbar {
   background-color: transparent !important;
+  padding: 0.5rem 1rem;
   position: fixed;
   top: 0;
   width: 100%;
@@ -110,6 +111,10 @@ export default {
 
 .navbar-nav .nav-link {
   color: #333;
+}
+
+.navbar-nav .nav-item {
+  margin-right: 0.5rem; /* Adjust the right margin as needed */
 }
 
 .offcanvas {
@@ -181,5 +186,11 @@ export default {
 
 .dark-mode .btn-close {
   filter: invert(1);
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  /* Other styles */
 }
 </style>
