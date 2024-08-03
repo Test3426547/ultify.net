@@ -1,5 +1,5 @@
 <template>
-  <header class="navbar navbar-expand-lg bg-light shadow-sm py-2">
+  <header class="navbar navbar-expand-lg bg-light shadow-sm sticky-top py-2">
     <div class="container">
       <NuxtLink to="/" class="navbar-brand d-flex align-items-center">
         <img src="/ultify.svg" width="30" alt="Ultify Solutions">
@@ -38,8 +38,8 @@
               <NuxtLink to="/contact-us" class="nav-link">Contact Us</NuxtLink>
             </li>
           </ul>
-          <div class="mt-3">
-            <label class="form-check-label d-flex align-items-center" for="darkModeSwitch">
+          <div class="mt-3 d-flex align-items-center">
+            <label class="form-check-label" for="darkModeSwitch">
               <input type="checkbox" class="form-check-input" id="darkModeSwitch" @change="toggleDarkMode">
               <span class="ms-2">Dark Mode</span>
               <i class="fas fa-moon ms-2"></i>
@@ -64,5 +64,11 @@ export default {
 <style scoped>
 .navbar {
   padding: 0.5rem 1rem;
+}
+.sticky-top {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1020;
 }
 </style>
