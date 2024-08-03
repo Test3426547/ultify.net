@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import { SpeedInsights } from '@vercel/speed-insights/nuxt';
-import Navbar from '~/components/Navbar.vue';
-import Footer from '~/components/Footer.vue';
-import Chatbot from '~/components/Chatbot.vue';
+import { ref } from 'vue'
+import { SpeedInsights } from '@vercel/speed-insights/nuxt'
+import Navbar from '~/components/Navbar.vue'
+import Footer from '~/components/Footer.vue'
+import Chatbot from '~/components/Chatbot.vue'
 
-const showChatbot = ref(false);
+const showChatbot = ref(false)
 
 function toggleChatbot() {
-  showChatbot.value = !showChatbot.value;
+  showChatbot.value = !showChatbot.value
 }
 </script>
 
@@ -96,7 +96,15 @@ function toggleChatbot() {
 }
 
 html {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family:
+    'Source Sans Pro',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    'Helvetica Neue',
+    Arial,
+    sans-serif;
   font-size: 16px;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
