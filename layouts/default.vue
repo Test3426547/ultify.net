@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import Navbar from '~/components/Navigation.vue'
+import { SpeedInsights } from '@vercel/speed-insights/nuxt'
+import Navbar from '~/components/Navbar.vue'
 import Footer from '~/components/Footer.vue'
 import Chatbot from '~/components/Chatbot.vue'
-import { SpeedInsights } from '@vercel/speed-insights/nuxt'
 
 const showChatbot = ref(false)
 
