@@ -28,6 +28,12 @@
             <li class="nav-item">
               <NuxtLink to="/about-us" class="nav-link">About Us</NuxtLink>
             </li>
+            <li class="nav-item">
+              <NuxtLink to="/consultation" class="nav-link">Consultation</NuxtLink>
+            </li>
+            <li class="nav-item">
+              <NuxtLink to="/contact-us" class="nav-link">Contact Us</NuxtLink>
+            </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Services
@@ -42,15 +48,9 @@
                 <li><NuxtLink to="/print-advertising" class="dropdown-item">Print Advertising</NuxtLink></li>
               </ul>
             </li>
-            <li class="nav-item">
-              <NuxtLink to="/consultation" class="nav-link">Consultation</NuxtLink>
-            </li>
-            <li class="nav-item">
-              <NuxtLink to="/contact-us" class="nav-link">Contact Us</NuxtLink>
-            </li>
           </ul>
-          <div class="mt-3 d-flex align-items-center justify-content-end">
-            <label class="form-switch" for="darkModeSwitch">
+          <div class="mt-3 d-flex align-items-center justify-content-start">
+            <label class="form-switch d-flex align-items-center" for="darkModeSwitch">
               <input
                 type="checkbox"
                 class="form-check-input"
