@@ -1,5 +1,5 @@
 <template>
-  <header class="navbar navbar-expand-lg sticky-top py-2 transparent-nav">
+  <header class="navbar sticky-top py-2 transparent-nav">
     <div class="container-fluid">
       <NuxtLink to="/" class="navbar-brand d-flex align-items-center">
         <img src="/ultify.svg" width="30" alt="Ultify Solutions" />
