@@ -1,12 +1,14 @@
 <template>
-  <header class="navbar navbar-expand-lg sticky-top py-2" :class="{ 'bg-light': !isDarkMode, 'bg-dark': isDarkMode }">
-    <div class="container-fluid">
+  <header class="navbar navbar-expand-lg sticky-top py-2 transparent-nav">
+    <div class="container">
       <NuxtLink to="/" class="navbar-brand d-flex align-items-center">
         <img src="/ultify.svg" width="30" alt="Ultify Solutions">
         <span class="ms-2">Ultify Solutions</span>
       </NuxtLink>
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+        <span class="navbar-toggler-icon">
+          <i class="bi bi-list" style="font-size: 1.5rem;"></i>
+        </span>
       </button>
       <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarNav">
         <div class="offcanvas-header">
@@ -39,8 +41,10 @@
             </li>
           </ul>
           <div class="mt-3 d-flex align-items-center">
-            <input type="checkbox" class="form-check-input" id="darkModeSwitch" @change="toggleDarkMode">
-            <i :class="isDarkMode ? 'fas fa-sun' : 'fas fa-moon'" class="ms-2" style="cursor: pointer;"></i>
+            <label class="form-check-label" for="darkModeSwitch">
+              <input type="checkbox" class="form-check-input" id="darkModeSwitch" @change="toggleDarkMode">
+              <i :class="isDarkMode ? 'bi bi-sun-fill' : 'bi bi-moon-fill'" class="ms-2"></i>
+            </label>
           </div>
         </div>
       </div>
@@ -58,28 +62,38 @@ export default {
   methods: {
     toggleDarkMode() {
       this.isDarkMode = !this.isDarkMode;
-      document.body.classList.toggle('dark-mode', this.isDarkMode);
-    },
-  },
+      document.body.classList.toggle('dark-mode');
+    }
+  }
 };
 </script>
 
 <style scoped>
 .navbar {
   padding: 0.5rem 1rem;
-  background-color: transparent;
-  transition: background-color 0.3s ease;
 }
 .sticky-top {
-  position: -webkit-sticky;
   position: sticky;
   top: 0;
   z-index: 1020;
 }
-.offcanvas-body {
+.transparent-nav {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+.navbar-toggler-icon i {
+  font-size: 1.5rem;
+}
+.navbar-nav .nav-link {
+  color: #333;
+}
+.offcanvas {
   background-color: rgba(255, 255, 255, 0.9);
 }
-.form-check-input:checked + .fas {
-  color: #f8f9fa;
+.dark-mode .transparent-nav,
+.dark-mode .offcanvas {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.dark-mode .navbar-nav .nav-link {
+  color: #fff;
 }
 </style>
