@@ -9,7 +9,7 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "start:cors": "node cors-proxy-server.js",
-    "generate-pwa-assets": "pwa-assets-generator --preset minimal-2023 public/chatbot-icon.png"
+    "generate-pwa-assets": "pwa-assets-generator --preset minimal-2023 public/pwa-512x512.png"
   },
   "dependencies": {
     "@ai-sdk/openai": "^0.0.40",

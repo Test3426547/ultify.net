@@ -23,6 +23,17 @@
           <h5 class="offcanvas-title">Menu</h5>
           <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
+        <div class="mt-3 d-flex align-items-center justify-content-start">
+            <label class="form-check-label" for="darkModeSwitch">
+              <input
+                type="checkbox"
+                class="form-check-input"
+                id="darkModeSwitch"
+                @change="toggleDarkMode"
+              />
+              <i :class="isDarkMode ? 'bi bi-sun-fill' : 'bi bi-moon-fill'" class="ms-2"></i>
+            </label>
+          </div>
         <div class="offcanvas-body">
           <ul class="navbar-nav">
             <li class="nav-item">
@@ -49,17 +60,6 @@
               </ul>
             </li>
           </ul>
-          <div class="mt-3 d-flex align-items-center justify-content-start">
-            <label class="form-check-label" for="darkModeSwitch">
-              <input
-                type="checkbox"
-                class="form-check-input"
-                id="darkModeSwitch"
-                @change="toggleDarkMode"
-              />
-              <i :class="isDarkMode ? 'bi bi-sun-fill' : 'bi bi-moon-fill'" class="ms-2"></i>
-            </label>
-          </div>
         </div>
       </div>
     </div>
