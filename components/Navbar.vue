@@ -24,7 +24,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
-          <ul class="navbar-nav ms-auto">
+          <ul class="navbar-nav">
             <li class="nav-item">
               <NuxtLink to="/about-us" class="nav-link">About Us</NuxtLink>
             </li>
@@ -50,17 +50,14 @@
             </li>
           </ul>
           <div class="mt-3 d-flex align-items-center justify-content-start">
-            <label class="form-switch d-flex align-items-center" for="darkModeSwitch">
+            <label class="form-check-label" for="darkModeSwitch">
               <input
                 type="checkbox"
                 class="form-check-input"
                 id="darkModeSwitch"
                 @change="toggleDarkMode"
               />
-              <i
-                :class="isDarkMode ? 'bi bi-sun-fill' : 'bi bi-moon-fill'"
-                class="icon ms-2"
-              ></i>
+              <i :class="isDarkMode ? 'bi bi-sun-fill' : 'bi bi-moon-fill'" class="ms-2"></i>
             </label>
           </div>
         </div>
@@ -120,9 +117,39 @@ export default {
   background-color: rgba(255, 255, 255, 0.9) !important;
 }
 
-.form-switch {
-  display: flex;
-  align-items: center;
+.form-check-input {
+  width: 2rem;
+  height: 1rem;
+  background-color: #ddd;
+  border-radius: 1rem;
+  position: relative;
+  appearance: none;
+  outline: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  border: none;
+  -webkit-appearance: none; /* Remove default checkbox styles */
+  -moz-appearance: none;
+}
+
+.form-check-input:checked {
+  background-color: #333;
+}
+
+.form-check-input::before {
+  content: "";
+  position: absolute;
+  top: 0.1rem;
+  left: 0.1rem;
+  width: 0.8rem;
+  height: 0.8rem;
+  background-color: #fff;
+  border-radius: 50%;
+  transition: transform 0.2s;
+}
+
+.form-check-input:checked::before {
+  transform: translateX(1rem);
 }
 
 .icon {
