@@ -29,8 +29,9 @@
               <NuxtLink to="/about-us" class="nav-link">About Us</NuxtLink>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Services
+                <img src="/down-arrow-dark.svg" alt="down-arrow" class="ms-1 dropdown-icon">
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><NuxtLink to="/website" class="dropdown-item">Website</NuxtLink></li>
@@ -85,7 +86,6 @@ export default {
 </script>
 
 <style scoped>
-/* General navbar styling */
 .navbar {
   background-color: transparent !important;
   padding: 0.5rem 1rem;
@@ -94,6 +94,7 @@ export default {
   width: 100%;
   z-index: 1030;
   border: none;
+  box-shadow: none; /* Remove shadow */
 }
 
 .sticky-top {
@@ -103,7 +104,7 @@ export default {
 }
 
 .transparent-nav {
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: transparent !important;
 }
 
 .navbar-toggler-icon i {
@@ -127,6 +128,11 @@ export default {
 .icon {
   font-size: 1.5rem;
   margin-left: 0.5rem;
+}
+
+.dropdown-icon {
+  width: auto;
+  height: 1em; /* Match the height of the font size */
 }
 
 /* Dark mode styling */
