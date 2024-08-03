@@ -1,9 +1,23 @@
 export default defineNuxtConfig({
-  // Single Page Application mode
-  ssr: false,
+  ssr: false, // Single Page Application mode
+  target: 'static', // Static Site Generation
 
-  // Static Site Generation
-  target: 'static',
+  // Global CSS files
+  css: [
+    'bootstrap/dist/css/bootstrap.min.css',
+    'bootstrap-icons/font/bootstrap-icons.css',
+    '~/assets/css/main.css',
+    '~/assets/css/nucleo-icons.css',
+    '~/assets/css/nucleo-svg.css',
+    '~/assets/css/soft-design-system-pro.css',
+    '~/assets/css/soft-design-system-pro.min.css',
+    '~/assets/css/theme.css'
+  ],
+
+  // Import plugins
+  plugins: [
+    { src: '~/plugins/bootstrap.client.js', mode: 'client' }
+  ],
 
   app: {
     head: {
@@ -18,31 +32,18 @@ export default defineNuxtConfig({
         { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' },
         { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/gh/creativetimofficial/public-assets@master/soft-ui-design-system-builder/v1.0.7/assets/css/nucleo-icons.css' },
         { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/gh/creativetimofficial/public-assets@master/soft-ui-design-system-builder/v1.0.7/assets/css/nucleo-svg.css' },
-        { rel: 'stylesheet', href: '/assets/css/theme.css' },
-        { rel: 'stylesheet', href: '/assets/css/loopple/loopple.css' },
-        { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css' }
       ],
       script: [
         { src: 'https://kit.fontawesome.com/42d5adcbca.js', crossorigin: 'anonymous' },
-        { src: 'https://cdn.jsdelivr.net/gh/creativetimofficial/public-assets@master/soft-ui-design-system-builder/v1.0.7/assets/js/core/bootstrap.min.js', type: 'text/javascript' },
-        { src: 'https://cdn.jsdelivr.net/gh/creativetimofficial/public-assets@master/soft-ui-design-system-builder/v1.0.7/assets/js/soft-design-system.js', type: 'text/javascript' },
+        { src: 'https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js', crossorigin: 'anonymous' },
+        { src: 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js', crossorigin: 'anonymous' },
         { src: 'https://cdn.jsdelivr.net/gh/creativetimofficial/public-assets@master/soft-ui-design-system-builder/v1.0.7/assets/js/plugins/countup.min.js', type: 'text/javascript' },
-        { src: 'https://cdn.jsdelivr.net/gh/creativetimofficial/public-assets@master/soft-ui-design-system-builder/v1.0.7/assets/js/plugins/flatpickr.min.js' },
-        { src: 'https://cdn.jsdelivr.net/gh/creativetimofficial/public-assets@master/soft-ui-design-system-builder/v1.0.7/assets/js/plugins/typedjs.js' },
-        { src: 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js', crossorigin: 'anonymous' }
+        { src: 'https://cdn.jsdelivr.net/gh/creativetimofficial/public-assets@master/soft-ui-design-system-builder/v1.0.7/assets/js/plugins/flatpickr.min.js', type: 'text/javascript' },
+        { src: 'https://cdn.jsdelivr.net/gh/creativetimofficial/public-assets@master/soft-ui-design-system-builder/v1.0.7/assets/js/plugins/typedjs.js', type: 'text/javascript' },
+        { src: 'https://cdn.jsdelivr.net/gh/creativetimofficial/public-assets@master/soft-ui-design-system-builder/v1.0.7/assets/js/soft-design-system.js', type: 'text/javascript' }
       ]
     }
   },
-
-  // Global CSS files
-  css: [
-    '~/assets/css/main.css', // Existing project styles
-    '~/assets/css/nucleo-icons.css', // Nucleo Icons
-    '~/assets/css/nucleo-svg.css', // Nucleo SVG
-    '~/assets/css/soft-design-system-pro.css', // Soft Design System Pro
-    '~/assets/css/soft-design-system-pro.min.css', // Soft Design System Pro Minified
-    '~/assets/css/theme.css' // Additional theme-specific styles
-  ],
 
   modules: [
     '@nuxtjs/tailwindcss',
@@ -58,12 +59,10 @@ export default defineNuxtConfig({
 
   vite: {
     css: {
-      // Disable CSS source maps
-      devSourcemap: false,
+      devSourcemap: false, // Disable CSS source maps
     },
-    // Remove any source map references in production builds
     build: {
-      sourcemap: false,
+      sourcemap: false, // Remove any source map references in production builds
     },
   },
 
@@ -138,7 +137,5 @@ export default defineNuxtConfig({
     serveStatic: true
   },
 
-  devtools: { enabled: true },
-  compatibility: { compatibilityDate: '2024-07-29' },
-  compatibilityDate: '2024-07-31'
+  devtools: { enabled: true }
 });
