@@ -69,7 +69,7 @@ export default {
 }
 
 .bg-light {
-  background-color: var(--bs-light-bg, #f8f9fa) !important;
+  background-color: var(--bs-light) !important;
 }
 
 .text-primary {
@@ -104,7 +104,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--bs-light-text, #ffffff);
+  color: var(--bs-white);
 }
 
 .timeline-icon i {
@@ -120,28 +120,5 @@ export default {
 .timeline-content p {
   margin-bottom: 0;
   color: var(--bs-body-color);
-}
-
-/* Dark mode styles */
-.dark-mode .bg-light {
-  background-color: var(--bs-dark-bg, #121212) !important;
-}
-
-.dark-mode .text-primary {
-  color: var(--bs-primary-dark) !important;
-}
-
-.dark-mode .timeline {
-  border-left-color: var(--bs-primary-dark);
-}
-
-.dark-mode .timeline-icon {
-  background-color: var(--bs-primary-dark);
-  color: var(--bs-dark-text, #212529);
-}
-
-.dark-mode .timeline-title,
-.dark-mode .timeline-content p {
-  color: var(--bs-light-text, #e1e1e1);
 }
 </style>

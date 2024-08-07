@@ -98,23 +98,10 @@ export default {
 }
 
 .bg-light {
-  background-color: var(--bs-light-bg) !important;
+  background-color: var(--bs-light) !important;
 }
 
 .border-radius-xl {
-  border-radius: 0.75rem;
-}
-
-/* Dark mode styles */
-.dark-mode .text-body {
-  color: var(--bs-body-color-dark) !important;
-}
-
-.dark-mode .bg-light {
-  background-color: var(--bs-dark-bg) !important;
-}
-
-.dark-mode .text-primary {
-  color: var(--bs-primary-dark) !important;
+  border-radius: var(--bs-border-radius-xl, 0.75rem);
 }
 </style>

@@ -1,15 +1,15 @@
 <template>
-  <section class="py-5 mt-1 bg-light dark-mode-bg">
+  <section class="py-5 mt-1 bg-light">
     <div class="container-fluid px-0">
       <div class="row justify-content-center text-center">
         <div class="col-12 position-relative">
           <div class="row align-items-center">
             <!-- Text Section -->
             <div class="col-xl-8 text-center mx-auto">
-              <h2 class="display-5 fw-bold mb-3 text-primary dark-mode-text-primary">
+              <h2 class="display-5 fw-bold mb-3 text-primary">
                 Get in contact
               </h2>
-              <p class="text-white dark-mode-text">
+              <p class="text-body">
                 Welcome to ULTIFY Solutions! We’re excited to hear from you. Beyond consultations, we’re here to assist you with a wide range of inquiries and opportunities. Whether you’re interested in learning more about our comprehensive service offerings, discussing potential collaborations, inquiring about career opportunities, or simply wanting to share feedback, we’re all ears. Our digital marketing agency believes in fostering strong relationships and utilizing open communication, so whatever the reason you’re reaching out, we’re ready to engage. Feel free to use the provided contact information to connect with us. Your thoughts and ideas matter, and we’re eager to explore how we can work together effectively.
               </p>
             </div>
@@ -17,7 +17,7 @@
             <div class="col-xl-4 position-relative p-0 d-flex justify-content-end">
               <img
                 class="img-fluid rounded-end"
-                src="/curved14.jpg"
+                src="@/assets/images/curved14.jpg"
                 alt="Contact Us Image"
                 style="max-height: 400px;"
               />
@@ -36,20 +36,18 @@ export default {
 </script>
 
 <style scoped>
-/* Light Mode Styles */
 .bg-light {
-  background-color: var(--bs-light, #f8f9fa) !important;
-}
-
-.text-white {
-  color: var(--bs-text-light, white) !important;
+  background-color: var(--bs-light) !important;
 }
 
 .text-primary {
   color: var(--bs-primary) !important;
 }
 
-/* Image Styling */
+.text-body {
+  color: var(--bs-body-color) !important;
+}
+
 .img-fluid {
   max-width: 100%;
   height: auto;
@@ -57,18 +55,5 @@ export default {
 
 .rounded-end {
   border-radius: 0 0.5rem 0.5rem 0;
-}
-
-/* Dark Mode Styles */
-.dark-mode .bg-light {
-  background-color: var(--bs-dark-bg, #343a40) !important;
-}
-
-.dark-mode .text-primary {
-  color: var(--bs-primary-dark, #0d6efd) !important;
-}
-
-.dark-mode .text-white {
-  color: var(--bs-text-dark, #f8f9fa) !important;
 }
 </style>

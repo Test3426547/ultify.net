@@ -1,12 +1,12 @@
 <template>
-  <section class="py-7 bg-light dark-mode-bg">
+  <section class="py-7 bg-light">
     <div class="container">
       <div class="row">
         <div class="col-lg-10 mx-auto">
           <div class="text-center">
-            <h4 class="text-gradient text-primary dark-mode-text-primary">Directive message from Ultify -</h4>
-            <blockquote class="blockquote dark-mode-blockquote">
-              <p class="mb-0 dark-mode-text">
+            <h4 class="text-gradient text-primary">Directive message from Ultify -</h4>
+            <blockquote class="blockquote">
+              <p class="mb-0">
                 “Throughout our years in the industry, we have solidified the ins and outs of all digital marketing elements. At ULTIFY, our agency truly understands consumer demands and we always actively remodel our systems to meet such criteria. As a result, we offer our free consultations for the best interest of connecting with like-minded individuals with whom we have built strong connections over the course of their digital journey. We can’t wait to hear from you and excel your innovative ideas through digital marketing with our agency.”
               </p>
             </blockquote>
@@ -24,14 +24,14 @@ export default {
 </script>
 
 <style scoped>
-/* Light Mode Styles */
 .bg-light {
-  background-color: var(--bs-light, #f8f9fa) !important;
+  background-color: var(--bs-light) !important;
 }
 
 .text-gradient {
-  background: -webkit-linear-gradient(left, #007bff, #6610f2);
+  background: -webkit-linear-gradient(left, var(--bs-blue), var(--bs-indigo));
   -webkit-background-clip: text;
+  background-clip: initial; /* Replace the comment with a valid CSS property */
   -webkit-text-fill-color: transparent;
 }
 
@@ -44,38 +44,11 @@ export default {
   padding-left: 1.5rem;
 }
 
-/* Dark Mode Styles */
-.dark-mode .bg-light {
-  background-color: var(--bs-dark-bg, #343a40) !important;
+.text-primary {
+  color: var(--bs-primary);
 }
 
-.dark-mode .text-primary {
-  color: var(--bs-primary-dark, #0d6efd) !important;
-}
-
-.dark-mode .text-gradient {
-  background: -webkit-linear-gradient(left, #66a1ff, #a57bf2);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.dark-mode .blockquote {
-  border-left: 5px solid var(--bs-primary-dark);
-}
-
-.dark-mode .blockquote p {
-  color: var(--bs-body-color-dark);
-}
-
-.dark-mode-text-primary {
-  color: var(--bs-primary-dark, #0d6efd) !important;
-}
-
-.dark-mode-blockquote {
-  border-left-color: var(--bs-primary-dark, #0d6efd);
-}
-
-.dark-mode-text {
-  color: var(--bs-body-color-dark, #adb5bd) !important;
+.mb-0 {
+  margin-bottom: 0;
 }
 </style>

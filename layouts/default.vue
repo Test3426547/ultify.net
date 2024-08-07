@@ -12,7 +12,7 @@ function toggleChatbot() {
 </script>
 
 <template>
-  <div :class="darkModeClass">
+  <div>
     <Navbar />
     <main>
       <slot />
@@ -43,32 +43,18 @@ function toggleChatbot() {
 <style scoped>
 /* Base styles */
 html, body {
-  background-color: var(--bs-light, #f8f9fa);
-  color: var(--bs-body-color, #343a40);
-}
-
-.dark-mode html, .dark-mode body {
-  background-color: var(--bs-dark-bg, #121212);
-  color: var(--bs-light-text, #e1e1e1);
+  background-color: var(--bs-light-bg);
+  color: var(--bs-body-color);
 }
 
 /* PWA Toast Styles */
 .pwa-toast {
-  background-color: var(--bs-toast-bg, white);
-  border: 1px solid #8885;
-}
-
-.dark-mode .pwa-toast {
-  background-color: var(--bs-toast-dark-bg, #333);
-  border-color: #6665;
+  background-color: var(--bs-toast-bg);
+  border: 1px solid var(--bs-toast-border);
 }
 
 .pwa-toast button {
-  border: 1px solid #8885;
-}
-
-.dark-mode .pwa-toast button {
-  border-color: #6665;
+  border: 1px solid var(--bs-toast-border);
 }
 
 /* Chatbot Styles */
@@ -83,11 +69,7 @@ html, body {
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  background-color: var(--bs-light, #f8f9fa);
-}
-
-.dark-mode .chatbot-icon {
-  background-color: var(--bs-dark-bg, #121212);
+  background-color: var(--bs-chatbot-bg);
 }
 
 .chatbot-icon img {
@@ -101,28 +83,11 @@ html, body {
   right: 20px;
   width: 300px;
   height: 400px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--bs-chatbot-border);
   border-radius: 10px;
-  background-color: white;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: var(--bs-chatbot-bg);
+  box-shadow: var(--bs-chatbot-shadow);
   z-index: 1000;
-}
-
-.dark-mode .chatbot-window {
-  background-color: var(--bs-dark-bg, #121212);
-  border-color: #444;
-}
-
-.dark-mode .chatbot-window img {
-  filter: invert(1);
-}
-
-.dark-mode .message {
-  color: var(--bs-light-text, #e1e1e1);
-}
-
-.dark-mode .buttons button {
-  color: var(--bs-light-text, #e1e1e1);
 }
 
 /* General styles */
@@ -136,4 +101,28 @@ html {
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
 }
+
+/* Navbar Styles */
+.navbar {
+  background-color: var(--bs-navbar-bg) !important;
+  box-shadow: var(--bs-navbar-shadow);
+  border: none;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
 </style>
+ 
+ In the code above, we have a  showChatbot  ref that is used to toggle the visibility of the chatbot window. The  toggleChatbot  function is used to toggle the value of  showChatbot  when the chatbot icon is clicked. 
+ The  chatbot-icon  div contains an image of the chatbot icon. When the icon is clicked, the  toggleChatbot  function is called to toggle the visibility of the chatbot window. 
+ The  chatbot-window  div contains the chatbot component. It is only displayed when the  showChatbot  ref is true. 
+ The  chatbot-icon  and  chatbot-window  divs are styled using CSS. The  chatbot-icon  div is positioned at the bottom right corner of the screen and contains the chatbot icon image. The  chatbot-window  div is positioned below the chatbot icon and contains the chatbot component. 
+ The chatbot icon image is displayed using an  img  tag with the  src  attribute set to  /chatbot-icon.png . The image is styled to have a maximum width and height of 100%. 
+ The chatbot window is displayed using the  Chatbot  component. The  Chatbot  component is imported at the top of the file and rendered inside the  chatbot-window  div. 
+ The chatbot window is styled using CSS to have a fixed position at the bottom right corner of the screen. It has a width of 300px, a height of 400px, a border, a border radius of 10px, a background color, and a box shadow. 
+ The chatbot window is displayed only when the  showChatbot  ref is true. The visibility of the chatbot window is toggled using the  toggleChatbot  function when the chatbot icon is clicked. 
+ Conclusion 
+ In this tutorial, we have learned how to create a chatbot in a Nuxt.js application using the Vue.js Composition API. We have created a chatbot component that can be displayed in a chatbot window. We have also created a chatbot icon that can be clicked to toggle the visibility of the chatbot window. 
+ We have used the Vue.js Composition API to define the chatbot component and the chatbot icon. We have also used the Vue.js Composition API to define the state and behavior of the chatbot window. 
+ We have styled the chatbot icon and

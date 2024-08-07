@@ -1,6 +1,6 @@
 <template>
   <header>
-    <div class="page-header min-vh-100" :class="{ 'dark-mode': isDarkMode }">
+    <div class="page-header min-vh-100">
       <div class="container">
         <div class="row">
           <div class="col-lg-6 col-sm-9 mx-auto text-center">
@@ -37,41 +37,22 @@
 <script>
 export default {
   name: 'HeaderWebsite',
-  computed: {
-    isDarkMode() {
-      return document.body.classList.contains('dark-mode');
-    }
-  }
 };
 </script>
 
 <style scoped>
 .page-header {
-  background-color: var(--bs-light, #f8f9fa) !important;
+  background-color: var(--bs-light) !important;
   padding-top: 60px;
   padding-bottom: 60px;
 }
 
-/* Dark Mode Styles */
-.page-header.dark-mode {
-  background-color: var(--bs-dark-bg, #121212) !important;
-}
-
 .text-title {
-  color: var(--bs-primary, #007bff) !important;
-}
-
-/* Dark Mode Title and Lead Text */
-.dark-mode .text-title {
-  color: var(--bs-light, #ffffff) !important;
+  color: var(--bs-primary) !important;
 }
 
 .text-subtitle {
-  color: var(--bs-secondary-text, #6c757d) !important;
-}
-
-.dark-mode .text-subtitle {
-  color: var(--bs-light-text, #e1e1e1) !important;
+  color: var(--bs-secondary-text) !important;
 }
 
 img {

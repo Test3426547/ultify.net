@@ -115,39 +115,10 @@ export default {
 </script>
 
 <style scoped>
-/* Hero Section Styling */
-.bg-light {
-  background-color: var(--bs-light-bg, #f8f9fa) !important;
-}
-
-.text-primary {
-  color: var(--bs-primary) !important;
-}
-
-.text-muted {
-  color: var(--bs-body-color, #6c757d);
-}
-
+/* Styling */
 .card {
   backdrop-filter: blur(10px);
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: var(--bs-card-bg);
   transition: background-color 0.3s, color 0.3s;
-}
-
-/* Dark Mode */
-.dark-mode .bg-light {
-  background-color: var(--bs-dark-bg, #121212) !important;
-}
-
-.dark-mode .text-primary {
-  color: var(--bs-primary-dark) !important;
-}
-
-.dark-mode .text-muted {
-  color: var(--bs-light-text, #e1e1e1);
-}
-
-.dark-mode .card {
-  background-color: rgba(24, 24, 24, 0.8);
 }
 </style>

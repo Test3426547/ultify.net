@@ -2,9 +2,6 @@ export default defineNuxtConfig({
   // Single Page Application mode
   ssr: false,
 
-  // Target for static site generation
-  target: 'static',
-
   // Global CSS files
   css: [
     'bootstrap/dist/css/bootstrap.min.css',
@@ -15,12 +12,12 @@ export default defineNuxtConfig({
     '~/assets/css/soft-design-system-pro.css',
     '~/assets/css/soft-design-system-pro.min.css',
     '~/assets/css/theme.css',
-    '~/assets/css/dark-mode.css' // Dark mode styles
   ],
 
   // Import plugins
   plugins: [
-    { src: '~/plugins/bootstrap.client.js', mode: 'client' },
+'~/plugins/axios',
+'~/plugins/analytics.client',
   ],
 
   // Application head settings
@@ -145,7 +142,7 @@ export default defineNuxtConfig({
   // Nitro configuration
   nitro: {
     prerender: {
-      routes: ['/']
+      routes: ['/', '/about-us', '/consultation', '/contact-us', '/website']
     },
     serveStatic: true
   },

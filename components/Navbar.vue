@@ -1,12 +1,11 @@
 <template>
   <header class="navbar sticky-top py-2 transparent-nav">
-    <div class="container-fluid">
+    <div class="container-fluid d-flex align-items-center justify-content-between">
       <NuxtLink to="/" class="navbar-brand d-flex align-items-center">
-        <img src="/ultify.svg" width="30" alt="Ultify Solutions" />
-        <span class="ms-2">Ultify Solutions</span>
+        <img src="/ultify.svg" width="50" alt="Ultify Logo" />
       </NuxtLink>
       <button
-        class="navbar-toggler"
+        class="navbar-toggler ms-auto"
         type="button"
         data-bs-toggle="offcanvas"
         data-bs-target="#navbarNav"
@@ -18,24 +17,15 @@
           <i class="bi bi-list" style="font-size: 1.5rem;"></i>
         </span>
       </button>
-      <div class="offcanvas offcanvas-end transparent-bg" tabindex="-1" id="navbarNav">
+      <div class="offcanvas offcanvas-end full-screen-offcanvas" tabindex="-1" id="navbarNav">
         <div class="offcanvas-header">
-          <h5 class="offcanvas-title">Menu</h5>
           <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
-        <div class="mt-3 d-flex align-items-center justify-content-start">
-            <label class="form-check-label" for="darkModeSwitch">
-              <input
-                type="checkbox"
-                class="form-check-input"
-                id="darkModeSwitch"
-                @change="toggleDarkMode"
-              />
-              <i :class="isDarkMode ? 'bi bi-sun-fill' : 'bi bi-moon-fill'" class="ms-2"></i>
-            </label>
-          </div>
-        <div class="offcanvas-body">
-          <ul class="navbar-nav">
+        <div class="offcanvas-body d-flex flex-column justify-content-center align-items-center">
+          <ul class="navbar-nav text-center">
+            <li class="nav-item">
+              <NuxtLink to="/" class="nav-link">Home</NuxtLink>
+            </li>
             <li class="nav-item">
               <NuxtLink to="/about-us" class="nav-link">About Us</NuxtLink>
             </li>
@@ -46,9 +36,9 @@
               <NuxtLink to="/contact-us" class="nav-link">Contact Us</NuxtLink>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <a class="nav-link dropdown-toggle d-flex align-items-center justify-content-center" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Services
-                <img src="/down-arrow-dark.svg" alt="down-arrow" class="ms-1 dropdown-icon">
+                <i class="bi bi-chevron-down ms-2"></i>
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><NuxtLink to="/website" class="dropdown-item">Website</NuxtLink></li>
@@ -68,17 +58,7 @@
 
 <script>
 export default {
-  data() {
-    return {
-      isDarkMode: false,
-    };
-  },
-  methods: {
-    toggleDarkMode() {
-      this.isDarkMode = !this.isDarkMode;
-      document.body.classList.toggle('dark-mode');
-    }
-  }
+  name: 'Navbar',
 };
 </script>
 
@@ -91,7 +71,7 @@ export default {
   width: 100%;
   z-index: 1030;
   border: none;
-  box-shadow: none; /* Remove shadow */
+  box-shadow: none;
 }
 
 .sticky-top {
@@ -110,87 +90,58 @@ export default {
 }
 
 .navbar-nav .nav-link {
-  color: #333;
+  color: #fff;
+  font-size: 2rem;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 .navbar-nav .nav-item {
-  margin-right: 0.5rem; /* Adjust the right margin as needed */
+  margin-bottom: 1rem; /* Adjust the bottom margin as needed */
 }
 
 .offcanvas {
   background-color: rgba(255, 255, 255, 0.9) !important;
 }
 
-.form-check-input {
-  width: 2rem;
-  height: 1rem;
-  background-color: #ddd;
-  border-radius: 1rem;
-  position: relative;
-  appearance: none;
-  outline: none;
-  cursor: pointer;
-  transition: background-color 0.2s;
+.full-screen-offcanvas {
+  width: 100%;
+  height: 100%;
+}
+
+.offcanvas-header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1rem;
+}
+
+.offcanvas-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+.dropdown-menu {
+  background-color: rgba(255, 255, 255, 0.9);
   border: none;
-  -webkit-appearance: none; /* Remove default checkbox styles */
-  -moz-appearance: none;
+  box-shadow: none;
 }
 
-.form-check-input:checked {
-  background-color: #333;
-}
-
-.form-check-input::before {
-  content: "";
-  position: absolute;
-  top: 0.1rem;
-  left: 0.1rem;
-  width: 0.8rem;
-  height: 0.8rem;
-  background-color: #fff;
-  border-radius: 50%;
-  transition: transform 0.2s;
-}
-
-.form-check-input:checked::before {
-  transform: translateX(1rem);
-}
-
-.icon {
+.dropdown-item {
+  color: #333;
   font-size: 1.5rem;
-  margin-left: 0.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
-.dropdown-icon {
-  width: auto;
-  height: 1em; /* Match the height of the font size */
+.dropdown-toggle::after {
+  display: none;
 }
 
-/* Dark mode styling */
-.dark-mode .transparent-nav,
-.dark-mode .offcanvas {
-  background-color: rgba(0, 0, 0, 0.5) !important;
-}
-
-.dark-mode .navbar-nav .nav-link {
-  color: #fff;
-}
-
-.dark-mode .navbar-toggler-icon i {
-  color: #fff; /* Ensure icon is visible in dark mode */
-}
-
-.dark-mode .icon {
-  color: #fff;
-}
-
-.dark-mode .btn-close {
-  filter: invert(1);
-}
-
-body, html {
-  margin: 0;
-  padding: 0;
-  /* Other styles */
+.bi-chevron-down {
+  font-size: 1.5rem;
 }
 </style>

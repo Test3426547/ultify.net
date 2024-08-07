@@ -28,10 +28,10 @@ export default {
 
 <style scoped>
 .card {
-  border-radius: 0.75rem;
+  border-radius: var(--bs-border-radius-lg, 0.75rem);
   transition: transform 0.3s ease;
-  background-color: var(--bs-card-bg, #fff);
-  box-shadow: var(--bs-card-shadow, 0 4px 6px rgba(0, 0, 0, 0.1));
+  background-color: var(--bs-light, #fff); /* Global CSS variable for light background */
+  box-shadow: var(--bs-card-shadow, 0 4px 6px rgba(0, 0, 0, 0.1)); /* Global CSS variable for card shadow */
 }
 
 .card:hover {
@@ -43,7 +43,7 @@ export default {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  color: var(--bs-body-color, #333);
+  color: var(--bs-body-color, #333); /* Global CSS variable for body color */
 }
 
 img {
@@ -55,20 +55,6 @@ img {
 }
 
 .text-primary {
-  color: var(--bs-primary);
-}
-
-/* Dark mode styles */
-.dark-mode .card {
-  background-color: var(--bs-dark-card-bg, #333);
-  box-shadow: var(--bs-dark-card-shadow, 0 4px 6px rgba(0, 0, 0, 0.3));
-}
-
-.dark-mode .card-body {
-  color: var(--bs-light-text, #e1e1e1);
-}
-
-.dark-mode .text-primary {
-  color: var(--bs-primary-dark);
+  color: var(--bs-primary) !important; /* Global CSS variable for primary color */
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <section class="py-7 bg-light dark-mode-bg">
+  <section class="py-7 bg-light">
     <div class="container">
       <div class="row">
         <div class="col">
@@ -9,18 +9,18 @@
               <div class="col-lg-7">
                 <form class="p-3" id="contact-form" @submit.prevent="handleSubmit">
                   <div class="card-header px-4 py-sm-5 py-3">
-                    <h2 class="text-primary dark-mode-text-primary">Book a Free</h2>
-                    <h2 class="text-primary dark-mode-text-primary">Consultation Now</h2>
-                    <p class="lead dark-mode-text">
+                    <h2 class="text-primary">Book a Free</h2>
+                    <h2 class="text-primary">Consultation Now</h2>
+                    <p class="lead">
                       We heard you are ready to begin your digital journey! Get talking to a suited expert for free, now!
                     </p>
                   </div>
                   <div class="card-body pt-1">
                     <div class="row">
                       <div class="col-md-12 pe-2 mb-3">
-                        <label for="businessName" class="dark-mode-text">URL/Business Name (if applicable)</label>
+                        <label for="businessName">URL/Business Name (if applicable)</label>
                         <input
-                          class="form-control dark-mode-input"
+                          class="form-control"
                           id="businessName"
                           v-model="form.businessName"
                           placeholder="Enter your business name"
@@ -28,9 +28,9 @@
                         />
                       </div>
                       <div class="col-md-12 pe-2 mb-3">
-                        <label for="name" class="dark-mode-text">Name</label>
+                        <label for="name">Name</label>
                         <input
-                          class="form-control dark-mode-input"
+                          class="form-control"
                           id="name"
                           v-model="form.name"
                           placeholder="Enter your name"
@@ -38,9 +38,9 @@
                         />
                       </div>
                       <div class="col-md-12 pe-2 mb-3">
-                        <label for="email" class="dark-mode-text">Email</label>
+                        <label for="email">Email</label>
                         <input
-                          class="form-control dark-mode-input"
+                          class="form-control"
                           id="email"
                           v-model="form.email"
                           placeholder="Enter your email"
@@ -48,9 +48,9 @@
                         />
                       </div>
                       <div class="col-md-12 pe-2 mb-3">
-                        <label for="phone" class="dark-mode-text">Phone</label>
+                        <label for="phone">Phone</label>
                         <input
-                          class="form-control dark-mode-input"
+                          class="form-control"
                           id="phone"
                           v-model="form.phone"
                           placeholder="Enter your phone number"
@@ -58,10 +58,10 @@
                         />
                       </div>
                       <div class="col-md-12 pe-2 mb-3">
-                        <label for="message" class="dark-mode-text">Your message</label>
+                        <label for="message">Your message</label>
                         <textarea
                           name="message"
-                          class="form-control dark-mode-input"
+                          class="form-control"
                           id="message"
                           v-model="form.message"
                           rows="6"
@@ -71,7 +71,7 @@
                     </div>
                     <div class="row">
                       <div class="col-md-6 text-end ms-auto">
-                        <button type="submit" class="btn btn-primary btn-round bg-gradient-primary mb-0">
+                        <button type="submit" class="btn btn-primary btn-round mb-0">
                           Send Message
                         </button>
                       </div>
@@ -86,8 +86,8 @@
               >
                 <div class="position-absolute z-index-2 w-100 h-100 top-0 start-0 d-lg-block d-none"></div>
                 <div class="z-index-2 text-center d-flex h-100 w-100 justify-content-center">
-                  <div class="mask bg-gradient-primary opacity-9"></div>
-                  <div class="p-5 ps-sm-8 position-relative text-start my-auto text-white dark-mode-text">
+                  <div class="mask"></div>
+                  <div class="p-5 ps-sm-8 position-relative text-start my-auto">
                     <h3>Contact Information</h3>
                     <p class="opacity-8 mb-4">
                       Fill up the form and our team will get back to you within 24 hours.
@@ -105,13 +105,13 @@
                       <span class="ps-3 text-sm opacity-8">Level 25, 50 Clarent St, Wynyard, Sydney, NSW, 2000, Australia</span>
                     </div>
                     <div class="mt-4">
-                      <a href="https://www.instagram.com" class="btn btn-icon-only btn-link text-white me-2" aria-label="Instagram">
+                      <a href="https://www.instagram.com" class="btn btn-icon-only btn-link me-2" aria-label="Instagram">
                         <i class="fab fa-instagram"></i>
                       </a>
-                      <a href="https://www.facebook.com" class="btn btn-icon-only btn-link text-white me-2" aria-label="Facebook">
+                      <a href="https://www.facebook.com" class="btn btn-icon-only btn-link me-2" aria-label="Facebook">
                         <i class="fab fa-facebook"></i>
                       </a>
-                      <a href="https://www.linkedin.com" class="btn btn-icon-only btn-link text-white" aria-label="LinkedIn">
+                      <a href="https://www.linkedin.com" class="btn btn-icon-only btn-link" aria-label="LinkedIn">
                         <i class="fab fa-linkedin"></i>
                       </a>
                     </div>
@@ -151,36 +151,61 @@ export default {
 </script>
 
 <style scoped>
-/* Light Mode Styles */
+/* Base styles */
+html, body {
+  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 16px;
+  word-spacing: 1px;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+}
+
 .bg-light {
-  background-color: var(--bs-light-bg, #f8f9fa) !important;
+  background-color: var(--bs-light-bg) !important;
 }
 
 .text-primary {
   color: var(--bs-primary);
 }
 
-.lead, .text-primary, .card-header, .card-body {
+.card {
+  border-radius: var(--bs-border-radius-lg);
+  background-color: var(--bs-white);
+}
+
+.card-header, .card-body {
   color: var(--bs-body-color);
 }
 
-/* Dark Mode Styles */
-.dark-mode-bg {
-  background-color: var(--bs-dark-bg, #343a40) !important;
+.form-control {
+  background-color: var(--bs-light);
+  border: 1px solid var(--bs-border-color);
+  border-radius: var(--bs-border-radius);
+  color: var(--bs-body-color);
 }
 
-.dark-mode-text-primary {
-  color: var(--bs-primary-dark) !important;
+.form-control:focus {
+  border-color: var(--bs-primary);
+  box-shadow: none;
 }
 
-.dark-mode-input {
-  background-color: var(--bs-dark-input-bg) !important;
-  color: var(--bs-dark-input-text) !important;
-  border: 1px solid var(--bs-dark-input-border) !important;
+.btn-primary {
+  background-color: var(--bs-primary);
+  border-color: var(--bs-primary);
+  color: var(--bs-white);
 }
 
-.dark-mode-text {
-  color: var(--bs-light);
+.btn-primary:hover {
+  background-color: var(--bs-primary-hover);
+  border-color: var(--bs-primary-hover);
+}
+
+.bg-cover {
+  background-size: cover;
+  background-position: center;
 }
 
 .mask {
@@ -189,20 +214,7 @@ export default {
   left: 0;
   right: 0;
   bottom: 0;
-}
-
-.bg-cover {
-  background-size: cover;
-  background-position: center;
-}
-
-.btn-primary {
-  background-color: var(--bs-primary);
-  border-color: var(--bs-primary);
-}
-
-.btn-primary:hover {
-  background-color: darken(var(--bs-primary), 10%);
-  border-color: darken(var(--bs-primary), 10%);
+  background: var(--bs-gradient-primary-left);
+  opacity: 0.9;
 }
 </style>

@@ -62,26 +62,14 @@ export default {
 
 <style scoped>
 .bg-light {
-  background-color: var(--bs-light-bg, #f8f9fa) !important;
+  background-color: var(--bs-light) !important;
 }
 
 .text-primary {
-  color: var(--bs-primary);
+  color: var(--bs-primary) !important;
 }
 
 .text-muted {
-  color: var(--bs-body-color-muted);
-}
-
-.dark-mode .bg-light {
-  background-color: var(--bs-dark-bg, #121212) !important;
-}
-
-.dark-mode .text-primary {
-  color: var(--bs-primary-dark);
-}
-
-.dark-mode .text-muted {
-  color: var(--bs-body-color-muted-dark);
+  color: var(--bs-muted) !important;
 }
 </style>

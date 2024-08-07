@@ -63,41 +63,27 @@ export default {
 
 <style scoped>
 .text-gradient {
-  background: linear-gradient(to right, #007bff, #00d4ff);
+  background: var(--bs-gradient-primary, linear-gradient(to right, #007bff, #00d4ff));
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .text-body {
-  color: var(--bs-body-color, #343a40);
+  color: var(--bs-body-color);
 }
 
 .bg-light {
-  background-color: var(--bs-light-bg, #f8f9fa) !important;
+  background-color: var(--bs-light) !important;
 }
 
 .blur-shadow-image img {
   max-width: 100%;
   height: auto;
-  border-radius: 0.5rem;
+  border-radius: var(--bs-border-radius-lg, 0.5rem);
 }
 
 .horizontal.dark {
-  border-color: var(--bs-dark-bg, #343a40);
-}
-
-/* Dark mode styles */
-.dark-mode .text-body {
-  color: var(--bs-light-text, #f8f9fa);
-}
-
-.dark-mode .bg-light {
-  background-color: var(--bs-dark-bg, #121212) !important;
-}
-
-.dark-mode .text-gradient {
-  background: linear-gradient(to right, #00d4ff, #6610f2);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  border-color: var(--bs-dark) !important;
 }
 </style>

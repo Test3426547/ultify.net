@@ -4,7 +4,7 @@
  * Copyright 2011-2022 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
-:root {
+ :root {
   --bs-blue: #63B3ED;
   --bs-indigo: #596CFF;
   --bs-purple: #6f42c1;
@@ -27,7 +27,7 @@
   --bs-gray-700: #495057;
   --bs-gray-800: #343a40;
   --bs-gray-900: #212529;
-  --bs-primary: #cb0c9f;
+  --bs-primary: #37B5FF;
   --bs-secondary: #8392ab;
   --bs-success: #82d616;
   --bs-info: #17c1e8;
@@ -35,7 +35,6 @@
   --bs-danger: #ea0606;
   --bs-light: #e9ecef;
   --bs-dark: #344767;
-  --bs-white: #fff;
   --bs-gradient-primary-right: #7928ca;
   --bs-gradient-primary-left: #ff0080;
   --bs-gradient-info-right: #2152ff;
@@ -60,7 +59,6 @@
   --bs-danger-rgb: 234, 6, 6;
   --bs-light-rgb: 233, 236, 239;
   --bs-dark-rgb: 52, 71, 103;
-  --bs-white-rgb: 255, 255, 255;
   --bs-white-rgb: 255, 255, 255;
   --bs-black-rgb: 0, 0, 0;
   --bs-body-color-rgb: 103, 116, 142;
@@ -89,6 +87,15 @@
   --bs-link-hover-color: #830866;
   --bs-code-color: #d63384;
   --bs-highlight-bg: #fcf8e3;
+
+  /* Additional styles for default.vue */
+  --bs-toast-bg: white;
+  --bs-toast-border: #8885;
+  --bs-chatbot-bg: #f8f9fa;
+  --bs-chatbot-border: #ccc;
+  --bs-chatbot-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  --bs-navbar-bg: transparent;
+  --bs-navbar-shadow: none;
 }
 
 *,
@@ -434,6 +441,7 @@ button,
 [type="reset"],
 [type="submit"] {
   -webkit-appearance: button;
+  appearance: button;
 }
 
 button:not(:disabled),
@@ -495,6 +503,7 @@ legend+* {
 [type="search"] {
   outline-offset: -2px;
   -webkit-appearance: textfield;
+  appearance: textfield;
 }
 
 /* rtl:raw:
@@ -516,6 +525,7 @@ legend+* {
 ::file-selector-button {
   font: inherit;
   -webkit-appearance: button;
+  appearance: button;
 }
 
 output {
@@ -2504,7 +2514,7 @@ progress {
 }
 
 .table-group-divider {
-  border-top: calc(2 * $table-border-width) solid currentColor;
+  border-top: calc(2 * 1px) solid currentColor;
 }
 
 .caption-top {
@@ -5607,7 +5617,7 @@ fieldset:disabled .btn {
 }
 
 .page-item:not(:first-child) .page-link {
-  margin-left: calc($pagination-border-width * -1);
+  margin-left: calc(1px * -1); /* Replace 1px with the actual value of $pagination-border-width */
 }
 
 .page-item:first-child .page-link {
@@ -20695,7 +20705,7 @@ fieldset:disabled .btn {
 .btn.bg-gradient-dark:not(:disabled):not(.disabled).active,
 .btn.bg-gradient-dark:not(:disabled):not(.disabled):active,
 .show>.btn.bg-gradient-dark.dropdown-toggle {
-  color: color-yiq(var(--bs-dark););
+  color: color-yiq(var(--bs-dark));
   background-color: var(--bs-dark);
 }
 
@@ -22035,7 +22045,7 @@ svg.text-dark .color-background {
 }
 
 *.gradient-animation {
-  background: linear-gradient(-45deg, var(--bs-gradient-info-right), var(--bs-danger), var(--bs-warning), var(--bs-gradient-primary-right), var(--bs-dark););
+  background: linear-gradient(-45deg, var(--bs-gradient-info-right), var(--bs-danger), var(--bs-warning), var(--bs-gradient-primary-right), var(--bs-dark));
   background-size: 400% 400% !important;
   animation: gradient 10s ease infinite;
 }
@@ -22473,7 +22483,7 @@ html {
   }
 }
 
-@use "sass:math";
+/* Remove the @use rule */
 
 .navbar-vertical .navbar-brand>img,
 .navbar-vertical .navbar-brand-img {
@@ -24936,7 +24946,7 @@ p {
 }
 
 .text-gradient.text-warning {
-  background-image: linear-gradient(310deg, var(--bs-gradient-warning-right), var(--bs-warning););
+  background-image: linear-gradient(310deg, var(--bs-gradient-warning-right), var(--bs-warning));
 }
 
 .text-gradient.text-danger {
@@ -25065,6 +25075,7 @@ p {
   touch-action: manipulation;
   background: #fff;
   -webkit-box-shadow: 0 8px 26px -4px rgba(20, 20, 20, 0.15), 0 8px 9px -5px rgba(20, 20, 20, 0.06);
+  box-shadow: 0 8px 26px -4px rgba(20, 20, 20, 0.15), 0 8px 9px -5px rgba(20, 20, 20, 0.06);
 }
 
 .flatpickr-calendar.open,
@@ -26183,10 +26194,11 @@ span.flatpickr-weekday {
   background: #fff;
   cursor: default;
   box-shadow: inset 0 0 1px #fff, inset 0 1px 7px #EBEBEB, 0 3px 6px -3px #BBB;
-  webkit-transition: .3s ease 0s;
+  transition: .3s ease 0s;
   -moz-transition: .3s ease 0s;
   -ms-transition: .3s ease 0s;
   -o-transform: .3s ease 0s;
+  transform: .3s ease 0s;
   transition: .3s ease 0s;
 }
 
