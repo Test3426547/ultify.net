@@ -1,12 +1,12 @@
 <template>
-  <header class="page-header min-vh-80 position-relative bg-light">
+  <header :class="headerClass" class="page-header min-vh-80 position-relative bg-light" :aria-expanded="isExpanded.toString()">
     <div class="position-absolute top-0 end-0 w-50 h-100 z-index-0 d-none d-md-block bg-image"></div>
     <div class="container">
       <div class="row">
         <div class="col-lg-7 d-flex justify-content-center flex-column">
           <div class="card card-body d-flex justify-content-center shadow-lg p-5 mt-5">
-            <h1 class="text-primary">{{ mainTitle }}</h1>
-            <h1 class="mb-4">{{ subTitle }}</h1>
+            <h1 class="text-primary">Capitalise on digital</h1>
+            <h1 class="mb-4">resources with Ultify</h1>
             <p class="lead pe-5 me-5">
               Our agency utilises digital resources and our working strategies
               to elevate your business operations. Start now and maximise your
@@ -14,7 +14,6 @@
             </p>
             <div class="buttons">
               <NuxtLink to="/contact-us" class="btn btn-primary mt-4">Get Started</NuxtLink>
-              <button @click="changeTitle" class="btn btn-secondary mt-4">Change Title</button>
             </div>
           </div>
         </div>
@@ -26,18 +25,16 @@
 <script setup>
 import { ref } from 'vue'
 
-const mainTitle = ref('Capitalise on digital')
-const subTitle = ref('resources with Ultify')
+// Example 1: Reactive class toggle
+const headerClass = ref('default-class')
 
-function changeTitle() {
-  mainTitle.value = 'Harness the power of digital'
-  subTitle.value = 'solutions with Ultify'
-}
+// Example 2: Conditional attribute
+const isExpanded = ref(false)
 </script>
 
 <style scoped>
 /* General page header styling */
-.page-header {
+.page-header.default-class {
   position: relative;
   background-color: var(--bs-light) !important;
 }
@@ -68,18 +65,6 @@ function changeTitle() {
 .btn-primary:hover {
   background-color: darken(var(--bs-primary), 10%) !important;
   border-color: darken(var(--bs-primary), 10%) !important;
-}
-
-/* Secondary button styling */
-.btn-secondary {
-  background-color: var(--bs-secondary) !important;
-  border-color: var(--bs-secondary) !important;
-  color: white;
-}
-
-.btn-secondary:hover {
-  background-color: darken(var(--bs-secondary), 10%) !important;
-  border-color: darken(var(--bs-secondary), 10%) !important;
 }
 
 /* Background image styling */
