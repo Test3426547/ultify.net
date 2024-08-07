@@ -52,7 +52,8 @@ export default defineNuxtConfig({
   // Nuxt modules
   modules: [
     '@nuxtjs/tailwindcss',
-    '@vite-pwa/nuxt'
+    '@vite-pwa/nuxt',
+    '@builder.io/sdk-vue/nuxt'
   ],
 
   // PostCSS configuration for TailwindCSS and Autoprefixer
