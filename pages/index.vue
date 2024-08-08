@@ -1,7 +1,9 @@
 <template>
   <div>
     <HeaderHome />
-    <Services />
+    <HeroSection />
+    <LeadSection />
+    <ServiceCards />
     <Consultation />
     <OurServices />
     <FAQ />
@@ -11,7 +13,9 @@
 
 <script setup>
 import HeaderHome from '@/components/HeaderHome.vue';
-import Services from '@/components/Services.vue';
+import HeroSection from '@/components/HeroSection.vue';
+import LeadSection from '@/components/LeadSection.vue';
+import ServiceCards from '@/components/ServiceCards.vue';
 import Consultation from '@/components/Consultation.vue';
 import OurServices from '@/components/OurServices.vue';
 import FAQ from '@/components/FAQ.vue';
