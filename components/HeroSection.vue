@@ -1,80 +1,145 @@
 <template>
-    <div class="hero-section bg-primary">
-      <div class="container h-100 d-flex flex-column justify-content-center" style="margin-top: -50px;">
-        <div class="row align-items-center">
-          <div class="col-lg-6 text-center text-lg-start">
-            <h1 class="display-4 text-white fw-bold">
-              Get a Website Exactly The Way You Need!
-            </h1>
-            <p class="lead text-white">
-              You have high standards. We have the expertise to meet them.
-            </p>
-          </div>
-          <div class="col-lg-6 mt-5 mt-lg-0">
-            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <img src="/home-01.png" class="d-block w-100 rounded border-radius-lg shadow" alt="Responsive Website">
-                </div>
-                <div class="carousel-item">
-                  <img src="/home-06.png" class="d-block w-100 rounded border-radius-lg shadow" alt="Website Development">
-                </div>
-                <div class="carousel-item">
-                  <img src="/home-07.png" class="d-block w-100 rounded border-radius-lg shadow" alt="SEO Optimization">
-                </div>
-                <div class="carousel-item">
-                  <img src="/home-08.png" class="d-block w-100 rounded border-radius-lg shadow" alt="Digital Marketing">
-                </div>
-              </div>
-              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-              </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-              </button>
-            </div>
-          </div>
+  <section class="hero-section position-relative">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 text-left content-wrapper">
+          <h1 class="fw-bold mb-4 text-white">
+            GET A WEBSITE EXACTLY THE WAY YOU NEED!
+          </h1>
+          <p class="lead mb-5">
+            You have high standards. We have the expertise to meet them.
+          </p>
+          <NuxtLink to="/case-studies" class="btn btn-light btn-lg rounded-pill">Case Studies</NuxtLink>
+        </div>
+        <div class="col-lg-6 image-wrapper">
+          <transition name="fade" mode="out-in">
+            <img :key="currentImage" :src="currentImage" :alt="'Website Example ' + (currentIndex + 1)" class="img-fluid rounded shadow-lg">
+          </transition>
         </div>
       </div>
     </div>
-  </template>
-  
-  <script setup>
-  import { ref, onMounted } from 'vue'
-  
-  const initCarousel = () => {
-    const carouselElement = document.getElementById('carouselExampleIndicators')
-    const carousel = new bootstrap.Carousel(carouselElement, {
-      interval: 2000,
-      ride: 'carousel'
-    })
-  }
-  
-  onMounted(() => {
-    initCarousel()
-  })
-  </script>
-  
-  <style scoped>
+  </section>
+</template>
+
+<script setup>
+import { ref, onMounted, onUnmounted } from 'vue'
+
+const images = [
+  '/home-01.png',
+  '/home-06.png',
+  '/home-07.png',
+  '/home-08.png'
+]
+const currentIndex = ref(0)
+const currentImage = ref(images[0])
+let interval
+
+const changeImage = () => {
+  currentIndex.value = (currentIndex.value + 1) % images.length
+  currentImage.value = images[currentIndex.value]
+}
+
+onMounted(() => {
+  interval = setInterval(changeImage, 5000)
+})
+
+onUnmounted(() => {
+  clearInterval(interval)
+})
+</script>
+
+<style scoped>
+.hero-section {
+  min-height: calc(100vh - 80px); /* Adjust based on your navbar height */
+  display: flex;
+  align-items: center;
+  background-color: var(--bs-primary);
+  padding: 4rem 0;
+  overflow: hidden;
+}
+
+.content-wrapper {
+  color: white;
+}
+
+.content-wrapper h1 {
+  font-size: 3rem;
+  line-height: 1.2;
+}
+
+.lead {
+  font-size: 1.25rem;
+}
+
+.btn-light {
+  color: var(--bs-primary);
+  font-weight: bold;
+  padding: 0.75rem 2rem;
+  transition: all 0.3s ease;
+}
+
+.btn-light:hover {
+  background-color: white;
+  color: var(--bs-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.image-wrapper {
+  position: relative;
+  z-index: 1;
+  background-color: var(--bs-primary); /* Ensure the background matches the section */
+  padding: 0; /* Remove any padding */
+}
+
+.image-wrapper img {
+  max-width: 100%;
+  height: auto;
+  margin: 0; /* Ensure no margin */
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+@media (max-width: 991.98px) {
   .hero-section {
-    height: 100vh;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--bs-primary);
-    margin-top: -50px; /* Shift the content up */
+    text-align: center;
+    padding: 3rem 0;
   }
-  
-  .text-white {
-    color: var(--bs-white) !important;
+
+  .content-wrapper {
+    margin-bottom: 2rem;
   }
-  
-  .carousel {
-    max-width: 100%;
-    height: auto;
-    margin-top: 20px;
+
+  .content-wrapper h1 {
+    font-size: 2.5rem;
   }
-  </style>  
+}
+
+@media (min-width: 1920px) {
+  .hero-section {
+    min-height: calc(100vh - 100px);
+  }
+
+  .content-wrapper h1 {
+    font-size: 4rem;
+  }
+
+  .lead {
+    font-size: 1.5rem;
+  }
+
+  .btn-light {
+    font-size: 1.25rem;
+    padding: 1rem 2.5rem;
+  }
+}
+</style>

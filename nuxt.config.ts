@@ -16,8 +16,8 @@ export default defineNuxtConfig({
 
   // Import plugins
   plugins: [
-'~/plugins/axios',
-'~/plugins/analytics.client',
+    '~/plugins/axios',
+    '~/plugins/analytics.client',
   ],
 
   // Application head settings
@@ -150,5 +150,10 @@ export default defineNuxtConfig({
 
   // Devtools settings
   devtools: { enabled: true },
-  compatibilityDate: '2024-08-03'
+  compatibilityDate: '2024-08-03',
+
+  // Build configuration
+  build: {
+    transpile: ['three']
+  }
 });
