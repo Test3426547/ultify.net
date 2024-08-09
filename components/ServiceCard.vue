@@ -1,53 +1,62 @@
 <template>
-  <div class="col-md-6 col-lg-4">
-    <div class="service-card">
-      <div class="icon-container">
-        <img :src="imgSrc" :alt="title">
+  <div class="col-lg-4 col-md-6 mb-5">
+    <div class="card h-100 bg-primary text-white shadow-lg">
+      <div class="card-body border-radius-lg position-relative overflow-hidden pb-4 px-5 d-flex align-items-center">
+        <div class="flex-grow-1">
+          <h5 class="mt-2">{{ title }}</h5>
+          <p class="mb-3">{{ description }}</p>
+          <a href="javascript:;" class="font-weight-bold text-xs text-uppercase text-white">
+            Explore Now
+            <i class="fas fa-arrow-right text-xs ms-1"></i>
+          </a>
+        </div>
+        <img class="w-25 mb-3 ms-3" :src="imgSrc" :alt="altText">
       </div>
-      <h3>{{ title }}</h3>
     </div>
   </div>
 </template>
 
-<script setup>
-defineProps({
-  title: String,
-  imgSrc: String,
-});
+<script>
+export default {
+  name: 'ServiceCard',
+  props: {
+    title: String,
+    description: String,
+    imgSrc: String,
+    altText: String,
+  },
+};
 </script>
 
 <style scoped>
-.service-card {
-  background-color: var(--bs-primary);
-  border-radius: 15px;
-  padding: 20px;
-  text-align: left;
-  color: var(--bs-white);
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+.card {
+  border-radius: var(--bs-border-radius-lg, 0.75rem);
   transition: transform 0.3s ease;
+  background-color: var(--bs-primary, #007bff); /* Global CSS variable for primary background */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Elegant shadow */
 }
 
-.service-card:hover {
+.card:hover {
   transform: translateY(-5px);
 }
 
-.icon-container {
+.card-body {
   display: flex;
-  justify-content: flex-end;
-  margin-bottom: 10px;
+  flex-direction: row;
+  align-items: center;
+  text-align: left;
+  color: var(--bs-white, #fff); /* Global CSS variable for white text */
 }
 
-.icon-container img {
-  width: 40px;
-  height: 40px;
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+  height: auto;
 }
 
-h3 {
-  font-size: 1.5rem;
-  margin-bottom: 0;
+.text-white {
+  color: var(--bs-white) !important; /* Global CSS variable for white text */
 }
 </style>
