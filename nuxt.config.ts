@@ -12,12 +12,14 @@ export default defineNuxtConfig({
     '~/assets/css/soft-design-system-pro.css',
     '~/assets/css/soft-design-system-pro.min.css',
     '~/assets/css/theme.css',
+    '@fortawesome/fontawesome-svg-core/styles.css',
   ],
 
   // Import plugins
   plugins: [
     '~/plugins/axios',
     '~/plugins/analytics.client',
+    '~/plugins/fontawesome.js',
   ],
 
   // Application head settings

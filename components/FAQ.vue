@@ -1,19 +1,17 @@
 <template>
-  <section class="faq-section bg-dark py-5">
+  <section class="faq-section">
     <div class="container">
-      <div class="text-center mb-5">
-        <h2 class="text-white">FAQ</h2>
-        <p class="text-muted">
-          If you have any questions that aren't addressed here, please feel free to contact our customer support team.
-        </p>
-      </div>
-      <div class="faq-container">
+      <h2 class="faq-title">FAQ</h2>
+      <p class="faq-subtitle">
+        If you have any questions that aren't addressed here, please feel free to contact our customer support team.
+      </p>
+      <div class="faq-grid">
         <div v-for="(faq, index) in faqs" :key="index" class="faq-item">
-          <div class="faq-question-container" @click="toggleAnswer(index)">
-            <span class="faq-question text-white">{{ faq.question }}</span>
-            <i :class="{'faq-icon': true, 'expanded': faq.showAnswer}">&#9660;</i>
+          <div class="faq-question" @click="toggleAnswer(index)">
+            {{ faq.question }}
+            <span class="faq-icon">{{ faq.showAnswer ? '▲' : '▼' }}</span>
           </div>
-          <div v-if="faq.showAnswer" class="faq-answer text-muted">
+          <div v-if="faq.showAnswer" class="faq-answer">
             {{ faq.answer }}
           </div>
         </div>
@@ -42,65 +40,66 @@ const toggleAnswer = (index) => {
 </script>
 
 <style scoped>
-.bg-dark {
-  background-color: var(--bs-dark) !important;
-}
-
-.text-white {
-  color: var(--bs-white) !important;
-}
-
-.text-muted {
-  color: var(--bs-muted) !important;
-}
-
 .faq-section {
+  background-color: #1e1e1e;
+  min-height: 100vh;
   padding: 60px 0;
-  color: var(--bs-light);
+  color: #ffffff;
 }
 
-.text-center {
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.faq-title {
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.faq-subtitle {
+  font-size: 1.2rem;
+  text-align: center;
   margin-bottom: 40px;
+  color: #cccccc;
 }
 
-.faq-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
+.faq-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
 }
 
 .faq-item {
-  background-color: var(--bs-primary);
-  width: 100%;
-  max-width: 500px;
-  padding: 15px;
-  border-radius: 25px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-}
-
-.faq-question-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  margin-bottom: 20px;
 }
 
 .faq-question {
-  font-weight: 600;
-  color: var(--bs-white);
+  background-color: #48cae4;
+  color: #ffffff;
+  padding: 15px 20px;
+  border-radius: 50px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
 .faq-icon {
-  transition: transform 0.3s ease;
-}
-
-.faq-icon.expanded {
-  transform: rotate(180deg);
+  font-size: 0.8rem;
 }
 
 .faq-answer {
+  background-color: #48cae4;
+  color: #ffffff;
+  padding: 20px;
+  border-radius: 20px;
   margin-top: 10px;
-  color: var(--bs-body-color);
+  margin-left: 20px;
+  margin-right: 20px;
 }
 </style>

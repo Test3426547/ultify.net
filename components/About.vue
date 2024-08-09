@@ -1,10 +1,11 @@
 <template>
-    <section class="about-us">
-      <div class="container">
+  <section class="about-us">
+    <div class="container">
+      <div class="content-wrapper">
         <div class="text-container">
-          <h2>Embrace the <span class="highlight">Digital Wave</span>; Ride the tide or get left behind!</h2>
+          <h2>Embrace the <span class="highlight">Digital Wave</span>;<br>Ride the tide or get left behind!</h2>
           <div class="image-container">
-            <img src="/curved2.jpg" alt="Cyclist on a wave">
+            <img src="/home-04.webp" alt="Cyclist on a wave">
           </div>
         </div>
         <div class="description-container">
@@ -21,94 +22,103 @@
           </p>
         </div>
       </div>
-    </section>
-  </template>
-  
-  <script setup>
-  </script>
-  
-  <style scoped>
-  /* Basic reset and styling */
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    </div>
+  </section>
+</template>
+
+<script setup>
+// No script needed for this component
+</script>
+
+<style scoped>
+.about-us {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background-color: var(--bs-white);
+  padding: 40px 0;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.content-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.text-container {
+  flex: 0 0 60%;
+  padding-right: 40px;
+}
+
+.text-container h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  line-height: 1.2;
+  margin-bottom: 30px;
+}
+
+.highlight {
+  color: var(--bs-primary);
+}
+
+.image-container {
+  margin-top: 30px;
+}
+
+.image-container img {
+  max-width: 100%;
+  height: auto;
+}
+
+.description-container {
+  flex: 0 0 35%;
+}
+
+.description-container h3 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.description-container p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 992px) {
+  .content-wrapper {
+    flex-direction: column;
   }
-  
-  .about-us {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    background-color: #fff;
+
+  .text-container, .description-container {
+    flex: 0 0 100%;
+    padding-right: 0;
   }
-  
-  .container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  .text-container {
-    flex: 1;
-    padding: 20px;
-  }
-  
-  .text-container h2 {
-    font-size: 2em;
-    margin-bottom: 20px;
-    font-weight: bold;
-  }
-  
-  .text-container .highlight {
-    color: #0096c7;
-  }
-  
-  .image-container {
-    text-align: center;
-  }
-  
-  .image-container img {
-    max-width: 100%;
-    height: auto;
-  }
-  
+
   .description-container {
-    flex: 1;
-    padding: 20px;
+    margin-top: 40px;
   }
-  
+}
+
+@media (max-width: 768px) {
+  .about-us {
+    padding: 60px 0;
+  }
+
+  .text-container h2 {
+    font-size: 2rem;
+  }
+
   .description-container h3 {
-    font-size: 1.5em;
-    margin-bottom: 10px;
+    font-size: 1.75rem;
   }
-  
-  .description-container p {
-    font-size: 1em;
-    line-height: 1.5;
-    margin-bottom: 10px;
-  }
-  
-  /* Responsive styling */
-  @media (max-width: 768px) {
-    .container {
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    .text-container, .description-container {
-      width: 100%;
-    }
-  
-    .text-container h2 {
-      text-align: center;
-    }
-  
-    .description-container h3 {
-      text-align: center;
-    }
-  }
-  </style>
+}
+</style>

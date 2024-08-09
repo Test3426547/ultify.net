@@ -1,12 +1,15 @@
 <template>
   <div class="service-cards-section position-relative">
     <div class="container">
-      <div class="row text-center align-items-stretch">
-        <div class="col-lg-3 col-md-6 mb-5 d-flex" v-for="(card, index) in cards" :key="index">
-          <div class="card shadow border-radius-lg p-4 flex-fill">
+      <div class="row g-4">
+        <div class="col-lg-3 col-md-6" v-for="(card, index) in cards" :key="index">
+          <div class="card">
             <div class="card-body">
-              <h5 class="text-white">{{ card.title }}</h5>
-              <p class="text-white">{{ card.description }}</p>
+              <h5 class="card-title">{{ card.title }}</h5>
+              <p class="card-text">{{ card.description }}</p>
+            </div>
+            <div class="card-badge">
+              <span>{{ index + 1 }}</span>
             </div>
           </div>
         </div>
@@ -19,47 +22,80 @@
 const cards = [
   {
     title: 'Guaranteed Leads',
-    description: 'Our digital marketing agency will help you masterplan and put into action an effective strategy for lead generation.'
+    description: 'Our digital marketing agency will help you masterplan and put to action an effective and efficient strategy for lead generation.'
   },
   {
     title: 'Guaranteed Traffic',
-    description: 'Drive traffic with our comprehensive digital marketing strategies.'
+    description: 'What\'s anything without the traffic? You could have all the components required to do the work, but no traffic means no sales.'
   },
   {
     title: 'Guaranteed Rankings',
-    description: 'Our SEO services are designed to boost your rankings, or you don\'t pay!'
+    description: 'Our digital marketing agency specialises in climbing those seo rankings, or you don\'t pay!'
   },
   {
     title: 'Guaranteed Growth',
-    description: 'Our commitment is to ensure your sustained growth.'
+    description: 'Our digital marketing agencies plan is to take care of you and not just for a short time.'
   }
 ]
 </script>
 
 <style scoped>
 .service-cards-section {
-  padding: 50px 0;
+  padding: 80px 0;
   background-color: var(--bs-white);
+  overflow: hidden;
 }
 
 .card {
-  backdrop-filter: blur(10px);
   background-color: var(--bs-primary);
-  transition: background-color 0.3s, color 0.3s;
-  border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 25px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+  position: relative;
+  overflow: visible;
 }
 
 .card:hover {
-  background-color: var(--bs-primary-dark);
-  color: var(--bs-white);
+  transform: translateY(-10px);
 }
 
 .card-body {
+  padding: 2rem;
   text-align: left;
 }
 
-.text-white {
-  color: var(--bs-white) !important;
+.card-title {
+  color: var(--bs-white);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.card-text {
+  color: var(--bs-white);
+  font-size: 1rem;
+}
+
+.card-badge {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--bs-warning);
+  color: var(--bs-white);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 991.98px) {
+  .card {
+    margin-bottom: 40px;
+  }
 }
 </style>
