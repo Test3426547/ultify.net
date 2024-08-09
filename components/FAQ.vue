@@ -1,26 +1,25 @@
 <template>
-  <div class="faq-section py-4 bg-light">
+  <section class="faq-section bg-dark py-5">
     <div class="container">
-      <div class="row my-5">
-        <div class="col-md-6 mx-auto text-center">
-          <h2 class="text-primary">Frequently Asked Questions</h2>
-          <p>We address common questions to help you understand our services and how we can assist you.</p>
-        </div>
+      <div class="text-center mb-5">
+        <h2 class="text-white">FAQ</h2>
+        <p class="text-muted">
+          If you have any questions that aren't addressed here, please feel free to contact our customer support team.
+        </p>
       </div>
-      <div class="row">
-        <div class="col-md-10 mx-auto">
-          <div v-for="(faq, index) in faqs" :key="index" class="faq-item mb-3">
-            <p class="faq-question mb-1 cursor-pointer" @click="toggleAnswer(index)">
-              {{ faq.question }}
-            </p>
-            <p v-if="faq.showAnswer" class="faq-answer">
-              {{ faq.answer }}
-            </p>
+      <div class="faq-container">
+        <div v-for="(faq, index) in faqs" :key="index" class="faq-item">
+          <div class="faq-question-container" @click="toggleAnswer(index)">
+            <span class="faq-question text-white">{{ faq.question }}</span>
+            <i :class="{'faq-icon': true, 'expanded': faq.showAnswer}">&#9660;</i>
+          </div>
+          <div v-if="faq.showAnswer" class="faq-answer text-muted">
+            {{ faq.answer }}
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script setup>
@@ -43,24 +42,65 @@ const toggleAnswer = (index) => {
 </script>
 
 <style scoped>
-.bg-light {
-  background-color: var(--bs-light) !important;
+.bg-dark {
+  background-color: var(--bs-dark) !important;
 }
 
-.text-primary {
-  color: var(--bs-primary) !important;
+.text-white {
+  color: var(--bs-white) !important;
+}
+
+.text-muted {
+  color: var(--bs-muted) !important;
+}
+
+.faq-section {
+  padding: 60px 0;
+  color: var(--bs-light);
+}
+
+.text-center {
+  margin-bottom: 40px;
+}
+
+.faq-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+.faq-item {
+  background-color: var(--bs-primary);
+  width: 100%;
+  max-width: 500px;
+  padding: 15px;
+  border-radius: 25px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.faq-question-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .faq-question {
-  cursor: pointer;
   font-weight: 600;
-  color: var(--bs-body-color);
-  font-size: 1.1rem;
+  color: var(--bs-white);
+}
+
+.faq-icon {
+  transition: transform 0.3s ease;
+}
+
+.faq-icon.expanded {
+  transform: rotate(180deg);
 }
 
 .faq-answer {
-  margin: 0;
-  color: var(--bs-muted);
-  font-size: 1rem;
+  margin-top: 10px;
+  color: var(--bs-body-color);
 }
 </style>

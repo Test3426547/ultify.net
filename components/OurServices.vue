@@ -1,10 +1,10 @@
 <template>
-  <section class="py-5 bg-light">
+  <section class="py-5 bg-white">
     <div class="container">
       <div class="row">
         <div class="col-md-8 ms-auto me-auto text-center">
           <h3 class="text-primary">Our Services</h3>
-          <p class="text-muted">Explore our comprehensive range of expert services designed to meet your diverse needs.</p>
+          <p class="text-primary">Explore our comprehensive range of expert services designed to meet your diverse needs.</p>
         </div>
       </div>
       <div class="row mt-5">
@@ -61,15 +61,15 @@ export default {
 </script>
 
 <style scoped>
-.bg-light {
-  background-color: var(--bs-light) !important;
+.bg-white {
+  background-color: var(--bs-white) !important;
 }
 
 .text-primary {
   color: var(--bs-primary) !important;
 }
 
-.text-muted {
-  color: var(--bs-muted) !important;
+.shadow-lg {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15) !important; /* Elegant shadow */
 }
 </style>

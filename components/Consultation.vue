@@ -1,125 +1,62 @@
 <template>
-  <section class="py-7 bg-light">
+  <section class="consultation bg-primary">
     <div class="container">
-      <div class="row">
-        <div class="col">
-          <div class="card overflow-hidden">
-            <div class="row">
-              <!-- Form Section -->
-              <div class="col-lg-7">
-                <form class="p-3" id="contact-form" @submit.prevent="handleSubmit">
-                  <div class="card-header px-4 py-sm-5 py-3">
-                    <h2 class="text-primary">Book a Free</h2>
-                    <h2 class="text-primary">Consultation Now</h2>
-                    <p class="lead">
-                      We heard you are ready to begin your digital journey! Get talking to a suited expert for free, now!
-                    </p>
-                  </div>
-                  <div class="card-body pt-1">
-                    <div class="row">
-                      <div class="col-md-12 pe-2 mb-3">
-                        <label for="businessName">URL/Business Name (if applicable)</label>
-                        <input
-                          class="form-control"
-                          id="businessName"
-                          v-model="form.businessName"
-                          placeholder="Enter your business name"
-                          type="text"
-                        />
-                      </div>
-                      <div class="col-md-12 pe-2 mb-3">
-                        <label for="name">Name</label>
-                        <input
-                          class="form-control"
-                          id="name"
-                          v-model="form.name"
-                          placeholder="Enter your name"
-                          type="text"
-                        />
-                      </div>
-                      <div class="col-md-12 pe-2 mb-3">
-                        <label for="email">Email</label>
-                        <input
-                          class="form-control"
-                          id="email"
-                          v-model="form.email"
-                          placeholder="Enter your email"
-                          type="email"
-                        />
-                      </div>
-                      <div class="col-md-12 pe-2 mb-3">
-                        <label for="phone">Phone</label>
-                        <input
-                          class="form-control"
-                          id="phone"
-                          v-model="form.phone"
-                          placeholder="Enter your phone number"
-                          type="tel"
-                        />
-                      </div>
-                      <div class="col-md-12 pe-2 mb-3">
-                        <label for="message">Your message</label>
-                        <textarea
-                          name="message"
-                          class="form-control"
-                          id="message"
-                          v-model="form.message"
-                          rows="6"
-                          placeholder="I want to say that..."
-                        ></textarea>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6 text-end ms-auto">
-                        <button type="submit" class="btn btn-primary btn-round mb-0">
-                          Send Message
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </form>
+      <div class="row align-items-center">
+        <!-- Image Section -->
+        <div class="col-lg-6">
+          <img src="/curved2.jpg" alt="Consultation Image" class="image">
+        </div>
+        <!-- Form Section -->
+        <div class="col-lg-6">
+          <div class="form-container bg-light">
+            <h2>Book A Free Consultation Now</h2>
+            <form class="p-3" id="contact-form" @submit.prevent="handleSubmit">
+              <div class="form-group">
+                <label for="businessName">URL/Business Name (if applicable)</label>
+                <input
+                  class="form-control"
+                  id="businessName"
+                  v-model="form.businessName"
+                  placeholder="URL/Business Name (if applicable)"
+                  type="text"
+                />
               </div>
-              <!-- Contact Information Section -->
-              <div
-                class="col-lg-5 position-relative bg-cover px-0"
-                :style="{ backgroundImage: 'url(/home-05.png)' }"
-              >
-                <div class="position-absolute z-index-2 w-100 h-100 top-0 start-0 d-lg-block d-none"></div>
-                <div class="z-index-2 text-center d-flex h-100 w-100 justify-content-center">
-                  <div class="mask"></div>
-                  <div class="p-5 ps-sm-8 position-relative text-start my-auto">
-                    <h3>Contact Information</h3>
-                    <p class="opacity-8 mb-4">
-                      Fill up the form and our team will get back to you within 24 hours.
-                    </p>
-                    <div class="d-flex p-2">
-                      <i class="fas fa-phone text-sm"></i>
-                      <span class="ps-3 text-sm opacity-8">1800 ULTIFY</span>
-                    </div>
-                    <div class="d-flex p-2">
-                      <i class="fas fa-envelope text-sm"></i>
-                      <span class="ps-3 text-sm opacity-8">admin@ultify.net</span>
-                    </div>
-                    <div class="d-flex p-2">
-                      <i class="fas fa-map-marker-alt text-sm"></i>
-                      <span class="ps-3 text-sm opacity-8">Level 25, 50 Clarent St, Wynyard, Sydney, NSW, 2000, Australia</span>
-                    </div>
-                    <div class="mt-4">
-                      <a href="https://www.instagram.com" class="btn btn-icon-only btn-link me-2" aria-label="Instagram">
-                        <i class="fab fa-instagram"></i>
-                      </a>
-                      <a href="https://www.facebook.com" class="btn btn-icon-only btn-link me-2" aria-label="Facebook">
-                        <i class="fab fa-facebook"></i>
-                      </a>
-                      <a href="https://www.linkedin.com" class="btn btn-icon-only btn-link" aria-label="LinkedIn">
-                        <i class="fab fa-linkedin"></i>
-                      </a>
-                    </div>
-                  </div>
-                </div>
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input
+                  class="form-control"
+                  id="name"
+                  v-model="form.name"
+                  placeholder="Name"
+                  type="text"
+                />
               </div>
-              <!-- End of Contact Information Section -->
-            </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input
+                  class="form-control"
+                  id="email"
+                  v-model="form.email"
+                  placeholder="Email"
+                  type="email"
+                />
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone</label>
+                <input
+                  class="form-control"
+                  id="phone"
+                  v-model="form.phone"
+                  placeholder="Phone"
+                  type="tel"
+                />
+              </div>
+              <button type="submit" class="btn btn-primary btn-block">LEAD WITHOUT A SWEAT</button>
+            </form>
+            <p class="disclaimer">
+              You are booking a free consultation with no maximum time (TnC's apply).
+              We will call you on the given number on our first available time-slot.
+            </p>
           </div>
         </div>
       </div>
@@ -137,7 +74,6 @@ export default {
         name: '',
         email: '',
         phone: '',
-        message: '',
       },
     };
   },
@@ -151,70 +87,67 @@ export default {
 </script>
 
 <style scoped>
-/* Base styles */
-html, body {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  font-size: 16px;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
+.consultation {
+  padding: 40px 0;
 }
 
-.bg-light {
-  background-color: var(--bs-light-bg) !important;
+.image {
+  width: 100%;
+  border-radius: 20px;
 }
 
-.text-primary {
-  color: var(--bs-primary);
+.form-container {
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.card {
-  border-radius: var(--bs-border-radius-lg);
-  background-color: var(--bs-white);
+h2 {
+  margin-bottom: 20px;
+  color: var(--bs-dark);
 }
 
-.card-header, .card-body {
-  color: var(--bs-body-color);
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: var(--bs-dark);
 }
 
 .form-control {
-  background-color: var(--bs-light);
-  border: 1px solid var(--bs-border-color);
-  border-radius: var(--bs-border-radius);
-  color: var(--bs-body-color);
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
-.form-control:focus {
-  border-color: var(--bs-primary);
-  box-shadow: none;
+.btn-block {
+  display: block;
+  width: 100%;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 16px;
 }
 
-.btn-primary {
-  background-color: var(--bs-primary);
-  border-color: var(--bs-primary);
-  color: var(--bs-white);
+.disclaimer {
+  margin-top: 15px;
+  font-size: 12px;
+  color: var(--bs-dark);
+  text-align: center;
 }
 
-.btn-primary:hover {
-  background-color: var(--bs-primary-hover);
-  border-color: var(--bs-primary-hover);
-}
+/* Responsive styling */
+@media (max-width: 768px) {
+  .container .row {
+    flex-direction: column;
+  }
 
-.bg-cover {
-  background-size: cover;
-  background-position: center;
-}
-
-.mask {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: var(--bs-gradient-primary-left);
-  opacity: 0.9;
+  .form-container {
+    margin-top: 20px;
+  }
 }
 </style>

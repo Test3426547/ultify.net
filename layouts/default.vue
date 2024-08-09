@@ -113,16 +113,3 @@ html {
   z-index: 1000;
 }
 </style>
- 
- In the code above, we have a  showChatbot  ref that is used to toggle the visibility of the chatbot window. The  toggleChatbot  function is used to toggle the value of  showChatbot  when the chatbot icon is clicked. 
- The  chatbot-icon  div contains an image of the chatbot icon. When the icon is clicked, the  toggleChatbot  function is called to toggle the visibility of the chatbot window. 
- The  chatbot-window  div contains the chatbot component. It is only displayed when the  showChatbot  ref is true. 
- The  chatbot-icon  and  chatbot-window  divs are styled using CSS. The  chatbot-icon  div is positioned at the bottom right corner of the screen and contains the chatbot icon image. The  chatbot-window  div is positioned below the chatbot icon and contains the chatbot component. 
- The chatbot icon image is displayed using an  img  tag with the  src  attribute set to  /chatbot-icon.png . The image is styled to have a maximum width and height of 100%. 
- The chatbot window is displayed using the  Chatbot  component. The  Chatbot  component is imported at the top of the file and rendered inside the  chatbot-window  div. 
- The chatbot window is styled using CSS to have a fixed position at the bottom right corner of the screen. It has a width of 300px, a height of 400px, a border, a border radius of 10px, a background color, and a box shadow. 
- The chatbot window is displayed only when the  showChatbot  ref is true. The visibility of the chatbot window is toggled using the  toggleChatbot  function when the chatbot icon is clicked. 
- Conclusion 
- In this tutorial, we have learned how to create a chatbot in a Nuxt.js application using the Vue.js Composition API. We have created a chatbot component that can be displayed in a chatbot window. We have also created a chatbot icon that can be clicked to toggle the visibility of the chatbot window. 
- We have used the Vue.js Composition API to define the chatbot component and the chatbot icon. We have also used the Vue.js Composition API to define the state and behavior of the chatbot window. 
- We have styled the chatbot icon and

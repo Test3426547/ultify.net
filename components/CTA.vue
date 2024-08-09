@@ -1,31 +1,18 @@
 <template>
-  <section class="py-5 mt-1 bg-light">
-    <div class="container-fluid px-0">
-      <div class="row justify-content-center text-center">
-        <div class="col-12 position-relative">
-          <div class="row align-items-center">
-            <!-- Text Section -->
-            <div class="col-xl-8 text-center mx-auto">
-              <h2 class="display-5 fw-bold mb-3 text-primary">
-                Ready to get started with your own digital journey?
-              </h2>
-              <p class="mb-4 text-muted">
-                Our team is here to help you every step of the way. Contact us today to begin your transformation.
-              </p>
-              <NuxtLink to="/contact-us" class="btn btn-outline-primary btn-lg rounded-pill">
-                Talk to an Expert Today
-              </NuxtLink>
-            </div>
-            <!-- Image Section -->
-            <div class="col-xl-4 position-relative p-0 d-flex justify-content-end">
-              <img
-                class="img-fluid rounded-end"
-                src="@/assets/images/curved13.jpg"
-                alt="Digital Journey Image"
-                style="max-height: 400px;"
-              />
-            </div>
-          </div>
+  <section class="cta-section bg-primary text-white py-5">
+    <div class="container">
+      <div class="d-flex flex-column flex-lg-row align-items-center justify-content-between">
+        <!-- Text Section -->
+        <div class="text-center text-lg-left mb-4 mb-lg-0">
+          <h2 class="cta-title fw-bold">
+            Ready to get started with your own digital journey?
+          </h2>
+        </div>
+        <!-- Call to Action Button -->
+        <div>
+          <NuxtLink to="/contact-us" class="cta-button btn btn-white text-primary fw-bold rounded-pill">
+            Talk to an Expert Today
+          </NuxtLink>
         </div>
       </div>
     </div>
@@ -39,34 +26,34 @@ export default {
 </script>
 
 <style scoped>
-.text-primary {
-  color: var(--bs-primary) !important;
-}
-
-.btn-outline-primary {
-  border-color: var(--bs-primary);
-  color: var(--bs-primary);
-}
-
-.btn-outline-primary:hover {
+.cta-section {
   background-color: var(--bs-primary);
   color: var(--bs-white);
 }
 
-.img-fluid {
-  max-width: 100%;
-  height: auto;
+.cta-title {
+  font-size: 2em;
 }
 
-.rounded-end {
-  border-radius: 0 0.5rem 0.5rem 0;
+.cta-button {
+  padding: 10px 30px;
+  font-size: 1em;
+  border: none;
 }
 
-.bg-light {
-  background-color: var(--bs-light) !important;
+.btn-white {
+  background-color: var(--bs-white);
+  color: var(--bs-primary);
 }
 
-.text-muted {
-  color: var(--bs-muted) !important;
+.btn-white:hover {
+  background-color: var(--bs-light);
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+  .cta-title {
+    font-size: 1.5em;
+  }
 }
 </style>

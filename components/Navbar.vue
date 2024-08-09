@@ -2,14 +2,12 @@
   <header class="navbar sticky-top py-2 transparent-nav">
     <div class="container-fluid d-flex align-items-center justify-content-between">
       <NuxtLink to="/" class="navbar-brand d-flex align-items-center">
-        <img src="/ultify.svg" width="50" alt="Ultify Logo" />
+        <img src="/ultify.svg" width="75" alt="Ultify Logo" />
       </NuxtLink>
       <button
-        class="navbar-toggler ms-auto"
+        class="navbar-toggler ms-3"
         type="button"
-        data-bs-toggle="offcanvas"
-        data-bs-target="#navbarNav"
-        aria-controls="navbarNav"
+        @click="toggleOffcanvas"
         aria-expanded="false"
         aria-label="Toggle navigation"
       >
@@ -17,36 +15,36 @@
           <i class="bi bi-list" style="font-size: 1.5rem;"></i>
         </span>
       </button>
-      <div class="offcanvas offcanvas-end full-screen-offcanvas" tabindex="-1" id="navbarNav">
+      <div :class="['offcanvas', 'full-screen-offcanvas', { show: showOffcanvas }]" tabindex="-1" id="navbarNav">
         <div class="offcanvas-header">
-          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          <button type="button" class="btn-close" @click="toggleOffcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body d-flex flex-column justify-content-center align-items-center">
           <ul class="navbar-nav text-center">
             <li class="nav-item">
-              <NuxtLink to="/" class="nav-link">Home</NuxtLink>
+              <NuxtLink to="/" class="nav-link" @click="toggleOffcanvas">Home</NuxtLink>
             </li>
             <li class="nav-item">
-              <NuxtLink to="/about-us" class="nav-link">About Us</NuxtLink>
+              <NuxtLink to="/about-us" class="nav-link" @click="toggleOffcanvas">About Us</NuxtLink>
             </li>
             <li class="nav-item">
-              <NuxtLink to="/consultation" class="nav-link">Consultation</NuxtLink>
+              <NuxtLink to="/consultation" class="nav-link" @click="toggleOffcanvas">Consultation</NuxtLink>
             </li>
             <li class="nav-item">
-              <NuxtLink to="/contact-us" class="nav-link">Contact Us</NuxtLink>
+              <NuxtLink to="/contact-us" class="nav-link" @click="toggleOffcanvas">Contact Us</NuxtLink>
             </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle d-flex align-items-center justify-content-center" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <li class="nav-item dropdown" :class="{ show: showDropdown }">
+              <a class="nav-link dropdown-toggle d-flex align-items-center justify-content-center" href="#" id="navbarDropdown" role="button" @click="toggleDropdown" aria-expanded="false">
                 Services
-                <i class="bi bi-chevron-down ms-2"></i>
+                <i :class="showDropdown ? 'bi bi-chevron-up ms-2' : 'bi bi-chevron-down ms-2'"></i>
               </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><NuxtLink to="/website" class="dropdown-item">Website</NuxtLink></li>
-                <li><NuxtLink to="/social-media" class="dropdown-item">Social Media</NuxtLink></li>
-                <li><NuxtLink to="/seo" class="dropdown-item">SEO</NuxtLink></li>
-                <li><NuxtLink to="/paid-media" class="dropdown-item">Paid Media</NuxtLink></li>
-                <li><NuxtLink to="/content-creation" class="dropdown-item">Content Creation</NuxtLink></li>
-                <li><NuxtLink to="/print-advertising" class="dropdown-item">Print Advertising</NuxtLink></li>
+              <ul class="dropdown-menu" :class="{ show: showDropdown }" aria-labelledby="navbarDropdown">
+                <li><NuxtLink to="/website" class="dropdown-item" @click="toggleOffcanvas">Website</NuxtLink></li>
+                <li><NuxtLink to="/social-media" class="dropdown-item" @click="toggleOffcanvas">Social Media</NuxtLink></li>
+                <li><NuxtLink to="/seo" class="dropdown-item" @click="toggleOffcanvas">SEO</NuxtLink></li>
+                <li><NuxtLink to="/paid-media" class="dropdown-item" @click="toggleOffcanvas">Paid Media</NuxtLink></li>
+                <li><NuxtLink to="/content-creation" class="dropdown-item" @click="toggleOffcanvas">Content Creation</NuxtLink></li>
+                <li><NuxtLink to="/print-advertising" class="dropdown-item" @click="toggleOffcanvas">Print Advertising</NuxtLink></li>
               </ul>
             </li>
           </ul>
@@ -56,10 +54,28 @@
   </header>
 </template>
 
-<script>
-export default {
-  name: 'Navbar',
-};
+<script setup>
+import { ref, watch } from 'vue'
+
+const showOffcanvas = ref(false)
+const showDropdown = ref(false)
+
+const toggleOffcanvas = () => {
+  showOffcanvas.value = !showOffcanvas.value
+  if (!showOffcanvas.value) {
+    showDropdown.value = false // Close dropdown when closing offcanvas
+  }
+}
+
+const toggleDropdown = (event) => {
+  event.preventDefault()
+  showDropdown.value = !showDropdown.value
+}
+
+// Ensure body overflow is handled
+watch(showOffcanvas, (newVal) => {
+  document.body.style.overflow = newVal ? 'hidden' : ''
+})
 </script>
 
 <style scoped>
@@ -86,7 +102,7 @@ export default {
 
 .navbar-toggler-icon i {
   font-size: 1.5rem;
-  color: #333; /* Ensure icon is visible */
+  color: #fff; /* Ensure icon is visible */
 }
 
 .navbar-nav .nav-link {
@@ -101,12 +117,19 @@ export default {
 }
 
 .offcanvas {
-  background-color: rgba(255, 255, 255, 0.9) !important;
+  background-color: var(--bs-primary) !important;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 1040;
 }
 
-.full-screen-offcanvas {
-  width: 100%;
-  height: 100%;
+.offcanvas.show {
+  transform: translateX(0);
 }
 
 .offcanvas-header {
@@ -125,14 +148,19 @@ export default {
 }
 
 .dropdown-menu {
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: var(--bs-primary);
   border: none;
   box-shadow: none;
+  position: static;
+  float: none;
+  transform: none;
+  width: 100%;
+  text-align: center;
 }
 
 .dropdown-item {
-  color: #333;
-  font-size: 1.5rem;
+  color: #fff;
+  font-size: 2rem;
   font-weight: bold;
   text-transform: uppercase;
 }
@@ -141,7 +169,8 @@ export default {
   display: none;
 }
 
-.bi-chevron-down {
+.bi-chevron-down, .bi-chevron-up {
   font-size: 1.5rem;
+  color: #fff; /* Ensure icon is visible */
 }
 </style>

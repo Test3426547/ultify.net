@@ -1,14 +1,16 @@
 <template>
   <div class="col-lg-4 col-md-6 mb-5">
-    <div class="card h-100">
-      <div class="card-body border-radius-lg position-relative overflow-hidden pb-4 px-5">
-        <img class="w-25 mb-3 ms-n2" :src="imgSrc" :alt="altText">
-        <h5 class="mt-2">{{ title }}</h5>
-        <p class="mb-3">{{ description }}</p>
-        <a href="javascript:;" class="font-weight-bold text-xs text-uppercase text-primary">
-          Explore Now
-          <i class="fas fa-arrow-right text-xs ms-1"></i>
-        </a>
+    <div class="card h-100 bg-primary text-white shadow-lg">
+      <div class="card-body border-radius-lg position-relative overflow-hidden pb-4 px-5 d-flex align-items-center">
+        <div class="flex-grow-1">
+          <h5 class="mt-2">{{ title }}</h5>
+          <p class="mb-3">{{ description }}</p>
+          <a href="javascript:;" class="font-weight-bold text-xs text-uppercase text-white">
+            Explore Now
+            <i class="fas fa-arrow-right text-xs ms-1"></i>
+          </a>
+        </div>
+        <img class="w-25 mb-3 ms-3" :src="imgSrc" :alt="altText">
       </div>
     </div>
   </div>
@@ -30,8 +32,8 @@ export default {
 .card {
   border-radius: var(--bs-border-radius-lg, 0.75rem);
   transition: transform 0.3s ease;
-  background-color: var(--bs-light, #fff); /* Global CSS variable for light background */
-  box-shadow: var(--bs-card-shadow, 0 4px 6px rgba(0, 0, 0, 0.1)); /* Global CSS variable for card shadow */
+  background-color: var(--bs-primary, #007bff); /* Global CSS variable for primary background */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Elegant shadow */
 }
 
 .card:hover {
@@ -40,10 +42,10 @@ export default {
 
 .card-body {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  text-align: center;
-  color: var(--bs-body-color, #333); /* Global CSS variable for body color */
+  text-align: left;
+  color: var(--bs-white, #fff); /* Global CSS variable for white text */
 }
 
 img {
@@ -54,7 +56,7 @@ img {
   height: auto;
 }
 
-.text-primary {
-  color: var(--bs-primary) !important; /* Global CSS variable for primary color */
+.text-white {
+  color: var(--bs-white) !important; /* Global CSS variable for white text */
 }
 </style>
