@@ -2,7 +2,7 @@
     <section class="contact-us">
       <div class="container">
         <div class="image-container">
-          <img src="/curved2.jpg" alt="Image Description">
+          <img src="/home-05.png" alt="Image Description">
         </div>
         <div class="form-container">
           <h2>Book a Free Consultation Now</h2>

@@ -4,7 +4,7 @@
       <div class="row align-items-center">
         <!-- Image Section -->
         <div class="col-lg-6">
-          <img src="/curved2.jpg" alt="Consultation Image" class="image">
+          <img src="/home-15.webp" alt="Consultation Image" class="image">
         </div>
         <!-- Form Section -->
         <div class="col-lg-6">
