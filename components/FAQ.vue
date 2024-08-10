@@ -33,6 +33,8 @@ const faqs = ref([
   { question: 'What can a digital marketing agency do for my business?', answer: 'A digital marketing agency can help you build brand awareness, increase online presence, generate leads, and ultimately grow your business through various digital strategies.', showAnswer: false, isBouncing: false },
   { question: 'What can I expect from a digital marketing agency team?', answer: 'A digital marketing agency team typically consists of experts in various areas such as strategy, content creation, SEO, social media, and analytics. They work collaboratively to develop and execute comprehensive digital marketing campaigns tailored to your business goals.', showAnswer: false, isBouncing: false },
   { question: 'Which industries benefit most from digital marketing?', answer: 'While all industries can benefit from digital marketing, those in e-commerce, tech, healthcare, and entertainment often see significant growth and ROI.', showAnswer: false, isBouncing: false },
+  { question: 'How do I find the right digital marketing agency for my company?', answer: 'Finding the right agency involves assessing your business needs, researching potential agencies\' expertise, and reviewing case studies and testimonials.', showAnswer: false, isBouncing: false },
+
 ]);
 
 const toggleAnswer = (index) => {

@@ -1,20 +1,22 @@
 <template>
   <section class="digital-world">
     <div class="container">
-      <h2 class="title">Impacting the digital world since 2019</h2>
+      <h2 class="title text-black">Impacting the digital world since 2019</h2>
       <div class="image-wrapper">
         <img src="/home-16.png" alt="Office Environment" class="responsive-image">
       </div>
       <div class="button-wrapper">
-        <NuxtLink to="/about-us" class="btn btn-primary">ABOUT US</NuxtLink>
-        <NuxtLink to="/contact-us" class="btn btn-primary">CONTACT US</NuxtLink>
+        <NuxtLink to="/about-us" class="btn btn-primary btn-lg">ABOUT US</NuxtLink>
+        <NuxtLink to="/contact-us" class="btn btn-primary btn-lg">CONTACT US</NuxtLink>
       </div>
     </div>
   </section>
 </template>
+
 <script setup>
 // No script needed for this component
 </script>
+
 <style scoped>
 .digital-world {
   background-color: var(--bs-white);
@@ -29,17 +31,16 @@
 }
 
 .title {
-  font-size: 3rem;
+  font-size: 3.5rem;
   font-weight: bold;
-  color: var(--bs-dark);
   margin-bottom: 60px;
 }
 
 .image-wrapper {
-  border-radius: 20px;
+  border-radius: 30px;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  margin-bottom: 60px;
+  margin-bottom: 100px;
 }
 
 .responsive-image {
@@ -51,15 +52,20 @@
 .button-wrapper {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 100px;
 }
 
 .btn {
-  font-size: 1.2rem;
-  padding: 15px 30px;
+  font-size: 1.5rem;
+  padding: 20px 40px;
   border-radius: 50px;
   text-decoration: none;
   transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-lg {
+  font-size: 1.8rem;
+  padding: 25px 50px;
 }
 
 .btn-primary {
@@ -77,17 +83,26 @@
   }
   
   .title {
-    font-size: 2.5rem;
+    font-size: 3rem;
     margin-bottom: 40px;
   }
   
   .image-wrapper {
-    margin-bottom: 40px;
+    margin-bottom: 60px;
+  }
+  
+  .button-wrapper {
+    gap: 40px;
   }
   
   .btn {
-    font-size: 1rem;
-    padding: 12px 25px;
+    font-size: 1.2rem;
+    padding: 15px 30px;
+  }
+  
+  .btn-lg {
+    font-size: 1.5rem;
+    padding: 20px 40px;
   }
 }
 </style>
