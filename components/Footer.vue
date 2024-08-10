@@ -22,7 +22,7 @@
         </div>
         <div class="footer-links">
           <div class="link-column">
-            <h3>Company</h3>
+            <h3 class="text-primary">Company</h3>
             <ul>
               <li><NuxtLink to="/" class="bounce-link">Home</NuxtLink></li>
               <li><NuxtLink to="/consultation" class="bounce-link">Consultation</NuxtLink></li>
@@ -31,7 +31,7 @@
             </ul>
           </div>
           <div class="link-column">
-            <h3>Services</h3>
+            <h3 class="text-primary">Services</h3>
             <ul>
               <li><NuxtLink to="/website" class="bounce-link">Website</NuxtLink></li>
               <li><NuxtLink to="/social-media" class="bounce-link">Social Media</NuxtLink></li>
