@@ -7,18 +7,18 @@
           WITH YOUR OWN DIGITAL<br>
           JOURNEY?
         </h2>
-        <NuxtLink to="/contact-us" class="cta-button">
-          TALK TO AN EXPERT TODAY
-        </NuxtLink>
+        <NuxtLink to="/contact-us" class="cta-button">TALK TO AN EXPERT TODAY</NuxtLink>
       </div>
     </div>
   </section>
 </template>
+
 <script>
 export default {
   name: 'CTA',
 };
 </script>
+
 <style scoped>
 .cta-section {
   padding: 100px 0;
@@ -42,17 +42,19 @@ export default {
   line-height: 1.2;
   margin: 0;
   max-width: 70%;
+  margin-left: 50px;
 }
 
 .cta-button {
   background-color: #ffffff;
-  color: #37B5FF;
+  color: #000000;
   font-size: 1.5rem;
   font-weight: bold;
   text-decoration: none;
   padding: 20px 40px;
   border-radius: 50px;
   transition: background-color 0.3s, color 0.3s;
+  white-space: nowrap;
 }
 
 .cta-button:hover {
@@ -79,6 +81,7 @@ export default {
     font-size: 3rem;
     max-width: 100%;
     margin-bottom: 40px;
+    margin-left: 0;
   }
 
   .cta-button {
