@@ -7,7 +7,7 @@
       </p>
       <div class="faq-grid">
         <div v-for="(faq, index) in faqs" :key="index" class="faq-item">
-          <div class="faq-question bg-primary text-white" @click="toggleAnswer(index)">
+          <div class="faq-question bg-primary text-white" @click="toggleAnswer(index)" @mouseover="startBounce(index)" @mouseleave="stopBounce(index)">
             {{ faq.question }}
             <span class="faq-icon">{{ faq.showAnswer ? '▲' : '▼' }}</span>
           </div>
@@ -19,24 +19,34 @@
     </div>
   </section>
 </template>
+
 <script setup>
 import { ref } from 'vue';
 
 const faqs = ref([
-  { question: 'What is digital marketing?', answer: 'Digital marketing refers to the use of digital channels, such as search engines, social media, email, and websites, to promote a product or service.', showAnswer: false },
-  { question: 'How do I get started?', answer: 'Getting started with digital marketing involves understanding your business goals, identifying your target audience, and selecting the right digital channels to reach them.', showAnswer: false },
-  { question: 'Why is ULTIFY the best digital marketing agency in Australia?', answer: 'ULTIFY is renowned for its comprehensive digital strategies, a team of experts, and a proven track record in delivering exceptional results across various industries.', showAnswer: false },
-  { question: 'What type of clients does ULTIFY work with?', answer: 'We work with a wide range of clients, from startups to established businesses, across various industries, helping them achieve their digital marketing goals.', showAnswer: false },
-  { question: 'What digital marketing trends does ULTIFY know?', answer: 'ULTIFY stays ahead of the curve by continuously researching and implementing the latest trends, such as AI-driven marketing, voice search optimization, and influencer marketing.', showAnswer: false },
-  { question: 'How do I find the right digital marketing agency for my company?', answer: 'Finding the right agency involves assessing your business needs, researching potential agencies\' expertise, and reviewing case studies and testimonials.', showAnswer: false },
-  { question: 'What can a digital marketing agency do for my business?', answer: 'A digital marketing agency can help you build brand awareness, increase online presence, generate leads, and ultimately grow your business through various digital strategies.', showAnswer: false },
-  { question: 'Which industries benefit most from digital marketing?', answer: 'While all industries can benefit from digital marketing, those in e-commerce, tech, healthcare, and entertainment often see significant growth and ROI.', showAnswer: false },
+  { question: 'What is digital marketing?', answer: 'Digital marketing refers to the use of digital channels, such as search engines, social media, email, and websites, to promote a product or service.', showAnswer: false, isBouncing: false },
+  { question: 'How do I get started?', answer: 'Getting started with digital marketing involves understanding your business goals, identifying your target audience, and selecting the right digital channels to reach them.', showAnswer: false, isBouncing: false },
+  { question: 'Why is ULTIFY the best digital marketing agency in Australia?', answer: 'ULTIFY is renowned for its comprehensive digital strategies, a team of experts, and a proven track record in delivering exceptional results across various industries.', showAnswer: false, isBouncing: false },
+  { question: 'What type of clients does ULTIFY work with?', answer: 'We work with a wide range of clients, from startups to established businesses, across various industries, helping them achieve their digital marketing goals.', showAnswer: false, isBouncing: false },
+  { question: 'What digital marketing trends does ULTIFY know?', answer: 'ULTIFY stays ahead of the curve by continuously researching and implementing the latest trends, such as AI-driven marketing, voice search optimization, and influencer marketing.', showAnswer: false, isBouncing: false },
+  { question: 'How do I find the right digital marketing agency for my company?', answer: 'Finding the right agency involves assessing your business needs, researching potential agencies\' expertise, and reviewing case studies and testimonials.', showAnswer: false, isBouncing: false },
+  { question: 'What can a digital marketing agency do for my business?', answer: 'A digital marketing agency can help you build brand awareness, increase online presence, generate leads, and ultimately grow your business through various digital strategies.', showAnswer: false, isBouncing: false },
+  { question: 'Which industries benefit most from digital marketing?', answer: 'While all industries can benefit from digital marketing, those in e-commerce, tech, healthcare, and entertainment often see significant growth and ROI.', showAnswer: false, isBouncing: false },
 ]);
 
 const toggleAnswer = (index) => {
   faqs.value[index].showAnswer = !faqs.value[index].showAnswer;
 };
+
+const startBounce = (index) => {
+  faqs.value[index].isBouncing = true;
+};
+
+const stopBounce = (index) => {
+  faqs.value[index].isBouncing = false;
+};
 </script>
+
 <style scoped>
 .faq-section {
   background-color: #2B2A2A;
@@ -64,8 +74,8 @@ const toggleAnswer = (index) => {
 
 .faq-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
 }
 
 .faq-item {
@@ -73,7 +83,7 @@ const toggleAnswer = (index) => {
 }
 
 .faq-question {
-  padding: 15px 20px;
+  padding: 20px 25px;
   border-radius: 50px;
   cursor: pointer;
   display: flex;
@@ -81,6 +91,27 @@ const toggleAnswer = (index) => {
   align-items: center;
   font-weight: bold;
   margin-bottom: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.faq-question:hover {
+  transform: translateY(-5px);
+}
+
+.faq-question.isBouncing {
+  animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
 }
 
 .faq-icon {
@@ -93,5 +124,11 @@ const toggleAnswer = (index) => {
   margin-top: 10px;
   margin-left: 20px;
   margin-right: 20px;
+}
+
+@media (max-width: 768px) {
+  .faq-grid {
+    grid-template-columns: 1fr;
+  }
 }
 </style>
