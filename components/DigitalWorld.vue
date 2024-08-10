@@ -31,8 +31,7 @@
 }
 
 .title {
-  font-size: 3.5rem;
-  font-weight: bold;
+  font-size: 3.0rem;
   margin-bottom: 60px;
 }
 

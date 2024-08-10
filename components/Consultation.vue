@@ -4,7 +4,9 @@
       <div class="row align-items-center">
         <!-- Image Section -->
         <div class="col-lg-6">
-          <img src="/home-15.webp" alt="Consultation Image" class="image">
+          <div class="image-container">
+            <img src="/home-15.webp" alt="Consultation Image" class="image">
+          </div>
         </div>
         <!-- Form Section -->
         <div class="col-lg-6">
@@ -63,6 +65,7 @@
     </div>
   </section>
 </template>
+
 <script>
 export default {
   name: 'Consultation',
@@ -84,20 +87,28 @@ export default {
   },
 };
 </script>
+
 <style scoped>
 .consultation {
   padding: 80px 0;
 }
 
+.image-container {
+  padding: 40px;
+  border-radius: 30px;
+  background-color: var(--bs-light);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
 .image {
   width: 100%;
   border-radius: 30px;
-  margin-bottom: 40px;
 }
 
 .form-container {
   padding: 40px;
   border-radius: 30px;
+  margin-left: 30px;
 }
 
 h2 {
@@ -143,8 +154,12 @@ h2 {
     flex-direction: column;
   }
 
+  .image-container {
+    margin-bottom: 30px;
+  }
+
   .form-container {
-    margin-top: 40px;
+    margin-left: 0;
   }
 }
 </style>
