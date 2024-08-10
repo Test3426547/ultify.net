@@ -6,8 +6,8 @@
         <img src="/home-16.png" alt="Office Environment" class="responsive-image">
       </div>
       <div class="button-wrapper">
-        <NuxtLink to="/about-us" class="btn btn-primary btn-lg">ABOUT US</NuxtLink>
-        <NuxtLink to="/contact-us" class="btn btn-primary btn-lg">CONTACT US</NuxtLink>
+        <NuxtLink to="/about-us" class="btn btn-primary btn-lg bounce-link">ABOUT US</NuxtLink>
+        <NuxtLink to="/contact-us" class="btn btn-primary btn-lg bounce-link">CONTACT US</NuxtLink>
       </div>
     </div>
   </section>
@@ -60,7 +60,7 @@
   padding: 20px 40px;
   border-radius: 50px;
   text-decoration: none;
-  transition: background-color 0.3s, color 0.3s;
+  transition: transform 0.3s ease-in-out;
 }
 
 .btn-lg {
@@ -73,8 +73,21 @@
   color: var(--bs-white);
 }
 
-.btn-primary:hover {
-  background-color: darken(var(--bs-primary), 10%);
+.bounce-link:hover {
+  transform: translateY(-5px);
+  animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
 }
 
 @media (max-width: 768px) {
