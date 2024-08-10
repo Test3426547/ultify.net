@@ -8,7 +8,7 @@
       <div class="faq-grid">
         <div v-for="(faq, index) in faqs" :key="index" class="faq-item">
           <div class="faq-question bg-primary text-white" @click="toggleAnswer(index)" @mouseover="startBounce(index)" @mouseleave="stopBounce(index)">
-            {{ faq.question }}
+            <span>{{ faq.question }}</span>
             <span class="faq-icon">{{ faq.showAnswer ? '▲' : '▼' }}</span>
           </div>
           <div v-if="faq.showAnswer" class="faq-answer bg-primary text-white">
@@ -31,6 +31,7 @@ const faqs = ref([
   { question: 'What digital marketing trends does ULTIFY know?', answer: 'ULTIFY stays ahead of the curve by continuously researching and implementing the latest trends, such as AI-driven marketing, voice search optimization, and influencer marketing.', showAnswer: false, isBouncing: false },
   { question: 'How do I find the right digital marketing agency for my company?', answer: 'Finding the right agency involves assessing your business needs, researching potential agencies\' expertise, and reviewing case studies and testimonials.', showAnswer: false, isBouncing: false },
   { question: 'What can a digital marketing agency do for my business?', answer: 'A digital marketing agency can help you build brand awareness, increase online presence, generate leads, and ultimately grow your business through various digital strategies.', showAnswer: false, isBouncing: false },
+  { question: 'What can I expect from a digital marketing agency team?', answer: 'A digital marketing agency team typically consists of experts in various areas such as strategy, content creation, SEO, social media, and analytics. They work collaboratively to develop and execute comprehensive digital marketing campaigns tailored to your business goals.', showAnswer: false, isBouncing: false },
   { question: 'Which industries benefit most from digital marketing?', answer: 'While all industries can benefit from digital marketing, those in e-commerce, tech, healthcare, and entertainment often see significant growth and ROI.', showAnswer: false, isBouncing: false },
 ]);
 
@@ -69,13 +70,13 @@ const stopBounce = (index) => {
 .faq-subtitle {
   font-size: 1.2rem;
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 60px;
 }
 
 .faq-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
+  gap: 20px;
 }
 
 .faq-item {
@@ -92,6 +93,7 @@ const stopBounce = (index) => {
   font-weight: bold;
   margin-bottom: 10px;
   transition: transform 0.3s ease-in-out;
+  min-height: 80px;
 }
 
 .faq-question:hover {
