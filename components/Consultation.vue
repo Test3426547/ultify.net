@@ -94,21 +94,21 @@ export default {
 }
 
 .image-container {
-  padding: 40px;
+  padding: 0;
   border-radius: 30px;
-  background-color: var(--bs-light);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 }
 
 .image {
   width: 100%;
-  border-radius: 30px;
+  height: auto;
+  display: block;
 }
 
 .form-container {
-  padding: 40px;
+  padding: 40px 60px;
   border-radius: 30px;
-  margin-left: 30px;
+  margin-left: 35px;
 }
 
 h2 {
@@ -155,7 +155,7 @@ h2 {
   }
 
   .image-container {
-    margin-bottom: 30px;
+    margin-bottom: 35px;
   }
 
   .form-container {
