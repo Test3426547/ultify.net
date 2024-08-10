@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer">
+  <footer class="footer bg-white text-primary">
     <div class="container">
       <div class="footer-content">
         <div class="company-info">
@@ -46,18 +46,14 @@
     </div>
   </footer>
 </template>
-
 <script>
 export default {
   name: 'Footer',
 };
 </script>
-
 <style scoped>
 .footer {
-  background-color: var(--bs-white);
-  color: var(--bs-primary);
-  padding: 60px 0;
+  padding: 80px 0;
 }
 
 .container {
@@ -76,26 +72,32 @@ export default {
 }
 
 .company-info h2 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .company-info p,
 .company-info address {
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
 }
 
 .contact-info {
-  margin-top: 1rem;
+  margin-top: 2rem;
+}
+
+.contact-info p {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
 }
 
 .social-icons {
-  margin-top: 1rem;
+  margin-top: 2rem;
 }
 
 .social-icons a {
-  font-size: 1.5rem;
-  margin-right: 1rem;
+  font-size: 2rem;
+  margin-right: 1.5rem;
   color: var(--bs-primary);
 }
 
@@ -106,8 +108,8 @@ export default {
 }
 
 .link-column h3 {
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .link-column ul {
@@ -116,12 +118,13 @@ export default {
 }
 
 .link-column ul li {
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 .link-column ul li a {
   color: var(--bs-primary);
   text-decoration: none;
+  font-size: 1.1rem;
 }
 
 @media (max-width: 768px) {
@@ -132,7 +135,7 @@ export default {
   .company-info,
   .footer-links {
     flex: 0 0 100%;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
   }
 }
 </style>

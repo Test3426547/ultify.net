@@ -5,18 +5,20 @@
       <div class="image-wrapper">
         <img src="/home-16.png" alt="Office Environment" class="responsive-image">
       </div>
+      <div class="button-wrapper">
+        <NuxtLink to="/about-us" class="btn btn-primary">ABOUT US</NuxtLink>
+        <NuxtLink to="/contact-us" class="btn btn-primary">CONTACT US</NuxtLink>
+      </div>
     </div>
   </section>
 </template>
-
 <script setup>
 // No script needed for this component
 </script>
-
 <style scoped>
 .digital-world {
   background-color: var(--bs-white);
-  padding: 80px 0;
+  padding: 100px 0;
   text-align: center;
 }
 
@@ -27,16 +29,17 @@
 }
 
 .title {
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: bold;
   color: var(--bs-dark);
-  margin-bottom: 40px;
+  margin-bottom: 60px;
 }
 
 .image-wrapper {
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  margin-bottom: 60px;
 }
 
 .responsive-image {
@@ -45,14 +48,46 @@
   display: block;
 }
 
+.button-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.btn {
+  font-size: 1.2rem;
+  padding: 15px 30px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-primary {
+  background-color: var(--bs-primary);
+  color: var(--bs-white);
+}
+
+.btn-primary:hover {
+  background-color: darken(var(--bs-primary), 10%);
+}
+
 @media (max-width: 768px) {
   .digital-world {
-    padding: 60px 0;
+    padding: 80px 0;
   }
   
   .title {
-    font-size: 2rem;
-    margin-bottom: 30px;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+  }
+  
+  .image-wrapper {
+    margin-bottom: 40px;
+  }
+  
+  .btn {
+    font-size: 1rem;
+    padding: 12px 25px;
   }
 }
 </style>

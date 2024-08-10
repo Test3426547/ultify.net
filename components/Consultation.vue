@@ -8,13 +8,13 @@
         </div>
         <!-- Form Section -->
         <div class="col-lg-6">
-          <div class="form-container bg-light">
-            <h2>Book A Free Consultation Now</h2>
-            <form class="p-3" id="contact-form" @submit.prevent="handleSubmit">
+          <div class="form-container bg-light rounded-lg shadow-lg">
+            <h2 class="text-center">Book A Free Consultation Now</h2>
+            <form class="p-4" id="contact-form" @submit.prevent="handleSubmit">
               <div class="form-group">
                 <label for="businessName">URL/Business Name (if applicable)</label>
                 <input
-                  class="form-control"
+                  class="form-control rounded-pill"
                   id="businessName"
                   v-model="form.businessName"
                   placeholder="URL/Business Name (if applicable)"
@@ -24,7 +24,7 @@
               <div class="form-group">
                 <label for="name">Name</label>
                 <input
-                  class="form-control"
+                  class="form-control rounded-pill"
                   id="name"
                   v-model="form.name"
                   placeholder="Name"
@@ -34,7 +34,7 @@
               <div class="form-group">
                 <label for="email">Email</label>
                 <input
-                  class="form-control"
+                  class="form-control rounded-pill"
                   id="email"
                   v-model="form.email"
                   placeholder="Email"
@@ -44,16 +44,16 @@
               <div class="form-group">
                 <label for="phone">Phone</label>
                 <input
-                  class="form-control"
+                  class="form-control rounded-pill"
                   id="phone"
                   v-model="form.phone"
                   placeholder="Phone"
                   type="tel"
                 />
               </div>
-              <button type="submit" class="btn btn-primary btn-block">LEAD WITHOUT A SWEAT</button>
+              <button type="submit" class="btn btn-primary btn-block rounded-pill py-3">LEAD WITHOUT A SWEAT</button>
             </form>
-            <p class="disclaimer">
+            <p class="disclaimer text-dark">
               You are booking a free consultation with no maximum time (TnC's apply).
               We will call you on the given number on our first available time-slot.
             </p>
@@ -63,7 +63,6 @@
     </div>
   </section>
 </template>
-
 <script>
 export default {
   name: 'Consultation',
@@ -85,69 +84,67 @@ export default {
   },
 };
 </script>
-
 <style scoped>
 .consultation {
-  padding: 40px 0;
+  padding: 80px 0;
 }
 
 .image {
   width: 100%;
-  border-radius: 20px;
+  border-radius: 30px;
+  margin-bottom: 40px;
 }
 
 .form-container {
-  padding: 20px;
-  border-radius: 20px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  border-radius: 30px;
 }
 
 h2 {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   color: var(--bs-dark);
 }
 
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .form-group label {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   font-weight: bold;
   color: var(--bs-dark);
 }
 
 .form-control {
   width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  padding: 15px 20px;
+  border: none;
+  background-color: #f5f5f5;
 }
 
 .btn-block {
   display: block;
   width: 100%;
-  padding: 10px 20px;
-  border-radius: 20px;
-  font-size: 16px;
+  padding: 15px 30px;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .disclaimer {
-  margin-top: 15px;
-  font-size: 12px;
-  color: var(--bs-dark);
+  margin-top: 20px;
+  font-size: 14px;
   text-align: center;
 }
 
 /* Responsive styling */
-@media (max-width: 768px) {
+@media (max-width: 991px) {
   .container .row {
     flex-direction: column;
   }
 
   .form-container {
-    margin-top: 20px;
+    margin-top: 40px;
   }
 }
 </style>

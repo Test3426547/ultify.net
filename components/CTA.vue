@@ -1,8 +1,8 @@
 <template>
-  <section class="cta-section">
+  <section class="cta-section bg-primary">
     <div class="container">
       <div class="cta-content">
-        <h2 class="cta-title">
+        <h2 class="cta-title text-white">
           READY TO GET STARTED<br>
           WITH YOUR OWN DIGITAL<br>
           JOURNEY?
@@ -14,17 +14,14 @@
     </div>
   </section>
 </template>
-
 <script>
 export default {
   name: 'CTA',
 };
 </script>
-
 <style scoped>
 .cta-section {
-  background-color: #48cae4;
-  padding: 80px 0;
+  padding: 100px 0;
 }
 
 .container {
@@ -40,8 +37,7 @@ export default {
 }
 
 .cta-title {
-  color: #ffffff;
-  font-size: 3.5rem;
+  font-size: 4rem;
   font-weight: bold;
   line-height: 1.2;
   margin: 0;
@@ -50,11 +46,11 @@ export default {
 
 .cta-button {
   background-color: #ffffff;
-  color: #48cae4;
-  font-size: 1.2rem;
+  color: #37B5FF;
+  font-size: 1.5rem;
   font-weight: bold;
   text-decoration: none;
-  padding: 15px 30px;
+  padding: 20px 40px;
   border-radius: 50px;
   transition: background-color 0.3s, color 0.3s;
 }
@@ -65,13 +61,13 @@ export default {
 
 @media (max-width: 1024px) {
   .cta-title {
-    font-size: 3rem;
+    font-size: 3.5rem;
   }
 }
 
 @media (max-width: 768px) {
   .cta-section {
-    padding: 60px 0;
+    padding: 80px 0;
   }
 
   .cta-content {
@@ -80,14 +76,14 @@ export default {
   }
 
   .cta-title {
-    font-size: 2.5rem;
+    font-size: 3rem;
     max-width: 100%;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
   }
 
   .cta-button {
-    font-size: 1rem;
-    padding: 12px 25px;
+    font-size: 1.2rem;
+    padding: 15px 30px;
   }
 }
 </style>

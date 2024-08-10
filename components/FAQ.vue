@@ -1,17 +1,17 @@
 <template>
   <section class="faq-section">
     <div class="container">
-      <h2 class="faq-title">FAQ</h2>
-      <p class="faq-subtitle">
+      <h2 class="faq-title text-white">FAQ</h2>
+      <p class="faq-subtitle text-white">
         If you have any questions that aren't addressed here, please feel free to contact our customer support team.
       </p>
       <div class="faq-grid">
         <div v-for="(faq, index) in faqs" :key="index" class="faq-item">
-          <div class="faq-question" @click="toggleAnswer(index)">
+          <div class="faq-question bg-primary text-white" @click="toggleAnswer(index)">
             {{ faq.question }}
             <span class="faq-icon">{{ faq.showAnswer ? '▲' : '▼' }}</span>
           </div>
-          <div v-if="faq.showAnswer" class="faq-answer">
+          <div v-if="faq.showAnswer" class="faq-answer bg-primary text-white">
             {{ faq.answer }}
           </div>
         </div>
@@ -19,7 +19,6 @@
     </div>
   </section>
 </template>
-
 <script setup>
 import { ref } from 'vue';
 
@@ -38,13 +37,11 @@ const toggleAnswer = (index) => {
   faqs.value[index].showAnswer = !faqs.value[index].showAnswer;
 };
 </script>
-
 <style scoped>
 .faq-section {
-  background-color: #1e1e1e;
+  background-color: #2B2A2A;
   min-height: 100vh;
   padding: 60px 0;
-  color: #ffffff;
 }
 
 .container {
@@ -63,7 +60,6 @@ const toggleAnswer = (index) => {
   font-size: 1.2rem;
   text-align: center;
   margin-bottom: 40px;
-  color: #cccccc;
 }
 
 .faq-grid {
@@ -77,8 +73,6 @@ const toggleAnswer = (index) => {
 }
 
 .faq-question {
-  background-color: #48cae4;
-  color: #ffffff;
   padding: 15px 20px;
   border-radius: 50px;
   cursor: pointer;
@@ -94,8 +88,6 @@ const toggleAnswer = (index) => {
 }
 
 .faq-answer {
-  background-color: #48cae4;
-  color: #ffffff;
   padding: 20px;
   border-radius: 20px;
   margin-top: 10px;
