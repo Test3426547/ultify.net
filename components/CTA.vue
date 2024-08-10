@@ -35,7 +35,7 @@ export default {
 }
 
 .cta-title {
-  font-size: 4rem;
+  font-size: 3rem;
   font-weight: bold;
   line-height: 1.2;
   margin: 0;
