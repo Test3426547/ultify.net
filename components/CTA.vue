@@ -3,8 +3,7 @@
     <div class="container">
       <div class="cta-content">
         <h3 class="cta-title text-white">
-          READY TO GET STARTED<br>
-          WITH YOUR OWN DIGITAL JOURNEY?<br>
+          READY TO GET STARTED WITH YOUR OWN DIGITAL JOURNEY?
         </h3>
         <NuxtLink to="/contact-us" class="cta-button">TALK TO AN EXPERT TODAY</NuxtLink>
       </div>
