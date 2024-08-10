@@ -53,11 +53,15 @@
                   type="tel"
                 />
               </div>
-              <button type="submit" class="btn btn-primary btn-block rounded-pill py-3">LEAD WITHOUT A SWEAT</button>
+              <button
+                type="submit"
+                class="btn btn-primary btn-block rounded-pill py-3"
+              >
+                LEAD WITHOUT A SWEAT
+              </button>
             </form>
             <p class="disclaimer text-dark">
-              You are booking a free consultation with no maximum time (TnC's apply).
-              We will call you on the given number on our first available time-slot.
+              You are booking a free consultation with no maximum time (TnC's apply). We will call you on the given number on our first available time-slot.
             </p>
           </div>
         </div>
@@ -97,18 +101,20 @@ export default {
   padding: 0;
   border-radius: 30px;
   overflow: hidden;
+  display: flex;
+  align-items: stretch;
 }
 
 .image {
   width: 100%;
-  height: auto;
-  display: block;
+  height: 100%;
+  object-fit: cover;
 }
 
 .form-container {
-  padding: 40px 60px;
+  padding: 30px 40px;
   border-radius: 30px;
-  margin-left: 35px;
+  margin-left: 15px;
 }
 
 h2 {
@@ -153,11 +159,9 @@ h2 {
   .container .row {
     flex-direction: column;
   }
-
   .image-container {
     margin-bottom: 35px;
   }
-
   .form-container {
     margin-left: 0;
   }
