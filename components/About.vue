@@ -2,14 +2,14 @@
   <section class="about-us">
     <div class="container-fluid">
       <div class="content-wrapper">
-        <div class="text-container">
-          <h2>Embrace the <span class="highlight">Digital Wave</span><span class="semicolon">;</span><br>Ride the tide or get left behind!</h2>
+        <header class="text-container">
+          <h1>Embrace the <span class="highlight">Digital Wave</span><span class="semicolon">;</span><br>Ride the tide or get left behind!</h1>
           <div class="image-container">
-            <img src="/home-04.webp" alt="Cyclist on a wave">
+            <img src="/home-04.webp" alt="Cyclist riding a wave, representing digital marketing momentum">
           </div>
-        </div>
-        <div class="description-container" style="margin-top: -100px;">
-          <h3>ABOUT US</h3>
+        </header>
+        <aside class="description-container">
+          <h2>ABOUT US</h2>
           <p>
             Capitalise from the technological shift of the business world.
             ULTIFY Solutions & Marketing is a team of professionals that
@@ -20,7 +20,7 @@
             Get your Digital Marketing work done by a real team of qualified
             professionals in Australia now.
           </p>
-        </div>
+        </aside>
       </div>
     </div>
   </section>
@@ -31,15 +31,16 @@
 </script>
 
 <style scoped>
+/* Root section styling */
 .about-us {
   min-height: 100vh;
   display: flex;
   align-items: center;
   background-color: var(--bs-white);
   padding: 80px 0;
-  overflow: hidden;
 }
 
+/* Container styling */
 .container-fluid {
   width: 100%;
   max-width: 1600px;
@@ -47,26 +48,29 @@
   padding: 0 20px;
 }
 
+/* Wrapper for content */
 .content-wrapper {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   flex-wrap: wrap;
-}
-
-.text-container {
-  flex: 0 0 60%; /* Keep more space for the text and image */
   position: relative;
 }
 
-.text-container h2 {
-  font-size: 3.5rem;
+/* Text and image section */
+.text-container {
+  flex: 0 0 60%;
+  position: relative;
+  top: -30px;
+}
+
+.text-container h1 {
+  font-size: 2.8rem;
   font-weight: bold;
   line-height: 1.2;
   margin-bottom: 30px;
   position: relative;
   z-index: 2;
-  transform: translateX(-10px); /* Slight adjustment for better alignment */
 }
 
 .highlight {
@@ -74,15 +78,16 @@
 }
 
 .semicolon {
-  color: inherit; /* Matches the surrounding text */
+  color: inherit;
 }
 
+/* Image container */
 .image-container {
   position: relative;
   width: 100%;
-  padding-top: 70%; /* Increase aspect ratio to make the image larger */
+  padding-top: 60%;
   overflow: hidden;
-  margin-top: -30px; /* Bring the image closer to the heading */
+  margin-top: -30px;
 }
 
 .image-container img {
@@ -91,20 +96,22 @@
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain; /* Ensure full visibility of the image without cropping */
+  object-fit: contain;
 }
 
+/* Description section */
 .description-container {
-  flex: 0 0 35%;
-  padding-left: 40px;
-  align-self: flex-end; /* Ensure it aligns with the bottom of the image */
+  position: absolute;
+  top: 25%;
+  right: 0;
+  width: 30%;
+  padding-left: 20px;
 }
 
-.description-container h3 {
-  font-size: 2.5rem;
+.description-container h2 {
+  font-size: 2.2rem;
   font-weight: bold;
-  margin-bottom: 20px;
-  align-self: flex-start; /* Position the "ABOUT US" heading independently */
+  margin-bottom: 10px;
 }
 
 .description-container p {
@@ -113,12 +120,28 @@
   margin-bottom: 20px;
 }
 
+/* Diagonal line under "So you want to ride the wave?!" */
+.diagonal-line {
+  width: 100%;
+  height: 5px;
+  background-color: var(--bs-primary);
+  transform: rotate(-5deg);
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+/* Adjust button section */
+.seo-section {
+  padding-top: 20px;
+}
+
+/* Responsive design */
 @media (max-width: 1200px) {
-  .text-container h2 {
-    font-size: 3rem;
+  .text-container h1 {
+    font-size: 2.5rem;
   }
 
-  .description-container h3 {
+  .description-container h2 {
     font-size: 2rem;
   }
 }
@@ -136,18 +159,17 @@
   .description-container {
     margin-top: 40px;
     padding-left: 0;
-    align-self: center; /* Center on smaller screens */
+    align-self: center;
   }
 
-  .text-container h2 {
+  .text-container h1 {
     font-size: 2.5rem;
-    transform: translateX(0);
   }
 
   .image-container {
     width: 100%;
     margin-left: 0;
-    padding-top: 56.25%; /* Restore the aspect ratio for smaller screens */
+    padding-top: 56.25%;
   }
 }
 
@@ -156,11 +178,11 @@
     padding: 60px 0;
   }
 
-  .text-container h2 {
+  .text-container h1 {
     font-size: 2rem;
   }
 
-  .description-container h3 {
+  .description-container h2 {
     font-size: 1.75rem;
   }
 }
