@@ -3,7 +3,7 @@
     <div class="container-fluid">
       <div class="content-wrapper">
         <div class="text-container">
-          <h2>Embrace the <span class="highlight">Digital Wave</span>;<br>Ride the tide or get left behind!</h2>
+          <h2>Embrace the <span class="highlight">Digital Wave</span><span class="semicolon">;</span><br>Ride the tide or get left behind!</h2>
           <div class="image-container">
             <img src="/home-04.webp" alt="Cyclist on a wave">
           </div>
@@ -55,7 +55,7 @@
 }
 
 .text-container {
-  flex: 0 0 60%; /* Adjusted to give more space to the image */
+  flex: 0 0 60%; /* Keep more space for the text and image */
   position: relative;
 }
 
@@ -73,12 +73,16 @@
   color: var(--bs-primary);
 }
 
+.semicolon {
+  color: inherit; /* Matches the surrounding text */
+}
+
 .image-container {
   position: relative;
   width: 100%;
-  padding-top: 50%; /* Adjusted aspect ratio */
+  padding-top: 70%; /* Increase aspect ratio to make the image larger */
   overflow: hidden;
-  margin-top: -50px; /* Align the image closer to the heading */
+  margin-top: -30px; /* Bring the image closer to the heading */
 }
 
 .image-container img {
@@ -87,19 +91,21 @@
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain; /* Ensure full visibility of the image without clipping */
+  object-fit: contain; /* Ensure full visibility of the image without cropping */
 }
 
 .description-container {
   flex: 0 0 35%;
-  padding-left: 40px; /* Reduced padding to align better with the image */
-  margin-top: 0; /* Align the text better with the image */
+  padding-left: 40px;
+  margin-top: -30px; /* Adjust margin to align text with the bottom of the image */
+  align-self: flex-end; /* Ensure it aligns with the bottom of the image */
 }
 
 .description-container h3 {
   font-size: 2.5rem;
   font-weight: bold;
   margin-bottom: 20px;
+  align-self: flex-start; /* Position the "ABOUT US" heading independently */
 }
 
 .description-container p {
@@ -131,6 +137,7 @@
   .description-container {
     margin-top: 40px;
     padding-left: 0;
+    align-self: center; /* Center on smaller screens */
   }
 
   .text-container h2 {

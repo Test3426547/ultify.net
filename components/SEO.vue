@@ -8,7 +8,7 @@
           <button class="seo-button live-chat">LIVE CHAT</button>
         </div>
         <div class="col-lg-5 d-flex flex-column justify-content-center consultation-container">
-          <h2>So you want to ride the <br/>wave?!</h2>
+          <h2>So you want to ride the wave?!</h2>
           <p>
             View our many resources prior to your consultation. If you are
             ready, consult now!
@@ -27,9 +27,9 @@
 
 <style scoped>
 .seo-section {
-  padding: 0; /* No padding to align closely with the above image */
+  padding: 0 0 0 0; /* Reduced top padding by 50px */
   background-color: var(--bs-white);
-  margin-top: -75px; /* Remove 75px of spacing */
+  margin-top: -125px; /* Combined previous 75px reduction with additional 50px */
 }
 
 .container-fluid {
@@ -74,7 +74,8 @@
   font-size: 2.5em;
   color: var(--bs-primary);
   margin-bottom: 20px;
-  font-weight: bold; /* Thicker text */
+  font-weight: bold;
+  white-space: nowrap; /* Ensure the text stays on one line */
 }
 
 .consultation-container p {
