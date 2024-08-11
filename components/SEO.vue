@@ -8,7 +8,7 @@
           <button class="seo-button live-chat">LIVE CHAT</button>
         </div>
         <div class="col-lg-5 d-flex flex-column justify-content-center consultation-container">
-          <h2>So you want to ride the wave?!</h2>
+          <h2 class="wave-heading">So you want to ride the wave?!</h2>
           <div class="consultation-content">
             <p>
               View our many resources prior to your consultation. If you are
@@ -31,7 +31,7 @@
 .seo-section {
   padding: 0;
   background-color: var(--bs-white);
-  margin-top: -175px;
+  margin-top: -205px;
 }
 
 .container-fluid {
@@ -70,21 +70,28 @@
 .consultation-container {
   text-align: center;
   margin-right: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
 }
 
-.consultation-container h2 {
+.wave-heading {
   font-size: 2.5em;
   color: var(--bs-primary);
   margin-bottom: 20px;
   font-weight: bold;
   white-space: nowrap;
+  margin-top: 50px;
 }
 
 .consultation-content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: -50px; /* Move content up by 75px */
+  justify-content: space-between;
+  height: 100%;
+  padding-top: 20px;
 }
 
 .consultation-container p {
@@ -97,8 +104,8 @@
   border: none;
   height: 2px;
   background-color: var(--bs-primary);
-  opacity: 1; /* Make the line more opaque */
-  margin: 20px 0;
+  opacity: 1;
+  margin: 30px 0;
   width: 100%;
 }
 
@@ -114,11 +121,51 @@
   transition: transform 0.3s ease;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   align-self: center;
+  margin-top: 30px;
 }
 
 .consultation-button:hover {
   transform: translateY(-5px);
 }
 
-/* Media queries remain unchanged */
+@media (max-width: 991px) {
+  .seo-section {
+    margin-top: -125px;
+  }
+
+  .row {
+    gap: 60px;
+  }
+
+  .buttons-container,
+  .consultation-container {
+    align-items: center;
+    text-align: center;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .consultation-container hr {
+    width: 100%;
+  }
+
+  .consultation-button {
+    align-self: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .seo-section {
+    padding: 60px 0;
+    margin-top: 0;
+  }
+
+  .wave-heading {
+    font-size: 2em;
+  }
+
+  .consultation-container p {
+    font-size: 1em;
+  }
+}
 </style>
