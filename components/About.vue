@@ -8,7 +8,7 @@
             <img src="/home-04.webp" alt="Cyclist on a wave">
           </div>
         </div>
-        <div class="description-container">
+        <div class="description-container" style="margin-top: -100px;">
           <h3>ABOUT US</h3>
           <p>
             Capitalise from the technological shift of the business world.
@@ -97,7 +97,6 @@
 .description-container {
   flex: 0 0 35%;
   padding-left: 40px;
-  margin-top: -130px; /* Shift body paragraph 100px up */
   align-self: flex-end; /* Ensure it aligns with the bottom of the image */
 }
 
