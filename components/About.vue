@@ -115,7 +115,6 @@
     flex: 0 0 35%;
     padding-left: 60px;
   }
-}
 
 @media (max-width: 1200px) {
   .text-container h2 {
