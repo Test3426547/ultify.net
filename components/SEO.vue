@@ -93,9 +93,9 @@
 
 .consultation-line {
   border: none;
-  height: 2px;
+  height: 5px;
   background-color: var(--bs-primary);
-  margin: 20px 0;
+  margin: 50px 0;
   width: 100%;
 }
 
