@@ -1,35 +1,3 @@
-<template>
-  <section class="about-us">
-    <div class="container">
-      <div class="content-wrapper">
-        <div class="text-container">
-          <h2>Embrace the <span class="highlight">Digital Wave</span>;<br>Ride the tide or get left behind!</h2>
-          <div class="image-container">
-            <img src="/home-04.webp" alt="Cyclist on a wave">
-          </div>
-        </div>
-        <div class="description-container">
-          <h3>ABOUT US</h3>
-          <p>
-            Capitalise from the technological shift of the business world. 
-            ULTIFY Solutions & Marketing is a team of professionals that 
-            are dedicated and have rigorously understood the algorithms 
-            of social media and online marketing.
-          </p>
-          <p>
-            Get your Digital Marketing work done by a real team of qualified 
-            professionals in Australia now.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-</template>
-
-<script setup>
-// No script needed for this component
-</script>
-
 <style scoped>
 .about-us {
   min-height: 100vh;
@@ -54,7 +22,7 @@
 }
 
 .text-container {
-  flex: 0 0 65%;
+  flex: 0 0 70%;
   position: relative;
 }
 
@@ -73,9 +41,10 @@
 
 .image-container {
   position: relative;
-  width: 100%;
-  padding-top: 56.25%; /* 16:9 aspect ratio */
-  overflow: hidden;
+  width: 120%; /* Increased width to show full image */
+  padding-top: 45%; /* Adjusted aspect ratio */
+  overflow: visible; /* Changed to visible to show full image */
+  margin-left: -10%; /* Shift image to the left */
 }
 
 .image-container img {
@@ -84,11 +53,11 @@
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain; /* Changed to contain to show full image */
 }
 
 .description-container {
-  flex: 0 0 30%;
+  flex: 0 0 25%;
   padding-left: 40px;
 }
 
@@ -112,6 +81,11 @@
   .description-container h3 {
     font-size: 2rem;
   }
+
+  .image-container {
+    width: 110%;
+    margin-left: -5%;
+  }
 }
 
 @media (max-width: 992px) {
@@ -130,6 +104,12 @@
 
   .text-container h2 {
     font-size: 2.5rem;
+  }
+
+  .image-container {
+    width: 100%;
+    margin-left: 0;
+    padding-top: 56.25%; /* Reset to 16:9 aspect ratio for mobile */
   }
 }
 
