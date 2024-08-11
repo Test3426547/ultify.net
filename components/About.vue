@@ -45,7 +45,7 @@
 }
 
 .header-container {
-  padding-top: 50px; /* Move the heading down 50px */
+  padding-top: 100px; /* Move the heading down 50px */
 }
 
 h1 {

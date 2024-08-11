@@ -84,7 +84,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: -75px; /* Move content up by 75px */
+  margin-top: -50px; /* Move content up by 75px */
 }
 
 .consultation-container p {
