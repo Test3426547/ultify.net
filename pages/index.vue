@@ -2,7 +2,6 @@
   <div>
     <HeaderHome />
     <HeroSection />
-    <LeadSection />
     <ServiceCards />
     <ContactUs />
     <About />
@@ -18,7 +17,6 @@
 <script setup>
 import HeaderHome from '@/components/HeaderHome.vue';
 import HeroSection from '@/components/HeroSection.vue';
-import LeadSection from '@/components/LeadSection.vue';
 import ServiceCards from '@/components/ServiceCards.vue';
 import ContactUs from '@/components/ContactUs.vue';
 import About from '@/components/About.vue';
