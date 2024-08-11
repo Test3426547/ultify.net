@@ -14,10 +14,6 @@
       </svg>
     </div>
     <div class="bottom-section">
-      <div class="content">
-        <h2>Our Services</h2>
-        <!-- Add more content for the bottom section here -->
-      </div>
     </div>
   </div>
 </template>
@@ -128,7 +124,7 @@ p {
 }
 
 .bottom-section {
-  background: linear-gradient(-45deg, var(--bs-primary), #4682B4, var(--bs-primary), #4682B4);
+  background: linear-gradient(-45deg, var(--bs-primary), var(--bs-primary), #4682B4);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
   color: #ffffff;
