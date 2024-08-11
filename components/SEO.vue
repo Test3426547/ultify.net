@@ -33,7 +33,7 @@
 .container {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
@@ -42,18 +42,18 @@
 .buttons-container {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 60px;
   width: 40%;
 }
 
 .seo-button {
   background-color: var(--bs-primary);
   color: white;
-  padding: 15px 30px;
+  padding: 20px 40px;
   border: none;
   border-radius: 50px;
   cursor: pointer;
-  font-size: 1.1em;
+  font-size: 1.2em;
   text-align: center;
   transition: transform 0.3s ease;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -65,13 +65,14 @@
 
 .consultation-container {
   width: 50%;
-  text-align: right;
+  text-align: center;
 }
 
 .consultation-container h2 {
   color: var(--bs-primary);
   font-size: 2.5em;
   margin-bottom: 20px;
+  white-space: nowrap;
 }
 
 .consultation-container p {
@@ -90,11 +91,11 @@
 .consultation-button {
   background-color: var(--bs-primary);
   color: white;
-  padding: 15px 40px;
+  padding: 20px 60px;
   border: none;
   border-radius: 50px;
   cursor: pointer;
-  font-size: 1.1em;
+  font-size: 1.3em;
   transition: transform 0.3s ease;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -124,12 +125,16 @@
   }
 
   .consultation-container {
-    margin-top: 40px;
+    margin-top: 60px;
   }
 
   .seo-button, .consultation-button {
     width: 100%;
     max-width: 300px;
+  }
+
+  .buttons-container {
+    gap: 40px;
   }
 }
 
