@@ -1,13 +1,13 @@
 <template>
   <section class="about-us">
     <div class="container-fluid">
+      <header class="text-center mb-5">
+        <h1>Embrace the <span class="highlight">Digital Wave</span><span class="semicolon">;</span><br>Ride the tide or get left behind!</h1>
+      </header>
       <div class="content-wrapper">
-        <header class="text-container">
-          <h1>Embrace the <span class="highlight">Digital Wave</span><span class="semicolon">;</span><br>Ride the tide or get left behind!</h1>
-          <div class="image-container">
-            <img src="/home-04.webp" alt="Cyclist riding a wave, representing digital marketing momentum">
-          </div>
-        </header>
+        <div class="image-container">
+          <img src="/home-04.webp" alt="Cyclist riding a wave, representing digital marketing momentum">
+        </div>
         <aside class="description-container">
           <h2>ABOUT US</h2>
           <p>
@@ -31,16 +31,12 @@
 </script>
 
 <style scoped>
-/* Root section styling */
 .about-us {
   min-height: 100vh;
-  display: flex;
-  align-items: center;
   background-color: var(--bs-white);
   padding: 80px 0;
 }
 
-/* Container styling */
 .container-fluid {
   width: 100%;
   max-width: 1600px;
@@ -48,29 +44,10 @@
   padding: 0 20px;
 }
 
-/* Wrapper for content */
-.content-wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  position: relative;
-}
-
-/* Text and image section */
-.text-container {
-  flex: 0 0 60%;
-  position: relative;
-  top: -30px;
-}
-
-.text-container h1 {
+h1 {
   font-size: 2.8rem;
   font-weight: bold;
   line-height: 1.2;
-  margin-bottom: 30px;
-  position: relative;
-  z-index: 2;
 }
 
 .highlight {
@@ -81,13 +58,18 @@
   color: inherit;
 }
 
-/* Image container */
-.image-container {
+.content-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
   position: relative;
-  width: 100%;
-  padding-top: 60%;
+}
+
+.image-container {
+  flex: 0 0 60%;
+  position: relative;
+  padding-top: 36%; /* Adjust this value to control the image height */
   overflow: hidden;
-  margin-top: -30px;
 }
 
 .image-container img {
@@ -99,13 +81,10 @@
   object-fit: contain;
 }
 
-/* Description section */
 .description-container {
-  position: absolute;
-  top: 25%;
-  right: 0;
-  width: 30%;
-  padding-left: 20px;
+  flex: 0 0 30%;
+  margin-top: 50px; /* Shift down by 50px */
+  margin-left: -50px; /* Shift left by 50px */
 }
 
 .description-container h2 {
@@ -120,24 +99,8 @@
   margin-bottom: 20px;
 }
 
-/* Diagonal line under "So you want to ride the wave?!" */
-.diagonal-line {
-  width: 100%;
-  height: 5px;
-  background-color: var(--bs-primary);
-  transform: rotate(-5deg);
-  margin-top: 10px;
-  margin-bottom: 30px;
-}
-
-/* Adjust button section */
-.seo-section {
-  padding-top: 20px;
-}
-
-/* Responsive design */
 @media (max-width: 1200px) {
-  .text-container h1 {
+  h1 {
     font-size: 2.5rem;
   }
 
@@ -151,25 +114,18 @@
     flex-direction: column;
   }
 
-  .text-container,
+  .image-container,
   .description-container {
     flex: 0 0 100%;
   }
 
   .description-container {
     margin-top: 40px;
-    padding-left: 0;
-    align-self: center;
-  }
-
-  .text-container h1 {
-    font-size: 2.5rem;
+    margin-left: 0;
   }
 
   .image-container {
-    width: 100%;
-    margin-left: 0;
-    padding-top: 56.25%;
+    padding-top: 56.25%; /* 16:9 aspect ratio for smaller screens */
   }
 }
 
@@ -178,7 +134,7 @@
     padding: 60px 0;
   }
 
-  .text-container h1 {
+  h1 {
     font-size: 2rem;
   }
 
