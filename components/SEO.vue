@@ -8,12 +8,12 @@
           <button class="seo-button live-chat">LIVE CHAT</button>
         </div>
         <div class="col-lg-5 d-flex flex-column justify-content-center consultation-container">
-          <h2>So you want to ride the wave?!</h2>
+          <h2>So you want to ride the <br/>wave?!</h2>
           <p>
             View our many resources prior to your consultation. If you are
             ready, consult now!
           </p>
-          <hr />
+          <hr class="custom-line" />
           <button class="consultation-button">FREE CONSULTATION</button>
         </div>
       </div>
@@ -29,11 +29,12 @@
 .seo-section {
   padding: 0; /* No padding to align closely with the above image */
   background-color: var(--bs-white);
+  margin-top: -75px; /* Remove 75px of spacing */
 }
 
 .container-fluid {
   max-width: 1400px;
-  padding: 50px 0; /* Space out the section within the container */
+  padding: 0 20px 50px 20px; /* Space out the section within the container */
 }
 
 .row {
@@ -65,24 +66,27 @@
 }
 
 .consultation-container {
-  text-align: left;
-  margin-right: -100px; /* Shift the right section 100px to the right */
+  text-align: center; /* Centered text alignment */
+  margin-right: 0; /* Removed right margin to center */
 }
 
 .consultation-container h2 {
   font-size: 2.5em;
   color: var(--bs-primary);
   margin-bottom: 20px;
+  font-weight: bold; /* Thicker text */
 }
 
 .consultation-container p {
-  font-size: 1.1em;
+  font-size: 1.2em;
   margin-bottom: 30px;
+  font-weight: 600; /* Thicker text */
 }
 
-.consultation-container hr {
+.consultation-container .custom-line {
   border-top: 2px solid var(--bs-primary);
-  margin: 30px 0;
+  margin: 30px auto; /* Center the line */
+  width: 80%; /* Adjust width to fit under the text */
 }
 
 .consultation-button {
@@ -96,7 +100,7 @@
   text-align: center;
   transition: transform 0.3s ease;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  align-self: flex-start;
+  align-self: center; /* Center the button */
 }
 
 .consultation-button:hover {

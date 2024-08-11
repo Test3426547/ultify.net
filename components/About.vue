@@ -55,7 +55,7 @@
 }
 
 .text-container {
-  flex: 0 0 65%;
+  flex: 0 0 60%; /* Adjusted to give more space to the image */
   position: relative;
 }
 
@@ -66,7 +66,7 @@
   margin-bottom: 30px;
   position: relative;
   z-index: 2;
-  transform: translateX(-25px);
+  transform: translateX(-10px); /* Slight adjustment for better alignment */
 }
 
 .highlight {
@@ -76,8 +76,9 @@
 .image-container {
   position: relative;
   width: 100%;
-  padding-top: 56.25%; /* 16:9 aspect ratio */
+  padding-top: 50%; /* Adjusted aspect ratio */
   overflow: hidden;
+  margin-top: -50px; /* Align the image closer to the heading */
 }
 
 .image-container img {
@@ -86,13 +87,13 @@
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain; /* Ensure full visibility of the image without clipping */
 }
 
 .description-container {
   flex: 0 0 35%;
-  padding-left: 60px;
-  margin-top: -50px;
+  padding-left: 40px; /* Reduced padding to align better with the image */
+  margin-top: 0; /* Align the text better with the image */
 }
 
 .description-container h3 {
@@ -140,6 +141,7 @@
   .image-container {
     width: 100%;
     margin-left: 0;
+    padding-top: 56.25%; /* Restore the aspect ratio for smaller screens */
   }
 }
 
