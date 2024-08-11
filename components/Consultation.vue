@@ -2,61 +2,32 @@
   <section class="consultation bg-primary">
     <div class="container">
       <div class="row align-items-center">
+
         <!-- Image Section -->
         <div class="col-lg-6">
           <div class="image-container">
             <img src="/home-15.webp" alt="Consultation Image" class="image">
           </div>
         </div>
+
         <!-- Form Section -->
         <div class="col-lg-6">
           <div class="form-container bg-light rounded-lg shadow-lg">
             <h2 class="text-center">Book A Free Consultation Now</h2>
             <form class="p-4" id="contact-form" @submit.prevent="handleSubmit">
               <div class="form-group">
-                <label for="businessName">URL/Business Name (if applicable)</label>
-                <input
-                  class="form-control rounded-pill"
-                  id="businessName"
-                  v-model="form.businessName"
-                  placeholder="URL/Business Name (if applicable)"
-                  type="text"
-                />
+                <input class="form-control rounded-pill" id="businessName" v-model="form.businessName" placeholder="URL/Business Name (if applicable)" type="text" />
               </div>
               <div class="form-group">
-                <label for="name">Name</label>
-                <input
-                  class="form-control rounded-pill"
-                  id="name"
-                  v-model="form.name"
-                  placeholder="Name"
-                  type="text"
-                />
+                <input class="form-control rounded-pill" id="name" v-model="form.name" placeholder="Name" type="text" />
               </div>
               <div class="form-group">
-                <label for="email">Email</label>
-                <input
-                  class="form-control rounded-pill"
-                  id="email"
-                  v-model="form.email"
-                  placeholder="Email"
-                  type="email"
-                />
+                <input class="form-control rounded-pill" id="email" v-model="form.email" placeholder="Email" type="email" />
               </div>
               <div class="form-group">
-                <label for="phone">Phone</label>
-                <input
-                  class="form-control rounded-pill"
-                  id="phone"
-                  v-model="form.phone"
-                  placeholder="Phone"
-                  type="tel"
-                />
+                <input class="form-control rounded-pill" id="phone" v-model="form.phone" placeholder="Phone" type="tel" />
               </div>
-              <button
-                type="submit"
-                class="btn btn-primary btn-block rounded-pill py-3"
-              >
+              <button type="submit" class="btn btn-primary btn-block rounded-pill py-3">
                 LEAD WITHOUT A SWEAT
               </button>
             </form>
@@ -65,6 +36,7 @@
             </p>
           </div>
         </div>
+
       </div>
     </div>
   </section>
@@ -94,7 +66,7 @@ export default {
 
 <style scoped>
 .consultation {
-  padding: 80px 0;
+  padding: 100px 0;
 }
 
 .image-container {
@@ -112,9 +84,9 @@ export default {
 }
 
 .form-container {
-  padding: 30px 40px;
+  padding: 40px 50px;
   border-radius: 30px;
-  margin-left: 15px;
+  margin-left: 35px;
 }
 
 h2 {
@@ -123,14 +95,7 @@ h2 {
 }
 
 .form-group {
-  margin-bottom: 20px;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 10px;
-  font-weight: bold;
-  color: var(--bs-dark);
+  margin-bottom: 25px;
 }
 
 .form-control {
@@ -159,9 +124,11 @@ h2 {
   .container .row {
     flex-direction: column;
   }
+
   .image-container {
     margin-bottom: 35px;
   }
+
   .form-container {
     margin-left: 0;
   }
