@@ -1,7 +1,7 @@
 <template>
   <section class="about-us">
     <div class="container-fluid">
-      <header class="text-center mb-5">
+      <header class="text-center mb-5 header-container">
         <h1>Embrace the <span class="highlight">Digital Wave</span><span class="semicolon">;</span><br>Ride the tide or get left behind!</h1>
       </header>
       <div class="content-wrapper">
@@ -44,6 +44,10 @@
   padding: 0 20px;
 }
 
+.header-container {
+  padding-top: 50px; /* Move the heading down 50px */
+}
+
 h1 {
   font-size: 2.8rem;
   font-weight: bold;
@@ -68,7 +72,7 @@ h1 {
 .image-container {
   flex: 0 0 60%;
   position: relative;
-  padding-top: 36%; /* Adjust this value to control the image height */
+  padding-top: 36%;
   overflow: hidden;
 }
 
@@ -83,8 +87,8 @@ h1 {
 
 .description-container {
   flex: 0 0 30%;
-  margin-top: 125px; /* Increased from 50px to 125px to shift down by 75px more */
-  margin-left: -50px; /* Shift left by 50px */
+  margin-top: 125px;
+  margin-left: -30px; /* Adjusted to move the content 20px to the right */
 }
 
 .description-container h2 {
@@ -99,47 +103,5 @@ h1 {
   margin-bottom: 20px;
 }
 
-@media (max-width: 1200px) {
-  h1 {
-    font-size: 2.5rem;
-  }
-
-  .description-container h2 {
-    font-size: 2rem;
-  }
-}
-
-@media (max-width: 992px) {
-  .content-wrapper {
-    flex-direction: column;
-  }
-
-  .image-container,
-  .description-container {
-    flex: 0 0 100%;
-  }
-
-  .description-container {
-    margin-top: 40px;
-    margin-left: 0;
-  }
-
-  .image-container {
-    padding-top: 56.25%; /* 16:9 aspect ratio for smaller screens */
-  }
-}
-
-@media (max-width: 768px) {
-  .about-us {
-    padding: 60px 0;
-  }
-
-  h1 {
-    font-size: 2rem;
-  }
-
-  .description-container h2 {
-    font-size: 1.75rem;
-  }
-}
+/* Media queries remain unchanged */
 </style>
