@@ -14,6 +14,7 @@
             ready, consult now!
           </p>
           <hr class="custom-line" />
+          <hr class="consultation-line" />
           <button class="consultation-button">FREE CONSULTATION</button>
         </div>
       </div>
@@ -29,7 +30,7 @@
 .seo-section {
   padding: 0;
   background-color: var(--bs-white);
-  margin-top: -175px; /* Increased negative margin to move content closer to the image */
+  margin-top: -175px;
 }
 
 .container-fluid {
@@ -90,6 +91,14 @@
   width: 80%;
 }
 
+.consultation-line {
+  border: none;
+  height: 2px;
+  background-color: var(--bs-primary);
+  margin: 20px 0;
+  width: 100%;
+}
+
 .consultation-button {
   background-color: var(--bs-primary);
   color: white;
@@ -110,7 +119,7 @@
 
 @media (max-width: 991px) {
   .seo-section {
-    margin-top: -125px; /* Adjust for smaller screens */
+    margin-top: -125px;
   }
 
   .row {

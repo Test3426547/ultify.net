@@ -83,7 +83,7 @@ h1 {
 
 .description-container {
   flex: 0 0 30%;
-  margin-top: 50px; /* Shift down by 50px */
+  margin-top: 125px; /* Increased from 50px to 125px to shift down by 75px more */
   margin-left: -50px; /* Shift left by 50px */
 }
 
