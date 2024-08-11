@@ -3,13 +3,12 @@
     <div class="container">
       <!-- First Row -->
       <div class="row">
-        <div class="col-lg-6 col-md-8">
-          <div class="position-relative ms-md-5 mb-0 mb-md-7 mb-lg-0 d-none d-md-block d-lg-block d-xl-block h-100">
-            <div class="bg-gradient-info w-100 h-100 border-radius-xl position-absolute"></div>
-            <img src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/soft-ui-design-system/assets/img/color-city.jpg" class="w-100 border-radius-xl mt-6 ms-5 position-absolute" style="max-height: 400px;" alt="Colorful City">
+        <div class="col-lg-6 col-md-8 mb-4 mb-lg-0">
+          <div class="image-container d-flex justify-content-center align-items-center h-100">
+            <img src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/soft-ui-design-system/assets/img/color-city.jpg" class="img-fluid border-radius-xl" style="max-height: 400px;" alt="Colorful City">
           </div>
         </div>
-        <div class="col-lg-6 col-md-12 ms-auto">
+        <div class="col-lg-6 col-md-12">
           <div class="p-3 pt-0">
             <h2 class="text-gradient text-primary mb-0">If you want results, you want ULTIFY.</h2>
             <h4 class="mb-4">About Ultify</h4>
@@ -25,7 +24,7 @@
 
       <!-- Second Row -->
       <div class="row mt-5">
-        <div class="col-lg-6 col-md-12 me-auto">
+        <div class="col-lg-6 col-md-12 mb-4 mb-lg-0">
           <div class="p-3 pt-0">
             <h4 class="text-gradient text-primary mb-0">Driven by Perfection, Crafted by Experts.</h4>
             <h4 class="mb-4">Driven, Perfection, Experts</h4>
@@ -35,9 +34,8 @@
           </div>
         </div>
         <div class="col-lg-6 col-md-8">
-          <div class="position-relative ms-md-5 d-none d-md-block d-lg-block d-xl-block h-100">
-            <div class="w-100 h-100 bg-gradient-warning border-radius-xl position-absolute"></div>
-            <img src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/soft-ui-design-system/assets/img/arena.jpg" class="w-100 border-radius-xl mt-6 ms-n5 position-absolute" style="max-height: 400px;" alt="Arena">
+          <div class="image-container d-flex justify-content-center align-items-center h-100">
+            <img src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/soft-ui-design-system/assets/img/arena.jpg" class="img-fluid border-radius-xl" style="max-height: 400px;" alt="Arena">
           </div>
         </div>
       </div>
@@ -55,16 +53,23 @@ export default {
 </script>
 
 <style scoped>
-/* Base styles */
+.image-container {
+  min-height: 400px;
+}
 
-html {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  font-size: 16px;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
+.border-radius-xl {
+  border-radius: 1rem;
+}
+
+.text-gradient.text-primary {
+  background: linear-gradient(to right, #5e72e4 0%, #825ee4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@media (max-width: 768px) {
+  .image-container {
+    min-height: 300px;
+  }
 }
 </style>

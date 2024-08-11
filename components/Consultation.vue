@@ -16,18 +16,18 @@
             <h2 class="text-center">Book A Free Consultation Now</h2>
             <form class="p-4" id="contact-form" @submit.prevent="handleSubmit">
               <div class="form-group">
-                <input class="form-control rounded-pill" id="businessName" v-model="form.businessName" placeholder="URL/Business Name (if applicable)" type="text" />
+                <input class="form-control" id="businessName" v-model="form.businessName" placeholder="URL/Business Name (if applicable)" type="text" />
               </div>
               <div class="form-group">
-                <input class="form-control rounded-pill" id="name" v-model="form.name" placeholder="Name" type="text" />
+                <input class="form-control" id="name" v-model="form.name" placeholder="Name" type="text" />
               </div>
               <div class="form-group">
-                <input class="form-control rounded-pill" id="email" v-model="form.email" placeholder="Email" type="email" />
+                <input class="form-control" id="email" v-model="form.email" placeholder="Email" type="email" />
               </div>
               <div class="form-group">
-                <input class="form-control rounded-pill" id="phone" v-model="form.phone" placeholder="Phone" type="tel" />
+                <input class="form-control" id="phone" v-model="form.phone" placeholder="Phone" type="tel" />
               </div>
-              <button type="submit" class="btn btn-primary btn-block rounded-pill py-3">
+              <button type="submit" class="btn btn-primary btn-block">
                 LEAD WITHOUT A SWEAT
               </button>
             </form>
@@ -103,6 +103,7 @@ h2 {
   padding: 15px 20px;
   border: none;
   background-color: #f5f5f5;
+  border-radius: 50px; /* Ensure full rounded corners */
 }
 
 .btn-block {
@@ -111,6 +112,7 @@ h2 {
   padding: 15px 30px;
   font-size: 18px;
   font-weight: bold;
+  border-radius: 50px; /* Ensure full rounded corners */
 }
 
 .disclaimer {
