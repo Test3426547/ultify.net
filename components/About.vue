@@ -97,7 +97,7 @@
 .description-container {
   flex: 0 0 35%;
   padding-left: 40px;
-  margin-top: -30px; /* Adjust margin to align text with the bottom of the image */
+  margin-top: -130px; /* Shift body paragraph 100px up */
   align-self: flex-end; /* Ensure it aligns with the bottom of the image */
 }
 
