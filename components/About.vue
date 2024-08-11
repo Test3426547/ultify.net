@@ -11,13 +11,13 @@
         <div class="description-container">
           <h3>ABOUT US</h3>
           <p>
-            Capitalise from the technological shift of the business world. 
-            ULTIFY Solutions & Marketing is a team of professionals that 
-            are dedicated and have rigorously understood the algorithms 
+            Capitalise from the technological shift of the business world.
+            ULTIFY Solutions & Marketing is a team of professionals that
+            are dedicated and have rigorously understood the algorithms
             of social media and online marketing.
           </p>
           <p>
-            Get your Digital Marketing work done by a real team of qualified 
+            Get your Digital Marketing work done by a real team of qualified
             professionals in Australia now.
           </p>
         </div>
@@ -111,7 +111,7 @@
   .text-container {
     flex: 0 0 65%;
   }
-  
+
   .description-container {
     flex: 0 0 35%;
     padding-left: 60px;
@@ -122,7 +122,7 @@
   .text-container h2 {
     font-size: 3rem;
   }
-  
+
   .description-container h3 {
     font-size: 2rem;
   }
@@ -133,7 +133,8 @@
     flex-direction: column;
   }
 
-  .text-container, .description-container {
+  .text-container,
+  .description-container {
     flex: 0 0 100%;
   }
 

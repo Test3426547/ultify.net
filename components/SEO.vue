@@ -110,7 +110,8 @@
     gap: 60px;
   }
 
-  .buttons-container, .consultation-container {
+  .buttons-container,
+  .consultation-container {
     align-items: center;
     text-align: center;
   }
