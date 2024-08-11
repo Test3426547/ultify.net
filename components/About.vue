@@ -107,7 +107,6 @@
   margin-bottom: 20px;
 }
 
-@media (max-width: 1400px) {
   .text-container {
     flex: 0 0 65%;
   }

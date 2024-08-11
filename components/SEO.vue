@@ -27,7 +27,7 @@
 
 <style scoped>
 .seo-section {
-  padding: 80px 0;
+  padding: 30px 0; /* Reduced top padding to remove 50px from the top */
   background-color: var(--bs-white);
   overflow: hidden;
 }
@@ -37,11 +37,12 @@
 }
 
 .row {
-  gap: 100px;
+  gap: 200px; /* Increased gap to 200px to shift the sections apart */
 }
 
 .buttons-container {
-  gap: 60px;
+  gap: 40px; /* Ensure uniform spacing between the pills */
+  margin-left: -100px; /* Shift the pills 100px to the left */
 }
 
 .seo-button {
@@ -63,12 +64,9 @@
   transform: translateY(-5px);
 }
 
-.seo-button.live-chat {
-  transform: translateY(-30px);
-}
-
 .consultation-container {
   text-align: left;
+  margin-right: -100px; /* Shift the right section 100px to the right */
 }
 
 .consultation-container h2 {
@@ -110,10 +108,11 @@
     gap: 60px;
   }
 
-  .buttons-container,
-  .consultation-container {
+  .buttons-container, .consultation-container {
     align-items: center;
     text-align: center;
+    margin-left: 0; /* Reset margin on smaller screens */
+    margin-right: 0; /* Reset margin on smaller screens */
   }
 
   .consultation-container hr {
@@ -122,10 +121,6 @@
 
   .consultation-button {
     align-self: center;
-  }
-
-  .seo-button.live-chat {
-    transform: translateY(0);
   }
 }
 

@@ -2,8 +2,8 @@
   <div class="service-cards-section position-relative">
     <div class="container">
       <div class="row g-4">
-        <div class="col-lg-3 col-md-6" v-for="(card, index) in cards" :key="index">
-          <div class="card">
+        <div class="col-lg-3 col-md-6 d-flex" v-for="(card, index) in cards" :key="index">
+          <div class="card flex-fill">
             <div class="card-body">
               <h5 class="card-title">{{ card.title }}</h5>
               <p class="card-text">{{ card.description }}</p>
@@ -53,6 +53,9 @@ const cards = [
   transition: transform 0.3s ease-in-out;
   position: relative;
   overflow: visible;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .card:hover {
@@ -62,6 +65,7 @@ const cards = [
 .card-body {
   padding: 2rem;
   text-align: left;
+  flex-grow: 1;
 }
 
 .card-title {
