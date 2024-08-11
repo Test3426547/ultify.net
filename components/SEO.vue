@@ -10,10 +10,10 @@
         <div class="col-lg-5 d-flex flex-column justify-content-center consultation-container">
           <h2>So you want to ride the wave?!</h2>
           <p>
-            View our many resources prior to your consultation.
-            If you are ready, consult now!
+            View our many resources prior to your consultation. If you are
+            ready, consult now!
           </p>
-          <hr>
+          <hr />
           <button class="consultation-button">FREE CONSULTATION</button>
         </div>
       </div>
@@ -27,17 +27,17 @@
 
 <style scoped>
 .seo-section {
-  padding: 30px 0; /* Reduced top padding to remove 50px from the top */
+  padding: 0; /* No padding to align closely with the above image */
   background-color: var(--bs-white);
-  overflow: hidden;
 }
 
 .container-fluid {
   max-width: 1400px;
+  padding: 50px 0; /* Space out the section within the container */
 }
 
 .row {
-  gap: 200px; /* Increased gap to 200px to shift the sections apart */
+  gap: 200px; /* Maintain the 200px gap between the sections */
 }
 
 .buttons-container {
@@ -108,7 +108,8 @@
     gap: 60px;
   }
 
-  .buttons-container, .consultation-container {
+  .buttons-container,
+  .consultation-container {
     align-items: center;
     text-align: center;
     margin-left: 0; /* Reset margin on smaller screens */
