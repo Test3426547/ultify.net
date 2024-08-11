@@ -36,12 +36,13 @@
   display: flex;
   align-items: center;
   background-color: var(--bs-white);
-  padding: 40px 0;
+  padding: 80px 0;
+  overflow: hidden;
 }
 
 .container {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -53,15 +54,17 @@
 }
 
 .text-container {
-  flex: 0 0 60%;
-  padding-right: 40px;
+  flex: 0 0 65%;
+  position: relative;
 }
 
 .text-container h2 {
-  font-size: 2.5rem;
+  font-size: 3.5rem;
   font-weight: bold;
   line-height: 1.2;
   margin-bottom: 30px;
+  position: relative;
+  z-index: 2;
 }
 
 .highlight {
@@ -69,28 +72,46 @@
 }
 
 .image-container {
-  margin-top: 30px;
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 aspect ratio */
+  overflow: hidden;
 }
 
 .image-container img {
-  max-width: 100%;
-  height: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .description-container {
-  flex: 0 0 35%;
+  flex: 0 0 30%;
+  padding-left: 40px;
 }
 
 .description-container h3 {
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: bold;
   margin-bottom: 20px;
 }
 
 .description-container p {
-  font-size: 1rem;
+  font-size: 1.1rem;
   line-height: 1.6;
   margin-bottom: 20px;
+}
+
+@media (max-width: 1200px) {
+  .text-container h2 {
+    font-size: 3rem;
+  }
+  
+  .description-container h3 {
+    font-size: 2rem;
+  }
 }
 
 @media (max-width: 992px) {
@@ -100,11 +121,15 @@
 
   .text-container, .description-container {
     flex: 0 0 100%;
-    padding-right: 0;
   }
 
   .description-container {
     margin-top: 40px;
+    padding-left: 0;
+  }
+
+  .text-container h2 {
+    font-size: 2.5rem;
   }
 }
 
