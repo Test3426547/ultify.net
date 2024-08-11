@@ -1,6 +1,6 @@
 <template>
   <section class="about-us">
-    <div class="container">
+    <div class="container-fluid">
       <div class="content-wrapper">
         <div class="text-container">
           <h2>Embrace the <span class="highlight">Digital Wave</span>;<br>Ride the tide or get left behind!</h2>
@@ -40,9 +40,9 @@
   overflow: hidden;
 }
 
-.container {
+.container-fluid {
   width: 100%;
-  max-width: 1400px;
+  max-width: 1600px;
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -54,7 +54,7 @@
 }
 
 .text-container {
-  flex: 0 0 65%;
+  flex: 0 0 70%;
   position: relative;
 }
 
@@ -65,6 +65,7 @@
   margin-bottom: 30px;
   position: relative;
   z-index: 2;
+  transform: translateX(-25px);
 }
 
 .highlight {
@@ -73,9 +74,10 @@
 
 .image-container {
   position: relative;
-  width: 100%;
+  width: calc(100% + 100px);
+  margin-left: -100px;
   padding-top: 56.25%; /* 16:9 aspect ratio */
-  overflow: hidden;
+  overflow: visible;
 }
 
 .image-container img {
@@ -89,7 +91,8 @@
 
 .description-container {
   flex: 0 0 30%;
-  padding-left: 40px;
+  padding-left: 90px;
+  margin-top: -50px;
 }
 
 .description-container h3 {
@@ -102,6 +105,17 @@
   font-size: 1.1rem;
   line-height: 1.6;
   margin-bottom: 20px;
+}
+
+@media (max-width: 1400px) {
+  .text-container {
+    flex: 0 0 65%;
+  }
+  
+  .description-container {
+    flex: 0 0 35%;
+    padding-left: 60px;
+  }
 }
 
 @media (max-width: 1200px) {
@@ -130,6 +144,12 @@
 
   .text-container h2 {
     font-size: 2.5rem;
+    transform: translateX(0);
+  }
+
+  .image-container {
+    width: 100%;
+    margin-left: 0;
   }
 }
 
