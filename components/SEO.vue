@@ -27,23 +27,23 @@
 
 <style scoped>
 .seo-section {
-  padding: 0 0 0 0; /* Reduced top padding by 50px */
+  padding: 0;
   background-color: var(--bs-white);
-  margin-top: -125px; /* Combined previous 75px reduction with additional 50px */
+  margin-top: -175px; /* Increased negative margin to move content closer to the image */
 }
 
 .container-fluid {
   max-width: 1400px;
-  padding: 0 20px 50px 20px; /* Space out the section within the container */
+  padding: 0 20px 50px 20px;
 }
 
 .row {
-  gap: 200px; /* Maintain the 200px gap between the sections */
+  gap: 200px;
 }
 
 .buttons-container {
-  gap: 40px; /* Ensure uniform spacing between the pills */
-  margin-left: -100px; /* Shift the pills 100px to the left */
+  gap: 40px;
+  margin-left: -100px;
 }
 
 .seo-button {
@@ -66,8 +66,8 @@
 }
 
 .consultation-container {
-  text-align: center; /* Centered text alignment */
-  margin-right: 0; /* Removed right margin to center */
+  text-align: center;
+  margin-right: 0;
 }
 
 .consultation-container h2 {
@@ -75,19 +75,19 @@
   color: var(--bs-primary);
   margin-bottom: 20px;
   font-weight: bold;
-  white-space: nowrap; /* Ensure the text stays on one line */
+  white-space: nowrap;
 }
 
 .consultation-container p {
   font-size: 1.2em;
   margin-bottom: 30px;
-  font-weight: 600; /* Thicker text */
+  font-weight: 600;
 }
 
 .consultation-container .custom-line {
   border-top: 2px solid var(--bs-primary);
-  margin: 30px auto; /* Center the line */
-  width: 80%; /* Adjust width to fit under the text */
+  margin: 30px auto;
+  width: 80%;
 }
 
 .consultation-button {
@@ -101,7 +101,7 @@
   text-align: center;
   transition: transform 0.3s ease;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  align-self: center; /* Center the button */
+  align-self: center;
 }
 
 .consultation-button:hover {
@@ -109,6 +109,10 @@
 }
 
 @media (max-width: 991px) {
+  .seo-section {
+    margin-top: -125px; /* Adjust for smaller screens */
+  }
+
   .row {
     gap: 60px;
   }
@@ -117,8 +121,8 @@
   .consultation-container {
     align-items: center;
     text-align: center;
-    margin-left: 0; /* Reset margin on smaller screens */
-    margin-right: 0; /* Reset margin on smaller screens */
+    margin-left: 0;
+    margin-right: 0;
   }
 
   .consultation-container hr {
@@ -133,6 +137,7 @@
 @media (max-width: 768px) {
   .seo-section {
     padding: 60px 0;
+    margin-top: 0;
   }
 
   .consultation-container h2 {
