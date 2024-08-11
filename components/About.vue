@@ -3,21 +3,18 @@
     <div class="container-fluid">
       <div class="content-wrapper">
         <div class="text-container">
-          <h2>
-            Embrace the <span class="highlight">Digital Wave</span>;<br />
-            Ride the tide or get left behind!
-          </h2>
-        </div>
-        <div class="image-container">
-          <img src="/home-04.webp" alt="Cyclist on a wave" />
+          <h2>Embrace the <span class="highlight">Digital Wave</span>;<br>Ride the tide or get left behind!</h2>
+          <div class="image-container">
+            <img src="/home-04.webp" alt="Cyclist on a wave">
+          </div>
         </div>
         <div class="description-container">
           <h3>ABOUT US</h3>
           <p>
             Capitalise from the technological shift of the business world.
-            ULTIFY Solutions & Marketing is a team of professionals that are dedicated
-            and have rigorously understood the algorithms of social media and online
-            marketing.
+            ULTIFY Solutions & Marketing is a team of professionals that
+            are dedicated and have rigorously understood the algorithms
+            of social media and online marketing.
           </p>
           <p>
             Get your Digital Marketing work done by a real team of qualified
@@ -35,11 +32,11 @@
 
 <style scoped>
 .about-us {
+  min-height: 100vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
   background-color: var(--bs-white);
-  padding: 30px 0; /* Adjusted to allow for space above the image */
+  padding: 80px 0;
   overflow: hidden;
 }
 
@@ -51,25 +48,25 @@
 }
 
 .content-wrapper {
-  position: relative;
-  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
 }
 
 .text-container {
-  position: absolute;
-  top: 50px; /* Adjust to place the text on top of the image */
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 2;
-  text-align: center;
+  flex: 0 0 65%;
+  position: relative;
 }
 
 .text-container h2 {
   font-size: 3.5rem;
   font-weight: bold;
   line-height: 1.2;
-  color: white;
-  margin: 0;
+  margin-bottom: 30px;
+  position: relative;
+  z-index: 2;
+  transform: translateX(-25px);
 }
 
 .highlight {
@@ -77,25 +74,25 @@
 }
 
 .image-container {
-  width: 100%;
-  height: auto;
   position: relative;
-  z-index: 1;
-  margin-bottom: -100px; /* Overlap the SEO section */
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 aspect ratio */
+  overflow: hidden;
 }
 
 .image-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: auto;
+  height: 100%;
   object-fit: cover;
 }
 
 .description-container {
-  background-color: white;
-  padding: 30px;
-  z-index: 3;
-  text-align: left;
-  margin-top: 50px;
+  flex: 0 0 35%;
+  padding-left: 60px;
+  margin-top: -50px;
 }
 
 .description-container h3 {
@@ -121,20 +118,36 @@
 }
 
 @media (max-width: 992px) {
-  .text-container h2 {
-    font-size: 2.5rem;
+  .content-wrapper {
+    flex-direction: column;
   }
 
-  .image-container img {
-    object-fit: contain; /* Make sure the image is fully visible */
+  .text-container,
+  .description-container {
+    flex: 0 0 100%;
   }
 
   .description-container {
-    padding: 20px;
+    margin-top: 40px;
+    padding-left: 0;
+  }
+
+  .text-container h2 {
+    font-size: 2.5rem;
+    transform: translateX(0);
+  }
+
+  .image-container {
+    width: 100%;
+    margin-left: 0;
   }
 }
 
 @media (max-width: 768px) {
+  .about-us {
+    padding: 60px 0;
+  }
+
   .text-container h2 {
     font-size: 2rem;
   }
