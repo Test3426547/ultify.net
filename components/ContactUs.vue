@@ -65,7 +65,7 @@ const submitForm = () => {
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url('/running-man.webp');
+  background-image: url('/running-man.svg');
   background-size: 130%;
   background-position: center 25%;
   background-repeat: no-repeat;
