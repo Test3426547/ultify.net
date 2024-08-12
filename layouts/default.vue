@@ -42,7 +42,7 @@ function toggleChatbot() {
 
 <style scoped>
 /* Import VAG Rounded Bold font */
-@import url('https://fonts.cdnfonts.com/css/vag-rundschrift-d');
+@import url('https://fonts.cdnfonts.com/css/vag-rounded');
 
 /* Base styles */
 * {
