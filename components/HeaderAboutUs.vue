@@ -44,6 +44,13 @@ const button = ref(null);
 let buttonAnimation;
 
 onMounted(() => {
+  // Delay the start of animations to ensure refs are properly mounted
+  setTimeout(() => {
+    animateHeading();
+  }, 100);
+});
+
+const animateHeading = () => {
   gsap.to(heading.value, {
     duration: 1,
     opacity: 1,
@@ -54,26 +61,26 @@ onMounted(() => {
       animateBody();
     }
   });
+};
 
-  function animateBody() {
-    gsap.to(body.value, {
-      opacity: 1,
-      x: 0,
-      duration: 1,
-      ease: "power3.out",
-      onComplete: animateButton
-    });
-  }
+const animateBody = () => {
+  gsap.to(body.value, {
+    opacity: 1,
+    x: 0,
+    duration: 1,
+    ease: "power3.out",
+    onComplete: animateButton
+  });
+};
 
-  function animateButton() {
-    gsap.to(button.value, {
-      opacity: 1,
-      y: -20,
-      duration: 0.5,
-      ease: "back.out(1.7)"
-    });
-  }
-});
+const animateButton = () => {
+  gsap.to(button.value, {
+    opacity: 1,
+    y: -20,
+    duration: 0.5,
+    ease: "back.out(1.7)"
+  });
+};
 
 const startButtonAnimation = () => {
   buttonAnimation = gsap.to(button.value, {
