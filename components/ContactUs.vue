@@ -1,12 +1,8 @@
 <template>
   <section class="consultation">
+    <div class="background-image"></div>
     <div class="container-fluid">
-      <div class="row">
-        <div class="col-lg-7 image-column">
-          <div class="image-container">
-            <img src="/home-05.png" alt="Digital Marketing Illustration">
-          </div>
-        </div>
+      <div class="row justify-content-end">
         <div class="col-lg-5 form-column">
           <div class="form-container">
             <h2>Book A Free<br>Consultation Now</h2>
@@ -54,37 +50,29 @@ const submitForm = () => {
 
 <style scoped>
 .consultation {
-  background-color: #45c5ff; /* Adjust to match your exact brand color */
+  position: relative;
   min-height: 100vh;
   display: flex;
   align-items: center;
+  background-color: #45c5ff; /* Fallback color */
+}
+
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('/home-05.png'); /* Replace with your image path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.8; /* Adjust this value to make the image more or less visible */
 }
 
 .container-fluid {
-  padding: 0;
-}
-
-.row {
-  margin: 0;
-}
-
-.image-column, .form-column {
-  padding: 0;
-}
-
-.image-container {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.image-container img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  border-radius: 20px;
+  position: relative;
+  z-index: 1;
 }
 
 .form-column {
@@ -150,16 +138,7 @@ const submitForm = () => {
 
 @media (max-width: 991px) {
   .consultation {
-    min-height: auto;
     padding: 60px 0;
-  }
-
-  .image-column {
-    margin-bottom: 30px;
-  }
-
-  .image-container {
-    max-height: 300px;
   }
 
   .form-column {
