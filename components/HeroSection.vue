@@ -88,17 +88,16 @@ onUnmounted(() => {
 .image-wrapper {
   position: relative;
   z-index: 1;
-  padding-right: 100px; /* Move images 100px to the right */
-  overflow: hidden; /* Hide any overflow */
+  padding-left: 100px; /* Move images 100px to the right */
+  overflow: visible; /* Allow overflow to be visible */
 }
 
 .image-wrapper img {
-  max-width: none; /* Allow image to exceed wrapper width */
-  height: 100%; /* Ensure image fills the height */
-  width: auto; /* Maintain aspect ratio */
-  position: absolute; /* Position the image absolutely within the wrapper */
-  top: 0;
-  left: 0;
+  max-width: 100%; /* Ensure image fits within the wrapper */
+  height: auto; /* Maintain aspect ratio */
+  width: 100%; /* Fill the width of the wrapper */
+  position: relative; /* Use relative positioning */
+  display: block; /* Ensure block display */
 }
 
 .fade-enter-active,
@@ -127,13 +126,11 @@ onUnmounted(() => {
   }
 
   .image-wrapper {
-    padding-right: 0; /* Remove right padding on mobile */
+    padding-left: 0; /* Remove left padding on mobile */
   }
 
   .image-wrapper img {
-    position: static; /* Reset positioning on mobile */
     max-width: 100%; /* Allow image to be responsive on mobile */
-    height: auto;
   }
 }
 
@@ -155,4 +152,4 @@ onUnmounted(() => {
     padding: 1rem 2.5rem;
   }
 }
-</style >
+</style>

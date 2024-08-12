@@ -21,8 +21,6 @@
         </g>
       </svg>
     </div>
-    <div class="bottom-section">
-    </div>
   </div>
 </template>
 
@@ -48,48 +46,54 @@ const waveColors = computed(() => [
 .top-section {
   background-color: #ffffff;
   color: #000000;
-  padding: 2rem;
-  min-height: 50vh;
-  position: relative;
+  padding: 4rem 2rem;
+  min-height: calc(100vh - 150px);
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .content {
   max-width: 800px;
-  margin: 0 auto;
-  text-align: left;
+  text-align: center;
 }
 
 .welcome {
   background-color: var(--bs-primary);
   color: #ffffff;
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  font-size: 0.9rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  display: inline-block;
+  margin-bottom: 1.5rem;
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: 3.5rem;
   line-height: 1.2;
   color: var(--bs-primary);
-  margin: 1rem 0;
+  margin: 1rem 0 1.5rem;
 }
 
 p {
-  font-size: 1.1rem;
-  line-height: 1.5;
-  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
 }
 
 .get-started-btn {
   background-color: var(--bs-primary);
   color: #ffffff;
   border: none;
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-  border-radius: 25px;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  border-radius: 30px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.get-started-btn:hover {
+  background-color: darken(var(--bs-primary), 10%);
 }
 
 .wave-container {
@@ -136,29 +140,27 @@ p {
   }
 }
 
-.bottom-section {
-  background: linear-gradient(-45deg, var(--bs-primary), var(--bs-primary), #4682B4);
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
-  color: #ffffff;
-  padding: 2rem;
-  min-height: calc(50vh - 150px);
-}
+@media (max-width: 768px) {
+  .top-section {
+    padding: 3rem 1rem;
+  }
 
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
+  h1 {
+    font-size: 2.5rem;
   }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
 
-h2 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+  p {
+    font-size: 1.1rem;
+  }
+
+  .welcome {
+    font-size: 1rem;
+    padding: 0.6rem 1.2rem;
+  }
+
+  .get-started-btn {
+    padding: 0.8rem 1.6rem;
+    font-size: 1rem;
+  }
 }
 </style>
