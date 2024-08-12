@@ -56,15 +56,17 @@
 
 .btn {
   font-size: 1.5rem;
-  padding: 20px 40px;
+  padding: 20px 0;
   border-radius: 50px;
   text-decoration: none;
   transition: transform 0.3s ease-in-out;
+  width: 250px;
+  display: inline-block;
+  text-align: center;
 }
 
 .btn-lg {
   font-size: 1.8rem;
-  padding: 25px 50px;
 }
 
 .btn-primary {
@@ -109,12 +111,12 @@
   
   .btn {
     font-size: 1.2rem;
-    padding: 15px 30px;
+    padding: 15px 0;
+    width: 200px;
   }
   
   .btn-lg {
     font-size: 1.5rem;
-    padding: 20px 40px;
   }
 }
 </style>

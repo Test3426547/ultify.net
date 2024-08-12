@@ -8,8 +8,8 @@
       <div class="faq-grid">
         <div v-for="(faq, index) in faqs" :key="index" class="faq-item">
           <div class="faq-question bg-primary text-white" @click="toggleAnswer(index)" @mouseover="startBounce(index)" @mouseleave="stopBounce(index)">
-            <span>{{ faq.question }}</span>
-            <span class="faq-icon">{{ faq.showAnswer ? '▲' : '▼' }}</span>
+          <span>{{ faq.question }}</span>
+          <span class="faq-icon">{{ faq.showAnswer ? '▲' : '▼' }}</span>
           </div>
           <div v-if="faq.showAnswer" class="faq-answer bg-primary text-white">
             {{ faq.answer }}
@@ -86,7 +86,7 @@ const stopBounce = (index) => {
 }
 
 .faq-question {
-  padding: 20px 25px;
+  padding: 10px 25px;
   border-radius: 50px;
   cursor: pointer;
   display: flex;
@@ -95,7 +95,15 @@ const stopBounce = (index) => {
   font-weight: bold;
   margin-bottom: 10px;
   transition: transform 0.3s ease-in-out;
-  min-height: 80px;
+  height: 80px; /* Set a fixed height */
+  overflow: hidden; /* Hide overflowing text */
+}
+
+.faq-question span:first-child {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  line-height: 1.2; /* Adjust line height for better readability */
 }
 
 .faq-question:hover {
