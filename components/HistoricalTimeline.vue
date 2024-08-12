@@ -1,19 +1,20 @@
 <template>
-  <section class="timeline-section py-12 bg-primary text-white">
-    <div class="container mx-auto px-4">
-      <h2 class="text-4xl font-bold text-center mb-12">Historical Timeline</h2>
+  <section class="timeline-section py-12 bg-primary">
+    <div class="container mx-auto px-4 relative">
+      <h2 class="text-6xl font-bold text-center mb-12 text-white">Historical Timeline</h2>
       <div class="timeline-container">
         <div v-for="(item, index) in timelineData" :key="index" class="timeline-item" :class="{ 'active': index === activeIndex }">
-          <div class="timeline-content">
-            <h3 class="timeline-year">{{ item.year }}</h3>
-            <p class="timeline-description">{{ item.description }}</p>
+          <div class="timeline-content bg-white rounded-lg shadow-lg p-6">
+            <h3 class="timeline-year text-primary">{{ item.year }}</h3>
+            <p class="timeline-description text-primary">{{ item.description }}</p>
           </div>
         </div>
       </div>
       <div class="timeline-navigation">
-        <button @click="prevItem" :disabled="activeIndex === 0">&lt;</button>
-        <button @click="nextItem" :disabled="activeIndex === timelineData.length - 1">&gt;</button>
+        <button @click="prevItem" :disabled="activeIndex === 0" class="text-white">&lt;</button>
+        <button @click="nextItem" :disabled="activeIndex === timelineData.length - 1" class="text-white">&gt;</button>
       </div>
+      <img src="/chatbot-icon.png" alt="Ultify Logo" class="absolute right-0 top-0 w-1/4 max-w-xs">
     </div>
   </section>
 </template>
@@ -90,13 +91,6 @@ export default {
   transform: translateZ(0) rotateY(0);
 }
 
-.timeline-content {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 2rem;
-  border-radius: 1rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
 .timeline-year {
   font-size: 3rem;
   font-weight: bold;
@@ -117,7 +111,6 @@ export default {
 .timeline-navigation button {
   background: rgba(255, 255, 255, 0.2);
   border: none;
-  color: white;
   font-size: 1.5rem;
   padding: 0.5rem 1rem;
   margin: 0 0.5rem;

@@ -1,5 +1,5 @@
 <template>
-  <section class="relative h-[90vh] w-full overflow-hidden">
+  <section class="relative h-screen w-full overflow-hidden flex items-center">
     <div class="absolute inset-0 bg-white"></div>
     <div class="wave-container">
       <svg class="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 24 150 28" preserveAspectRatio="none">
@@ -14,13 +14,14 @@
         </g>
       </svg>
     </div>
-    <div class="relative z-10 mx-auto flex h-full max-w-7xl flex-col items-center justify-center px-4 text-center">
-      <h1 ref="heading" class="text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl text-black">Learn More About Us</h1>
-      <p ref="body" class="mt-6 text-lg font-medium sm:text-xl lg:text-2xl text-black">Need to get in contact with us? Our email and phone number are at your disposal.</p>
-      <div class="mt-10">
+    <div class="relative z-10 mx-auto max-w-7xl px-4 text-center">
+      <h1 ref="heading" class="text-6xl sm:text-7xl lg:text-8xl font-bold tracking-tight text-black mb-8 opacity-0">Learn More About Us</h1>
+      <p ref="body" class="text-xl sm:text-2xl lg:text-3xl font-medium text-black mb-12 opacity-0 transform translate-x-full">
+        Need to get in contact with us?<br>Our email and phone number are at your disposal.
+      </p>
+      <div ref="button" class="opacity-0">
         <a
-          ref="button"
-          class="inline-flex h-12 items-center justify-center rounded-full bg-[#37B5FF] px-6 py-3 text-sm font-medium text-white shadow-sm transition-colors hover:bg-[#37B5FF]/90 focus:outline-none focus:ring-2 focus:ring-[#37B5FF] focus:ring-offset-2"
+          class="inline-flex h-14 items-center justify-center rounded-full bg-[#37B5FF] px-8 py-4 text-lg font-medium text-white shadow-sm transition-colors hover:bg-[#37B5FF]/90 focus:outline-none focus:ring-2 focus:ring-[#37B5FF] focus:ring-offset-2"
           href="#"
           @mouseenter="startButtonAnimation"
           @mouseleave="stopButtonAnimation"
@@ -43,19 +44,35 @@ const button = ref(null);
 let buttonAnimation;
 
 onMounted(() => {
-  gsap.from(heading.value, {
+  gsap.to(heading.value, {
     duration: 1,
-    opacity: 0,
-    scale: 1.2,
-    ease: "elastic.out(1, 0.5)"
+    opacity: 1,
+    scale: 1.1,
+    ease: "elastic.out(1, 0.5)",
+    onComplete: () => {
+      gsap.to(heading.value, { scale: 1, duration: 0.5 });
+      animateBody();
+    }
   });
 
-  gsap.from(body.value, {
-    duration: 1,
-    opacity: 0,
-    x: 100,
-    ease: "power2.out"
-  });
+  function animateBody() {
+    gsap.to(body.value, {
+      opacity: 1,
+      x: 0,
+      duration: 1,
+      ease: "power3.out",
+      onComplete: animateButton
+    });
+  }
+
+  function animateButton() {
+    gsap.to(button.value, {
+      opacity: 1,
+      y: -20,
+      duration: 0.5,
+      ease: "back.out(1.7)"
+    });
+  }
 });
 
 const startButtonAnimation = () => {
