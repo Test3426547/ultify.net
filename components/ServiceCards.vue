@@ -2,7 +2,7 @@
   <div class="service-cards-section position-relative">
     <div class="container">
       <h2 class="main-heading text-primary text-center mb-2">Embrace the Digital Wave;</h2>
-      <h2 class="main-heading text-primary text-center mb-2">Ride the tide or get left behind!</h2>
+      <h2 class="main-heading text-primary text-center mb-5">Ride the tide or get left behind!</h2>
       <div class="row g-4">
         <div class="col-lg-3 col-md-6 d-flex" v-for="(card, index) in cards" :key="index">
           <div class="card flex-fill">
@@ -43,46 +43,90 @@ const cards = [
 
 <style scoped>
 .service-cards-section {
-  padding: 0 0 80px; /* Removed top padding */
+  padding: 0 0 30px; /* Reduced bottom padding */
   background-color: var(--bs-white);
   overflow: hidden;
 }
 
 .container {
-  padding-top: 50px; /* Added padding to the container instead */
+  padding-top: 50px;
 }
 
-.main-heading,
-.sub-heading {
+.main-heading {
   font-size: 3rem;
   line-height: 1.2;
   color: var(--bs-primary);
-  margin-top: 0; /* Ensure no top margin on headings */
-  margin-bottom: 1rem; /* Add some space between headings and cards */
+  margin-top: 0;
+  margin-bottom: 1rem;
 }
 
-.sub-heading {
-  font-size: 2.5rem;
-  margin-bottom: 2rem; /* Add more space after the second heading */
+.card {
+  background-color: var(--bs-primary);
+  border-radius: 25px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+  position: relative;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-/* Rest of the styles remain the same */
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.card-body {
+  padding: 2rem;
+  text-align: left;
+  flex-grow: 1;
+}
+
+.card-title {
+  color: var(--bs-white);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.card-text {
+  color: var(--bs-white);
+  font-size: 1rem;
+}
+
+.card-badge {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--bs-warning);
+  color: var(--bs-white);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
 @media (max-width: 991.98px) {
   .container {
-    padding-top: 30px; /* Adjust padding for smaller screens */
+    padding-top: 30px;
   }
 
   .card {
     margin-bottom: 40px;
   }
   
-  .main-heading,
-  .sub-heading {
+  .main-heading {
     font-size: 2.5rem;
   }
-  
-  .sub-heading {
+}
+
+@media (max-width: 768px) {
+  .main-heading {
     font-size: 2rem;
   }
 }
