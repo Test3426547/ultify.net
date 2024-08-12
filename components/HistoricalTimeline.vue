@@ -1,26 +1,18 @@
 <template>
-  <section class="py-6 bg-light">
-    <div class="container">
-      <h2 class="text-center text-primary mb-5">Historical Timeline</h2>
-      <div class="row">
-        <div class="col-md-8">
-          <div class="timeline">
-            <div class="timeline-container">
-              <div class="timeline-item" v-for="item in timelineData" :key="item.year">
-                <div class="timeline-icon">
-                  <i :class="item.icon"></i>
-                </div>
-                <div class="timeline-content">
-                  <h3 class="timeline-title">{{ item.year }}</h3>
-                  <p>{{ item.description }}</p>
-                </div>
-              </div>
-            </div>
+  <section class="timeline-section py-12 bg-primary text-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-4xl font-bold text-center mb-12">Historical Timeline</h2>
+      <div class="timeline-container">
+        <div v-for="(item, index) in timelineData" :key="index" class="timeline-item" :class="{ 'active': index === activeIndex }">
+          <div class="timeline-content">
+            <h3 class="timeline-year">{{ item.year }}</h3>
+            <p class="timeline-description">{{ item.description }}</p>
           </div>
         </div>
-        <div class="col-md-4 d-flex justify-content-center align-items-center">
-          <img src="/chatbot-icon.png" alt="Company Logo" class="img-fluid" style="max-height: 400px;">
-        </div>
+      </div>
+      <div class="timeline-navigation">
+        <button @click="prevItem" :disabled="activeIndex === 0">&lt;</button>
+        <button @click="nextItem" :disabled="activeIndex === timelineData.length - 1">&gt;</button>
       </div>
     </div>
   </section>
@@ -31,94 +23,115 @@ export default {
   name: 'HistoricalTimeline',
   data() {
     return {
+      activeIndex: 0,
       timelineData: [
         {
           year: '2019',
-          icon: 'fas fa-history',
           description: 'Our Co-Founders began their first venture by offering high-quality website design, SEO, and content creation services for leading agencies in Australia.'
         },
         {
           year: '2020',
-          icon: 'fas fa-briefcase',
           description: 'We decided it was the right time to venture into our own branded business, starting with the intention of gaining as much experience as possible.'
         },
         {
           year: '2021',
-          icon: 'fas fa-rocket',
           description: 'Our agency had a rough start, so we decided to intern for a leading digital marketing agency while running our business. This experience gave us insights into working with top brands in Australia, perfecting and developing our strategies.'
         },
         {
           year: '2022',
-          icon: 'fas fa-sync-alt',
           description: 'We rebranded to ULTIFY Solutions, operating as a private digital marketing agency, servicing our clients with an improved and larger range of comprehensive services.'
         },
         {
           year: '2023',
-          icon: 'fas fa-bullseye',
           description: 'Our agency decided it was the right time to go public and accept all clients and businesses with our solidified strategies. We are honored to have worked with leading companies and businesses of all sorts through our business, ULTIFY Solutions, bringing our tailored techniques to their craft.'
         }
       ]
     };
+  },
+  methods: {
+    prevItem() {
+      if (this.activeIndex > 0) {
+        this.activeIndex--;
+      }
+    },
+    nextItem() {
+      if (this.activeIndex < this.timelineData.length - 1) {
+        this.activeIndex++;
+      }
+    }
   }
 };
 </script>
 
 <style scoped>
-.page-header {
-  position: relative;
-}
-
-.bg-light {
-  background-color: var(--bs-light) !important;
-}
-
-.text-primary {
-  color: var(--bs-primary) !important;
-}
-
-/* Timeline styling */
-.timeline {
-  position: relative;
-  padding-left: 40px;
-  margin-left: 20px;
-  border-left: 2px solid var(--bs-primary);
+.timeline-section {
+  overflow: hidden;
 }
 
 .timeline-container {
-  padding-bottom: 20px;
+  position: relative;
+  height: 400px;
+  perspective: 1000px;
 }
 
 .timeline-item {
-  position: relative;
-  margin-bottom: 20px;
-}
-
-.timeline-icon {
   position: absolute;
-  left: -30px;
   top: 0;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background-color: var(--bs-primary);
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transform: translateZ(-400px) rotateY(45deg);
+  transition: all 0.5s ease-out;
+}
+
+.timeline-item.active {
+  opacity: 1;
+  transform: translateZ(0) rotateY(0);
+}
+
+.timeline-content {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-year {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.timeline-description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.timeline-navigation {
   display: flex;
-  align-items: center;
   justify-content: center;
-  color: var(--bs-white);
+  margin-top: 2rem;
 }
 
-.timeline-icon i {
-  font-size: 14px;
+.timeline-navigation button {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  padding: 0.5rem 1rem;
+  margin: 0 0.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
 }
 
-.timeline-title {
-  font-size: 1.25rem;
-  font-weight: 500;
-  color: var(--bs-body-color);
+.timeline-navigation button:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.3);
 }
 
-.timeline-content p {
-  margin-bottom: 0;
-  color: var(--bs-body-color);
+.timeline-navigation button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 </style>
