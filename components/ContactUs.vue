@@ -3,7 +3,7 @@
     <div class="background-image"></div>
     <div class="container-fluid h-100">
       <div class="row h-100 justify-content-end align-items-center">
-        <div class="col-lg-5 form-column">
+        <div class="col-lg-6 form-column">
           <div class="form-container">
             <h2>Book A Free<br>Consultation Now</h2>
             <form @submit.prevent="submitForm">
@@ -51,12 +51,12 @@ const submitForm = () => {
 <style scoped>
 .consultation {
   position: relative;
-  height: calc(100vh - 200px); /* Reduced by 200px */
-  min-height: 600px; /* Ensure a minimum height for smaller screens */
+  height: calc(100vh - 250px); /* Reduced by another 50px */
+  min-height: 550px; /* Adjusted minimum height */
   display: flex;
   align-items: center;
   background-color: #45c5ff; /* Fallback color */
-  overflow: hidden; /* Ensure the background doesn't spill out */
+  overflow: hidden;
 }
 
 .background-image {
@@ -66,8 +66,8 @@ const submitForm = () => {
   right: 0;
   bottom: 0;
   background-image: url('/home-05.png'); /* Replace with your image path */
-  background-size: 120%; /* Zoom out the image */
-  background-position: center 30%; /* Adjust vertical position */
+  background-size: 130%; /* Further zoomed out */
+  background-position: center 25%; /* Adjusted vertical position */
   background-repeat: no-repeat;
 }
 
@@ -80,47 +80,48 @@ const submitForm = () => {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-right: 50px; /* Added padding to the right */
 }
 
 .form-container {
   background-color: #ffffff;
-  padding: 80px 55px; /* Increased padding: 50px top/bottom, 25px left/right */
+  padding: 80px 80px; /* Increased horizontal padding by 25px on each side */
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 450px; /* Slightly increased to accommodate larger padding */
+  max-width: 550px; /* Increased to accommodate larger padding */
 }
 
 .form-container h2 {
-  font-size: 26px; /* Slightly increased font size */
-  margin-bottom: 25px;
+  font-size: 32px; /* Increased font size */
+  margin-bottom: 30px;
   color: #333;
   text-align: center;
   line-height: 1.2;
 }
 
 .form-group {
-  margin-bottom: 20px; /* Slightly increased spacing between form elements */
+  margin-bottom: 25px; /* Increased spacing between form elements */
 }
 
 .form-container input {
   width: 100%;
-  padding: 12px 20px;
+  padding: 15px 25px;
   border: 1px solid #e0e0e0;
   border-radius: 50px;
-  font-size: 16px;
+  font-size: 18px;
   background-color: #ffffff;
 }
 
 .form-container button {
   width: 100%;
-  padding: 12px;
+  padding: 15px;
   background-color: #45c5ff; /* Adjust to match your exact brand color */
   color: white;
   border: none;
   border-radius: 50px;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
   transition: background-color 0.3s ease;
 }
@@ -130,30 +131,46 @@ const submitForm = () => {
 }
 
 .disclaimer {
-  margin-top: 20px;
-  font-size: 12px;
+  margin-top: 25px;
+  font-size: 14px;
   color: #666;
   text-align: center;
   line-height: 1.4;
 }
 
+@media (max-width: 1199px) {
+  .form-column {
+    padding-right: 15px;
+  }
+
+  .form-container {
+    max-width: 100%;
+    padding: 60px 50px;
+  }
+}
+
 @media (max-width: 991px) {
   .consultation {
     height: auto;
-    padding: 60px 0;
+    padding: 80px 0;
   }
 
   .background-image {
     background-size: cover;
   }
 
-  .form-column {
-    padding: 0 15px;
+  .form-container {
+    padding: 50px 30px;
   }
 
-  .form-container {
-    max-width: 100%;
-    padding: 60px 40px; /* Slightly reduced padding for mobile */
+  .form-container h2 {
+    font-size: 28px;
+  }
+
+  .form-container input,
+  .form-container button {
+    font-size: 16px;
+    padding: 12px 20px;
   }
 }
 </style>
