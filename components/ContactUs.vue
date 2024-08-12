@@ -1,8 +1,8 @@
 <template>
   <section class="consultation">
     <div class="background-image"></div>
-    <div class="container-fluid">
-      <div class="row justify-content-end">
+    <div class="container-fluid h-100">
+      <div class="row h-100 justify-content-end align-items-center">
         <div class="col-lg-5 form-column">
           <div class="form-container">
             <h2>Book A Free<br>Consultation Now</h2>
@@ -51,10 +51,12 @@ const submitForm = () => {
 <style scoped>
 .consultation {
   position: relative;
-  min-height: 100vh;
+  height: calc(100vh - 200px); /* Reduced by 200px */
+  min-height: 600px; /* Ensure a minimum height for smaller screens */
   display: flex;
   align-items: center;
   background-color: #45c5ff; /* Fallback color */
+  overflow: hidden; /* Ensure the background doesn't spill out */
 }
 
 .background-image {
@@ -64,10 +66,9 @@ const submitForm = () => {
   right: 0;
   bottom: 0;
   background-image: url('/home-05.png'); /* Replace with your image path */
-  background-size: cover;
-  background-position: center;
+  background-size: 120%; /* Zoom out the image */
+  background-position: center 30%; /* Adjust vertical position */
   background-repeat: no-repeat;
-  opacity: 0.8; /* Adjust this value to make the image more or less visible */
 }
 
 .container-fluid {
@@ -83,16 +84,16 @@ const submitForm = () => {
 
 .form-container {
   background-color: #ffffff;
-  padding: 40px;
+  padding: 30px;
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 450px;
+  max-width: 400px;
 }
 
 .form-container h2 {
   font-size: 24px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   color: #333;
   text-align: center;
   line-height: 1.2;
@@ -104,16 +105,16 @@ const submitForm = () => {
 
 .form-container input {
   width: 100%;
-  padding: 12px 20px;
+  padding: 10px 20px;
   border: 1px solid #e0e0e0;
   border-radius: 50px;
-  font-size: 16px;
+  font-size: 14px;
   background-color: #ffffff;
 }
 
 .form-container button {
   width: 100%;
-  padding: 12px;
+  padding: 10px;
   background-color: #45c5ff; /* Adjust to match your exact brand color */
   color: white;
   border: none;
@@ -130,7 +131,7 @@ const submitForm = () => {
 
 .disclaimer {
   margin-top: 15px;
-  font-size: 12px;
+  font-size: 11px;
   color: #666;
   text-align: center;
   line-height: 1.4;
@@ -138,7 +139,12 @@ const submitForm = () => {
 
 @media (max-width: 991px) {
   .consultation {
+    height: auto;
     padding: 60px 0;
+  }
+
+  .background-image {
+    background-size: cover;
   }
 
   .form-column {
