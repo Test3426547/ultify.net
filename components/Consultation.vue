@@ -1,12 +1,18 @@
 <template>
-  <section class="consultation">
-    <div class="container-fluid h-100">
-      <div class="row h-100 align-items-center">
-        <div class="col-lg-7 image-container">
-          <img src="/path-to-your-image.webp" alt="Runners" class="runner-image">
+  <section class="consultation bg-primary">
+    <div class="container">
+      <div class="row align-items-center">
+
+        <!-- Image Section -->
+        <div class="col-lg-6">
+          <div class="image-container">
+            <img src="/home-15.webp" alt="Consultation Image" class="image">
+          </div>
         </div>
-        <div class="col-lg-5 form-column">
-          <div class="form-container bg-light shadow-lg">
+
+        <!-- Form Section -->
+        <div class="col-lg-6">
+          <div class="form-container bg-light rounded-lg shadow-lg">
             <h2 class="text-center">Book A Free Consultation Now</h2>
             <form class="p-4" id="contact-form" @submit.prevent="handleSubmit">
               <div class="form-group">
@@ -30,6 +36,7 @@
             </p>
           </div>
         </div>
+
       </div>
     </div>
   </section>
@@ -59,87 +66,73 @@ export default {
 
 <style scoped>
 .consultation {
-  height: 100vh;
-  background-color: #45c5ff; /* Adjust this to match your exact brand color */
-  overflow: hidden;
+  padding: 100px 0;
 }
 
 .image-container {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 0;
+  border-radius: 30px;
   overflow: hidden;
-}
-
-.runner-image {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  border-radius: 20px;
-}
-
-.form-column {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  align-items: stretch;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .form-container {
-  width: 100%;
-  max-width: 450px;
-  padding: 30px;
-  border-radius: 20px;
+  padding: 40px 50px;
+  border-radius: 30px;
+  margin-left: 35px;
 }
 
 h2 {
-  font-size: 24px;
-  color: #333;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+  color: var(--bs-dark);
 }
 
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 25px;
 }
 
 .form-control {
-  border-radius: 50px;
-  padding: 12px 20px;
-  border: 1px solid #e0e0e0;
-}
-
-.btn-primary {
-  background-color: #45c5ff;
+  width: 100%;
+  padding: 15px 20px;
   border: none;
-  border-radius: 50px;
-  padding: 12px 0;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
+  background-color: #f5f5f5;
+  border-radius: 50px; /* Ensure full rounded corners */
 }
 
-.btn-primary:hover {
-  background-color: #3ab1e8;
+.btn-block {
+  display: block;
+  width: 100%;
+  padding: 15px 30px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 50px; /* Ensure full rounded corners */
 }
 
 .disclaimer {
-  font-size: 12px;
+  margin-top: 20px;
+  font-size: 14px;
   text-align: center;
-  margin-top: 15px;
-  color: #666;
 }
 
+/* Responsive styling */
 @media (max-width: 991px) {
-  .consultation {
-    height: auto;
+  .container .row {
+    flex-direction: column;
   }
-  
+
   .image-container {
-    height: 300px;
-    margin-bottom: 30px;
+    margin-bottom: 35px;
   }
-  
-  .form-column {
-    padding: 30px 15px;
+
+  .form-container {
+    margin-left: 0;
   }
 }
 </style>
