@@ -3,7 +3,7 @@
     <div class="container">
       <h2 class="main-heading text-primary text-center mb-2">Embrace the Digital Wave;</h2>
       <h2 class="main-heading text-primary text-center mb-5">Ride the tide or get left behind!</h2>
-      <div class="row g-4">
+      <div class="row g-4 mb-5">
         <div class="col-lg-3 col-md-6 d-flex" v-for="(card, index) in cards" :key="index">
           <div class="card flex-fill">
             <div class="card-body">
@@ -15,6 +15,9 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="text-center">
+        <button class="btn btn-primary btn-lg mb-4">SEO</button>
       </div>
     </div>
   </div>
@@ -43,13 +46,9 @@ const cards = [
 
 <style scoped>
 .service-cards-section {
-  padding: 0 0 30px; /* Reduced bottom padding */
+  padding: 50px 0;
   background-color: var(--bs-white);
   overflow: hidden;
-}
-
-.container {
-  padding-top: 50px;
 }
 
 .main-heading {
@@ -70,6 +69,7 @@ const cards = [
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin-bottom: 40px;
 }
 
 .card:hover {
@@ -112,14 +112,6 @@ const cards = [
 }
 
 @media (max-width: 991.98px) {
-  .container {
-    padding-top: 30px;
-  }
-
-  .card {
-    margin-bottom: 40px;
-  }
-  
   .main-heading {
     font-size: 2.5rem;
   }
