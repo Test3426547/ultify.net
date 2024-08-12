@@ -41,7 +41,14 @@ function toggleChatbot() {
 </template>
 
 <style scoped>
+/* Import VAG Rounded Bold font */
+@import url('https://fonts.cdnfonts.com/css/vag-rundschrift-d');
+
 /* Base styles */
+* {
+  font-family: 'VAG Rounded Bold', sans-serif !important;
+}
+
 html, body {
   background-color: var(--bs-light-bg);
   color: var(--bs-body-color);
@@ -92,7 +99,6 @@ html, body {
 
 /* General styles */
 html {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-size: 16px;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
