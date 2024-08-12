@@ -1,6 +1,8 @@
 <template>
   <div class="service-cards-section position-relative">
     <div class="container">
+      <h2 class="main-heading text-primary text-center mb-2">Embrace the Digital Wave;</h2>
+      <h2 class="sub-heading text-primary text-center mb-5">Ride the tide or get left behind!</h2>
       <div class="row g-4">
         <div class="col-lg-3 col-md-6 d-flex" v-for="(card, index) in cards" :key="index">
           <div class="card flex-fill">
@@ -41,9 +43,20 @@ const cards = [
 
 <style scoped>
 .service-cards-section {
-  padding: 80px 0;
+  padding: 150px 0 80px;
   background-color: var(--bs-white);
   overflow: hidden;
+}
+
+.main-heading,
+.sub-heading {
+  font-size: 3rem;
+  line-height: 1.2;
+  color: var(--bs-primary);
+}
+
+.sub-heading {
+  font-size: 2.5rem;
 }
 
 .card {
@@ -100,6 +113,15 @@ const cards = [
 @media (max-width: 991.98px) {
   .card {
     margin-bottom: 40px;
+  }
+  
+  .main-heading,
+  .sub-heading {
+    font-size: 2.5rem;
+  }
+  
+  .sub-heading {
+    font-size: 2rem;
   }
 }
 </style>

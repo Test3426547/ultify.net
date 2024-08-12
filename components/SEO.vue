@@ -29,9 +29,11 @@
 
 <style scoped>
 .seo-section {
-  padding: 0;
+  padding: 100px 0 0; /* Add 100px padding to the top */
   background-color: var(--bs-white);
-  margin-top: -205px;
+  margin-top: 0; /* Remove the negative margin */
+  position: relative; /* Add this to ensure proper stacking */
+  z-index: 1; /* Add this to ensure proper stacking */
 }
 
 .container-fluid {
@@ -130,7 +132,8 @@
 
 @media (max-width: 991px) {
   .seo-section {
-    margin-top: -125px;
+    padding-top: 100px; /* Maintain the top padding on smaller screens */
+    margin-top: 0;
   }
 
   .row {
@@ -156,7 +159,7 @@
 
 @media (max-width: 768px) {
   .seo-section {
-    padding: 60px 0;
+    padding: 100px 0 60px; /* Adjust padding for smaller screens */
     margin-top: 0;
   }
 
