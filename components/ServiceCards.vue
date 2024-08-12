@@ -16,8 +16,6 @@
           </div>
         </div>
       </div>
-      <div class="text-center">
-        <button class="btn btn-primary btn-lg mb-4">SEO</button>
       </div>
     </div>
   </div>
