@@ -84,43 +84,43 @@ const submitForm = () => {
 
 .form-container {
   background-color: #ffffff;
-  padding: 30px;
+  padding: 80px 55px; /* Increased padding: 50px top/bottom, 25px left/right */
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 400px;
+  max-width: 450px; /* Slightly increased to accommodate larger padding */
 }
 
 .form-container h2 {
-  font-size: 24px;
-  margin-bottom: 20px;
+  font-size: 26px; /* Slightly increased font size */
+  margin-bottom: 25px;
   color: #333;
   text-align: center;
   line-height: 1.2;
 }
 
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 20px; /* Slightly increased spacing between form elements */
 }
 
 .form-container input {
   width: 100%;
-  padding: 10px 20px;
+  padding: 12px 20px;
   border: 1px solid #e0e0e0;
   border-radius: 50px;
-  font-size: 14px;
+  font-size: 16px;
   background-color: #ffffff;
 }
 
 .form-container button {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   background-color: #45c5ff; /* Adjust to match your exact brand color */
   color: white;
   border: none;
   border-radius: 50px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: bold;
   transition: background-color 0.3s ease;
 }
@@ -130,8 +130,8 @@ const submitForm = () => {
 }
 
 .disclaimer {
-  margin-top: 15px;
-  font-size: 11px;
+  margin-top: 20px;
+  font-size: 12px;
   color: #666;
   text-align: center;
   line-height: 1.4;
@@ -153,6 +153,7 @@ const submitForm = () => {
 
   .form-container {
     max-width: 100%;
+    padding: 60px 40px; /* Slightly reduced padding for mobile */
   }
 }
 </style>
