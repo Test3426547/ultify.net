@@ -15,16 +15,14 @@
       </svg>
     </div>
     <div class="relative z-10 mx-auto max-w-7xl px-4 text-center">
-      <h1 ref="heading" class="text-6xl sm:text-7xl lg:text-8xl font-bold tracking-tight text-black mb-8 opacity-0">Learn More About Us</h1>
-      <p ref="body" class="text-xl sm:text-2xl lg:text-3xl font-medium text-black mb-12 opacity-0 transform translate-x-full">
+      <h1 class="text-6xl sm:text-7xl lg:text-8xl font-bold tracking-tight text-black mb-8">Learn More About Us</h1>
+      <p class="text-xl sm:text-2xl lg:text-3xl font-medium text-black mb-12">
         Need to get in contact with us?<br>Our email and phone number are at your disposal.
       </p>
-      <div ref="button" class="opacity-0">
+      <div>
         <a
           class="inline-flex h-14 items-center justify-center rounded-full bg-[#37B5FF] px-8 py-4 text-lg font-medium text-white shadow-sm transition-colors hover:bg-[#37B5FF]/90 focus:outline-none focus:ring-2 focus:ring-[#37B5FF] focus:ring-offset-2"
           href="#"
-          @mouseenter="startButtonAnimation"
-          @mouseleave="stopButtonAnimation"
         >
           Contact Us
         </a>
@@ -34,74 +32,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
-import { gsap } from 'gsap';
-
-const heading = ref(null);
-const body = ref(null);
-const button = ref(null);
-
-let buttonAnimation;
-
-onMounted(() => {
-  // Delay the start of animations to ensure refs are properly mounted
-  setTimeout(() => {
-    animateHeading();
-  }, 100);
-});
-
-const animateHeading = () => {
-  gsap.to(heading.value, {
-    duration: 1,
-    opacity: 1,
-    scale: 1.1,
-    ease: "elastic.out(1, 0.5)",
-    onComplete: () => {
-      gsap.to(heading.value, { scale: 1, duration: 0.5 });
-      animateBody();
-    }
-  });
-};
-
-const animateBody = () => {
-  gsap.to(body.value, {
-    opacity: 1,
-    x: 0,
-    duration: 1,
-    ease: "power3.out",
-    onComplete: animateButton
-  });
-};
-
-const animateButton = () => {
-  gsap.to(button.value, {
-    opacity: 1,
-    y: -20,
-    duration: 0.5,
-    ease: "back.out(1.7)"
-  });
-};
-
-const startButtonAnimation = () => {
-  buttonAnimation = gsap.to(button.value, {
-    y: -10,
-    repeat: -1,
-    yoyo: true,
-    duration: 0.4,
-    ease: "power1.inOut"
-  });
-};
-
-const stopButtonAnimation = () => {
-  if (buttonAnimation) {
-    buttonAnimation.kill();
-    gsap.to(button.value, {
-      y: 0,
-      duration: 0.2,
-      ease: "power1.out"
-    });
-  }
-};
+// No need for any script setup now that animations are removed
 </script>
 
 <style scoped>
