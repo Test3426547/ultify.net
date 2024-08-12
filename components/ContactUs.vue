@@ -51,11 +51,11 @@ const submitForm = () => {
 <style scoped>
 .consultation {
   position: relative;
-  height: calc(100vh - 250px); /* Reduced by another 50px */
-  min-height: 550px; /* Adjusted minimum height */
+  height: calc(100vh - 250px);
+  min-height: 550px;
   display: flex;
   align-items: center;
-  background-color: #45c5ff; /* Fallback color */
+  background-color: #45c5ff;
   overflow: hidden;
 }
 
@@ -65,9 +65,9 @@ const submitForm = () => {
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url('/home-05.png'); /* Replace with your image path */
-  background-size: 130%; /* Further zoomed out */
-  background-position: center 25%; /* Adjusted vertical position */
+  background-image: url('/home-05.png');
+  background-size: 130%;
+  background-position: center 25%;
   background-repeat: no-repeat;
 }
 
@@ -80,20 +80,20 @@ const submitForm = () => {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-right: 50px; /* Added padding to the right */
+  padding-right: 50px;
 }
 
 .form-container {
-  background-color: #ffffff;
-  padding: 80px 80px; /* Increased horizontal padding by 25px on each side */
+  background-color: var(--bs-light);
+  padding: 55px 80px;
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 550px; /* Increased to accommodate larger padding */
+  max-width: 550px;
 }
 
 .form-container h2 {
-  font-size: 32px; /* Increased font size */
+  font-size: 32px;
   margin-bottom: 30px;
   color: #333;
   text-align: center;
@@ -101,7 +101,7 @@ const submitForm = () => {
 }
 
 .form-group {
-  margin-bottom: 25px; /* Increased spacing between form elements */
+  margin-bottom: 25px;
 }
 
 .form-container input {
@@ -116,7 +116,7 @@ const submitForm = () => {
 .form-container button {
   width: 100%;
   padding: 15px;
-  background-color: #45c5ff; /* Adjust to match your exact brand color */
+  background-color: #45c5ff;
   color: white;
   border: none;
   border-radius: 50px;
@@ -127,7 +127,7 @@ const submitForm = () => {
 }
 
 .form-container button:hover {
-  background-color: #3ab1e8; /* Slightly darker shade for hover effect */
+  background-color: #3ab1e8;
 }
 
 .disclaimer {
@@ -145,7 +145,7 @@ const submitForm = () => {
 
   .form-container {
     max-width: 100%;
-    padding: 60px 50px;
+    padding: 35px 50px;
   }
 }
 
@@ -160,7 +160,7 @@ const submitForm = () => {
   }
 
   .form-container {
-    padding: 50px 30px;
+    padding: 25px 30px;
   }
 
   .form-container h2 {
