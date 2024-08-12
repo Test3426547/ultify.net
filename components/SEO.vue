@@ -25,9 +25,9 @@
 
 <style scoped>
 .seo-section {
-  padding: 25px 0 0; /* Reduced top padding from 100px to 25px */
+  padding: 0; /* Remove all padding */
   background-color: var(--bs-white);
-  margin-top: 0;
+  margin-top: -75px; /* Move the section up to overlap with the cards */
   position: relative;
   z-index: 1;
 }
@@ -80,7 +80,7 @@
   margin-bottom: 20px;
   font-weight: bold;
   white-space: nowrap;
-  margin-top: 0; /* Removed top margin */
+  margin-top: 0;
 }
 
 .consultation-content {
@@ -128,8 +128,7 @@
 
 @media (max-width: 991px) {
   .seo-section {
-    padding-top: 25px; /* Reduced top padding */
-    margin-top: 0;
+    margin-top: -50px; /* Adjust for smaller screens */
   }
 
   .row {
@@ -155,8 +154,8 @@
 
 @media (max-width: 768px) {
   .seo-section {
-    padding: 25px 0 60px; /* Reduced top padding */
-    margin-top: 0;
+    margin-top: 0; /* Remove negative margin for mobile */
+    padding: 25px 0 60px;
   }
 
   .wave-heading {
