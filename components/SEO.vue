@@ -23,17 +23,13 @@
   </section>
 </template>
 
-<script setup>
-// No script needed for this component
-</script>
-
 <style scoped>
 .seo-section {
-  padding: 100px 0 0; /* Add 100px padding to the top */
+  padding: 25px 0 0; /* Reduced top padding from 100px to 25px */
   background-color: var(--bs-white);
-  margin-top: 0; /* Remove the negative margin */
-  position: relative; /* Add this to ensure proper stacking */
-  z-index: 1; /* Add this to ensure proper stacking */
+  margin-top: 0;
+  position: relative;
+  z-index: 1;
 }
 
 .container-fluid {
@@ -84,7 +80,7 @@
   margin-bottom: 20px;
   font-weight: bold;
   white-space: nowrap;
-  margin-top: 50px;
+  margin-top: 0; /* Removed top margin */
 }
 
 .consultation-content {
@@ -132,7 +128,7 @@
 
 @media (max-width: 991px) {
   .seo-section {
-    padding-top: 100px; /* Maintain the top padding on smaller screens */
+    padding-top: 25px; /* Reduced top padding */
     margin-top: 0;
   }
 
@@ -159,7 +155,7 @@
 
 @media (max-width: 768px) {
   .seo-section {
-    padding: 100px 0 60px; /* Adjust padding for smaller screens */
+    padding: 25px 0 60px; /* Reduced top padding */
     margin-top: 0;
   }
 
