@@ -41,14 +41,15 @@ function toggleChatbot() {
 </template>
 
 <style scoped>
-/* Import VAG Rounded Bold font */
-@import url('https://fonts.cdnfonts.com/css/vag-rounded');
+/* Import Poppins font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 /* Base styles */
 * {
-  font-family: 'VAG Rounded Bold', sans-serif !important;
+  font-family: 'Poppins', sans-serif !important;
 }
 
+/* Rest of your styles remain the same */
 html, body {
   background-color: var(--bs-light-bg);
   color: var(--bs-body-color);
