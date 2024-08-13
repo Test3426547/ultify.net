@@ -106,7 +106,7 @@
   }
   
   .image-wrapper {
-    margin-bottom: 60px;
+    margin-bottom: 100px;
     width: 90%; /* Slightly larger on mobile for better visibility */
   }
   
