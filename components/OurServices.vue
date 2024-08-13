@@ -5,7 +5,7 @@
         <div class="row">
           <div class="col-md-8 mx-auto text-center">
             <h3 class="wave-heading">Our Services</h3>
-            <p>Explore our comprehensive range of expert services designed to meet your diverse needs.</p>
+            <p class="faq-subtitle">Explore our comprehensive range of expert services designed to meet your diverse needs.</p>
           </div>
         </div>
       </div>
@@ -90,8 +90,12 @@ export default {
 }
 
 .wave-heading {
-  font-size: 2.5em;
+  font-size: 3em;
   color: var(--bs-white);
+}
+
+.faq-subtitle {
+  font-size: 1.2rem;
 }
 
 .service-grid {
