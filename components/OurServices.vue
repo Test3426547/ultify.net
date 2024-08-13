@@ -4,7 +4,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-8 mx-auto text-center">
-            <h3>Our Services</h3>
+            <h3 class="bs-white">Our Services</h3>
             <p>Explore our comprehensive range of expert services designed to meet your diverse needs.</p>
           </div>
         </div>
