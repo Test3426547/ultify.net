@@ -20,7 +20,7 @@
 <style scoped>
 .digital-world {
   background-color: var(--bs-white);
-  padding: 90px 0;
+  padding: 90px 0 85px; /* Removed 5px from the bottom padding */
   text-align: center;
 }
 
@@ -40,8 +40,8 @@
   border-radius: 30px;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  margin-bottom: 70px;
-  width: 80%; /* Reduced to 80% of original size */
+  margin-bottom: 65px; /* Reduced from 70px to 65px */
+  width: 80%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -50,12 +50,14 @@
   width: 100%;
   height: auto;
   display: block;
+  margin-bottom: -5px; /* Added to remove 5px from underneath the image */
 }
 
 .button-wrapper {
   display: flex;
   justify-content: center;
   gap: 100px;
+  margin-top: -5px; /* Added to move the buttons up 5px */
 }
 
 .btn {
@@ -106,8 +108,8 @@
   }
   
   .image-wrapper {
-    margin-bottom: 60px;
-    width: 90%; /* Slightly larger on mobile for better visibility */
+    margin-bottom: 55px; /* Reduced from 60px to 55px */
+    width: 90%;
   }
   
   .button-wrapper {
