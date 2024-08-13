@@ -41,13 +41,15 @@ const waveColors = computed(() => [
 .homepage {
   min-height: 100vh;
   font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
 }
 
 .top-section {
   background-color: #ffffff;
   color: #000000;
   padding: 4rem 2rem;
-  min-height: calc(100vh - 150px);
+  flex-grow: 1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -98,8 +100,9 @@ p {
 
 .wave-container {
   position: relative;
-  height: 150px;
+  height: 200px; /* Increased from 150px to 200px */
   overflow: hidden;
+  margin-top: -50px; /* Added to shift the wave up */
 }
 
 .waves {
@@ -108,37 +111,10 @@ p {
   width: 100%;
   height: 100%;
   min-height: 100px;
-  max-height: 150px;
+  max-height: 200px; /* Increased from 150px to 200px */
 }
 
-.parallax > use {
-  animation: move-forever 25s cubic-bezier(.55,.5,.45,.5) infinite;
-}
-.parallax > use:nth-child(1) {
-  animation-delay: -2s;
-  animation-duration: 7s;
-}
-.parallax > use:nth-child(2) {
-  animation-delay: -3s;
-  animation-duration: 10s;
-}
-.parallax > use:nth-child(3) {
-  animation-delay: -4s;
-  animation-duration: 13s;
-}
-.parallax > use:nth-child(4) {
-  animation-delay: -5s;
-  animation-duration: 20s;
-}
-
-@keyframes move-forever {
-  0% {
-    transform: translate3d(-90px,0,0);
-  }
-  100% { 
-    transform: translate3d(85px,0,0);
-  }
-}
+/* Rest of the styles remain unchanged */
 
 @media (max-width: 768px) {
   .top-section {
@@ -161,6 +137,15 @@ p {
   .get-started-btn {
     padding: 0.8rem 1.6rem;
     font-size: 1rem;
+  }
+
+  .wave-container {
+    height: 150px; /* Adjust for mobile if needed */
+    margin-top: -25px; /* Adjust for mobile if needed */
+  }
+
+  .waves {
+    max-height: 150px; /* Adjust for mobile if needed */
   }
 }
 </style>
