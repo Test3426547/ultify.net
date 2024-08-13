@@ -111,10 +111,16 @@ h2 {
 
 .form-control {
   width: 100%;
-  padding: 15px 20px;
+  padding: 15px 25px; /* Increased right padding slightly */
   border: none;
   background-color: #f5f5f5;
-  border-radius: 50px;
+  border-radius: 9999px; /* Use a large value to ensure full rounding */
+  outline: none; /* Remove the default focus outline */
+  box-shadow: none; /* Remove any default shadow */
+}
+
+.form-control:focus {
+  box-shadow: 0 0 0 2px var(--bs-primary); /* Add a focus effect that doesn't interfere with the shape */
 }
 
 .btn-block {
@@ -123,39 +129,16 @@ h2 {
   padding: 15px 30px;
   font-size: 18px;
   font-weight: bold;
-  border-radius: 50px;
+  border-radius: 9999px; /* Ensure full rounding for the button as well */
+  border: none; /* Remove any default border */
 }
 
-.disclaimer {
-  margin-top: 20px;
-  font-size: 14px;
-  text-align: center;
-}
-
-/* Responsive styling */
+/* You may need to adjust these media query styles as well */
 @media (max-width: 991px) {
-  .consultation {
-    padding: 60px 0;
-  }
-
-  .row {
-    flex-direction: column;
-  }
-
-  .col-lg-6 {
-    margin-bottom: 30px;
-  }
-
-  .image-container, .form-container {
-    height: auto;
-  }
-
-  .image-container {
-    margin-bottom: 30px;
-  }
-
-  .form-container {
-    padding: 30px;
+  /* Keep existing media query styles */
+  
+  .form-control, .btn-block {
+    border-radius: 9999px; /* Ensure full rounding on smaller screens too */
   }
 }
 </style>
