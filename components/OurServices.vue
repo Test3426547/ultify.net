@@ -91,7 +91,7 @@ export default {
 
 .service-grid {
   padding-top: 25px;
-  padding-bottom: 75px; /* Increased bottom padding */
+  padding-bottom: 100px; /* Increased bottom padding */
 }
 
 .row {
