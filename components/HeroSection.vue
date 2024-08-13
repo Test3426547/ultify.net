@@ -88,16 +88,18 @@ onUnmounted(() => {
 .image-wrapper {
   position: relative;
   z-index: 1;
-  padding-left: 100px; /* Move images 100px to the right */
+  padding-left: 50px; /* Adjusted from 100px to 50px to move images right */
   overflow: visible; /* Allow overflow to be visible */
 }
 
 .image-wrapper img {
-  max-width: 100%; /* Ensure image fits within the wrapper */
+  max-width: calc(100% + 50px); /* Extend image width to cover the blue bar */
   height: auto; /* Maintain aspect ratio */
-  width: 100%; /* Fill the width of the wrapper */
+  width: calc(100% + 50px); /* Extend image width to cover the blue bar */
   position: relative; /* Use relative positioning */
   display: block; /* Ensure block display */
+  margin-left: -50px; /* Offset the extended width */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Add shadow to make image stand out */
 }
 
 .fade-enter-active,
@@ -130,7 +132,9 @@ onUnmounted(() => {
   }
 
   .image-wrapper img {
-    max-width: 100%; /* Allow image to be responsive on mobile */
+    max-width: 100%; /* Reset to 100% on mobile */
+    width: 100%; /* Reset to 100% on mobile */
+    margin-left: 0; /* Remove margin on mobile */
   }
 }
 
