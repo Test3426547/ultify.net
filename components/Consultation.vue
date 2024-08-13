@@ -66,7 +66,7 @@ export default {
 
 <style scoped>
 .consultation {
-  padding: 100px 0;
+  padding: 115px 0;
 }
 
 .image-container {
