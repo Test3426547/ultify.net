@@ -44,7 +44,7 @@ const waveColors = computed(() => [
 }
 
 .top-section {
-  background-color: #ffffff;
+  background-color: var(--bs-light); /* Changed from #ffffff to var(--bs-light) */
   color: #000000;
   padding: 4rem 2rem;
   min-height: calc(100vh - 150px);
