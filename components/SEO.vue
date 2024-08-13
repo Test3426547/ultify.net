@@ -25,7 +25,7 @@
 
 <style scoped>
 .seo-section {
-  padding: 0 0 65px 0; /* Added 65px padding to the bottom */
+  padding: 0 0 70px 0; /* Added 65px padding to the bottom */
   background-color: var(--bs-white);
   margin-top: -75px; /* Move the section up to overlap with the cards */
   position: relative;

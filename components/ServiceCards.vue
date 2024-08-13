@@ -1,8 +1,7 @@
 <template>
   <div class="service-cards-section position-relative">
     <div class="container">
-      <h2 class="main-heading text-primary text-center mb-2">Embrace the Digital Wave;</h2>
-      <h2 class="main-heading text-primary text-center mb-5">Ride the tide or get left behind!</h2>
+      <h2 class="main-heading text-primary text-center mb-2">ULTIFY is a leading digital agency because;</h2>
       <div class="row g-4 mb-5">
         <div class="col-lg-3 col-md-6 d-flex" v-for="(card, index) in cards" :key="index">
           <div class="card flex-fill">
