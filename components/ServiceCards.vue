@@ -1,9 +1,9 @@
 <template>
   <div class="service-cards-section position-relative">
     <div class="container">
-      <h2 class="main-heading text-primary text-center mb-2">ULTIFY is a leading digital agency because;</h2>
-      <div class="row g-4 mb-5">
-        <div class="col-lg-3 col-md-6 d-flex" v-for="(card, index) in cards" :key="index">
+      <h2 class="main-heading text-primary text-center">ULTIFY is a leading digital agency because;</h2>
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 mb-5">
+        <div class="col d-flex" v-for="(card, index) in cards" :key="index">
           <div class="card flex-fill">
             <div class="card-body">
               <h5 class="card-title">{{ card.title }}</h5>
@@ -18,7 +18,7 @@
     </div>
     
     <section class="seo-section">
-      <div class="container-fluid">
+      <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-5 d-flex flex-column justify-content-center align-items-center buttons-container">
             <button class="seo-button">SEO</button>
@@ -64,7 +64,7 @@ const cards = [
 
 <style scoped>
 .service-cards-section {
-  padding: 115px 0 50px;
+  padding: 115px 0 100px;
   background-color: var(--bs-white);
   overflow: hidden;
 }
@@ -74,7 +74,7 @@ const cards = [
   line-height: 1.2;
   color: var(--bs-primary);
   margin-top: 0;
-  margin-bottom: 50px;
+  margin-bottom: 100px;
 }
 
 .card {
@@ -130,25 +130,24 @@ const cards = [
 }
 
 .seo-section {
-  padding: 0 0 70px 0;
+  padding: 100px 0;
   background-color: var(--bs-white);
-  margin-top: -75px;
   position: relative;
   z-index: 1;
 }
 
-.container-fluid {
-  max-width: 1400px;
-  padding: 0 20px 50px 20px;
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
 }
 
 .row {
-  gap: 200px;
+  --bs-gutter-x: 30px;
 }
 
 .buttons-container {
-  gap: 40px;
-  margin-left: -100px;
+  gap: 20px;
 }
 
 .seo-button {
@@ -164,6 +163,7 @@ const cards = [
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 300px;
+  margin-bottom: 10px;
 }
 
 .seo-button:hover {
@@ -232,19 +232,22 @@ const cards = [
 }
 
 @media (max-width: 991.98px) {
+  .service-cards-section {
+    padding: 80px 0;
+  }
+
+  .seo-section {
+    padding: 60px 0;
+  }
+
   .main-heading {
     font-size: 2.5rem;
   }
-  
-  .seo-section {
-    margin-top: -50px;
-    padding-bottom: 65px;
-  }
-  
+
   .row {
-    gap: 60px;
+    --bs-gutter-x: 20px;
   }
-  
+
   .buttons-container,
   .consultation-container {
     align-items: center;
@@ -252,30 +255,33 @@ const cards = [
     margin-left: 0;
     margin-right: 0;
   }
-  
+
   .consultation-container hr {
     width: 100%;
   }
-  
+
   .consultation-button {
     align-self: center;
   }
 }
 
 @media (max-width: 768px) {
+  .service-cards-section {
+    padding: 60px 0;
+  }
+
+  .seo-section {
+    padding: 40px 0;
+  }
+
   .main-heading {
     font-size: 2rem;
   }
-  
-  .seo-section {
-    margin-top: 0;
-    padding: 25px 0 125px;
-  }
-  
+
   .wave-heading {
     font-size: 2em;
   }
-  
+
   .consultation-container p {
     font-size: 1em;
   }
