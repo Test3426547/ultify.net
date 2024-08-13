@@ -20,7 +20,7 @@
 <style scoped>
 .digital-world {
   background-color: var(--bs-white);
-  padding: 95px 0;
+  padding: 90px 0;
   text-align: center;
 }
 
@@ -32,7 +32,7 @@
 
 .title {
   font-size: 2.5rem; /* Reduced from 3.0rem */
-  margin-bottom: 100px;
+  margin-bottom: 80px;
   color: var(--bs-primary); /* Changed to primary color */
 }
 
