@@ -52,7 +52,7 @@ const cards = [
   line-height: 1.2;
   color: var(--bs-primary);
   margin-top: 0;
-  margin-bottom: 100px; /* Changed from 1rem to 50px */
+  margin-bottom: 100px; /* Changed from 50px to 100px */
 }
 
 .card {
@@ -110,12 +110,14 @@ const cards = [
 @media (max-width: 991.98px) {
   .main-heading {
     font-size: 2.5rem;
+    margin-bottom: 80px; /* Added margin-bottom for responsiveness */
   }
 }
 
 @media (max-width: 768px) {
   .main-heading {
     font-size: 2rem;
+    margin-bottom: 60px; /* Added margin-bottom for responsiveness */
   }
 }
 </style>
