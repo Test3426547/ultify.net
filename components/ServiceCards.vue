@@ -64,7 +64,7 @@ const cards = [
 
 <style scoped>
 .service-cards-section {
-  padding: 115px 0 100px;
+  padding: 115px 0 50px;
   background-color: var(--bs-white);
   overflow: hidden;
 }
@@ -74,7 +74,11 @@ const cards = [
   line-height: 1.2;
   color: var(--bs-primary);
   margin-top: 0;
-  margin-bottom: 100px;
+  margin-bottom: 70px;
+}
+
+.row.mb-5 {
+  margin-bottom: 0 !important;
 }
 
 .card {
@@ -130,7 +134,7 @@ const cards = [
 }
 
 .seo-section {
-  padding: 100px 0;
+  padding: 50px 0;
   background-color: var(--bs-white);
   position: relative;
   z-index: 1;
@@ -233,11 +237,11 @@ const cards = [
 
 @media (max-width: 991.98px) {
   .service-cards-section {
-    padding: 80px 0;
+    padding: 80px 0 30px;
   }
 
   .seo-section {
-    padding: 60px 0;
+    padding: 40px 0;
   }
 
   .main-heading {
@@ -267,11 +271,11 @@ const cards = [
 
 @media (max-width: 768px) {
   .service-cards-section {
-    padding: 60px 0;
+    padding: 60px 0 20px;
   }
 
   .seo-section {
-    padding: 40px 0;
+    padding: 30px 0;
   }
 
   .main-heading {
