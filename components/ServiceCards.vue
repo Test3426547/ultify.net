@@ -74,7 +74,7 @@ const cards = [
   line-height: 1.2;
   color: var(--bs-primary);
   margin-top: 0;
-  margin-bottom: 70px; /* This ensures 70px space between heading and cards */
+  margin-bottom: 70px;
 }
 
 .row.mb-5 {
@@ -193,7 +193,8 @@ const cards = [
 .consultation-content {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+  width: 100%;
 }
 
 .consultation-container p {
@@ -201,6 +202,7 @@ const cards = [
   margin-bottom: 30px;
   font-weight: 600;
   color: #6c757d;
+  text-align: center;
 }
 
 .consultation-line {
@@ -223,7 +225,7 @@ const cards = [
   text-align: center;
   transition: transform 0.3s ease;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  align-self: flex-start;
+  align-self: center;
 }
 
 .consultation-button:hover {
