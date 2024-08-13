@@ -84,8 +84,8 @@ export default {
 }
 
 .banner {
-  padding-top: 125px !important; /* Increased top padding */
-  padding-bottom: 125px !important; /* Increased bottom padding */
+  padding-top: 110px !important; /* Increased top padding */
+  padding-bottom: 110px !important; /* Increased bottom padding */
   margin-bottom: 100px; /* Add space below the banner */
 }
 
