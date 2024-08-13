@@ -55,7 +55,7 @@
 .button-wrapper {
   display: flex;
   justify-content: center;
-  gap: 100px;
+  gap: 70px;
 }
 
 .btn {
