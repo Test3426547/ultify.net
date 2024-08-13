@@ -74,11 +74,16 @@ const cards = [
   line-height: 1.2;
   color: var(--bs-primary);
   margin-top: 0;
-  margin-bottom: 70px;
+  margin-bottom: 70px !important; /* Ensures 70px space between heading and cards */
 }
 
 .row.mb-5 {
+  margin-top: 0 !important; /* Reset top margin */
   margin-bottom: 0 !important;
+}
+
+.row > * {
+  margin-top: 0;
 }
 
 .card {
@@ -243,6 +248,7 @@ const cards = [
 
   .main-heading {
     font-size: 2.5rem;
+    margin-bottom: 50px !important; /* Adjusted for smaller screens */
   }
 
   .row {
@@ -277,6 +283,7 @@ const cards = [
 
   .main-heading {
     font-size: 2rem;
+    margin-bottom: 40px !important; /* Further adjusted for mobile screens */
   }
 
   .wave-heading {
