@@ -1,7 +1,7 @@
 <template>
   <div class="service-cards-section position-relative">
     <div class="container">
-      <h2 class="main-heading text-primary text-center">ULTIFY is a leading digital agency because;</h2>
+      <h2 class="main-heading text-primary text-center mb-2">ULTIFY is a leading digital agency because;</h2>
       <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 mb-5">
         <div class="col d-flex" v-for="(card, index) in cards" :key="index">
           <div class="card flex-fill">
@@ -19,13 +19,13 @@
     
     <section class="seo-section">
       <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-lg-5 d-flex flex-column justify-content-center align-items-center buttons-container">
+        <div class="row justify-content-between align-items-start">
+          <div class="col-lg-5 d-flex flex-column justify-content-start align-items-start buttons-container">
             <button class="seo-button">SEO</button>
             <button class="seo-button">FREE REPORT</button>
             <button class="seo-button live-chat">LIVE CHAT</button>
           </div>
-          <div class="col-lg-5 d-flex flex-column justify-content-center consultation-container">
+          <div class="col-lg-6 d-flex flex-column justify-content-start consultation-container">
             <h2 class="wave-heading">So you want to ride the wave?!</h2>
             <div class="consultation-content">
               <p>
@@ -152,12 +152,13 @@ const cards = [
 
 .buttons-container {
   gap: 20px;
+  margin-left: -50px;
 }
 
 .seo-button {
   background-color: var(--bs-primary);
   color: white;
-  padding: 20px 40px;
+  padding: 15px 30px;
   border: none;
   border-radius: 50px;
   cursor: pointer;
@@ -166,8 +167,8 @@ const cards = [
   transition: transform 0.3s ease;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 300px;
-  margin-bottom: 10px;
+  max-width: 250px;
+  margin-bottom: 20px;
 }
 
 .seo-button:hover {
@@ -175,12 +176,8 @@ const cards = [
 }
 
 .consultation-container {
-  text-align: center;
-  margin-right: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  height: 100%;
+  text-align: left;
+  margin-right: -50px;
 }
 
 .wave-heading {
@@ -195,16 +192,14 @@ const cards = [
 .consultation-content {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  height: 100%;
-  padding-top: 20px;
+  align-items: flex-start;
 }
 
 .consultation-container p {
   font-size: 1.2em;
   margin-bottom: 30px;
   font-weight: 600;
+  color: #6c757d;
 }
 
 .consultation-line {
@@ -219,7 +214,7 @@ const cards = [
 .consultation-button {
   background-color: var(--bs-primary);
   color: white;
-  padding: 20px 40px;
+  padding: 15px 30px;
   border: none;
   border-radius: 50px;
   cursor: pointer;
@@ -227,8 +222,7 @@ const cards = [
   text-align: center;
   transition: transform 0.3s ease;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  align-self: center;
-  margin-top: 30px;
+  align-self: flex-start;
 }
 
 .consultation-button:hover {
@@ -290,4 +284,4 @@ const cards = [
     font-size: 1em;
   }
 }
-</style>
+</style>+

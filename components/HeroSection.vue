@@ -50,7 +50,7 @@ onUnmounted(() => {
 
 <style scoped>
 .hero-section {
-  min-height: calc(100vh - 80px); /* Adjust based on your navbar height */
+  min-height: calc(100vh - 80px);
   display: flex;
   align-items: center;
   background-color: var(--bs-primary);
@@ -63,7 +63,7 @@ onUnmounted(() => {
 }
 
 .content-wrapper h1 {
-  font-size: 3rem;
+  font-size: 2.1rem; /* Reduced by 30% from 3rem */
   line-height: 1.2;
 }
 
@@ -88,18 +88,18 @@ onUnmounted(() => {
 .image-wrapper {
   position: relative;
   z-index: 1;
-  padding-left: 50px; /* Adjusted from 100px to 50px to move images right */
-  overflow: visible; /* Allow overflow to be visible */
+  padding-left: 150px; /* Increased from 50px to 150px to move images 100px more to the right */
+  overflow: visible;
 }
 
 .image-wrapper img {
-  max-width: calc(100% + 50px); /* Extend image width to cover the blue bar */
-  height: auto; /* Maintain aspect ratio */
-  width: calc(100% + 50px); /* Extend image width to cover the blue bar */
-  position: relative; /* Use relative positioning */
-  display: block; /* Ensure block display */
-  margin-left: -50px; /* Offset the extended width */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Add shadow to make image stand out */
+  max-width: 100%; /* Changed from calc(100% + 50px) to 100% */
+  height: auto;
+  width: 100%; /* Changed from calc(100% + 50px) to 100% */
+  position: relative;
+  display: block;
+  margin-left: 0; /* Removed negative margin */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 .fade-enter-active,
@@ -124,17 +124,17 @@ onUnmounted(() => {
   }
 
   .content-wrapper h1 {
-    font-size: 2.5rem;
+    font-size: 1.75rem; /* Adjusted for mobile */
   }
 
   .image-wrapper {
-    padding-left: 0; /* Remove left padding on mobile */
+    padding-left: 0;
   }
 
   .image-wrapper img {
-    max-width: 100%; /* Reset to 100% on mobile */
-    width: 100%; /* Reset to 100% on mobile */
-    margin-left: 0; /* Remove margin on mobile */
+    max-width: 100%;
+    width: 100%;
+    margin-left: 0;
   }
 }
 
@@ -144,7 +144,7 @@ onUnmounted(() => {
   }
 
   .content-wrapper h1 {
-    font-size: 4rem;
+    font-size: 2.8rem; /* Reduced by 30% from 4rem */
   }
 
   .lead {
