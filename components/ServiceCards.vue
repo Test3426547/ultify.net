@@ -43,10 +43,12 @@ const cards = [
 
 <style scoped>
 .service-cards-section {
-  padding: 50px 0;
+  padding: 115px 0 50px; /* Changed from 50px 0 to 115px 0 50px */
   background-color: var(--bs-white);
   overflow: hidden;
 }
+
+/* The rest of the styles remain unchanged */
 
 .main-heading {
   font-size: 3rem;

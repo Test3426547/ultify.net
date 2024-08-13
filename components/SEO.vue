@@ -25,7 +25,7 @@
 
 <style scoped>
 .seo-section {
-  padding: 0; /* Remove all padding */
+  padding: 0 0 65px 0; /* Added 65px padding to the bottom */
   background-color: var(--bs-white);
   margin-top: -75px; /* Move the section up to overlap with the cards */
   position: relative;
@@ -129,6 +129,7 @@
 @media (max-width: 991px) {
   .seo-section {
     margin-top: -50px; /* Adjust for smaller screens */
+    padding-bottom: 65px; /* Maintain the added bottom padding */
   }
 
   .row {
@@ -155,7 +156,7 @@
 @media (max-width: 768px) {
   .seo-section {
     margin-top: 0; /* Remove negative margin for mobile */
-    padding: 25px 0 60px;
+    padding: 25px 0 125px; /* Increased bottom padding to 125px (60px + 65px) */
   }
 
   .wave-heading {
