@@ -42,19 +42,17 @@ const cards = [
 
 <style scoped>
 .service-cards-section {
-  padding: 115px 0 50px; /* Changed from 50px 0 to 115px 0 50px */
+  padding: 115px 0 50px;
   background-color: var(--bs-white);
   overflow: hidden;
 }
-
-/* The rest of the styles remain unchanged */
 
 .main-heading {
   font-size: 3rem;
   line-height: 1.2;
   color: var(--bs-primary);
   margin-top: 0;
-  margin-bottom: 3rem;
+  margin-bottom: 50px; /* Changed from 1rem to 50px */
 }
 
 .card {
