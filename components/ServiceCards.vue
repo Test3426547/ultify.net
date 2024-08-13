@@ -54,7 +54,7 @@ const cards = [
   line-height: 1.2;
   color: var(--bs-primary);
   margin-top: 0;
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
 }
 
 .card {
