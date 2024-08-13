@@ -51,7 +51,7 @@ const stopBounce = (index) => {
 <style scoped>
 .faq-section {
   background-color: #2B2A2A;
-  padding: 100px 0; /* Added 100px padding to top and bottom */
+  padding: 100px 0; /* Retained 100px padding top and bottom */
 }
 
 .container {
@@ -74,7 +74,7 @@ const stopBounce = (index) => {
 
 .faq-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(2, 1fr); /* Changed back to 2 columns */
   gap: 30px;
 }
 
@@ -92,7 +92,7 @@ const stopBounce = (index) => {
   font-weight: bold;
   margin-bottom: 10px;
   transition: transform 0.3s ease-in-out;
-  min-height: 80px; /* Changed from fixed height to min-height */
+  min-height: 80px;
 }
 
 .faq-question span:first-child {
@@ -135,7 +135,7 @@ const stopBounce = (index) => {
 
 @media (max-width: 768px) {
   .faq-section {
-    padding: 60px 0; /* Reduced padding for smaller screens */
+    padding: 60px 0;
   }
 
   .faq-title {
@@ -148,7 +148,7 @@ const stopBounce = (index) => {
   }
 
   .faq-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* Single column for mobile */
   }
 
   .faq-question {
