@@ -40,7 +40,7 @@
   border-radius: 30px;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  margin-bottom: 100px;
+  margin-bottom: 65px;
   width: 80%; /* Reduced to 80% of original size */
   margin-left: auto;
   margin-right: auto;
@@ -55,7 +55,7 @@
 .button-wrapper {
   display: flex;
   justify-content: center;
-  gap: 70px;
+  gap: 100px;
 }
 
 .btn {
