@@ -1,17 +1,16 @@
 <template>
   <section class="consultation bg-primary">
     <div class="container">
-      <div class="row align-items-center">
-
+      <div class="row align-items-stretch">
         <!-- Image Section -->
-        <div class="col-lg-6">
+        <div class="col-lg-6 d-flex">
           <div class="image-container">
             <img src="/home-15.webp" alt="Consultation Image" class="image">
           </div>
         </div>
 
         <!-- Form Section -->
-        <div class="col-lg-6">
+        <div class="col-lg-6 d-flex">
           <div class="form-container bg-light rounded-lg shadow-lg">
             <h2 class="text-center">Book A Free Consultation Now</h2>
             <form class="p-4" id="contact-form" @submit.prevent="handleSubmit">
@@ -36,7 +35,6 @@
             </p>
           </div>
         </div>
-
       </div>
     </div>
   </section>
@@ -66,13 +64,25 @@ export default {
 
 <style scoped>
 .consultation {
-  padding: 115px 0;
+  padding: 120px 0;
+}
+
+.row {
+  margin: 0 -15px;
+}
+
+.col-lg-6 {
+  padding: 0 15px;
+}
+
+.image-container, .form-container {
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
+  overflow: hidden;
 }
 
 .image-container {
-  padding: 0;
-  border-radius: 30px;
-  overflow: hidden;
   display: flex;
   align-items: stretch;
 }
@@ -84,9 +94,10 @@ export default {
 }
 
 .form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   padding: 40px 50px;
-  border-radius: 30px;
-  margin-left: 35px;
 }
 
 h2 {
@@ -95,7 +106,7 @@ h2 {
 }
 
 .form-group {
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
 
 .form-control {
@@ -103,7 +114,7 @@ h2 {
   padding: 15px 20px;
   border: none;
   background-color: #f5f5f5;
-  border-radius: 50px; /* Ensure full rounded corners */
+  border-radius: 50px;
 }
 
 .btn-block {
@@ -112,7 +123,7 @@ h2 {
   padding: 15px 30px;
   font-size: 18px;
   font-weight: bold;
-  border-radius: 50px; /* Ensure full rounded corners */
+  border-radius: 50px;
 }
 
 .disclaimer {
@@ -123,16 +134,28 @@ h2 {
 
 /* Responsive styling */
 @media (max-width: 991px) {
-  .container .row {
+  .consultation {
+    padding: 60px 0;
+  }
+
+  .row {
     flex-direction: column;
   }
 
+  .col-lg-6 {
+    margin-bottom: 30px;
+  }
+
+  .image-container, .form-container {
+    height: auto;
+  }
+
   .image-container {
-    margin-bottom: 35px;
+    margin-bottom: 30px;
   }
 
   .form-container {
-    margin-left: 0;
+    padding: 30px;
   }
 }
 </style>
