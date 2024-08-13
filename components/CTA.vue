@@ -42,7 +42,8 @@ export default {
   line-height: 1.2;
   margin: 0;
   max-width: 70%;
-  margin-left: 50px;
+  margin-left: 0; /* Changed from 50px to 0 */
+  padding-left: 0; /* Added to ensure no left padding */
 }
 
 .cta-button {
