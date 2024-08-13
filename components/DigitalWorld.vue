@@ -17,10 +17,6 @@
 // No script needed for this component
 </script>
 
-<script setup>
-// No script needed for this component
-</script>
-
 <style scoped>
 .digital-world {
   background-color: var(--bs-white);
