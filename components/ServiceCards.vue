@@ -152,7 +152,8 @@ const cards = [
 
 .buttons-container {
   gap: 20px;
-  margin-left: -50px;
+  margin-left: 0;
+  padding-left: 50px;
 }
 
 .seo-button {
@@ -251,7 +252,7 @@ const cards = [
     align-items: center;
     text-align: center;
     margin-left: 0;
-    margin-right: 0;
+    padding-left: 0;
   }
 
   .consultation-container hr {
@@ -284,4 +285,4 @@ const cards = [
     font-size: 1em;
   }
 }
-</style>+
+</style>
