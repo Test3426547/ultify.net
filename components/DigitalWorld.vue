@@ -32,7 +32,7 @@
 
 .title {
   font-size: 2.5rem; /* Reduced from 3.0rem */
-  margin-bottom: 60px;
+  margin-bottom: 115px;
   color: var(--bs-primary); /* Changed to primary color */
 }
 
@@ -102,11 +102,11 @@
   
   .title {
     font-size: 2.5rem;
-    margin-bottom: 80px;
+    margin-bottom: 40px;
   }
   
   .image-wrapper {
-    margin-bottom: 100px;
+    margin-bottom: 60px;
     width: 90%; /* Slightly larger on mobile for better visibility */
   }
   
