@@ -102,7 +102,7 @@
   
   .title {
     font-size: 2.5rem;
-    margin-bottom: 40px;
+    margin-bottom: 80px;
   }
   
   .image-wrapper {
