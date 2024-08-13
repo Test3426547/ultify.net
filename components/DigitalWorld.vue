@@ -32,7 +32,7 @@
 
 .title {
   font-size: 2.5rem; /* Reduced from 3.0rem */
-  margin-bottom: 115px;
+  margin-bottom: 110px;
   color: var(--bs-primary); /* Changed to primary color */
 }
 
@@ -40,7 +40,7 @@
   border-radius: 30px;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  margin-bottom: 65px;
+  margin-bottom: 70px;
   width: 80%; /* Reduced to 80% of original size */
   margin-left: auto;
   margin-right: auto;
