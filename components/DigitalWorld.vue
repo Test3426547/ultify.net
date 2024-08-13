@@ -1,7 +1,7 @@
 <template>
   <section class="digital-world">
     <div class="container">
-      <h2 class="title text-black">Impacting the digital world since 2019</h2>
+      <h2 class="title text-primary">Impacting the digital world since 2019</h2>
       <div class="image-wrapper">
         <img src="/home-16.png" alt="Office Environment" class="responsive-image">
       </div>
@@ -12,6 +12,10 @@
     </div>
   </section>
 </template>
+
+<script setup>
+// No script needed for this component
+</script>
 
 <script setup>
 // No script needed for this component
@@ -31,8 +35,9 @@
 }
 
 .title {
-  font-size: 3.0rem;
+  font-size: 2.5rem; /* Reduced from 3.0rem */
   margin-bottom: 60px;
+  color: var(--bs-primary); /* Changed to primary color */
 }
 
 .image-wrapper {
@@ -40,6 +45,9 @@
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   margin-bottom: 100px;
+  width: 80%; /* Reduced to 80% of original size */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .responsive-image {
@@ -97,12 +105,13 @@
   }
   
   .title {
-    font-size: 3rem;
+    font-size: 2.5rem;
     margin-bottom: 40px;
   }
   
   .image-wrapper {
     margin-bottom: 60px;
+    width: 90%; /* Slightly larger on mobile for better visibility */
   }
   
   .button-wrapper {
