@@ -74,7 +74,7 @@ const cards = [
   line-height: 1.2;
   color: var(--bs-primary);
   margin-top: 0;
-  margin-bottom: 70px;
+  margin-bottom: 70px; /* This ensures 70px space between heading and cards */
 }
 
 .row.mb-5 {
