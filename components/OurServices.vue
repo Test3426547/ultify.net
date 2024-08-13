@@ -86,7 +86,7 @@ export default {
 .banner {
   padding-top: 75px !important; /* Increased top padding */
   padding-bottom: 75px !important; /* Increased bottom padding */
-  margin-bottom: 50px; /* Add space below the banner */
+  margin-bottom: 100px; /* Add space below the banner */
 }
 
 .service-grid {
