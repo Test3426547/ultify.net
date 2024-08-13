@@ -1,12 +1,12 @@
 <template>
-  <div class="col-lg-4 col-md-6 mb-5">
+  <div class="col-lg-4 col-md-6 mb-4">
     <div class="card h-100 bg-primary text-white shadow-3d" @click="navigateToService">
-      <div class="card-body border-radius-lg position-relative overflow-hidden pb-4 px-5 d-flex align-items-center">
-        <div class="flex-grow-1">
-          <h5 class="mt-2 font-weight-bold text-white">{{ title }}</h5>
-          <p class="mb-3">{{ description }}</p>
+      <div class="card-body d-flex flex-column justify-content-between">
+        <div>
+          <h5 class="card-title font-weight-bold text-white">{{ title }}</h5>
+          <p class="card-text">{{ description }}</p>
         </div>
-        <img class="w-25 mb-3 ms-3" :src="imgSrc" :alt="altText">
+        <img class="card-image mt-3" :src="imgSrc" :alt="altText">
       </div>
     </div>
   </div>
@@ -33,36 +33,60 @@ export default {
 <style scoped>
 .card {
   border-radius: 1.5rem;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   background-color: var(--bs-primary, #007bff);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .card:hover {
   transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
 }
 
 .card-body {
+  padding: 1.5rem;
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  text-align: left;
-  color: var(--bs-white, #fff);
+  flex-direction: column;
+  height: 100%;
 }
 
-img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 100%;
-  height: auto;
+.card-title {
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
 }
 
-.text-white {
-  color: var(--bs-white) !important;
+.card-text {
+  flex-grow: 1;
+  font-size: 0.9rem;
+  line-height: 1.5;
 }
 
-.shadow-3d {
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 6px 6px rgba(0, 0, 0, 0.1);
+.card-image {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  margin-top: auto;
+  align-self: flex-end;
+}
+
+@media (max-width: 767.98px) {
+  .card-body {
+    padding: 1.25rem;
+  }
+
+  .card-title {
+    font-size: 1.1rem;
+  }
+
+  .card-text {
+    font-size: 0.85rem;
+  }
+
+  .card-image {
+    width: 50px;
+    height: 50px;
+  }
 }
 </style>
