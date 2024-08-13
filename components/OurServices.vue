@@ -4,7 +4,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-8 mx-auto text-center">
-            <h3 class="bs-white">Our Services</h3>
+            <h3 class="wave-heading">Our Services</h3>
             <p>Explore our comprehensive range of expert services designed to meet your diverse needs.</p>
           </div>
         </div>
@@ -87,6 +87,11 @@ export default {
   padding-top: 125px !important; /* Increased top padding */
   padding-bottom: 125px !important; /* Increased bottom padding */
   margin-bottom: 100px; /* Add space below the banner */
+}
+
+.wave-heading {
+  font-size: 2.5em;
+  color: var(--bs-white);
 }
 
 .service-grid {
