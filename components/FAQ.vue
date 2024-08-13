@@ -8,8 +8,8 @@
       <div class="faq-grid">
         <div v-for="(faq, index) in faqs" :key="index" class="faq-item">
           <div class="faq-question bg-primary text-white" @click="toggleAnswer(index)" @mouseover="startBounce(index)" @mouseleave="stopBounce(index)">
-          <span>{{ faq.question }}</span>
-          <span class="faq-icon">{{ faq.showAnswer ? '▲' : '▼' }}</span>
+            <span>{{ faq.question }}</span>
+            <span class="faq-icon">{{ faq.showAnswer ? '▲' : '▼' }}</span>
           </div>
           <div v-if="faq.showAnswer" class="faq-answer bg-primary text-white">
             {{ faq.answer }}
@@ -33,8 +33,6 @@ const faqs = ref([
   { question: 'What can a digital marketing agency do for my business?', answer: 'A digital marketing agency can help you build brand awareness, increase online presence, generate leads, and ultimately grow your business through various digital strategies.', showAnswer: false, isBouncing: false },
   { question: 'What can I expect from a digital marketing agency team?', answer: 'A digital marketing agency team typically consists of experts in various areas such as strategy, content creation, SEO, social media, and analytics. They work collaboratively to develop and execute comprehensive digital marketing campaigns tailored to your business goals.', showAnswer: false, isBouncing: false },
   { question: 'Which industries benefit most from digital marketing?', answer: 'While all industries can benefit from digital marketing, those in e-commerce, tech, healthcare, and entertainment often see significant growth and ROI.', showAnswer: false, isBouncing: false },
-  { question: 'How do I find the right digital marketing agency for my company?', answer: 'Finding the right agency involves assessing your business needs, researching potential agencies\' expertise, and reviewing case studies and testimonials.', showAnswer: false, isBouncing: false },
-
 ]);
 
 const toggleAnswer = (index) => {
@@ -53,8 +51,7 @@ const stopBounce = (index) => {
 <style scoped>
 .faq-section {
   background-color: #2B2A2A;
-  min-height: 100vh;
-  padding: 60px 0;
+  padding: 100px 0; /* Added 100px padding to top and bottom */
 }
 
 .container {
@@ -77,8 +74,8 @@ const stopBounce = (index) => {
 
 .faq-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
 }
 
 .faq-item {
@@ -86,7 +83,7 @@ const stopBounce = (index) => {
 }
 
 .faq-question {
-  padding: 10px 25px;
+  padding: 15px 25px;
   border-radius: 50px;
   cursor: pointer;
   display: flex;
@@ -95,15 +92,14 @@ const stopBounce = (index) => {
   font-weight: bold;
   margin-bottom: 10px;
   transition: transform 0.3s ease-in-out;
-  height: 80px; /* Set a fixed height */
-  overflow: hidden; /* Hide overflowing text */
+  min-height: 80px; /* Changed from fixed height to min-height */
 }
 
 .faq-question span:first-child {
   flex: 1;
   display: flex;
   align-items: center;
-  line-height: 1.2; /* Adjust line height for better readability */
+  line-height: 1.3;
 }
 
 .faq-question:hover {
@@ -128,19 +124,36 @@ const stopBounce = (index) => {
 
 .faq-icon {
   font-size: 0.8rem;
+  margin-left: 10px;
 }
 
 .faq-answer {
   padding: 20px;
   border-radius: 20px;
   margin-top: 10px;
-  margin-left: 20px;
-  margin-right: 20px;
 }
 
 @media (max-width: 768px) {
+  .faq-section {
+    padding: 60px 0; /* Reduced padding for smaller screens */
+  }
+
+  .faq-title {
+    font-size: 2.5rem;
+  }
+
+  .faq-subtitle {
+    font-size: 1rem;
+    margin-bottom: 40px;
+  }
+
   .faq-grid {
     grid-template-columns: 1fr;
+  }
+
+  .faq-question {
+    padding: 12px 20px;
+    min-height: 60px;
   }
 }
 </style>
