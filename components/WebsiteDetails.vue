@@ -63,7 +63,7 @@ export default {
 }
 
 .container {
-  max-width: 1100px;  /* Adjusted to accommodate the new gap */
+  max-width: 1200px;  /* Adjusted to accommodate the new gap */
   margin: 0 auto;
   padding: 0 20px;
 }
