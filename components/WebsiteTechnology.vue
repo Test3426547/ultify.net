@@ -1,5 +1,5 @@
 <template>
-  <section class="py-5 bg-primary text-white website-technology">
+  <section class="py-5 pb-6 bg-primary text-white website-technology">
     <div class="container">
       <div class="row align-items-center">
         <!-- Framework Technology Section -->
@@ -80,5 +80,9 @@ export default {
 .horizontal.light {
   border-color: var(--bs-white) !important;
   opacity: 0.2;
+}
+
+.pb-6 {
+  padding-bottom: 50px !important;
 }
 </style>
