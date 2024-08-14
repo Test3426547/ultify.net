@@ -1,18 +1,14 @@
 <template>
-  <section class="py-5 bg-light">
+  <section class="service-details bg-light">
     <div class="container">
-      <div class="row g-5">
-        <template v-for="(service, index) in services" :key="index">
-          <div :class="['col-12 col-md-6', index % 2 === 0 ? 'order-md-1' : 'order-md-2']">
-            <div class="h-100 d-flex flex-column justify-content-center">
-              <h3 class="text-primary mb-3">{{ service.title }}</h3>
-              <p class="text-body mb-0">{{ service.description }}</p>
-            </div>
-          </div>
-          <div :class="['col-12 col-md-6', index % 2 === 0 ? 'order-md-2' : 'order-md-1']">
-            <img :src="service.image" class="img-fluid rounded-3 shadow" :alt="service.title">
-          </div>
-        </template>
+      <div class="service-row" v-for="(service, index) in services" :key="index">
+        <div class="service-content" :class="{ 'order-2': index % 2 !== 0 }">
+          <h2 class="service-title">{{ service.title }}</h2>
+          <p class="service-description">{{ service.description }}</p>
+        </div>
+        <div class="service-image" :class="{ 'order-1': index % 2 !== 0 }">
+          <img :src="service.image" :alt="service.title">
+        </div>
       </div>
     </div>
   </section>
@@ -30,24 +26,24 @@ export default {
           image: '/website-04.png'
         },
         {
-          title: 'Mobile Conversion',
-          description: 'Did you know that 86% of the world owns a smartphone, compared to only 25% owning a computer? This statistic emphasizes the importance of having a website optimized for all devices. At ULTIFY, we provide a highly optimized website for all devices, ensuring no loss in quality, conversion rates, or user experience.',
-          image: '/website-05.png'
-        },
-        {
           title: 'Website Management',
           description: 'ULTIFY provides comprehensive website management services to ensure your site is always up-to-date, secure, and performing at its best. Our services include regular updates, user experience improvements, and multimedia content management.',
           image: '/website-06.png'
         },
         {
-          title: 'Conversion Rate Optimization',
-          description: 'What is the point of a website if it doesnt convert? At ULTIFY, we implement CRO strategies to maximize your sites effectiveness, driving more conversions and sales through meticulous analysis and A/B testing.',
-          image: '/website-07.png'
-        },
-        {
           title: 'Website Maintenance',
           description: 'We offer comprehensive website maintenance services to ensure your sites security, reliability, and performance. Our team conducts regular checks and updates to keep your site running smoothly.',
           image: '/website-08.png'
+        },
+        {
+          title: 'Mobile Conversion',
+          description: 'Did you know that 86% of the world owns a smartphone, compared to only 25% owning a computer? This statistic emphasizes the importance of having a website optimized for all devices. At ULTIFY, we provide a highly optimized website for all devices, ensuring no loss in quality, conversion rates, or user experience.',
+          image: '/website-05.png'
+        },
+        {
+          title: 'Conversion Rate Optimization',
+          description: 'What is the point of a website if it doesnt convert? At ULTIFY, we implement CRO strategies to maximize your sites effectiveness, driving more conversions and sales through meticulous analysis and A/B testing.',
+          image: '/website-07.png'
         },
         {
           title: 'Website Audit & Strategy',
@@ -61,21 +57,48 @@ export default {
 </script>
 
 <style scoped>
-.bg-light {
-  background-color: var(--bs-light) !important;
+.service-details {
+  min-height: 5000px;
+  padding: 100px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.text-primary {
-  color: var(--bs-primary) !important;
+.service-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 100px;
 }
 
-.text-body {
-  color: var(--bs-body-color) !important;
+.service-content, .service-image {
+  flex: 1;
+  padding: 20px;
 }
 
-@media (min-width: 768px) {
-  .row > div {
-    margin-bottom: 3rem;
+.service-title {
+  color: #3498db;
+  margin-bottom: 20px;
+}
+
+.service-description {
+  color: #34495e;
+  line-height: 1.6;
+}
+
+.service-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+  .service-row {
+    flex-direction: column;
+  }
+
+  .service-content, .service-image {
+    order: 0 !important;
   }
 }
 </style>
