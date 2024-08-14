@@ -2,11 +2,11 @@
   <section class="service-details bg-light">
     <div class="container">
       <div class="service-row" v-for="(service, index) in services" :key="index">
-        <div class="service-content" :class="{ 'order-2': index % 2 !== 0 }">
+        <div class="service-content" :class="{ 'left': index % 2 === 0, 'right': index % 2 !== 0 }">
           <h2 class="service-title">{{ service.title }}</h2>
           <p class="service-description">{{ service.description }}</p>
         </div>
-        <div class="service-image" :class="{ 'order-1': index % 2 !== 0 }">
+        <div class="service-image" :class="{ 'right': index % 2 === 0, 'left': index % 2 !== 0 }">
           <img :src="service.image" :alt="service.title">
         </div>
       </div>
@@ -58,32 +58,48 @@ export default {
 
 <style scoped>
 .service-details {
-  min-height: 5000px;
-  padding: 100px 0;
+  height: 5000px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  background-color: #f8f9fa;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .service-row {
   display: flex;
   align-items: center;
-  margin-bottom: 100px;
+  justify-content: space-between;
+  margin-bottom: 50px;
 }
 
 .service-content, .service-image {
-  flex: 1;
-  padding: 20px;
+  flex-basis: 45%;
+}
+
+.service-content.left {
+  margin-left: -100px;
+}
+
+.service-content.right {
+  margin-right: -100px;
 }
 
 .service-title {
   color: #3498db;
   margin-bottom: 20px;
+  font-size: 2.5rem;
 }
 
 .service-description {
   color: #34495e;
   line-height: 1.6;
+  font-size: 1.1rem;
 }
 
 .service-image img {
@@ -92,13 +108,21 @@ export default {
   border-radius: 10px;
 }
 
+@media (max-width: 1200px) {
+  .service-content.left, .service-content.right {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
 @media (max-width: 768px) {
   .service-row {
     flex-direction: column;
   }
 
   .service-content, .service-image {
-    order: 0 !important;
+    flex-basis: 100%;
+    margin-bottom: 30px;
   }
 }
 </style>
