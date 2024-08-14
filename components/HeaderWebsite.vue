@@ -2,10 +2,9 @@
   <div class="homepage">
     <div class="top-section">
       <div class="content">
-        <span class="welcome">Welcome to Ultify</span>
         <h1>Rise to Digital Excellence with Your Own Website</h1>
         <p>We’re constantly trying to express ourselves and actualize our dreams. If you have the opportunity to play this game, make the most of it!</p>
-        <button class="get-started-btn">Get Started</button>
+        <button class="get-started-btn">Contact Us</button>
       </div>
     </div>
     <div class="wave-container">
