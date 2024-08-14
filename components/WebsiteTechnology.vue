@@ -83,6 +83,6 @@ export default {
 }
 
 .pb-6 {
-  padding-bottom: 50px !important;
+  padding-bottom: 80px !important;
 }
 </style>
