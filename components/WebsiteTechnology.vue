@@ -1,11 +1,11 @@
 <template>
-  <section class="py-5 bg-light">
+  <section class="py-5 bg-primary text-white">
     <div class="container">
       <div class="row align-items-center">
         <!-- Framework Technology Section -->
         <div class="col-md-6 mb-md-0 mb-4">
-          <h3 class="text-gradient text-primary mb-0">Our Framework Technology</h3>
-          <p class="text-body">Our technology stack includes a range of popular frameworks to ensure robust and scalable solutions. We have the expertise to work beyond these listed technologies, offering tailored solutions for your needs.</p>
+          <h3 class="mb-0">Our Framework Technology</h3>
+          <p>Our technology stack includes a range of popular frameworks to ensure robust and scalable solutions. We have the expertise to work beyond these listed technologies, offering tailored solutions for your needs.</p>
           <ul class="list-unstyled">
             <li><span class="me-2">&#9679;</span> Framework Development</li>
             <li><span class="me-2">&#9679;</span> React Development</li>
@@ -25,12 +25,12 @@
           </div>
         </div>
       </div>
-      <hr class="horizontal dark my-6 mx-7">
+      <hr class="horizontal light my-6 mx-7">
       <div class="row align-items-center">
         <!-- CMS Technology Section -->
         <div class="col-md-6 mb-md-0 mb-4">
-          <h3 class="text-gradient text-primary mb-0">Our CMS Technology</h3>
-          <p class="text-body">We specialize in various CMS platforms to deliver efficient content management solutions. Our expertise is not limited to these technologies, and we can work with other CMS platforms as well.</p>
+          <h3 class="mb-0">Our CMS Technology</h3>
+          <p>We specialize in various CMS platforms to deliver efficient content management solutions. Our expertise is not limited to these technologies, and we can work with other CMS platforms as well.</p>
           <ul class="list-unstyled">
             <li><span class="me-2">&#9679;</span> CMS Development</li>
             <li><span class="me-2">&#9679;</span> Shopify Development</li>
@@ -62,19 +62,12 @@ export default {
 </script>
 
 <style scoped>
-.text-gradient {
-  background: var(--bs-gradient-primary, linear-gradient(to right, #007bff, #00d4ff));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+.bg-primary {
+  background-color: var(--bs-primary) !important;
 }
 
-.text-body {
-  color: var(--bs-body-color);
-}
-
-.bg-light {
-  background-color: var(--bs-light) !important;
+.text-white {
+  color: var(--bs-white) !important;
 }
 
 .blur-shadow-image img {
@@ -83,7 +76,8 @@ export default {
   border-radius: var(--bs-border-radius-lg, 0.5rem);
 }
 
-.horizontal.dark {
-  border-color: var(--bs-dark) !important;
+.horizontal.light {
+  border-color: var(--bs-white) !important;
+  opacity: 0.2;
 }
 </style>

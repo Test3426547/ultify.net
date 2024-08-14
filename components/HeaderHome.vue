@@ -5,7 +5,7 @@
         <span class="welcome">Welcome to Ultify</span>
         <h1>Capitalise on digital resources with ULTIFY</h1>
         <p>Our agency utilises digital resources and our working strategies to elevate your business operations. Start now and maximise your digital reach.</p>
-        <button class="get-started-btn">Get Started</button>
+        <NuxtLink to="/consultation" class="get-started-btn">Get Started</NuxtLink>
       </div>
     </div>
     <div class="wave-container">
