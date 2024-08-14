@@ -63,7 +63,7 @@ export default {
 }
 
 .container {
-  max-width: 1400px;  /* Increased to accommodate the gap */
+  max-width: 1330px;  /* Adjusted to accommodate the new gap */
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -80,28 +80,26 @@ export default {
 }
 
 .service-content, .service-image {
-  flex-basis: calc(50% - 100px);  /* 50% width minus 100px for the gap */
-  max-width: calc(50% - 100px);
+  flex-basis: calc(50% - 65px);  /* 50% width minus 65px for the gap */
+  max-width: calc(50% - 65px);
 }
 
 .service-content {
-  padding-right: 50px;
+  transform: translateX(-65px);
 }
 
 .service-content.right {
   order: 2;
-  padding-right: 0;
-  padding-left: 50px;
+  transform: translateX(65px);
 }
 
 .service-image {
-  padding-left: 50px;
+  transform: translateX(65px);
 }
 
 .service-image.left {
   order: 1;
-  padding-left: 0;
-  padding-right: 50px;
+  transform: translateX(-65px);
 }
 
 .service-title {
@@ -135,13 +133,13 @@ export default {
   .service-content, .service-image {
     flex-basis: 100%;
     max-width: 100%;
-    padding: 0;
+    transform: none;
     margin-bottom: 30px;
   }
 
   .service-content.right, .service-image.left {
     order: 0;
-    padding: 0;
+    transform: none;
   }
 
   .service-title {
