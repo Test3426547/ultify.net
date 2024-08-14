@@ -1,88 +1,207 @@
 <template>
-  <section class="py-5 pb-6 bg-primary text-white website-technology">
-    <div class="container">
-      <div class="row align-items-center">
-        <!-- Framework Technology Section -->
-        <div class="col-md-6 mb-md-0 mb-4">
-          <h3 class="mb-0">Our Framework Technology</h3>
-          <p>Our technology stack includes a range of popular frameworks to ensure robust and scalable solutions. We have the expertise to work beyond these listed technologies, offering tailored solutions for your needs.</p>
-          <ul class="list-unstyled">
-            <li><span class="me-2">&#9679;</span> Framework Development</li>
-            <li><span class="me-2">&#9679;</span> React Development</li>
-            <li><span class="me-2">&#9679;</span> Angular JS Development</li>
-            <li><span class="me-2">&#9679;</span> Ruby Development</li>
-            <li><span class="me-2">&#9679;</span> Django Development</li>
-            <li><span class="me-2">&#9679;</span> NodeJS Development</li>
-          </ul>
-        </div>
-        <div class="col-md-6">
-          <div class="blur-shadow-image text-center">
-            <picture>
-              <source srcset="/website-02m.png" media="(max-width: 767px)">
-              <source srcset="/website-02.png">
-              <img src="/website-02.png" alt="Framework Technologies" class="img-fluid shadow border-radius-lg max-height-600">
-            </picture>
+  <section class="website-technology">
+    <!-- Framework Technology Section -->
+    <div class="technology-section framework-section">
+      <div class="content-wrapper">
+        <h2 class="section-title">Our Framework Technology</h2>
+        <p class="section-description">
+          Our technology stack includes a range of popular frameworks to ensure robust and scalable solutions. 
+          We have the expertise to work beyond these listed technologies, offering tailored solutions for your needs.
+        </p>
+        <div class="technology-list">
+          <div v-for="(framework, index) in frameworks" :key="index" class="technology-item" 
+               @mouseenter="onHover(framework, 'framework')" @mouseleave="onLeave('framework')">
+            {{ framework }}
           </div>
         </div>
       </div>
-      <hr class="horizontal light my-6 mx-7">
-      <div class="row align-items-center">
-        <!-- CMS Technology Section -->
-        <div class="col-md-6 mb-md-0 mb-4">
-          <h3 class="mb-0">Our CMS Technology</h3>
-          <p>We specialize in various CMS platforms to deliver efficient content management solutions. Our expertise is not limited to these technologies, and we can work with other CMS platforms as well.</p>
-          <ul class="list-unstyled">
-            <li><span class="me-2">&#9679;</span> CMS Development</li>
-            <li><span class="me-2">&#9679;</span> Shopify Development</li>
-            <li><span class="me-2">&#9679;</span> WordPress Development</li>
-            <li><span class="me-2">&#9679;</span> GoDaddy Development</li>
-            <li><span class="me-2">&#9679;</span> Wix Development</li>
-            <li><span class="me-2">&#9679;</span> Weebly Development</li>
-            <li><span class="me-2">&#9679;</span> Squarespace Development</li>
-          </ul>
-        </div>
-        <div class="col-md-6">
-          <div class="blur-shadow-image text-center">
-            <picture>
-              <source srcset="/website-03m.png" media="(max-width: 767px)">
-              <source srcset="/website-03.png">
-              <img src="/website-03.png" alt="CMS Technologies" class="img-fluid shadow border-radius-lg max-height-600">
-            </picture>
+      <div class="image-wrapper" ref="frameworkImageWrapper">
+        <img :src="currentFrameworkImage" alt="Framework Technologies" class="technology-image">
+      </div>
+    </div>
+
+    <!-- CMS Technology Section -->
+    <div class="technology-section cms-section">
+      <div class="content-wrapper">
+        <h2 class="section-title">Our CMS Technology</h2>
+        <p class="section-description">
+          We specialize in various CMS platforms to deliver efficient content management solutions. 
+          Our expertise is not limited to these technologies, and we can work with other CMS platforms as well.
+        </p>
+        <div class="technology-list">
+          <div v-for="(cms, index) in cmsTechnologies" :key="index" class="technology-item"
+               @mouseenter="onHover(cms, 'cms')" @mouseleave="onLeave('cms')">
+            {{ cms }}
           </div>
         </div>
+      </div>
+      <div class="image-wrapper" ref="cmsImageWrapper">
+        <img :src="currentCmsImage" alt="CMS Technologies" class="technology-image">
       </div>
     </div>
   </section>
 </template>
 
 <script>
+import { gsap } from 'gsap';
+import * as THREE from 'three';
+
 export default {
   name: 'WebsiteTechnology',
+  data() {
+    return {
+      frameworks: [
+        'Framework Development', 'React Development', 'Angular JS Development',
+        'Ruby Development', 'Django Development', 'NodeJS Development'
+      ],
+      cmsTechnologies: [
+        'CMS Development', 'Shopify Development', 'WordPress Development',
+        'GoDaddy Development', 'Wix Development', 'Squarespace Development'
+      ],
+      currentFrameworkImage: '/placeholder-framework.jpg',
+      currentCmsImage: '/placeholder-cms.jpg',
+    };
+  },
+  mounted() {
+    this.initThreeJS();
+  },
+  methods: {
+    onHover(technology, type) {
+      // Update image based on hovered technology
+      if (type === 'framework') {
+        this.currentFrameworkImage = `/placeholder-${technology.toLowerCase().replace(' ', '-')}.jpg`;
+      } else {
+        this.currentCmsImage = `/placeholder-${technology.toLowerCase().replace(' ', '-')}.jpg`;
+      }
+
+      // Animate the hovered item
+      gsap.to(event.target, {
+        scale: 1.1,
+        color: '#FFD700',
+        duration: 0.3,
+        ease: 'power2.out'
+      });
+
+      // Animate image transition
+      this.animateImageTransition(type);
+    },
+    onLeave(type) {
+      // Reset image to default
+      if (type === 'framework') {
+        this.currentFrameworkImage = '/placeholder-framework.jpg';
+      } else {
+        this.currentCmsImage = '/placeholder-cms.jpg';
+      }
+
+      // Reset animation for all items
+      gsap.to('.technology-item', {
+        scale: 1,
+        color: '#FFFFFF',
+        duration: 0.3,
+        ease: 'power2.out'
+      });
+    },
+    animateImageTransition(type) {
+      const wrapper = type === 'framework' ? this.$refs.frameworkImageWrapper : this.$refs.cmsImageWrapper;
+      gsap.fromTo(wrapper, 
+        { opacity: 0, scale: 0.9 },
+        { opacity: 1, scale: 1, duration: 0.5, ease: 'power2.out' }
+      );
+    },
+    initThreeJS() {
+      // Basic Three.js setup for both sections
+      ['frameworkImageWrapper', 'cmsImageWrapper'].forEach(ref => {
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ alpha: true });
+        
+        renderer.setSize(window.innerWidth / 2, window.innerHeight);
+        this.$refs[ref].appendChild(renderer.domElement);
+
+        const geometry = new THREE.BoxGeometry();
+        const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+        const cube = new THREE.Mesh(geometry, material);
+        scene.add(cube);
+
+        camera.position.z = 5;
+
+        const animate = () => {
+          requestAnimationFrame(animate);
+          cube.rotation.x += 0.01;
+          cube.rotation.y += 0.01;
+          renderer.render(scene, camera);
+        };
+
+        animate();
+      });
+    }
+  }
 };
 </script>
 
 <style scoped>
 .website-technology {
-  background-color: var(--bs-primary) !important;
-  color: var(--bs-white) !important;
+  background-color: #1a1a1a;
+  color: #ffffff;
 }
 
-.website-technology h3 {
-  color: var(--bs-white) !important;
+.technology-section {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 2rem;
 }
 
-.blur-shadow-image img {
+.content-wrapper {
+  flex: 1;
+  padding-right: 2rem;
+}
+
+.image-wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.section-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.technology-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.technology-item {
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.technology-image {
   max-width: 100%;
   height: auto;
-  border-radius: var(--bs-border-radius-lg, 0.5rem);
+  border-radius: 10px;
 }
 
-.horizontal.light {
-  border-color: var(--bs-white) !important;
-  opacity: 0.2;
-}
+@media (max-width: 768px) {
+  .technology-section {
+    flex-direction: column;
+    height: auto;
+  }
 
-.pb-6 {
-  padding-bottom: 80px !important;
+  .content-wrapper, .image-wrapper {
+    width: 100%;
+    padding: 1rem 0;
+  }
 }
 </style>
