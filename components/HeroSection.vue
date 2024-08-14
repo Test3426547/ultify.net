@@ -1,5 +1,5 @@
 <template>
-  <section class="hero-section position-relative bg-primary">
+  <section class="hero-section position-relative">
     <div class="container h-100 d-flex flex-column justify-content-between">
       <h1 class="text-white text-center hero-title" ref="heroTitle">GET A WEBSITE EXACTLY THE WAY YOU NEED!</h1>
       <div class="carousel-container d-flex justify-content-center align-items-center">
@@ -50,36 +50,7 @@ const changeImages = () => {
 onMounted(() => {
   interval = setInterval(changeImages, 5000)
 
-  gsap.from(heroTitle.value, {
-    y: -30,
-    opacity: 0,
-    duration: 1,
-    ease: 'power3.out'
-  })
-
-  gsap.from(leftCarousel.value, {
-    x: -50,
-    opacity: 0,
-    duration: 1,
-    delay: 0.3,
-    ease: 'power3.out'
-  })
-
-  gsap.from(rightCarousel.value, {
-    x: 50,
-    opacity: 0,
-    duration: 1,
-    delay: 0.3,
-    ease: 'power3.out'
-  })
-
-  gsap.from(caseStudiesBtn.value, {
-    y: 30,
-    opacity: 0,
-    duration: 1,
-    delay: 0.6,
-    ease: 'power3.out'
-  })
+  // Removed initial animations for carousels and title
 
   caseStudiesBtn.value.addEventListener('mouseenter', () => {
     gsap.to(caseStudiesBtn.value, {
@@ -124,7 +95,6 @@ onUnmounted(() => {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 5%;
 }
 
 .carousel-wrapper {
@@ -138,12 +108,14 @@ onUnmounted(() => {
   width: 50%;
   max-width: 600px;
   aspect-ratio: 16 / 9;
+  transform: translateX(-100px);
 }
 
 .right-carousel {
   width: 25%;
   max-width: 300px;
   aspect-ratio: 9 / 16;
+  transform: translateX(50px);
 }
 
 .carousel-image {
@@ -191,6 +163,7 @@ onUnmounted(() => {
   .right-carousel {
     width: 90%;
     max-width: none;
+    transform: none;
   }
 
   .right-carousel {
