@@ -4,7 +4,7 @@
       <div class="row align-items-center">
         <!-- Framework Technology Section -->
         <div class="col-md-6 mb-md-0 mb-4">
-          <h3 class="mb-0">Our Framework Technology</h3>
+          <h3 class="mb-0 bs-white">Our Framework Technology</h3>
           <p>Our technology stack includes a range of popular frameworks to ensure robust and scalable solutions. We have the expertise to work beyond these listed technologies, offering tailored solutions for your needs.</p>
           <ul class="list-unstyled">
             <li><span class="me-2">&#9679;</span> Framework Development</li>
@@ -29,7 +29,7 @@
       <div class="row align-items-center">
         <!-- CMS Technology Section -->
         <div class="col-md-6 mb-md-0 mb-4">
-          <h3 class="mb-0">Our CMS Technology</h3>
+          <h3 class="mb-0 bs-white">Our CMS Technology</h3>
           <p>We specialize in various CMS platforms to deliver efficient content management solutions. Our expertise is not limited to these technologies, and we can work with other CMS platforms as well.</p>
           <ul class="list-unstyled">
             <li><span class="me-2">&#9679;</span> CMS Development</li>
