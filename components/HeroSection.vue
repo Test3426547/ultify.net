@@ -50,50 +50,6 @@ onMounted(() => {
   if (caseStudiesBtn.value) {
     caseStudiesBtn.value.addEventListener('mouseenter', () => {
       gsap.to(caseStudiesBtn.value, {
-        y: -10,
-        duration: 0.2,
-        repeat: 3,
-        yoyo: true,
-        ease: "power2.inOut"
-      })
-    })
-  }
-})
-
-onUnmounted(() => {
-  clearInterval(interval)
-})
-</script>
-
-<script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
-import { gsap } from 'gsap'
-
-const leftImages = ['/7.png', '/8.png', '/9.png', '/10.png', '/11.png']
-const rightImages = ['/13.png', '/14.png', '/15.png', '/16.png', '/17.png']
-
-const leftCurrentIndex = ref(0)
-const rightCurrentIndex = ref(0)
-const leftCurrentImage = ref(leftImages[0])
-const rightCurrentImage = ref(rightImages[0])
-
-let interval
-
-const changeImages = () => {
-  leftCurrentIndex.value = (leftCurrentIndex.value + 1) % leftImages.length
-  rightCurrentIndex.value = (rightCurrentIndex.value + 1) % rightImages.length
-  leftCurrentImage.value = leftImages[leftCurrentIndex.value]
-  rightCurrentImage.value = rightImages[rightCurrentIndex.value]
-}
-
-onMounted(() => {
-  interval = setInterval(changeImages, 5000)
-
-  const caseStudiesBtn = ref(null)
-
-  if (caseStudiesBtn.value) {
-    caseStudiesBtn.value.addEventListener('mouseenter', () => {
-      gsap.to(caseStudiesBtn.value, {
         y: -5,
         duration: 0.2,
         repeat: 5,
