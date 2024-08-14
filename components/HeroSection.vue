@@ -1,17 +1,13 @@
 <template>
-  <section class="hero-section position-relative bg-primary d-flex flex-column justify-content-between">
-    <div class="container d-flex flex-column justify-content-between h-100">
-      <h1 class="text-white text-center">GET A WEBSITE EXACTLY THE WAY YOU NEED!</h1>
+  <section class="hero-section position-relative bg-primary overflow-hidden">
+    <div class="container h-100 d-flex flex-column justify-content-between">
+      <h1 class="text-white text-center hero-title" ref="heroTitle">GET A WEBSITE EXACTLY THE WAY YOU NEED!</h1>
       <div class="carousel-container d-flex justify-content-center align-items-center">
-        <div class="carousel-wrapper left-carousel">
-          <transition name="fade" mode="out-in">
-            <img :key="leftCurrentImage" :src="leftCurrentImage" :alt="'Website Example Left ' + (leftCurrentIndex + 1)" class="carousel-image">
-          </transition>
+        <div class="carousel-wrapper left-carousel" ref="leftCarousel">
+          <img v-for="(img, index) in leftImages" :key="'left'+index" :src="img" :alt="'Website Example Left ' + (index + 1)" class="carousel-image" :class="{ active: index === leftCurrentIndex }">
         </div>
-        <div class="carousel-wrapper right-carousel">
-          <transition name="fade" mode="out-in">
-            <img :key="rightCurrentImage" :src="rightCurrentImage" :alt="'Website Example Right ' + (rightCurrentIndex + 1)" class="carousel-image">
-          </transition>
+        <div class="carousel-wrapper right-carousel" ref="rightCarousel">
+          <img v-for="(img, index) in rightImages" :key="'right'+index" :src="img" :alt="'Website Example Right ' + (index + 1)" class="carousel-image" :class="{ active: index === rightCurrentIndex }">
         </div>
       </div>
       <div class="text-center">
@@ -24,33 +20,37 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const leftImages = ['/7.png', '/8.png', '/9.png', '/10.png', '/11.png']
 const rightImages = ['/13.png', '/14.png', '/15.png', '/16.png', '/17.png']
 
 const leftCurrentIndex = ref(0)
 const rightCurrentIndex = ref(0)
-const leftCurrentImage = ref(leftImages[0])
-const rightCurrentImage = ref(rightImages[0])
+
+const heroTitle = ref(null)
+const leftCarousel = ref(null)
+const rightCarousel = ref(null)
+const caseStudiesBtn = ref(null)
 
 let interval
 
 const changeImages = () => {
-  // Fade out both images
-  gsap.to('.carousel-image', { 
-    opacity: 0, 
-    duration: 0.5, 
+  gsap.to('.carousel-image.active', {
+    opacity: 0,
+    scale: 0.8,
+    duration: 0.5,
     onComplete: () => {
-      // Update image sources
       leftCurrentIndex.value = (leftCurrentIndex.value + 1) % leftImages.length
       rightCurrentIndex.value = (rightCurrentIndex.value + 1) % rightImages.length
-      leftCurrentImage.value = leftImages[leftCurrentIndex.value]
-      rightCurrentImage.value = rightImages[rightCurrentIndex.value]
       
-      // Fade in new images after a short delay
-      setTimeout(() => {
-        gsap.to('.carousel-image', { opacity: 1, duration: 0.5 })
-      }, 100)
+      gsap.to('.carousel-image.active', {
+        opacity: 1,
+        scale: 1,
+        duration: 0.5
+      })
     }
   })
 }
@@ -58,26 +58,72 @@ const changeImages = () => {
 onMounted(() => {
   interval = setInterval(changeImages, 5000)
 
-  const caseStudiesBtn = ref(null)
+  gsap.from(heroTitle.value, {
+    y: -50,
+    opacity: 0,
+    duration: 1,
+    ease: 'power3.out'
+  })
 
-  if (caseStudiesBtn.value) {
-    caseStudiesBtn.value.addEventListener('mouseenter', () => {
-      gsap.to(caseStudiesBtn.value, {
-        y: -5,
-        duration: 0.2,
-        repeat: 5,
-        yoyo: true,
-        ease: "power2.inOut",
-        onComplete: () => {
-          gsap.to(caseStudiesBtn.value, {
-            y: 0,
-            duration: 0.2,
-            ease: "power2.out"
-          })
-        }
-      })
+  gsap.from(leftCarousel.value, {
+    x: -200,
+    opacity: 0,
+    duration: 1,
+    delay: 0.5,
+    ease: 'power3.out'
+  })
+
+  gsap.from(rightCarousel.value, {
+    x: 200,
+    opacity: 0,
+    duration: 1,
+    delay: 0.5,
+    ease: 'power3.out'
+  })
+
+  gsap.from(caseStudiesBtn.value, {
+    y: 50,
+    opacity: 0,
+    duration: 1,
+    delay: 1,
+    ease: 'power3.out'
+  })
+
+  caseStudiesBtn.value.addEventListener('mouseenter', () => {
+    gsap.to(caseStudiesBtn.value, {
+      y: -5,
+      duration: 0.2,
+      repeat: 5,
+      yoyo: true,
+      ease: "power2.inOut",
+      onComplete: () => {
+        gsap.to(caseStudiesBtn.value, {
+          y: 0,
+          duration: 0.2,
+          ease: "power2.out"
+        })
+      }
     })
-  }
+  })
+
+  // Parallax effect
+  gsap.to('.left-carousel', {
+    yPercent: 20,
+    ease: "none",
+    scrollTrigger: {
+      trigger: ".hero-section",
+      scrub: true
+    }, 
+  })
+
+  gsap.to('.right-carousel', {
+    yPercent: -20,
+    ease: "none",
+    scrollTrigger: {
+      trigger: ".hero-section",
+      scrub: true
+    }, 
+  })
 })
 
 onUnmounted(() => {
@@ -88,52 +134,48 @@ onUnmounted(() => {
 <style scoped>
 .hero-section {
   height: 100vh;
-  padding: 1rem 0;
-  overflow: hidden;
+  padding: 2rem 0;
 }
 
-h1 {
-  font-size: 2.5rem;
+.hero-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
   line-height: 1.2;
-  margin: 1rem 0;
+  margin: 2rem 0;
 }
 
 .carousel-container {
   flex: 1;
-  margin: 1rem 0;
+  margin: 2rem 0;
 }
 
 .carousel-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
   position: relative;
+  width: 45%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
 }
 
 .left-carousel {
-  width: 50%;
-  height: 100%;
-  transform: translateX(-200px);
+  transform: translateX(-10%) rotate(-5deg);
 }
 
 .right-carousel {
-  width: 25%;
-  height: 100%;
+  transform: translateX(10%) rotate(5deg);
 }
 
 .carousel-image {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.carousel-image.active {
   opacity: 1;
-  transition: opacity 0.5s ease;
 }
 
 .case-studies-btn {
@@ -141,29 +183,34 @@ h1 {
   font-weight: bold;
   padding: 0.75rem 2rem;
   font-size: 1.25rem;
-  margin-bottom: 1rem;
+  transition: all 0.3s ease;
 }
 
 .case-studies-btn:hover {
   background-color: var(--bs-white);
   color: var(--bs-primary);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
 }
 
 @media (max-width: 768px) {
-  h1 {
-    font-size: 1.75rem;
+  .hero-section {
+    height: auto;
+    min-height: 100vh;
   }
 
   .carousel-container {
     flex-direction: column;
+    align-items: center;
+  }
+
+  .carousel-wrapper {
+    width: 80%;
+    margin-bottom: 2rem;
   }
 
   .left-carousel, .right-carousel {
-    width: 100%;
-    height: auto;
     transform: none;
-    margin-bottom: 1rem;
   }
 
   .case-studies-btn {
