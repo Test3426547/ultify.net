@@ -1,8 +1,8 @@
 <template>
-  <section class="hero-section position-relative bg-primary">
-    <div class="container d-flex flex-column justify-content-between h-100">
-      <h1 class="fw-bold text-white text-center mb-0 hero-title">GET A WEBSITE EXACTLY THE WAY YOU NEED!</h1>
-      <div class="carousel-container row justify-content-center align-items-center">
+  <section class="hero-section position-relative bg-primary d-flex flex-column">
+    <div class="container flex-grow-1 d-flex flex-column">
+      <h1 class="text-white text-center mt-5 mb-4">GET A WEBSITE EXACTLY THE WAY YOU NEED!</h1>
+      <div class="carousel-container row justify-content-center align-items-center flex-grow-1">
         <div class="carousel-wrapper col-md-6 left-carousel">
           <transition name="fade" mode="out-in">
             <img :key="leftCurrentImage" :src="leftCurrentImage" :alt="'Website Example Left ' + (leftCurrentIndex + 1)" class="carousel-image">
@@ -14,8 +14,8 @@
           </transition>
         </div>
       </div>
-      <div class="text-center">
-        <NuxtLink to="/case-studies" class="btn btn-light btn-lg rounded-pill case-studies-btn" ref="caseStudiesBtn">Case Studies</NuxtLink>
+      <div class="text-center mb-5">
+        <NuxtLink to="/case-studies" class="btn btn-light rounded-pill case-studies-btn" ref="caseStudiesBtn">Case Studies</NuxtLink>
       </div>
     </div>
   </section>
@@ -69,18 +69,15 @@ onUnmounted(() => {
 .hero-section {
   min-height: 100vh;
   padding: 2rem 0;
-  overflow: hidden;
 }
 
-.hero-title {
+h1 {
   font-size: 2.5rem;
   line-height: 1.2;
-  white-space: nowrap;
-  margin-top: -200px;
 }
 
 .carousel-container {
-  height: 60vh;
+  max-height: calc(100vh - 300px); /* Adjust this value as needed */
 }
 
 .carousel-wrapper {
@@ -91,24 +88,22 @@ onUnmounted(() => {
   overflow: hidden;
 }
 
-.left-carousel {
-  transform: translateX(-200px);
-}
-
 .carousel-image {
-  height: 100%;
-  width: auto;
+  max-height: 100%;
+  max-width: 100%;
   object-fit: contain;
 }
 
 .case-studies-btn {
+  color: var(--bs-primary);
   font-weight: bold;
-  padding: 1rem 3rem;
-  font-size: 1.5rem;
-  margin-bottom: -200px;
+  padding: 0.75rem 2rem;
+  font-size: 1.25rem;
 }
 
 .case-studies-btn:hover {
+  background-color: var(--bs-white);
+  color: var(--bs-primary);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -123,33 +118,23 @@ onUnmounted(() => {
 }
 
 @media (max-width: 768px) {
-  .hero-section {
-    padding: 1rem;
-  }
-
-  .hero-title {
-    font-size: 1.5rem;
-    white-space: normal;
-    margin-top: 0;
+  h1 {
+    font-size: 1.75rem;
+    margin-top: 2rem;
   }
 
   .carousel-container {
-    height: auto;
+    max-height: none;
   }
 
   .carousel-wrapper {
-    height: 40vh;
+    height: auto;
     margin-bottom: 1rem;
   }
 
-  .left-carousel {
-    transform: none;
-  }
-
   .case-studies-btn {
-    margin-bottom: 0;
-    padding: 0.75rem 2rem;
-    font-size: 1.2rem;
+    font-size: 1rem;
+    padding: 0.5rem 1.5rem;
   }
 }
 </style>
