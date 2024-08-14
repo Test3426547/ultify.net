@@ -63,7 +63,7 @@ export default {
 }
 
 .container {
-  max-width: 1330px;  /* Adjusted to accommodate the new gap */
+  max-width: 1100px;  /* Adjusted to accommodate the new gap */
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -80,8 +80,8 @@ export default {
 }
 
 .service-content, .service-image {
-  flex-basis: calc(50% - 65px);  /* 50% width minus 65px for the gap */
-  max-width: calc(50% - 65px);
+  flex-basis: calc(50% - 50px);  /* 50% width minus 65px for the gap */
+  max-width: calc(50% - 50px);
 }
 
 .service-content {
