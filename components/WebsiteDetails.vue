@@ -58,10 +58,8 @@ export default {
 
 <style scoped>
 .service-details {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 60px 0;
+  padding: 200px 0;
+  background-color: #f8f9fa;
 }
 
 .container {
@@ -72,7 +70,7 @@ export default {
 .service-row {
   display: flex;
   align-items: center;
-  margin-bottom: 80px;
+  margin-bottom: 200px;
 }
 
 .service-row:last-child {
@@ -87,6 +85,7 @@ export default {
 .service-title {
   margin-bottom: 20px;
   font-size: 28px;
+  color: #007bff;
 }
 
 .service-description {
@@ -99,17 +98,16 @@ export default {
   max-width: 100%;
   height: auto;
   border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 @media (max-width: 768px) {
   .service-details {
-    padding: 40px 0;
+    padding: 100px 0;
   }
 
   .service-row {
     flex-direction: column;
-    margin-bottom: 60px;
+    margin-bottom: 100px;
   }
 
   .service-content, .service-image {
