@@ -47,7 +47,7 @@ export default {
 }
 
 .cta-button {
-  background-color: #ffffff;
+  background-color: bs-light;
   color: #000000;
   font-size: 1.5rem;
   font-weight: bold;

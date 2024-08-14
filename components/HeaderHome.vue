@@ -41,10 +41,10 @@ const waveColors = computed(() => [
 .homepage {
   min-height: 100vh;
   font-family: Arial, sans-serif;
+  background-color: var(--bs-light);
 }
 
 .top-section {
-  background-color: var(--bs-light); /* Changed from #ffffff to var(--bs-light) */
   color: #000000;
   padding: 4rem 2rem;
   min-height: calc(100vh - 150px);
@@ -100,6 +100,7 @@ p {
   position: relative;
   height: 150px;
   overflow: hidden;
+  background-color: var(--bs-light);
 }
 
 .waves {
