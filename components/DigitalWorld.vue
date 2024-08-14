@@ -19,7 +19,7 @@
 
 <style scoped>
 .digital-world {
-  background-color: var(--bs-white);
+  background-color: var(--bs-light);
   padding: 90px 0 85px; /* Removed 5px from the bottom padding */
   text-align: center;
 }

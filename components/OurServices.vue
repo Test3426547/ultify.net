@@ -80,7 +80,7 @@ export default {
 
 <style scoped>
 .our-services {
-  background-color: var(--bs-white);
+  background-color: var(--bs-light);
 }
 
 .banner {

@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer bg-white text-primary">
+  <footer class="footer bg-light text-primary">
     <div class="container">
       <div class="footer-content">
         <div class="company-info">
