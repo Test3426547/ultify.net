@@ -118,17 +118,38 @@ export default {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border-radius: 15px;
   z-index: 2;
+  max-width: 50%;
 }
 
 .image-container {
   flex: 1;
-  margin-left: -5%;
   z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-container img {
+  max-width: 100%;
+  height: auto;
+  max-height: 300px;
+  object-fit: contain;
+}
+
+.diagonal-item:not(.reverse) .content-container {
+  margin-right: -100px;
+}
+
+.diagonal-item.reverse .content-container {
+  margin-left: -100px;
+}
+
+.diagonal-item:not(.reverse) .image-container {
+  margin-left: -100px;
 }
 
 .diagonal-item.reverse .image-container {
-  margin-left: 0;
-  margin-right: -5%;
+  margin-right: -100px;
 }
 
 @media (max-width: 991px) {
@@ -136,15 +157,13 @@ export default {
     flex-direction: column;
   }
 
-  .image-container, .diagonal-item.reverse .image-container {
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: -50px;
+  .content-container, .diagonal-item.reverse .content-container {
+    max-width: 90%;
+    margin: 0 auto;
   }
 
-  .content-container {
-    width: 90%;
-    margin: 0 auto;
+  .image-container, .diagonal-item.reverse .image-container {
+    margin: 30px auto 0;
   }
 }
 </style>
