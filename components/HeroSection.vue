@@ -2,15 +2,15 @@
   <section class="hero-section position-relative">
     <div class="container">
       <h1 class="fw-bold mb-5 text-white text-center">GET A WEBSITE EXACTLY THE WAY YOU NEED!</h1>
-      <div class="row align-items-center justify-content-between">
-        <div class="col-md-5 carousel-wrapper">
+      <div class="carousel-container">
+        <div class="carousel-wrapper left-carousel">
           <transition name="fade" mode="out-in">
-            <img :key="leftCurrentImage" :src="leftCurrentImage" :alt="'Website Example Left ' + (leftCurrentIndex + 1)" class="img-fluid rounded shadow-lg">
+            <img :key="leftCurrentImage" :src="leftCurrentImage" :alt="'Website Example Left ' + (leftCurrentIndex + 1)" class="carousel-image">
           </transition>
         </div>
-        <div class="col-md-5 carousel-wrapper">
+        <div class="carousel-wrapper right-carousel">
           <transition name="fade" mode="out-in">
-            <img :key="rightCurrentImage" :src="rightCurrentImage" :alt="'Website Example Right ' + (rightCurrentIndex + 1)" class="img-fluid rounded shadow-lg">
+            <img :key="rightCurrentImage" :src="rightCurrentImage" :alt="'Website Example Right ' + (rightCurrentIndex + 1)" class="carousel-image">
           </transition>
         </div>
       </div>
@@ -67,78 +67,88 @@ onUnmounted(() => {
 
 <style scoped>
 .hero-section {
-  min-height: calc(100vh - 80px);
+  min-height: 100vh;
   display: flex;
   align-items: center;
-  background-color: var(--bs-primary);
-  padding: 4rem 0;
+  background-color: #38bdf8;  /* Adjusted to match the blue in the image */
+  padding: 2rem 0;
   overflow: hidden;
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: 2.5rem;
   line-height: 1.2;
   white-space: nowrap;
-}
-
-.carousel-wrapper {
   margin-bottom: 2rem;
 }
 
-.carousel-wrapper img {
-  max-width: 100%;
-  height: auto;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+.carousel-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.carousel-wrapper {
+  width: 45%;  /* Adjust as needed */
+  aspect-ratio: 16 / 9;  /* Maintain aspect ratio */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;  /* This will ensure the image covers the entire container */
+  object-position: center;
 }
 
 .case-studies-btn {
-  color: var(--bs-primary);
+  background-color: white;
+  color: #38bdf8;
   font-weight: bold;
   padding: 0.75rem 2rem;
   transition: all 0.3s ease;
 }
 
 .case-studies-btn:hover {
-  background-color: white;
-  color: var(--bs-primary-dark);
+  background-color: #f0f0f0;
+  color: #38bdf8;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition: opacity 0.5s ease;
 }
 
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
-  transform: scale(0.95);
 }
 
-@media (max-width: 991.98px) {
+@media (max-width: 768px) {
   .hero-section {
-    text-align: center;
-    padding: 3rem 0;
+    padding: 1rem;
   }
 
   h1 {
     font-size: 1.5rem;
     white-space: normal;
   }
-}
 
-@media (min-width: 1920px) {
-  .hero-section {
-    min-height: calc(100vh - 100px);
+  .carousel-container {
+    flex-direction: column;
   }
 
-  h1 {
-    font-size: 2.5rem;
-  }
-
-  .case-studies-btn {
-    font-size: 1.25rem;
-    padding: 1rem 2.5rem;
+  .carousel-wrapper {
+    width: 90%;
+    margin-bottom: 1rem;
   }
 }
 </style>
