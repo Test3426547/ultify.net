@@ -2,11 +2,11 @@
   <section class="service-details bg-light">
     <div class="container">
       <div class="service-row" v-for="(service, index) in services" :key="index">
-        <div class="service-content" :class="{ 'order-2': index % 2 !== 0 }">
+        <div class="service-content" :class="{ 'right': index % 2 !== 0 }">
           <h2 class="service-title text-primary">{{ service.title }}</h2>
           <p class="service-description">{{ service.description }}</p>
         </div>
-        <div class="service-image" :class="{ 'order-1': index % 2 !== 0 }">
+        <div class="service-image" :class="{ 'left': index % 2 !== 0 }">
           <img :src="service.image" :alt="service.title">
         </div>
       </div>
@@ -63,13 +63,15 @@ export default {
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1400px;  /* Increased to accommodate the gap */
   margin: 0 auto;
+  padding: 0 20px;
 }
 
 .service-row {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   margin-bottom: 200px;
 }
 
@@ -78,8 +80,28 @@ export default {
 }
 
 .service-content, .service-image {
-  flex: 1;
-  padding: 0 30px;
+  flex-basis: calc(50% - 100px);  /* 50% width minus 100px for the gap */
+  max-width: calc(50% - 100px);
+}
+
+.service-content {
+  padding-right: 50px;
+}
+
+.service-content.right {
+  order: 2;
+  padding-right: 0;
+  padding-left: 50px;
+}
+
+.service-image {
+  padding-left: 50px;
+}
+
+.service-image.left {
+  order: 1;
+  padding-left: 0;
+  padding-right: 50px;
 }
 
 .service-title {
@@ -100,9 +122,9 @@ export default {
   border-radius: 10px;
 }
 
-@media (max-width: 768px) {
-  .service-details {
-    padding: 100px 0;
+@media (max-width: 992px) {
+  .container {
+    padding: 0 40px;
   }
 
   .service-row {
@@ -111,9 +133,15 @@ export default {
   }
 
   .service-content, .service-image {
-    order: 0 !important;
-    padding: 0 20px;
+    flex-basis: 100%;
+    max-width: 100%;
+    padding: 0;
     margin-bottom: 30px;
+  }
+
+  .service-content.right, .service-image.left {
+    order: 0;
+    padding: 0;
   }
 
   .service-title {
