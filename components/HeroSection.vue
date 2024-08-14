@@ -1,9 +1,9 @@
 <template>
   <section class="hero-section position-relative bg-primary d-flex flex-column justify-content-between">
     <div class="container d-flex flex-column justify-content-between h-100">
-      <h1 class="text-white text-center mt-5">GET A WEBSITE EXACTLY THE WAY YOU NEED!</h1>
+      <h1 class="text-white text-center">GET A WEBSITE EXACTLY THE WAY YOU NEED!</h1>
       <div class="carousel-container d-flex justify-content-center align-items-center">
-        <div class="carousel-wrapper left-carousel me-4">
+        <div class="carousel-wrapper left-carousel">
           <transition name="fade" mode="out-in">
             <img :key="leftCurrentImage" :src="leftCurrentImage" :alt="'Website Example Left ' + (leftCurrentIndex + 1)" class="carousel-image">
           </transition>
@@ -14,7 +14,7 @@
           </transition>
         </div>
       </div>
-      <div class="text-center mb-5">
+      <div class="text-center">
         <NuxtLink to="/case-studies" class="btn btn-light rounded-pill case-studies-btn" ref="caseStudiesBtn">Case Studies</NuxtLink>
       </div>
     </div>
@@ -36,10 +36,13 @@ const rightCurrentImage = ref(rightImages[0])
 let interval
 
 const changeImages = () => {
-  leftCurrentIndex.value = (leftCurrentIndex.value + 1) % leftImages.length
-  rightCurrentIndex.value = (rightCurrentIndex.value + 1) % rightImages.length
-  leftCurrentImage.value = leftImages[leftCurrentIndex.value]
-  rightCurrentImage.value = rightImages[rightCurrentIndex.value]
+  gsap.to('.carousel-image', { opacity: 0, duration: 0.3, onComplete: () => {
+    leftCurrentIndex.value = (leftCurrentIndex.value + 1) % leftImages.length
+    rightCurrentIndex.value = (rightCurrentIndex.value + 1) % rightImages.length
+    leftCurrentImage.value = leftImages[leftCurrentIndex.value]
+    rightCurrentImage.value = rightImages[rightCurrentIndex.value]
+    gsap.to('.carousel-image', { opacity: 1, duration: 0.3 })
+  }})
 }
 
 onMounted(() => {
@@ -74,19 +77,20 @@ onUnmounted(() => {
 
 <style scoped>
 .hero-section {
-  min-height: 100vh;
-  padding: 2rem 0;
+  height: 100vh;
+  padding: 1rem 0;
+  overflow: hidden;
 }
 
 h1 {
   font-size: 2.5rem;
   line-height: 1.2;
-  margin-bottom: 100px;
+  margin: 1rem 0;
 }
 
 .carousel-container {
   flex: 1;
-  margin-bottom: 100px;
+  margin: 1rem 0;
 }
 
 .carousel-wrapper {
@@ -94,15 +98,17 @@ h1 {
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  position: relative;
 }
 
 .left-carousel {
-  width: 60%;
+  width: 50%;
   height: 100%;
+  transform: translateX(-200px);
 }
 
 .right-carousel {
-  width: 30%;
+  width: 25%;
   height: 100%;
 }
 
@@ -110,6 +116,12 @@ h1 {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
 }
 
 .case-studies-btn {
@@ -117,6 +129,7 @@ h1 {
   font-weight: bold;
   padding: 0.75rem 2rem;
   font-size: 1.25rem;
+  margin-bottom: 1rem;
 }
 
 .case-studies-btn:hover {
@@ -127,7 +140,7 @@ h1 {
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.5s ease;
+  transition: opacity 0.3s ease;
 }
 
 .fade-enter-from,
@@ -138,17 +151,16 @@ h1 {
 @media (max-width: 768px) {
   h1 {
     font-size: 1.75rem;
-    margin-bottom: 50px;
   }
 
   .carousel-container {
     flex-direction: column;
-    margin-bottom: 50px;
   }
 
   .left-carousel, .right-carousel {
     width: 100%;
     height: auto;
+    transform: none;
     margin-bottom: 1rem;
   }
 
