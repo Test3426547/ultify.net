@@ -3,8 +3,8 @@
     <div class="top-section">
       <div class="content">
         <h1>Rise to Digital Excellence with Your Own Website</h1>
-        <p>We’re constantly trying to express ourselves and actualize our dreams. If you have the opportunity to play this game, make the most of it!</p>
-        <button class="get-started-btn">Contact Us</button>
+        <p>We're constantly trying to express ourselves and actualize our dreams. If you have the opportunity to play this game, make the most of it!</p>
+        <NuxtLink to="/consultation" class="get-started-btn">Contact Us</NuxtLink>
       </div>
     </div>
     <div class="wave-container">
@@ -88,11 +88,22 @@ p {
   font-size: 1.1rem;
   border-radius: 30px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: transform 0.3s ease;
+  display: inline-block;
+  text-decoration: none;
 }
 
 .get-started-btn:hover {
-  background-color: darken(var(--bs-primary), 10%);
+  animation: bounce 0.5s;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 .wave-container {
