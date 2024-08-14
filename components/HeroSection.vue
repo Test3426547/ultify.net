@@ -36,13 +36,23 @@ const rightCurrentImage = ref(rightImages[0])
 let interval
 
 const changeImages = () => {
-  gsap.to('.carousel-image', { opacity: 0, duration: 0.3, onComplete: () => {
-    leftCurrentIndex.value = (leftCurrentIndex.value + 1) % leftImages.length
-    rightCurrentIndex.value = (rightCurrentIndex.value + 1) % rightImages.length
-    leftCurrentImage.value = leftImages[leftCurrentIndex.value]
-    rightCurrentImage.value = rightImages[rightCurrentIndex.value]
-    gsap.to('.carousel-image', { opacity: 1, duration: 0.3 })
-  }})
+  // Fade out both images
+  gsap.to('.carousel-image', { 
+    opacity: 0, 
+    duration: 0.5, 
+    onComplete: () => {
+      // Update image sources
+      leftCurrentIndex.value = (leftCurrentIndex.value + 1) % leftImages.length
+      rightCurrentIndex.value = (rightCurrentIndex.value + 1) % rightImages.length
+      leftCurrentImage.value = leftImages[leftCurrentIndex.value]
+      rightCurrentImage.value = rightImages[rightCurrentIndex.value]
+      
+      // Fade in new images after a short delay
+      setTimeout(() => {
+        gsap.to('.carousel-image', { opacity: 1, duration: 0.5 })
+      }, 100)
+    }
+  })
 }
 
 onMounted(() => {
@@ -122,6 +132,8 @@ h1 {
   right: 0;
   bottom: 0;
   margin: auto;
+  opacity: 1;
+  transition: opacity 0.5s ease;
 }
 
 .case-studies-btn {
@@ -136,16 +148,6 @@ h1 {
   background-color: var(--bs-white);
   color: var(--bs-primary);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.3s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
 }
 
 @media (max-width: 768px) {
