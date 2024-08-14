@@ -58,46 +58,72 @@ export default {
 
 <style scoped>
 .service-details {
-  height: 5000px;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  padding: 100px 0;
+  justify-content: center;
+  padding: 60px 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .service-row {
   display: flex;
   align-items: center;
-  margin-bottom: 50px;
+  margin-bottom: 80px;
+}
+
+.service-row:last-child {
+  margin-bottom: 0;
 }
 
 .service-content, .service-image {
   flex: 1;
-  padding: 20px;
+  padding: 0 30px;
 }
 
 .service-title {
   margin-bottom: 20px;
+  font-size: 28px;
 }
 
 .service-description {
   color: #34495e;
   line-height: 1.6;
+  font-size: 16px;
 }
 
 .service-image img {
   max-width: 100%;
   height: auto;
   border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 @media (max-width: 768px) {
+  .service-details {
+    padding: 40px 0;
+  }
+
   .service-row {
     flex-direction: column;
+    margin-bottom: 60px;
   }
 
   .service-content, .service-image {
     order: 0 !important;
+    padding: 0 20px;
+    margin-bottom: 30px;
+  }
+
+  .service-title {
+    font-size: 24px;
+  }
+
+  .service-description {
+    font-size: 14px;
   }
 }
 </style>
