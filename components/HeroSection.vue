@@ -120,30 +120,36 @@ onUnmounted(() => {
 
 .carousel-container {
   margin-bottom: 5vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5%;
 }
 
 .carousel-wrapper {
   position: relative;
-  width: 45%;
-  max-width: 600px;
-  aspect-ratio: 16 / 9;
   overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
 }
 
 .left-carousel {
-  transform: perspective(1000px) rotateY(10deg);
+  width: 50%;
+  max-width: 600px;
+  aspect-ratio: 16 / 9;
 }
 
 .right-carousel {
-  transform: perspective(1000px) rotateY(-10deg);
+  width: 25%;
+  max-width: 300px;
+  aspect-ratio: 9 / 16;
 }
 
 .carousel-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 10px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .case-studies-btn {
@@ -178,17 +184,17 @@ onUnmounted(() => {
 
   .carousel-container {
     flex-direction: column;
-    align-items: center;
-  }
-
-  .carousel-wrapper {
-    width: 90%;
-    margin-bottom: 3vh;
+    gap: 3vh;
   }
 
   .left-carousel,
   .right-carousel {
-    transform: none;
+    width: 90%;
+    max-width: none;
+  }
+
+  .right-carousel {
+    aspect-ratio: 16 / 9;
   }
 }
 </style>
