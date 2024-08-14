@@ -1,21 +1,21 @@
 <template>
   <section class="hero-section position-relative">
     <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-6 text-left content-wrapper">
-          <h1 class="fw-bold mb-4 text-white">
-            GET A WEBSITE EXACTLY THE WAY YOU NEED!
-          </h1>
-          <p class="lead mb-5">
-            You have high standards. We have the expertise to meet them.
-          </p>
-          <NuxtLink to="/case-studies" class="btn btn-light btn-lg rounded-pill">Case Studies</NuxtLink>
-        </div>
-        <div class="col-lg-6 image-wrapper">
+      <h1 class="fw-bold mb-5 text-white text-center">GET A WEBSITE EXACTLY THE WAY YOU NEED!</h1>
+      <div class="row align-items-center justify-content-between">
+        <div class="col-md-5 carousel-wrapper">
           <transition name="fade" mode="out-in">
-            <img :key="currentImage" :src="currentImage" :alt="'Website Example ' + (currentIndex + 1)" class="img-fluid rounded shadow-lg">
+            <img :key="leftCurrentImage" :src="leftCurrentImage" :alt="'Website Example Left ' + (leftCurrentIndex + 1)" class="img-fluid rounded shadow-lg">
           </transition>
         </div>
+        <div class="col-md-5 carousel-wrapper">
+          <transition name="fade" mode="out-in">
+            <img :key="rightCurrentImage" :src="rightCurrentImage" :alt="'Website Example Right ' + (rightCurrentIndex + 1)" class="img-fluid rounded shadow-lg">
+          </transition>
+        </div>
+      </div>
+      <div class="text-center mt-5">
+        <NuxtLink to="/case-studies" class="btn btn-light btn-lg rounded-pill case-studies-btn" ref="caseStudiesBtn">Case Studies</NuxtLink>
       </div>
     </div>
   </section>
@@ -23,24 +23,41 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
+import { gsap } from 'gsap'
 
-const images = [
-  '/home-01.png',
-  '/home-06.png',
-  '/home-07.png',
-  '/home-08.png'
-]
-const currentIndex = ref(0)
-const currentImage = ref(images[0])
+const leftImages = ['/7.png', '/8.png', '/9.png', '/10.png', '/11.png']
+const rightImages = ['/13.png', '/14.png', '/15.png', '/16.png', '/17.png']
+
+const leftCurrentIndex = ref(0)
+const rightCurrentIndex = ref(0)
+const leftCurrentImage = ref(leftImages[0])
+const rightCurrentImage = ref(rightImages[0])
+
 let interval
 
-const changeImage = () => {
-  currentIndex.value = (currentIndex.value + 1) % images.length
-  currentImage.value = images[currentIndex.value]
+const changeImages = () => {
+  leftCurrentIndex.value = (leftCurrentIndex.value + 1) % leftImages.length
+  rightCurrentIndex.value = (rightCurrentIndex.value + 1) % rightImages.length
+  leftCurrentImage.value = leftImages[leftCurrentIndex.value]
+  rightCurrentImage.value = rightImages[rightCurrentIndex.value]
 }
 
 onMounted(() => {
-  interval = setInterval(changeImage, 5000)
+  interval = setInterval(changeImages, 5000)
+
+  const caseStudiesBtn = ref(null)
+
+  if (caseStudiesBtn.value) {
+    caseStudiesBtn.value.addEventListener('mouseenter', () => {
+      gsap.to(caseStudiesBtn.value, {
+        y: -5,
+        duration: 0.2,
+        repeat: 3,
+        yoyo: true,
+        ease: "power2.inOut"
+      })
+    })
+  }
 })
 
 onUnmounted(() => {
@@ -58,48 +75,33 @@ onUnmounted(() => {
   overflow: hidden;
 }
 
-.content-wrapper {
-  color: white;
-}
-
-.content-wrapper h1 {
-  font-size: 2.1rem; /* Reduced by 30% from 3rem */
+h1 {
+  font-size: 2rem;
   line-height: 1.2;
+  white-space: nowrap;
 }
 
-.lead {
-  font-size: 1.25rem;
+.carousel-wrapper {
+  margin-bottom: 2rem;
 }
 
-.btn-light {
+.carousel-wrapper img {
+  max-width: 100%;
+  height: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.case-studies-btn {
   color: var(--bs-primary);
   font-weight: bold;
   padding: 0.75rem 2rem;
   transition: all 0.3s ease;
 }
 
-.btn-light:hover {
+.case-studies-btn:hover {
   background-color: white;
   color: var(--bs-primary-dark);
-  transform: translateY(-2px);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.image-wrapper {
-  position: relative;
-  z-index: 1;
-  padding-left: 150px; /* Increased from 50px to 150px to move images 100px more to the right */
-  overflow: visible;
-}
-
-.image-wrapper img {
-  max-width: 100%; /* Changed from calc(100% + 50px) to 100% */
-  height: auto;
-  width: 100%; /* Changed from calc(100% + 50px) to 100% */
-  position: relative;
-  display: block;
-  margin-left: 0; /* Removed negative margin */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 .fade-enter-active,
@@ -119,22 +121,9 @@ onUnmounted(() => {
     padding: 3rem 0;
   }
 
-  .content-wrapper {
-    margin-bottom: 2rem;
-  }
-
-  .content-wrapper h1 {
-    font-size: 1.75rem; /* Adjusted for mobile */
-  }
-
-  .image-wrapper {
-    padding-left: 0;
-  }
-
-  .image-wrapper img {
-    max-width: 100%;
-    width: 100%;
-    margin-left: 0;
+  h1 {
+    font-size: 1.5rem;
+    white-space: normal;
   }
 }
 
@@ -143,15 +132,11 @@ onUnmounted(() => {
     min-height: calc(100vh - 100px);
   }
 
-  .content-wrapper h1 {
-    font-size: 2.8rem; /* Reduced by 30% from 4rem */
+  h1 {
+    font-size: 2.5rem;
   }
 
-  .lead {
-    font-size: 1.5rem;
-  }
-
-  .btn-light {
+  .case-studies-btn {
     font-size: 1.25rem;
     padding: 1rem 2.5rem;
   }
