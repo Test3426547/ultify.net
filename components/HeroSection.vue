@@ -1,13 +1,17 @@
 <template>
-  <section class="hero-section position-relative bg-primary overflow-hidden">
+  <section class="hero-section position-relative bg-primary">
     <div class="container h-100 d-flex flex-column justify-content-between">
       <h1 class="text-white text-center hero-title" ref="heroTitle">GET A WEBSITE EXACTLY THE WAY YOU NEED!</h1>
       <div class="carousel-container d-flex justify-content-center align-items-center">
         <div class="carousel-wrapper left-carousel" ref="leftCarousel">
-          <img v-for="(img, index) in leftImages" :key="'left'+index" :src="img" :alt="'Website Example Left ' + (index + 1)" class="carousel-image" :class="{ active: index === leftCurrentIndex }">
+          <transition name="fade" mode="out-in">
+            <img :key="leftCurrentImage" :src="leftCurrentImage" :alt="'Website Example Left'" class="carousel-image">
+          </transition>
         </div>
         <div class="carousel-wrapper right-carousel" ref="rightCarousel">
-          <img v-for="(img, index) in rightImages" :key="'right'+index" :src="img" :alt="'Website Example Right ' + (index + 1)" class="carousel-image" :class="{ active: index === rightCurrentIndex }">
+          <transition name="fade" mode="out-in">
+            <img :key="rightCurrentImage" :src="rightCurrentImage" :alt="'Website Example Right'" class="carousel-image">
+          </transition>
         </div>
       </div>
       <div class="text-center">
@@ -20,15 +24,14 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
-gsap.registerPlugin(ScrollTrigger)
 
 const leftImages = ['/7.png', '/8.png', '/9.png', '/10.png', '/11.png']
 const rightImages = ['/13.png', '/14.png', '/15.png', '/16.png', '/17.png']
 
 const leftCurrentIndex = ref(0)
 const rightCurrentIndex = ref(0)
+const leftCurrentImage = ref(leftImages[0])
+const rightCurrentImage = ref(rightImages[0])
 
 const heroTitle = ref(null)
 const leftCarousel = ref(null)
@@ -38,54 +41,43 @@ const caseStudiesBtn = ref(null)
 let interval
 
 const changeImages = () => {
-  gsap.to('.carousel-image.active', {
-    opacity: 0,
-    scale: 0.8,
-    duration: 0.5,
-    onComplete: () => {
-      leftCurrentIndex.value = (leftCurrentIndex.value + 1) % leftImages.length
-      rightCurrentIndex.value = (rightCurrentIndex.value + 1) % rightImages.length
-      
-      gsap.to('.carousel-image.active', {
-        opacity: 1,
-        scale: 1,
-        duration: 0.5
-      })
-    }
-  })
+  leftCurrentIndex.value = (leftCurrentIndex.value + 1) % leftImages.length
+  rightCurrentIndex.value = (rightCurrentIndex.value + 1) % rightImages.length
+  leftCurrentImage.value = leftImages[leftCurrentIndex.value]
+  rightCurrentImage.value = rightImages[rightCurrentIndex.value]
 }
 
 onMounted(() => {
   interval = setInterval(changeImages, 5000)
 
   gsap.from(heroTitle.value, {
-    y: -50,
+    y: -30,
     opacity: 0,
     duration: 1,
     ease: 'power3.out'
   })
 
   gsap.from(leftCarousel.value, {
-    x: -200,
+    x: -50,
     opacity: 0,
     duration: 1,
-    delay: 0.5,
+    delay: 0.3,
     ease: 'power3.out'
   })
 
   gsap.from(rightCarousel.value, {
-    x: 200,
+    x: 50,
     opacity: 0,
     duration: 1,
-    delay: 0.5,
+    delay: 0.3,
     ease: 'power3.out'
   })
 
   gsap.from(caseStudiesBtn.value, {
-    y: 50,
+    y: 30,
     opacity: 0,
     duration: 1,
-    delay: 1,
+    delay: 0.6,
     ease: 'power3.out'
   })
 
@@ -93,7 +85,7 @@ onMounted(() => {
     gsap.to(caseStudiesBtn.value, {
       y: -5,
       duration: 0.2,
-      repeat: 5,
+      repeat: 3,
       yoyo: true,
       ease: "power2.inOut",
       onComplete: () => {
@@ -105,25 +97,6 @@ onMounted(() => {
       }
     })
   })
-
-  // Parallax effect
-  gsap.to('.left-carousel', {
-    yPercent: 20,
-    ease: "none",
-    scrollTrigger: {
-      trigger: ".hero-section",
-      scrub: true
-    }, 
-  })
-
-  gsap.to('.right-carousel', {
-    yPercent: -20,
-    ease: "none",
-    scrollTrigger: {
-      trigger: ".hero-section",
-      scrub: true
-    }, 
-  })
 })
 
 onUnmounted(() => {
@@ -133,56 +106,51 @@ onUnmounted(() => {
 
 <style scoped>
 .hero-section {
-  height: 100vh;
-  padding: 2rem 0;
+  min-height: 100vh;
+  padding: 5vh 0;
+  display: flex;
+  align-items: center;
 }
 
 .hero-title {
-  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-size: clamp(1.5rem, 4vw, 3rem);
   line-height: 1.2;
-  margin: 2rem 0;
+  margin-bottom: 5vh;
 }
 
 .carousel-container {
-  flex: 1;
-  margin: 2rem 0;
+  margin-bottom: 5vh;
 }
 
 .carousel-wrapper {
   position: relative;
   width: 45%;
+  max-width: 600px;
   aspect-ratio: 16 / 9;
   overflow: hidden;
 }
 
 .left-carousel {
-  transform: translateX(-10%) rotate(-5deg);
+  transform: perspective(1000px) rotateY(10deg);
 }
 
 .right-carousel {
-  transform: translateX(10%) rotate(5deg);
+  transform: perspective(1000px) rotateY(-10deg);
 }
 
 .carousel-image {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0;
-  transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-.carousel-image.active {
-  opacity: 1;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .case-studies-btn {
   color: var(--bs-primary);
   font-weight: bold;
   padding: 0.75rem 2rem;
-  font-size: 1.25rem;
+  font-size: clamp(1rem, 2vw, 1.25rem);
   transition: all 0.3s ease;
 }
 
@@ -193,10 +161,19 @@ onUnmounted(() => {
   transform: translateY(-2px);
 }
 
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
 @media (max-width: 768px) {
   .hero-section {
-    height: auto;
-    min-height: 100vh;
+    padding: 3vh 0;
   }
 
   .carousel-container {
@@ -205,17 +182,13 @@ onUnmounted(() => {
   }
 
   .carousel-wrapper {
-    width: 80%;
-    margin-bottom: 2rem;
+    width: 90%;
+    margin-bottom: 3vh;
   }
 
-  .left-carousel, .right-carousel {
+  .left-carousel,
+  .right-carousel {
     transform: none;
-  }
-
-  .case-studies-btn {
-    font-size: 1rem;
-    padding: 0.5rem 1.5rem;
   }
 }
 </style>
