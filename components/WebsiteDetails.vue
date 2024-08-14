@@ -21,19 +21,20 @@ export default {
     return {
       services: [
         {
-          title: 'Website Design & Development',
-          description: 'Need a custom designed, visually pleasing, highly optimized, and converting website? Let our team at ULTIFY handle all your website design and development needs. Our certified programmers and designers produce high-quality projects to help your business grow and outperform competitors in every aspect.',
-          image: '/website-04.png'
-        },
+          title: 'Website Maintenance',
+          description: 'We offer comprehensive website maintenance services to ensure your sites security, reliability, and performance. Our team conducts regular checks and updates to keep your site running smoothly.',
+          image: '/website-08.png'
+        },  
+      
         {
           title: 'Website Management',
           description: 'ULTIFY provides comprehensive website management services to ensure your site is always up-to-date, secure, and performing at its best. Our services include regular updates, user experience improvements, and multimedia content management.',
           image: '/website-06.png'
         },
         {
-          title: 'Website Maintenance',
-          description: 'We offer comprehensive website maintenance services to ensure your sites security, reliability, and performance. Our team conducts regular checks and updates to keep your site running smoothly.',
-          image: '/website-08.png'
+          title: 'Website Design & Development',
+          description: 'Need a custom designed, visually pleasing, highly optimized, and converting website? Let our team at ULTIFY handle all your website design and development needs. Our certified programmers and designers produce high-quality projects to help your business grow and outperform competitors in every aspect.',
+          image: '/website-04.png'
         },
         {
           title: 'Mobile Conversion',
