@@ -88,17 +88,18 @@ onUnmounted(() => {
 <style scoped>
 .hero-section {
   min-height: 100vh;
-  padding: 0 0 30px; /* Removed top padding */
+  padding: 0; /* Removed all padding, we'll control it in child elements */
   background-color: var(--bs-primary);
 }
 
 .container {
   height: 100vh;
+  padding-bottom: 0; /* Remove default container bottom padding if any */
 }
 
 .heading-wrapper {
   flex: 0 0 auto;
-  padding-top: 35px; /* Reduced from 100px to 35px (100px - 65px) */
+  padding-top: 35px; /* Kept as is */
 }
 
 .content-wrapper {
@@ -106,6 +107,7 @@ onUnmounted(() => {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding-bottom: 0; /* Removed bottom padding */
 }
 
 .hero-title {
@@ -116,7 +118,7 @@ onUnmounted(() => {
 
 .carousel-container {
   width: 100%;
-  margin-bottom: 5vh;
+  margin-bottom: 3vh; /* Reduced from 5vh */
 }
 
 .carousel-wrapper {
@@ -162,12 +164,8 @@ onUnmounted(() => {
 
 /* Mobile styles */
 @media (max-width: 768px) {
-  .hero-section {
-    padding: 0 0 20px; /* Removed top padding for mobile */
-  }
-
   .heading-wrapper {
-    padding-top: 20px; /* Adjusted for mobile */
+    padding-top: 20px; /* Kept as is */
   }
 
   .carousel-wrapper {
@@ -175,7 +173,7 @@ onUnmounted(() => {
   }
 
   .case-studies-btn {
-    margin-top: -30px; /* Adjust for mobile if needed */
+    margin-top: -30px; /* Kept as is */
   }
 }
 </style>
