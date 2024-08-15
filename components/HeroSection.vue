@@ -24,7 +24,7 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 import { gsap } from 'gsap'
 
-const images = ['/home-17.png', '/home-18.png', '/home-19.png', '/home-20.png']
+const images = ['/home-17.webp', '/home-18.webp', '/home-19.webp', '/home-20.webp']
 
 const currentIndex = ref(0)
 const currentImage = ref(images[0])
