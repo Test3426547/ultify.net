@@ -42,12 +42,14 @@ const waveColors = computed(() => [
   min-height: 100vh;
   font-family: Arial, sans-serif;
   background-color: var(--bs-light);
+  position: relative; /* Add this */
+  overflow: hidden; /* Add this */
 }
 
 .top-section {
   color: #000000;
   padding: 4rem 2rem;
-  min-height: calc(100vh - 150px);
+  min-height: calc(100vh - 250px); /* Changed from 150px to 250px */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -97,10 +99,13 @@ p {
 }
 
 .wave-container {
-  position: relative;
-  height: 150px;
+  position: absolute; /* Changed from relative to absolute */
+  bottom: 0; /* Add this */
+  left: 0; /* Add this */
+  right: 0; /* Add this */
+  height: 250px; /* Changed from 150px to 250px */
   overflow: hidden;
-  background-color: var(--bs-light);
+  background-color: transparent; /* Changed from var(--bs-light) to transparent */
 }
 
 .waves {
@@ -109,7 +114,7 @@ p {
   width: 100%;
   height: 100%;
   min-height: 100px;
-  max-height: 150px;
+  max-height: 250px; /* Changed from 150px to 250px */
 }
 
 .parallax > use {
