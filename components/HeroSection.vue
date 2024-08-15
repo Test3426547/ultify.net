@@ -87,14 +87,13 @@ onUnmounted(() => {
 
 <style scoped>
 .hero-section {
-  min-height: 100vh;
-  padding: 0; /* Removed all padding, we'll control it in child elements */
+  min-height: calc(100vh - 30px); /* Reduced by 30px */
+  padding: 0 0 0; /* Removed bottom padding */
   background-color: var(--bs-primary);
 }
 
 .container {
-  height: 100vh;
-  padding-bottom: 0; /* Remove default container bottom padding if any */
+  height: calc(100vh - 30px); /* Reduced by 30px */
 }
 
 .heading-wrapper {
@@ -107,7 +106,6 @@ onUnmounted(() => {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-bottom: 0; /* Removed bottom padding */
 }
 
 .hero-title {
@@ -118,7 +116,7 @@ onUnmounted(() => {
 
 .carousel-container {
   width: 100%;
-  margin-bottom: 3vh; /* Reduced from 5vh */
+  margin-bottom: 5vh;
 }
 
 .carousel-wrapper {
@@ -144,7 +142,7 @@ onUnmounted(() => {
   transition: all 0.3s ease;
   background-color: var(--bs-light);
   color: var(--bs-primary);
-  margin-top: -50px; /* This will move the button up */
+  margin-top: -50px; /* Kept as is */
 }
 
 .case-studies-btn:hover {
@@ -164,6 +162,15 @@ onUnmounted(() => {
 
 /* Mobile styles */
 @media (max-width: 768px) {
+  .hero-section {
+    min-height: calc(100vh - 20px); /* Adjusted for mobile */
+    padding: 0; /* Removed all padding for mobile */
+  }
+
+  .container {
+    height: calc(100vh - 20px); /* Adjusted for mobile */
+  }
+
   .heading-wrapper {
     padding-top: 20px; /* Kept as is */
   }
