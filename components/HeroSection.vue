@@ -10,7 +10,7 @@
         </div>
       </div>
       <div class="text-center">
-        <NuxtLink to="/case-studies" class="btn rounded-pill case-studies-btn" ref="caseStudiesBtn">Case Studies</NuxtLink>
+        <NuxtLink to="/website" class="btn rounded-pill case-studies-btn" ref="caseStudiesBtn">View Website Page</NuxtLink>
       </div>
     </div>
   </section>
