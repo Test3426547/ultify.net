@@ -4,7 +4,6 @@
       <h2 class="title text-primary">Impacting the digital world since 2019</h2>
       <div class="image-wrapper">
         <img src="/sydney.jpg" alt="Sydney Opera House" class="responsive-image">
-        <div class="location">SYD</div>
       </div>
       <div class="info-wrapper">
         <p class="address">
@@ -12,6 +11,7 @@
           59 Elizabeth Street,<br>
           Surry Hills NSW 2010
         </p>
+        <NuxtLink to="/contact-us" class="get-directions">Get Directions</NuxtLink>
       </div>
       <div class="button-wrapper">
         <NuxtLink to="/about-us" class="btn btn-primary btn-lg bounce-link">ABOUT US</NuxtLink>
@@ -61,16 +61,6 @@
   display: block;
 }
 
-.location {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  font-size: 4rem;
-  font-weight: bold;
-  color: var(--bs-black);
-  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
-}
-
 .info-wrapper {
   margin-bottom: 40px;
 }
@@ -79,6 +69,15 @@
   font-size: 1rem;
   line-height: 1.5;
   color: var(--bs-black);
+  margin-bottom: 10px;
+}
+
+.get-directions {
+  display: inline-block;
+  color: var(--bs-primary);
+  text-decoration: underline;
+  font-size: 1rem;
+  margin-top: 10px;
 }
 
 .button-wrapper {
@@ -139,17 +138,15 @@
     width: 90%;
   }
   
-  .location {
-    font-size: 3rem;
-    bottom: 10px;
-    right: 10px;
-  }
-  
   .info-wrapper {
     margin-bottom: 30px;
   }
   
   .address {
+    font-size: 0.9rem;
+  }
+  
+  .get-directions {
     font-size: 0.9rem;
   }
   
