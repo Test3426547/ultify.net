@@ -117,7 +117,6 @@ onUnmounted(() => {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 80px;
 }
 
 .carousel-wrapper {
@@ -137,7 +136,7 @@ onUnmounted(() => {
   width: 25%;
   max-width: 300px;
   aspect-ratio: 9 / 16;
-  transform: translateX(40px);
+  transform: translateX(80px);
 }
 
 .carousel-image {
@@ -172,18 +171,12 @@ onUnmounted(() => {
 
 /* Tablet styles */
 @media (max-width: 1024px) {
-  .carousel-container {
-    padding: 0 40px;
-  }
-
-  .left-carousel,
-  .right-carousel {
-    width: 45%;
-    max-width: none;
-    transform: none;
+  .left-carousel {
+    transform: translateX(-40px);
   }
 
   .right-carousel {
+    transform: translateX(40px);
     aspect-ratio: 16 / 9;
   }
 }
@@ -197,7 +190,6 @@ onUnmounted(() => {
   .carousel-container {
     flex-direction: column;
     gap: 3vh;
-    padding: 0;
   }
 
   .left-carousel,
