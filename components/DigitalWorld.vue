@@ -65,20 +65,20 @@
   position: absolute;
   top: 20px;
   right: 20px;
-  font-size: 4rem;
+  font-size: 4rem; /* 200% bigger than before */
   font-weight: bold;
   color: var(--bs-primary);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .info-wrapper {
+  margin-top: -140px; /* Move up by 100px */
   margin-bottom: 40px;
 }
 
 .address {
   font-size: 1rem;
   line-height: 1.5;
-  color: var(--bs-primary);
 }
 
 .button-wrapper {
@@ -146,6 +146,7 @@
   }
   
   .info-wrapper {
+    margin-top: -120px;
     margin-bottom: 30px;
   }
   
