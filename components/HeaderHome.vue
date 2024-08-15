@@ -1,6 +1,8 @@
 <template>
   <div class="homepage">
-    <div class="gradient-background" :style="gradientStyle"></div>
+    <div class="gradient-background">
+      <div class="aura" :style="auraStyle"></div>
+    </div>
     <div class="content">
       <!-- Your content goes here -->
     </div>
@@ -10,10 +12,10 @@
           <path id="wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
         </defs>
         <g class="parallax">
-          <use xlink:href="#wave" x="48" y="0" :fill="waveColors[0]" />
-          <use xlink:href="#wave" x="48" y="3" :fill="waveColors[1]" />
-          <use xlink:href="#wave" x="48" y="5" :fill="waveColors[2]" />
-          <use xlink:href="#wave" x="48" y="7" :fill="waveColors[3]" />
+          <use xlink:href="#wave" x="48" y="0" fill="#4169E1B3" />
+          <use xlink:href="#wave" x="48" y="3" fill="#4169E180" />
+          <use xlink:href="#wave" x="48" y="5" fill="#4169E14D" />
+          <use xlink:href="#wave" x="48" y="7" fill="#4169E1" />
         </g>
       </svg>
     </div>
@@ -23,28 +25,33 @@
 <script setup>
 import { ref, computed } from 'vue';
 
-// Customizable gradient colors
-const gradientColors = ref({
-  purple: '#8A2BE2',
-  blue: '#4169E1',
-  pink: '#FF69B4'
+// Customizable aura colors
+const auraColors = ref({
+  color1: '#FF69B4',
+  color2: '#4169E1',
+  color3: '#8A2BE2',
 });
 
-// Customizable background color
-const backgroundColor = ref('#F0F0F0');
-
-// Compute the gradient style
-const gradientStyle = computed(() => ({
-  background: `radial-gradient(circle, ${backgroundColor.value} 0%, ${backgroundColor.value} 60%, ${gradientColors.value.purple} 70%, ${gradientColors.value.blue} 80%, ${gradientColors.value.pink} 90%, ${backgroundColor.value} 100%)`
+// Compute the aura style
+const auraStyle = computed(() => ({
+  background: `
+    radial-gradient(
+      circle at 70% 20%,
+      ${auraColors.value.color1}33 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 20% 80%,
+      ${auraColors.value.color2}33 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 50% 50%,
+      ${auraColors.value.color3}33 0%,
+      transparent 50%
+    )
+  `
 }));
-
-// Wave colors (you can customize these as well)
-const waveColors = computed(() => [
-  '#4169E1B3', // 70% opacity
-  '#4169E180', // 50% opacity
-  '#4169E14D', // 30% opacity
-  '#4169E1'
-]);
 </script>
 
 <style scoped>
@@ -52,6 +59,7 @@ const waveColors = computed(() => [
   position: relative;
   min-height: 100vh;
   overflow: hidden;
+  background-color: #F0F0F0;
 }
 
 .gradient-background {
@@ -60,7 +68,25 @@ const waveColors = computed(() => [
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1;
+  z-index: 0;
+}
+
+.aura {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  animation: rotate 60s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .content {
