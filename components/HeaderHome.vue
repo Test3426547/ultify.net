@@ -38,26 +38,30 @@ const waveColors = computed(() => [
 </script>
 
 <style scoped>
+/* Overall container for the homepage */
 .homepage {
   min-height: 100vh;
   font-family: Arial, sans-serif;
   background-color: var(--bs-light);
 }
 
+/* Top section containing the main content */
 .top-section {
   color: #000000;
   padding: 4rem 2rem;
-  min-height: calc(100vh - 150px);
+  min-height: calc(100vh - 250px); /* Adjusted to account for taller wave container */
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+/* Content wrapper for centering and max-width */
 .content {
   max-width: 800px;
   text-align: center;
 }
 
+/* Welcome badge styling */
 .welcome {
   background-color: var(--bs-primary);
   color: #ffffff;
@@ -68,6 +72,7 @@ const waveColors = computed(() => [
   margin-bottom: 1.5rem;
 }
 
+/* Main heading styles */
 h1 {
   font-size: 3.5rem;
   line-height: 1.2;
@@ -75,12 +80,14 @@ h1 {
   margin: 1rem 0 1.5rem;
 }
 
+/* Paragraph styles */
 p {
   font-size: 1.25rem;
   line-height: 1.6;
   margin-bottom: 2rem;
 }
 
+/* Get Started button styles */
 .get-started-btn {
   background-color: var(--bs-primary);
   color: #ffffff;
@@ -96,22 +103,36 @@ p {
   background-color: darken(var(--bs-primary), 10%);
 }
 
+/* Wave container styles */
 .wave-container {
   position: relative;
-  height: 150px;
+  height: 250px; /* Increased to accommodate additional padding */
   overflow: hidden;
   background-color: var(--bs-light);
 }
 
-.waves {
+/* Pseudo-element for additional padding below waves */
+.wave-container::after {
+  content: '';
   position: absolute;
   bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background-color: var(--bs-primary);
+}
+
+/* Wave SVG styles */
+.waves {
+  position: absolute;
+  bottom: 100px; /* Moved up to sit above the new padding */
   width: 100%;
-  height: 100%;
+  height: 150px;
   min-height: 100px;
   max-height: 150px;
 }
 
+/* Wave animation styles */
 .parallax > use {
   animation: move-forever 25s cubic-bezier(.55,.5,.45,.5) infinite;
 }
@@ -132,6 +153,7 @@ p {
   animation-duration: 20s;
 }
 
+/* Keyframes for wave animation */
 @keyframes move-forever {
   0% {
     transform: translate3d(-90px,0,0);
@@ -141,6 +163,7 @@ p {
   }
 }
 
+/* Mobile responsive styles */
 @media (max-width: 768px) {
   .top-section {
     padding: 3rem 1rem;
