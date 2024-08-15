@@ -95,6 +95,7 @@ onUnmounted(() => {
   line-height: 1.2;
   margin-bottom: 5vh;
   color: var(--bs-white);
+  margin-top: 50px; /* Add this line to move the heading down */
 }
 
 .carousel-container {
@@ -119,7 +120,7 @@ onUnmounted(() => {
 }
 
 .text-center {
-  margin-top: -50px; /* Add this line to move the button up */
+  margin-top: -50px; /* This moves the button up */
 }
 
 .case-studies-btn {
@@ -150,6 +151,10 @@ onUnmounted(() => {
 @media (max-width: 768px) {
   .hero-section {
     padding: 20px 0; /* Further reduced padding for mobile */
+  }
+
+  .hero-title {
+    margin-top: 30px; /* Adjust for mobile if needed */
   }
 
   .carousel-wrapper {
