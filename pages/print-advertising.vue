@@ -1,8 +1,8 @@
 <template>
     <div>
-      <HeaderPaidMedia />
-      <PaidMediaTechnology />
-      <PaidMediaDetails />
+      <HeaderPrintMedia />
+      <PrintMediaTechnology />
+      <PrintMediaDetails />
       <Consultation />
       <FAQ />
       <CTA />
@@ -10,9 +10,9 @@
   </template>
   
   <script setup>
-  import HeaderPaidMedia from '@/components/HeaderPaidMedia.vue';
-  import PaidMediaTechnology from '@/components/PaidMediaTechnology.vue';
-  import PaidMediaDetails from '@/components/PaidMediaDetails.vue';
+  import HeaderPrintMedia from '@/components/HeaderPrintMedia.vue';
+  import PrintMediaTechnology from '@/components/PrintMediaTechnology.vue';
+  import PrintMediaDetails from '@/components/PrintMediaDetails.vue';
   import Consultation from '@/components/Consultation.vue';
   import FAQ from '@/components/FAQ.vue';
   import CTA from '@/components/CTA.vue';
