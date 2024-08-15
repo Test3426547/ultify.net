@@ -1,5 +1,5 @@
 <template>
-  <div class="homepage">
+  <div class="homepage" ref="homepage">
     <canvas ref="canvas" class="gradient-background"></canvas>
     <div class="top-section">
       <div class="content">
@@ -28,32 +28,33 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue';
 
+const homepage = ref(null);
 const canvas = ref(null);
 const primaryColor = ref(getComputedStyle(document.documentElement).getPropertyValue('--bs-primary').trim());
 
 const waveColors = computed(() => [
-  `${primaryColor.value}B3`, // 70% opacity
-  `${primaryColor.value}80`, // 50% opacity
-  `${primaryColor.value}4D`, // 30% opacity
+  `${primaryColor.value}B3`,
+  `${primaryColor.value}80`,
+  `${primaryColor.value}4D`,
   primaryColor.value
 ]);
 
-let ctx, width, height, particles;
+let ctx, width, height;
 let animationFrameId;
 let mouse = { x: 0, y: 0 };
+let gradientCenter = { x: 0, y: 0 };
 
 onMounted(() => {
   initCanvas();
-  createParticles();
   animate();
   window.addEventListener('resize', onResize);
-  window.addEventListener('mousemove', onMouseMove);
+  homepage.value.addEventListener('mousemove', onMouseMove);
 });
 
 onUnmounted(() => {
   cancelAnimationFrame(animationFrameId);
   window.removeEventListener('resize', onResize);
-  window.removeEventListener('mousemove', onMouseMove);
+  homepage.value.removeEventListener('mousemove', onMouseMove);
 });
 
 function initCanvas() {
@@ -63,52 +64,31 @@ function initCanvas() {
   height = canvasElement.height = window.innerHeight;
 }
 
-function createParticles() {
-  particles = [];
-  const particlesCount = 100;
-  for (let i = 0; i < particlesCount; i++) {
-    particles.push({
-      x: Math.random() * width,
-      y: Math.random() * height,
-      radius: Math.random() * 2 + 1,
-      vx: Math.random() * 2 - 1,
-      vy: Math.random() * 2 - 1
-    });
-  }
-}
-
 function drawGradient() {
+  ctx.clearRect(0, 0, width, height);
+
+  // Create gradient
   const gradient = ctx.createRadialGradient(
-    mouse.x, mouse.y, 0,
-    mouse.x, mouse.y, width
+    gradientCenter.x, gradientCenter.y, 0,
+    gradientCenter.x, gradientCenter.y, width * 0.6
   );
-  gradient.addColorStop(0, 'rgba(173, 216, 230, 0.8)');  // Light blue
-  gradient.addColorStop(0.5, 'rgba(135, 206, 235, 0.6)'); // Sky blue
-  gradient.addColorStop(1, 'rgba(240, 248, 255, 0.4)');  // Alice blue
-  
+
+  gradient.addColorStop(0, 'rgba(135, 206, 235, 0.8)');  // Light blue
+  gradient.addColorStop(0.5, 'rgba(135, 206, 235, 0.3)');
+  gradient.addColorStop(1, 'rgba(135, 206, 235, 0)');
+
+  // Fill canvas with gradient
   ctx.fillStyle = gradient;
   ctx.fillRect(0, 0, width, height);
 }
 
-function drawParticles() {
-  particles.forEach(particle => {
-    particle.x += particle.vx;
-    particle.y += particle.vy;
-    
-    if (particle.x < 0 || particle.x > width) particle.vx *= -1;
-    if (particle.y < 0 || particle.y > height) particle.vy *= -1;
-    
-    ctx.beginPath();
-    ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
-    ctx.fill();
-  });
-}
-
 function animate() {
-  ctx.clearRect(0, 0, width, height);
   drawGradient();
-  drawParticles();
+  
+  // Smooth movement of gradient center
+  gradientCenter.x += (mouse.x - gradientCenter.x) * 0.05;
+  gradientCenter.y += (mouse.y - gradientCenter.y) * 0.05;
+
   animationFrameId = requestAnimationFrame(animate);
 }
 
@@ -118,8 +98,9 @@ function onResize() {
 }
 
 function onMouseMove(e) {
-  mouse.x = e.clientX;
-  mouse.y = e.clientY;
+  const rect = homepage.value.getBoundingClientRect();
+  mouse.x = e.clientX - rect.left;
+  mouse.y = e.clientY - rect.top;
 }
 </script>
 
@@ -128,7 +109,7 @@ function onMouseMove(e) {
 .homepage {
   min-height: 100vh;
   font-family: Arial, sans-serif;
-  background-color: var(--bs-light);
+  background-color: #f0f0f0;
   position: relative;
   overflow: hidden;
 }
@@ -141,6 +122,7 @@ function onMouseMove(e) {
   width: 100%;
   height: 100%;
   z-index: 0;
+  pointer-events: none;
 }
 
 /* Top section containing the main content */
@@ -178,7 +160,6 @@ h1 {
   line-height: 1.2;
   color: var(--bs-primary);
   margin: 1rem 0 1.5rem;
-  text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.5);
 }
 
 /* Paragraph styles */
@@ -186,7 +167,6 @@ p {
   font-size: 1.25rem;
   line-height: 1.6;
   margin-bottom: 2rem;
-  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
 }
 
 /* Get Started button styles */
