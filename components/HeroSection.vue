@@ -3,14 +3,9 @@
     <div class="container h-100 d-flex flex-column justify-content-between">
       <h1 class="hero-title text-center" ref="heroTitle">GET A WEBSITE EXACTLY THE WAY YOU NEED!</h1>
       <div class="carousel-container d-flex justify-content-center align-items-center">
-        <div class="carousel-wrapper left-carousel" ref="leftCarousel">
+        <div class="carousel-wrapper" ref="carousel">
           <transition name="fade" mode="out-in">
-            <img v-if="imagesLoaded" :key="leftCurrentImage" :src="leftCurrentImage" :alt="'Website Example Left'" class="carousel-image">
-          </transition>
-        </div>
-        <div class="carousel-wrapper right-carousel" ref="rightCarousel">
-          <transition name="fade" mode="out-in">
-            <img v-if="imagesLoaded" :key="rightCurrentImage" :src="rightCurrentImage" :alt="'Website Example Right'" class="carousel-image">
+            <img v-if="imagesLoaded" :key="currentImage" :src="currentImage" :alt="'Website Example'" class="carousel-image">
           </transition>
         </div>
       </div>
@@ -25,28 +20,22 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 import { gsap } from 'gsap'
 
-const leftImages = ['/7.png', '/8.png', '/9.png', '/10.png', '/11.png']
-const rightImages = ['/13.png', '/14.png', '/15.png', '/16.png', '/17.png']
+const images = ['/home-17.png', '/home-18.png', '/home-19.png', '/home-20.png']
 
-const leftCurrentIndex = ref(0)
-const rightCurrentIndex = ref(0)
-const leftCurrentImage = ref(leftImages[0])
-const rightCurrentImage = ref(rightImages[0])
+const currentIndex = ref(0)
+const currentImage = ref(images[0])
 
 const heroTitle = ref(null)
-const leftCarousel = ref(null)
-const rightCarousel = ref(null)
+const carousel = ref(null)
 const caseStudiesBtn = ref(null)
 
 const imagesLoaded = ref(false)
 
 let interval
 
-const changeImages = () => {
-  leftCurrentIndex.value = (leftCurrentIndex.value + 1) % leftImages.length
-  rightCurrentIndex.value = (rightCurrentIndex.value + 1) % rightImages.length
-  leftCurrentImage.value = leftImages[leftCurrentIndex.value]
-  rightCurrentImage.value = rightImages[rightCurrentIndex.value]
+const changeImage = () => {
+  currentIndex.value = (currentIndex.value + 1) % images.length
+  currentImage.value = images[currentIndex.value]
 }
 
 const preloadImages = (imageArray) => {
@@ -62,12 +51,9 @@ const preloadImages = (imageArray) => {
 
 onMounted(async () => {
   try {
-    await Promise.all([
-      preloadImages(leftImages),
-      preloadImages(rightImages)
-    ])
+    await preloadImages(images)
     imagesLoaded.value = true
-    interval = setInterval(changeImages, 5000)
+    interval = setInterval(changeImage, 5000)
   } catch (error) {
     console.error('Error preloading images:', error)
   }
@@ -114,29 +100,16 @@ onUnmounted(() => {
 .carousel-container {
   margin-bottom: 5vh;
   width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .carousel-wrapper {
   position: relative;
   overflow: hidden;
   border-radius: 10px;
-}
-
-.left-carousel {
-  width: 50%;
-  max-width: 600px;
+  width: 100%;
+  max-width: 1200px; /* Adjust this to match the width of your heading */
+  margin: 0 auto;
   aspect-ratio: 16 / 9;
-  transform: translateX(-130px);
-}
-
-.right-carousel {
-  width: 25%;
-  max-width: 300px;
-  aspect-ratio: 9 / 16;
-  transform: translateX(90px);
 }
 
 .carousel-image {
@@ -169,41 +142,14 @@ onUnmounted(() => {
   opacity: 0;
 }
 
-/* Tablet styles */
-@media (max-width: 1024px) {
-  .left-carousel {
-    transform: translateX(-40px);
-  }
-
-  .right-carousel {
-    transform: translateX(40px);
-    aspect-ratio: 16 / 9;
-  }
-}
-
 /* Mobile styles */
 @media (max-width: 768px) {
   .hero-section {
     padding: 3vh 0;
   }
 
-  .carousel-container {
-    flex-direction: column;
-    gap: 3vh;
-  }
-
-  .left-carousel {
+  .carousel-wrapper {
     width: 90%;
-    max-width: none;
-    transform: none;
-    aspect-ratio: 16 / 9;
-  }
-
-  .right-carousel {
-    width: 90%;
-    max-width: none;
-    transform: none;
-    aspect-ratio: 9 / 16;
   }
 }
 </style>
