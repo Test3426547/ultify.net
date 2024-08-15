@@ -1,7 +1,7 @@
 <template>
-  <section class="hero-section position-relative bs-primary">
+  <section class="hero-section position-relative">
     <div class="container h-100 d-flex flex-column justify-content-between">
-      <h1 class="bs-white text-center hero-title" ref="heroTitle">GET A WEBSITE EXACTLY THE WAY YOU NEED!</h1>
+      <h1 class="hero-title text-center" ref="heroTitle">GET A WEBSITE EXACTLY THE WAY YOU NEED!</h1>
       <div class="carousel-container d-flex justify-content-center align-items-center">
         <div class="carousel-wrapper left-carousel" ref="leftCarousel">
           <transition name="fade" mode="out-in">
@@ -15,7 +15,7 @@
         </div>
       </div>
       <div class="text-center">
-        <NuxtLink to="/case-studies" class="btn bs-light text-primary rounded-pill case-studies-btn" ref="caseStudiesBtn">Case Studies</NuxtLink>
+        <NuxtLink to="/case-studies" class="btn rounded-pill case-studies-btn" ref="caseStudiesBtn">Case Studies</NuxtLink>
       </div>
     </div>
   </section>
@@ -101,12 +101,14 @@ onUnmounted(() => {
   padding: 5vh 0;
   display: flex;
   align-items: center;
+  background-color: var(--bs-primary);
 }
 
 .hero-title {
   font-size: clamp(1.5rem, 4vw, 3rem);
   line-height: 1.2;
   margin-bottom: 5vh;
+  color: var(--bs-white);
 }
 
 .carousel-container {
@@ -148,6 +150,8 @@ onUnmounted(() => {
   padding: 0.75rem 2rem;
   font-size: clamp(1rem, 2vw, 1.25rem);
   transition: all 0.3s ease;
+  background-color: var(--bs-light);
+  color: var(--bs-primary);
 }
 
 .case-studies-btn:hover {
