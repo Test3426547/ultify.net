@@ -3,7 +3,19 @@
     <div class="container">
       <h2 class="title text-primary">Impacting the digital world since 2019</h2>
       <div class="image-wrapper">
-        <img src="/sydney.jpg" alt="Office Environment" class="responsive-image">
+        <img src="/sydney.jpg" alt="Sydney Opera House" class="responsive-image">
+      </div>
+      <div class="info-wrapper">
+        <h3 class="location">SYD</h3>
+        <p class="address">
+          Level 1/457,<br>
+          59 Elizabeth Street,<br>
+          Surry Hills NSW 2010
+        </p>
+        <p class="contact">
+          1800 ULTIFY<br>
+          admin@ultify.net
+        </p>
       </div>
       <div class="button-wrapper">
         <NuxtLink to="/about-us" class="btn btn-primary btn-lg bounce-link">ABOUT US</NuxtLink>
@@ -20,7 +32,7 @@
 <style scoped>
 .digital-world {
   background-color: var(--bs-light);
-  padding: 90px 0 85px; /* Removed 5px from the bottom padding */
+  padding: 90px 0 85px;
   text-align: center;
 }
 
@@ -31,16 +43,16 @@
 }
 
 .title {
-  font-size: 2.5rem; /* Reduced from 3.0rem */
+  font-size: 2.5rem;
   margin-bottom: 80px;
-  color: var(--bs-primary); /* Changed to primary color */
+  color: var(--bs-primary);
 }
 
 .image-wrapper {
   border-radius: 30px;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  margin-bottom: 65px; /* Reduced from 70px to 65px */
+  margin-bottom: 40px;
   width: 80%;
   margin-left: auto;
   margin-right: auto;
@@ -50,14 +62,29 @@
   width: 100%;
   height: auto;
   display: block;
-  margin-bottom: -5px; /* Added to remove 5px from underneath the image */
+}
+
+.info-wrapper {
+  margin-bottom: 40px;
+}
+
+.location {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: var(--bs-primary);
+}
+
+.address, .contact {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 10px;
 }
 
 .button-wrapper {
   display: flex;
   justify-content: center;
   gap: 100px;
-  margin-top: -5px; /* Added to move the buttons up 5px */
 }
 
 .btn {
@@ -108,8 +135,20 @@
   }
   
   .image-wrapper {
-    margin-bottom: 55px; /* Reduced from 60px to 55px */
+    margin-bottom: 30px;
     width: 90%;
+  }
+  
+  .info-wrapper {
+    margin-bottom: 30px;
+  }
+  
+  .location {
+    font-size: 1.8rem;
+  }
+  
+  .address, .contact {
+    font-size: 0.9rem;
   }
   
   .button-wrapper {
