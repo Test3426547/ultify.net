@@ -1,5 +1,6 @@
 <template>
   <div class="homepage">
+    <canvas ref="canvas" class="gradient-background"></canvas>
     <div class="top-section">
       <div class="content">
         <span class="welcome">Welcome to Ultify</span>
@@ -25,8 +26,9 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted, onUnmounted } from 'vue';
 
+const canvas = ref(null);
 const primaryColor = ref(getComputedStyle(document.documentElement).getPropertyValue('--bs-primary').trim());
 
 const waveColors = computed(() => [
@@ -35,6 +37,90 @@ const waveColors = computed(() => [
   `${primaryColor.value}4D`, // 30% opacity
   primaryColor.value
 ]);
+
+let ctx, width, height, particles;
+let animationFrameId;
+let mouse = { x: 0, y: 0 };
+
+onMounted(() => {
+  initCanvas();
+  createParticles();
+  animate();
+  window.addEventListener('resize', onResize);
+  window.addEventListener('mousemove', onMouseMove);
+});
+
+onUnmounted(() => {
+  cancelAnimationFrame(animationFrameId);
+  window.removeEventListener('resize', onResize);
+  window.removeEventListener('mousemove', onMouseMove);
+});
+
+function initCanvas() {
+  const canvasElement = canvas.value;
+  ctx = canvasElement.getContext('2d');
+  width = canvasElement.width = window.innerWidth;
+  height = canvasElement.height = window.innerHeight;
+}
+
+function createParticles() {
+  particles = [];
+  const particlesCount = 100;
+  for (let i = 0; i < particlesCount; i++) {
+    particles.push({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      radius: Math.random() * 2 + 1,
+      vx: Math.random() * 2 - 1,
+      vy: Math.random() * 2 - 1
+    });
+  }
+}
+
+function drawGradient() {
+  const gradient = ctx.createRadialGradient(
+    mouse.x, mouse.y, 0,
+    mouse.x, mouse.y, width
+  );
+  gradient.addColorStop(0, 'rgba(173, 216, 230, 0.8)');  // Light blue
+  gradient.addColorStop(0.5, 'rgba(135, 206, 235, 0.6)'); // Sky blue
+  gradient.addColorStop(1, 'rgba(240, 248, 255, 0.4)');  // Alice blue
+  
+  ctx.fillStyle = gradient;
+  ctx.fillRect(0, 0, width, height);
+}
+
+function drawParticles() {
+  particles.forEach(particle => {
+    particle.x += particle.vx;
+    particle.y += particle.vy;
+    
+    if (particle.x < 0 || particle.x > width) particle.vx *= -1;
+    if (particle.y < 0 || particle.y > height) particle.vy *= -1;
+    
+    ctx.beginPath();
+    ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+    ctx.fill();
+  });
+}
+
+function animate() {
+  ctx.clearRect(0, 0, width, height);
+  drawGradient();
+  drawParticles();
+  animationFrameId = requestAnimationFrame(animate);
+}
+
+function onResize() {
+  width = canvas.value.width = window.innerWidth;
+  height = canvas.value.height = window.innerHeight;
+}
+
+function onMouseMove(e) {
+  mouse.x = e.clientX;
+  mouse.y = e.clientY;
+}
 </script>
 
 <style scoped>
@@ -43,16 +129,30 @@ const waveColors = computed(() => [
   min-height: 100vh;
   font-family: Arial, sans-serif;
   background-color: var(--bs-light);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Gradient background canvas */
+.gradient-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
 }
 
 /* Top section containing the main content */
 .top-section {
   color: #000000;
   padding: 4rem 2rem;
-  min-height: calc(100vh - 250px); /* Adjusted to account for taller wave container */
+  min-height: calc(100vh - 250px);
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  z-index: 1;
 }
 
 /* Content wrapper for centering and max-width */
@@ -78,6 +178,7 @@ h1 {
   line-height: 1.2;
   color: var(--bs-primary);
   margin: 1rem 0 1.5rem;
+  text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.5);
 }
 
 /* Paragraph styles */
@@ -85,6 +186,7 @@ p {
   font-size: 1.25rem;
   line-height: 1.6;
   margin-bottom: 2rem;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
 }
 
 /* Get Started button styles */
@@ -106,9 +208,10 @@ p {
 /* Wave container styles */
 .wave-container {
   position: relative;
-  height: 250px; /* Increased to accommodate additional padding */
+  height: 250px;
   overflow: hidden;
-  background-color: var(--bs-light);
+  background-color: transparent;
+  z-index: 1;
 }
 
 /* Pseudo-element for additional padding below waves */
@@ -125,7 +228,7 @@ p {
 /* Wave SVG styles */
 .waves {
   position: absolute;
-  bottom: 100px; /* Moved up to sit above the new padding */
+  bottom: 100px;
   width: 100%;
   height: 150px;
   min-height: 100px;
