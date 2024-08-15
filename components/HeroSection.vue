@@ -107,7 +107,7 @@ onUnmounted(() => {
   overflow: hidden;
   border-radius: 10px;
   width: 100%;
-  max-width: 1000px; /* Adjust this to match the width of your heading */
+  max-width: 1100px; /* Adjust this to match the width of your heading */
   margin: 0 auto;
   aspect-ratio: 16 / 9;
 }
