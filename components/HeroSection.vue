@@ -1,7 +1,7 @@
 <template>
-  <section class="hero-section position-relative">
+  <section class="hero-section position-relative bs-light">
     <div class="container h-100 d-flex flex-column justify-content-between">
-      <h1 class="text-white text-center hero-title" ref="heroTitle">GET A WEBSITE EXACTLY THE WAY YOU NEED!</h1>
+      <h1 class="text-primary text-center hero-title" ref="heroTitle">GET A WEBSITE EXACTLY THE WAY YOU NEED!</h1>
       <div class="carousel-container d-flex justify-content-center align-items-center">
         <div class="carousel-wrapper left-carousel" ref="leftCarousel">
           <transition name="fade" mode="out-in">
@@ -15,7 +15,7 @@
         </div>
       </div>
       <div class="text-center">
-        <NuxtLink to="/case-studies" class="btn btn-light rounded-pill case-studies-btn" ref="caseStudiesBtn">Case Studies</NuxtLink>
+        <NuxtLink to="/case-studies" class="btn btn-primary rounded-pill case-studies-btn" ref="caseStudiesBtn">Case Studies</NuxtLink>
       </div>
     </div>
   </section>
@@ -49,8 +49,6 @@ const changeImages = () => {
 
 onMounted(() => {
   interval = setInterval(changeImages, 5000)
-
-  // Removed initial animations for carousels and title
 
   caseStudiesBtn.value.addEventListener('mouseenter', () => {
     gsap.to(caseStudiesBtn.value, {
@@ -100,7 +98,6 @@ onUnmounted(() => {
 .carousel-wrapper {
   position: relative;
   overflow: hidden;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
 }
 
@@ -125,7 +122,6 @@ onUnmounted(() => {
 }
 
 .case-studies-btn {
-  color: var(--bs-primary);
   font-weight: bold;
   padding: 0.75rem 2rem;
   font-size: clamp(1rem, 2vw, 1.25rem);
@@ -133,8 +129,6 @@ onUnmounted(() => {
 }
 
 .case-studies-btn:hover {
-  background-color: var(--bs-white);
-  color: var(--bs-primary);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   transform: translateY(-2px);
 }
