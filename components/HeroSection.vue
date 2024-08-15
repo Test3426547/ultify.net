@@ -95,7 +95,7 @@ onUnmounted(() => {
   line-height: 1.2;
   margin-bottom: 5vh;
   color: var(--bs-white);
-  margin-top: 50px; /* Add this line to move the heading down */
+  margin-top: 100px; /* Add this line to move the heading down */
 }
 
 .carousel-container {
