@@ -4,7 +4,7 @@
       <h1 class="hero-title text-center" ref="heroTitle">GET A WEBSITE EXACTLY THE WAY YOU NEED!</h1>
       <div class="carousel-container d-flex justify-content-center align-items-center">
         <div class="carousel-wrapper" ref="carousel">
-          <transition name="fade" mode="out-in">
+          <transition @before-enter="beforeEnter" @enter="enter" @leave="leave" :css="false">
             <img v-if="imagesLoaded" :key="currentImage" :src="currentImage" :alt="'Website Example'" class="carousel-image">
           </transition>
         </div>
@@ -47,6 +47,33 @@ const preloadImages = (imageArray) => {
       img.src = src
     })
   }))
+}
+
+const beforeEnter = (el) => {
+  gsap.set(el, {
+    opacity: 0,
+    x: '-100%',
+  })
+}
+
+const enter = (el, done) => {
+  gsap.to(el, {
+    opacity: 1,
+    x: '0%',
+    duration: 0.8,
+    ease: 'power3.out',
+    onComplete: done
+  })
+}
+
+const leave = (el, done) => {
+  gsap.to(el, {
+    opacity: 0,
+    x: '100%',
+    duration: 0.8,
+    ease: 'power3.in',
+    onComplete: done
+  })
 }
 
 onMounted(async () => {
