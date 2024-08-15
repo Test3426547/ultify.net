@@ -106,7 +106,7 @@
   }
   
   .service-image img {
-  max-width: 50%;  /* Changed from 100% to 50% */
+  max-width: 60%;  /* Changed from 100% to 50% */
   height: auto;
   border-radius: 10px;
   display: block;  /* Added to center the image */
