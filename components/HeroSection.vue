@@ -4,7 +4,7 @@
       <h1 class="hero-title text-center" ref="heroTitle">GET A WEBSITE EXACTLY THE WAY YOU NEED!</h1>
       <div class="carousel-container d-flex justify-content-center align-items-center">
         <div class="carousel-wrapper" ref="carousel">
-          <transition @before-enter="beforeEnter" @enter="enter" @leave="leave" :css="false">
+          <transition @enter="enter" @leave="leave" :css="false">
             <img v-if="imagesLoaded" :key="currentImage" :src="currentImage" :alt="'Website Example'" class="carousel-image">
           </transition>
         </div>
@@ -49,29 +49,23 @@ const preloadImages = (imageArray) => {
   }))
 }
 
-const beforeEnter = (el) => {
-  gsap.set(el, {
-    opacity: 0,
-    x: '-100%',
-  })
-}
-
 const enter = (el, done) => {
-  gsap.to(el, {
-    opacity: 1,
-    x: '0%',
-    duration: 0.8,
-    ease: 'power3.out',
-    onComplete: done
-  })
+  gsap.fromTo(el, 
+    { opacity: 0 },
+    {
+      opacity: 1,
+      duration: 0.5,
+      delay: 0.5, // Delay the fade-in until after the previous image has slid out
+      onComplete: done
+    }
+  )
 }
 
 const leave = (el, done) => {
   gsap.to(el, {
-    opacity: 0,
-    x: '100%',
-    duration: 0.8,
-    ease: 'power3.in',
+    x: '100%', // Slide the entire image to the right
+    duration: 0.5,
+    ease: 'power2.in',
     onComplete: done
   })
 }
@@ -157,16 +151,6 @@ onUnmounted(() => {
 .case-studies-btn:hover {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   transform: translateY(-2px);
-}
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
 }
 
 /* Mobile styles */
