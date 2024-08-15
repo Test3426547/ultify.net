@@ -28,39 +28,40 @@ const easeInOutQuad = (t) => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
 
 const animateWave = () => {
   const wave = document.querySelector('.parallax > use');
-  let time = 0;
-  let isPaused = false;
-  let pauseDuration = 0;
+  let position = -90;
   let currentSpeed = 1;
   let targetSpeed = 1;
+  let lastSpeedChangeTime = Date.now();
+  let speedChangeDuration = Math.random() * 5000 + 3000; // 3-8 seconds
 
   const animate = () => {
-    if (!isPaused) {
-      // Smoothly adjust the current speed towards the target speed
-      currentSpeed += (targetSpeed - currentSpeed) * 0.05;
+    const now = Date.now();
+    const timeSinceLastChange = now - lastSpeedChangeTime;
 
-      time += 0.005 * currentSpeed;
-      if (time > 1) time = 0;
-
-      const position = -90 + (easeInOutQuad(time) * 175);
-      wave.setAttribute('transform', `translate(${position},0)`);
-
-      // Randomly change target speed
-      if (Math.random() < 0.01) {
-        targetSpeed = 0.5 + Math.random() * 1.5; // Speed between 0.5 and 2
-      }
-
-      // Randomly decide to pause
-      if (Math.random() < 0.002) {
-        isPaused = true;
-        pauseDuration = Math.random() * 2000 + 1000; // Pause between 1 and 3 seconds
-        setTimeout(() => {
-          isPaused = false;
-        }, pauseDuration);
-      }
+    // Change speed if it's time
+    if (timeSinceLastChange >= speedChangeDuration) {
+      targetSpeed = Math.random() * 2; // New speed between 0 and 2
+      speedChangeDuration = Math.random() * 5000 + 3000; // New duration 3-8 seconds
+      lastSpeedChangeTime = now;
     }
 
-    animationFrame = requestAnimationFrame(animate);
+    // Smoothly adjust current speed towards target speed
+    currentSpeed += (targetSpeed - currentSpeed) * 0.05;
+
+    // Move the wave
+    position += 0.5 * currentSpeed;
+    if (position > 85) position = -90;
+
+    wave.setAttribute('transform', `translate(${position},0)`);
+
+    // If speed is very close to 0, pause briefly
+    if (Math.abs(currentSpeed) < 0.05) {
+      setTimeout(() => {
+        animationFrame = requestAnimationFrame(animate);
+      }, 500); // Pause for 0.5 seconds
+    } else {
+      animationFrame = requestAnimationFrame(animate);
+    }
   };
 
   animate();
