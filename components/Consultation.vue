@@ -97,9 +97,7 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 40px 30px;
-  max-width: 450px;
-  margin: 0 auto;
+  padding: 40px 50px;
 }
 
 h2 {
@@ -123,7 +121,6 @@ h2 {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  font-size: 14px;
 }
 
 .form-control:focus {
@@ -134,7 +131,7 @@ h2 {
   display: block;
   width: 100%;
   padding: 15px 30px;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: bold;
   border-radius: 50px;
   border: none;
@@ -175,8 +172,7 @@ h2 {
   }
 
   .form-container {
-    padding: 30px 20px;
-    max-width: 100%;
+    padding: 30px;
   }
 }
 </style>
