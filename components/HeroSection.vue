@@ -129,7 +129,7 @@ onUnmounted(() => {
   width: 50%;
   max-width: 600px;
   aspect-ratio: 16 / 9;
-  transform: translateX(-100px);
+  transform: translateX(-50px);
 }
 
 .right-carousel {
@@ -169,6 +169,26 @@ onUnmounted(() => {
   opacity: 0;
 }
 
+/* Tablet styles */
+@media (max-width: 1024px) {
+  .carousel-container {
+    flex-direction: row;
+    gap: 3vw;
+  }
+
+  .left-carousel,
+  .right-carousel {
+    width: 45%;
+    max-width: none;
+    transform: none;
+  }
+
+  .right-carousel {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+/* Mobile styles */
 @media (max-width: 768px) {
   .hero-section {
     padding: 3vh 0;
@@ -184,9 +204,6 @@ onUnmounted(() => {
     width: 90%;
     max-width: none;
     transform: none;
-  }
-
-  .right-carousel {
     aspect-ratio: 16 / 9;
   }
 }
