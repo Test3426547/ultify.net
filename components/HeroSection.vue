@@ -88,7 +88,7 @@ onUnmounted(() => {
 <style scoped>
 .hero-section {
   min-height: 100vh;
-  padding: 30px 0;
+  padding: 0 0 30px; /* Removed top padding */
   background-color: var(--bs-primary);
 }
 
@@ -98,7 +98,7 @@ onUnmounted(() => {
 
 .heading-wrapper {
   flex: 0 0 auto;
-  padding-top: 100px; /* This will move the heading down by 100px */
+  padding-top: 35px; /* Reduced from 100px to 35px (100px - 65px) */
 }
 
 .content-wrapper {
@@ -163,11 +163,11 @@ onUnmounted(() => {
 /* Mobile styles */
 @media (max-width: 768px) {
   .hero-section {
-    padding: 20px 0;
+    padding: 0 0 20px; /* Removed top padding for mobile */
   }
 
   .heading-wrapper {
-    padding-top: 50px; /* Adjust for mobile if needed */
+    padding-top: 20px; /* Adjusted for mobile */
   }
 
   .carousel-wrapper {
