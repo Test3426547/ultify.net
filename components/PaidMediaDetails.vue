@@ -106,10 +106,12 @@
   }
   
   .service-image img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-  }
+  max-width: 50%;  /* Changed from 100% to 50% */
+  height: auto;
+  border-radius: 10px;
+  display: block;  /* Added to center the image */
+  margin: 0 auto;  /* Added to center the image */
+}
   
   @media (max-width: 992px) {
     .container {
