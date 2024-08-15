@@ -1,9 +1,9 @@
 <template>
-    <section class="service-details bg-light">
+    <section class="service-details bg-primary">
       <div class="container">
         <div class="service-row" v-for="(service, index) in services" :key="index">
           <div class="service-content" :class="{ 'right': index % 2 !== 0 }">
-            <h2 class="service-title text-primary">{{ service.title }}</h2>
+            <h2 class="service-title text-white">{{ service.title }}</h2>
             <p class="service-description">{{ service.description }}</p>
           </div>
           <div class="service-image" :class="{ 'left': index % 2 !== 0 }">
@@ -96,11 +96,11 @@
   .service-title {
     margin-bottom: 20px;
     font-size: 28px;
-    color: #007bff;
+    color: var(--bs-white);
   }
   
   .service-description {
-    color: #34495e;
+    color: var(--bs-white);
     line-height: 1.6;
     font-size: 16px;
   }
