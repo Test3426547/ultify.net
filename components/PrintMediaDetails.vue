@@ -1,18 +1,18 @@
 <template>
-    <section class="service-details bg-light">
-      <div class="container">
-        <div class="service-row" v-for="(service, index) in services" :key="index">
-          <div class="service-content" :class="{ 'right': index % 2 !== 0 }">
-            <h2 class="service-title text-primary">{{ service.title }}</h2>
-            <p class="service-description">{{ service.description }}</p>
-          </div>
-          <div class="service-image" :class="{ 'left': index % 2 !== 0 }">
-            <img :src="service.image" :alt="service.title">
-          </div>
+  <section class="service-details bg-light">
+    <div class="container">
+      <div class="service-row" v-for="(service, index) in services" :key="index">
+        <div class="service-content" :class="{ 'right': index % 2 !== 0 }">
+          <h2 class="service-title text-primary">{{ service.title }}</h2>
+          <p class="service-description">{{ service.description }}</p>
+        </div>
+        <div class="service-image" :class="{ 'left': index % 2 !== 0 }">
+          <img :src="service.image" :alt="service.title" :class="{ 'resize-image': index === 0 || index === 2 }">
         </div>
       </div>
-    </section>
-  </template>
+    </div>
+  </section>
+</template>
   
   <script>
   export default {
@@ -106,10 +106,16 @@
   }
   
   .service-image img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-  }
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.service-image img.resize-image {
+  max-width: 60%;
+  display: block;
+  margin: 0 auto;
+}
   
   @media (max-width: 992px) {
     .container {
