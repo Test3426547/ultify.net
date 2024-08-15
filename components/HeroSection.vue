@@ -1,16 +1,20 @@
 <template>
   <section class="hero-section position-relative">
-    <div class="container h-100 d-flex flex-column justify-content-between">
-      <h1 class="hero-title text-center" ref="heroTitle">GET A WEBSITE EXACTLY THE WAY YOU NEED!</h1>
-      <div class="carousel-container d-flex justify-content-center align-items-center">
-        <div class="carousel-wrapper" ref="carousel">
-          <transition name="fade" mode="out-in">
-            <img v-if="imagesLoaded" :key="currentImage" :src="currentImage" :alt="'Website Example'" class="carousel-image">
-          </transition>
-        </div>
+    <div class="container h-100 d-flex flex-column">
+      <div class="heading-wrapper">
+        <h1 class="hero-title text-center" ref="heroTitle">GET A WEBSITE EXACTLY THE WAY YOU NEED!</h1>
       </div>
-      <div class="text-center">
-        <NuxtLink to="/website" class="btn rounded-pill case-studies-btn" ref="caseStudiesBtn">View Website Page</NuxtLink>
+      <div class="content-wrapper">
+        <div class="carousel-container d-flex justify-content-center align-items-center">
+          <div class="carousel-wrapper" ref="carousel">
+            <transition name="fade" mode="out-in">
+              <img v-if="imagesLoaded" :key="currentImage" :src="currentImage" :alt="'Website Example'" class="carousel-image">
+            </transition>
+          </div>
+        </div>
+        <div class="text-center">
+          <NuxtLink to="/website" class="btn rounded-pill case-studies-btn" ref="caseStudiesBtn">View Website Page</NuxtLink>
+        </div>
       </div>
     </div>
   </section>
@@ -84,23 +88,35 @@ onUnmounted(() => {
 <style scoped>
 .hero-section {
   min-height: 100vh;
-  padding: 30px 0; /* Reduced padding */
-  display: flex;
-  align-items: center;
+  padding: 30px 0;
   background-color: var(--bs-primary);
+}
+
+.container {
+  height: 100vh;
+}
+
+.heading-wrapper {
+  flex: 0 0 auto;
+  padding-top: 100px; /* This will move the heading down by 100px */
+}
+
+.content-wrapper {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .hero-title {
   font-size: clamp(1.5rem, 4vw, 3rem);
   line-height: 1.2;
-  margin-bottom: 5vh;
   color: var(--bs-white);
-  margin-top: 150px; /* Add this line to move the heading down */
 }
 
 .carousel-container {
-  margin-bottom: 5vh;
   width: 100%;
+  margin-bottom: 5vh;
 }
 
 .carousel-wrapper {
@@ -108,7 +124,7 @@ onUnmounted(() => {
   overflow: hidden;
   border-radius: 10px;
   width: 100%;
-  max-width: 1100px; /* Adjust this to match the width of your heading */
+  max-width: 1100px;
   margin: 0 auto;
   aspect-ratio: 16 / 9;
 }
@@ -119,10 +135,6 @@ onUnmounted(() => {
   object-fit: cover;
 }
 
-.text-center {
-  margin-top: -50px; /* This moves the button up */
-}
-
 .case-studies-btn {
   font-weight: bold;
   padding: 0.75rem 2rem;
@@ -130,6 +142,7 @@ onUnmounted(() => {
   transition: all 0.3s ease;
   background-color: var(--bs-light);
   color: var(--bs-primary);
+  margin-top: -50px; /* This will move the button up */
 }
 
 .case-studies-btn:hover {
@@ -150,18 +163,18 @@ onUnmounted(() => {
 /* Mobile styles */
 @media (max-width: 768px) {
   .hero-section {
-    padding: 20px 0; /* Further reduced padding for mobile */
+    padding: 20px 0;
   }
 
-  .hero-title {
-    margin-top: 30px; /* Adjust for mobile if needed */
+  .heading-wrapper {
+    padding-top: 50px; /* Adjust for mobile if needed */
   }
 
   .carousel-wrapper {
     width: 90%;
   }
 
-  .text-center {
+  .case-studies-btn {
     margin-top: -30px; /* Adjust for mobile if needed */
   }
 }
