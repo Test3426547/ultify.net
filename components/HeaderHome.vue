@@ -42,8 +42,8 @@ const waveColors = computed(() => [
   min-height: 100vh;
   font-family: Arial, sans-serif;
   background-color: var(--bs-light);
-  position: relative; /* Add this */
-  overflow: hidden; /* Add this */
+  position: relative;
+  overflow: hidden;
 }
 
 .top-section {
@@ -99,22 +99,22 @@ p {
 }
 
 .wave-container {
-  position: absolute; /* Changed from relative to absolute */
-  bottom: 0; /* Add this */
-  left: 0; /* Add this */
-  right: 0; /* Add this */
-  height: 250px; /* Changed from 150px to 250px */
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 250px; /* Increased from 150px to 250px */
   overflow: hidden;
-  background-color: transparent; /* Changed from var(--bs-light) to transparent */
+  background-color: var(--bs-primary); /* Changed to primary color */
 }
 
 .waves {
   position: absolute;
-  bottom: 0;
+  bottom: 100px; /* Add this to move waves up */
   width: 100%;
-  height: 100%;
+  height: 150px; /* Keep original height */
   min-height: 100px;
-  max-height: 250px; /* Changed from 150px to 250px */
+  max-height: 150px; /* Keep original max-height */
 }
 
 .parallax > use {
