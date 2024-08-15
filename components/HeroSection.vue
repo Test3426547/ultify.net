@@ -118,6 +118,10 @@ onUnmounted(() => {
   object-fit: cover;
 }
 
+.text-center {
+  margin-top: -50px; /* Add this line to move the button up */
+}
+
 .case-studies-btn {
   font-weight: bold;
   padding: 0.75rem 2rem;
@@ -150,6 +154,10 @@ onUnmounted(() => {
 
   .carousel-wrapper {
     width: 90%;
+  }
+
+  .text-center {
+    margin-top: -30px; /* Adjust for mobile if needed */
   }
 }
 </style>
