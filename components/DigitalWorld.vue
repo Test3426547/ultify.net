@@ -74,9 +74,9 @@
 
 .get-directions {
   display: inline-block;
-  color: var(--bs-primary);
+  color: var(--bs-black);
   text-decoration: underline;
-  font-size: 1rem;
+  font-size: 0.8rem; /* Reduced by 20% from 1rem */
   margin-top: 10px;
 }
 
@@ -147,7 +147,7 @@
   }
   
   .get-directions {
-    font-size: 0.9rem;
+    font-size: 0.72rem; /* Reduced by 20% from 0.9rem */
   }
   
   .button-wrapper {
