@@ -1,10 +1,8 @@
 <template>
   <div class="homepage">
-    <div class="gradient-background">
-      <div class="aura" :style="auraStyle"></div>
-    </div>
-    <div class="content">
-      <!-- Your content goes here -->
+    <div class="top-section">
+      <div class="content">
+      </div>
     </div>
     <div class="wave-container">
       <svg class="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 24 150 28" preserveAspectRatio="none">
@@ -12,10 +10,10 @@
           <path id="wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
         </defs>
         <g class="parallax">
-          <use xlink:href="#wave" x="48" y="0" fill="#4169E1B3" />
-          <use xlink:href="#wave" x="48" y="3" fill="#4169E180" />
-          <use xlink:href="#wave" x="48" y="5" fill="#4169E14D" />
-          <use xlink:href="#wave" x="48" y="7" fill="#4169E1" />
+          <use xlink:href="#wave" x="48" y="0" :fill="waveColors[0]" />
+          <use xlink:href="#wave" x="48" y="3" :fill="waveColors[1]" />
+          <use xlink:href="#wave" x="48" y="5" :fill="waveColors[2]" />
+          <use xlink:href="#wave" x="48" y="7" :fill="waveColors[3]" />
         </g>
       </svg>
     </div>
@@ -25,98 +23,73 @@
 <script setup>
 import { ref, computed } from 'vue';
 
-// Customizable aura colors
-const auraColors = ref({
-  color1: '#FF69B4',
-  color2: '#4169E1',
-  color3: '#8A2BE2',
-});
+const primaryColor = ref(getComputedStyle(document.documentElement).getPropertyValue('--bs-primary').trim());
 
-// Compute the aura style
-const auraStyle = computed(() => ({
-  background: `
-    radial-gradient(
-      circle at 70% 20%,
-      ${auraColors.value.color1}33 0%,
-      transparent 50%
-    ),
-    radial-gradient(
-      circle at 20% 80%,
-      ${auraColors.value.color2}33 0%,
-      transparent 50%
-    ),
-    radial-gradient(
-      circle at 50% 50%,
-      ${auraColors.value.color3}33 0%,
-      transparent 50%
-    )
-  `
-}));
+const waveColors = computed(() => [
+  `${primaryColor.value}B3`, // 70% opacity
+  `${primaryColor.value}80`, // 50% opacity
+  `${primaryColor.value}4D`, // 30% opacity
+  primaryColor.value
+]);
 </script>
 
 <style scoped>
+/* Overall container for the homepage */
 .homepage {
-  position: relative;
   min-height: 100vh;
-  overflow: hidden;
-  background-color: #F0F0F0;
+  font-family: Arial, sans-serif;
+  background-color: var(--bs-light);
 }
 
-.gradient-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
+/* Top section containing the main content */
+.top-section {
+  color: #000000;
+  padding: 4rem 2rem;
+  min-height: calc(100vh - 250px); /* Adjusted to account for taller wave container */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.aura {
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  animation: rotate 60s linear infinite;
-}
-
-@keyframes rotate {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
+/* Content wrapper for centering and max-width */
 .content {
-  position: relative;
-  z-index: 1;
-  /* Add your content styles here */
+  max-width: 800px;
+  text-align: center;
 }
 
+/* Wave container styles */
 .wave-container {
+  position: relative;
+  height: 250px; /* Increased to accommodate additional padding */
+  overflow: hidden;
+  background-color: var(--bs-light);
+}
+
+/* Pseudo-element for additional padding below waves */
+.wave-container::after {
+  content: '';
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 100%;
-  height: 250px;
-  overflow: hidden;
+  right: 0;
+  height: 100px;
+  background-color: var(--bs-primary);
 }
 
+/* Wave SVG styles */
 .waves {
   position: absolute;
-  bottom: 0;
+  bottom: 100px; /* Moved up to sit above the new padding */
   width: 100%;
-  height: 100%;
+  height: 150px;
   min-height: 100px;
   max-height: 150px;
 }
 
+/* Wave animation styles */
 .parallax > use {
-  animation: move-forever 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+  animation: move-forever 25s cubic-bezier(.55,.5,.45,.5) infinite;
 }
-
 .parallax > use:nth-child(1) {
   animation-delay: -2s;
   animation-duration: 7s;
@@ -134,18 +107,20 @@ const auraStyle = computed(() => ({
   animation-duration: 20s;
 }
 
+/* Keyframes for wave animation */
 @keyframes move-forever {
   0% {
-    transform: translate3d(-90px, 0, 0);
+    transform: translate3d(-90px,0,0);
   }
-  100% {
-    transform: translate3d(85px, 0, 0);
+  100% { 
+    transform: translate3d(85px,0,0);
   }
 }
 
+/* Mobile responsive styles */
 @media (max-width: 768px) {
-  .wave-container {
-    height: 150px;
+  .top-section {
+    padding: 3rem 1rem;
   }
 }
 </style>
