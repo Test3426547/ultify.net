@@ -1,7 +1,6 @@
 <template>
     <div>
       <HeaderPrintMedia />
-      <PrintMediaTechnology />
       <PrintMediaDetails />
       <Consultation />
       <FAQ />
@@ -11,7 +10,6 @@
   
   <script setup>
   import HeaderPrintMedia from '@/components/HeaderPrintMedia.vue';
-  import PrintMediaTechnology from '@/components/PrintMediaTechnology.vue';
   import PrintMediaDetails from '@/components/PrintMediaDetails.vue';
   import Consultation from '@/components/Consultation.vue';
   import FAQ from '@/components/FAQ.vue';
