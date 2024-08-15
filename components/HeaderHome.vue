@@ -2,10 +2,6 @@
   <div class="homepage">
     <div class="top-section">
       <div class="content">
-        <span class="welcome">Welcome to Ultify</span>
-        <h1>Capitalise on digital resources with ULTIFY</h1>
-        <p>Our agency utilises digital resources and our working strategies to elevate your business operations. Start now and maximise your digital reach.</p>
-        <NuxtLink to="/consultation" class="get-started-btn">Get Started</NuxtLink>
       </div>
     </div>
     <div class="wave-container">
@@ -59,48 +55,6 @@ const waveColors = computed(() => [
 .content {
   max-width: 800px;
   text-align: center;
-}
-
-/* Welcome badge styling */
-.welcome {
-  background-color: var(--bs-primary);
-  color: #ffffff;
-  padding: 0.75rem 1.5rem;
-  border-radius: 30px;
-  font-size: 1.1rem;
-  display: inline-block;
-  margin-bottom: 1.5rem;
-}
-
-/* Main heading styles */
-h1 {
-  font-size: 3.5rem;
-  line-height: 1.2;
-  color: var(--bs-primary);
-  margin: 1rem 0 1.5rem;
-}
-
-/* Paragraph styles */
-p {
-  font-size: 1.25rem;
-  line-height: 1.6;
-  margin-bottom: 2rem;
-}
-
-/* Get Started button styles */
-.get-started-btn {
-  background-color: var(--bs-primary);
-  color: #ffffff;
-  border: none;
-  padding: 1rem 2rem;
-  font-size: 1.1rem;
-  border-radius: 30px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.get-started-btn:hover {
-  background-color: darken(var(--bs-primary), 10%);
 }
 
 /* Wave container styles */
@@ -167,24 +121,6 @@ p {
 @media (max-width: 768px) {
   .top-section {
     padding: 3rem 1rem;
-  }
-
-  h1 {
-    font-size: 2.5rem;
-  }
-
-  p {
-    font-size: 1.1rem;
-  }
-
-  .welcome {
-    font-size: 1rem;
-    padding: 0.6rem 1.2rem;
-  }
-
-  .get-started-btn {
-    padding: 0.8rem 1.6rem;
-    font-size: 1rem;
   }
 }
 </style>
