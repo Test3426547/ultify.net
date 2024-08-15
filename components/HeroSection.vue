@@ -129,14 +129,14 @@ onUnmounted(() => {
   width: 50%;
   max-width: 600px;
   aspect-ratio: 16 / 9;
-  transform: translateX(-80px);
+  transform: translateX(-130px);
 }
 
 .right-carousel {
   width: 25%;
   max-width: 300px;
   aspect-ratio: 9 / 16;
-  transform: translateX(80px);
+  transform: translateX(90px);
 }
 
 .carousel-image {
@@ -192,12 +192,18 @@ onUnmounted(() => {
     gap: 3vh;
   }
 
-  .left-carousel,
-  .right-carousel {
+  .left-carousel {
     width: 90%;
     max-width: none;
     transform: none;
     aspect-ratio: 16 / 9;
+  }
+
+  .right-carousel {
+    width: 90%;
+    max-width: none;
+    transform: none;
+    aspect-ratio: 9 / 16;
   }
 }
 </style>
