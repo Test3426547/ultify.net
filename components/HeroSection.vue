@@ -105,7 +105,7 @@ onUnmounted(() => {
 <style scoped>
 .hero-section {
   min-height: 100vh;
-  padding: 5vh 0;
+  padding: 100px 0; /* Changed from 5vh 0 to 100px 0 */
   display: flex;
   align-items: center;
   background-color: var(--bs-primary);
@@ -116,6 +116,7 @@ onUnmounted(() => {
   line-height: 1.2;
   margin-bottom: 5vh;
   color: var(--bs-white);
+  padding-top: 100px; /* Added 100px padding above the heading */
 }
 
 .carousel-container {
@@ -146,6 +147,7 @@ onUnmounted(() => {
   transition: all 0.3s ease;
   background-color: var(--bs-light);
   color: var(--bs-primary);
+  margin-bottom: 100px; /* Added 100px padding below the button */
 }
 
 .case-studies-btn:hover {
@@ -156,11 +158,19 @@ onUnmounted(() => {
 /* Mobile styles */
 @media (max-width: 768px) {
   .hero-section {
-    padding: 3vh 0;
+    padding: 50px 0; /* Reduced padding for mobile */
+  }
+
+  .hero-title {
+    padding-top: 50px; /* Reduced top padding for mobile */
   }
 
   .carousel-wrapper {
     width: 90%;
+  }
+
+  .case-studies-btn {
+    margin-bottom: 50px; /* Reduced bottom padding for mobile */
   }
 }
 </style>
