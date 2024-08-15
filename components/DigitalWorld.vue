@@ -3,7 +3,7 @@
     <div class="container">
       <h2 class="title text-primary">Impacting the digital world since 2019</h2>
       <div class="image-wrapper">
-        <img src="/sydney.jpg" alt="Sydney Opera House" class="responsive-image">
+        <img src="/sydney.webp" alt="Sydney Opera House" class="responsive-image">
       </div>
       <div class="info-wrapper">
         <p class="address">
