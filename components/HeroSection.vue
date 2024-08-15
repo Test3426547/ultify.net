@@ -1,21 +1,21 @@
 <template>
-  <section class="hero-section position-relative bs-light">
+  <section class="hero-section position-relative bs-primary">
     <div class="container h-100 d-flex flex-column justify-content-between">
-      <h1 class="text-primary text-center hero-title" ref="heroTitle">GET A WEBSITE EXACTLY THE WAY YOU NEED!</h1>
+      <h1 class="bs-white text-center hero-title" ref="heroTitle">GET A WEBSITE EXACTLY THE WAY YOU NEED!</h1>
       <div class="carousel-container d-flex justify-content-center align-items-center">
         <div class="carousel-wrapper left-carousel" ref="leftCarousel">
           <transition name="fade" mode="out-in">
-            <img :key="leftCurrentImage" :src="leftCurrentImage" :alt="'Website Example Left'" class="carousel-image">
+            <img v-if="imagesLoaded" :key="leftCurrentImage" :src="leftCurrentImage" :alt="'Website Example Left'" class="carousel-image">
           </transition>
         </div>
         <div class="carousel-wrapper right-carousel" ref="rightCarousel">
           <transition name="fade" mode="out-in">
-            <img :key="rightCurrentImage" :src="rightCurrentImage" :alt="'Website Example Right'" class="carousel-image">
+            <img v-if="imagesLoaded" :key="rightCurrentImage" :src="rightCurrentImage" :alt="'Website Example Right'" class="carousel-image">
           </transition>
         </div>
       </div>
       <div class="text-center">
-        <NuxtLink to="/case-studies" class="btn btn-primary rounded-pill case-studies-btn" ref="caseStudiesBtn">Case Studies</NuxtLink>
+        <NuxtLink to="/case-studies" class="btn bs-light text-primary rounded-pill case-studies-btn" ref="caseStudiesBtn">Case Studies</NuxtLink>
       </div>
     </div>
   </section>
@@ -38,6 +38,8 @@ const leftCarousel = ref(null)
 const rightCarousel = ref(null)
 const caseStudiesBtn = ref(null)
 
+const imagesLoaded = ref(false)
+
 let interval
 
 const changeImages = () => {
@@ -47,8 +49,28 @@ const changeImages = () => {
   rightCurrentImage.value = rightImages[rightCurrentIndex.value]
 }
 
-onMounted(() => {
-  interval = setInterval(changeImages, 5000)
+const preloadImages = (imageArray) => {
+  return Promise.all(imageArray.map(src => {
+    return new Promise((resolve, reject) => {
+      const img = new Image()
+      img.onload = resolve
+      img.onerror = reject
+      img.src = src
+    })
+  }))
+}
+
+onMounted(async () => {
+  try {
+    await Promise.all([
+      preloadImages(leftImages),
+      preloadImages(rightImages)
+    ])
+    imagesLoaded.value = true
+    interval = setInterval(changeImages, 5000)
+  } catch (error) {
+    console.error('Error preloading images:', error)
+  }
 
   caseStudiesBtn.value.addEventListener('mouseenter', () => {
     gsap.to(caseStudiesBtn.value, {
