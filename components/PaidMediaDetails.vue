@@ -21,25 +21,25 @@
       return {
         services: [
           {
-            title: 'Social Media Marketing (SMM)',
-            description: 'A successful social media marketing (SMM) campaign is greater than just a couple viral post. Do they convert? Do they sustain? Do they grow? At ULTIFY, our strategy isn’t just about quick wins, it’s about cultivating a long-lasting presence on social platforms that will consistently drive exponential organic engagement. Let our digital marketing agency intuitively plan, test and smash your organic social media campaigns.',
-            image: '/social-media-01.jpg'
+            title: 'Paid Search (SEM)',
+            description: 'What if you could instantly advertise to people that are actively searching for your products or services? Well, you can. This opens up huge marketing potential for your business, especially if you need results quickly and you cannot wait for organic methods. Our digital marketing agency specialises in creating highly effective paid search (SEM) strategies that not only attract the clients you need, but also converts them into sales through directed pay-per-click (PPC), cost-per-action (CPA), cost-per-mille (CPM) and other advertising campaign models which we utilise to provide our clients with endless traffic. Stop missing out and start investing in successful paid search campaigns today with ULTIFY.',
+            image: '/paid-media-03.png'
           },  
         
           {
-            title: 'Social Media Management',
-            description: 'A social media management system will allow your business to have a well-scheduled and statistically driven approach to uploading fresh, engaging and converting content. Our agency will also provide your clients with fast interactive and engaging responses, building your brands identity, reputation and improving customer service. Run your platforms on a schedule and make improvements based on data analysis, stop running with the wind!',
-            image: '/social-media-02.png'
+            title: 'Social Media Advertising (SMA)',
+            description: 'Did you know, 5 billion people use social media? Well, you probably would off guessed a number like that. Then, can you guess my next point? Why are you not advertising on a cost-efficient, globalised marketing platform that brings you exactly the clients you need with an agency that knows exactly what they are doing? At ULTIFY, we don’t guess, we implement our working social media advertising (SMA) strategies into your business, so you can get exactly what you need, whether it is sales, views, download, clicks, likes or all of the above! Let your social media platforms grow your business, increasing your reach on a cost-effective basis.',
+            image: '/paid-media-04.png'
           },
           {
-            title: 'Social Media Account Setup',
-            description: 'Experience clear and optimised social media account setup with our digital marketing agency. At ULTIFY, our agency will handle everything from profile creation to the grand launch, ensuring you start on the right foot in this vast digital world.',
-            image: '/social-media-03.png'
+            title: 'Retargeting',
+            description: 'Statistics show that retargeted users are 8x cheaper to reach per click, while also boosting conversions by up to 400%. At ULTIFY, our agency constantly works on improving paid media campaigns through retargeting by reducing ad spend, converting missed sales, enhancing personalisation, precise targeting and harnessing a great competitive advantage.',
+            image: '/paid-media-05.png'
           },
           {
-            title: 'Social Media Audit & Strategy',
-            description: 'Our digital marketing agency evaluates your social media goals and current state in order to masterplan a strategic system that will not just bring views to your instagram (or whatever platform), but convert them into beautiful sales. We assess your current platform performance, social media profiles, competitors, marketable resources and target audience to determine clear data-driven insight, combined with our social media experience.',
-            image: '/social-media-04.png'
+            title: 'Paid Media Audit & Strategy',
+            description: 'It is crucial to successfully deliver an engaging, converting and positively rated paid media campaign to not waste resources, damage brand image, waste opportunities and increase bidding cost due to negative ratings from platforms (such as google). Our paid media audit & strategy maximises ROI through implementing a system that is backed by a data-driven approach, which will sufficiently minimise cost, target the right audience, deliver high quality ad creatives and focus on retargeting.',
+            image: '/paid-media-06.png'
           },
         ]
       }
