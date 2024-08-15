@@ -63,12 +63,12 @@
 
 .location {
   position: absolute;
-  top: 20px;
+  bottom: 20px;
   right: 20px;
   font-size: 4rem;
   font-weight: bold;
-  color: var(--bs-primary);
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  color: var(--bs-black);
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
 }
 
 .info-wrapper {
@@ -78,7 +78,7 @@
 .address {
   font-size: 1rem;
   line-height: 1.5;
-  color: var(--bs-primary);
+  color: var(--bs-black);
 }
 
 .button-wrapper {
@@ -141,7 +141,7 @@
   
   .location {
     font-size: 3rem;
-    top: 10px;
+    bottom: 10px;
     right: 10px;
   }
   
