@@ -1,23 +1,21 @@
 <template>
-    <div v-html="content"></div>
-  </template>
-  
-  <script setup>
-  import { ref, onMounted } from 'vue'
-  import axios from 'axios'
-  
-  const content = ref('')
-  
-  onMounted(async () => {
-    try {
-      const response = await axios.get('/social-media.html')
-      content.value = response.data
-    } catch (error) {
-      console.error('Error fetching HTML content:', error)
-    }
-  })
-  </script>
-  
-  <style scoped>
-  /* Add your styles here */
-  </style>  
+  <div>
+    <HeaderSocialMedia />
+    <WebsiteDetails />
+    <Consultation />
+    <FAQ />
+    <CTA />
+  </div>
+</template>
+
+<script setup>
+import HeaderSocialMedia from '@/components/HeaderSocialMedia.vue';
+import WebsiteDetails from '@/components/WebsiteDetails.vue';
+import Consultation from '@/components/Consultation.vue';
+import FAQ from '@/components/FAQ.vue';
+import CTA from '@/components/CTA.vue';
+</script>
+
+<style>
+/* Additional styling specific to the Website page */
+</style>
