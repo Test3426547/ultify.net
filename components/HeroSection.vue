@@ -4,7 +4,7 @@
       <h1 class="hero-title text-center" ref="heroTitle">GET A WEBSITE EXACTLY THE WAY YOU NEED!</h1>
       <div class="carousel-container d-flex justify-content-center align-items-center">
         <div class="carousel-wrapper" ref="carousel">
-          <transition @enter="enter" @leave="leave" :css="false">
+          <transition name="fade" mode="out-in">
             <img v-if="imagesLoaded" :key="currentImage" :src="currentImage" :alt="'Website Example'" class="carousel-image">
           </transition>
         </div>
@@ -49,27 +49,6 @@ const preloadImages = (imageArray) => {
   }))
 }
 
-const enter = (el, done) => {
-  gsap.fromTo(el, 
-    { opacity: 0 },
-    {
-      opacity: 1,
-      duration: 0.5,
-      delay: 0.5, // Delay the fade-in until after the previous image has slid out
-      onComplete: done
-    }
-  )
-}
-
-const leave = (el, done) => {
-  gsap.to(el, {
-    x: '100%', // Slide the entire image to the right
-    duration: 0.5,
-    ease: 'power2.in',
-    onComplete: done
-  })
-}
-
 onMounted(async () => {
   try {
     await preloadImages(images)
@@ -105,7 +84,7 @@ onUnmounted(() => {
 <style scoped>
 .hero-section {
   min-height: 100vh;
-  padding: 100px 0; /* Changed from 5vh 0 to 100px 0 */
+  padding: 30px 0; /* Reduced padding */
   display: flex;
   align-items: center;
   background-color: var(--bs-primary);
@@ -116,7 +95,6 @@ onUnmounted(() => {
   line-height: 1.2;
   margin-bottom: 5vh;
   color: var(--bs-white);
-  padding-top: 100px; /* Added 100px padding above the heading */
 }
 
 .carousel-container {
@@ -147,7 +125,6 @@ onUnmounted(() => {
   transition: all 0.3s ease;
   background-color: var(--bs-light);
   color: var(--bs-primary);
-  margin-bottom: 100px; /* Added 100px padding below the button */
 }
 
 .case-studies-btn:hover {
@@ -155,22 +132,24 @@ onUnmounted(() => {
   transform: translateY(-2px);
 }
 
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
 /* Mobile styles */
 @media (max-width: 768px) {
   .hero-section {
-    padding: 50px 0; /* Reduced padding for mobile */
-  }
-
-  .hero-title {
-    padding-top: 50px; /* Reduced top padding for mobile */
+    padding: 20px 0; /* Further reduced padding for mobile */
   }
 
   .carousel-wrapper {
     width: 90%;
-  }
-
-  .case-studies-btn {
-    margin-bottom: 50px; /* Reduced bottom padding for mobile */
   }
 }
 </style>
