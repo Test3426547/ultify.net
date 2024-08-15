@@ -3,7 +3,7 @@
     <div class="container">
       <h2 class="title text-primary">Impacting the digital world since 2019</h2>
       <div class="image-wrapper">
-        <img src="/sydney.jpeg" alt="Office Environment" class="responsive-image">
+        <img src="/sydney.jpg" alt="Office Environment" class="responsive-image">
       </div>
       <div class="button-wrapper">
         <NuxtLink to="/about-us" class="btn btn-primary btn-lg bounce-link">ABOUT US</NuxtLink>
