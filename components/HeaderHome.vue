@@ -18,7 +18,46 @@
 </template>
 
 <script setup>
-// No need for computed wave colors anymore
+import { onMounted, onUnmounted } from 'vue';
+
+let animationInterval;
+
+const animateWave = () => {
+  const wave = document.querySelector('.parallax > use');
+  let position = -90;
+  let isPaused = false;
+  let pauseDuration = 0;
+
+  const animate = () => {
+    if (!isPaused) {
+      position += 0.5; // Increased speed
+      if (position > 85) position = -90;
+      wave.setAttribute('transform', `translate(${position},0)`);
+
+      // Randomly decide to pause
+      if (Math.random() < 0.005) { // Adjust this value to change pause frequency
+        isPaused = true;
+        pauseDuration = Math.random() * 2000 + 500; // Random pause between 0.5 and 2.5 seconds
+        setTimeout(() => {
+          isPaused = false;
+        }, pauseDuration);
+      }
+    }
+    animationInterval = requestAnimationFrame(animate);
+  };
+
+  animate();
+};
+
+onMounted(() => {
+  animateWave();
+});
+
+onUnmounted(() => {
+  if (animationInterval) {
+    cancelAnimationFrame(animationInterval);
+  }
+});
 </script>
 
 <style scoped>
@@ -33,7 +72,7 @@
 .top-section {
   color: #000000;
   padding: 4rem 2rem;
-  min-height: calc(100vh - 150px); /* Adjusted for smaller wave container */
+  min-height: calc(100vh - 150px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -61,21 +100,6 @@
   height: 100%;
   min-height: 100px;
   max-height: 150px;
-}
-
-/* Wave animation styles */
-.parallax > use {
-  animation: move-forever 25s cubic-bezier(.55,.5,.45,.5) infinite;
-}
-
-/* Keyframes for wave animation */
-@keyframes move-forever {
-  0% {
-    transform: translate3d(-90px,0,0);
-  }
-  100% { 
-    transform: translate3d(85px,0,0);
-  }
 }
 
 /* Mobile responsive styles */
