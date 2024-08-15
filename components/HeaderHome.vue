@@ -2,6 +2,7 @@
   <div class="homepage">
     <div class="top-section">
       <div class="content">
+        <!-- Your content here -->
       </div>
     </div>
     <div class="wave-container">
@@ -10,7 +11,7 @@
           <path id="wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
         </defs>
         <g class="parallax">
-          <use xlink:href="#wave" x="48" y="0" fill="var(--bs-primary)" />
+          <use xlink:href="#wave" x="48" y="0" :fill="waveColor" />
         </g>
       </svg>
     </div>
@@ -18,32 +19,48 @@
 </template>
 
 <script setup>
-import { onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 
-let animationInterval;
+const waveColor = ref('var(--bs-primary)');
+let animationFrame;
+
+const easeInOutQuad = (t) => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
 
 const animateWave = () => {
   const wave = document.querySelector('.parallax > use');
-  let position = -90;
+  let time = 0;
   let isPaused = false;
   let pauseDuration = 0;
+  let currentSpeed = 1;
+  let targetSpeed = 1;
 
   const animate = () => {
     if (!isPaused) {
-      position += 0.5; // Increased speed
-      if (position > 85) position = -90;
+      // Smoothly adjust the current speed towards the target speed
+      currentSpeed += (targetSpeed - currentSpeed) * 0.05;
+
+      time += 0.005 * currentSpeed;
+      if (time > 1) time = 0;
+
+      const position = -90 + (easeInOutQuad(time) * 175);
       wave.setAttribute('transform', `translate(${position},0)`);
 
+      // Randomly change target speed
+      if (Math.random() < 0.01) {
+        targetSpeed = 0.5 + Math.random() * 1.5; // Speed between 0.5 and 2
+      }
+
       // Randomly decide to pause
-      if (Math.random() < 0.005) { // Adjust this value to change pause frequency
+      if (Math.random() < 0.002) {
         isPaused = true;
-        pauseDuration = Math.random() * 2000 + 500; // Random pause between 0.5 and 2.5 seconds
+        pauseDuration = Math.random() * 2000 + 1000; // Pause between 1 and 3 seconds
         setTimeout(() => {
           isPaused = false;
         }, pauseDuration);
       }
     }
-    animationInterval = requestAnimationFrame(animate);
+
+    animationFrame = requestAnimationFrame(animate);
   };
 
   animate();
@@ -54,21 +71,19 @@ onMounted(() => {
 });
 
 onUnmounted(() => {
-  if (animationInterval) {
-    cancelAnimationFrame(animationInterval);
+  if (animationFrame) {
+    cancelAnimationFrame(animationFrame);
   }
 });
 </script>
 
 <style scoped>
-/* Overall container for the homepage */
 .homepage {
   min-height: 100vh;
   font-family: Arial, sans-serif;
   background-color: var(--bs-light);
 }
 
-/* Top section containing the main content */
 .top-section {
   color: #000000;
   padding: 4rem 2rem;
@@ -78,13 +93,11 @@ onUnmounted(() => {
   justify-content: center;
 }
 
-/* Content wrapper for centering and max-width */
 .content {
   max-width: 800px;
   text-align: center;
 }
 
-/* Wave container styles */
 .wave-container {
   position: relative;
   height: 150px;
@@ -92,7 +105,6 @@ onUnmounted(() => {
   background-color: var(--bs-light);
 }
 
-/* Wave SVG styles */
 .waves {
   position: absolute;
   bottom: 0;
@@ -102,7 +114,6 @@ onUnmounted(() => {
   max-height: 150px;
 }
 
-/* Mobile responsive styles */
 @media (max-width: 768px) {
   .top-section {
     padding: 3rem 1rem;
