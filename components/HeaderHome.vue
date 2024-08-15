@@ -1,3 +1,4 @@
+<!-- HeroSection.vue -->
 <template>
   <section class="hero" :style="{ '--primary-color': primaryColor, '--secondary-color': secondaryColor, '--tertiary-color': tertiaryColor }">
     <div class="hero-content">
@@ -153,3 +154,4 @@ p {
     font-size: 1rem;
   }
 }
+</style>
