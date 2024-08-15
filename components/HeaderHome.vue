@@ -103,18 +103,18 @@ p {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 250px; /* Increased from 150px to 250px */
+  height: 250px;
   overflow: hidden;
-  background-color: var(--bs-primary); /* Changed to primary color */
+  background-color: var(--bs-primary);
 }
 
 .waves {
   position: absolute;
-  bottom: 100px; /* Add this to move waves up */
+  bottom: 0;
   width: 100%;
-  height: 150px; /* Keep original height */
+  height: 250px;
   min-height: 100px;
-  max-height: 150px; /* Keep original max-height */
+  max-height: 250px;
 }
 
 .parallax > use {
