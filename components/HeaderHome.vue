@@ -1,8 +1,8 @@
 <template>
   <div class="homepage">
-    <div class="top-section">
-      <div class="content">
-      </div>
+    <div class="gradient-background" :style="gradientStyle"></div>
+    <div class="content">
+      <!-- Your content goes here -->
     </div>
     <div class="wave-container">
       <svg class="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 24 150 28" preserveAspectRatio="none">
@@ -23,73 +23,74 @@
 <script setup>
 import { ref, computed } from 'vue';
 
-const primaryColor = ref(getComputedStyle(document.documentElement).getPropertyValue('--bs-primary').trim());
+// Customizable gradient colors
+const gradientColors = ref({
+  purple: '#8A2BE2',
+  blue: '#4169E1',
+  pink: '#FF69B4'
+});
 
+// Customizable background color
+const backgroundColor = ref('#F0F0F0');
+
+// Compute the gradient style
+const gradientStyle = computed(() => ({
+  background: `radial-gradient(circle, ${backgroundColor.value} 0%, ${backgroundColor.value} 60%, ${gradientColors.value.purple} 70%, ${gradientColors.value.blue} 80%, ${gradientColors.value.pink} 90%, ${backgroundColor.value} 100%)`
+}));
+
+// Wave colors (you can customize these as well)
 const waveColors = computed(() => [
-  `${primaryColor.value}B3`, // 70% opacity
-  `${primaryColor.value}80`, // 50% opacity
-  `${primaryColor.value}4D`, // 30% opacity
-  primaryColor.value
+  '#4169E1B3', // 70% opacity
+  '#4169E180', // 50% opacity
+  '#4169E14D', // 30% opacity
+  '#4169E1'
 ]);
 </script>
 
 <style scoped>
-/* Overall container for the homepage */
 .homepage {
-  min-height: 100vh;
-  font-family: Arial, sans-serif;
-  background-color: var(--bs-light);
-}
-
-/* Top section containing the main content */
-.top-section {
-  color: #000000;
-  padding: 4rem 2rem;
-  min-height: calc(100vh - 250px); /* Adjusted to account for taller wave container */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Content wrapper for centering and max-width */
-.content {
-  max-width: 800px;
-  text-align: center;
-}
-
-/* Wave container styles */
-.wave-container {
   position: relative;
-  height: 250px; /* Increased to accommodate additional padding */
+  min-height: 100vh;
   overflow: hidden;
-  background-color: var(--bs-light);
 }
 
-/* Pseudo-element for additional padding below waves */
-.wave-container::after {
-  content: '';
+.gradient-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  /* Add your content styles here */
+}
+
+.wave-container {
   position: absolute;
   bottom: 0;
   left: 0;
-  right: 0;
-  height: 100px;
-  background-color: var(--bs-primary);
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
 }
 
-/* Wave SVG styles */
 .waves {
   position: absolute;
-  bottom: 100px; /* Moved up to sit above the new padding */
+  bottom: 0;
   width: 100%;
-  height: 150px;
+  height: 100%;
   min-height: 100px;
   max-height: 150px;
 }
 
-/* Wave animation styles */
 .parallax > use {
-  animation: move-forever 25s cubic-bezier(.55,.5,.45,.5) infinite;
+  animation: move-forever 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
 }
+
 .parallax > use:nth-child(1) {
   animation-delay: -2s;
   animation-duration: 7s;
@@ -107,20 +108,18 @@ const waveColors = computed(() => [
   animation-duration: 20s;
 }
 
-/* Keyframes for wave animation */
 @keyframes move-forever {
   0% {
-    transform: translate3d(-90px,0,0);
+    transform: translate3d(-90px, 0, 0);
   }
-  100% { 
-    transform: translate3d(85px,0,0);
+  100% {
+    transform: translate3d(85px, 0, 0);
   }
 }
 
-/* Mobile responsive styles */
 @media (max-width: 768px) {
-  .top-section {
-    padding: 3rem 1rem;
+  .wave-container {
+    height: 150px;
   }
 }
 </style>
