@@ -6,16 +6,50 @@
       </div>
     </div>
     <div class="wave-container">
-      <div class="wave-line"></div>
-      <div class="ripple ripple1"></div>
-      <div class="ripple ripple2"></div>
-      <div class="ripple ripple3"></div>
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 24 150 28" preserveAspectRatio="none">
+        <defs>
+          <path id="wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#wave1" x="48" y="0" :fill="waveColor" />
+          <use xlink:href="#wave2" x="48" y="0" :fill="waveColor" opacity="0.6"/>
+        </g>
+      </svg>
     </div>
   </div>
 </template>
 
 <script setup>
-// No JavaScript needed for the animation
+import { ref, onMounted, onUnmounted } from 'vue';
+import { gsap } from 'gsap';
+
+const waveColor = ref('var(--bs-primary)');
+let animationFrame;
+
+const animateWave = () => {
+  const waves = document.querySelectorAll('.parallax > use');
+  
+  gsap.set(waves, { x: -90 });
+  gsap.to(waves, {
+    x: 90,
+    duration: 10,
+    ease: "none",
+    repeat: -1,
+    modifiers: {
+      x: gsap.utils.unitize(value => parseFloat(value) % 180 - 90)
+    }
+  });
+};
+
+onMounted(() => {
+  animateWave();
+});
+
+onUnmounted(() => {
+  if (animationFrame) {
+    cancelAnimationFrame(animationFrame);
+  }
+});
 </script>
 
 <style scoped>
@@ -43,44 +77,16 @@
   position: relative;
   height: 150px;
   overflow: hidden;
-  background-color: var(--bs-primary);
+  background-color: var(--bs-light);
 }
 
-.wave-line {
+.waves {
   position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background-color: rgba(255, 255, 255, 0.5);
-}
-
-.ripple {
-  position: absolute;
-  top: 0;
-  left: -100%;
+  bottom: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0) 70%);
-  animation: ripple 15s infinite linear;
-}
-
-.ripple1 { animation-delay: 0s; }
-.ripple2 { animation-delay: 5s; }
-.ripple3 { animation-delay: 10s; }
-
-@keyframes ripple {
-  0% {
-    left: -100%;
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
-  100% {
-    left: 100%;
-    transform: translateY(0);
-  }
+  min-height: 100px;
+  max-height: 150px;
 }
 
 @media (max-width: 768px) {
