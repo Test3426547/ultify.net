@@ -11,8 +11,8 @@
           <path id="wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
         </defs>
         <g class="parallax">
-          <use xlink:href="#wave1" x="48" y="0" :fill="waveColor" />
-          <use xlink:href="#wave2" x="48" y="0" :fill="waveColor" opacity="0.6"/>
+          <use xlink:href="#wave" class="wave1" x="48" y="0" :fill="waveColor" />
+          <use xlink:href="#wave" class="wave2" x="48" y="0" :fill="waveColor" opacity="0.6" />
         </g>
       </svg>
     </div>
@@ -28,20 +28,27 @@ let animationFrame;
 
 const animateWave = () => {
   const waves = document.querySelectorAll('.parallax > use');
+  console.log('Waves elements:', waves); // Debugging: Log the wave elements
   
-  gsap.set(waves, { x: -90 });
-  gsap.to(waves, {
-    x: 90,
-    duration: 10,
-    ease: "none",
-    repeat: -1,
-    modifiers: {
-      x: gsap.utils.unitize(value => parseFloat(value) % 180 - 90)
-    }
-  });
+  if (waves.length > 0) {
+    gsap.set(waves, { x: -90 });
+    gsap.to(waves, {
+      x: 90,
+      duration: 10,
+      ease: "none",
+      repeat: -1,
+      modifiers: {
+        x: gsap.utils.unitize(value => parseFloat(value) % 180 - 90)
+      }
+    });
+    console.log('GSAP animation applied successfully'); // Debugging: Confirm GSAP animation is applied
+  } else {
+    console.error('Failed to select wave elements');
+  }
 };
 
 onMounted(() => {
+  console.log('Component mounted'); // Debugging: Confirm component is mounted
   animateWave();
 });
 
@@ -49,6 +56,7 @@ onUnmounted(() => {
   if (animationFrame) {
     cancelAnimationFrame(animationFrame);
   }
+  console.log('Component unmounted'); // Debugging: Confirm component is unmounted
 });
 </script>
 
