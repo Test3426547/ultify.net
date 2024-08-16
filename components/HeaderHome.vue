@@ -1,5 +1,5 @@
 <template>
-  <div class="homepage">
+  <div class="homepage" @mousemove="handleMouseMove">
     <div class="top-section">
       <div class="content">
         <span class="welcome">Welcome to Ultify</span>
@@ -8,14 +8,15 @@
         <NuxtLink to="/consultation" class="get-started-btn">Get Started</NuxtLink>
       </div>
     </div>
+    <div class="interactive-background" ref="interactiveBackground"></div>
     <div class="wave-container" ref="waveContainer">
       <svg class="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
         <path class="wave1" :d="wavePath1" :fill="waveColors[0]"></path>
         <path class="wave2" :d="wavePath2" :fill="waveColors[1]"></path>
         <path class="wave3" :d="wavePath3" :fill="waveColors[2]"></path>
       </svg>
-      <div class="digital-particles"></div>
     </div>
+    <div class="blue-background"></div>
   </div>
 </template>
 
@@ -23,6 +24,7 @@
 import { ref, computed, onMounted, onUnmounted } from 'vue';
 
 const primaryColor = ref(getComputedStyle(document.documentElement).getPropertyValue('--bs-primary').trim());
+const lightColor = ref(getComputedStyle(document.documentElement).getPropertyValue('--bs-light').trim());
 
 const waveColors = computed(() => [
   `${primaryColor.value}B3`, // 70% opacity
@@ -31,6 +33,7 @@ const waveColors = computed(() => [
 ]);
 
 const waveContainer = ref(null);
+const interactiveBackground = ref(null);
 const wavePath1 = ref('');
 const wavePath2 = ref('');
 const wavePath3 = ref('');
@@ -59,54 +62,49 @@ const generateWavePath = (width, height, time, frequency, amplitude) => {
   return path;
 };
 
+const handleMouseMove = (event) => {
+  const { clientX, clientY } = event;
+  const { left, top, width, height } = interactiveBackground.value.getBoundingClientRect();
+  const x = (clientX - left) / width;
+  const y = (clientY - top) / height;
+  
+  interactiveBackground.value.style.setProperty('--mouse-x', x);
+  interactiveBackground.value.style.setProperty('--mouse-y', y);
+};
+
 onMounted(() => {
   updateWavePaths();
-  createDigitalParticles();
 });
 
 onUnmounted(() => {
   cancelAnimationFrame(animationFrame);
 });
-
-const createDigitalParticles = () => {
-  const particlesContainer = waveContainer.value.querySelector('.digital-particles');
-  for (let i = 0; i < 50; i++) {
-    const particle = document.createElement('div');
-    particle.classList.add('particle');
-    particle.style.left = `${Math.random() * 100}%`;
-    particle.style.top = `${Math.random() * 100}%`;
-    particle.style.animationDuration = `${Math.random() * 3 + 2}s`;
-    particle.style.animationDelay = `${Math.random() * 2}s`;
-    particlesContainer.appendChild(particle);
-  }
-};
 </script>
 
 <style scoped>
-/* Overall container for the homepage */
 .homepage {
   min-height: 100vh;
   font-family: Arial, sans-serif;
-  background-color: var(--bs-light);
+  position: relative;
+  overflow: hidden;
 }
 
-/* Top section containing the main content */
 .top-section {
   color: #000000;
   padding: 4rem 2rem;
-  min-height: calc(100vh - 250px); /* Adjusted to account for taller wave container */
+  min-height: calc(100vh - 350px);
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  z-index: 2;
 }
 
-/* Content wrapper for centering and max-width */
 .content {
   max-width: 800px;
   text-align: center;
 }
 
-/* Welcome badge styling */
 .welcome {
   background-color: var(--bs-primary);
   color: #ffffff;
@@ -117,7 +115,6 @@ const createDigitalParticles = () => {
   margin-bottom: 1.5rem;
 }
 
-/* Main heading styles */
 h1 {
   font-size: 3.5rem;
   line-height: 1.2;
@@ -125,14 +122,12 @@ h1 {
   margin: 1rem 0 1.5rem;
 }
 
-/* Paragraph styles */
 p {
   font-size: 1.25rem;
   line-height: 1.6;
   margin-bottom: 2rem;
 }
 
-/* Get Started button styles */
 .get-started-btn {
   background-color: var(--bs-primary);
   color: #ffffff;
@@ -141,19 +136,59 @@ p {
   font-size: 1.1rem;
   border-radius: 30px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: transform 0.3s ease;
+  display: inline-block;
 }
 
 .get-started-btn:hover {
-  background-color: darken(var(--bs-primary), 10%);
+  animation: bounce 0.5s ease;
 }
 
-/* Wave container styles */
-.wave-container {
-  position: relative;
-  height: 250px;
-  overflow: hidden;
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  25% { transform: translateY(-10px); }
+  50% { transform: translateY(-5px); }
+  75% { transform: translateY(-2px); }
+}
+
+.interactive-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 100px;
   background-color: var(--bs-light);
+  z-index: 1;
+}
+
+.interactive-background::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(
+    circle at calc(var(--mouse-x, 0.5) * 100%) calc(var(--mouse-y, 0.5) * 100%),
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(0, 0, 0, 0) 50%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.interactive-background:hover::after {
+  opacity: 1;
+}
+
+.wave-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  overflow: hidden;
+  z-index: 2;
 }
 
 .waves {
@@ -164,35 +199,37 @@ p {
   height: 100%;
 }
 
-.digital-particles {
+.blue-background {
   position: absolute;
-  top: 0;
+  bottom: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
+  right: 0;
+  height: 100px;
+  background-color: var(--bs-primary);
+  z-index: 1;
 }
 
-.particle {
-  position: absolute;
-  width: 4px;
-  height: 4px;
-  background-color: rgba(255, 255, 255, 0.6);
-  border-radius: 50%;
-  animation: float-up 3s infinite ease-out;
-}
+@media (max-width: 768px) {
+  .top-section {
+    padding: 3rem 1rem;
+  }
 
-@keyframes float-up {
-  0% {
-    transform: translateY(100%) scale(0);
-    opacity: 0;
+  h1 {
+    font-size: 2.5rem;
   }
-  50% {
-    opacity: 1;
+
+  p {
+    font-size: 1.1rem;
   }
-  100% {
-    transform: translateY(-100%) scale(1);
-    opacity: 0;
+
+  .welcome {
+    font-size: 1rem;
+    padding: 0.6rem 1.2rem;
+  }
+
+  .get-started-btn {
+    padding: 0.8rem 1.6rem;
+    font-size: 1rem;
   }
 }
 </style>
