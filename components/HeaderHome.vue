@@ -17,32 +17,58 @@
 import { ref, onMounted, onUnmounted } from 'vue';
 
 const waveColor = ref('var(--bs-primary)');
-const pathData = ref('M0 160 Q 720 200 1440 160 T 2880 160'); // Initial gentle wave
+const pathData = ref('M0 160 L1440 160'); // Initial flat line
 let animationFrame;
 
-const createWave = (xOffset, amplitude, frequency) => {
-  const width = 1440; // Canvas width
+const createRipple = (xOffset, amplitude, frequency, width) => {
   const points = [];
-  const step = width / 20; // Controls smoothness of the curve
+  const step = width / 100; // Controls smoothness of the curve
 
   for (let x = 0; x <= width; x += step) {
-    const y = 160 + amplitude * Math.sin((x / width) * frequency + xOffset);
+    const distanceFromCenter = Math.abs(x - xOffset);
+    const y = 160 + amplitude * Math.sin((distanceFromCenter / width) * frequency) * Math.exp(-distanceFromCenter / (width / 4));
     points.push(`${x},${y}`);
   }
 
-  // Close the path to create a wave that fills the area below it
-  return `M0,320 L0,${points[0].split(',')[1]} ${points.join(' ')} L1440,320 Z`;
+  return points.join(' ');
 };
 
 const animateWave = () => {
-  let xOffset = 0;
-  const amplitude = 40; // Max height of the wave
-  const frequency = 2 * Math.PI; // Complete sine wave cycle
+  let ripples = [];
+  const width = 1440; // SVG width
   
   const animate = () => {
-    xOffset += 0.05; // Speed of the wave animation
-    pathData.value = createWave(xOffset, amplitude, frequency);
-
+    // Randomly create new ripples
+    if (Math.random() < 0.02 && ripples.length < 3) {
+      ripples.push({
+        xOffset: 0,
+        amplitude: Math.random() * 20 + 10, // Random amplitude between 10 and 30
+        frequency: Math.random() * 10 + 5, // Random frequency
+        speed: Math.random() * 5 + 2 // Random speed
+      });
+    }
+    
+    // Move existing ripples
+    ripples = ripples.filter(ripple => {
+      ripple.xOffset += ripple.speed;
+      return ripple.xOffset < width;
+    });
+    
+    // Create path data
+    if (ripples.length === 0) {
+      pathData.value = `M0 160 L${width} 160`;
+    } else {
+      const points = Array(width + 1).fill(160);
+      ripples.forEach(ripple => {
+        const ripplePoints = createRipple(ripple.xOffset, ripple.amplitude, ripple.frequency, width).split(' ');
+        ripplePoints.forEach((point, index) => {
+          const [x, y] = point.split(',').map(Number);
+          points[x] += y - 160;
+        });
+      });
+      pathData.value = `M0 320 L0 ${points[0]} ${points.map((y, x) => `${x},${y}`).join(' ')} L${width} 320 Z`;
+    }
+    
     animationFrame = requestAnimationFrame(animate);
   };
 
@@ -87,9 +113,9 @@ onUnmounted(() => {
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 300px; /* Adjusted height for wave */
+  height: 300px;
   overflow: hidden;
-  background-color: var(--bs-primary); /* Adjusted color for bottom section */
+  background-color: var(--bs-primary);
 }
 
 .waves {
