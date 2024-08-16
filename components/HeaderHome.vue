@@ -1,109 +1,117 @@
-<template>
-  <div class="homepage">
-    <div class="top-section">
-      <div class="content">
-        <!-- Your content here -->
+  <template>
+    <div class="homepage">
+      <div class="top-section">
+        <div class="content">
+          <!-- Your content here -->
+        </div>
+      </div>
+      <div class="wave-container">
+        <div class="wave-wrapper">
+          <div class="wave wave1"></div>
+          <div class="wave wave2"></div>
+          <div class="wave wave3"></div>
+        </div>
+      </div>
+      <div class="bottom-section">
+        <!-- Additional content for the bottom section -->
       </div>
     </div>
-    <div class="wave-container">
-      <svg class="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 24 150 28" preserveAspectRatio="none">
-        <defs>
-          <path id="wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
-        </defs>
-        <g class="parallax">
-          <use xlink:href="#wave" class="wave1" x="48" y="0" :fill="waveColor" />
-          <use xlink:href="#wave" class="wave2" x="48" y="0" :fill="waveColor" opacity="0.6" />
-        </g>
-      </svg>
-    </div>
-  </div>
-</template>
-
-<script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
-import { gsap } from 'gsap';
-
-const waveColor = ref('var(--bs-primary)');
-let animationFrame;
-
-const animateWave = () => {
-  const waves = document.querySelectorAll('.parallax > use');
-  console.log('Waves elements:', waves); // Debugging: Log the wave elements
+  </template>
+  <script setup>
+  // No script needed for this implementation
+  </script>
+  <style scoped>
+  .homepage {
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    position: relative;
+    overflow: hidden;
+  }
   
-  if (waves.length > 0) {
-    gsap.set(waves, { x: -90 });
-    gsap.to(waves, {
-      x: 90,
-      duration: 10,
-      ease: "none",
-      repeat: -1,
-      modifiers: {
-        x: gsap.utils.unitize(value => parseFloat(value) % 180 - 90)
-      }
-    });
-    console.log('GSAP animation applied successfully'); // Debugging: Confirm GSAP animation is applied
-  } else {
-    console.error('Failed to select wave elements');
-  }
-};
-
-onMounted(() => {
-  console.log('Component mounted'); // Debugging: Confirm component is mounted
-  animateWave();
-});
-
-onUnmounted(() => {
-  if (animationFrame) {
-    cancelAnimationFrame(animationFrame);
-  }
-  console.log('Component unmounted'); // Debugging: Confirm component is unmounted
-});
-</script>
-
-<style scoped>
-.homepage {
-  min-height: 100vh;
-  font-family: Arial, sans-serif;
-  background-color: var(--bs-light);
-}
-
-.top-section {
-  color: #000000;
-  padding: 4rem 2rem;
-  min-height: calc(100vh - 150px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.content {
-  max-width: 800px;
-  text-align: center;
-}
-
-.wave-container {
-  position: relative;
-  height: 150px;
-  overflow: hidden;
-  background-color: var(--bs-light);
-}
-
-.waves {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-  min-height: 100px;
-  max-height: 150px;
-}
-
-@media (max-width: 768px) {
   .top-section {
-    padding: 3rem 1rem;
+    height: 60vh;
+    background-color: var(--bs-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .content {
+    max-width: 800px;
+    text-align: center;
   }
   
   .wave-container {
-    height: 100px;
+    position: absolute;
+    width: 100%;
+    height: 200px;
+    top: calc(60vh - 100px);
+    left: 0;
+    z-index: 2;
   }
-}
-</style>
+  
+  .wave-wrapper {
+    position: absolute;
+    width: 200%;
+    height: 100%;
+    animation: wave 10s linear infinite;
+  }
+  
+  .wave {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    background: var(--bs-primary);
+    opacity: 0.4;
+  }
+  
+  .wave1 {
+    animation: wave-animation 3s linear infinite;
+  }
+  
+  .wave2 {
+    animation: wave-animation 5s linear infinite;
+  }
+  
+  .wave3 {
+    animation: wave-animation 7s linear infinite;
+  }
+  
+  .bottom-section {
+    height: 40vh;
+    background-color: var(--bs-primary);
+    position: relative;
+    z-index: 1;
+  }
+  
+  @keyframes wave {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  
+  @keyframes wave-animation {
+    0% {
+      border-radius: 0 0 50% 50%;
+    }
+    50% {
+      border-radius: 0 0 40% 60%;
+    }
+    100% {
+      border-radius: 0 0 50% 50%;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .wave-container {
+      height: 150px;
+      top: calc(60vh - 75px);
+    }
+  }
+  </style>
