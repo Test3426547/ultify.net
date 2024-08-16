@@ -3,21 +3,20 @@
     <div class="content-section">
       <!-- Your content here -->
     </div>
-    <div class="wave-container">
-      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
-        <defs>
-          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
-        </defs>
-        <g class="parallax">
-          <use xlink:href="#gentle-wave" x="48" y="0" />
-          <use xlink:href="#gentle-wave" x="48" y="3" />
-          <use xlink:href="#gentle-wave" x="48" y="5" />
-          <use xlink:href="#gentle-wave" x="48" y="7" />
-        </g>
-      </svg>
-    </div>
     <div class="primary-section">
-      <!-- Content for the primary section -->
+      <div class="wave-container">
+        <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+          <defs>
+            <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+          </defs>
+          <g class="parallax">
+            <use xlink:href="#gentle-wave" x="48" y="0" />
+            <use xlink:href="#gentle-wave" x="48" y="3" />
+            <use xlink:href="#gentle-wave" x="48" y="5" />
+            <use xlink:href="#gentle-wave" x="48" y="7" />
+          </g>
+        </svg>
+      </div>
     </div>
   </div>
 </template>
@@ -35,8 +34,8 @@ onMounted(() => {
   
   waves.forEach((wave, index) => {
     tl.to(wave, {
-      duration: 10 + index * 2, // Stagger the durations
-      attr: { x: 48 + 240 }, // Move two full cycles
+      duration: 10 + index * 2,
+      attr: { x: 48 + 240 },
       ease: "sine.inOut",
       repeat: -1,
       yoyo: true
@@ -45,7 +44,7 @@ onMounted(() => {
 });
 
 onUnmounted(() => {
-  if (tl) tl.kill(); // Clean up the animation when component is unmounted
+  if (tl) tl.kill();
 });
 </script>
 
@@ -57,41 +56,57 @@ onUnmounted(() => {
 }
 
 .content-section {
-  flex: 1;
-  padding: 2rem;
+  flex: 0 0 60%;
   background-color: var(--bs-light);
   /* Add your content styles here */
 }
 
-.wave-container {
+.primary-section {
+  flex: 0 0 40%;
+  background-color: var(--bs-primary);
   position: relative;
-  width: 100%;
-  height: 150px; /* Increased height for more prominent waves */
   overflow: hidden;
+}
+
+.wave-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 25%; /* 10% of the total height (25% of 40%) */
 }
 
 .waves {
   position: absolute;
-  top: 0; /* Changed from bottom to top */
+  top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  transform: rotate(180deg); /* Flip the waves upside down */
 }
 
 .parallax > use {
-  fill: var(--bs-primary); /* Ensure all waves use the primary color */
+  fill: var(--bs-primary);
 }
 
-.primary-section {
-  background-color: var(--bs-primary);
-  min-height: 40vh; /* Adjust as needed */
-  /* Add styles for your primary section content */
+.parallax > use:nth-child(1) {
+  opacity: 0.7;
+}
+
+.parallax > use:nth-child(2) {
+  opacity: 0.5;
+}
+
+.parallax > use:nth-child(3) {
+  opacity: 0.3;
+}
+
+.parallax > use:nth-child(4) {
+  opacity: 0.2;
 }
 
 @media (max-width: 768px) {
   .wave-container {
-    height: 100px;
+    height: 50px;
   }
 }
 </style>
