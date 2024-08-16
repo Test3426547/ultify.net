@@ -6,88 +6,16 @@
       </div>
     </div>
     <div class="wave-container">
-      <svg class="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100" preserveAspectRatio="none">
-        <path :d="pathData" :fill="waveColor" />
-      </svg>
+      <div class="wave-line"></div>
+      <div class="ripple ripple1"></div>
+      <div class="ripple ripple2"></div>
+      <div class="ripple ripple3"></div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
-
-const waveColor = ref('var(--bs-primary)');
-const pathData = ref('');
-let animationFrame;
-
-const createRipple = (x, amplitude, width, frequency) => {
-  const points = [];
-  const step = 1;
-  for (let i = 0; i <= width; i += step) {
-    const distanceFromCenter = Math.abs(i - x);
-    const y = 50 + amplitude * Math.sin((i / width) * frequency * Math.PI * 2) * Math.exp(-distanceFromCenter / (width / 8));
-    points.push(`${i},${y}`);
-  }
-  return points.join(' ');
-};
-
-const animateWave = () => {
-  const width = 1440;
-  const ripples = [];
-  let lastRippleTime = Date.now();
-
-  const animate = () => {
-    const now = Date.now();
-    
-    // Randomly create new ripples
-    if (now - lastRippleTime > 2000 && Math.random() < 0.1) {
-      ripples.push({
-        x: 0,
-        amplitude: Math.random() * 20 + 10,
-        width: Math.random() * 200 + 100,
-        frequency: Math.random() * 2 + 1,
-        speed: Math.random() * 3 + 1
-      });
-      lastRippleTime = now;
-    }
-
-    // Move and remove ripples
-    for (let i = ripples.length - 1; i >= 0; i--) {
-      ripples[i].x += ripples[i].speed;
-      if (ripples[i].x > width) {
-        ripples.splice(i, 1);
-      }
-    }
-
-    // Create path data
-    let points = Array(width + 1).fill(50);
-    ripples.forEach(ripple => {
-      const ripplePoints = createRipple(ripple.x, ripple.amplitude, ripple.width, ripple.frequency).split(' ');
-      ripplePoints.forEach(point => {
-        const [x, y] = point.split(',').map(Number);
-        if (x >= 0 && x <= width) {
-          points[x] = Math.max(0, Math.min(100, y));
-        }
-      });
-    });
-
-    pathData.value = `M0,50 ${points.map((y, x) => `L${x},${y}`).join(' ')} L1440,50 L1440,100 L0,100 Z`;
-
-    animationFrame = requestAnimationFrame(animate);
-  };
-
-  animate();
-};
-
-onMounted(() => {
-  animateWave();
-});
-
-onUnmounted(() => {
-  if (animationFrame) {
-    cancelAnimationFrame(animationFrame);
-  }
-});
+// No JavaScript needed for the animation
 </script>
 
 <style scoped>
@@ -118,11 +46,41 @@ onUnmounted(() => {
   background-color: var(--bs-primary);
 }
 
-.waves {
+.wave-line {
   position: absolute;
-  bottom: 0;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.ripple {
+  position: absolute;
+  top: 0;
+  left: -100%;
   width: 100%;
   height: 100%;
+  background: radial-gradient(circle, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0) 70%);
+  animation: ripple 15s infinite linear;
+}
+
+.ripple1 { animation-delay: 0s; }
+.ripple2 { animation-delay: 5s; }
+.ripple3 { animation-delay: 10s; }
+
+@keyframes ripple {
+  0% {
+    left: -100%;
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    left: 100%;
+    transform: translateY(0);
+  }
 }
 
 @media (max-width: 768px) {
