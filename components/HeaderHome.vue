@@ -5,8 +5,8 @@
         <!-- Your content here -->
       </div>
     </div>
-    <div class="wave-container">
-      <svg class="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
+    <div ref="waveContainer" class="wave-container">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" :viewBox="`0 0 ${svgWidth} ${svgHeight}`" preserveAspectRatio="none">
         <path :d="pathData" :fill="waveColor" />
       </svg>
     </div>
@@ -14,69 +14,96 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted, computed } from 'vue';
+import { useWindowSize } from '@vueuse/core';
+import gsap from 'gsap';
 
+// Reactive values
+const waveContainer = ref(null);
 const waveColor = ref('var(--bs-primary)');
-const pathData = ref('M0 160 L1440 160'); // Initial flat line
+const pathData = ref('');
+const { width: windowWidth, height: windowHeight } = useWindowSize();
+
+// Computed values
+const svgWidth = computed(() => Math.max(1440, windowWidth.value));
+const svgHeight = computed(() => Math.min(320, windowHeight.value * 0.3));
+
+// Animation constants
+const RIPPLE_CHANCE = 0.02;
+const MAX_RIPPLES = 3;
+const RIPPLE_AMPLITUDE_RANGE = { min: 10, max: 30 };
+const RIPPLE_FREQUENCY_RANGE = { min: 5, max: 15 };
+const RIPPLE_SPEED_RANGE = { min: 2, max: 7 };
+
+// Ripple state
+let ripples = [];
 let animationFrame;
+
+// Utility functions
+const randomBetween = (min, max) => Math.random() * (max - min) + min;
 
 const createRipple = (xOffset, amplitude, frequency, width) => {
   const points = [];
-  const step = width / 100; // Controls smoothness of the curve
+  const step = width / 100;
 
   for (let x = 0; x <= width; x += step) {
     const distanceFromCenter = Math.abs(x - xOffset);
-    const y = 160 + amplitude * Math.sin((distanceFromCenter / width) * frequency) * Math.exp(-distanceFromCenter / (width / 4));
+    const y = svgHeight.value / 2 + amplitude * Math.sin((distanceFromCenter / width) * frequency) * Math.exp(-distanceFromCenter / (width / 4));
     points.push(`${x},${y}`);
   }
 
   return points.join(' ');
 };
 
-const animateWave = () => {
-  let ripples = [];
-  const width = 1440; // SVG width
-  
-  const animate = () => {
-    // Randomly create new ripples
-    if (Math.random() < 0.02 && ripples.length < 3) {
-      ripples.push({
-        xOffset: 0,
-        amplitude: Math.random() * 20 + 10, // Random amplitude between 10 and 30
-        frequency: Math.random() * 10 + 5, // Random frequency
-        speed: Math.random() * 5 + 2 // Random speed
+const updatePathData = () => {
+  if (ripples.length === 0) {
+    pathData.value = `M0 ${svgHeight.value / 2} L${svgWidth.value} ${svgHeight.value / 2}`;
+  } else {
+    const points = Array(svgWidth.value + 1).fill(svgHeight.value / 2);
+    ripples.forEach(ripple => {
+      const ripplePoints = createRipple(ripple.xOffset, ripple.amplitude, ripple.frequency, svgWidth.value).split(' ');
+      ripplePoints.forEach(point => {
+        const [x, y] = point.split(',').map(Number);
+        points[x] += y - svgHeight.value / 2;
       });
-    }
-    
-    // Move existing ripples
-    ripples = ripples.filter(ripple => {
-      ripple.xOffset += ripple.speed;
-      return ripple.xOffset < width;
     });
-    
-    // Create path data
-    if (ripples.length === 0) {
-      pathData.value = `M0 160 L${width} 160`;
-    } else {
-      const points = Array(width + 1).fill(160);
-      ripples.forEach(ripple => {
-        const ripplePoints = createRipple(ripple.xOffset, ripple.amplitude, ripple.frequency, width).split(' ');
-        ripplePoints.forEach((point, index) => {
-          const [x, y] = point.split(',').map(Number);
-          points[x] += y - 160;
-        });
-      });
-      pathData.value = `M0 320 L0 ${points[0]} ${points.map((y, x) => `${x},${y}`).join(' ')} L${width} 320 Z`;
-    }
-    
-    animationFrame = requestAnimationFrame(animate);
-  };
-
-  animate();
+    pathData.value = `M0 ${svgHeight.value} L0 ${points[0]} ${points.map((y, x) => `${x},${y}`).join(' ')} L${svgWidth.value} ${svgHeight.value} Z`;
+  }
 };
 
+const animateWave = () => {
+  if (Math.random() < RIPPLE_CHANCE && ripples.length < MAX_RIPPLES) {
+    ripples.push({
+      xOffset: 0,
+      amplitude: randomBetween(RIPPLE_AMPLITUDE_RANGE.min, RIPPLE_AMPLITUDE_RANGE.max),
+      frequency: randomBetween(RIPPLE_FREQUENCY_RANGE.min, RIPPLE_FREQUENCY_RANGE.max),
+      speed: randomBetween(RIPPLE_SPEED_RANGE.min, RIPPLE_SPEED_RANGE.max)
+    });
+  }
+
+  ripples = ripples.filter(ripple => {
+    ripple.xOffset += ripple.speed;
+    return ripple.xOffset < svgWidth.value;
+  });
+
+  updatePathData();
+
+  animationFrame = requestAnimationFrame(animateWave);
+};
+
+// Lifecycle hooks
 onMounted(() => {
+  updatePathData();
   animateWave();
+
+  // GSAP animation for smooth color transitions
+  gsap.to(waveContainer.value, {
+    '--wave-color': 'var(--bs-primary)',
+    duration: 1,
+    repeat: -1,
+    yoyo: true,
+    ease: 'power2.inOut'
+  });
 });
 
 onUnmounted(() => {
@@ -97,7 +124,7 @@ onUnmounted(() => {
 .top-section {
   color: #000000;
   padding: 4rem 2rem;
-  min-height: calc(100vh - 300px);
+  min-height: calc(100vh - 30vh);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -113,9 +140,10 @@ onUnmounted(() => {
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 300px;
+  height: 30vh;
   overflow: hidden;
-  background-color: var(--bs-primary);
+  background-color: var(--wave-color, var(--bs-primary));
+  transition: background-color 0.5s ease;
 }
 
 .waves {
@@ -131,7 +159,7 @@ onUnmounted(() => {
   }
   
   .wave-container {
-    height: 200px;
+    height: 20vh;
   }
 }
 </style>
