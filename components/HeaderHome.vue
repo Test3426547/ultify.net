@@ -8,24 +8,19 @@
         <NuxtLink to="/consultation" class="get-started-btn">Get Started</NuxtLink>
       </div>
     </div>
-    <div class="wave-container">
-      <svg class="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 24 150 28" preserveAspectRatio="none">
-        <defs>
-          <path id="wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
-        </defs>
-        <g class="parallax">
-          <use xlink:href="#wave" x="48" y="0" :fill="waveColors[0]" />
-          <use xlink:href="#wave" x="48" y="3" :fill="waveColors[1]" />
-          <use xlink:href="#wave" x="48" y="5" :fill="waveColors[2]" />
-          <use xlink:href="#wave" x="48" y="7" :fill="waveColors[3]" />
-        </g>
+    <div class="wave-container" ref="waveContainer">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
+        <path class="wave1" :d="wavePath1" :fill="waveColors[0]"></path>
+        <path class="wave2" :d="wavePath2" :fill="waveColors[1]"></path>
+        <path class="wave3" :d="wavePath3" :fill="waveColors[2]"></path>
       </svg>
+      <div class="digital-particles"></div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted, onUnmounted } from 'vue';
 
 const primaryColor = ref(getComputedStyle(document.documentElement).getPropertyValue('--bs-primary').trim());
 
@@ -33,8 +28,58 @@ const waveColors = computed(() => [
   `${primaryColor.value}B3`, // 70% opacity
   `${primaryColor.value}80`, // 50% opacity
   `${primaryColor.value}4D`, // 30% opacity
-  primaryColor.value
 ]);
+
+const waveContainer = ref(null);
+const wavePath1 = ref('');
+const wavePath2 = ref('');
+const wavePath3 = ref('');
+
+let animationFrame;
+
+const updateWavePaths = () => {
+  const width = waveContainer.value.offsetWidth;
+  const height = waveContainer.value.offsetHeight;
+  const time = Date.now() / 1000;
+
+  wavePath1.value = generateWavePath(width, height, time, 0.02, 20);
+  wavePath2.value = generateWavePath(width, height, time, 0.03, 15);
+  wavePath3.value = generateWavePath(width, height, time, 0.04, 10);
+
+  animationFrame = requestAnimationFrame(updateWavePaths);
+};
+
+const generateWavePath = (width, height, time, frequency, amplitude) => {
+  let path = `M0 ${height} `;
+  for (let x = 0; x <= width; x += 10) {
+    const y = Math.sin((x * frequency) + time) * amplitude + (height / 2);
+    path += `L${x} ${y} `;
+  }
+  path += `L${width} ${height} Z`;
+  return path;
+};
+
+onMounted(() => {
+  updateWavePaths();
+  createDigitalParticles();
+});
+
+onUnmounted(() => {
+  cancelAnimationFrame(animationFrame);
+});
+
+const createDigitalParticles = () => {
+  const particlesContainer = waveContainer.value.querySelector('.digital-particles');
+  for (let i = 0; i < 50; i++) {
+    const particle = document.createElement('div');
+    particle.classList.add('particle');
+    particle.style.left = `${Math.random() * 100}%`;
+    particle.style.top = `${Math.random() * 100}%`;
+    particle.style.animationDuration = `${Math.random() * 3 + 2}s`;
+    particle.style.animationDelay = `${Math.random() * 2}s`;
+    particlesContainer.appendChild(particle);
+  }
+};
 </script>
 
 <style scoped>
@@ -106,85 +151,48 @@ p {
 /* Wave container styles */
 .wave-container {
   position: relative;
-  height: 250px; /* Increased to accommodate additional padding */
+  height: 250px;
   overflow: hidden;
   background-color: var(--bs-light);
 }
 
-/* Pseudo-element for additional padding below waves */
-.wave-container::after {
-  content: '';
+.waves {
   position: absolute;
   bottom: 0;
   left: 0;
-  right: 0;
-  height: 100px;
-  background-color: var(--bs-primary);
-}
-
-/* Wave SVG styles */
-.waves {
-  position: absolute;
-  bottom: 100px; /* Moved up to sit above the new padding */
   width: 100%;
-  height: 150px;
-  min-height: 100px;
-  max-height: 150px;
+  height: 100%;
 }
 
-/* Wave animation styles */
-.parallax > use {
-  animation: move-forever 25s cubic-bezier(.55,.5,.45,.5) infinite;
-}
-.parallax > use:nth-child(1) {
-  animation-delay: -2s;
-  animation-duration: 7s;
-}
-.parallax > use:nth-child(2) {
-  animation-delay: -3s;
-  animation-duration: 10s;
-}
-.parallax > use:nth-child(3) {
-  animation-delay: -4s;
-  animation-duration: 13s;
-}
-.parallax > use:nth-child(4) {
-  animation-delay: -5s;
-  animation-duration: 20s;
+.digital-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
 }
 
-/* Keyframes for wave animation */
-@keyframes move-forever {
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  animation: float-up 3s infinite ease-out;
+}
+
+@keyframes float-up {
   0% {
-    transform: translate3d(-90px,0,0);
+    transform: translateY(100%) scale(0);
+    opacity: 0;
   }
-  100% { 
-    transform: translate3d(85px,0,0);
+  50% {
+    opacity: 1;
   }
-}
-
-/* Mobile responsive styles */
-@media (max-width: 768px) {
-  .top-section {
-    padding: 3rem 1rem;
-  }
-
-  h1 {
-    font-size: 2.5rem;
-  }
-
-  p {
-    font-size: 1.1rem;
-  }
-
-  .welcome {
-    font-size: 1rem;
-    padding: 0.6rem 1.2rem;
-  }
-
-  .get-started-btn {
-    padding: 0.8rem 1.6rem;
-    font-size: 1rem;
+  100% {
+    transform: translateY(-100%) scale(1);
+    opacity: 0;
   }
 }
 </style>
