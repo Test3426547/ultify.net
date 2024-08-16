@@ -6,18 +6,8 @@
       </div>
     </div>
     <div class="wave-container">
-      <svg class="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
-        <path :fill="waveColor" fill-opacity="1" d="M0,160L40,165.3C80,171,160,181,240,176C320,171,400,149,480,138.7C560,128,640,128,720,138.7C800,149,880,171,960,181.3C1040,192,1120,192,1200,181.3C1280,171,1360,149,1400,138.7L1440,128L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z">
-          <animate
-            attributeName="d"
-            dur="20s"
-            repeatCount="indefinite"
-            values="
-              M0,160L40,165.3C80,171,160,181,240,176C320,171,400,149,480,138.7C560,128,640,128,720,138.7C800,149,880,171,960,181.3C1040,192,1120,192,1200,181.3C1280,171,1360,149,1400,138.7L1440,128L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z;
-              M0,64L40,85.3C80,107,160,149,240,176C320,203,400,213,480,202.7C560,192,640,160,720,138.7C800,117,880,107,960,128C1040,149,1120,203,1200,213.3C1280,224,1360,192,1400,176L1440,160L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z;
-              M0,160L40,165.3C80,171,160,181,240,176C320,171,400,149,480,138.7C560,128,640,128,720,138.7C800,149,880,171,960,181.3C1040,192,1120,192,1200,181.3C1280,171,1360,149,1400,138.7L1440,128L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"
-          />
-        </path>
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 50" preserveAspectRatio="none">
+        <path :d="pathData" :fill="waveColor" />
       </svg>
     </div>
   </div>
@@ -27,38 +17,55 @@
 import { ref, onMounted, onUnmounted } from 'vue';
 
 const waveColor = ref('var(--bs-primary)');
+const pathData = ref('M0 25 L1000 25');
 let animationFrame;
 
-const easeInOutQuad = (t) => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+const createWave = (x, amplitude, wavelength) => {
+  const points = [];
+  for (let i = 0; i <= 1000; i++) {
+    const y = amplitude * Math.sin((i - x) / wavelength * 2 * Math.PI);
+    points.push(`${i} ${25 + y}`);
+  }
+  return `M${points.join(' L')}`;
+};
 
 const animateWave = () => {
-  const wave = document.querySelector('.waves path');
   let time = 0;
-  let currentSpeed = 1;
-  let targetSpeed = 1;
-  let lastSpeedChangeTime = Date.now();
-  let speedChangeDuration = Math.random() * 5000 + 3000; // 3-8 seconds
-
+  let waves = [];
+  
   const animate = () => {
-    const now = Date.now();
-    const timeSinceLastChange = now - lastSpeedChangeTime;
-
-    // Change speed if it's time
-    if (timeSinceLastChange >= speedChangeDuration) {
-      targetSpeed = Math.random() * 1.5 + 0.5; // New speed between 0.5 and 2
-      speedChangeDuration = Math.random() * 5000 + 3000; // New duration 3-8 seconds
-      lastSpeedChangeTime = now;
+    time += 0.02;
+    
+    // Randomly create new waves
+    if (Math.random() < 0.02 && waves.length < 5) {
+      waves.push({
+        x: 0,
+        amplitude: Math.random() * 10 + 5,
+        wavelength: Math.random() * 100 + 50,
+        speed: Math.random() * 2 + 1
+      });
     }
-
-    // Smoothly adjust current speed towards target speed
-    currentSpeed += (targetSpeed - currentSpeed) * 0.05;
-
-    time += 0.005 * currentSpeed;
-    if (time > 1) time -= 1;
-
-    const progress = easeInOutQuad(time);
-    wave.setAttribute('transform', `translate(${-1440 * progress},0)`);
-
+    
+    // Move existing waves
+    waves = waves.filter(wave => {
+      wave.x += wave.speed;
+      return wave.x < 1000;
+    });
+    
+    // Create path data
+    if (waves.length === 0) {
+      pathData.value = 'M0 25 L1000 25';
+    } else {
+      const points = Array(1001).fill(25);
+      waves.forEach(wave => {
+        for (let i = 0; i <= 1000; i++) {
+          const y = wave.amplitude * Math.sin((i - wave.x) / wave.wavelength * 2 * Math.PI);
+          points[i] += y;
+        }
+      });
+      pathData.value = `M${points.map((y, x) => `${x} ${y}`).join(' L')}`;
+    }
+    
     animationFrame = requestAnimationFrame(animate);
   };
 
@@ -86,7 +93,7 @@ onUnmounted(() => {
 .top-section {
   color: #000000;
   padding: 4rem 2rem;
-  min-height: calc(100vh - 150px);
+  min-height: calc(100vh - 50px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -99,7 +106,7 @@ onUnmounted(() => {
 
 .wave-container {
   position: relative;
-  height: 150px;
+  height: 50px;
   overflow: hidden;
   background-color: var(--bs-light);
 }
@@ -109,8 +116,6 @@ onUnmounted(() => {
   bottom: 0;
   width: 100%;
   height: 100%;
-  min-height: 100px;
-  max-height: 150px;
 }
 
 @media (max-width: 768px) {
@@ -119,7 +124,7 @@ onUnmounted(() => {
   }
   
   .wave-container {
-    height: 100px;
+    height: 30px;
   }
 }
 </style>
