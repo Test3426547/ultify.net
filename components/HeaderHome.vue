@@ -17,9 +17,10 @@
 import { ref, onMounted, onUnmounted } from 'vue';
 
 const waveColor = ref('var(--bs-primary)');
-const pathData = ref('M0 25 L1000 25');
+const pathData = ref('M0 25 L1000 25'); // Initial straight line
 let animationFrame;
 
+// Create a wave path using a sine wave function
 const createWave = (x, amplitude, wavelength) => {
   const points = [];
   for (let i = 0; i <= 1000; i++) {
@@ -29,6 +30,7 @@ const createWave = (x, amplitude, wavelength) => {
   return `M${points.join(' L')}`;
 };
 
+// Animation logic
 const animateWave = () => {
   let time = 0;
   let waves = [];
@@ -54,7 +56,7 @@ const animateWave = () => {
     
     // Create path data
     if (waves.length === 0) {
-      pathData.value = 'M0 25 L1000 25';
+      pathData.value = 'M0 25 L1000 25'; // Flat line when no waves
     } else {
       const points = Array(1001).fill(25);
       waves.forEach(wave => {
@@ -72,10 +74,12 @@ const animateWave = () => {
   animate();
 };
 
+// Start the wave animation when the component is mounted
 onMounted(() => {
   animateWave();
 });
 
+// Clean up the animation frame when the component is unmounted
 onUnmounted(() => {
   if (animationFrame) {
     cancelAnimationFrame(animationFrame);
@@ -116,6 +120,7 @@ onUnmounted(() => {
   bottom: 0;
   width: 100%;
   height: 100%;
+  transition: fill 0.5s ease;
 }
 
 @media (max-width: 768px) {
