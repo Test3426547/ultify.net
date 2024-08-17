@@ -67,7 +67,12 @@ onMounted(() => {
 
 <style scoped>
 .navbar {
-  padding: 1rem;
+  padding: 0.5rem 1rem;
+}
+
+.navbar-brand img {
+  max-height: 75px;
+  width: auto;
 }
 
 .hamburger {
