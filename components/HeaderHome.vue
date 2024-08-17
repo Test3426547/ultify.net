@@ -17,7 +17,7 @@
           <a href="/consultation" class="header__cta-button btn btn-outline-light rounded-pill">
             Get Started
           </a>
-          <svg class="header__scroll-arrow" width="40" height="70" viewBox="0 0 40 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg class="header__scroll-arrow" width="10" height="70" viewBox="0 0 40 70" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M20 70L40 50L35 45L25 55V0H15V55L5 45L0 50L20 70Z" fill="white"/>
           </svg>
         </div>
@@ -136,7 +136,7 @@
   }
 
   .header__scroll-arrow {
-    width: 10px;
+    width: 30px;
     height: 52.5px;
   }
 }
