@@ -72,6 +72,7 @@ router.afterEach(() => {
 .navbar {
   padding: 0.5rem 1rem;
   background-color: transparent !important;
+  box-shadow: none !important;
 }
 
 .navbar-brand img {
@@ -120,7 +121,7 @@ router.afterEach(() => {
   right: 0;
   bottom: 0;
   width: 100%;
-  max-width: 400px;
+  height: 100%;
   background-color: var(--bs-primary);
   transform: translateX(100%);
   transition: transform 0.3s ease-in-out;
@@ -147,6 +148,10 @@ router.afterEach(() => {
 
 .offcanvas-body {
   padding: 2rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .nav-list {
@@ -195,11 +200,5 @@ router.afterEach(() => {
 
 .services-submenu a {
   font-size: 1.5rem;
-}
-
-@media (max-width: 991.98px) {
-  .offcanvas {
-    max-width: none;
-  }
 }
 </style>
