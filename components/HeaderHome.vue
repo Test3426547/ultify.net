@@ -69,8 +69,8 @@
   left: 50%;
   transform: translateX(-50%);
   color: var(--bs-light);
-  font-size: 1.5rem;
-  width: 290px;
+  font-size: 1rem;
+  width: 300px;
 }
 
 @media (max-width: 768px) {
