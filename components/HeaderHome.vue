@@ -65,11 +65,11 @@
 
 .header__subtitle {
   position: absolute;
-  top: calc(35% + 60px + 300px);
+  top: calc(35% + 60px + 400px);
   left: 50%;
   transform: translateX(-50%);
   color: var(--bs-light);
-  font-size: 1rem;
+  font-size: 1.1rem;
   width: 300px;
 }
 
