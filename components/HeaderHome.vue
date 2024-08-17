@@ -136,7 +136,7 @@
   }
 
   .header__scroll-arrow {
-    width: 30px;
+    width: 10px;
     height: 52.5px;
   }
 }
