@@ -58,11 +58,11 @@
   }
   
   .about-section {
-    padding: 5rem 0;
+    padding: 2.5rem 0; /* Reduced from 5rem to 2.5rem */
   }
   
   .about-section + .about-section {
-    margin-top: 100px;
+    margin-top: 50px; /* Reduced from 100px to 50px */
   }
   
   .container {
@@ -117,11 +117,11 @@
   
   @media (max-width: 991.98px) {
     .about-section {
-      padding: 3rem 0;
+      padding: 1.5rem 0; /* Reduced from 3rem to 1.5rem */
     }
   
     .about-section + .about-section {
-      margin-top: 50px;
+      margin-top: 25px; /* Reduced from 50px to 25px */
     }
   
     .content-wrapper {
