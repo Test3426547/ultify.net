@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg fixed-top">
+  <nav class="navbar fixed-top">
     <div class="container-fluid">
       <NuxtLink to="/" class="navbar-brand">
         <img src="/ultify.svg" alt="Ultify Logo" height="75" width="auto">
