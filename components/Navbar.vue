@@ -55,7 +55,7 @@
 </template>
 
 <script setup>
-import { ref, watch } from 'vue'
+import { ref, watch, onMounted, onUnmounted } from 'vue'
 
 const showOffcanvas = ref(false)
 const showDropdown = ref(false)
@@ -72,9 +72,38 @@ const toggleDropdown = (event) => {
   showDropdown.value = !showDropdown.value
 }
 
-// Ensure body overflow is handled
+// Function to handle body overflow and prevent content shift
+const handleBodyOverflow = (isOpen) => {
+  if (isOpen) {
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth
+    document.body.style.overflow = 'hidden'
+    document.body.style.paddingRight = `${scrollbarWidth}px`
+    document.body.classList.add('offcanvas-open')
+  } else {
+    document.body.style.overflow = ''
+    document.body.style.paddingRight = ''
+    document.body.classList.remove('offcanvas-open')
+  }
+}
+
+// Watch for changes in showOffcanvas
 watch(showOffcanvas, (newVal) => {
-  document.body.style.overflow = newVal ? 'hidden' : ''
+  handleBodyOverflow(newVal)
+})
+
+// Clean up function
+const cleanup = () => {
+  handleBodyOverflow(false)
+}
+
+// Set up and clean up
+onMounted(() => {
+  window.addEventListener('resize', cleanup)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('resize', cleanup)
+  cleanup()
 })
 </script>
 
@@ -159,7 +188,7 @@ watch(showOffcanvas, (newVal) => {
   top: 0;
   right: 0;
   height: 100%;
-  width: 100%;
+  width: 100vw;
   transform: translateX(100%);
   transition: transform 0.3s ease-in-out;
   z-index: 1040;
@@ -209,5 +238,9 @@ watch(showOffcanvas, (newVal) => {
 .bi-chevron-down, .bi-chevron-up {
   font-size: 1.5rem;
   color: #fff;
+}
+
+body.offcanvas-open {
+  overflow: hidden;
 }
 </style>
