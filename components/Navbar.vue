@@ -12,7 +12,7 @@
         aria-label="Toggle navigation"
       >
         <span class="navbar-toggler-icon">
-          <i class="bi bi-list" style="font-size: 1.5rem;"></i>
+          <i class="bi bi-list"></i>
         </span>
       </button>
       <div :class="['offcanvas', 'full-screen-offcanvas', { show: showOffcanvas }]" tabindex="-1" id="navbarNav">
@@ -100,9 +100,22 @@ watch(showOffcanvas, (newVal) => {
   background-color: transparent !important;
 }
 
+.navbar-toggler {
+  border: none;
+  background-color: transparent;
+  padding: 0;
+}
+
+.navbar-toggler-icon {
+  background-image: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .navbar-toggler-icon i {
-  font-size: 1.5rem;
-  color: #fff; /* Ensure icon is visible */
+  font-size: 2rem;
+  color: #000; /* Black icon */
 }
 
 .navbar-nav .nav-link {
@@ -113,7 +126,7 @@ watch(showOffcanvas, (newVal) => {
 }
 
 .navbar-nav .nav-item {
-  margin-bottom: 1rem; /* Adjust the bottom margin as needed */
+  margin-bottom: 1rem;
 }
 
 .offcanvas {
@@ -171,6 +184,6 @@ watch(showOffcanvas, (newVal) => {
 
 .bi-chevron-down, .bi-chevron-up {
   font-size: 1.5rem;
-  color: #fff; /* Ensure icon is visible */
+  color: #fff;
 }
 </style>
