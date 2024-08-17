@@ -6,7 +6,7 @@
       <div class="row h-100 position-relative">
         <div class="col-12 d-flex flex-column align-items-center justify-content-center">
           <h1 class="header__title-top text-center fw-bold">
-            Start capitalising on digital<br>resources to elevate your brand.
+            ULTIFY capitalises on digital<br>resources to elevate your brand.
           </h1>
           <h2 class="header__title-bottom text-center fw-bold">
             Start now and maximise your<br>digital reach.
