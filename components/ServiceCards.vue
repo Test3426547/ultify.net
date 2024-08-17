@@ -1,7 +1,7 @@
 <template>
   <div class="service-cards-section position-relative bg-light">
-    <div class="container">
-      <!-- Empty container to maintain space -->
+    <div class="container h-100">
+      <!-- Empty container to maintain full screen height -->
     </div>
   </div>
 </template>
@@ -12,7 +12,10 @@
 
 <style scoped>
 .service-cards-section {
-  padding: 115px 0 50px;
+  min-height: 100vh; /* Full viewport height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   overflow: hidden;
 }
 
@@ -24,13 +27,13 @@
 
 @media (max-width: 991.98px) {
   .service-cards-section {
-    padding: 80px 0 30px;
+    min-height: 100vh; /* Ensure full height on smaller screens */
   }
 }
 
 @media (max-width: 768px) {
   .service-cards-section {
-    padding: 60px 0 20px;
+    min-height: 100vh; /* Maintain full height on mobile */
   }
 }
 </style>
