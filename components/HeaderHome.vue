@@ -14,6 +14,9 @@
           <p class="header__subtitle text-center">
             Your Solutions Start With Ultify.
           </p>
+          <a href="/consultation" class="header__cta-button btn btn-outline-light rounded-pill">
+            Get Started
+          </a>
         </div>
       </div>
     </div>
@@ -73,6 +76,23 @@
   width: 300px;
 }
 
+.header__cta-button {
+  position: absolute;
+  top: calc(35% + 60px + 300px + 50px + 1.1rem);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 30px;
+  font-size: 1rem;
+  border-color: var(--bs-light);
+  color: var(--bs-light);
+  transition: all 0.3s ease;
+}
+
+.header__cta-button:hover, .header__cta-button:focus {
+  background-color: var(--bs-light);
+  color: var(--bs-primary);
+}
+
 @media (max-width: 768px) {
   .header__title-top {
     font-size: 1.8rem;
@@ -85,6 +105,11 @@
   .header__subtitle {
     font-size: 1.2rem;
     width: 80%;
+  }
+
+  .header__cta-button {
+    font-size: 0.9rem;
+    padding: 8px 24px;
   }
 }
 </style>
