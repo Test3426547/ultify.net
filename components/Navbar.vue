@@ -16,16 +16,14 @@
   </nav>
 
   <div class="offcanvas" :class="{ 'show': isMenuOpen }" ref="offcanvas">
-    <div class="offcanvas-header">
-      <button class="close-btn" @click="toggleMenu" aria-label="Close menu">
-        <div class="hamburger-circle">
-          <div class="hamburger" ref="closeHamburger">
-            <span></span>
-            <span></span>
-          </div>
+    <button class="close-btn" @click="toggleMenu" aria-label="Close menu">
+      <div class="hamburger-circle">
+        <div class="hamburger" ref="closeHamburger">
+          <span></span>
+          <span></span>
         </div>
-      </button>
-    </div>
+      </div>
+    </button>
     <div class="offcanvas-body">
       <ul class="nav-list">
         <li><NuxtLink to="/" @click="toggleMenu" ref="menuItem">Home</NuxtLink></li>
@@ -193,16 +191,14 @@ router.afterEach(() => {
   transform: translateX(0);
 }
 
-.offcanvas-header {
-  padding: 0.5rem 1rem;
-  display: flex;
-  justify-content: flex-end;
-}
-
 .close-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
   background: transparent;
   border: none;
   padding: 0;
+  z-index: 1060;
 }
 
 .offcanvas-body {
@@ -211,6 +207,7 @@ router.afterEach(() => {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-top: 60px;
 }
 
 .nav-list {
