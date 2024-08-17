@@ -18,7 +18,7 @@
             Get Started
           </a>
           <svg class="header__scroll-arrow" width="7" height="35" viewBox="0 0 7 35" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M20 70L40 50L35 45L25 55V0H15V55L5 45L0 50L20 70Z" fill="white"/>
+            <path d="M3.5 35L7 31.5L6.125 30.625L4.375 32.375V0H2.625V32.375L0.875 30.625L0 31.5L3.5 35Z" fill="white"/>
           </svg>
         </div>
       </div>
@@ -109,10 +109,10 @@
     transform: translateX(-50%) translateY(0);
   }
   40% {
-    transform: translateX(-50%) translateY(-20px);
+    transform: translateX(-50%) translateY(-10px);
   }
   60% {
-    transform: translateX(-50%) translateY(-10px);
+    transform: translateX(-50%) translateY(-5px);
   }
 }
 
@@ -136,8 +136,8 @@
   }
 
   .header__scroll-arrow {
-    width: 30px;
-    height: 52.5px;
+    width: 5px;
+    height: 25px;
   }
 }
 </style>
