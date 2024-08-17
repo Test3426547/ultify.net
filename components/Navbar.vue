@@ -6,7 +6,7 @@
       </NuxtLink>
       <button class="navbar-toggler" type="button" @click="toggleMenu" aria-label="Toggle navigation">
         <div class="hamburger-circle">
-          <div class="hamburger">
+          <div class="hamburger" ref="hamburger">
             <span></span>
             <span></span>
           </div>
@@ -15,44 +15,43 @@
     </div>
   </nav>
 
-  <div class="offcanvas" :class="{ 'show': isMenuOpen }">
-    <div class="offcanvas-header">
-      <button type="button" class="close-btn" @click="toggleMenu" aria-label="Close">
-        <span>&times;</span>
-      </button>
-    </div>
+  <div class="offcanvas" :class="{ 'show': isMenuOpen }" ref="offcanvas">
     <div class="offcanvas-body">
       <ul class="nav-list">
-        <li><NuxtLink to="/" @click="toggleMenu">Home</NuxtLink></li>
+        <li><NuxtLink to="/" @click="toggleMenu" ref="menuItem">Home</NuxtLink></li>
         <li class="services-dropdown">
-          <a href="#" @click.prevent="toggleServices">Services <span class="arrow" :class="{ 'up': showServices }">&#9662;</span></a>
+          <a href="#" @click.prevent="toggleServices" ref="menuItem">Services <span class="arrow" :class="{ 'up': showServices }">&#9662;</span></a>
           <ul v-if="showServices" class="services-submenu">
-            <li><NuxtLink to="/website" @click="toggleMenu">Website</NuxtLink></li>
-            <li><NuxtLink to="/social-media" @click="toggleMenu">Social Media</NuxtLink></li>
-            <li><NuxtLink to="/seo" @click="toggleMenu">SEO</NuxtLink></li>
-            <li><NuxtLink to="/paid-media" @click="toggleMenu">Paid Media</NuxtLink></li>
-            <li><NuxtLink to="/content-creation" @click="toggleMenu">Content Creation</NuxtLink></li>
-            <li><NuxtLink to="/print-advertising" @click="toggleMenu">Print Advertising</NuxtLink></li>
+            <li><NuxtLink to="/website" @click="toggleMenu" ref="menuItem">Website</NuxtLink></li>
+            <li><NuxtLink to="/social-media" @click="toggleMenu" ref="menuItem">Social Media</NuxtLink></li>
+            <li><NuxtLink to="/seo" @click="toggleMenu" ref="menuItem">SEO</NuxtLink></li>
+            <li><NuxtLink to="/paid-media" @click="toggleMenu" ref="menuItem">Paid Media</NuxtLink></li>
+            <li><NuxtLink to="/content-creation" @click="toggleMenu" ref="menuItem">Content Creation</NuxtLink></li>
+            <li><NuxtLink to="/print-advertising" @click="toggleMenu" ref="menuItem">Print Advertising</NuxtLink></li>
           </ul>
         </li>
-        <li><NuxtLink to="/about-us" @click="toggleMenu">About Us</NuxtLink></li>
-        <li><NuxtLink to="/consultation" @click="toggleMenu">Consultation</NuxtLink></li>
-        <li><NuxtLink to="/contact-us" @click="toggleMenu">Contact Us</NuxtLink></li>
+        <li><NuxtLink to="/about-us" @click="toggleMenu" ref="menuItem">About Us</NuxtLink></li>
+        <li><NuxtLink to="/consultation" @click="toggleMenu" ref="menuItem">Consultation</NuxtLink></li>
+        <li><NuxtLink to="/contact-us" @click="toggleMenu" ref="menuItem">Contact Us</NuxtLink></li>
       </ul>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
+import gsap from 'gsap'
 
 const isMenuOpen = ref(false)
 const showServices = ref(false)
 const router = useRouter()
+const hamburger = ref(null)
+const offcanvas = ref(null)
 
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value
+  animateHamburger()
   if (!isMenuOpen.value) {
     showServices.value = false
   }
@@ -61,6 +60,40 @@ const toggleMenu = () => {
 const toggleServices = () => {
   showServices.value = !showServices.value
 }
+
+const animateHamburger = () => {
+  const spans = hamburger.value.querySelectorAll('span')
+  if (isMenuOpen.value) {
+    gsap.to(spans[0], { rotation: 45, y: 6, duration: 0.3 })
+    gsap.to(spans[1], { rotation: -45, y: -6, duration: 0.3 })
+  } else {
+    gsap.to(spans[0], { rotation: 0, y: 0, duration: 0.3 })
+    gsap.to(spans[1], { rotation: 0, y: 0, duration: 0.3 })
+  }
+}
+
+onMounted(() => {
+  const menuItems = offcanvas.value.querySelectorAll('[ref="menuItem"]')
+  menuItems.forEach((item) => {
+    gsap.to(item, {
+      y: 10,
+      opacity: 0,
+      duration: 0.2,
+      paused: true,
+      ease: 'power2.inOut',
+    })
+    item.animation = gsap.to(item, {
+      y: 0,
+      opacity: 1,
+      duration: 0.3,
+      paused: true,
+      ease: 'power2.out',
+    })
+    
+    item.addEventListener('mouseenter', () => item.animation.play())
+    item.addEventListener('mouseleave', () => item.animation.reverse())
+  })
+})
 
 router.afterEach(() => {
   isMenuOpen.value = false
@@ -110,6 +143,7 @@ router.afterEach(() => {
   width: 100%;
   background: #000;
   left: 0;
+  transition: transform 0.3s ease;
 }
 
 .hamburger span:nth-child(1) { top: 0; }
@@ -118,55 +152,48 @@ router.afterEach(() => {
 .offcanvas {
   position: fixed;
   top: 0;
+  left: 0;
   right: 0;
   bottom: 0;
   width: 100%;
   height: 100%;
   background-color: var(--bs-primary);
-  transform: translateX(100%);
+  transform: translateX(-100%);
   transition: transform 0.3s ease-in-out;
   z-index: 1050;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .offcanvas.show {
   transform: translateX(0);
 }
 
-.offcanvas-header {
-  padding: 1rem;
-  display: flex;
-  justify-content: flex-end;
-}
-
-.close-btn {
-  background: transparent;
-  border: none;
-  font-size: 2rem;
-  color: #fff;
-  cursor: pointer;
-}
-
 .offcanvas-body {
-  padding: 2rem;
+  width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 .nav-list {
   list-style-type: none;
   padding: 0;
   margin: 0;
+  text-align: center;
 }
 
 .nav-list li {
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
 .nav-list a {
   color: #fff;
-  font-size: 2rem;
+  font-size: 3rem;
+  font-weight: 700;
   text-decoration: none;
   transition: color 0.3s ease;
 }
@@ -190,15 +217,25 @@ router.afterEach(() => {
 
 .services-submenu {
   list-style-type: none;
-  padding-left: 1rem;
-  margin-top: 0.5rem;
+  padding-left: 0;
+  margin-top: 1rem;
 }
 
 .services-submenu li {
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 .services-submenu a {
-  font-size: 1.5rem;
+  font-size: 2rem;
+}
+
+@media (min-width: 768px) {
+  .nav-list a {
+    font-size: 4rem;
+  }
+  
+  .services-submenu a {
+    font-size: 2.5rem;
+  }
 }
 </style>
