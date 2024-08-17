@@ -17,8 +17,8 @@
           <a href="/consultation" class="header__cta-button btn btn-outline-light rounded-pill">
             Get Started
           </a>
-          <svg class="header__scroll-arrow" width="66" height="88" viewBox="0 0 66 88" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M28 0V77L0 49L10 39L28 57V0H38V57L56 39L66 49L38 77V0H28Z" fill="white"/>
+          <svg class="header__scroll-arrow" width="14" height="70" viewBox="0 0 14 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7 70L14 56L10.5 56L7 61V0H7V61L3.5 56L0 56L7 70Z" fill="white"/>
           </svg>
         </div>
       </div>
@@ -27,16 +27,27 @@
 </template>
 
 <script setup>
-// No JavaScript needed for now
+// No JavaScript needed
 </script>
 
 <style scoped>
+:root {
+  --header-top-height: 35%;
+  --header-bottom-height: 65%;
+  --title-top-font-size: 3rem;
+  --title-bottom-font-size: 3.4rem;
+  --subtitle-font-size: 1.1rem;
+  --button-font-size: 1rem;
+  --arrow-width: 14px;
+  --arrow-height: 70px;
+}
+
 .header__background-top {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  height: 35%;
+  height: var(--header-top-height);
   background-color: var(--bs-light);
 }
 
@@ -45,47 +56,47 @@
   bottom: 0;
   left: 0;
   right: 0;
-  height: 65%;
+  height: var(--header-bottom-height);
   background-color: var(--bs-primary);
 }
 
 .header__title-top {
   position: absolute;
-  bottom: calc(65% + 60px);
+  bottom: calc(var(--header-bottom-height) + 60px);
   left: 50%;
   transform: translateX(-50%);
   color: var(--bs-primary);
-  font-size: 3rem;
+  font-size: var(--title-top-font-size);
   max-width: 90%;
 }
 
 .header__title-bottom {
   position: absolute;
-  top: calc(35% + 60px);
+  top: calc(var(--header-top-height) + 60px);
   left: 50%;
   transform: translateX(-50%);
   color: var(--bs-white);
-  font-size: 3.4rem;
+  font-size: var(--title-bottom-font-size);
   max-width: 90%;
 }
 
 .header__subtitle {
   position: absolute;
-  top: calc(35% + 60px + 300px);
+  top: calc(var(--header-top-height) + 60px + 300px);
   left: 50%;
   transform: translateX(-50%);
   color: var(--bs-white);
-  font-size: 1.1rem;
+  font-size: var(--subtitle-font-size);
   width: 300px;
 }
 
 .header__cta-button {
   position: absolute;
-  top: calc(35% + 60px + 300px + 50px + 1.1rem);
+  top: calc(var(--header-top-height) + 60px + 300px + 50px + var(--subtitle-font-size));
   left: 50%;
   transform: translateX(-50%);
   padding: 10px 30px;
-  font-size: 1rem;
+  font-size: var(--button-font-size);
   border-color: var(--bs-white);
   color: var(--bs-white);
   transition: all 0.3s ease;
@@ -98,12 +109,12 @@
 
 .header__scroll-arrow {
   position: absolute;
-  top: calc(35% + 60px + 300px + 50px + 1.1rem + 50px + 30px);
+  bottom: 5%;
   left: 50%;
   transform: translateX(-50%);
   animation: bounce 3s infinite;
-  width: 66px;
-  height: 88px;
+  width: var(--arrow-width);
+  height: var(--arrow-height);
 }
 
 @keyframes bounce {
@@ -118,28 +129,44 @@
   }
 }
 
-@media (max-width: 768px) {
-  .header__title-top {
-    font-size: 1.8rem;
+@media (max-width: 1200px) {
+  :root {
+    --title-top-font-size: 2.5rem;
+    --title-bottom-font-size: 2.9rem;
   }
-  
-  .header__title-bottom {
-    font-size: 2.16rem;
+}
+
+@media (max-width: 992px) {
+  :root {
+    --title-top-font-size: 2rem;
+    --title-bottom-font-size: 2.4rem;
+    --subtitle-font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --title-top-font-size: 1.8rem;
+    --title-bottom-font-size: 2.16rem;
+    --subtitle-font-size: 0.9rem;
+    --button-font-size: 0.9rem;
+    --arrow-width: 10px;
+    --arrow-height: 50px;
   }
 
   .header__subtitle {
-    font-size: 1.2rem;
     width: 80%;
   }
 
   .header__cta-button {
-    font-size: 0.9rem;
     padding: 8px 24px;
   }
+}
 
-  .header__scroll-arrow {
-    width: 33px;
-    height: 44px;
+@media (max-width: 576px) {
+  :root {
+    --title-top-font-size: 1.5rem;
+    --title-bottom-font-size: 1.8rem;
   }
 }
 </style>
