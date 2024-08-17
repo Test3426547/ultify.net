@@ -16,6 +16,16 @@
   </nav>
 
   <div class="offcanvas" :class="{ 'show': isMenuOpen }" ref="offcanvas">
+    <div class="offcanvas-header">
+      <button class="close-btn" @click="toggleMenu" aria-label="Close menu">
+        <div class="hamburger-circle">
+          <div class="hamburger" ref="closeHamburger">
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </button>
+    </div>
     <div class="offcanvas-body">
       <ul class="nav-list">
         <li><NuxtLink to="/" @click="toggleMenu" ref="menuItem">Home</NuxtLink></li>
@@ -47,6 +57,7 @@ const isMenuOpen = ref(false)
 const showServices = ref(false)
 const router = useRouter()
 const hamburger = ref(null)
+const closeHamburger = ref(null)
 const offcanvas = ref(null)
 
 const toggleMenu = () => {
@@ -62,38 +73,47 @@ const toggleServices = () => {
 }
 
 const animateHamburger = () => {
-  const spans = hamburger.value.querySelectorAll('span')
+  const spans = (hamburger.value as HTMLElement | null)?.querySelectorAll('span') || []
+  const closeSpans = (closeHamburger.value as HTMLElement | null)?.querySelectorAll('span') || []
+  
   if (isMenuOpen.value) {
-    gsap.to(spans[0], { rotation: 45, y: 6, duration: 0.3 })
-    gsap.to(spans[1], { rotation: -45, y: -6, duration: 0.3 })
+    gsap.to(spans[0], { rotation: 45, y: 4, duration: 0.3 })
+    gsap.to(spans[1], { rotation: -45, y: -4, duration: 0.3 })
+    gsap.to(closeSpans[0], { rotation: 45, y: 4, duration: 0.3 })
+    gsap.to(closeSpans[1], { rotation: -45, y: -4, duration: 0.3 })
   } else {
     gsap.to(spans[0], { rotation: 0, y: 0, duration: 0.3 })
     gsap.to(spans[1], { rotation: 0, y: 0, duration: 0.3 })
+    gsap.to(closeSpans[0], { rotation: 0, y: 0, duration: 0.3 })
+    gsap.to(closeSpans[1], { rotation: 0, y: 0, duration: 0.3 })
   }
 }
 
 onMounted(() => {
-  const menuItems = offcanvas.value.querySelectorAll('[ref="menuItem"]')
-  menuItems.forEach((item) => {
-    gsap.to(item, {
-      y: 10,
-      opacity: 0,
-      duration: 0.2,
-      paused: true,
-      ease: 'power2.inOut',
-    })
-    item.animation = gsap.to(item, {
-      y: 0,
-      opacity: 1,
-      duration: 0.3,
-      paused: true,
-      ease: 'power2.out',
-    })
-    
-    item.addEventListener('mouseenter', () => item.animation.play())
-    item.addEventListener('mouseleave', () => item.animation.reverse())
-  })
-})
+  const menuItems = (offcanvas.value as HTMLElement | null)?.querySelectorAll('[ref="menuItem"]')
+  if (menuItems) {
+    menuItems.forEach((item: Element) => {
+      const menuItem = item as HTMLElement;
+      gsap.to(menuItem, {
+        y: 10,
+        opacity: 0,
+        duration: 0.2,
+        paused: true,
+        ease: 'power2.inOut',
+      });
+      menuItem.animation = gsap.to(menuItem, {
+        y: 0,
+        opacity: 1,
+        duration: 0.3,
+        paused: true,
+        ease: 'power2.out',
+      });
+      
+      menuItem.addEventListener('mouseenter', () => menuItem.animation.play());
+      menuItem.addEventListener('mouseleave', () => menuItem.animation.reverse());
+    });
+  }
+});
 
 router.afterEach(() => {
   isMenuOpen.value = false
@@ -119,6 +139,10 @@ router.afterEach(() => {
   background: transparent;
 }
 
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+
 .hamburger-circle {
   width: 40px;
   height: 40px;
@@ -131,7 +155,7 @@ router.afterEach(() => {
 
 .hamburger {
   width: 20px;
-  height: 14px;
+  height: 10px;
   position: relative;
   cursor: pointer;
 }
@@ -162,17 +186,27 @@ router.afterEach(() => {
   transition: transform 0.3s ease-in-out;
   z-index: 1050;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
 }
 
 .offcanvas.show {
   transform: translateX(0);
 }
 
+.offcanvas-header {
+  padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.close-btn {
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
 .offcanvas-body {
-  width: 100%;
-  height: 100%;
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
