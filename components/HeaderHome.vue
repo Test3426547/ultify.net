@@ -18,7 +18,7 @@
             Get Started
           </a>
           <svg class="header__scroll-arrow" width="7" height="35" viewBox="0 0 7 35" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M3.5 35L7 31.5L6.125 30.625L4.375 32.375V0H2.625V32.375L0.875 30.625L0 31.5L3.5 35Z" fill="white"/>
+            <path d="M3.5 35L7 28L5.25 28L3.5 30.5L3.5 0L3.5 0L3.5 30.5L1.75 28L0 28L3.5 35Z" fill="white"/>
           </svg>
         </div>
       </div>
