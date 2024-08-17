@@ -9,7 +9,7 @@
             Start capitalising on digital<br>resources to elevate your brand.
           </h1>
           <h2 class="header__title-bottom text-center fw-bold">
-            Start now and maximise your digital reach.
+            Start now and maximise your<br>digital reach.
           </h2>
         </div>
       </div>
@@ -56,7 +56,7 @@
   left: 50%;
   transform: translateX(-50%);
   color: var(--bs-light);
-  font-size: 2.5rem; /* 20% larger than the top title */
+  font-size: 2.6rem; /* 20% larger than the top title */
   max-width: 90%;
 }
 
