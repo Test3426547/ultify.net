@@ -107,6 +107,14 @@ watch(showOffcanvas, (newVal) => {
   width: 40px;
   height: 40px;
   position: relative;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.navbar-toggler:focus,
+.navbar-toggler:active {
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 .navbar-toggler-icon {
