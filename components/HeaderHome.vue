@@ -52,7 +52,7 @@
   left: 50%;
   transform: translateX(-50%);
   color: var(--bs-primary);
-  font-size: 2.5rem;
+  font-size: 3rem;
   max-width: 90%;
 }
 
@@ -62,7 +62,7 @@
   left: 50%;
   transform: translateX(-50%);
   color: var(--bs-light);
-  font-size: 2.8rem;
+  font-size: 3.4rem;
   max-width: 90%;
 }
 
