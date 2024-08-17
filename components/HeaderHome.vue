@@ -17,8 +17,8 @@
           <a href="/consultation" class="header__cta-button btn btn-outline-light rounded-pill">
             Get Started
           </a>
-          <svg class="header__scroll-arrow" width="14" height="70" viewBox="0 0 14 70" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M7 70L14 56L10.5 56L7 61V0H7V61L3.5 56L0 56L7 70Z" fill="white"/>
+          <svg class="header__scroll-arrow" width="7" height="35" viewBox="0 0 7 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 70L40 50L35 45L25 55V0H15V55L5 45L0 50L20 70Z" fill="white"/>
           </svg>
         </div>
       </div>
@@ -27,27 +27,16 @@
 </template>
 
 <script setup>
-// No JavaScript needed
+// No JavaScript needed for now
 </script>
 
 <style scoped>
-:root {
-  --header-top-height: 35%;
-  --header-bottom-height: 65%;
-  --title-top-font-size: 3rem;
-  --title-bottom-font-size: 3.4rem;
-  --subtitle-font-size: 1.1rem;
-  --button-font-size: 1rem;
-  --arrow-width: 14px;
-  --arrow-height: 70px;
-}
-
 .header__background-top {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  height: var(--header-top-height);
+  height: 35%;
   background-color: var(--bs-light);
 }
 
@@ -56,47 +45,47 @@
   bottom: 0;
   left: 0;
   right: 0;
-  height: var(--header-bottom-height);
+  height: 65%;
   background-color: var(--bs-primary);
 }
 
 .header__title-top {
   position: absolute;
-  bottom: calc(var(--header-bottom-height) + 60px);
+  bottom: calc(65% + 60px);
   left: 50%;
   transform: translateX(-50%);
   color: var(--bs-primary);
-  font-size: var(--title-top-font-size);
+  font-size: 3rem;
   max-width: 90%;
 }
 
 .header__title-bottom {
   position: absolute;
-  top: calc(var(--header-top-height) + 60px);
+  top: calc(35% + 60px);
   left: 50%;
   transform: translateX(-50%);
   color: var(--bs-white);
-  font-size: var(--title-bottom-font-size);
+  font-size: 3.4rem;
   max-width: 90%;
 }
 
 .header__subtitle {
   position: absolute;
-  top: calc(var(--header-top-height) + 60px + 300px);
+  top: calc(35% + 60px + 300px);
   left: 50%;
   transform: translateX(-50%);
   color: var(--bs-white);
-  font-size: var(--subtitle-font-size);
+  font-size: 1.1rem;
   width: 300px;
 }
 
 .header__cta-button {
   position: absolute;
-  top: calc(var(--header-top-height) + 60px + 300px + 50px + var(--subtitle-font-size));
+  top: calc(35% + 60px + 300px + 50px + 1.1rem);
   left: 50%;
   transform: translateX(-50%);
   padding: 10px 30px;
-  font-size: var(--button-font-size);
+  font-size: 1rem;
   border-color: var(--bs-white);
   color: var(--bs-white);
   transition: all 0.3s ease;
@@ -109,12 +98,10 @@
 
 .header__scroll-arrow {
   position: absolute;
-  bottom: 5%;
+  top: calc(35% + 60px + 300px + 50px + 1.1rem + 50px + 30px);
   left: 50%;
   transform: translateX(-50%);
   animation: bounce 3s infinite;
-  width: var(--arrow-width);
-  height: var(--arrow-height);
 }
 
 @keyframes bounce {
@@ -122,51 +109,35 @@
     transform: translateX(-50%) translateY(0);
   }
   40% {
-    transform: translateX(-50%) translateY(-10px);
+    transform: translateX(-50%) translateY(-20px);
   }
   60% {
-    transform: translateX(-50%) translateY(-5px);
-  }
-}
-
-@media (max-width: 1200px) {
-  :root {
-    --title-top-font-size: 2.5rem;
-    --title-bottom-font-size: 2.9rem;
-  }
-}
-
-@media (max-width: 992px) {
-  :root {
-    --title-top-font-size: 2rem;
-    --title-bottom-font-size: 2.4rem;
-    --subtitle-font-size: 1rem;
+    transform: translateX(-50%) translateY(-10px);
   }
 }
 
 @media (max-width: 768px) {
-  :root {
-    --title-top-font-size: 1.8rem;
-    --title-bottom-font-size: 2.16rem;
-    --subtitle-font-size: 0.9rem;
-    --button-font-size: 0.9rem;
-    --arrow-width: 10px;
-    --arrow-height: 50px;
+  .header__title-top {
+    font-size: 1.8rem;
+  }
+  
+  .header__title-bottom {
+    font-size: 2.16rem;
   }
 
   .header__subtitle {
+    font-size: 1.2rem;
     width: 80%;
   }
 
   .header__cta-button {
+    font-size: 0.9rem;
     padding: 8px 24px;
   }
-}
 
-@media (max-width: 576px) {
-  :root {
-    --title-top-font-size: 1.5rem;
-    --title-bottom-font-size: 1.8rem;
+  .header__scroll-arrow {
+    width: 30px;
+    height: 52.5px;
   }
 }
 </style>
