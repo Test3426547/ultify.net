@@ -65,7 +65,7 @@
 
 .header__subtitle {
   position: absolute;
-  top: calc(35% + 60px + 350px);
+  top: calc(35% + 60px + 300px);
   left: 50%;
   transform: translateX(-50%);
   color: var(--bs-light);
