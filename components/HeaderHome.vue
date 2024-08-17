@@ -98,7 +98,7 @@
 
 .header__scroll-arrow {
   position: absolute;
-  top: calc(35% + 60px + 300px + 50px + 1.1rem + 50px + 50px);
+  top: calc(35% + 60px + 300px + 50px + 1.1rem + 50px + 80px);
   left: 50%;
   transform: translateX(-50%);
   animation: bounce 3s infinite;
