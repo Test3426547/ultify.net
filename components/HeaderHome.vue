@@ -17,8 +17,8 @@
           <a href="/consultation" class="header__cta-button btn btn-outline-light rounded-pill">
             Get Started
           </a>
-          <svg class="header__scroll-arrow" width="7" height="35" viewBox="0 0 7 35" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M3.5 35L7 28L5.25 28L3.5 30.5L3.5 0L3.5 0L3.5 30.5L1.75 28L0 28L3.5 35Z" fill="white"/>
+          <svg class="header__scroll-arrow" width="66" height="88" viewBox="0 0 66 88" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M28 0V77L0 49L10 39L28 57V0H38V57L56 39L66 49L38 77V0H28Z" fill="white"/>
           </svg>
         </div>
       </div>
@@ -102,6 +102,8 @@
   left: 50%;
   transform: translateX(-50%);
   animation: bounce 3s infinite;
+  width: 66px;
+  height: 88px;
 }
 
 @keyframes bounce {
@@ -136,8 +138,8 @@
   }
 
   .header__scroll-arrow {
-    width: 5px;
-    height: 25px;
+    width: 33px;
+    height: 44px;
   }
 }
 </style>
