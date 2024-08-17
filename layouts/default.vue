@@ -2,7 +2,6 @@
 import { ref } from 'vue';
 import Navbar from '~/components/Navbar.vue';
 import Footer from '~/components/Footer.vue';
-import Chatbot from '~/components/Chatbot.vue';
 
 const showChatbot = ref(false);
 
