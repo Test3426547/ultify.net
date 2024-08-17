@@ -4,64 +4,63 @@
       <NuxtLink to="/" class="navbar-brand">
         <img src="/ultify.svg" alt="Ultify Logo" height="75" width="auto">
       </NuxtLink>
-      <button class="navbar-toggler" type="button" @click="toggleMenu" aria-label="Toggle navigation">
-        <div class="hamburger" :class="{ 'is-active': isMenuOpen }">
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+        <div class="hamburger">
           <span></span>
           <span></span>
           <span></span>
         </div>
       </button>
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item">
+              <NuxtLink to="/" class="nav-link">Home</NuxtLink>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Services
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
+                <li><NuxtLink to="/website" class="dropdown-item">Website</NuxtLink></li>
+                <li><NuxtLink to="/social-media" class="dropdown-item">Social Media</NuxtLink></li>
+                <li><NuxtLink to="/seo" class="dropdown-item">SEO</NuxtLink></li>
+                <li><NuxtLink to="/paid-media" class="dropdown-item">Paid Media</NuxtLink></li>
+                <li><NuxtLink to="/content-creation" class="dropdown-item">Content Creation</NuxtLink></li>
+                <li><NuxtLink to="/print-advertising" class="dropdown-item">Print Advertising</NuxtLink></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <NuxtLink to="/about-us" class="nav-link">About Us</NuxtLink>
+            </li>
+            <li class="nav-item">
+              <NuxtLink to="/consultation" class="nav-link">Consultation</NuxtLink>
+            </li>
+            <li class="nav-item">
+              <NuxtLink to="/contact-us" class="nav-link">Contact Us</NuxtLink>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   </nav>
-
-  <div class="offcanvas-menu" :class="{ 'is-open': isMenuOpen }">
-    <div class="offcanvas-menu-inner">
-      <ul class="nav flex-column">
-        <li class="nav-item" v-for="(item, index) in menuItems" :key="index">
-          <NuxtLink :to="item.path" class="nav-link" @click="closeMenu">{{ item.name }}</NuxtLink>
-        </li>
-      </ul>
-    </div>
-  </div>
 </template>
 
-<script setup>
-import { ref, onMounted } from 'vue'
+<script setup lang="ts">
+import { onMounted } from 'vue'
 import { gsap } from 'gsap'
 
-const isMenuOpen = ref(false)
-const menuItems = [
-  { name: 'Home', path: '/' },
-  { name: 'Services', path: '/services' },
-  { name: 'About Us', path: '/about-us' },
-  { name: 'Consultation', path: '/consultation' },
-  { name: 'Contact Us', path: '/contact-us' }
-]
-
-const toggleMenu = () => {
-  isMenuOpen.value = !isMenuOpen.value
-  animateMenu()
-}
-
-const closeMenu = () => {
-  isMenuOpen.value = false
-  animateMenu()
-}
-
-const animateMenu = () => {
-  const tl = gsap.timeline()
-  if (isMenuOpen.value) {
-    tl.to('.offcanvas-menu', { x: '0%', duration: 0.5, ease: 'power2.out' })
-    tl.to('.nav-link', { opacity: 1, y: 0, stagger: 0.1, duration: 0.3 }, '-=0.3')
-  } else {
-    tl.to('.nav-link', { opacity: 0, y: 20, stagger: 0.05, duration: 0.2 })
-    tl.to('.offcanvas-menu', { x: '100%', duration: 0.5, ease: 'power2.in' }, '-=0.1')
-  }
-}
-
 onMounted(() => {
-  gsap.set('.offcanvas-menu', { x: '100%' })
-  gsap.set('.nav-link', { opacity: 0, y: 20 })
+  const offcanvas = document.getElementById('offcanvasNavbar')
+  offcanvas?.addEventListener('show.bs.offcanvas', () => {
+    gsap.fromTo('.nav-link', 
+      { opacity: 0, y: 20 },
+      { opacity: 1, y: 0, stagger: 0.1, duration: 0.3, delay: 0.2 }
+    )
+  })
 })
 </script>
 
@@ -105,35 +104,12 @@ onMounted(() => {
 .hamburger span:nth-child(2) { top: 9px; }
 .hamburger span:nth-child(3) { top: 18px; }
 
-.hamburger.is-active span:nth-child(1) {
-  top: 9px;
-  transform: rotate(135deg);
-}
-
-.hamburger.is-active span:nth-child(2) {
-  opacity: 0;
-  left: -60px;
-}
-
-.hamburger.is-active span:nth-child(3) {
-  top: 9px;
-  transform: rotate(-135deg);
-}
-
-.offcanvas-menu {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  max-width: 400px;
+.offcanvas {
   background-color: var(--bs-primary);
-  z-index: 1050;
-  overflow-y: auto;
 }
 
-.offcanvas-menu-inner {
-  padding: 5rem 2rem;
+.offcanvas-header .btn-close {
+  color: var(--bs-white);
 }
 
 .nav-link {
@@ -143,14 +119,29 @@ onMounted(() => {
   transition: color 0.3s ease;
 }
 
-.nav-link:hover {
+.nav-link:hover, .nav-link:focus {
   color: rgba(255, 255, 255, 0.8);
 }
 
+.dropdown-menu {
+  background-color: var(--bs-primary);
+  border: none;
+}
+
+.dropdown-item {
+  color: var(--bs-white);
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+}
+
+.dropdown-item:hover, .dropdown-item:focus {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--bs-white);
+}
+
 @media (max-width: 991.98px) {
-  .offcanvas-menu {
+  .offcanvas {
     width: 100%;
-    max-width: none;
   }
 }
 </style>
