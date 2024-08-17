@@ -104,6 +104,9 @@ watch(showOffcanvas, (newVal) => {
   border: none;
   background-color: transparent;
   padding: 0;
+  width: 40px;
+  height: 40px;
+  position: relative;
 }
 
 .navbar-toggler-icon {
@@ -111,10 +114,23 @@ watch(showOffcanvas, (newVal) => {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.navbar-toggler-icon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 2px solid #000;
+  border-radius: 50%;
 }
 
 .navbar-toggler-icon i {
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: #000; /* Black icon */
 }
 
