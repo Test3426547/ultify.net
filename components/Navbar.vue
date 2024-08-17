@@ -1,256 +1,145 @@
 <template>
-  <header class="navbar sticky-top py-2 transparent-nav">
-    <div class="container-fluid d-flex align-items-center justify-content-between">
-      <NuxtLink to="/" class="navbar-brand d-flex align-items-center">
-        <img src="/ultify.svg" width="75" alt="Ultify Logo" />
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container-fluid">
+      <NuxtLink to="/" class="navbar-brand">
+        <img src="/ultify.svg" alt="Ultify Logo" height="30">
       </NuxtLink>
-      <button
-        class="navbar-toggler ms-3"
-        type="button"
-        @click="toggleOffcanvas"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon">
-          <i class="bi bi-list"></i>
-        </span>
+      <button class="navbar-toggler" type="button" @click="toggleMenu" aria-label="Toggle navigation">
+        <div class="hamburger" :class="{ 'is-active': isMenuOpen }">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
       </button>
-      <div :class="['offcanvas', 'full-screen-offcanvas', { show: showOffcanvas }]" tabindex="-1" id="navbarNav">
-        <div class="offcanvas-header">
-          <button type="button" class="btn-close" @click="toggleOffcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body d-flex flex-column justify-content-center align-items-center">
-          <ul class="navbar-nav text-center">
-            <li class="nav-item">
-              <NuxtLink to="/" class="nav-link" @click="toggleOffcanvas">Home</NuxtLink>
-            </li>
-            <li class="nav-item">
-              <NuxtLink to="/about-us" class="nav-link" @click="toggleOffcanvas">About Us</NuxtLink>
-            </li>
-            <li class="nav-item">
-              <NuxtLink to="/consultation" class="nav-link" @click="toggleOffcanvas">Consultation</NuxtLink>
-            </li>
-            <li class="nav-item">
-              <NuxtLink to="/contact-us" class="nav-link" @click="toggleOffcanvas">Contact Us</NuxtLink>
-            </li>
-            <li class="nav-item dropdown" :class="{ show: showDropdown }">
-              <a class="nav-link dropdown-toggle d-flex align-items-center justify-content-center" href="#" id="navbarDropdown" role="button" @click="toggleDropdown" aria-expanded="false">
-                Services
-                <i :class="showDropdown ? 'bi bi-chevron-up ms-2' : 'bi bi-chevron-down ms-2'"></i>
-              </a>
-              <ul class="dropdown-menu" :class="{ show: showDropdown }" aria-labelledby="navbarDropdown">
-                <li><NuxtLink to="/website" class="dropdown-item" @click="toggleOffcanvas">Website</NuxtLink></li>
-                <li><NuxtLink to="/social-media" class="dropdown-item" @click="toggleOffcanvas">Social Media</NuxtLink></li>
-                <li><NuxtLink to="/seo" class="dropdown-item" @click="toggleOffcanvas">SEO</NuxtLink></li>
-                <li><NuxtLink to="/paid-media" class="dropdown-item" @click="toggleOffcanvas">Paid Media</NuxtLink></li>
-                <li><NuxtLink to="/content-creation" class="dropdown-item" @click="toggleOffcanvas">Content Creation</NuxtLink></li>
-                <li><NuxtLink to="/print-advertising" class="dropdown-item" @click="toggleOffcanvas">Print Advertising</NuxtLink></li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-      </div>
     </div>
-  </header>
+  </nav>
+
+  <div class="offcanvas-menu" :class="{ 'is-open': isMenuOpen }">
+    <div class="offcanvas-menu-inner">
+      <ul class="nav flex-column">
+        <li class="nav-item" v-for="(item, index) in menuItems" :key="index">
+          <NuxtLink :to="item.path" class="nav-link" @click="closeMenu">{{ item.name }}</NuxtLink>
+        </li>
+      </ul>
+    </div>
+  </div>
 </template>
 
 <script setup>
-import { ref, watch, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted } from 'vue'
+import { gsap } from 'gsap'
 
-const showOffcanvas = ref(false)
-const showDropdown = ref(false)
+const isMenuOpen = ref(false)
+const menuItems = [
+  { name: 'Home', path: '/' },
+  { name: 'Services', path: '/services' },
+  { name: 'About Us', path: '/about-us' },
+  { name: 'Consultation', path: '/consultation' },
+  { name: 'Contact Us', path: '/contact-us' }
+]
 
-const toggleOffcanvas = () => {
-  showOffcanvas.value = !showOffcanvas.value
-  if (!showOffcanvas.value) {
-    showDropdown.value = false // Close dropdown when closing offcanvas
-  }
+const toggleMenu = () => {
+  isMenuOpen.value = !isMenuOpen.value
+  animateMenu()
 }
 
-const toggleDropdown = (event) => {
-  event.preventDefault()
-  showDropdown.value = !showDropdown.value
+const closeMenu = () => {
+  isMenuOpen.value = false
+  animateMenu()
 }
 
-// Function to handle body overflow and prevent content shift
-const handleBodyOverflow = (isOpen) => {
-  const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth
-  if (isOpen) {
-    document.body.style.overflow = 'hidden'
-    document.body.style.paddingRight = `${scrollbarWidth}px`
-    document.documentElement.style.paddingRight = `${scrollbarWidth}px`
-    document.body.classList.add('offcanvas-open')
+const animateMenu = () => {
+  const tl = gsap.timeline()
+  if (isMenuOpen.value) {
+    tl.to('.offcanvas-menu', { x: '0%', duration: 0.5, ease: 'power2.out' })
+    tl.to('.nav-link', { opacity: 1, y: 0, stagger: 0.1, duration: 0.3 }, '-=0.3')
   } else {
-    document.body.style.overflow = ''
-    document.body.style.paddingRight = ''
-    document.documentElement.style.paddingRight = ''
-    document.body.classList.remove('offcanvas-open')
+    tl.to('.nav-link', { opacity: 0, y: 20, stagger: 0.05, duration: 0.2 })
+    tl.to('.offcanvas-menu', { x: '100%', duration: 0.5, ease: 'power2.in' }, '-=0.1')
   }
 }
 
-// Watch for changes in showOffcanvas
-watch(showOffcanvas, (newVal) => {
-  handleBodyOverflow(newVal)
-})
-
-// Clean up function
-const cleanup = () => {
-  handleBodyOverflow(false)
-}
-
-// Set up and clean up
 onMounted(() => {
-  window.addEventListener('resize', cleanup)
-})
-
-onUnmounted(() => {
-  window.removeEventListener('resize', cleanup)
-  cleanup()
+  gsap.set('.offcanvas-menu', { x: '100%' })
+  gsap.set('.nav-link', { opacity: 0, y: 20 })
 })
 </script>
 
 <style scoped>
 .navbar {
-  background-color: transparent !important;
-  padding: 0.5rem 1rem;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1030;
-  border: none;
-  box-shadow: none;
-}
-
-.sticky-top {
-  position: sticky;
-  top: 0;
-  z-index: 1020;
-}
-
-.transparent-nav {
-  background-color: transparent !important;
-}
-
-.navbar-toggler {
-  border: none;
-  background-color: transparent;
-  padding: 0;
-  width: 40px;
-  height: 40px;
-  position: relative;
-  outline: none !important;
-  box-shadow: none !important;
-}
-
-.navbar-toggler:focus,
-.navbar-toggler:active {
-  outline: none !important;
-  box-shadow: none !important;
-}
-
-.navbar-toggler-icon {
-  background-image: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-}
-
-.navbar-toggler-icon::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border: 2px solid #000;
-  border-radius: 50%;
-}
-
-.navbar-toggler-icon i {
-  font-size: 1.5rem;
-  color: #000; /* Black icon */
-}
-
-.navbar-nav .nav-link {
-  color: #fff;
-  font-size: 2rem;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-
-.navbar-nav .nav-item {
-  margin-bottom: 1rem;
-}
-
-.offcanvas {
-  background-color: var(--bs-primary) !important;
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  height: 100vh;
-  width: 100vw;
-  transform: translateX(100%);
-  transition: transform 0.3s ease-in-out;
-  z-index: 1040;
-  overflow-y: auto;
-}
-
-.offcanvas.show {
-  transform: translateX(0);
-}
-
-.offcanvas-header {
-  display: flex;
-  justify-content: flex-end;
   padding: 1rem;
 }
 
-.offcanvas-body {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 2rem;
+.hamburger {
+  width: 30px;
+  height: 20px;
+  position: relative;
+  cursor: pointer;
 }
 
-.dropdown-menu {
-  background-color: var(--bs-primary);
-  border: none;
-  box-shadow: none;
-  position: static;
-  float: none;
-  transform: none;
+.hamburger span {
+  display: block;
+  position: absolute;
+  height: 2px;
   width: 100%;
-  text-align: center;
+  background: var(--bs-primary);
+  border-radius: 9px;
+  opacity: 1;
+  left: 0;
+  transform: rotate(0deg);
+  transition: .25s ease-in-out;
 }
 
-.dropdown-item {
-  color: #fff;
-  font-size: 2rem;
-  font-weight: bold;
-  text-transform: uppercase;
+.hamburger span:nth-child(1) { top: 0px; }
+.hamburger span:nth-child(2) { top: 9px; }
+.hamburger span:nth-child(3) { top: 18px; }
+
+.hamburger.is-active span:nth-child(1) {
+  top: 9px;
+  transform: rotate(135deg);
 }
 
-.dropdown-toggle::after {
-  display: none;
+.hamburger.is-active span:nth-child(2) {
+  opacity: 0;
+  left: -60px;
 }
 
-.bi-chevron-down, .bi-chevron-up {
+.hamburger.is-active span:nth-child(3) {
+  top: 9px;
+  transform: rotate(-135deg);
+}
+
+.offcanvas-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: 400px;
+  background-color: var(--bs-primary);
+  z-index: 1050;
+  overflow-y: auto;
+}
+
+.offcanvas-menu-inner {
+  padding: 5rem 2rem;
+}
+
+.nav-link {
+  color: var(--bs-white);
   font-size: 1.5rem;
-  color: #fff;
+  padding: 1rem 0;
+  transition: color 0.3s ease;
 }
 
-body.offcanvas-open {
-  overflow: hidden;
+.nav-link:hover {
+  color: rgba(255, 255, 255, 0.8);
 }
 
-/* Ensure the navbar stays in place when scrollbar disappears */
-body.offcanvas-open .navbar {
-  padding-right: inherit;
+@media (max-width: 991.98px) {
+  .offcanvas-menu {
+    width: 100%;
+    max-width: none;
+  }
 }
 </style>
