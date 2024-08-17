@@ -56,7 +56,7 @@
   left: 50%;
   transform: translateX(-50%);
   color: var(--bs-light);
-  font-size: 2.6rem; /* 20% larger than the top title */
+  font-size: 2.8rem; /* 20% larger than the top title */
   max-width: 90%;
 }
 
