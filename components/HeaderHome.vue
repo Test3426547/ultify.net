@@ -11,6 +11,9 @@
           <h2 class="header__title-bottom text-center fw-bold">
             Start now and maximise your<br>digital reach.
           </h2>
+          <p class="header__subtitle text-center">
+            Your Solutions Start With Ultify.
+          </p>
         </div>
       </div>
     </div>
@@ -56,8 +59,18 @@
   left: 50%;
   transform: translateX(-50%);
   color: var(--bs-light);
-  font-size: 2.8rem; /* 20% larger than the top title */
+  font-size: 2.8rem;
   max-width: 90%;
+}
+
+.header__subtitle {
+  position: absolute;
+  top: calc(35% + 60px + 200px);
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--bs-light);
+  font-size: 1.5rem;
+  width: 290px;
 }
 
 @media (max-width: 768px) {
@@ -66,7 +79,12 @@
   }
   
   .header__title-bottom {
-    font-size: 2.16rem; /* Maintaining the 20% size difference */
+    font-size: 2.16rem;
+  }
+
+  .header__subtitle {
+    font-size: 1.2rem;
+    width: 80%;
   }
 }
 </style>
