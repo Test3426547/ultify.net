@@ -74,14 +74,16 @@ const toggleDropdown = (event) => {
 
 // Function to handle body overflow and prevent content shift
 const handleBodyOverflow = (isOpen) => {
+  const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth
   if (isOpen) {
-    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth
     document.body.style.overflow = 'hidden'
     document.body.style.paddingRight = `${scrollbarWidth}px`
+    document.documentElement.style.paddingRight = `${scrollbarWidth}px`
     document.body.classList.add('offcanvas-open')
   } else {
     document.body.style.overflow = ''
     document.body.style.paddingRight = ''
+    document.documentElement.style.paddingRight = ''
     document.body.classList.remove('offcanvas-open')
   }
 }
@@ -113,7 +115,8 @@ onUnmounted(() => {
   padding: 0.5rem 1rem;
   position: fixed;
   top: 0;
-  width: 100%;
+  left: 0;
+  right: 0;
   z-index: 1030;
   border: none;
   box-shadow: none;
@@ -187,11 +190,13 @@ onUnmounted(() => {
   position: fixed;
   top: 0;
   right: 0;
-  height: 100%;
+  bottom: 0;
+  height: 100vh;
   width: 100vw;
   transform: translateX(100%);
   transition: transform 0.3s ease-in-out;
   z-index: 1040;
+  overflow-y: auto;
 }
 
 .offcanvas.show {
@@ -242,5 +247,10 @@ onUnmounted(() => {
 
 body.offcanvas-open {
   overflow: hidden;
+}
+
+/* Ensure the navbar stays in place when scrollbar disappears */
+body.offcanvas-open .navbar {
+  padding-right: inherit;
 }
 </style>
