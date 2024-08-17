@@ -17,6 +17,9 @@
           <a href="/consultation" class="header__cta-button btn btn-outline-light rounded-pill">
             Get Started
           </a>
+          <svg class="header__scroll-arrow" width="40" height="70" viewBox="0 0 40 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 70L40 50L35 45L25 55V0H15V55L5 45L0 50L20 70Z" fill="white"/>
+          </svg>
         </div>
       </div>
     </div>
@@ -93,6 +96,26 @@
   color: var(--bs-primary);
 }
 
+.header__scroll-arrow {
+  position: absolute;
+  top: calc(35% + 60px + 300px + 50px + 1.1rem + 50px + 30px);
+  left: 50%;
+  transform: translateX(-50%);
+  animation: bounce 3s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  40% {
+    transform: translateX(-50%) translateY(-20px);
+  }
+  60% {
+    transform: translateX(-50%) translateY(-10px);
+  }
+}
+
 @media (max-width: 768px) {
   .header__title-top {
     font-size: 1.8rem;
@@ -110,6 +133,11 @@
   .header__cta-button {
     font-size: 0.9rem;
     padding: 8px 24px;
+  }
+
+  .header__scroll-arrow {
+    width: 30px;
+    height: 52.5px;
   }
 }
 </style>
