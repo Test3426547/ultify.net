@@ -4,63 +4,67 @@
       <NuxtLink to="/" class="navbar-brand">
         <img src="/ultify.svg" alt="Ultify Logo" height="75" width="auto">
       </NuxtLink>
-      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-        <div class="hamburger">
-          <span></span>
-          <span></span>
-          <span></span>
+      <button class="navbar-toggler" type="button" @click="toggleMenu" aria-label="Toggle navigation">
+        <div class="hamburger-circle">
+          <div class="hamburger">
+            <span></span>
+            <span></span>
+          </div>
         </div>
       </button>
-      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-        <div class="offcanvas-header">
-          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-            <li class="nav-item">
-              <NuxtLink to="/" class="nav-link">Home</NuxtLink>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Services
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
-                <li><NuxtLink to="/website" class="dropdown-item">Website</NuxtLink></li>
-                <li><NuxtLink to="/social-media" class="dropdown-item">Social Media</NuxtLink></li>
-                <li><NuxtLink to="/seo" class="dropdown-item">SEO</NuxtLink></li>
-                <li><NuxtLink to="/paid-media" class="dropdown-item">Paid Media</NuxtLink></li>
-                <li><NuxtLink to="/content-creation" class="dropdown-item">Content Creation</NuxtLink></li>
-                <li><NuxtLink to="/print-advertising" class="dropdown-item">Print Advertising</NuxtLink></li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <NuxtLink to="/about-us" class="nav-link">About Us</NuxtLink>
-            </li>
-            <li class="nav-item">
-              <NuxtLink to="/consultation" class="nav-link">Consultation</NuxtLink>
-            </li>
-            <li class="nav-item">
-              <NuxtLink to="/contact-us" class="nav-link">Contact Us</NuxtLink>
-            </li>
-          </ul>
-        </div>
-      </div>
     </div>
   </nav>
+
+  <div class="offcanvas" :class="{ 'show': isMenuOpen }">
+    <div class="offcanvas-header">
+      <button type="button" class="close-btn" @click="toggleMenu" aria-label="Close">
+        <span>&times;</span>
+      </button>
+    </div>
+    <div class="offcanvas-body">
+      <ul class="nav-list">
+        <li><NuxtLink to="/" @click="toggleMenu">Home</NuxtLink></li>
+        <li class="services-dropdown">
+          <a href="#" @click.prevent="toggleServices">Services <span class="arrow" :class="{ 'up': showServices }">&#9662;</span></a>
+          <ul v-if="showServices" class="services-submenu">
+            <li><NuxtLink to="/website" @click="toggleMenu">Website</NuxtLink></li>
+            <li><NuxtLink to="/social-media" @click="toggleMenu">Social Media</NuxtLink></li>
+            <li><NuxtLink to="/seo" @click="toggleMenu">SEO</NuxtLink></li>
+            <li><NuxtLink to="/paid-media" @click="toggleMenu">Paid Media</NuxtLink></li>
+            <li><NuxtLink to="/content-creation" @click="toggleMenu">Content Creation</NuxtLink></li>
+            <li><NuxtLink to="/print-advertising" @click="toggleMenu">Print Advertising</NuxtLink></li>
+          </ul>
+        </li>
+        <li><NuxtLink to="/about-us" @click="toggleMenu">About Us</NuxtLink></li>
+        <li><NuxtLink to="/consultation" @click="toggleMenu">Consultation</NuxtLink></li>
+        <li><NuxtLink to="/contact-us" @click="toggleMenu">Contact Us</NuxtLink></li>
+      </ul>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
-import { onMounted } from 'vue'
-import { gsap } from 'gsap'
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 
-onMounted(() => {
-  const offcanvas = document.getElementById('offcanvasNavbar')
-  offcanvas?.addEventListener('show.bs.offcanvas', () => {
-    gsap.fromTo('.nav-link', 
-      { opacity: 0, y: 20 },
-      { opacity: 1, y: 0, stagger: 0.1, duration: 0.3, delay: 0.2 }
-    )
-  })
+const isMenuOpen = ref(false)
+const showServices = ref(false)
+const router = useRouter()
+
+const toggleMenu = () => {
+  isMenuOpen.value = !isMenuOpen.value
+  if (!isMenuOpen.value) {
+    showServices.value = false
+  }
+}
+
+const toggleServices = () => {
+  showServices.value = !showServices.value
+}
+
+router.afterEach(() => {
+  isMenuOpen.value = false
+  showServices.value = false
 })
 </script>
 
@@ -78,11 +82,22 @@ onMounted(() => {
 .navbar-toggler {
   border: none;
   padding: 0;
+  background: transparent;
+}
+
+.hamburger-circle {
+  width: 40px;
+  height: 40px;
+  border: 2px solid #000;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .hamburger {
-  width: 30px;
-  height: 20px;
+  width: 20px;
+  height: 14px;
   position: relative;
   cursor: pointer;
 }
@@ -92,56 +107,99 @@ onMounted(() => {
   position: absolute;
   height: 2px;
   width: 100%;
-  background: var(--bs-primary);
-  border-radius: 9px;
-  opacity: 1;
+  background: #000;
   left: 0;
-  transform: rotate(0deg);
-  transition: .25s ease-in-out;
 }
 
-.hamburger span:nth-child(1) { top: 0px; }
-.hamburger span:nth-child(2) { top: 9px; }
-.hamburger span:nth-child(3) { top: 18px; }
+.hamburger span:nth-child(1) { top: 0; }
+.hamburger span:nth-child(2) { bottom: 0; }
 
 .offcanvas {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: 400px;
   background-color: var(--bs-primary);
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 1050;
 }
 
-.offcanvas-header .btn-close {
-  color: var(--bs-white);
+.offcanvas.show {
+  transform: translateX(0);
 }
 
-.nav-link {
-  color: var(--bs-white);
-  font-size: 1.5rem;
-  padding: 1rem 0;
+.offcanvas-header {
+  padding: 1rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.close-btn {
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+.offcanvas-body {
+  padding: 2rem;
+}
+
+.nav-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-list li {
+  margin-bottom: 1rem;
+}
+
+.nav-list a {
+  color: #fff;
+  font-size: 2rem;
+  text-decoration: none;
   transition: color 0.3s ease;
 }
 
-.nav-link:hover, .nav-link:focus {
+.nav-list a:hover {
   color: rgba(255, 255, 255, 0.8);
 }
 
-.dropdown-menu {
-  background-color: var(--bs-primary);
-  border: none;
+.services-dropdown {
+  position: relative;
 }
 
-.dropdown-item {
-  color: var(--bs-white);
-  font-size: 1.2rem;
-  padding: 0.5rem 1rem;
+.arrow {
+  display: inline-block;
+  transition: transform 0.3s ease;
 }
 
-.dropdown-item:hover, .dropdown-item:focus {
-  background-color: rgba(255, 255, 255, 0.1);
-  color: var(--bs-white);
+.arrow.up {
+  transform: rotate(180deg);
+}
+
+.services-submenu {
+  list-style-type: none;
+  padding-left: 1rem;
+  margin-top: 0.5rem;
+}
+
+.services-submenu li {
+  margin-bottom: 0.5rem;
+}
+
+.services-submenu a {
+  font-size: 1.5rem;
 }
 
 @media (max-width: 991.98px) {
   .offcanvas {
-    width: 100%;
+    max-width: none;
   }
 }
 </style>
