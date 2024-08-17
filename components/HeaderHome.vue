@@ -61,7 +61,7 @@
   top: calc(35% + 60px);
   left: 50%;
   transform: translateX(-50%);
-  color: var(--bs-light);
+  color: var(--bs-white);
   font-size: 3.4rem;
   max-width: 90%;
 }
@@ -71,7 +71,7 @@
   top: calc(35% + 60px + 300px);
   left: 50%;
   transform: translateX(-50%);
-  color: var(--bs-light);
+  color: var(--bs-white);
   font-size: 1.1rem;
   width: 300px;
 }
@@ -83,13 +83,13 @@
   transform: translateX(-50%);
   padding: 10px 30px;
   font-size: 1rem;
-  border-color: var(--bs-light);
-  color: var(--bs-light);
+  border-color: var(--bs-white);
+  color: var(--bs-white);
   transition: all 0.3s ease;
 }
 
 .header__cta-button:hover, .header__cta-button:focus {
-  background-color: var(--bs-light);
+  background-color: var(--bs-white);
   color: var(--bs-primary);
 }
 
