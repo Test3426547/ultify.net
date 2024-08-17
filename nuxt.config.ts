@@ -1,6 +1,6 @@
 export default defineNuxtConfig({
   // Single Page Application mode
-  ssr: false,
+  ssr: true,
 
   // Global CSS files
   css: [
