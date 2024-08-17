@@ -39,7 +39,7 @@
 
 .header__title {
   position: absolute;
-  bottom: calc(65% + 100px);
+  bottom: calc(65% + 60px);
   left: 50%;
   transform: translateX(-50%);
   color: var(--bs-primary);
