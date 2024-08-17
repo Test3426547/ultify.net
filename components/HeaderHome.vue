@@ -67,7 +67,7 @@ onMounted(() => {
   top: 0;
   left: 0;
   right: 0;
-  height: 30%;
+  height: 35%;
   background-color: var(--bs-light);
 }
 
@@ -76,7 +76,7 @@ onMounted(() => {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 70%;
+  height: 65%;
   background-color: var(--bs-primary);
 }
 
