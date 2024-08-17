@@ -1,8 +1,8 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+  <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container-fluid">
       <NuxtLink to="/" class="navbar-brand">
-        <img src="/ultify.svg" alt="Ultify Logo" height="30">
+        <img src="/ultify.svg" alt="Ultify Logo" height="75" width="auto">
       </NuxtLink>
       <button class="navbar-toggler" type="button" @click="toggleMenu" aria-label="Toggle navigation">
         <div class="hamburger" :class="{ 'is-active': isMenuOpen }">
@@ -68,11 +68,17 @@ onMounted(() => {
 <style scoped>
 .navbar {
   padding: 0.5rem 1rem;
+  background-color: transparent !important;
 }
 
 .navbar-brand img {
   max-height: 75px;
   width: auto;
+}
+
+.navbar-toggler {
+  border: none;
+  padding: 0;
 }
 
 .hamburger {
