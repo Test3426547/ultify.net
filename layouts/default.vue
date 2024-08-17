@@ -1,13 +1,6 @@
 <script setup lang="ts">
-import { ref } from 'vue';
 import Navbar from '~/components/Navbar.vue';
 import Footer from '~/components/Footer.vue';
-
-const showChatbot = ref(false);
-
-function toggleChatbot() {
-  showChatbot.value = !showChatbot.value;
-}
 </script>
 
 <template>
@@ -24,14 +17,6 @@ function toggleChatbot() {
             <button @click="$pwa.updateServiceWorker()">Reload</button>
             <button @click="$pwa.cancelPrompt()">Close</button>
           </div>
-        </div>
-      </ClientOnly>
-      <ClientOnly>
-        <div class="chatbot-icon" @click="toggleChatbot">
-          <img src="/chatbot-icon.png" alt="Chatbot Icon" />
-        </div>
-        <div v-if="showChatbot" class="chatbot-window">
-          <Chatbot @close="toggleChatbot" />
         </div>
       </ClientOnly>
     </main>
@@ -62,39 +47,6 @@ html, body {
 
 .pwa-toast button {
   border: 1px solid var(--bs-toast-border);
-}
-
-/* Chatbot Styles */
-.chatbot-icon {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 50px;
-  height: 50px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background-color: var(--bs-chatbot-bg);
-}
-
-.chatbot-icon img {
-  max-width: 100%;
-  max-height: 100%;
-}
-
-.chatbot-window {
-  position: fixed;
-  bottom: 80px;
-  right: 20px;
-  width: 300px;
-  height: 400px;
-  border: 1px solid var(--bs-chatbot-border);
-  border-radius: 10px;
-  background-color: var(--bs-chatbot-bg);
-  box-shadow: var(--bs-chatbot-shadow);
-  z-index: 1000;
 }
 
 /* General styles */
