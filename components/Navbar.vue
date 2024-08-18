@@ -9,7 +9,6 @@
           <div class="hamburger">
             <span></span>
             <span></span>
-            <span></span>
           </div>
         </div>
       </button>
@@ -26,7 +25,23 @@
       </div>
     </button>
     <div class="offcanvas-body">
-      <!-- ... (rest of the offcanvas content remains the same) ... -->
+      <ul class="nav-list">
+        <li><NuxtLink to="/" @click="toggleMenu" ref="menuItem">Home</NuxtLink></li>
+        <li class="services-dropdown">
+          <a href="#" @click.prevent="toggleServices" ref="menuItem">Services <span class="arrow" :class="{ 'up': showServices }">&#9662;</span></a>
+          <ul v-if="showServices" class="services-submenu">
+            <li><NuxtLink to="/website" @click="toggleMenu" ref="menuItem">Website</NuxtLink></li>
+            <li><NuxtLink to="/social-media" @click="toggleMenu" ref="menuItem">Social Media</NuxtLink></li>
+            <li><NuxtLink to="/seo" @click="toggleMenu" ref="menuItem">SEO</NuxtLink></li>
+            <li><NuxtLink to="/paid-media" @click="toggleMenu" ref="menuItem">Paid Media</NuxtLink></li>
+            <li><NuxtLink to="/content-creation" @click="toggleMenu" ref="menuItem">Content Creation</NuxtLink></li>
+            <li><NuxtLink to="/print-advertising" @click="toggleMenu" ref="menuItem">Print Advertising</NuxtLink></li>
+          </ul>
+        </li>
+        <li><NuxtLink to="/about-us" @click="toggleMenu" ref="menuItem">About Us</NuxtLink></li>
+        <li><NuxtLink to="/consultation" @click="toggleMenu" ref="menuItem">Consultation</NuxtLink></li>
+        <li><NuxtLink to="/contact-us" @click="toggleMenu" ref="menuItem">Contact Us</NuxtLink></li>
+      </ul>
     </div>
   </div>
 </template>
@@ -122,7 +137,7 @@ router.afterEach(() => {
 
 .hamburger {
   width: 20px;
-  height: 14px;
+  height: 10px;
   position: relative;
   cursor: pointer;
 }
@@ -137,8 +152,7 @@ router.afterEach(() => {
 }
 
 .hamburger span:nth-child(1) { top: 0; }
-.hamburger span:nth-child(2) { top: 50%; transform: translateY(-50%); }
-.hamburger span:nth-child(3) { bottom: 0; }
+.hamburger span:nth-child(2) { bottom: 0; }
 
 .close-icon {
   width: 20px;
@@ -198,6 +212,7 @@ router.afterEach(() => {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow-y: auto;
 }
 
 .nav-list {
