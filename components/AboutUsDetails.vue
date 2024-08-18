@@ -69,8 +69,8 @@
 
 .container {
   max-width: 1300px; /* Increased to accommodate the extra spacing */
-  padding-left: 80px;
-  padding-right: 80px;
+  padding-left: 130px;
+  padding-right: 130px;
 }
 
 .content-wrapper {
