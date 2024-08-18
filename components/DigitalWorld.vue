@@ -1,5 +1,5 @@
 <template>
-  <section class="digital-world">
+  <section class="digital-world" :class="{ 'consultation-padding': isConsultationPage }">
     <div class="container">
       <h2 class="title text-primary">Impacting the digital world since 2019</h2>
       <div class="image-wrapper">
@@ -22,7 +22,14 @@
 </template>
 
 <script setup>
-// No script needed for this component
+import { computed } from 'vue';
+import { useRoute } from 'nuxt/app';
+
+const route = useRoute();
+
+const isConsultationPage = computed(() => {
+  return route.path === '/consultation';
+});
 </script>
 
 <style scoped>
@@ -30,6 +37,11 @@
   background-color: var(--bs-light);
   padding: 90px 0 85px;
   text-align: center;
+}
+
+.consultation-padding {
+  padding-top: 190px; /* 90px + 100px */
+  padding-bottom: 185px; /* 85px + 100px */
 }
 
 .container {
@@ -76,7 +88,7 @@
   display: inline-block;
   color: var(--bs-black);
   text-decoration: underline;
-  font-size: 0.8rem; /* Reduced by 20% from 1rem */
+  font-size: 0.8rem;
   margin-top: 10px;
 }
 
@@ -128,6 +140,11 @@
     padding: 80px 0;
   }
   
+  .consultation-padding {
+    padding-top: 180px; /* 80px + 100px */
+    padding-bottom: 180px; /* 80px + 100px */
+  }
+  
   .title {
     font-size: 2.5rem;
     margin-bottom: 40px;
@@ -147,7 +164,7 @@
   }
   
   .get-directions {
-    font-size: 0.72rem; /* Reduced by 20% from 0.9rem */
+    font-size: 0.72rem;
   }
   
   .button-wrapper {
