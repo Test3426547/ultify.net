@@ -1,5 +1,5 @@
 <template>
-  <section class="directive-section">
+  <div class="directive-wrapper">
     <div class="container">
       <div class="directive-box bg-white rounded-lg shadow-lg p-4 p-md-5">
         <div class="row align-items-center">
@@ -20,7 +20,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </div>
 </template>
 
 <script>
@@ -30,18 +30,11 @@ export default {
 </script>
 
 <style scoped>
-.directive-section {
+.directive-wrapper {
   position: relative;
   z-index: 10;
   margin-top: -50px;
   margin-bottom: -50px;
-  padding: 0;
-  background: transparent;
-}
-
-.container {
-  padding-top: 0;
-  padding-bottom: 0;
 }
 
 .directive-box {
@@ -63,7 +56,7 @@ export default {
 }
 
 @media (max-width: 767px) {
-  .directive-section {
+  .directive-wrapper {
     margin-top: -30px;
     margin-bottom: -30px;
   }
