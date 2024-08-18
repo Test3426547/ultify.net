@@ -1,9 +1,9 @@
 <template>
   <section class="consultation bg-light">
     <div class="container">
-      <div class="row justify-content-center">
+      <div class="row align-items-center">
         <!-- Form Section -->
-        <div class="col-lg-8">
+        <div class="col-lg-6">
           <div class="form-container bg-white rounded-lg shadow-lg">
             <h2 class="text-center text-primary">Book A Free Consultation Now</h2>
             <form class="p-4" id="contact-form" @submit.prevent="submitForm">
@@ -55,7 +55,7 @@ const submitForm = () => {
 }
 
 .form-container {
-  padding: 40px 100px;
+  padding: 40px 50px;
   border-radius: 30px;
 }
 
@@ -92,7 +92,7 @@ h2 {
 /* Responsive styling */
 @media (max-width: 991px) {
   .form-container {
-    padding: 40px 50px;
+    margin-bottom: 35px;
   }
 }
 
