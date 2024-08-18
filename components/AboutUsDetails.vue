@@ -55,30 +55,26 @@
   <style scoped>
 .about-us-details {
   background-color: var(--bs-light);
-  padding: 80px 0; /* Added top and bottom padding */
+  padding: 80px 0;
 }
 
 .about-section {
   padding: 2.5rem 0;
-  margin-bottom: 80px; /* Added space between sections */
+  margin-bottom: 80px;
 }
 
 .about-section:last-child {
-  margin-bottom: 0; /* Remove margin from the last section */
+  margin-bottom: 0;
 }
 
 .container {
-  max-width: 1200px;
-  padding-left: 30px; /* Added left padding */
-  padding-right: 30px; /* Added right padding */
+  max-width: 1300px; /* Increased to accommodate the extra spacing */
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 .content-wrapper {
   max-width: 80%;
-}
-
-.text-right .content-wrapper {
-  margin-left: auto;
 }
 
 .number {
@@ -119,19 +115,63 @@
   object-fit: cover;
 }
 
+/* Move left sections 50px to the left */
+.about-section:nth-child(odd) .row {
+  margin-left: -50px;
+}
+
+/* Move right sections 50px to the right */
+.about-section:nth-child(even) .row {
+  margin-right: -50px;
+}
+
 /* Adjust image positioning */
 .about-section:nth-child(odd) .image-wrapper {
-  padding-left: 30px;
+  padding-left: 80px; /* Increased from 30px to 80px */
 }
 
 .about-section:nth-child(even) .image-wrapper {
-  padding-right: 30px;
+  padding-right: 80px; /* Increased from 30px to 80px */
+}
+
+/* Adjust text positioning */
+.about-section:nth-child(odd) .content-wrapper {
+  padding-right: 50px;
+}
+
+.about-section:nth-child(even) .content-wrapper {
+  padding-left: 50px;
+  margin-left: auto;
+}
+
+@media (max-width: 1199.98px) {
+  .container {
+    max-width: 100%;
+  }
+
+  .about-section:nth-child(odd) .row,
+  .about-section:nth-child(even) .row {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .about-section:nth-child(odd) .image-wrapper,
+  .about-section:nth-child(even) .image-wrapper {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .about-section:nth-child(odd) .content-wrapper,
+  .about-section:nth-child(even) .content-wrapper {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 @media (max-width: 991.98px) {
   .about-section {
     padding: 1.5rem 0;
-    margin-bottom: 40px; /* Reduced space between sections for smaller screens */
+    margin-bottom: 40px;
   }
 
   .content-wrapper {
@@ -140,10 +180,11 @@
   }
 
   .image-wrapper {
-    padding: 0 !important; /* Remove padding for smaller screens */
+    padding: 0 !important;
   }
 
-  .text-right .content-wrapper {
+  .about-section:nth-child(odd) .content-wrapper,
+  .about-section:nth-child(even) .content-wrapper {
     margin-left: 0;
   }
 }
