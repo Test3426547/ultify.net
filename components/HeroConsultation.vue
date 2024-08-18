@@ -5,7 +5,7 @@
           <div class="col-lg-6">
             <div v-parallax="0.2" class="hero-image">
               <!-- Replace with your image -->
-              <img src="path/to/your/image.jpg" alt="Consultation Hero Image" />
+              <img src="print-media-02.png" alt="Consultation Hero Image" />
             </div>
           </div>
           <div class="col-lg-6">
