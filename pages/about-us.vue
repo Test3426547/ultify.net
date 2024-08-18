@@ -4,6 +4,7 @@
     <AboutUs />
     <AboutUsDetails />
     <Consultation />
+    <DigitalWorld />
     <FAQ />
     <CTA />
   </div>
@@ -14,6 +15,7 @@ import HeaderAboutUs from '~/components/HeaderAboutUs.vue';
 import AboutUs from '~/components/AboutUs.vue';
 import AboutUsDetails from '~/components/AboutUsDetails.vue';
 import Consultation from '~/components/Consultation.vue';
+import DigitalWorld from '@/components/DigitalWorld.vue';
 import FAQ from '~/components/FAQ.vue';
 import CTA from '~/components/CTA.vue';
 </script>

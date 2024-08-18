@@ -4,6 +4,7 @@
     <WebsiteTechnology />
     <WebsiteDetails />
     <Consultation />
+    <DigitalWorld />
     <FAQ />
     <CTA />
   </div>
@@ -14,6 +15,7 @@ import HeaderWebsite from '@/components/HeaderWebsite.vue';
 import WebsiteTechnology from '@/components/WebsiteTechnology.vue';
 import WebsiteDetails from '@/components/WebsiteDetails.vue';
 import Consultation from '@/components/Consultation.vue';
+import DigitalWorld from '@/components/DigitalWorld.vue';
 import FAQ from '@/components/FAQ.vue';
 import CTA from '@/components/CTA.vue';
 </script>
