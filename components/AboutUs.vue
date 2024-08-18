@@ -1,53 +1,45 @@
 <template>
-  <section class="about-us py-5">
+  <section class="about-us bg-bs-primary text-bs-white vh-100 d-flex align-items-center">
     <div class="container">
       <div class="row align-items-center">
         <div class="col-lg-6 mb-4 mb-lg-0">
-          <h2 class="text-bs-primary fw-bold">Our DNA</h2>
+          <h2 class="fw-bold display-4">Our DNA</h2>
           <h3 class="h4 mb-3">What ULTIFY is made of</h3>
           <p class="mb-4">
             At ULTIFY, our digital marketing agency is highly passionate about bringing success to like-minded individuals and business owners through our traditional and digital marketing efforts. With a team of experienced leaders, professionals, and enthusiasts, we are proud to have a deep understanding of the ever-evolving digital landscape.
           </p>
-          <NuxtLink to="/consultation" class="btn btn-bs-primary rounded-pill">
+          <NuxtLink to="/consultation" class="btn btn-bs-light text-bs-primary rounded-pill px-4 py-2">
             Contact Us
           </NuxtLink>
         </div>
         <div class="col-lg-6">
           <div class="dna-helix position-relative">
             <svg
-              viewBox="0 0 200 400"
+              viewBox="0 0 300 600"
               class="w-100 h-auto"
               xmlns="http://www.w3.org/2000/svg"
             >
               <!-- DNA Strands -->
               <path
-                d="M50,0 Q100,50 50,100 Q0,150 50,200 Q100,250 50,300 Q0,350 50,400"
+                d="M75,0 Q150,75 75,150 Q0,225 75,300 Q150,375 75,450 Q0,525 75,600"
                 fill="none"
-                stroke="var(--bs-primary)"
+                stroke="var(--bs-white)"
                 stroke-width="4"
               />
               <path
-                d="M150,0 Q100,50 150,100 Q200,150 150,200 Q100,250 150,300 Q200,350 150,400"
+                d="M225,0 Q150,75 225,150 Q300,225 225,300 Q150,375 225,450 Q300,525 225,600"
                 fill="none"
-                stroke="var(--bs-primary)"
+                stroke="var(--bs-white)"
                 stroke-width="4"
               />
               
               <!-- DNA Rungs -->
-              <line x1="50" y1="25" x2="150" y2="25" stroke="var(--bs-primary)" stroke-width="3" />
-              <line x1="50" y1="75" x2="150" y2="75" stroke="var(--bs-primary)" stroke-width="3" />
-              <line x1="50" y1="125" x2="150" y2="125" stroke="var(--bs-primary)" stroke-width="3" />
-              <line x1="50" y1="175" x2="150" y2="175" stroke="var(--bs-primary)" stroke-width="3" />
-              <line x1="50" y1="225" x2="150" y2="225" stroke="var(--bs-primary)" stroke-width="3" />
-              <line x1="50" y1="275" x2="150" y2="275" stroke="var(--bs-primary)" stroke-width="3" />
-              <line x1="50" y1="325" x2="150" y2="325" stroke="var(--bs-primary)" stroke-width="3" />
-              <line x1="50" y1="375" x2="150" y2="375" stroke="var(--bs-primary)" stroke-width="3" />
+              <g v-for="(value, index) in dnaValues" :key="index">
+                <line :x1="75" :y1="index * 75 + 37.5" :x2="225" :y2="index * 75 + 37.5" stroke="var(--bs-white)" stroke-width="3" />
+                <rect :x="120" :y="index * 75 + 25" width="60" height="25" fill="var(--bs-white)" rx="12.5" ry="12.5" />
+                <text :x="150" :y="index * 75 + 42.5" font-size="14" fill="var(--bs-primary)" text-anchor="middle" dominant-baseline="middle">{{ value }}</text>
+              </g>
             </svg>
-            
-            <!-- DNA Value Labels -->
-            <div v-for="(value, index) in dnaValues" :key="index" class="dna-value" :style="getValueStyle(index)">
-              {{ value }}
-            </div>
           </div>
         </div>
       </div>
@@ -57,42 +49,26 @@
 
 <script setup>
 const dnaValues = ref(['Value 1', 'Value 2', 'Value 3', 'Value 4', 'Value 5', 'Value 6', 'Value 7', 'Value 8']);
-
-const getValueStyle = (index) => {
-  const top = `${index * 12.5 + 3}%`;
-  const left = index % 2 === 0 ? '15%' : '75%';
-  return { top, left };
-};
 </script>
 
 <style scoped>
 .about-us {
-  background-color: var(--bs-light);
+  overflow: hidden;
 }
 
 .dna-helix {
-  height: 400px;
-}
-
-.dna-value {
-  position: absolute;
-  transform: translate(-50%, -50%);
-  background-color: var(--bs-white);
-  padding: 5px 10px;
-  border-radius: 15px;
-  font-size: 0.8rem;
-  font-weight: bold;
-  color: var(--bs-primary);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 100%;
 }
 
 @media (max-width: 991.98px) {
-  .dna-helix {
-    height: 300px;
+  .about-us {
+    height: auto !important;
+    min-height: 100vh;
+    padding: 4rem 0;
   }
   
-  .dna-value {
-    font-size: 0.7rem;
+  .dna-helix {
+    max-height: 60vh;
   }
 }
 </style>
