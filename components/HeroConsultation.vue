@@ -5,7 +5,7 @@
           <div class="col-lg-6">
             <div class="hero-image">
               <!-- Replace with your image -->
-              <img src="/print-media-02.jpg" alt="Consultation Hero Image" />
+              <img src="/consultation-01.png" alt="Consultation Hero Image" />
             </div>
           </div>
           <div class="col-lg-6">
