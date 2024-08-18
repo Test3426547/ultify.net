@@ -68,7 +68,7 @@
 }
 
 .container {
-  max-width: 1500px;
+  max-width: 1400px;
   padding-left: 15px;
   padding-right: 15px;
   margin-left: auto;
@@ -78,15 +78,18 @@
 .row {
   margin-left: -15px;
   margin-right: -15px;
+  display: flex;
+  align-items: center;
 }
 
 .col-lg-6 {
   padding-left: 15px;
   padding-right: 15px;
+  width: 50%;
 }
 
 .content-wrapper {
-  max-width: 80%;
+  max-width: 90%;
 }
 
 .number {
@@ -117,7 +120,7 @@
 
 .image-wrapper {
   padding: 0;
-  width: 540px; /* Set a fixed width to maintain original image size */
+  width: 540px;
 }
 
 .rounded-image {
@@ -128,13 +131,26 @@
   object-fit: cover;
 }
 
-/* Move text sections */
+/* Adjust image positioning */
+.about-section:nth-child(4n+1) .image-wrapper,
+.about-section:nth-child(4n+3) .image-wrapper {
+  margin-left: 50px;
+}
+
+.about-section:nth-child(4n+2) .image-wrapper,
+.about-section:nth-child(4n) .image-wrapper {
+  margin-right: 50px;
+  margin-left: auto;
+}
+
+/* Ensure text alignment */
 .about-section:nth-child(odd) .content-wrapper {
-  transform: translateX(-50px);
+  padding-right: 50px;
 }
 
 .about-section:nth-child(even) .content-wrapper {
-  transform: translateX(50px);
+  margin-left: auto;
+  padding-left: 50px;
 }
 
 @media (max-width: 1399.98px) {
@@ -149,17 +165,26 @@
     margin-bottom: 40px;
   }
 
+  .row {
+    flex-direction: column;
+  }
+
+  .col-lg-6 {
+    width: 100%;
+  }
+
   .content-wrapper {
     max-width: 100%;
     margin-bottom: 2rem;
-    transform: none !important; /* Reset transform for smaller screens */
+    padding-left: 0 !important;
+    padding-right: 0 !important;
   }
 
   .image-wrapper {
     width: 100%;
     max-width: 540px;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: auto !important;
+    margin-right: auto !important;
   }
 }
 
