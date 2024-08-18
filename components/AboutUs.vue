@@ -18,6 +18,10 @@
             <div class="rung rung-2">Creativity</div>
             <div class="rung rung-3">Excellence</div>
             <div class="rung rung-4">Integrity</div>
+            <div class="rung rung-5">Passion</div>
+            <div class="rung rung-6">Collaboration</div>
+            <div class="rung rung-7">Adaptability</div>
+            <div class="rung rung-8">Results-Driven</div>
           </div>
         </div>
       </div>
@@ -48,26 +52,25 @@ export default {
 .dna-helix {
   position: relative;
   width: 100%;
-  height: 300px;
+  height: 400px;
   overflow: hidden;
 }
 
 .strand {
   position: absolute;
-  width: 20px;
-  height: 100%;
+  width: 10px;
+  height: 150%;
   background-color: var(--bs-white);
-  animation: rotate 10s linear infinite;
 }
 
 .strand-1 {
-  left: 40%;
-  transform-origin: 50% 100%;
+  left: 45%;
+  transform: translateX(-50%) rotate(30deg);
 }
 
 .strand-2 {
-  right: 40%;
-  transform-origin: 50% 0%;
+  right: 45%;
+  transform: translateX(50%) rotate(-30deg);
 }
 
 .rung {
@@ -84,15 +87,14 @@ export default {
   font-weight: bold;
 }
 
-.rung-1 { top: 20%; }
-.rung-2 { top: 40%; }
-.rung-3 { top: 60%; }
-.rung-4 { top: 80%; }
-
-@keyframes rotate {
-  0% { transform: rotateX(0deg); }
-  100% { transform: rotateX(360deg); }
-}
+.rung-1 { top: 5%; }
+.rung-2 { top: 15%; }
+.rung-3 { top: 30%; }
+.rung-4 { top: 40%; }
+.rung-5 { top: 50%; }
+.rung-6 { top: 60%; }
+.rung-7 { top: 75%; }
+.rung-8 { top: 85%; }
 
 @media (max-width: 768px) {
   .container {
@@ -101,7 +103,7 @@ export default {
   }
   
   .dna-helix {
-    height: 200px;
+    height: 300px;
   }
 }
 </style>
