@@ -130,11 +130,11 @@
 
 /* Adjust positioning for increased spacing */
 .about-section:nth-child(odd) .row {
-  margin-left: -60px;
+  margin-right: -60px;
 }
 
 .about-section:nth-child(even) .row {
-  margin-right: -60px;
+  margin-left: -60px;
 }
 
 .about-section:nth-child(odd) .content-wrapper {
@@ -147,12 +147,11 @@
 }
 
 .about-section:nth-child(odd) .image-wrapper {
-  margin-left: 60px;
+  margin-left: auto;
 }
 
 .about-section:nth-child(even) .image-wrapper {
-  margin-right: 60px;
-  margin-left: auto;
+  margin-right: auto;
 }
 
 @media (max-width: 1399.98px) {
