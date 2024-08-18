@@ -1,11 +1,11 @@
 <template>
   <section class="consultation bg-light">
     <div class="container">
-      <div class="row align-items-center">
+      <div class="row justify-content-center">
         <!-- Form Section -->
-        <div class="col-lg-6">
+        <div class="col-lg-8">
           <div class="form-container bg-white rounded-lg shadow-lg">
-            <h2 class="text-center">Book A Free Consultation Now</h2>
+            <h2 class="text-center text-primary">Book A Free Consultation Now</h2>
             <form class="p-4" id="contact-form" @submit.prevent="submitForm">
               <div class="form-group">
                 <input class="form-control rounded-pill" id="businessName" v-model="form.businessName" placeholder="URL/Business Name (if applicable)" type="text" />
@@ -26,20 +26,6 @@
             <p class="disclaimer text-dark">
               You are booking a free consultation with no maximum time (TnC's apply). We will call you on the given number on our first available time-slot.
             </p>
-          </div>
-        </div>
-
-        <!-- Information Section -->
-        <div class="col-lg-6">
-          <div class="info-container bg-primary text-white rounded-lg p-5">
-            <h3>We protect your intellectual property.</h3>
-            <p>Our agency will provide NDA's to protect your intellectual property and confidential information.</p>
-
-            <h3>No maximum time</h3>
-            <p>We provide in-depth consultations with no maximum time to ensure you get the information you need.</p>
-
-            <h3>Certified Consultants</h3>
-            <p>Our consultations are managed by real business consultants who have passed our extensive certification checklist.</p>
           </div>
         </div>
       </div>
@@ -69,17 +55,13 @@ const submitForm = () => {
 }
 
 .form-container {
-  padding: 40px 50px;
-  border-radius: 30px;
-}
-
-.info-container {
+  padding: 40px 100px;
   border-radius: 30px;
 }
 
 h2 {
   margin-bottom: 30px;
-  color: var(--bs-dark);
+  color: var(--bs-primary);
 }
 
 .form-group {
@@ -107,19 +89,16 @@ h2 {
   text-align: center;
 }
 
-h3 {
-  margin-top: 20px;
-  margin-bottom: 10px;
-}
-
 /* Responsive styling */
 @media (max-width: 991px) {
-  .container .row {
-    flex-direction: column-reverse;
+  .form-container {
+    padding: 40px 50px;
   }
+}
 
-  .form-container, .info-container {
-    margin-bottom: 35px;
+@media (max-width: 767px) {
+  .form-container {
+    padding: 30px 20px;
   }
 }
 </style>
