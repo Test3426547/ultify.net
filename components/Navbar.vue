@@ -61,6 +61,7 @@ const offcanvas = ref(null)
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value
   animateHamburger()
+  animateOffcanvas()
   if (!isMenuOpen.value) {
     showServices.value = false
   }
@@ -80,6 +81,22 @@ const animateHamburger = () => {
   } else {
     gsap.to([spans[0], offcanvasSpans[0]], { rotation: 0, y: 0, duration: 0.3 })
     gsap.to([spans[1], offcanvasSpans[1]], { rotation: 0, y: 0, duration: 0.3 })
+  }
+}
+
+const animateOffcanvas = () => {
+  const offcanvasElement = offcanvas.value as HTMLElement | null
+  if (offcanvasElement) {
+    if (isMenuOpen.value) {
+      gsap.fromTo(offcanvasElement, 
+        { x: '100%' }, 
+        { x: '0%', duration: 0.5, ease: 'power2.out' }
+      )
+    } else {
+      gsap.to(offcanvasElement, 
+        { x: '100%', duration: 0.5, ease: 'power2.in' }
+      )
+    }
   }
 }
 
@@ -174,34 +191,20 @@ router.afterEach(() => {
 .offcanvas {
   position: fixed;
   top: 0;
-  left: 0;
   right: 0;
   bottom: 0;
   width: 100%;
   height: 100%;
   background-color: var(--bs-primary);
-  transform: translateX(-100%);
-  transition: transform 0.3s ease-in-out;
+  transform: translateX(100%);
   z-index: 1050;
   display: flex;
   flex-direction: column;
   padding-top: 60px;
 }
 
-.offcanvas.show {
-  transform: translateX(0);
-}
-
 .offcanvas-toggler {
   position: absolute;
-}
-
-.offcanvas-toggler .hamburger-circle {
-  border-color: #fff;
-}
-
-.offcanvas-toggler .hamburger span {
-  background: #fff;
 }
 
 .offcanvas-body {
