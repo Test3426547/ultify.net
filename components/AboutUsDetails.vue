@@ -53,102 +53,112 @@
   </script>
   
   <style scoped>
-  .about-us-details {
-    background-color: var(--bs-light);
-  }
-  
+.about-us-details {
+  background-color: var(--bs-light);
+  padding: 80px 0; /* Added top and bottom padding */
+}
+
+.about-section {
+  padding: 2.5rem 0;
+  margin-bottom: 80px; /* Added space between sections */
+}
+
+.about-section:last-child {
+  margin-bottom: 0; /* Remove margin from the last section */
+}
+
+.container {
+  max-width: 1200px;
+  padding-left: 30px; /* Added left padding */
+  padding-right: 30px; /* Added right padding */
+}
+
+.content-wrapper {
+  max-width: 80%;
+}
+
+.text-right .content-wrapper {
+  margin-left: auto;
+}
+
+.number {
+  font-size: 1.2rem;
+  color: var(--bs-gray-600);
+  margin-bottom: 1rem;
+}
+
+.pill-wrapper {
+  margin-bottom: 2rem;
+}
+
+.pill {
+  display: inline-block;
+  padding: 0.5rem 1.5rem;
+  background-color: var(--bs-primary);
+  color: white;
+  border-radius: 50px;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.description {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: var(--bs-gray-700);
+}
+
+.image-wrapper {
+  padding: 0;
+}
+
+.rounded-image {
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+}
+
+/* Adjust image positioning */
+.about-section:nth-child(odd) .image-wrapper {
+  padding-left: 30px;
+}
+
+.about-section:nth-child(even) .image-wrapper {
+  padding-right: 30px;
+}
+
+@media (max-width: 991.98px) {
   .about-section {
-    padding: 2.5rem 0; /* Reduced from 5rem to 2.5rem */
+    padding: 1.5rem 0;
+    margin-bottom: 40px; /* Reduced space between sections for smaller screens */
   }
-  
-  .about-section + .about-section {
-    margin-top: 50px; /* Reduced from 100px to 50px */
-  }
-  
-  .container {
-    max-width: 1200px;
-  }
-  
+
   .content-wrapper {
-    max-width: 80%;
-  }
-  
-  .text-right .content-wrapper {
-    margin-left: auto;
-  }
-  
-  .number {
-    font-size: 1.2rem;
-    color: var(--bs-gray-600);
-    margin-bottom: 1rem;
-  }
-  
-  .pill-wrapper {
+    max-width: 100%;
     margin-bottom: 2rem;
   }
-  
-  .pill {
-    display: inline-block;
-    padding: 0.5rem 1.5rem;
-    background-color: var(--bs-primary);
-    color: white;
-    border-radius: 50px;
-    font-size: 1.5rem;
-    font-weight: bold;
-  }
-  
-  .description {
-    font-size: 1.2rem;
-    line-height: 1.6;
-    color: var(--bs-gray-700);
-  }
-  
+
   .image-wrapper {
-    padding: 0 2rem;
+    padding: 0 !important; /* Remove padding for smaller screens */
   }
-  
+
+  .text-right .content-wrapper {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .pill {
+    font-size: 1.2rem;
+  }
+
+  .description {
+    font-size: 1rem;
+  }
+
   .rounded-image {
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
+    height: 300px;
   }
-  
-  @media (max-width: 991.98px) {
-    .about-section {
-      padding: 1.5rem 0; /* Reduced from 3rem to 1.5rem */
-    }
-  
-    .about-section + .about-section {
-      margin-top: 25px; /* Reduced from 50px to 25px */
-    }
-  
-    .content-wrapper {
-      max-width: 100%;
-      margin-bottom: 2rem;
-    }
-  
-    .image-wrapper {
-      padding: 0;
-    }
-  
-    .text-right .content-wrapper {
-      margin-left: 0;
-    }
-  }
-  
-  @media (max-width: 767.98px) {
-    .pill {
-      font-size: 1.2rem;
-    }
-  
-    .description {
-      font-size: 1rem;
-    }
-  
-    .rounded-image {
-      height: 300px;
-    }
-  }
-  </style>
+}
+</style>
