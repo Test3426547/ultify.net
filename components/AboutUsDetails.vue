@@ -78,11 +78,14 @@
 .row {
   margin-left: -15px;
   margin-right: -15px;
+  display: flex;
+  align-items: center;
 }
 
 .col-lg-6 {
   padding-left: 15px;
   padding-right: 15px;
+  width: 50%;
 }
 
 .content-wrapper {
@@ -117,8 +120,9 @@
 
 .image-wrapper {
   padding: 0;
-  max-width: 540px; /* Set a max-width to maintain original image size */
-  margin: 0 auto; /* Center the image wrapper */
+  max-width: 540px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .rounded-image {
@@ -139,11 +143,11 @@
 }
 
 .about-section:nth-child(odd) .content-wrapper {
-  padding-right: 50px;
+  padding-right: 60px;
 }
 
 .about-section:nth-child(even) .content-wrapper {
-  padding-left: 50px;
+  padding-left: 60px;
   margin-left: auto;
 }
 
@@ -157,6 +161,14 @@
   .about-section {
     padding: 1.5rem 0;
     margin-bottom: 40px;
+  }
+
+  .row {
+    flex-direction: column;
+  }
+
+  .col-lg-6 {
+    width: 100%;
   }
 
   .content-wrapper {
