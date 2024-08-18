@@ -1,6 +1,6 @@
 <template>
   <section class="directive-section">
-    <div class="container position-relative">
+    <div class="container">
       <div class="directive-box bg-white rounded-lg shadow-lg p-4 p-md-5">
         <div class="row align-items-center">
           <div class="col-md-4 mb-4 mb-md-0">
@@ -31,9 +31,17 @@ export default {
 
 <style scoped>
 .directive-section {
-  margin: -50px 0; /* Adjust this value to control how much it overlaps */
   position: relative;
   z-index: 10;
+  margin-top: -50px;
+  margin-bottom: -50px;
+  padding: 0;
+  background: transparent;
+}
+
+.container {
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 .directive-box {
@@ -56,7 +64,8 @@ export default {
 
 @media (max-width: 767px) {
   .directive-section {
-    margin: -30px 0; /* Less overlap on mobile */
+    margin-top: -30px;
+    margin-bottom: -30px;
   }
   
   .directive-title {
