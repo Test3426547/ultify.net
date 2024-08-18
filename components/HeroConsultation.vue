@@ -29,15 +29,13 @@
     </section>
   </template>
   
-  <script>
-  import { VueParallaxJs } from 'vue-parallax-js'
+  <script setup>
+  import VueParallaxJs from 'vue-parallax-js'
+  import { onMounted } from 'vue'
   
-  export default {
-    name: 'HeroConsultation',
-    directives: {
-      parallax: VueParallaxJs
-    }
-  }
+  onMounted(() => {
+    VueParallaxJs.install(window)
+  })
   </script>
   
   <style scoped>
