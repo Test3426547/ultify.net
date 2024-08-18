@@ -10,9 +10,11 @@
           </div>
         </div>
         <div class="col-md-8">
-          <p class="directive-message text-white mb-0">
-            "Throughout our years in the industry, we have solidified the ins and outs of all digital marketing elements. At ULTIFY, our agency truly understands consumer demands and we always actively remodel our systems to meet such criteria. As a result, we offer our free consultations for the best interest of connecting with like-minded individuals with whom we have built strong connections over the course of their digital journey. We can't wait to hear from you and excel your innovative ideas through digital marketing with our agency."
-          </p>
+          <div class="directive-message-wrapper">
+            <p class="directive-message text-white mb-0">
+              "Throughout our years in the industry, we have solidified the ins and outs of all digital marketing elements. At ULTIFY, our agency truly understands consumer demands and we always actively remodel our systems to meet such criteria. As a result, we offer our free consultations for the best interest of connecting with like-minded individuals with whom we have built strong connections over the course of their digital journey. We can't wait to hear from you and excel your innovative ideas through digital marketing with our agency."
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -41,9 +43,19 @@ export default {
   color: #000000;
 }
 
+.directive-message-wrapper {
+  padding-left: 150px;
+}
+
 .directive-message {
   font-size: 1.1rem;
   line-height: 1.6;
+}
+
+@media (max-width: 991px) {
+  .directive-message-wrapper {
+    padding-left: 0;
+  }
 }
 
 @media (max-width: 767px) {
