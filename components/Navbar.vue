@@ -16,14 +16,6 @@
   </nav>
 
   <div class="offcanvas" :class="{ 'show': isMenuOpen }" ref="offcanvas">
-    <button class="close-btn" @click="toggleMenu" aria-label="Close menu">
-      <div class="hamburger-circle">
-        <div class="hamburger" ref="closeHamburger">
-          <span></span>
-          <span></span>
-        </div>
-      </div>
-    </button>
     <div class="offcanvas-body">
       <ul class="nav-list">
         <li><NuxtLink to="/" @click="toggleMenu" ref="menuItem">Home</NuxtLink></li>
@@ -55,7 +47,6 @@ const isMenuOpen = ref(false)
 const showServices = ref(false)
 const router = useRouter()
 const hamburger = ref(null)
-const closeHamburger = ref(null)
 const offcanvas = ref(null)
 
 const toggleMenu = () => {
@@ -72,18 +63,13 @@ const toggleServices = () => {
 
 const animateHamburger = () => {
   const spans = (hamburger.value as HTMLElement | null)?.querySelectorAll('span') || []
-  const closeSpans = (closeHamburger.value as HTMLElement | null)?.querySelectorAll('span') || []
   
   if (isMenuOpen.value) {
     gsap.to(spans[0], { rotation: 45, y: 4, duration: 0.3 })
     gsap.to(spans[1], { rotation: -45, y: -4, duration: 0.3 })
-    gsap.to(closeSpans[0], { rotation: 45, y: 4, duration: 0.3 })
-    gsap.to(closeSpans[1], { rotation: -45, y: -4, duration: 0.3 })
   } else {
     gsap.to(spans[0], { rotation: 0, y: 0, duration: 0.3 })
     gsap.to(spans[1], { rotation: 0, y: 0, duration: 0.3 })
-    gsap.to(closeSpans[0], { rotation: 0, y: 0, duration: 0.3 })
-    gsap.to(closeSpans[1], { rotation: 0, y: 0, duration: 0.3 })
   }
 }
 
@@ -135,6 +121,10 @@ router.afterEach(() => {
   border: none;
   padding: 0;
   background: transparent;
+  position: fixed;
+  top: 0.5rem;
+  right: 1rem;
+  z-index: 1060;
 }
 
 .navbar-toggler:focus {
@@ -185,20 +175,11 @@ router.afterEach(() => {
   z-index: 1050;
   display: flex;
   flex-direction: column;
+  padding-top: 60px;
 }
 
 .offcanvas.show {
   transform: translateX(0);
-}
-
-.close-btn {
-  position: absolute;
-  top: 0.5rem;
-  right: 1rem;
-  background: transparent;
-  border: none;
-  padding: 0;
-  z-index: 1060;
 }
 
 .offcanvas-body {
@@ -207,7 +188,6 @@ router.afterEach(() => {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 60px;
 }
 
 .nav-list {
