@@ -9,35 +9,35 @@
             At ULTIFY, our digital marketing agency is highly passionate about bringing success to like-minded individuals and business owners through our traditional and digital marketing efforts. With a team of experienced leaders, professionals, and enthusiasts, we are proud to have a deep understanding of the ever-evolving digital landscape.
           </p>
           <NuxtLink to="/consultation" class="btn btn-bs-light text-bs-primary rounded-pill px-4 py-2">
-            Contact Us
+            CONTACT US
           </NuxtLink>
         </div>
         <div class="col-lg-6">
           <div class="dna-helix position-relative">
             <svg
-              viewBox="0 0 300 600"
+              viewBox="0 0 300 800"
               class="w-100 h-auto"
               xmlns="http://www.w3.org/2000/svg"
             >
               <!-- DNA Strands -->
               <path
-                d="M75,0 Q150,75 75,150 Q0,225 75,300 Q150,375 75,450 Q0,525 75,600"
+                d="M75,0 Q150,100 75,200 Q0,300 75,400 Q150,500 75,600 Q0,700 75,800"
                 fill="none"
                 stroke="var(--bs-white)"
                 stroke-width="4"
               />
               <path
-                d="M225,0 Q150,75 225,150 Q300,225 225,300 Q150,375 225,450 Q300,525 225,600"
+                d="M225,0 Q150,100 225,200 Q300,300 225,400 Q150,500 225,600 Q300,700 225,800"
                 fill="none"
                 stroke="var(--bs-white)"
                 stroke-width="4"
               />
               
-              <!-- DNA Rungs -->
+              <!-- DNA Rungs and Values -->
               <g v-for="(value, index) in dnaValues" :key="index">
-                <line :x1="75" :y1="index * 75 + 37.5" :x2="225" :y2="index * 75 + 37.5" stroke="var(--bs-white)" stroke-width="3" />
-                <rect :x="120" :y="index * 75 + 25" width="60" height="25" fill="var(--bs-white)" rx="12.5" ry="12.5" />
-                <text :x="150" :y="index * 75 + 42.5" font-size="14" fill="var(--bs-primary)" text-anchor="middle" dominant-baseline="middle">{{ value }}</text>
+                <line :x1="75" :y1="index * 100 + 50" :x2="225" :y2="index * 100 + 50" stroke="var(--bs-white)" stroke-width="3" />
+                <rect :x="120" :y="index * 100 + 35" width="60" height="30" fill="var(--bs-white)" rx="15" ry="15" />
+                <text :x="150" :y="index * 100 + 55" font-size="14" fill="var(--bs-primary)" text-anchor="middle" dominant-baseline="middle" font-weight="bold">{{ value }}</text>
               </g>
             </svg>
           </div>
@@ -68,7 +68,7 @@ const dnaValues = ref(['Value 1', 'Value 2', 'Value 3', 'Value 4', 'Value 5', 'V
   }
   
   .dna-helix {
-    max-height: 60vh;
+    max-height: 80vh;
   }
 }
 </style>
