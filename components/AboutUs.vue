@@ -17,10 +17,10 @@
         <!-- Right side: DNA helix illustration -->
         <div class="col-lg-6">
           <svg viewBox="0 0 300 600" class="dna-helix">
-            <path d="M50,0 Q150,75 250,150 T50,300 T250,450 T50,600" fill="none" stroke="white" stroke-width="2" />
-            <path d="M250,0 Q150,75 50,150 T250,300 T50,450 T250,600" fill="none" stroke="white" stroke-width="2" />
+            <path d="M75,0 C150,50 150,100 75,150 C0,200 0,250 75,300 C150,350 150,400 75,450 C0,500 0,550 75,600" fill="none" stroke="white" stroke-width="2" />
+            <path d="M225,0 C150,50 150,100 225,150 C300,200 300,250 225,300 C150,350 150,400 225,450 C300,500 300,550 225,600" fill="none" stroke="white" stroke-width="2" />
             <g v-for="(value, index) in companyValues" :key="index">
-              <line :x1="50" :y1="75 * index + 37.5" :x2="250" :y2="75 * index + 37.5" stroke="white" stroke-width="1" />
+              <line :x1="75" :y1="75 * index + 37.5" :x2="225" :y2="75 * index + 37.5" stroke="white" stroke-width="1" />
               <text :x="150" :y="75 * index + 42.5" text-anchor="middle" fill="white" font-size="12">{{ value }}</text>
             </g>
           </svg>
