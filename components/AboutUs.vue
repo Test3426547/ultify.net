@@ -2,7 +2,7 @@
   <div class="about-us bg-primary text-white py-5">
     <div class="container">
       <div class="row align-items-center">
-        <!-- Left side: Text content -->
+        <!-- Left side: Text content (unchanged) -->
         <div class="col-lg-6 mb-4 mb-lg-0">
           <small>Our DNA</small>
           <h2 class="display-4 mb-4">What ULTIFY is made of</h2>
@@ -16,13 +16,14 @@
         
         <!-- Right side: DNA helix illustration -->
         <div class="col-lg-6">
-          <div class="dna-helix">
-            <div v-for="(value, index) in companyValues" :key="index" class="dna-rung">
-              <div class="dna-value">{{ value }}</div>
-              <div class="dna-strand left"></div>
-              <div class="dna-strand right"></div>
-            </div>
-          </div>
+          <svg viewBox="0 0 300 600" class="dna-helix">
+            <path d="M50,0 Q150,75 250,150 T50,300 T250,450 T50,600" fill="none" stroke="white" stroke-width="2" />
+            <path d="M250,0 Q150,75 50,150 T250,300 T50,450 T250,600" fill="none" stroke="white" stroke-width="2" />
+            <g v-for="(value, index) in companyValues" :key="index">
+              <line :x1="50" :y1="75 * index + 37.5" :x2="250" :y2="75 * index + 37.5" stroke="white" stroke-width="1" />
+              <text :x="150" :y="75 * index + 42.5" text-anchor="middle" fill="white" font-size="12">{{ value }}</text>
+            </g>
+          </svg>
         </div>
       </div>
     </div>
@@ -45,65 +46,14 @@ export default {
 
 <style scoped>
 .dna-helix {
-  position: relative;
-  height: 600px;
-  overflow: hidden;
-}
-
-.dna-rung {
-  position: relative;
-  height: 75px; /* 600px / 8 rungs */
-  display: flex;
-  align-items: center;
-}
-
-.dna-value {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 2;
-  background-color: rgba(255, 255, 255, 0.8);
-  padding: 5px 10px;
-  border-radius: 15px;
-  color: #007bff;
-  font-weight: bold;
-}
-
-.dna-strand {
-  position: absolute;
   width: 100%;
-  height: 20px;
-  background-color: rgba(255, 255, 255, 0.5);
-}
-
-.dna-strand.left {
-  transform: rotate(30deg);
-  left: -20px;
-}
-
-.dna-strand.right {
-  transform: rotate(-30deg);
-  right: -20px;
-}
-
-/* Create the DNA crossover effect */
-.dna-rung:nth-child(3) .dna-strand.left,
-.dna-rung:nth-child(7) .dna-strand.left {
-  transform: rotate(-30deg);
-}
-
-.dna-rung:nth-child(3) .dna-strand.right,
-.dna-rung:nth-child(7) .dna-strand.right {
-  transform: rotate(30deg);
+  height: auto;
+  max-height: 600px;
 }
 
 @media (max-width: 991.98px) {
   .dna-helix {
-    height: 400px;
-  }
-  
-  .dna-rung {
-    height: 50px;
+    max-height: 400px;
   }
 }
 </style>
