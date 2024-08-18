@@ -68,7 +68,7 @@
 }
 
 .container {
-  max-width: 1400px;
+  max-width: 1500px;
   padding-left: 15px;
   padding-right: 15px;
   margin-left: auto;
