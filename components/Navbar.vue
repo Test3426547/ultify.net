@@ -197,11 +197,11 @@ router.afterEach(() => {
 }
 
 .offcanvas-toggler .hamburger-circle {
-  border-color: #fff;
+  border-color: #000; /* Changed from #fff to #000 */
 }
 
 .offcanvas-toggler .hamburger span {
-  background: #fff;
+  background: #000; /* Changed from #fff to #000 */
 }
 
 .offcanvas-body {
