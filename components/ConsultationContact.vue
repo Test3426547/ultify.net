@@ -1,7 +1,7 @@
 <template>
   <section class="consultation bg-light">
     <div class="container">
-      <div class="row align-items-center">
+      <div class="row justify-content-center">
         <!-- Form Section -->
         <div class="col-lg-6">
           <div class="form-container bg-white rounded-lg shadow-lg">
@@ -57,6 +57,8 @@ const submitForm = () => {
 .form-container {
   padding: 40px 50px;
   border-radius: 30px;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 h2 {
