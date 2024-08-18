@@ -44,6 +44,7 @@
     "three": "^0.167.1",
     "vite-plugin-pwa": "^0.20.0",
     "vue": "^3.4.34",
+    "vue-parallax-js": "^0.2.3",
     "vue-router": "^4.4.3",
     "vuex": "^4.1.0",
     "workbox-build": "^7.1.0",
