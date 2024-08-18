@@ -1,5 +1,5 @@
 <template>
-  <section class="consultation bg-light">
+  <section class="consultation bg-primary">
     <div class="container">
       <div class="row justify-content-center">
         <!-- Form Section -->
