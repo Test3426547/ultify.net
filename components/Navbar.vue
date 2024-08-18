@@ -16,6 +16,14 @@
   </nav>
 
   <div class="offcanvas" :class="{ 'show': isMenuOpen }" ref="offcanvas">
+    <button class="navbar-toggler offcanvas-toggler" type="button" @click="toggleMenu" aria-label="Toggle navigation">
+      <div class="hamburger-circle">
+        <div class="hamburger" ref="offcanvasHamburger">
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </button>
     <div class="offcanvas-body">
       <ul class="nav-list">
         <li><NuxtLink to="/" @click="toggleMenu" ref="menuItem">Home</NuxtLink></li>
@@ -47,6 +55,7 @@ const isMenuOpen = ref(false)
 const showServices = ref(false)
 const router = useRouter()
 const hamburger = ref(null)
+const offcanvasHamburger = ref(null)
 const offcanvas = ref(null)
 
 const toggleMenu = () => {
@@ -63,13 +72,14 @@ const toggleServices = () => {
 
 const animateHamburger = () => {
   const spans = (hamburger.value as HTMLElement | null)?.querySelectorAll('span') || []
+  const offcanvasSpans = (offcanvasHamburger.value as HTMLElement | null)?.querySelectorAll('span') || []
   
   if (isMenuOpen.value) {
-    gsap.to(spans[0], { rotation: 45, y: 4, duration: 0.3 })
-    gsap.to(spans[1], { rotation: -45, y: -4, duration: 0.3 })
+    gsap.to([spans[0], offcanvasSpans[0]], { rotation: 45, y: 4, duration: 0.3 })
+    gsap.to([spans[1], offcanvasSpans[1]], { rotation: -45, y: -4, duration: 0.3 })
   } else {
-    gsap.to(spans[0], { rotation: 0, y: 0, duration: 0.3 })
-    gsap.to(spans[1], { rotation: 0, y: 0, duration: 0.3 })
+    gsap.to([spans[0], offcanvasSpans[0]], { rotation: 0, y: 0, duration: 0.3 })
+    gsap.to([spans[1], offcanvasSpans[1]], { rotation: 0, y: 0, duration: 0.3 })
   }
 }
 
@@ -122,8 +132,8 @@ router.afterEach(() => {
   padding: 0;
   background: transparent;
   position: fixed;
-  top: 0.5rem;
-  right: 1rem;
+  top: 1.5rem;
+  right: 1.5rem;
   z-index: 1060;
 }
 
@@ -180,6 +190,18 @@ router.afterEach(() => {
 
 .offcanvas.show {
   transform: translateX(0);
+}
+
+.offcanvas-toggler {
+  position: absolute;
+}
+
+.offcanvas-toggler .hamburger-circle {
+  border-color: #fff;
+}
+
+.offcanvas-toggler .hamburger span {
+  background: #fff;
 }
 
 .offcanvas-body {
