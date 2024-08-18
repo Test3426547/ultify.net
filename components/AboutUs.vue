@@ -1,122 +1,98 @@
 <template>
-  <section class="about-us-section bg-primary text-white py-12">
-    <div class="container mx-auto px-4">
-      <h3 class="text-sm font-semibold uppercase mb-4">Our DNA</h3>
-      <h1 class="text-5xl font-bold mb-6">We are obsessed <span class="text-blue-300">with results.</span></h1>
-      
-      <div class="flex flex-wrap items-center">
-        <div class="w-full lg:w-1/2 mb-8 lg:mb-0">
-          <p class="text-lg mb-6">
+  <section class="about-us py-5">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 mb-4 mb-lg-0">
+          <h2 class="text-bs-primary fw-bold">Our DNA</h2>
+          <h3 class="h4 mb-3">What ULTIFY is made of</h3>
+          <p class="mb-4">
             At ULTIFY, our digital marketing agency is highly passionate about bringing success to like-minded individuals and business owners through our traditional and digital marketing efforts. With a team of experienced leaders, professionals, and enthusiasts, we are proud to have a deep understanding of the ever-evolving digital landscape.
           </p>
+          <NuxtLink to="/consultation" class="btn btn-bs-primary rounded-pill">
+            Contact Us
+          </NuxtLink>
         </div>
-        <div class="w-full lg:w-1/2">
-          <div class="dna-helix">
-            <div class="strand strand-1"></div>
-            <div class="strand strand-2"></div>
-            <div class="rung rung-1"><span>Innovation</span></div>
-            <div class="rung rung-2"><span>Creativity</span></div>
-            <div class="rung rung-3"><span>Excellence</span></div>
-            <div class="rung rung-4"><span>Integrity</span></div>
-            <div class="rung rung-5"><span>Passion</span></div>
-            <div class="rung rung-6"><span>Collaboration</span></div>
-            <div class="rung rung-7"><span>Adaptability</span></div>
-            <div class="rung rung-8"><span>Results-Driven</span></div>
+        <div class="col-lg-6">
+          <div class="dna-helix position-relative">
+            <svg
+              viewBox="0 0 200 400"
+              class="w-100 h-auto"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <!-- DNA Strands -->
+              <path
+                d="M50,0 Q100,50 50,100 Q0,150 50,200 Q100,250 50,300 Q0,350 50,400"
+                fill="none"
+                stroke="var(--bs-primary)"
+                stroke-width="4"
+              />
+              <path
+                d="M150,0 Q100,50 150,100 Q200,150 150,200 Q100,250 150,300 Q200,350 150,400"
+                fill="none"
+                stroke="var(--bs-primary)"
+                stroke-width="4"
+              />
+              
+              <!-- DNA Rungs -->
+              <line x1="50" y1="25" x2="150" y2="25" stroke="var(--bs-primary)" stroke-width="3" />
+              <line x1="50" y1="75" x2="150" y2="75" stroke="var(--bs-primary)" stroke-width="3" />
+              <line x1="50" y1="125" x2="150" y2="125" stroke="var(--bs-primary)" stroke-width="3" />
+              <line x1="50" y1="175" x2="150" y2="175" stroke="var(--bs-primary)" stroke-width="3" />
+              <line x1="50" y1="225" x2="150" y2="225" stroke="var(--bs-primary)" stroke-width="3" />
+              <line x1="50" y1="275" x2="150" y2="275" stroke="var(--bs-primary)" stroke-width="3" />
+              <line x1="50" y1="325" x2="150" y2="325" stroke="var(--bs-primary)" stroke-width="3" />
+              <line x1="50" y1="375" x2="150" y2="375" stroke="var(--bs-primary)" stroke-width="3" />
+            </svg>
+            
+            <!-- DNA Value Labels -->
+            <div v-for="(value, index) in dnaValues" :key="index" class="dna-value" :style="getValueStyle(index)">
+              {{ value }}
+            </div>
           </div>
         </div>
-      </div>
-      <div class="text-center mt-8">
-        <button class="bg-light hover:bg-gray-200 text-primary font-bold py-3 px-6 rounded-full transition-colors duration-300">
-          More about our services
-        </button>
       </div>
     </div>
   </section>
 </template>
 
-<script>
-export default {
-  name: 'AboutUs',
-}
+<script setup>
+const dnaValues = ref(['Value 1', 'Value 2', 'Value 3', 'Value 4', 'Value 5', 'Value 6', 'Value 7', 'Value 8']);
+
+const getValueStyle = (index) => {
+  const top = `${index * 12.5 + 3}%`;
+  const left = index % 2 === 0 ? '15%' : '75%';
+  return { top, left };
+};
 </script>
 
 <style scoped>
-.about-us-section {
-  background-color: var(--bs-primary);
-}
-
-.container {
-  max-width: 1200px;
+.about-us {
+  background-color: var(--bs-light);
 }
 
 .dna-helix {
-  position: relative;
-  width: 100%;
-  height: 500px;
-  overflow: hidden;
+  height: 400px;
 }
 
-.strand {
+.dna-value {
   position: absolute;
-  width: 20px;
-  height: 200%;
+  transform: translate(-50%, -50%);
   background-color: var(--bs-white);
-}
-
-.strand-1 {
-  left: 50%;
-  transform: translateX(-50%) rotate(20deg);
-}
-
-.strand-2 {
-  left: 50%;
-  transform: translateX(-50%) rotate(-20deg);
-}
-
-.rung {
-  position: absolute;
-  left: 50%;
-  width: 120px;
-  height: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.rung span {
-  background-color: var(--bs-light);
-  color: var(--bs-primary);
   padding: 5px 10px;
   border-radius: 15px;
+  font-size: 0.8rem;
   font-weight: bold;
-  font-size: 0.9em;
+  color: var(--bs-primary);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.rung-1 { top: 5%; transform: translateX(-50%) rotate(-20deg); }
-.rung-2 { top: 15%; transform: translateX(-50%) rotate(20deg); }
-.rung-3 { top: 30%; transform: translateX(-50%) rotate(-20deg); }
-.rung-4 { top: 40%; transform: translateX(-50%) rotate(20deg); }
-.rung-5 { top: 50%; transform: translateX(-50%) rotate(-20deg); }
-.rung-6 { top: 60%; transform: translateX(-50%) rotate(20deg); }
-.rung-7 { top: 75%; transform: translateX(-50%) rotate(-20deg); }
-.rung-8 { top: 85%; transform: translateX(-50%) rotate(20deg); }
-
-@media (max-width: 768px) {
-  .container {
-    padding-left: 1rem;
-    padding-right: 1rem;
+@media (max-width: 991.98px) {
+  .dna-helix {
+    height: 300px;
   }
   
-  .dna-helix {
-    height: 400px;
-  }
-
-  .rung {
-    width: 100px;
-  }
-
-  .rung span {
-    font-size: 0.8em;
+  .dna-value {
+    font-size: 0.7rem;
   }
 }
 </style>
