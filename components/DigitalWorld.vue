@@ -1,5 +1,5 @@
 <template>
-  <section class="digital-world" :class="{ 'consultation-padding': isConsultationPage }">
+  <section class="digital-world">
     <div class="container">
       <h2 class="title text-primary">Impacting the digital world since 2019</h2>
       <div class="image-wrapper">
@@ -22,14 +22,7 @@
 </template>
 
 <script setup>
-import { computed } from 'vue';
-import { useRoute } from 'nuxt/app';
-
-const route = useRoute();
-
-const isConsultationPage = computed(() => {
-  return route.path === '/consultation';
-});
+// No need for any script logic now
 </script>
 
 <style scoped>
@@ -37,11 +30,6 @@ const isConsultationPage = computed(() => {
   background-color: var(--bs-light);
   padding: 90px 0 85px;
   text-align: center;
-}
-
-.consultation-padding {
-  padding-top: 190px; /* 90px + 100px */
-  padding-bottom: 185px; /* 85px + 100px */
 }
 
 .container {
@@ -138,11 +126,6 @@ const isConsultationPage = computed(() => {
 @media (max-width: 768px) {
   .digital-world {
     padding: 80px 0;
-  }
-  
-  .consultation-padding {
-    padding-top: 180px; /* 80px + 100px */
-    padding-bottom: 180px; /* 80px + 100px */
   }
   
   .title {
