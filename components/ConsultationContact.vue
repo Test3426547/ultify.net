@@ -19,7 +19,7 @@
               <div class="form-group">
                 <input class="form-control rounded-pill" id="phone" v-model="form.phone" placeholder="Phone" type="tel" />
               </div>
-              <button type="submit" class="btn btn-dark btn-block rounded-pill py-3 text-white">
+              <button type="submit" class="btn btn-black btn-block rounded-pill py-3 text-white">
                 LEAD WITHOUT A SWEAT
               </button>
             </form>
