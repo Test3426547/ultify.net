@@ -1,7 +1,7 @@
 <template>
   <div class="directive-wrapper">
     <div class="container">
-      <div class="directive-box bg-white rounded-lg shadow-lg p-4 p-md-5">
+      <div class="directive-box rounded-lg shadow-lg p-4 p-md-5">
         <div class="row align-items-center">
           <div class="col-md-4 mb-4 mb-md-0">
             <div class="directive-title-wrapper">
@@ -33,11 +33,31 @@ export default {
 .directive-wrapper {
   position: relative;
   z-index: 10;
-  margin-top: -50px;
-  margin-bottom: -50px;
+  padding: 50px 0;
+}
+
+.directive-wrapper::before,
+.directive-wrapper::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 50%;
+  z-index: -1;
+}
+
+.directive-wrapper::before {
+  top: 0;
+  background-color: var(--bs-primary);
+}
+
+.directive-wrapper::after {
+  bottom: 0;
+  background-color: var(--bs-light);
 }
 
 .directive-box {
+  background-color: var(--bs-white);
   border-radius: 20px;
 }
 
@@ -57,8 +77,7 @@ export default {
 
 @media (max-width: 767px) {
   .directive-wrapper {
-    margin-top: -30px;
-    margin-bottom: -30px;
+    padding: 30px 0;
   }
   
   .directive-title {
