@@ -1,5 +1,5 @@
 <template>
-  <section class="bg-[#37B5FF] py-16 px-4 sm:px-6 lg:px-8">
+  <section class="bg-[#37B5FF] py-16 px-4 sm:px-6 lg:px-8 relative">
     <div class="max-w-7xl mx-auto">
       <div class="flex flex-col lg:flex-row justify-between items-start">
         <!-- Left side - Category buttons -->
@@ -22,9 +22,9 @@
         </div>
 
         <!-- Right side - Contact form -->
-        <div class="w-full lg:w-1/2">
-          <h2 class="text-3xl font-bold text-white mb-6 text-center">Get in touch.</h2>
-          <form @submit.prevent="submitForm" class="space-y-4">
+        <div class="w-full lg:w-1/2 relative">
+          <h2 class="text-3xl font-bold text-white mb-6 text-center absolute top-0 left-0 right-0">Get in touch.</h2>
+          <form @submit.prevent="submitForm" class="space-y-4 mt-[-70px]">
             <div>
               <input type="text" id="name" v-model="form.name" placeholder="Name" class="w-full px-4 py-2 rounded-full border-2 border-white bg-[#37B5FF] text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-white">
             </div>
