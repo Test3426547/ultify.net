@@ -4,7 +4,7 @@
       <div class="row justify-content-center">
         <!-- Form Section -->
         <div class="col-lg-6">
-          <div class="form-container bg-dark rounded-lg shadow-lg">
+          <div class="form-container bg-primary rounded-lg shadow-lg">
             <h2 class="text-center text-white">Book A Free Consultation Now</h2>
             <form class="p-4" id="contact-form" @submit.prevent="submitForm">
               <div class="form-group">
@@ -19,7 +19,7 @@
               <div class="form-group">
                 <input class="form-control rounded-pill" id="phone" v-model="form.phone" placeholder="Phone" type="tel" />
               </div>
-              <button type="submit" class="btn btn-primary btn-block rounded-pill py-3">
+              <button type="submit" class="btn btn-dark btn-block rounded-pill py-3 text-white">
                 LEAD WITHOUT A SWEAT
               </button>
             </form>
