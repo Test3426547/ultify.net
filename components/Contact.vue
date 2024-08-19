@@ -1,7 +1,7 @@
 <template>
   <section class="bg-light py-16 px-4 sm:px-6 lg:px-8">
     <div class="max-w-7xl mx-auto">
-      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">Get in touch.</h2>
+      <h2 class="text-3xl font-bold text-gray-900 mb-4 text-center">Get in touch.</h2>
       <div class="flex flex-col lg:flex-row justify-between">
         <!-- Left side - Category buttons -->
         <div class="w-full lg:w-1/3 mb-8 lg:mb-0">
@@ -24,7 +24,7 @@
 
         <!-- Right side - Contact form -->
         <div class="w-full lg:w-1/2">
-          <form @submit.prevent="submitForm" class="space-y-6">
+          <form @submit.prevent="submitForm" class="space-y-4">
             <div>
               <input type="text" id="name" v-model="form.name" placeholder="Name" class="w-full px-4 py-2 rounded-full border-2 border-primary bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary">
             </div>
@@ -63,8 +63,6 @@ const categories = [
   'Sponsorship'
 ];
 
-const selectedCategory = ref('');
-
 const form = ref({
   name: '',
   email: '',
@@ -72,13 +70,9 @@ const form = ref({
   message: ''
 });
 
-const selectCategory = (category) => {
-  selectedCategory.value = category;
-};
-
 const submitForm = () => {
   // Handle form submission
-  console.log('Form submitted:', form.value, 'Selected category:', selectedCategory.value);
+  console.log('Form submitted:', form.value);
 };
 </script>
 
