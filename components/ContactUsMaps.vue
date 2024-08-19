@@ -30,7 +30,7 @@
         </div>
         <div class="col-lg-6 position-relative">
           <div class="image-container">
-            <img src="/contact-us-01.jpg" alt="Contact Us" class="img-fluid rounded-3">
+            <img src="/contact-us-01.webp" alt="Contact Us" class="img-fluid rounded-3">
           </div>
         </div>
       </div>
