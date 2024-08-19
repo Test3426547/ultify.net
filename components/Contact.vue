@@ -1,59 +1,71 @@
 <template>
-  <section class="py-5 mt-1 bg-light">
-    <div class="container-fluid px-0">
-      <div class="row justify-content-center text-center">
-        <div class="col-12 position-relative">
-          <div class="row align-items-center">
-            <!-- Text Section -->
-            <div class="col-xl-8 text-center mx-auto">
-              <h2 class="display-5 fw-bold mb-3 text-primary">
-                Get in contact
-              </h2>
-              <p class="text-body">
-                Welcome to ULTIFY Solutions! We’re excited to hear from you. Beyond consultations, we’re here to assist you with a wide range of inquiries and opportunities. Whether you’re interested in learning more about our comprehensive service offerings, discussing potential collaborations, inquiring about career opportunities, or simply wanting to share feedback, we’re all ears. Our digital marketing agency believes in fostering strong relationships and utilizing open communication, so whatever the reason you’re reaching out, we’re ready to engage. Feel free to use the provided contact information to connect with us. Your thoughts and ideas matter, and we’re eager to explore how we can work together effectively.
-              </p>
-            </div>
-            <!-- Image Section -->
-            <div class="col-xl-4 position-relative p-0 d-flex justify-content-end">
-              <img
-                class="img-fluid rounded-end"
-                src="@/assets/images/curved14.jpg"
-                alt="Contact Us Image"
-                style="max-height: 400px;"
-              />
-            </div>
+  <section class="bg-light py-16 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col lg:flex-row justify-between">
+        <!-- Left side - Category buttons -->
+        <div class="w-full lg:w-1/3 mb-8 lg:mb-0">
+          <div class="space-y-4">
+            <button v-for="category in categories" :key="category" class="w-full py-2 px-4 rounded-full border-2 border-primary text-primary hover:bg-primary hover:text-white transition-colors duration-300">
+              {{ category }}
+            </button>
           </div>
+        </div>
+
+        <!-- Right side - Contact form -->
+        <div class="w-full lg:w-1/2">
+          <h2 class="text-3xl font-bold text-gray-900 mb-8">Get in touch.</h2>
+          <form @submit.prevent="submitForm" class="space-y-6">
+            <div>
+              <input type="text" id="name" v-model="form.name" placeholder="Name" class="w-full px-4 py-2 rounded-full border-2 border-primary bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary">
+            </div>
+            <div>
+              <input type="email" id="email" v-model="form.email" placeholder="Email" class="w-full px-4 py-2 rounded-full border-2 border-primary bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary">
+            </div>
+            <div>
+              <input type="text" id="website" v-model="form.website" placeholder="Enter your company website (if applicable)" class="w-full px-4 py-2 rounded-full border-2 border-primary bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary">
+            </div>
+            <div>
+              <textarea id="message" v-model="form.message" placeholder="Message" rows="4" class="w-full px-4 py-2 rounded-3xl border-2 border-primary bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
+            </div>
+            <div>
+              <button type="submit" class="w-full py-2 px-4 rounded-full border-2 border-primary text-primary hover:bg-primary hover:text-white transition-colors duration-300">
+                Hear Back From Us Now
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
   </section>
 </template>
 
-<script>
-export default {
-  name: 'Contact',
+<script setup>
+import { ref } from 'vue';
+
+const categories = [
+  'Website',
+  'Social Media',
+  'SEO',
+  'Paid Media',
+  'Content Creation',
+  'Print Advertising',
+  'Internship',
+  'Sponsorship'
+];
+
+const form = ref({
+  name: '',
+  email: '',
+  website: '',
+  message: ''
+});
+
+const submitForm = () => {
+  // Handle form submission
+  console.log('Form submitted:', form.value);
 };
 </script>
 
 <style scoped>
-.bg-light {
-  background-color: var(--bs-light) !important;
-}
-
-.text-primary {
-  color: var(--bs-primary) !important;
-}
-
-.text-body {
-  color: var(--bs-body-color) !important;
-}
-
-.img-fluid {
-  max-width: 100%;
-  height: auto;
-}
-
-.rounded-end {
-  border-radius: 0 0.5rem 0.5rem 0;
-}
+/* Add any additional styles here */
 </style>
