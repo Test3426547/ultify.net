@@ -1,71 +1,28 @@
 <template>
-  <header>
-    <div class="page-header min-vh-80 bg-light">
-      <div
-        class="position-absolute fixed-top ms-auto w-50 h-100 z-index-0 d-none d-sm-none d-md-block bg-image"
-      ></div>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-7 d-flex justify-content-center flex-column">
-            <div class="card card-body d-flex justify-content-center shadow-lg p-5 mt-5">
-              <h1 class="text-gradient text-primary">
-                Our Impactful Consultation System
-              </h1>
-              <p class="lead pe-5 me-5">
-                We heard you are ready to begin your digital journey! Get talking
-                to a suited expert for free, now!
-              </p>
-            </div>
-          </div>
-        </div>
+  <section class="relative h-screen w-full overflow-hidden flex items-center">
+    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('/contact-us-01.webp');"></div>
+    <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+    <div class="relative z-10 mx-auto max-w-7xl px-4 text-center">
+      <h1 class="text-6xl sm:text-7xl lg:text-8xl font-bold tracking-tight text-white mb-8">Our Impactful Consultation System</h1>
+      <p class="text-xl sm:text-2xl lg:text-3xl font-medium text-white mb-12">
+        We heard you are ready to begin your digital journey!<br>Get talking to a suited expert for free, now!
+      </p>
+      <div>
+        <a
+          class="inline-flex h-14 items-center justify-center rounded-full bg-[#37B5FF] px-8 py-4 text-lg font-medium text-white shadow-sm transition-colors hover:bg-[#37B5FF]/90 focus:outline-none focus:ring-2 focus:ring-[#37B5FF] focus:ring-offset-2"
+          href="#"
+        >
+          Contact Us
+        </a>
       </div>
     </div>
-  </header>
+  </section>
 </template>
 
-<script>
-export default {
-  name: 'HeaderConsultation',
-};
+<script setup>
+// No script setup needed
 </script>
 
 <style scoped>
-/* General page header styling */
-.page-header {
-  position: relative;
-  background-color: var(--bs-light) !important;
-  min-height: 80vh;
-}
-
-/* Card body styling */
-.card-body {
-  background-color: var(--bs-light) !important;
-  border-radius: 0.5rem;
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-}
-
-/* Gradient text styling */
-.text-gradient {
-  background: -webkit-linear-gradient(left, var(--bs-blue), var(--bs-indigo));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text; /* Add the standard property */
-}
-
-/* Primary text color */
-.text-primary {
-  color: var(--bs-primary) !important;
-}
-
-/* Background image settings */
-.bg-image {
-  background-image: url('@/assets/images/curved2.jpg');
-  background-size: cover;
-  background-position: center;
-}
-
-/* Text color for lead */
-.lead {
-  color: var(--bs-body-color) !important;
-}
+/* No additional styles needed */
 </style>
