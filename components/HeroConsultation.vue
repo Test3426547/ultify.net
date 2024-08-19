@@ -5,7 +5,7 @@
       <div class="row">
         <div class="col-lg-6">
           <div class="hero-image">
-            <img src="/consultation-01.png" alt="Consultation Hero Image" />
+            <img src="/consultation-01.webp" alt="Consultation Hero Image" />
           </div>
         </div>
         <div class="col-lg-6">
