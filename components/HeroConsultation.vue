@@ -1,5 +1,5 @@
 <template>
-  <section class="hero-consultation bg-primary min-vh-100 d-flex flex-column">
+  <section class="hero-consultation bg-light min-vh-100 d-flex flex-column">
     <div class="container my-auto py-5">
       <h2 class="main-heading text-white text-center mb-5">Our Consultation Guarantees</h2>
       <div class="row justify-content-between">
