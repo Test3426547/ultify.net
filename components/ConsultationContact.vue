@@ -19,7 +19,7 @@
               <div class="form-group">
                 <input class="form-control rounded-pill" id="phone" v-model="form.phone" placeholder="Phone" type="tel" />
               </div>
-              <button type="submit" class="btn btn-black btn-block rounded-pill py-3 text-white">
+              <button type="submit" class="btn btn-custom btn-block rounded-pill py-3 text-white">
                 LEAD WITHOUT A SWEAT
               </button>
             </form>
@@ -75,6 +75,15 @@ h2 {
   padding: 15px 20px;
   border: none;
   background-color: #f5f5f5;
+}
+
+.btn-custom {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.btn-custom:hover {
+  background-color: #333333;
 }
 
 .btn-block {
