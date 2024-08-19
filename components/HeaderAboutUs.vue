@@ -1,6 +1,7 @@
 <template>
   <section class="relative h-screen w-full overflow-hidden flex items-center">
-    <div class="absolute inset-0 bg-white"></div>
+    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('/contact-us-01.webp');"></div>
+    <div class="absolute inset-0 bg-black bg-opacity-50"></div>
     <div class="wave-container">
       <svg class="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 24 150 28" preserveAspectRatio="none">
         <defs>
@@ -15,14 +16,14 @@
       </svg>
     </div>
     <div class="relative z-10 mx-auto max-w-7xl px-4 text-center">
-      <h1 class="text-6xl sm:text-7xl lg:text-8xl font-bold tracking-tight text-black mb-8">Learn More About Us</h1>
-      <p class="text-xl sm:text-2xl lg:text-3xl font-medium text-black mb-12">
+      <h1 class="text-6xl sm:text-7xl lg:text-8xl font-bold tracking-tight text-white mb-8">Learn More About Us</h1>
+      <p class="text-xl sm:text-2xl lg:text-3xl font-medium text-white mb-12">
         Need to get in contact with us?<br>Our email and phone number are at your disposal.
       </p>
       <div>
         <a
           class="inline-flex h-14 items-center justify-center rounded-full bg-[#37B5FF] px-8 py-4 text-lg font-medium text-white shadow-sm transition-colors hover:bg-[#37B5FF]/90 focus:outline-none focus:ring-2 focus:ring-[#37B5FF] focus:ring-offset-2"
-          href="#"
+          href="/contact-us"
         >
           Contact Us
         </a>
@@ -43,6 +44,7 @@
   width: 100%;
   height: 33.33%;
   overflow: hidden;
+  z-index: 1;
 }
 
 .waves {
