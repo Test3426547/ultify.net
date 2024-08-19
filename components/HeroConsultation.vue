@@ -36,13 +36,13 @@
 <style scoped>
 .hero-consultation {
   padding-top: 100px;
-  padding-bottom: 40px;
+  padding-bottom: 100px; /* Updated: Increased from 40px to 100px for total bottom padding of 100px */
 }
 
 .main-heading {
   font-size: 3rem;
   font-weight: bold;
-  margin-bottom: 100px;
+  margin-bottom: 80px; /* Updated: Increased from 60px to 80px for additional 20px spacing */
 }
 
 .hero-image {
