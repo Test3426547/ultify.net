@@ -23,7 +23,7 @@
                 LEAD WITHOUT A SWEAT
               </button>
             </form>
-            <p class="disclaimer text-white">
+            <p class="disclaimer text-white px-4">
               You are booking a free consultation with no maximum time (TnC's apply). We will call you on the given number on our first available time-slot.
             </p>
           </div>
@@ -51,11 +51,11 @@ const submitForm = () => {
 
 <style scoped>
 .consultation {
-  padding: 100px 0;
+  padding: 100px 0 50px; /* Reduced bottom padding by 50px */
 }
 
 .form-container {
-  padding: 40px 50px;
+  padding: 40px 50px 0; /* Removed bottom padding */
   border-radius: 30px;
   max-width: 600px;
   margin: 0 auto;
@@ -98,6 +98,7 @@ h2 {
   margin-top: 20px;
   font-size: 14px;
   text-align: center;
+  padding-bottom: 20px; /* Added some bottom padding to the disclaimer */
 }
 
 /* Responsive styling */
@@ -109,7 +110,7 @@ h2 {
 
 @media (max-width: 767px) {
   .form-container {
-    padding: 30px 20px;
+    padding: 30px 20px 0; /* Adjusted padding for mobile */
   }
 }
 </style>
