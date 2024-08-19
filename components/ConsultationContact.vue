@@ -1,11 +1,11 @@
 <template>
-  <section class="consultation bg-primary">
+  <section class="consultation bg-white">
     <div class="container">
       <div class="row justify-content-center">
         <!-- Form Section -->
         <div class="col-lg-6">
-          <div class="form-container bg-white rounded-lg shadow-lg">
-            <h2 class="text-center text-primary">Book A Free Consultation Now</h2>
+          <div class="form-container bg-dark rounded-lg shadow-lg">
+            <h2 class="text-center text-white">Book A Free Consultation Now</h2>
             <form class="p-4" id="contact-form" @submit.prevent="submitForm">
               <div class="form-group">
                 <input class="form-control rounded-pill" id="businessName" v-model="form.businessName" placeholder="URL/Business Name (if applicable)" type="text" />
@@ -23,7 +23,7 @@
                 LEAD WITHOUT A SWEAT
               </button>
             </form>
-            <p class="disclaimer text-dark">
+            <p class="disclaimer text-white">
               You are booking a free consultation with no maximum time (TnC's apply). We will call you on the given number on our first available time-slot.
             </p>
           </div>
@@ -63,7 +63,7 @@ const submitForm = () => {
 
 h2 {
   margin-bottom: 30px;
-  color: var(--bs-primary);
+  color: var(--bs-white);
 }
 
 .form-group {
