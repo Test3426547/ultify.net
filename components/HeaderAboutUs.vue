@@ -1,6 +1,6 @@
 <template>
   <section class="relative h-screen w-full overflow-hidden flex items-center">
-    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('/contact-us-01.webp');"></div>
+    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('/about-us-05.webp');"></div>
     <div class="absolute inset-0 bg-black bg-opacity-50"></div>
     <div class="wave-container">
       <svg class="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 24 150 28" preserveAspectRatio="none">
