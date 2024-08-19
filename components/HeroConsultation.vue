@@ -1,14 +1,14 @@
 <template>
-  <section class="hero-consultation bg-primary">
+  <section class="hero-consultation bg-primary vh-100 d-flex align-items-center">
     <div class="container">
       <h2 class="main-heading text-white text-center mb-5">Our Consultation Guarantees</h2>
-      <div class="row">
-        <div class="col-lg-6">
+      <div class="row justify-content-between">
+        <div class="col-lg-5">
           <div class="hero-image">
             <img src="/consultation-01.webp" alt="Consultation Hero Image" />
           </div>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-5">
           <div class="info-container bg-white rounded-lg p-5">
             <div class="info-section">
               <h3 class="text-primary">We protect your intellectual property.</h3>
@@ -35,7 +35,7 @@
 
 <style scoped>
 .hero-consultation {
-  padding: 100px 0;
+  padding: 0;
 }
 
 .main-heading {
@@ -44,7 +44,8 @@
 }
 
 .hero-image {
-  height: 100%;
+  height: calc(100% + 100px);
+  margin-left: -50px;
 }
 
 .hero-image img {
@@ -55,11 +56,12 @@
 }
 
 .info-container {
-  height: 100%;
+  height: calc(100% + 100px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   border-radius: 10px;
+  margin-right: -50px;
 }
 
 .info-section {
@@ -82,8 +84,15 @@ p {
 }
 
 @media (max-width: 991px) {
+  .hero-consultation {
+    height: auto !important;
+    padding: 100px 0;
+  }
+
   .hero-image, .info-container {
     height: auto;
+    margin-left: 0;
+    margin-right: 0;
   }
   
   .hero-image {
