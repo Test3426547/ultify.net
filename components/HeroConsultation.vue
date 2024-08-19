@@ -1,27 +1,31 @@
 <template>
-  <section class="hero-consultation bg-primary">
+  <section class="consultation bg-white">
     <div class="container">
-      <h2 class="main-heading text-white text-center mb-5">Our Consultation Guarantees</h2>
-      <div class="row">
+      <div class="row justify-content-center">
+        <!-- Form Section -->
         <div class="col-lg-6">
-          <div class="hero-image">
-            <img src="/consultation-01.png" alt="Consultation Hero Image" />
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <div class="info-container bg-white rounded-lg p-5">
-            <div class="info-section">
-              <h3 class="text-primary">We protect your intellectual property.</h3>
-              <p class="text-primary">Our agency will provide NDA's to protect your intellectual property and confidential information.</p>
-            </div>
-            <div class="info-section">
-              <h3 class="text-primary">No maximum time</h3>
-              <p class="text-primary">We provide in-depth consultations with no maximum time to ensure you get the information you need.</p>
-            </div>
-            <div class="info-section">
-              <h3 class="text-primary">Certified Consultants</h3>
-              <p class="text-primary">Our consultations are managed by real business consultants who have passed our extensive certification checklist.</p>
-            </div>
+          <div class="form-container bg-primary rounded-lg shadow-lg">
+            <h2 class="text-center text-white">Book A Free Consultation Now</h2>
+            <form class="p-4" id="contact-form" @submit.prevent="submitForm">
+              <div class="form-group">
+                <input class="form-control rounded-pill" id="businessName" v-model="form.businessName" placeholder="URL/Business Name (if applicable)" type="text" />
+              </div>
+              <div class="form-group">
+                <input class="form-control rounded-pill" id="name" v-model="form.name" placeholder="Name" type="text" />
+              </div>
+              <div class="form-group">
+                <input class="form-control rounded-pill" id="email" v-model="form.email" placeholder="Email" type="email" />
+              </div>
+              <div class="form-group">
+                <input class="form-control rounded-pill" id="phone" v-model="form.phone" placeholder="Phone" type="tel" />
+              </div>
+              <button type="submit" class="btn btn-custom btn-block rounded-pill py-3 text-white">
+                LEAD WITHOUT A SWEAT
+              </button>
+            </form>
+            <p class="disclaimer text-white px-4">
+              You are booking a free consultation with no maximum time (TnC's apply). We will call you on the given number on our first available time-slot.
+            </p>
           </div>
         </div>
       </div>
@@ -30,64 +34,83 @@
 </template>
 
 <script setup>
-// No setup needed for this component
+import { ref } from 'vue';
+
+const form = ref({
+  businessName: '',
+  name: '',
+  email: '',
+  phone: '',
+});
+
+const submitForm = () => {
+  console.log('Form submitted:', form.value);
+  // Implement your form submission logic here
+};
 </script>
 
 <style scoped>
-.hero-consultation {
-  padding: 100px 0;
+.consultation {
+  padding: 100px 0 50px; /* Reduced bottom padding by 50px */
 }
 
-.main-heading {
-  font-size: 3rem;
-  font-weight: bold;
+.form-container {
+  padding: 40px 50px 0; /* Removed bottom padding */
+  border-radius: 30px;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
-.hero-image {
-  height: 100%;
-}
-
-.hero-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 10px;
-}
-
-.info-container {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  border-radius: 10px;
-}
-
-.info-section {
+h2 {
   margin-bottom: 30px;
+  color: var(--bs-white);
 }
 
-.info-section:last-child {
-  margin-bottom: 0;
+.form-group {
+  margin-bottom: 25px;
 }
 
-h3 {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
+.form-control {
+  width: 100%;
+  padding: 15px 20px;
+  border: none;
+  background-color: #f5f5f5;
+}
+
+.btn-custom {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.btn-custom:hover {
+  background-color: #333333;
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+  padding: 15px 30px;
+  font-size: 18px;
   font-weight: bold;
 }
 
-p {
-  font-size: 1rem;
-  line-height: 1.4;
+.disclaimer {
+  margin-top: 20px;
+  font-size: 14px;
+  text-align: center;
+  padding-bottom: 20px; /* Added some bottom padding to the disclaimer */
 }
 
+/* Responsive styling */
 @media (max-width: 991px) {
-  .hero-image, .info-container {
-    height: auto;
+  .form-container {
+    margin-bottom: 35px;
   }
-  
-  .hero-image {
-    margin-bottom: 30px;
+}
+
+@media (max-width: 767px) {
+  .form-container {
+    padding: 30px 20px 0; /* Adjusted padding for mobile */
   }
 }
 </style>
