@@ -10,7 +10,7 @@
       <div>
         <a
           class="inline-flex h-14 items-center justify-center rounded-full bg-[#37B5FF] px-8 py-4 text-lg font-medium text-white shadow-sm transition-colors hover:bg-[#37B5FF]/90 focus:outline-none focus:ring-2 focus:ring-[#37B5FF] focus:ring-offset-2"
-          href="#"
+          href="/consultation"
         >
           Contact Us
         </a>
