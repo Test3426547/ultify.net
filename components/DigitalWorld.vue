@@ -1,5 +1,5 @@
 <template>
-  <section class="digital-world">
+  <section class="digital-world" :class="{ 'consultation-page': isConsultationPage }">
     <div class="container">
       <h2 class="title text-primary">Impacting the digital world since 2019</h2>
       <div class="image-wrapper">
@@ -22,7 +22,11 @@
 </template>
 
 <script setup>
-// No need for any script logic now
+import { computed } from 'vue';
+import { useRoute } from 'vue-router';
+
+const route = useRoute();
+const isConsultationPage = computed(() => route.path === '/consultation');
 </script>
 
 <style scoped>
@@ -30,6 +34,10 @@
   background-color: var(--bs-light);
   padding: 90px 0 85px;
   text-align: center;
+}
+
+.digital-world.consultation-page {
+  padding-top: 40px; /* Reduced top padding by 50px for consultation page */
 }
 
 .container {
@@ -126,6 +134,10 @@
 @media (max-width: 768px) {
   .digital-world {
     padding: 80px 0;
+  }
+  
+  .digital-world.consultation-page {
+    padding-top: 30px; /* Adjusted for mobile on consultation page */
   }
   
   .title {
