@@ -1,7 +1,7 @@
 <template>
   <section class="hero-consultation bg-primary vh-100 d-flex align-items-center">
     <div class="container">
-      <h2 class="main-heading text-white text-center mb-5">Our Consultation Guarantees</h2>
+      <h2 class="main-heading text-white text-center">Our Consultation Guarantees</h2>
       <div class="row justify-content-between">
         <div class="col-lg-5">
           <div class="hero-image">
@@ -35,16 +35,20 @@
 
 <style scoped>
 .hero-consultation {
-  padding: 0 0 100px 0;
+  padding: 0 0 90px 0; /* Reduced bottom padding by 10px */
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
+.container {
+  margin-top: -35px; /* Removed 35px of padding from above the heading */
+}
+
 .main-heading {
   font-size: 3rem;
   font-weight: bold;
-  margin-bottom: 50px;
+  margin-bottom: 130px; /* Increased to 130px (50px + 80px) */
 }
 
 .hero-image {
@@ -90,7 +94,15 @@ p {
 @media (max-width: 991px) {
   .hero-consultation {
     height: auto !important;
-    padding: 50px 0 100px 0;
+    padding: 50px 0 90px 0; /* Adjusted bottom padding */
+  }
+
+  .container {
+    margin-top: 0; /* Reset margin for mobile */
+  }
+
+  .main-heading {
+    margin-bottom: 50px; /* Reduced margin for mobile */
   }
 
   .hero-image, .info-container {
