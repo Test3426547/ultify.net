@@ -48,7 +48,7 @@ export default {
 
 .directive-wrapper::before {
   top: 0;
-  background-color: var(--bs-primary);
+  background-color: var(--bs-white); /* Changed from var(--bs-primary) to var(--bs-white) */
 }
 
 .directive-wrapper::after {
