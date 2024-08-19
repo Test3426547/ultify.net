@@ -38,13 +38,13 @@
   padding: 0 0 100px 0;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center;
 }
 
 .main-heading {
   font-size: 3rem;
   font-weight: bold;
-  margin-bottom: 80px; /* Increased from 50px to account for the removed top padding */
+  margin-bottom: 50px;
 }
 
 .hero-image {
@@ -91,11 +91,6 @@ p {
   .hero-consultation {
     height: auto !important;
     padding: 50px 0 100px 0;
-    justify-content: flex-start;
-  }
-
-  .main-heading {
-    margin-bottom: 50px;
   }
 
   .hero-image, .info-container {
