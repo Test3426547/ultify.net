@@ -35,12 +35,16 @@
 
 <style scoped>
 .hero-consultation {
-  padding: 0;
+  padding: 0 0 100px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 .main-heading {
   font-size: 3rem;
   font-weight: bold;
+  margin-bottom: 80px; /* Increased from 50px to account for the removed top padding */
 }
 
 .hero-image {
@@ -86,7 +90,12 @@ p {
 @media (max-width: 991px) {
   .hero-consultation {
     height: auto !important;
-    padding: 100px 0;
+    padding: 50px 0 100px 0;
+    justify-content: flex-start;
+  }
+
+  .main-heading {
+    margin-bottom: 50px;
   }
 
   .hero-image, .info-container {
