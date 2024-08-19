@@ -29,25 +29,25 @@ const sections = [
   {
     number: '01',
     title: 'Two minds is better than one',
-    description: 'Our Agency produces success from the core principles of teamwork and collective thinking, which we apply within our team and collobrations.',
+    description: 'Our Agency produces success from the core principles of teamwork and collective thinking, which we apply within our team and collaborations.',
     image: '/about-us-01.webp'
   },
   {
     number: '02',
     title: 'Not giving up until it\'s perfect',
-    description: 'Our dedicated and passionate team strive for greatness and feed of the challenge of problem solving. We understdnad that failure is apart of sucess!',
+    description: 'Our dedicated and passionate team strive for greatness and feed of the challenge of problem solving. We understand that failure is apart of success!',
     image: '/about-us-02.webp'
   },
   {
     number: '03',
     title: 'Our time is your time',
-    description: 'ULTIFY appreciates and respects the opportunity and time provided by our clients, our agency ensures to utilise both parties time in the nmost effecient way with proportion to industryu stdsbards.',
+    description: 'ULTIFY appreciates and respects the opportunity and time provided by our clients, our agency ensures to utilise both parties time in the most effecient way with proportion to industry standards.',
     image: '/about-us-03.webp'
   },
   {
     number: '04',
     title: 'Our skills and your idea',
-    description: 'Combining our experience and expertisw ewith your idea and vision, we aim to acheiev a high-class project which will bring us manyt more!',
+    description: 'Combining our experience and expertise with your idea and vision, we aim to achieve a high-class project which will bring us many more!',
     image: '/about-us-04.webp'
   }
 ];
