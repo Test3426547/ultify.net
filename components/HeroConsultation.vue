@@ -36,7 +36,6 @@
 <style scoped>
 .hero-consultation {
   padding-top: 100px;
-  padding-bottom: 100px; /* Updated: Increased from 40px to 100px for total bottom padding of 100px */
 }
 
 .main-heading {
