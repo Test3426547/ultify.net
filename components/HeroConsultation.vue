@@ -1,7 +1,7 @@
 <template>
-  <section class="hero-consultation bg-primary vh-100 d-flex align-items-center">
-    <div class="container">
-      <h2 class="main-heading text-white text-center">Our Consultation Guarantees</h2>
+  <section class="hero-consultation bg-primary min-vh-100 d-flex flex-column">
+    <div class="container my-auto py-5">
+      <h2 class="main-heading text-white text-center mb-5">Our Consultation Guarantees</h2>
       <div class="row justify-content-between">
         <div class="col-lg-5">
           <div class="hero-image">
@@ -35,24 +35,18 @@
 
 <style scoped>
 .hero-consultation {
-  padding: 0 0 90px 0; /* Reduced bottom padding by 10px */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.container {
-  margin-top: -35px; /* Removed 35px of padding from above the heading */
+  padding-top: 100px;
+  padding-bottom: 100px;
 }
 
 .main-heading {
   font-size: 3rem;
   font-weight: bold;
-  margin-bottom: 130px; /* Increased to 130px (50px + 80px) */
+  margin-bottom: 100px;
 }
 
 .hero-image {
-  height: calc(100% + 100px);
+  height: 100%;
   margin-left: -50px;
 }
 
@@ -64,7 +58,7 @@
 }
 
 .info-container {
-  height: calc(100% + 100px);
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -94,15 +88,6 @@ p {
 @media (max-width: 991px) {
   .hero-consultation {
     height: auto !important;
-    padding: 50px 0 90px 0; /* Adjusted bottom padding */
-  }
-
-  .container {
-    margin-top: 0; /* Reset margin for mobile */
-  }
-
-  .main-heading {
-    margin-bottom: 50px; /* Reduced margin for mobile */
   }
 
   .hero-image, .info-container {
