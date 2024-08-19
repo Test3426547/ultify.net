@@ -1,7 +1,7 @@
 <template>
   <div class="about-us-details">
     <div class="container">
-      <h1 class="main-title">We Never Forget</h1>
+      <h1 class="main-title">ULTIFY's Core Standards</h1>
       <section v-for="(section, index) in sections" :key="index" class="about-section" :class="{ 'text-right': index % 2 !== 0 }">
         <div class="row align-items-center">
           <div :class="['col-lg-6', { 'order-lg-2': index % 2 !== 0 }]">
