@@ -4,7 +4,7 @@
       <div class="flex flex-col lg:flex-row justify-between items-start">
         <!-- Left side - Category buttons -->
         <div class="w-full lg:w-1/3 mb-8 lg:mb-0">
-          <div class="space-y-4">
+          <div class="space-y-4 mt-[50px]">
             <button 
               v-for="category in categories" 
               :key="category" 
