@@ -1,48 +1,32 @@
 <template>
-  <section class="bg-[#37B5FF] py-16 px-4 sm:px-6 lg:px-8 relative">
-    <div class="max-w-7xl mx-auto">
-      <div class="flex flex-col lg:flex-row justify-between items-start">
-        <!-- Left side - Category buttons -->
-        <div class="w-full lg:w-1/3 mb-8 lg:mb-0">
-          <div class="space-y-4 mt-[50px]">
-            <button 
-              v-for="category in categories" 
-              :key="category" 
-              @click="selectCategory(category)"
-              :class="[
-                'w-full py-2 px-4 rounded-full border-2 transition-colors duration-300',
-                selectedCategory === category 
-                  ? 'bg-white text-[#37B5FF] border-white' 
-                  : 'border-white text-white hover:bg-white hover:text-[#37B5FF]'
-              ]"
-            >
-              {{ category }}
-            </button>
-          </div>
-        </div>
-
-        <!-- Right side - Contact form -->
-        <div class="w-full lg:w-1/2 relative">
-          <h2 class="text-3xl font-bold text-white mb-6 text-center absolute top-0 left-0 right-0">Get in touch.</h2>
-          <form @submit.prevent="submitForm" class="space-y-4 mt-[+50px]">
-            <div>
-              <input type="text" id="name" v-model="form.name" placeholder="Name" class="w-full px-4 py-2 rounded-full border-2 border-white bg-[#37B5FF] text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-white">
-            </div>
-            <div>
-              <input type="email" id="email" v-model="form.email" placeholder="Email" class="w-full px-4 py-2 rounded-full border-2 border-white bg-[#37B5FF] text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-white">
-            </div>
-            <div>
-              <input type="text" id="website" v-model="form.website" placeholder="Enter your company website (if applicable)" class="w-full px-4 py-2 rounded-full border-2 border-white bg-[#37B5FF] text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-white">
-            </div>
-            <div>
-              <textarea id="message" v-model="form.message" placeholder="Message" rows="8" class="w-full px-4 py-2 rounded-3xl border-2 border-white bg-[#37B5FF] text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-white"></textarea>
-            </div>
-            <div>
-              <button type="submit" class="w-full py-2 px-4 rounded-full border-2 border-white text-white hover:bg-white hover:text-[#37B5FF] transition-colors duration-300">
-                Hear Back From Us Now
+  <section class="consultation bg-white">
+    <div class="container">
+      <div class="row justify-content-center">
+        <!-- Form Section -->
+        <div class="col-lg-6">
+          <div class="form-container bg-primary rounded-lg shadow-lg">
+            <h2 class="text-center text-white">Book A Free Consultation Now</h2>
+            <form class="p-4" id="contact-form" @submit.prevent="submitForm">
+              <div class="form-group">
+                <input class="form-control" id="businessName" v-model="form.businessName" placeholder="URL/Business Name (if applicable)" type="text" />
+              </div>
+              <div class="form-group">
+                <input class="form-control" id="name" v-model="form.name" placeholder="Name" type="text" />
+              </div>
+              <div class="form-group">
+                <input class="form-control" id="email" v-model="form.email" placeholder="Email" type="email" />
+              </div>
+              <div class="form-group">
+                <input class="form-control" id="phone" v-model="form.phone" placeholder="Phone" type="tel" />
+              </div>
+              <button type="submit" class="btn btn-custom btn-block py-3 text-white">
+                LEAD WITHOUT A SWEAT
               </button>
-            </div>
-          </form>
+            </form>
+            <p class="disclaimer text-white px-4">
+              You are booking a free consultation with no maximum time (TnC's apply). We will call you on the given number on our first available time-slot.
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -52,36 +36,83 @@
 <script setup>
 import { ref } from 'vue';
 
-const categories = [
-  'Website',
-  'Social Media',
-  'SEO',
-  'Paid Media',
-  'Content Creation',
-  'Print Advertising',
-  'Internship',
-  'Sponsorship'
-];
-
-const selectedCategory = ref('');
-
 const form = ref({
+  businessName: '',
   name: '',
   email: '',
-  website: '',
-  message: ''
+  phone: '',
 });
 
-const selectCategory = (category) => {
-  selectedCategory.value = category;
-};
-
 const submitForm = () => {
-  // Handle form submission
-  console.log('Form submitted:', form.value, 'Selected category:', selectedCategory.value);
+  console.log('Form submitted:', form.value);
+  // Implement your form submission logic here
 };
 </script>
 
 <style scoped>
-/* Add any additional styles here if needed */
+.consultation {
+  padding: 100px 0 50px;
+}
+
+.form-container {
+  padding: 40px 50px 0;
+  border-radius: 30px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+h2 {
+  margin-bottom: 30px;
+  color: var(--bs-white);
+}
+
+.form-group {
+  margin-bottom: 25px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 15px 20px;
+  border: none;
+  background-color: #f5f5f5;
+  border-radius: 50px;
+}
+
+.btn-custom {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.btn-custom:hover {
+  background-color: #333333;
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+  padding: 15px 30px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 50px;
+}
+
+.disclaimer {
+  margin-top: 20px;
+  font-size: 14px;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+/* Responsive styling */
+@media (max-width: 991px) {
+  .form-container {
+    margin-bottom: 35px;
+  }
+}
+
+@media (max-width: 767px) {
+  .form-container {
+    padding: 30px 20px 0;
+  }
+}
 </style>
