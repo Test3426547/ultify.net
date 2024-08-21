@@ -5,13 +5,13 @@
         <div class="col-12 col-lg-5 mb-4 mb-lg-0 position-relative">
           <div class="card custom-black custom-rounded shadow-lg custom-size"></div>
           <div class="image-wrapper custom-size custom-rounded">
-            <img src="/about-us-01.webp" alt="About Us 1" class="custom-image" />
+            <img src="/index-01.webp" alt="About Us 1" class="custom-image" />
           </div>
         </div>
         <div class="col-12 col-lg-5 position-relative">
           <div class="card custom-black custom-rounded shadow-lg custom-size"></div>
           <div class="image-wrapper custom-size custom-rounded">
-            <img src="/about-us-02.webp" alt="About Us 2" class="custom-image" />
+            <img src="/index-02.webp" alt="About Us 2" class="custom-image" />
           </div>
         </div>
       </div>
