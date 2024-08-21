@@ -1,12 +1,14 @@
 <template>
   <div class="service-cards-section position-relative bg-light">
-    <div class="container-fluid h-100 d-flex align-items-center justify-content-center"> <!-- Changed to container-fluid for more width -->
+    <div class="container-fluid h-100 d-flex align-items-center justify-content-center">
       <div class="row w-100 justify-content-between">
-        <div class="col-12 col-lg-5 mb-4 mb-lg-0"> <!-- Changed breakpoint to lg -->
-          <div class="card custom-black custom-rounded shadow-lg custom-size"></div> <!-- Added custom-size class -->
+        <div class="col-12 col-lg-5 mb-4 mb-lg-0 position-relative">
+          <div class="card custom-black custom-rounded shadow-lg custom-size"></div>
+          <img src="/about-us-01.webp" alt="About Us 1" class="custom-image custom-rounded" />
         </div>
-        <div class="col-12 col-lg-5"> <!-- Changed breakpoint to lg -->
-          <div class="card custom-black custom-rounded shadow-lg custom-size"></div> <!-- Added custom-size class -->
+        <div class="col-12 col-lg-5 position-relative">
+          <div class="card custom-black custom-rounded shadow-lg custom-size"></div>
+          <img src="/about-us-02.webp" alt="About Us 2" class="custom-image custom-rounded" />
         </div>
       </div>
     </div>
@@ -27,7 +29,7 @@
 }
 
 .container-fluid {
-  max-width: 1400px; /* Increased max-width to accommodate larger cards */
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0 15px;
 }
@@ -40,13 +42,21 @@
   border-radius: 30px;
 }
 
-/* New class for custom size */
 .custom-size {
-  width: calc(100% + 100px); /* 100px wider */
+  width: calc(100% + 100px);
   height: 0;
-  padding-bottom: calc(56.25% + 100px); /* 16:9 aspect ratio + 200px taller */
-  margin-left: -50px; /* Offset half of the extra width */
-  margin-right: -50px; /* Offset half of the extra width */
+  padding-bottom: calc(56.25% + 100px);
+  margin-left: -50px;
+  margin-right: -50px;
+}
+
+.custom-image {
+  position: absolute;
+  top: -20px;
+  left: -70px; /* -50px from custom-size margin-left + additional -20px */
+  width: calc(100% + 100px);
+  height: calc(100% + 100px);
+  object-fit: cover;
 }
 
 @media (max-width: 991.98px) {
@@ -54,11 +64,13 @@
     min-height: 100vh;
   }
   
-  .custom-size {
-    width: 100%; /* Full width on smaller screens */
-    padding-bottom: 100%; /* Square aspect ratio on smaller screens */
+  .custom-size,
+  .custom-image {
+    width: 100%;
+    padding-bottom: 100%;
     margin-left: 0;
     margin-right: 0;
+    left: -20px;
   }
 }
 
