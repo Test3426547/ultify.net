@@ -1,116 +1,104 @@
 <template>
-  <section class="consultation bg-white">
-    <div class="container">
-      <div class="row justify-content-center">
-        <!-- Form Section -->
-        <div class="col-lg-6">
-          <div class="form-container bg-primary rounded-lg shadow-lg">
-            <h2 class="text-center text-white">Book A Free Consultation Now</h2>
-            <form class="p-4" id="contact-form" @submit.prevent="submitForm">
-              <div class="form-group">
-                <input class="form-control rounded-pill" id="businessName" v-model="form.businessName" placeholder="URL/Business Name (if applicable)" type="text" />
-              </div>
-              <div class="form-group">
-                <input class="form-control rounded-pill" id="name" v-model="form.name" placeholder="Name" type="text" />
-              </div>
-              <div class="form-group">
-                <input class="form-control rounded-pill" id="email" v-model="form.email" placeholder="Email" type="email" />
-              </div>
-              <div class="form-group">
-                <input class="form-control rounded-pill" id="phone" v-model="form.phone" placeholder="Phone" type="tel" />
-              </div>
-              <button type="submit" class="btn btn-custom btn-block rounded-pill py-3 text-white">
-                LEAD WITHOUT A SWEAT
-              </button>
-            </form>
-            <p class="disclaimer text-white px-4">
-              You are booking a free consultation with no maximum time (TnC's apply). We will call you on the given number on our first available time-slot.
-            </p>
-          </div>
+  <div class="contact-form-container vh-100 vw-100 d-flex align-items-center justify-content-center bg-white">
+    <div class="contact-form bg-primary rounded-5 p-4 p-md-5">
+      <h2 class="text-white text-center mb-4">Book A Free Consultation Now</h2>
+      <form @submit.prevent="submitForm">
+        <div class="mb-3">
+          <input 
+            type="text" 
+            class="form-control form-control-lg rounded-pill bg-light" 
+            id="url" 
+            v-model="formData.url"
+            placeholder="URL/Business Name (If applicable)"
+          >
         </div>
-      </div>
+        <div class="mb-3">
+          <input 
+            type="text" 
+            class="form-control form-control-lg rounded-pill bg-light" 
+            id="name" 
+            v-model="formData.name"
+            placeholder="Name" 
+            required
+          >
+        </div>
+        <div class="mb-3">
+          <input 
+            type="email" 
+            class="form-control form-control-lg rounded-pill bg-light" 
+            id="email" 
+            v-model="formData.email"
+            placeholder="Email" 
+            required
+          >
+        </div>
+        <div class="mb-3">
+          <input 
+            type="tel" 
+            class="form-control form-control-lg rounded-pill bg-light" 
+            id="phone" 
+            v-model="formData.phone"
+            placeholder="Phone" 
+            required
+          >
+        </div>
+        <div class="d-grid">
+          <button type="submit" class="btn btn-lg rounded-pill text-white custom-black-btn">
+            LEAD WITHOUT A SWEAT
+          </button>
+        </div>
+      </form>
+      <p class="text-white text-center mt-4 small">
+        You are booking a free consultation with no maximum time (TnC's apply). We will call you on the given number on our first available time-slot.
+      </p>
     </div>
-  </section>
+  </div>
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref } from 'vue'
 
-const form = ref({
-  businessName: '',
+const formData = ref({
+  url: '',
   name: '',
   email: '',
-  phone: '',
-});
+  phone: ''
+})
 
 const submitForm = () => {
-  console.log('Form submitted:', form.value);
-  // Implement your form submission logic here
-};
+  console.log('Form submitted:', formData.value)
+  // Add your form submission logic here
+}
 </script>
 
 <style scoped>
-.consultation {
-  padding: 100px 0 50px; /* Reduced bottom padding by 50px */
+.contact-form-container {
+  background-color: var(--bs-white);
 }
 
-.form-container {
-  padding: 40px 50px 0; /* Removed bottom padding */
-  border-radius: 30px;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-h2 {
-  margin-bottom: 30px;
-  color: var(--bs-white);
-}
-
-.form-group {
-  margin-bottom: 25px;
+.contact-form {
+  max-width: 750px; /* Increased by 50% from 500px */
+  width: 100%;
+  background-color: var(--bs-primary);
 }
 
 .form-control {
-  width: 100%;
-  padding: 15px 20px;
-  border: none;
-  background-color: #f5f5f5;
+  background-color: var(--bs-light);
+  padding-right: 1rem !important; /* Added to ensure right-side padding */
 }
 
-.btn-custom {
-  background-color: #000000;
-  color: #ffffff;
+.custom-black-btn {
+  background-color: #000;
+  transition: background-color 0.3s ease;
 }
 
-.btn-custom:hover {
-  background-color: #333333;
+.custom-black-btn:hover {
+  background-color: #333;
 }
 
-.btn-block {
-  display: block;
-  width: 100%;
-  padding: 15px 30px;
-  font-size: 18px;
-  font-weight: bold;
-}
-
-.disclaimer {
-  margin-top: 20px;
-  font-size: 14px;
-  text-align: center;
-  padding-bottom: 20px; /* Added some bottom padding to the disclaimer */
-}
-
-/* Responsive styling */
-@media (max-width: 991px) {
-  .form-container {
-    margin-bottom: 35px;
-  }
-}
-
-@media (max-width: 767px) {
-  .form-container {
-    padding: 30px 20px 0; /* Adjusted padding for mobile */
+@media (max-width: 768px) {
+  .contact-form {
+    max-width: 90%;
   }
 }
 </style>
