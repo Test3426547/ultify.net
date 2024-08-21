@@ -48,7 +48,7 @@
 .main-heading {
   font-size: 3rem;
   font-weight: bold;
-  margin-bottom: 80px;
+  margin-bottom: 60px;
 }
 
 .hero-image {
