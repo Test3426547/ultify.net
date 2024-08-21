@@ -35,7 +35,7 @@
 
 <style scoped>
 .hero-consultation {
-  padding-top: 0; /* Removed padding-top completely */
+  padding-top: -200px; /* Removed padding-top completely */
 }
 
 .container {
