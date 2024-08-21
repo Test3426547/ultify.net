@@ -36,7 +36,7 @@
 <style scoped>
 .hero-consultation {
   padding-top: 0 !important;
-  margin-top: -100px !important; /* Negative margin to pull content up */
+  margin-top: -50px !important; /* Negative margin to pull content up */
 }
 
 .container {
