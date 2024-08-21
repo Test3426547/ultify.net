@@ -57,8 +57,8 @@
 
 .image-wrapper {
   position: absolute;
-  top: -20px;
-  left: -70px; /* -50px from custom-size margin-left + additional -20px */
+  top: -10px; /* Changed from -20px to -10px to move up by 10px */
+  left: -30px; /* Changed from -70px to -30px to move right by 20px */
 }
 
 .custom-image {
@@ -84,7 +84,8 @@
   }
 
   .image-wrapper {
-    left: -20px;
+    left: 0; /* Reset left position on smaller screens */
+    top: -10px; /* Maintain 10px upward shift on smaller screens */
   }
 }
 
