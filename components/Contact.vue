@@ -1,12 +1,11 @@
 <template>
-  <section class="consultation bg-white">
+  <section class="consultation">
     <div class="container">
       <div class="row justify-content-center">
-        <!-- Form Section -->
         <div class="col-lg-6">
-          <div class="form-container bg-primary rounded-lg shadow-lg">
-            <h2 class="text-center text-white">Book A Free Consultation Now</h2>
-            <form class="p-4" id="contact-form" @submit.prevent="submitForm">
+          <div class="form-container">
+            <h2>Book A Free Consultation Now</h2>
+            <form id="contact-form" @submit.prevent="submitForm">
               <div class="form-group">
                 <input class="form-control" id="businessName" v-model="form.businessName" placeholder="URL/Business Name (if applicable)" type="text" />
               </div>
@@ -19,11 +18,11 @@
               <div class="form-group">
                 <input class="form-control" id="phone" v-model="form.phone" placeholder="Phone" type="tel" />
               </div>
-              <button type="submit" class="btn btn-custom btn-block py-3 text-white">
+              <button type="submit" class="btn btn-custom btn-block">
                 LEAD WITHOUT A SWEAT
               </button>
             </form>
-            <p class="disclaimer text-white px-4">
+            <p class="disclaimer">
               You are booking a free consultation with no maximum time (TnC's apply). We will call you on the given number on our first available time-slot.
             </p>
           </div>
@@ -51,56 +50,63 @@ const submitForm = () => {
 
 <style scoped>
 .consultation {
-  padding: 100px 0 50px;
+  padding: 0;
 }
 
 .form-container {
-  padding: 40px 50px 0;
+  background-color: #37B5FF;
+  padding: 40px 30px;
   border-radius: 30px;
-  max-width: 600px;
+  max-width: 500px;
   margin: 0 auto;
 }
 
 h2 {
+  font-size: 28px;
   margin-bottom: 30px;
-  color: var(--bs-white);
+  color: white;
+  text-align: center;
 }
 
 .form-group {
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
 
 .form-control {
   width: 100%;
   padding: 15px 20px;
   border: none;
-  background-color: #f5f5f5;
+  background-color: rgba(255, 255, 255, 0.2);
   border-radius: 50px;
+  color: white;
+  font-size: 16px;
+}
+
+.form-control::placeholder {
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .btn-custom {
   background-color: #000000;
   color: #ffffff;
+  border-radius: 50px;
+  padding: 15px 30px;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  width: 100%;
+  border: none;
 }
 
 .btn-custom:hover {
   background-color: #333333;
 }
 
-.btn-block {
-  display: block;
-  width: 100%;
-  padding: 15px 30px;
-  font-size: 18px;
-  font-weight: bold;
-  border-radius: 50px;
-}
-
 .disclaimer {
   margin-top: 20px;
   font-size: 14px;
   text-align: center;
-  padding-bottom: 20px;
+  color: white;
 }
 
 /* Responsive styling */
@@ -112,7 +118,7 @@ h2 {
 
 @media (max-width: 767px) {
   .form-container {
-    padding: 30px 20px 0;
+    padding: 30px 20px;
   }
 }
 </style>
