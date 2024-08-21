@@ -35,8 +35,8 @@
 
 <style scoped>
 .hero-consultation {
-  padding-top: 100px !important;
-  padding-bottom: 100px !important; /* Added 100px padding to the bottom */
+  padding-top: 70px !important;
+  padding-bottom: 70px !important; /* Added 100px padding to the bottom */
   margin-top: -50px !important; /* Negative margin to pull content up */
 }
 
