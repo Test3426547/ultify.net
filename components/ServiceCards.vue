@@ -1,8 +1,10 @@
 <template>
   <div class="service-cards-section position-relative bg-light">
     <div class="container-fluid h-100 d-flex flex-column justify-content-center">
-      <!-- Added heading -->
-      <h2 class="section-heading text-primary fw-bold mb-5">Our latest work</h2>
+      <!-- Added a wrapper div for the heading to control spacing -->
+      <div class="heading-wrapper mb-100">
+        <h2 class="section-heading text-primary fw-bold">Our latest work</h2>
+      </div>
       <div class="row w-100 justify-content-between">
         <div class="col-12 col-lg-5 mb-4 mb-lg-0 position-relative">
           <div class="card custom-black custom-rounded shadow-lg custom-size"></div>
@@ -40,11 +42,19 @@
   padding: 0 15px;
 }
 
-/* Added styles for the heading */
+/* Added styles for the heading wrapper */
+.heading-wrapper {
+  width: 100%;
+}
+
+/* Added custom class for 100px bottom margin */
+.mb-100 {
+  margin-bottom: 100px;
+}
+
 .section-heading {
   font-size: 3rem;
   text-align: left;
-  align-self: flex-start;
 }
 
 .custom-black {
@@ -108,9 +118,13 @@
     margin-right: 0;
   }
 
-  /* Added responsive font size for smaller screens */
   .section-heading {
     font-size: 2.5rem;
+  }
+
+  /* Adjust spacing for mobile */
+  .mb-100 {
+    margin-bottom: 50px;
   }
 }
 </style>
