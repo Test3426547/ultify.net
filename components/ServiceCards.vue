@@ -1,6 +1,8 @@
 <template>
   <div class="service-cards-section position-relative bg-light">
-    <div class="container-fluid h-100 d-flex align-items-center justify-content-center">
+    <div class="container-fluid h-100 d-flex flex-column justify-content-center">
+      <!-- Added heading -->
+      <h2 class="section-heading text-primary fw-bold mb-5">Our latest work</h2>
       <div class="row w-100 justify-content-between">
         <div class="col-12 col-lg-5 mb-4 mb-lg-0 position-relative">
           <div class="card custom-black custom-rounded shadow-lg custom-size"></div>
@@ -38,6 +40,13 @@
   padding: 0 15px;
 }
 
+/* Added styles for the heading */
+.section-heading {
+  font-size: 3rem;
+  text-align: left;
+  align-self: flex-start;
+}
+
 .custom-black {
   background-color: #2B2A2A;
 }
@@ -57,8 +66,8 @@
 
 .image-wrapper {
   position: absolute;
-  top: -30px; /* Changed from -20px to -10px to move up by 10px */
-  left: -30px; /* Changed from -70px to -30px to move right by 20px */
+  top: -30px;
+  left: -30px;
 }
 
 .custom-image {
@@ -84,8 +93,8 @@
   }
 
   .image-wrapper {
-    left: 0; /* Reset left position on smaller screens */
-    top: -10px; /* Maintain 10px upward shift on smaller screens */
+    left: 0;
+    top: -10px;
   }
 }
 
@@ -97,6 +106,11 @@
   .row {
     margin-left: 0;
     margin-right: 0;
+  }
+
+  /* Added responsive font size for smaller screens */
+  .section-heading {
+    font-size: 2.5rem;
   }
 }
 </style>
