@@ -1,6 +1,6 @@
 <template>
   <div class="contact-form-container vh-100 vw-100 d-flex align-items-center justify-content-center bg-white">
-    <div class="contact-form bg-primary rounded-pill p-4 p-md-5">
+    <div class="contact-form bg-primary rounded-5 p-4 p-md-5">
       <h2 class="text-white text-center mb-4">Book A Free Consultation Now</h2>
       <form @submit.prevent="submitForm">
         <div class="mb-3">
@@ -80,7 +80,6 @@ const submitForm = () => {
   max-width: 500px;
   width: 100%;
   background-color: var(--bs-primary);
-  padding: 2rem !important;
 }
 
 .form-control {
@@ -99,7 +98,6 @@ const submitForm = () => {
 @media (max-width: 576px) {
   .contact-form {
     max-width: 90%;
-    padding: 1.5rem !important;
   }
 }
 </style>
