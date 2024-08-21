@@ -1,30 +1,65 @@
 <template>
   <div class="service-cards-section position-relative bg-light">
     <div class="container-fluid h-100 d-flex flex-column justify-content-center">
-      <!-- Added a wrapper div for the heading to control spacing -->
       <div class="heading-wrapper mb-100">
         <h2 class="section-heading text-primary fw-bold">Our latest work</h2>
       </div>
-      <div class="row w-100 justify-content-between">
-        <div class="col-12 col-lg-5 mb-4 mb-lg-0 position-relative">
-          <div class="card custom-black custom-rounded shadow-lg custom-size"></div>
-          <div class="image-wrapper custom-size custom-rounded">
-            <img src="/index-01.webp" alt="About Us 1" class="custom-image" />
+      <div class="carousel-wrapper position-relative">
+        <button class="carousel-control prev" @click="prevSlide" aria-label="Previous slide">
+          <i class="bi bi-chevron-left"></i>
+        </button>
+        <div class="carousel-container overflow-hidden">
+          <div class="carousel-slide" :style="{ transform: `translateX(-${currentSlide * 100}%)` }">
+            <div v-for="(pair, index) in cardPairs" :key="index" class="card-pair d-flex justify-content-between">
+              <div v-for="card in pair" :key="card.id" class="card-wrapper col-12 col-lg-5 position-relative">
+                <div class="card custom-black custom-rounded shadow-lg custom-size"></div>
+                <div class="image-wrapper custom-size custom-rounded">
+                  <img :src="card.image" :alt="card.alt" class="custom-image" />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="col-12 col-lg-5 position-relative">
-          <div class="card custom-black custom-rounded shadow-lg custom-size"></div>
-          <div class="image-wrapper custom-size custom-rounded">
-            <img src="/index-02.webp" alt="About Us 2" class="custom-image" />
-          </div>
-        </div>
+        <button class="carousel-control next" @click="nextSlide" aria-label="Next slide">
+          <i class="bi bi-chevron-right"></i>
+        </button>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-// No script needed
+import { ref, computed } from 'vue';
+
+const cards = [
+  { id: 1, image: '/index-01.webp', alt: 'Work 1' },
+  { id: 2, image: '/index-02.webp', alt: 'Work 2' },
+  { id: 3, image: '/about-us-01.webp', alt: 'Work 3' },
+  { id: 4, image: '/about-us-02.webp', alt: 'Work 4' },
+  { id: 5, image: '/about-us-03.webp', alt: 'Work 5' },
+  { id: 6, image: '/about-us-04.webp', alt: 'Work 6' },
+  { id: 7, image: '/about-us-05.webp', alt: 'Work 7' },
+  { id: 8, image: '/consultation-01.webp', alt: 'Work 8' },
+];
+
+const cardPairs = computed(() => {
+  const pairs = [];
+  for (let i = 0; i < cards.length; i += 2) {
+    pairs.push(cards.slice(i, i + 2));
+  }
+  return pairs;
+});
+
+const currentSlide = ref(0);
+const totalSlides = computed(() => cardPairs.value.length);
+
+const nextSlide = () => {
+  currentSlide.value = (currentSlide.value + 1) % totalSlides.value;
+};
+
+const prevSlide = () => {
+  currentSlide.value = (currentSlide.value - 1 + totalSlides.value) % totalSlides.value;
+};
 </script>
 
 <style scoped>
@@ -42,12 +77,11 @@
   padding: 0 15px;
 }
 
-/* Added styles for the heading wrapper */
 .heading-wrapper {
   width: 100%;
+  padding-left: 50px; /* Align with the first card */
 }
 
-/* Added custom class for 100px bottom margin */
 .mb-100 {
   margin-bottom: 100px;
 }
@@ -55,6 +89,44 @@
 .section-heading {
   font-size: 3rem;
   text-align: left;
+}
+
+.carousel-wrapper {
+  width: 100%;
+}
+
+.carousel-container {
+  width: 100%;
+}
+
+.carousel-slide {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.card-pair {
+  min-width: 100%;
+  padding: 0 50px;
+}
+
+.carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: white;
+  font-size: 2rem;
+  padding: 1rem;
+  z-index: 10;
+}
+
+.carousel-control.prev {
+  left: 0;
+}
+
+.carousel-control.next {
+  right: 0;
 }
 
 .custom-black {
@@ -69,7 +141,7 @@
 .custom-size {
   width: calc(100% + 100px);
   height: 0;
-  padding-bottom: calc(56.25% + 100px); /* 16:9 aspect ratio + 100px extra height */
+  padding-bottom: calc(56.25% + 100px);
   margin-left: -50px;
   margin-right: -50px;
 }
@@ -97,7 +169,7 @@
   .custom-size,
   .image-wrapper {
     width: 100%;
-    padding-bottom: 100%; /* Square aspect ratio on smaller screens */
+    padding-bottom: 100%;
     margin-left: 0;
     margin-right: 0;
   }
@@ -106,6 +178,14 @@
     left: 0;
     top: -10px;
   }
+
+  .heading-wrapper {
+    padding-left: 15px;
+  }
+
+  .card-pair {
+    padding: 0 15px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -113,16 +193,10 @@
     min-height: 100vh;
   }
 
-  .row {
-    margin-left: 0;
-    margin-right: 0;
-  }
-
   .section-heading {
     font-size: 2.5rem;
   }
 
-  /* Adjust spacing for mobile */
   .mb-100 {
     margin-bottom: 50px;
   }
