@@ -36,6 +36,7 @@
 <style scoped>
 .hero-consultation {
   padding-top: 100px !important;
+  padding-bottom: 100px !important; /* Added 100px padding to the bottom */
   margin-top: -50px !important; /* Negative margin to pull content up */
 }
 
@@ -93,6 +94,7 @@ p {
 @media (max-width: 991px) {
   .hero-consultation {
     margin-top: -100px !important; /* Less aggressive on mobile */
+    padding-bottom: 50px !important; /* Reduced bottom padding on mobile */
   }
 
   .hero-image, .info-container {
