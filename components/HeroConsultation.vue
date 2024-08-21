@@ -1,6 +1,6 @@
 <template>
   <section class="hero-consultation bg-light d-flex flex-column">
-    <div class="container mt-4">
+    <div class="container">
       <h2 class="main-heading text-primary text-center">Our Consultation Guarantees</h2>
       <div class="row justify-content-between">
         <div class="col-lg-5">
@@ -40,7 +40,8 @@
 }
 
 .container {
-  padding-top: 0 !important;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 .main-heading {
@@ -91,7 +92,6 @@ p {
 
 @media (max-width: 991px) {
   .hero-consultation {
-    height: auto !important;
     margin-top: -100px !important; /* Less aggressive on mobile */
   }
 
