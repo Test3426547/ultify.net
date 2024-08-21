@@ -39,7 +39,7 @@
 }
 
 .custom-black {
-  background-color: #000000;
+  background-color: #2b2a2a;
 }
 
 .custom-rounded {
