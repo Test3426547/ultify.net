@@ -11,7 +11,7 @@
         <div class="carousel-container overflow-hidden">
           <div class="carousel-slide" :style="{ transform: `translateX(-${currentSlide * 100}%)` }">
             <div v-for="(pair, index) in cardPairs" :key="index" class="card-pair d-flex justify-content-between">
-              <div v-for="card in pair" :key="card.id" class="card-wrapper col-12 col-lg-5 position-relative">
+              <div v-for="card in pair" :key="card.id" class="card-wrapper col-12 col-lg-6 position-relative">
                 <div class="card custom-black custom-rounded shadow-lg custom-size"></div>
                 <div class="image-wrapper custom-size custom-rounded">
                   <img :src="card.image" :alt="card.alt" class="custom-image" />
@@ -79,7 +79,7 @@ const prevSlide = () => {
 
 .heading-wrapper {
   width: 100%;
-  padding-left: 50px; /* Align with the first card */
+  padding-left: 50px;
 }
 
 .mb-100 {
@@ -93,6 +93,7 @@ const prevSlide = () => {
 
 .carousel-wrapper {
   width: 100%;
+  overflow: hidden;
 }
 
 .carousel-container {
@@ -146,10 +147,16 @@ const prevSlide = () => {
   margin-right: -50px;
 }
 
+.card-wrapper {
+  padding: 0 15px;
+}
+
 .image-wrapper {
   position: absolute;
   top: -30px;
   left: -30px;
+  right: -30px;
+  bottom: -30px;
 }
 
 .custom-image {
@@ -176,7 +183,9 @@ const prevSlide = () => {
 
   .image-wrapper {
     left: 0;
+    right: 0;
     top: -10px;
+    bottom: -10px;
   }
 
   .heading-wrapper {
