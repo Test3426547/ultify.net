@@ -57,7 +57,7 @@
 
 .image-wrapper {
   position: absolute;
-  top: 20px; /* Changed from -20px to -10px to move up by 10px */
+  top: -30px; /* Changed from -20px to -10px to move up by 10px */
   left: -30px; /* Changed from -70px to -30px to move right by 20px */
 }
 
