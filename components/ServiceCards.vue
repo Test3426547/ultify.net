@@ -4,11 +4,15 @@
       <div class="row w-100 justify-content-between">
         <div class="col-12 col-lg-5 mb-4 mb-lg-0 position-relative">
           <div class="card custom-black custom-rounded shadow-lg custom-size"></div>
-          <img src="/about-us-01.webp" alt="About Us 1" class="custom-image custom-rounded" />
+          <div class="image-wrapper custom-size custom-rounded">
+            <img src="/about-us-01.webp" alt="About Us 1" class="custom-image" />
+          </div>
         </div>
         <div class="col-12 col-lg-5 position-relative">
           <div class="card custom-black custom-rounded shadow-lg custom-size"></div>
-          <img src="/about-us-02.webp" alt="About Us 2" class="custom-image custom-rounded" />
+          <div class="image-wrapper custom-size custom-rounded">
+            <img src="/about-us-02.webp" alt="About Us 2" class="custom-image" />
+          </div>
         </div>
       </div>
     </div>
@@ -40,23 +44,30 @@
 
 .custom-rounded {
   border-radius: 30px;
+  overflow: hidden;
 }
 
 .custom-size {
   width: calc(100% + 100px);
   height: 0;
-  padding-bottom: calc(56.25% + 100px);
+  padding-bottom: calc(56.25% + 100px); /* 16:9 aspect ratio + 100px extra height */
   margin-left: -50px;
   margin-right: -50px;
 }
 
-.custom-image {
+.image-wrapper {
   position: absolute;
   top: -20px;
   left: -70px; /* -50px from custom-size margin-left + additional -20px */
-  width: calc(100% + 100px);
-  height: calc(100% + 100px);
+}
+
+.custom-image {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 @media (max-width: 991.98px) {
@@ -65,11 +76,14 @@
   }
   
   .custom-size,
-  .custom-image {
+  .image-wrapper {
     width: 100%;
-    padding-bottom: 100%;
+    padding-bottom: 100%; /* Square aspect ratio on smaller screens */
     margin-left: 0;
     margin-right: 0;
+  }
+
+  .image-wrapper {
     left: -20px;
   }
 }
