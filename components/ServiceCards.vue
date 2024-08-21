@@ -44,7 +44,7 @@
 .custom-size {
   width: calc(100% + 100px); /* 100px wider */
   height: 0;
-  padding-bottom: calc(56.25% + 200px); /* 16:9 aspect ratio + 200px taller */
+  padding-bottom: calc(56.25% + 100px); /* 16:9 aspect ratio + 200px taller */
   margin-left: -50px; /* Offset half of the extra width */
   margin-right: -50px; /* Offset half of the extra width */
 }
