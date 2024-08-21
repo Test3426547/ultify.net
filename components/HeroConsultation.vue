@@ -1,7 +1,7 @@
 <template>
   <section class="hero-consultation bg-light min-vh-100 d-flex flex-column">
     <div class="container my-auto py-5">
-      <h2 class="main-heading text-primary text-center mb-5">Our Consultation Guarantees</h2>
+      <h2 class="main-heading text-primary text-center">Our Consultation Guarantees</h2>
       <div class="row justify-content-between">
         <div class="col-lg-5">
           <div class="hero-image">
@@ -35,13 +35,13 @@
 
 <style scoped>
 .hero-consultation {
-  padding-top: 100px;
+  padding-top: 50px; /* Reduced from 100px to 50px */
 }
 
 .main-heading {
   font-size: 3rem;
   font-weight: bold;
-  margin-bottom: 80px; /* Updated: Increased from 60px to 80px for additional 20px spacing */
+  margin-bottom: 50px; /* Added 50px spacing underneath the header */
 }
 
 .hero-image {
