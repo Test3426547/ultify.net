@@ -77,14 +77,15 @@ const submitForm = () => {
 }
 
 .contact-form {
-  max-width: 750px; /* Increased by 50% from 500px */
+  max-width: 650px; /* Reduced from 750px to 650px */
   width: 100%;
   background-color: var(--bs-primary);
+  padding: 2rem;
 }
 
 .form-control {
   background-color: var(--bs-light);
-  padding-right: 1rem !important; /* Added to ensure right-side padding */
+  padding-right: 1rem !important;
 }
 
 .custom-black-btn {
@@ -98,7 +99,8 @@ const submitForm = () => {
 
 @media (max-width: 768px) {
   .contact-form {
-    max-width: 90%;
+    max-width: calc(90% - 100px); /* Adjusted to account for the 100px reduction */
+    padding: 1.5rem;
   }
 }
 </style>
