@@ -15,7 +15,7 @@
             <h2 class="text-center">Book A Free Consultation Now</h2>
             <form class="p-4" id="contact-form" @submit.prevent="handleSubmit">
               <div class="form-group">
-                <input class="form-control" id="businessName" v-model="form.businessName" placeholder="URL/Business Name (if applicable)" type="text" />
+                <input class="form-control business-name-input" id="businessName" v-model="form.businessName" placeholder="URL/Business Name (if applicable)" type="text" />
               </div>
               <div class="form-group">
                 <input class="form-control" id="name" v-model="form.name" placeholder="Name" type="text" />
@@ -121,6 +121,10 @@ h2 {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+}
+
+.business-name-input {
+  width: 50%;
 }
 
 .form-control:focus {
