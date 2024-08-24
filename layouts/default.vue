@@ -30,7 +30,7 @@ import Footer from '~/components/Footer.vue';
 
 /* Base styles */
 * {
-  font-family: 'Poppins', sans-serif !important;
+  font-family: 'Poppins';
 }
 
 /* Rest of your styles remain the same */
