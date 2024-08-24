@@ -128,7 +128,7 @@ const handleSubmit = () => {
 }
 
 .header__subtitle-large {
-  font-size: 2.5rem;
+  font-size: 3rem;
   line-height: 1.2;
   margin-bottom: 1rem;
 }
