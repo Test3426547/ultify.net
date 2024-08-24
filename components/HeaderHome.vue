@@ -1,8 +1,10 @@
 <template>
   <header class="header position-relative vh-100 overflow-hidden">
+    <div class="header__background-top"></div>
+    <div class="header__background-bottom"></div>
     <div class="container-fluid h-100">
       <div class="row h-100">
-        <div class="col-lg-7 d-flex flex-column justify-content-between py-5">
+        <div class="col-lg-7 d-flex flex-column justify-content-between py-5 header__content">
           <div class="header__top">
             <h1 class="header__title fw-bold text-primary">
               ULTIFY capitalizes on digital<br>resources to elevate your brand.
@@ -19,7 +21,7 @@
               Explore our comprehensive services
             </p>
             <div class="header__services">
-              <NuxtLink v-for="service in services" :key="service.path" :to="service.path" class="btn btn-outline-light rounded-pill me-2 mb-2">
+              <NuxtLink v-for="(service, index) in services" :key="service.path" :to="service.path" class="btn btn-outline-light rounded-pill">
                 {{ service.name }}
               </NuxtLink>
             </div>
@@ -59,33 +61,36 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-
-const services = [
-  { name: 'Paid Media', path: '/paid-media' },
-  { name: 'SEO', path: '/seo' },
-  { name: 'Content Creation', path: '/content-creation' },
-  { name: 'Website', path: '/website' },
-  { name: 'Social Media', path: '/social-media' },
-  { name: 'Print Advertising', path: '/print-media' }
-];
-
-const form = ref({
-  businessName: '',
-  name: '',
-  email: '',
-  phone: ''
-});
-
-const handleSubmit = () => {
-  // Implement form submission logic here
-  console.log('Form submitted:', form.value);
-};
+// ... (script remains the same)
 </script>
 
 <style scoped>
 .header {
+  position: relative;
+}
+
+.header__background-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background-color: var(--bs-white);
+}
+
+.header__background-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
   background-color: var(--bs-primary);
+}
+
+.header__content {
+  padding-left: 200px;
+  position: relative;
+  z-index: 1;
 }
 
 .header__top {
@@ -109,8 +114,10 @@ const handleSubmit = () => {
 }
 
 .header__services {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  max-width: 600px;
 }
 
 .header__services .btn {
@@ -118,7 +125,9 @@ const handleSubmit = () => {
   color: var(--bs-white);
   transition: all 0.3s ease;
   font-size: 0.9rem;
-  padding: 0.5rem 1.5rem;
+  padding: 0.5rem 1rem;
+  width: 100%;
+  text-align: center;
 }
 
 .header__services .btn:hover, .header__services .btn:focus {
@@ -129,6 +138,8 @@ const handleSubmit = () => {
 .consultation-form {
   width: 100%;
   max-width: 400px;
+  position: relative;
+  z-index: 1;
 }
 
 .form-control {
@@ -151,6 +162,7 @@ const handleSubmit = () => {
   left: 50%;
   transform: translateX(-50%);
   animation: bounce 3s infinite;
+  z-index: 1;
 }
 
 @keyframes bounce {
@@ -166,6 +178,10 @@ const handleSubmit = () => {
 }
 
 @media (max-width: 991px) {
+  .header__content {
+    padding-left: 0;
+  }
+
   .header__title {
     font-size: 2.5rem;
   }
@@ -176,6 +192,10 @@ const handleSubmit = () => {
 
   .header__subtitle {
     font-size: 1rem;
+  }
+
+  .header__services {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -194,7 +214,7 @@ const handleSubmit = () => {
 
   .header__services .btn {
     font-size: 0.8rem;
-    padding: 0.4rem 1rem;
+    padding: 0.4rem 0.8rem;
   }
 }
 </style>
