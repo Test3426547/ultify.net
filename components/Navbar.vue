@@ -3,25 +3,22 @@
     <div class="container-fluid d-flex justify-content-between align-items-start">
       <!-- Left column - Menu options -->
       <div class="menu-column">
-        <NuxtLink to="/" class="navbar-brand mb-4">
-          <img src="/ultify.svg" alt="Ultify Logo" height="75" width="auto">
-        </NuxtLink>
         <ul class="nav-list">
-          <li><NuxtLink to="/" @click="toggleMenu" ref="menuItem">Home</NuxtLink></li>
+          <li><NuxtLink to="/" ref="menuItem">Home</NuxtLink></li>
           <li class="services-dropdown">
             <a href="#" @click.prevent="toggleServices" ref="menuItem">Services <span class="arrow" :class="{ 'up': showServices }">&#9662;</span></a>
             <ul v-if="showServices" class="services-submenu">
-              <li><NuxtLink to="/website" @click="toggleMenu" ref="menuItem">Website</NuxtLink></li>
-              <li><NuxtLink to="/social-media" @click="toggleMenu" ref="menuItem">Social Media</NuxtLink></li>
-              <li><NuxtLink to="/seo" @click="toggleMenu" ref="menuItem">SEO</NuxtLink></li>
-              <li><NuxtLink to="/paid-media" @click="toggleMenu" ref="menuItem">Paid Media</NuxtLink></li>
-              <li><NuxtLink to="/content-creation" @click="toggleMenu" ref="menuItem">Content Creation</NuxtLink></li>
-              <li><NuxtLink to="/print-advertising" @click="toggleMenu" ref="menuItem">Print Advertising</NuxtLink></li>
+              <li><NuxtLink to="/website" ref="menuItem">Website</NuxtLink></li>
+              <li><NuxtLink to="/social-media" ref="menuItem">Social Media</NuxtLink></li>
+              <li><NuxtLink to="/seo" ref="menuItem">SEO</NuxtLink></li>
+              <li><NuxtLink to="/paid-media" ref="menuItem">Paid Media</NuxtLink></li>
+              <li><NuxtLink to="/content-creation" ref="menuItem">Content Creation</NuxtLink></li>
+              <li><NuxtLink to="/print-advertising" ref="menuItem">Print Advertising</NuxtLink></li>
             </ul>
           </li>
-          <li><NuxtLink to="/about-us" @click="toggleMenu" ref="menuItem">About Us</NuxtLink></li>
-          <li><NuxtLink to="/consultation" @click="toggleMenu" ref="menuItem">Consultation</NuxtLink></li>
-          <li><NuxtLink to="/contact-us" @click="toggleMenu" ref="menuItem">Contact Us</NuxtLink></li>
+          <li><NuxtLink to="/about-us" ref="menuItem">About Us</NuxtLink></li>
+          <li><NuxtLink to="/consultation" ref="menuItem">Consultation</NuxtLink></li>
+          <li><NuxtLink to="/contact-us" ref="menuItem">Contact Us</NuxtLink></li>
         </ul>
       </div>
 
@@ -39,7 +36,7 @@
     </div>
   </nav>
 
-  <!-- Mobile menu toggle button -->
+  <!-- Hamburger menu button -->
   <button class="navbar-toggler" type="button" @click="toggleMenu" aria-label="Toggle navigation">
     <div class="hamburger-circle">
       <div class="hamburger" :class="{ 'is-active': isMenuOpen }">
@@ -111,15 +108,8 @@ const toggleServices = () => {
 }
 
 const submitForm = () => {
-  // Handle form submission
   console.log('Form submitted:', form.value)
-  // Reset form after submission
-  form.value = {
-    name: '',
-    email: '',
-    website: '',
-    message: ''
-  }
+  form.value = { name: '', email: '', website: '', message: '' }
 }
 
 onMounted(() => {
@@ -164,19 +154,12 @@ router.afterEach(() => {
 
 .container-fluid {
   height: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.menu-column {
-  width: calc(50% - 150px);
-}
-
-.contact-form-column {
-  width: calc(50% - 150px);
-}
-
-.navbar-brand img {
-  max-height: 75px;
-  width: auto;
+.menu-column, .contact-form-column {
+  width: 45%;
 }
 
 .nav-list {
@@ -186,12 +169,12 @@ router.afterEach(() => {
 }
 
 .nav-list li {
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 .nav-list a {
   color: #fff;
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: 700;
   text-decoration: none;
   transition: color 0.3s ease;
@@ -221,26 +204,27 @@ router.afterEach(() => {
 }
 
 .services-submenu li {
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 .services-submenu a {
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 
 .contact-form {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .form-input {
   width: 100%;
-  padding: 0.5rem 1rem;
+  padding: 1rem 1.5rem;
   border-radius: 9999px;
   border: 2px solid #fff;
   background-color: transparent;
   color: #fff;
+  font-size: 1.2rem;
 }
 
 .form-input::placeholder {
@@ -249,16 +233,18 @@ router.afterEach(() => {
 
 textarea.form-input {
   border-radius: 1.5rem;
+  min-height: 150px;
 }
 
 .submit-button {
   width: 100%;
-  padding: 0.5rem 1rem;
+  padding: 1rem 1.5rem;
   border-radius: 9999px;
   border: 2px solid #fff;
   background-color: #fff;
   color: var(--bs-primary);
   font-weight: bold;
+  font-size: 1.2rem;
   transition: all 0.3s ease;
 }
 
@@ -279,9 +265,9 @@ textarea.form-input {
 }
 
 .hamburger-circle {
-  width: 40px;
-  height: 40px;
-  border: 2px solid #000;
+  width: 50px;
+  height: 50px;
+  border: 2px solid #fff;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -289,8 +275,8 @@ textarea.form-input {
 }
 
 .hamburger, .close-icon {
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   position: relative;
   cursor: pointer;
 }
@@ -298,9 +284,9 @@ textarea.form-input {
 .hamburger span, .close-icon span {
   display: block;
   position: absolute;
-  height: 2px;
+  height: 3px;
   width: 100%;
-  background: #000;
+  background: #fff;
   left: 0;
   transition: all 0.3s ease;
 }
@@ -354,7 +340,7 @@ textarea.form-input {
   padding: 2rem;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .navbar {
     display: none;
   }
@@ -366,7 +352,9 @@ textarea.form-input {
   .offcanvas {
     display: block;
   }
+}
 
+@media (max-width: 768px) {
   .menu-column,
   .contact-form-column {
     width: 100%;
@@ -374,11 +362,11 @@ textarea.form-input {
   }
 
   .nav-list a {
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
 
   .services-submenu a {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
   }
 }
 </style>
