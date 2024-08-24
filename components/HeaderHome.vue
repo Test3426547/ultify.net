@@ -4,30 +4,47 @@
     <div class="header__background-bottom"></div>
     <div class="container-fluid h-100">
       <div class="row h-100 position-relative">
-        <div class="col-12 d-flex flex-column align-items-center justify-content-center">
-          <h1 class="header__title-top text-center fw-bold">
-            ULTIFY capitalises on digital<br>resources to elevate your brand.
+        <div class="col-lg-6 d-flex flex-column justify-content-center align-items-start ps-lg-5 ps-3">
+          <h1 class="header__title header__title-top fw-bold mb-3">
+            ULTIFY capitalizes on digital<br>resources to elevate your brand.
           </h1>
-          <h2 class="header__title-bottom text-center fw-bold">
-            Start now and maximise your<br>digital reach.
-          </h2>
-          <p class="header__subtitle text-center">
+          <p class="header__subtitle mb-4">
             Your Solutions Start With Ultify.
           </p>
-          <a href="/consultation" class="header__cta-button btn btn-outline-light rounded-pill">
-            Get Started
-          </a>
-          <svg class="header__scroll-arrow" width="40" height="35" viewBox="0 0 40 35" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M20 35L36.5 18.5L33.25 15.25L23.5 25V0H16.5V25L6.75 15.25L3.5 18.5L20 35Z" fill="white"/>
-          </svg>
+          <h2 class="header__title header__title-bottom fw-bold mb-3">
+            Start now and maximise your<br>digital reach!
+          </h2>
+          <p class="header__subtitle mb-4">
+            Explore our comprehensive services
+          </p>
+          <div class="d-flex flex-wrap gap-2">
+            <NuxtLink v-for="service in services" :key="service.name" :to="service.link" class="btn btn-outline-light rounded-pill">
+              {{ service.name }}
+            </NuxtLink>
+          </div>
+        </div>
+        <div class="col-lg-6 d-flex align-items-center">
+          <Consultation />
         </div>
       </div>
     </div>
+    <svg class="header__scroll-arrow" width="40" height="35" viewBox="0 0 40 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20 35L36.5 18.5L33.25 15.25L23.5 25V0H16.5V25L6.75 15.25L3.5 18.5L20 35Z" fill="white"/>
+    </svg>
   </header>
 </template>
 
 <script setup>
-// No JavaScript needed for now
+import Consultation from './Consultation.vue';
+
+const services = [
+  { name: 'Paid Media', link: '/paid-media' },
+  { name: 'SEO', link: '/seo' },
+  { name: 'Content Creation', link: '/content-creation' },
+  { name: 'Website', link: '/website' },
+  { name: 'Social Media', link: '/social-media' },
+  { name: 'Print Advertising', link: '/print-media' },
+];
 </script>
 
 <style scoped>
@@ -36,8 +53,8 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 35%;
-  background-color: var(--bs-light);
+  height: 50%;
+  background-color: var(--bs-white);
 }
 
 .header__background-bottom {
@@ -45,60 +62,45 @@
   bottom: 0;
   left: 0;
   right: 0;
-  height: 65%;
+  height: 50%;
   background-color: var(--bs-primary);
 }
 
+.header__title {
+  font-size: 2.5rem;
+  line-height: 1.2;
+  z-index: 1;
+}
+
 .header__title-top {
-  position: absolute;
-  bottom: calc(65% + 60px);
-  left: 50%;
-  transform: translateX(-50%);
   color: var(--bs-primary);
-  font-size: 3rem;
-  max-width: 90%;
 }
 
 .header__title-bottom {
-  position: absolute;
-  top: calc(35% + 60px);
-  left: 50%;
-  transform: translateX(-50%);
   color: var(--bs-white);
-  font-size: 3.4rem;
-  max-width: 90%;
 }
 
 .header__subtitle {
-  position: absolute;
-  top: calc(35% + 60px + 300px);
-  left: 50%;
-  transform: translateX(-50%);
-  color: var(--bs-white);
   font-size: 1.1rem;
-  width: 300px;
+  z-index: 1;
 }
 
-.header__cta-button {
-  position: absolute;
-  top: calc(35% + 60px + 300px + 50px + 1.1rem);
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 10px 30px;
-  font-size: 1rem;
-  border-color: var(--bs-white);
-  color: var(--bs-white);
-  transition: all 0.3s ease;
-}
-
-.header__cta-button:hover, .header__cta-button:focus {
-  background-color: var(--bs-white);
+.btn-outline-light {
+  border-color: var(--bs-primary);
   color: var(--bs-primary);
+  transition: all 0.3s ease;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+}
+
+.btn-outline-light:hover, .btn-outline-light:focus {
+  background-color: var(--bs-primary);
+  color: var(--bs-white);
 }
 
 .header__scroll-arrow {
   position: absolute;
-  top: calc(35% + 60px + 300px + 50px + 1.1rem + 50px + 70px);
+  bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
   animation: bounce 3s infinite;
@@ -116,28 +118,53 @@
   }
 }
 
-@media (max-width: 768px) {
-  .header__title-top {
-    font-size: 1.8rem;
+@media (max-width: 991px) {
+  .header__title {
+    font-size: 2rem;
   }
   
-  .header__title-bottom {
-    font-size: 2.16rem;
-  }
-
   .header__subtitle {
-    font-size: 1.2rem;
-    width: 80%;
+    font-size: 1rem;
   }
 
-  .header__cta-button {
-    font-size: 0.9rem;
-    padding: 8px 24px;
+  .btn-outline-light {
+    padding: 8px 16px;
+    font-size: 0.8rem;
   }
 
   .header__scroll-arrow {
     width: 30px;
     height: 26.25px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header__title {
+    font-size: 1.8rem;
+  }
+
+  .header__subtitle {
+    font-size: 0.9rem;
+  }
+
+  .btn-outline-light {
+    padding: 6px 12px;
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .header__title {
+    font-size: 1.5rem;
+  }
+
+  .header__subtitle {
+    font-size: 0.8rem;
+  }
+
+  .btn-outline-light {
+    padding: 5px 10px;
+    font-size: 0.6rem;
   }
 }
 </style>
