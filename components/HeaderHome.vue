@@ -1,11 +1,8 @@
 <template>
   <header class="header position-relative vh-100 overflow-hidden">
-    <div class="header__background-top"></div>
-    <div class="header__background-bottom"></div>
-    <div class="header__divider"></div>
     <div class="container-fluid h-100">
       <div class="row h-100">
-        <div class="col-lg-7 d-flex flex-column justify-content-between py-5 position-relative">
+        <div class="col-lg-7 d-flex flex-column justify-content-between py-5">
           <div class="header__top">
             <h1 class="header__title fw-bold text-primary">
               ULTIFY capitalizes on digital<br>resources to elevate your brand.
@@ -28,7 +25,7 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-5 d-flex justify-content-center align-items-center position-relative">
+        <div class="col-lg-5 d-flex justify-content-center align-items-center">
           <div class="consultation-form bg-light rounded-4 shadow-lg p-4">
             <h2 class="text-center text-dark mb-4">Book A Free Consultation Now</h2>
             <form @submit.prevent="handleSubmit">
@@ -62,44 +59,37 @@
 </template>
 
 <script setup>
-// ... (script remains the same)
+import { ref } from 'vue';
+
+const services = [
+  { name: 'Paid Media', path: '/paid-media' },
+  { name: 'SEO', path: '/seo' },
+  { name: 'Content Creation', path: '/content-creation' },
+  { name: 'Website', path: '/website' },
+  { name: 'Social Media', path: '/social-media' },
+  { name: 'Print Advertising', path: '/print-media' }
+];
+
+const form = ref({
+  businessName: '',
+  name: '',
+  email: '',
+  phone: ''
+});
+
+const handleSubmit = () => {
+  // Implement form submission logic here
+  console.log('Form submitted:', form.value);
+};
 </script>
 
 <style scoped>
 .header {
-  position: relative;
-}
-
-.header__background-top {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 50%;
-  background-color: var(--bs-white);
-}
-
-.header__background-bottom {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 50%;
   background-color: var(--bs-primary);
 }
 
-.header__divider {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background-color: var(--bs-gray-300);
-}
-
-.header__top, .header__bottom, .consultation-form {
-  position: relative;
-  z-index: 1;
+.header__top {
+  padding-top: 3rem;
 }
 
 .header__title {
@@ -161,7 +151,6 @@
   left: 50%;
   transform: translateX(-50%);
   animation: bounce 3s infinite;
-  z-index: 1;
 }
 
 @keyframes bounce {
