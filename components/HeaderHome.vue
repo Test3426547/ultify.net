@@ -20,7 +20,7 @@
             <p class="header__subtitle text-white mb-4">
               Explore our comprehensive services
             </p>
-            <!-- Updated service pills layout -->
+            <!-- Updated service pills layout: two rows of three -->
             <div class="header__services">
               <div class="row g-2">
                 <div class="col-md-4" v-for="service in services.slice(0, 3)" :key="service.path">
@@ -39,9 +39,10 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-5 d-flex justify-content-center align-items-center position-relative">
-          <!-- Updated contact form class for more rounded corners -->
-          <div class="consultation-form bg-light rounded-5 shadow-lg p-4">
+        <!-- Updated contact form container for full height -->
+        <div class="col-lg-5 d-flex justify-content-center align-items-center position-relative p-0">
+          <!-- Updated contact form class for more rounded corners and adjusted padding -->
+          <div class="consultation-form bg-light rounded-5 shadow-lg p-4 h-100">
             <h2 class="text-center text-dark mb-4">Book A Free Consultation Now</h2>
             <form @submit.prevent="handleSubmit">
               <div class="form-group mb-3">
@@ -181,10 +182,12 @@ const handleSubmit = () => {
 .consultation-form {
   position: relative;
   z-index: 1;
-  width: calc(100% + 200px); /* Increased width by 200px */
-  max-width: 600px;
+  width: 100%; /* Full width of the container */
   background-color: var(--bs-light);
   border-radius: 2rem; /* More rounded corners */
+  /* Removed left and right padding */
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .form-control {
@@ -252,12 +255,6 @@ const handleSubmit = () => {
   .header__subtitle {
     font-size: 1rem;
   }
-
-  /* Adjusted contact form width for smaller screens */
-  .consultation-form {
-    width: 100%;
-    max-width: 500px;
-  }
 }
 
 @media (max-width: 768px) {
@@ -288,12 +285,6 @@ const handleSubmit = () => {
   .header__services .btn {
     font-size: 0.8rem;
     padding: 0.4rem 1rem;
-  }
-
-  /* Further adjusted contact form width for mobile screens */
-  .consultation-form {
-    width: 100%;
-    max-width: 400px;
   }
 }
 </style>
