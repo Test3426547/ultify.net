@@ -4,7 +4,7 @@
     <div class="header__background-bottom"></div>
     <div class="container-fluid h-100">
       <div class="row h-100">
-        <div class="col-lg-7 d-flex flex-column justify-content-between py-5 header__content">
+        <div class="col-lg-7 d-flex flex-column justify-content-between py-5 position-relative">
           <div class="header__top">
             <h1 class="header__title fw-bold text-primary">
               ULTIFY capitalizes on digital<br>resources to elevate your brand.
@@ -21,13 +21,13 @@
               Explore our comprehensive services
             </p>
             <div class="header__services">
-              <NuxtLink v-for="(service, index) in services" :key="service.path" :to="service.path" class="btn btn-outline-light rounded-pill">
+              <NuxtLink v-for="service in services" :key="service.path" :to="service.path" class="btn btn-outline-light rounded-pill me-2 mb-2">
                 {{ service.name }}
               </NuxtLink>
             </div>
           </div>
         </div>
-        <div class="col-lg-5 d-flex justify-content-center align-items-center">
+        <div class="col-lg-5 d-flex justify-content-center align-items-center position-relative">
           <div class="consultation-form bg-light rounded-4 shadow-lg p-4">
             <h2 class="text-center text-dark mb-4">Book A Free Consultation Now</h2>
             <form @submit.prevent="handleSubmit">
@@ -61,7 +61,28 @@
 </template>
 
 <script setup>
-// ... (script remains the same)
+import { ref } from 'vue';
+
+const services = [
+  { name: 'Paid Media', path: '/paid-media' },
+  { name: 'SEO', path: '/seo' },
+  { name: 'Content Creation', path: '/content-creation' },
+  { name: 'Website', path: '/website' },
+  { name: 'Social Media', path: '/social-media' },
+  { name: 'Print Advertising', path: '/print-media' }
+];
+
+const form = ref({
+  businessName: '',
+  name: '',
+  email: '',
+  phone: ''
+});
+
+const handleSubmit = () => {
+  // Implement form submission logic here
+  console.log('Form submitted:', form.value);
+};
 </script>
 
 <style scoped>
@@ -87,14 +108,9 @@
   background-color: var(--bs-primary);
 }
 
-.header__content {
-  padding-left: 200px;
+.header__top, .header__bottom, .consultation-form {
   position: relative;
   z-index: 1;
-}
-
-.header__top {
-  padding-top: 3rem;
 }
 
 .header__title {
@@ -114,10 +130,8 @@
 }
 
 .header__services {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  max-width: 600px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .header__services .btn {
@@ -125,9 +139,7 @@
   color: var(--bs-white);
   transition: all 0.3s ease;
   font-size: 0.9rem;
-  padding: 0.5rem 1rem;
-  width: 100%;
-  text-align: center;
+  padding: 0.5rem 1.5rem;
 }
 
 .header__services .btn:hover, .header__services .btn:focus {
@@ -138,8 +150,7 @@
 .consultation-form {
   width: 100%;
   max-width: 400px;
-  position: relative;
-  z-index: 1;
+  background-color: var(--bs-light);
 }
 
 .form-control {
@@ -178,10 +189,6 @@
 }
 
 @media (max-width: 991px) {
-  .header__content {
-    padding-left: 0;
-  }
-
   .header__title {
     font-size: 2.5rem;
   }
@@ -192,10 +199,6 @@
 
   .header__subtitle {
     font-size: 1rem;
-  }
-
-  .header__services {
-    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -214,7 +217,7 @@
 
   .header__services .btn {
     font-size: 0.8rem;
-    padding: 0.4rem 0.8rem;
+    padding: 0.4rem 1rem;
   }
 }
 </style>
