@@ -4,7 +4,7 @@
     <div class="header__background-bottom"></div>
     <div class="container-fluid h-100">
       <div class="row h-100">
-        <div class="col-lg-7 d-flex flex-column justify-content-between py-5 position-relative">
+        <div class="col-lg-7 d-flex flex-column py-5 position-relative">
           <div class="header__top content-shift">
             <h1 class="header__title fw-bold text-primary">
               ULTIFY capitalizes on digital<br>resources to elevate your brand.
@@ -108,8 +108,19 @@ const handleSubmit = () => {
   background-color: var(--bs-primary);
 }
 
-.header__top, .header__bottom, .consultation-form {
-  position: relative;
+.header__top {
+  position: absolute;
+  top: calc(50% - 260px);
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+.header__bottom {
+  position: absolute;
+  top: calc(50% + 60px);
+  left: 0;
+  right: 0;
   z-index: 1;
 }
 
@@ -152,6 +163,8 @@ const handleSubmit = () => {
 }
 
 .consultation-form {
+  position: relative;
+  z-index: 1;
   width: 100%;
   max-width: 400px;
   background-color: var(--bs-light);
@@ -203,12 +216,20 @@ const handleSubmit = () => {
     padding-left: 50px;
   }
 
+  .header__top {
+    top: calc(50% - 220px);
+  }
+
+  .header__bottom {
+    top: calc(50% + 40px);
+  }
+
   .header__title {
     font-size: 2.5rem;
   }
 
   .header__subtitle-large {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
 
   .header__subtitle {
@@ -221,12 +242,20 @@ const handleSubmit = () => {
     padding-left: 20px;
   }
 
+  .header__top {
+    top: calc(50% - 180px);
+  }
+
+  .header__bottom {
+    top: calc(50% + 20px);
+  }
+
   .header__title {
     font-size: 2rem;
   }
 
   .header__subtitle-large {
-    font-size: 1.75rem;
+    font-size: 2rem;
   }
 
   .header__subtitle {
