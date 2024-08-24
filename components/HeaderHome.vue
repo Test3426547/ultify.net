@@ -5,7 +5,7 @@
     <div class="header__divider"></div>
     <div class="container-fluid h-100">
       <div class="row h-100">
-        <div class="col-lg-7 d-flex flex-column justify-content-between py-5">
+        <div class="col-lg-7 d-flex flex-column justify-content-between py-5 position-relative">
           <div class="header__top">
             <h1 class="header__title fw-bold text-primary">
               ULTIFY capitalizes on digital<br>resources to elevate your brand.
@@ -28,7 +28,7 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-5 d-flex justify-content-center align-items-center">
+        <div class="col-lg-5 d-flex justify-content-center align-items-center position-relative">
           <div class="consultation-form bg-light rounded-4 shadow-lg p-4">
             <h2 class="text-center text-dark mb-4">Book A Free Consultation Now</h2>
             <form @submit.prevent="handleSubmit">
@@ -97,13 +97,7 @@
   background-color: var(--bs-gray-300);
 }
 
-.header__top {
-  padding-top: 3rem;
-  position: relative;
-  z-index: 1;
-}
-
-.header__bottom {
+.header__top, .header__bottom, .consultation-form {
   position: relative;
   z-index: 1;
 }
@@ -145,8 +139,6 @@
 .consultation-form {
   width: 100%;
   max-width: 400px;
-  position: relative;
-  z-index: 1;
 }
 
 .form-control {
