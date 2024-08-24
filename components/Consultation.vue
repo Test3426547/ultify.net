@@ -1,187 +1,182 @@
 <template>
-  <header class="header position-relative vh-100 overflow-hidden">
-    <div class="header__background-top"></div>
-    <div class="header__background-bottom"></div>
-    <div class="container-fluid h-100">
-      <div class="row h-100 position-relative">
-        <div class="col-lg-6 d-flex flex-column justify-content-center align-items-start ps-5">
-          <h1 class="header__title fw-bold text-primary">
-            ULTIFY capitalizes on digital<br>resources to elevate your brand.
-          </h1>
-          <p class="header__subtitle text-primary">
-            Your Solutions Start With Ultify.
-          </p>
-          <h2 class="header__title fw-bold mt-4 text-white">
-            Start now and maximise your<br>digital reach!
-          </h2>
-          <p class="header__subtitle text-white mb-4">
-            Explore our comprehensive services
-          </p>
-          <div class="header__services">
-            <NuxtLink v-for="service in services" :key="service.path" :to="service.path" class="btn btn-outline-light rounded-pill me-2 mb-2">
-              {{ service.name }}
-            </NuxtLink>
+  <section class="consultation bg-primary">
+    <div class="container">
+      <div class="row align-items-stretch">
+        <!-- Image Section -->
+        <div class="col-lg-6 d-flex">
+          <div class="image-container">
+            <img src="/home-15.webp" alt="Consultation Image" class="image">
           </div>
         </div>
-        <div class="col-lg-6 d-flex justify-content-center align-items-center">
-          <div class="consultation-form bg-white rounded-lg shadow-lg p-4">
-            <h2 class="text-center text-dark">Book A Free Consultation Now</h2>
-            <form @submit.prevent="handleSubmit">
-              <div class="form-group mb-3">
-                <input class="form-control" v-model="form.businessName" placeholder="URL/Business Name (if applicable)" type="text" />
+
+        <!-- Form Section -->
+        <div class="col-lg-6 d-flex">
+          <div class="form-container bg-light rounded-lg shadow-lg">
+            <h2 class="text-center">Book A Free Consultation Now</h2>
+            <form class="p-4" id="contact-form" @submit.prevent="handleSubmit">
+              <div class="form-group">
+                <input class="form-control business-name-input" id="businessName" v-model="form.businessName" placeholder="URL/Business Name (if applicable)" type="text" />
               </div>
-              <div class="form-group mb-3">
-                <input class="form-control" v-model="form.name" placeholder="Name" type="text" />
+              <div class="form-group">
+                <input class="form-control" id="name" v-model="form.name" placeholder="Name" type="text" />
               </div>
-              <div class="form-group mb-3">
-                <input class="form-control" v-model="form.email" placeholder="Email" type="email" />
+              <div class="form-group">
+                <input class="form-control" id="email" v-model="form.email" placeholder="Email" type="email" />
               </div>
-              <div class="form-group mb-3">
-                <input class="form-control" v-model="form.phone" placeholder="Phone" type="tel" />
+              <div class="form-group">
+                <input class="form-control" id="phone" v-model="form.phone" placeholder="Phone" type="tel" />
               </div>
               <button type="submit" class="btn btn-primary btn-block">
                 LEAD WITHOUT A SWEAT
               </button>
             </form>
-            <p class="disclaimer text-dark mt-3 text-center small">
+            <p class="disclaimer text-dark">
               You are booking a free consultation with no maximum time (TnC's apply). We will call you on the given number on our first available time-slot.
             </p>
           </div>
         </div>
       </div>
     </div>
-    <svg class="header__scroll-arrow" width="40" height="35" viewBox="0 0 40 35" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M20 35L36.5 18.5L33.25 15.25L23.5 25V0H16.5V25L6.75 15.25L3.5 18.5L20 35Z" fill="white"/>
-    </svg>
-  </header>
+  </section>
 </template>
 
-<script setup>
-import { ref } from 'vue';
-
-const services = [
-  { name: 'Paid Media', path: '/paid-media' },
-  { name: 'SEO', path: '/seo' },
-  { name: 'Content Creation', path: '/content-creation' },
-  { name: 'Website', path: '/website' },
-  { name: 'Social Media', path: '/social-media' },
-  { name: 'Print Advertising', path: '/print-media' }
-];
-
-const form = ref({
-  businessName: '',
-  name: '',
-  email: '',
-  phone: ''
-});
-
-const handleSubmit = () => {
-  // Implement form submission logic here
-  console.log('Form submitted:', form.value);
+<script>
+export default {
+  name: 'Consultation',
+  data() {
+    return {
+      form: {
+        businessName: '',
+        name: '',
+        email: '',
+        phone: '',
+      },
+    };
+  },
+  methods: {
+    handleSubmit() {
+      // Implement form submission logic here
+      console.log('Form submitted:', this.form);
+    },
+  },
 };
 </script>
 
 <style scoped>
-.header__background-top {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 50%;
-  background-color: var(--bs-white);
+.consultation {
+  padding: 120px 0;
 }
 
-.header__background-bottom {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 50%;
-  background-color: var(--bs-primary);
+.row {
+  margin: 0 -15px;
 }
 
-.header__title {
-  font-size: 3rem;
-  max-width: 90%;
+.col-lg-6 {
+  padding: 0 15px;
 }
 
-.header__subtitle {
-  font-size: 1.1rem;
-}
-
-.header__services .btn {
-  border-color: var(--bs-white);
-  color: var(--bs-white);
-  transition: all 0.3s ease;
-}
-
-.header__services .btn:hover, .header__services .btn:focus {
-  background-color: var(--bs-white);
-  color: var(--bs-primary);
-}
-
-.consultation-form {
+.image-container, .form-container {
   width: 100%;
-  max-width: 400px;
+  height: 100%;
+  border-radius: 30px;
+  overflow: hidden;
+}
+
+.image-container {
+  display: flex;
+  align-items: stretch;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px 50px;
+}
+
+h2 {
+  margin-bottom: 30px;
+  color: var(--bs-dark);
+}
+
+.form-group {
+  margin-bottom: 20px;
+  position: relative;
 }
 
 .form-control {
+  width: 100%;
+  padding: 15px 25px;
+  border: none;
+  background-color: #f5f5f5;
   border-radius: 50px;
+  outline: none;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.business-name-input {
+  width: 50%;
+}
+
+.form-control:focus {
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 0 2px rgba(var(--bs-primary-rgb), 0.25);
 }
 
 .btn-block {
   display: block;
   width: 100%;
+  padding: 15px 30px;
+  font-size: 18px;
+  font-weight: bold;
   border-radius: 50px;
+  border: none;
+  background-color: var(--bs-primary);
+  color: white;
+  transition: background-color 0.3s ease;
 }
 
-.header__scroll-arrow {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  animation: bounce 3s infinite;
+.btn-block:hover {
+  background-color: var(--bs-primary-dark, #0056b3);
 }
 
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateX(-50%) translateY(0);
-  }
-  40% {
-    transform: translateX(-50%) translateY(-20px);
-  }
-  60% {
-    transform: translateX(-50%) translateY(-10px);
-  }
+.disclaimer {
+  margin-top: 20px;
+  font-size: 14px;
+  text-align: center;
 }
 
 @media (max-width: 991px) {
-  .header__title {
-    font-size: 2.5rem;
+  .consultation {
+    padding: 60px 0;
   }
 
-  .header__subtitle {
-    font-size: 1rem;
+  .row {
+    flex-direction: column;
   }
 
-  .header__services .btn {
-    font-size: 0.9rem;
-    padding: 8px 16px;
-  }
-}
-
-@media (max-width: 768px) {
-  .header__title {
-    font-size: 2rem;
+  .col-lg-6 {
+    margin-bottom: 30px;
   }
 
-  .header__subtitle {
-    font-size: 0.9rem;
+  .image-container, .form-container {
+    height: auto;
   }
 
-  .header__services .btn {
-    font-size: 0.8rem;
-    padding: 6px 12px;
+  .image-container {
+    margin-bottom: 30px;
+  }
+
+  .form-container {
+    padding: 30px;
   }
 }
 </style>

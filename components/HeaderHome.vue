@@ -1,33 +1,54 @@
 <template>
   <header class="header position-relative vh-100 overflow-hidden">
-    <div class="header__background-top"></div>
-    <div class="header__background-bottom"></div>
     <div class="container-fluid h-100">
-      <div class="row h-100 position-relative">
-        <div class="col-lg-6 d-flex flex-column justify-content-center align-items-start ps-5">
-          <h1 class="header__title fw-bold">
-            ULTIFY capitalizes on digital<br>resources to elevate your brand.
-          </h1>
-          <p class="header__subtitle">
-            Your Solutions Start With Ultify.
-          </p>
-          <h2 class="header__title fw-bold mt-4">
-            Start now and maximise your<br>digital reach!
-          </h2>
-          <p class="header__subtitle mb-4">
-            Explore our comprehensive services
-          </p>
-          <div class="header__services">
-            <NuxtLink to="/paid-media" class="btn btn-outline-light rounded-pill me-2 mb-2">Paid Media</NuxtLink>
-            <NuxtLink to="/seo" class="btn btn-outline-light rounded-pill me-2 mb-2">SEO</NuxtLink>
-            <NuxtLink to="/content-creation" class="btn btn-outline-light rounded-pill me-2 mb-2">Content Creation</NuxtLink>
-            <NuxtLink to="/website" class="btn btn-outline-light rounded-pill me-2 mb-2">Website</NuxtLink>
-            <NuxtLink to="/social-media" class="btn btn-outline-light rounded-pill me-2 mb-2">Social Media</NuxtLink>
-            <NuxtLink to="/print-media" class="btn btn-outline-light rounded-pill me-2 mb-2">Print Advertising</NuxtLink>
+      <div class="row h-100">
+        <div class="col-lg-7 d-flex flex-column justify-content-between py-5">
+          <div class="header__top">
+            <h1 class="header__title fw-bold text-primary">
+              ULTIFY capitalizes on digital<br>resources to elevate your brand.
+            </h1>
+            <p class="header__subtitle text-primary">
+              Your Solutions Start With Ultify.
+            </p>
+          </div>
+          <div class="header__bottom">
+            <h2 class="header__subtitle-large fw-bold text-white">
+              Start now and maximise your<br>digital reach!
+            </h2>
+            <p class="header__subtitle text-white mb-4">
+              Explore our comprehensive services
+            </p>
+            <div class="header__services">
+              <NuxtLink v-for="service in services" :key="service.path" :to="service.path" class="btn btn-outline-light rounded-pill me-2 mb-2">
+                {{ service.name }}
+              </NuxtLink>
+            </div>
           </div>
         </div>
-        <div class="col-lg-6 d-flex justify-content-center align-items-center">
-          <Consultation />
+        <div class="col-lg-5 d-flex justify-content-center align-items-center">
+          <div class="consultation-form bg-light rounded-4 shadow-lg p-4">
+            <h2 class="text-center text-dark mb-4">Book A Free Consultation Now</h2>
+            <form @submit.prevent="handleSubmit">
+              <div class="form-group mb-3">
+                <input class="form-control" v-model="form.businessName" placeholder="URL/Business Name (if applicable)" type="text" />
+              </div>
+              <div class="form-group mb-3">
+                <input class="form-control" v-model="form.name" placeholder="Name" type="text" />
+              </div>
+              <div class="form-group mb-3">
+                <input class="form-control" v-model="form.email" placeholder="Email" type="email" />
+              </div>
+              <div class="form-group mb-3">
+                <input class="form-control" v-model="form.phone" placeholder="Phone" type="tel" />
+              </div>
+              <button type="submit" class="btn btn-primary btn-block">
+                LEAD WITHOUT A SWEAT
+              </button>
+            </form>
+            <p class="disclaimer text-dark mt-3 text-center small">
+              You are booking a free consultation with no maximum time (TnC's apply). We will call you on the given number on our first available time-slot.
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -38,48 +59,90 @@
 </template>
 
 <script setup>
-import Consultation from './Consultation.vue';
+import { ref } from 'vue';
+
+const services = [
+  { name: 'Paid Media', path: '/paid-media' },
+  { name: 'SEO', path: '/seo' },
+  { name: 'Content Creation', path: '/content-creation' },
+  { name: 'Website', path: '/website' },
+  { name: 'Social Media', path: '/social-media' },
+  { name: 'Print Advertising', path: '/print-media' }
+];
+
+const form = ref({
+  businessName: '',
+  name: '',
+  email: '',
+  phone: ''
+});
+
+const handleSubmit = () => {
+  // Implement form submission logic here
+  console.log('Form submitted:', form.value);
+};
 </script>
 
 <style scoped>
-.header__background-top {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 50%;
-  background-color: var(--bs-white);
+.header {
+  background-color: var(--bs-primary);
 }
 
-.header__background-bottom {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 50%;
-  background-color: var(--bs-primary);
+.header__top {
+  padding-top: 3rem;
 }
 
 .header__title {
   font-size: 3rem;
-  max-width: 90%;
-  color: var(--bs-primary);
+  line-height: 1.2;
+  margin-bottom: 1rem;
 }
 
 .header__subtitle {
   font-size: 1.1rem;
-  color: var(--bs-primary);
+}
+
+.header__subtitle-large {
+  font-size: 2.5rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.header__services {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .header__services .btn {
-  border-color: var(--bs-primary);
-  color: var(--bs-primary);
+  border-color: var(--bs-white);
+  color: var(--bs-white);
   transition: all 0.3s ease;
+  font-size: 0.9rem;
+  padding: 0.5rem 1.5rem;
 }
 
 .header__services .btn:hover, .header__services .btn:focus {
-  background-color: var(--bs-primary);
-  color: var(--bs-white);
+  background-color: var(--bs-white);
+  color: var(--bs-primary);
+}
+
+.consultation-form {
+  width: 100%;
+  max-width: 400px;
+}
+
+.form-control {
+  border-radius: 50px;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  background-color: var(--bs-white);
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+  border-radius: 50px;
+  padding: 0.75rem 1.5rem;
 }
 
 .header__scroll-arrow {
@@ -107,13 +170,12 @@ import Consultation from './Consultation.vue';
     font-size: 2.5rem;
   }
 
-  .header__subtitle {
-    font-size: 1rem;
+  .header__subtitle-large {
+    font-size: 2rem;
   }
 
-  .header__services .btn {
-    font-size: 0.9rem;
-    padding: 8px 16px;
+  .header__subtitle {
+    font-size: 1rem;
   }
 }
 
@@ -122,13 +184,17 @@ import Consultation from './Consultation.vue';
     font-size: 2rem;
   }
 
+  .header__subtitle-large {
+    font-size: 1.75rem;
+  }
+
   .header__subtitle {
     font-size: 0.9rem;
   }
 
   .header__services .btn {
     font-size: 0.8rem;
-    padding: 6px 12px;
+    padding: 0.4rem 1rem;
   }
 }
 </style>
