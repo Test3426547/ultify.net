@@ -5,7 +5,7 @@
     <div class="container-fluid h-100">
       <div class="row h-100">
         <div class="col-lg-7 d-flex flex-column justify-content-between py-5 position-relative">
-          <div class="header__top">
+          <div class="header__top content-shift">
             <h1 class="header__title fw-bold text-primary">
               ULTIFY capitalizes on digital<br>resources to elevate your brand.
             </h1>
@@ -13,7 +13,7 @@
               Your Solutions Start With Ultify.
             </p>
           </div>
-          <div class="header__bottom">
+          <div class="header__bottom content-shift">
             <h2 class="header__subtitle-large fw-bold text-white">
               Start now and maximise your<br>digital reach!
             </h2>
@@ -113,6 +113,10 @@ const handleSubmit = () => {
   z-index: 1;
 }
 
+.content-shift {
+  padding-left: 150px;
+}
+
 .header__title {
   font-size: 3rem;
   line-height: 1.2;
@@ -188,7 +192,17 @@ const handleSubmit = () => {
   }
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1200px) {
+  .content-shift {
+    padding-left: 100px;
+  }
+}
+
+@media (max-width: 992px) {
+  .content-shift {
+    padding-left: 50px;
+  }
+
   .header__title {
     font-size: 2.5rem;
   }
@@ -203,6 +217,10 @@ const handleSubmit = () => {
 }
 
 @media (max-width: 768px) {
+  .content-shift {
+    padding-left: 20px;
+  }
+
   .header__title {
     font-size: 2rem;
   }
