@@ -1,28 +1,46 @@
 <template>
   <div class="service-cards-section position-relative bg-light">
     <div class="container-fluid h-100 d-flex flex-column justify-content-center">
-      <!-- Added heading -->
       <h2 class="section-heading text-primary fw-bold mb-5">Our latest work</h2>
-      <div class="row w-100 justify-content-between">
-        <div class="col-12 col-lg-5 mb-4 mb-lg-0 position-relative">
-          <div class="card custom-black custom-rounded shadow-lg custom-size"></div>
-          <div class="image-wrapper custom-size custom-rounded">
-            <img src="/index-01.webp" alt="About Us 1" class="custom-image" />
+      <div class="slider-container">
+        <button @click="prevSlide" class="slider-button prev">&lt;</button>
+        <div class="slider-wrapper" :style="{ transform: `translateX(-${currentSlide * 100}%)` }">
+          <div v-for="(image, index) in images" :key="index" class="slide">
+            <div class="card custom-black custom-rounded shadow-lg custom-size"></div>
+            <div class="image-wrapper custom-size custom-rounded">
+              <img :src="image" :alt="`Work ${index + 1}`" class="custom-image" />
+            </div>
           </div>
         </div>
-        <div class="col-12 col-lg-5 position-relative">
-          <div class="card custom-black custom-rounded shadow-lg custom-size"></div>
-          <div class="image-wrapper custom-size custom-rounded">
-            <img src="/index-02.webp" alt="About Us 2" class="custom-image" />
-          </div>
-        </div>
+        <button @click="nextSlide" class="slider-button next">&gt;</button>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-// No script needed
+import { ref } from 'vue';
+
+const images = [
+  '/index-01.webp',
+  '/index-02.webp',
+  '/7.webp',
+  '/8.webp',
+  '/9.webp',
+  '/10.webp',
+  '/11.webp',
+  '/about-us-01.webp'
+];
+
+const currentSlide = ref(0);
+
+const nextSlide = () => {
+  currentSlide.value = (currentSlide.value + 1) % images.length;
+};
+
+const prevSlide = () => {
+  currentSlide.value = (currentSlide.value - 1 + images.length) % images.length;
+};
 </script>
 
 <style scoped>
@@ -40,11 +58,26 @@
   padding: 0 15px;
 }
 
-/* Added styles for the heading */
 .section-heading {
   font-size: 3rem;
   text-align: left;
   align-self: flex-start;
+}
+
+.slider-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.slider-wrapper {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.slide {
+  flex: 0 0 100%;
+  position: relative;
 }
 
 .custom-black {
@@ -57,17 +90,17 @@
 }
 
 .custom-size {
-  width: calc(100% + 100px);
+  width: calc(100% - 100px);
   height: 0;
-  padding-bottom: calc(56.25% + 100px); /* 16:9 aspect ratio + 100px extra height */
-  margin-left: -50px;
-  margin-right: -50px;
+  padding-bottom: calc(56.25% + 100px);
+  margin: 0 auto;
 }
 
 .image-wrapper {
   position: absolute;
   top: -30px;
-  left: -30px;
+  left: 50px;
+  right: 50px;
 }
 
 .custom-image {
@@ -79,6 +112,27 @@
   left: 0;
 }
 
+.slider-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 18px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.slider-button.prev {
+  left: 10px;
+}
+
+.slider-button.next {
+  right: 10px;
+}
+
 @media (max-width: 991.98px) {
   .service-cards-section {
     min-height: 100vh;
@@ -86,14 +140,14 @@
   
   .custom-size,
   .image-wrapper {
-    width: 100%;
-    padding-bottom: 100%; /* Square aspect ratio on smaller screens */
-    margin-left: 0;
-    margin-right: 0;
+    width: calc(100% - 40px);
+    padding-bottom: 100%;
+    margin: 0 20px;
   }
 
   .image-wrapper {
-    left: 0;
+    left: 20px;
+    right: 20px;
     top: -10px;
   }
 }
@@ -103,12 +157,6 @@
     min-height: 100vh;
   }
 
-  .row {
-    margin-left: 0;
-    margin-right: 0;
-  }
-
-  /* Added responsive font size for smaller screens */
   .section-heading {
     font-size: 2.5rem;
   }
