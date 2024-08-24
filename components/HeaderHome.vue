@@ -4,7 +4,7 @@
     <div class="header__background-bottom"></div>
     <div class="container-fluid h-100">
       <div class="row h-100 position-relative">
-        <div class="col-lg-6 d-flex flex-column justify-content-center align-items-start ps-lg-5 ps-3">
+        <div class="col-lg-7 d-flex flex-column justify-content-center align-items-start ps-lg-5 ps-3">
           <h1 class="header__title header__title-top fw-bold mb-3">
             ULTIFY capitalizes on digital<br>resources to elevate your brand.
           </h1>
@@ -18,12 +18,12 @@
             Explore our comprehensive services
           </p>
           <div class="d-flex flex-wrap gap-2">
-            <NuxtLink v-for="service in services" :key="service.name" :to="service.link" class="btn btn-outline-light rounded-pill">
+            <NuxtLink v-for="service in services" :key="service.name" :to="service.link" class="btn btn-outline-primary rounded-pill">
               {{ service.name }}
             </NuxtLink>
           </div>
         </div>
-        <div class="col-lg-6 d-flex align-items-center">
+        <div class="col-lg-5 d-flex align-items-center">
           <Consultation />
         </div>
       </div>
@@ -48,6 +48,11 @@ const services = [
 </script>
 
 <style scoped>
+.header {
+  position: relative;
+  overflow: hidden;
+}
+
 .header__background-top {
   position: absolute;
   top: 0;
@@ -85,7 +90,7 @@ const services = [
   z-index: 1;
 }
 
-.btn-outline-light {
+.btn-outline-primary {
   border-color: var(--bs-primary);
   color: var(--bs-primary);
   transition: all 0.3s ease;
@@ -93,7 +98,7 @@ const services = [
   font-size: 0.9rem;
 }
 
-.btn-outline-light:hover, .btn-outline-light:focus {
+.btn-outline-primary:hover, .btn-outline-primary:focus {
   background-color: var(--bs-primary);
   color: var(--bs-white);
 }
@@ -127,7 +132,7 @@ const services = [
     font-size: 1rem;
   }
 
-  .btn-outline-light {
+  .btn-outline-primary {
     padding: 8px 16px;
     font-size: 0.8rem;
   }
@@ -147,7 +152,7 @@ const services = [
     font-size: 0.9rem;
   }
 
-  .btn-outline-light {
+  .btn-outline-primary {
     padding: 6px 12px;
     font-size: 0.7rem;
   }
@@ -162,7 +167,7 @@ const services = [
     font-size: 0.8rem;
   }
 
-  .btn-outline-light {
+  .btn-outline-primary {
     padding: 5px 10px;
     font-size: 0.6rem;
   }
