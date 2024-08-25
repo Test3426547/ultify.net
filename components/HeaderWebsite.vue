@@ -10,7 +10,7 @@
               Website.
             </h1>
             <p class="header__subtitle text-primary">
-              Our agency boast great expertise in leading edge technologies such as WordPress, NUXT, NEXT and React.
+              Our agency boast great expertise in leading edge technologies such as<br>WordPress, NUXT, NEXT and React.
             </p>
           </div>
           <div class="header__bottom content-shift">
@@ -173,7 +173,7 @@ const handleSubmit = () => {
   border-color: var(--bs-white);
   color: var(--bs-white);
   transition: all 0.3s ease;
-  font-size: 0.9rem;
+  font-size: 0.8rem; /* Reduced from 0.9rem to 0.8rem */
   padding: 0.5rem 1rem;
   white-space: nowrap;
 }
@@ -335,7 +335,7 @@ form {
   }
 
   .header__services .btn {
-    font-size: 0.8rem;
+    font-size: 0.7rem; /* Reduced from 0.8rem to 0.7rem for smaller screens */
     padding: 0.4rem 1rem;
   }
 
