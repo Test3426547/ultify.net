@@ -7,15 +7,15 @@
         <div class="col-lg-7 d-flex flex-column py-5 position-relative">
           <div class="header__top content-shift">
             <h1 class="header__title fw-bold text-primary">
-              SEO.
+              Print Advertising.
             </h1>
             <p class="header__subtitle text-primary">
-              Conquer the ladder of Google search rankings.
+              Your Solutions Start With Ultify.
             </p>
           </div>
           <div class="header__bottom content-shift">
             <h2 class="header__subtitle-large fw-bold text-white">
-              Conquer the Lannder of Google Search Results!
+              Start now and maximise your digital reach!
             </h2>
             <p class="header__subtitle text-white mb-4">
               Explore our comprehensive services
@@ -80,12 +80,10 @@
 import { ref } from 'vue';
 
 const services = [
-  'SEO for CMS Websites',
-  'SEO Built on Frameworks',
-  'SEO Audit & Strategy',
-  'Technical SEO',
-  'On-Page/Off-Page SEO',
-  'Keywords'
+  'Design',
+  'Printing',
+  'Delivery',
+  'Print Advertising Strategy',
 ];
 
 const form = ref({
