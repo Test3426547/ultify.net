@@ -173,7 +173,7 @@ const handleSubmit = () => {
   border-color: var(--bs-white);
   color: var(--bs-white);
   transition: all 0.3s ease;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   padding: 0.5rem 1rem;
   white-space: nowrap;
 }
@@ -335,7 +335,7 @@ form {
   }
 
   .header__services .btn {
-    font-size: 0.7rem;
+    font-size: 0.6rem;
     padding: 0.4rem 1rem;
   }
 
