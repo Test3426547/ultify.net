@@ -1,7 +1,7 @@
 <template>
   <div>
     <HeaderHome />
-    <HeroSection />
+    <QuickNEasy />
     <ServiceCards />
     <OurServices />
     <Consultation />
@@ -13,7 +13,7 @@
 
 <script setup>
 import HeaderHome from '@/components/HeaderHome.vue';
-import HeroSection from '@/components/HeroSection.vue';
+import QuickNEasy from '@/components/QuickNEasy.vue';
 import ServiceCards from '@/components/ServiceCards.vue';
 import OurServices from '@/components/OurServices.vue';
 import Consultation from '@/components/Consultation.vue';
