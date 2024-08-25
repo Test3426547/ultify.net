@@ -21,7 +21,7 @@
               Explore our comprehensive services
             </p>
             <div class="header__services">
-              <!-- Reduced width of service pills -->
+              <!-- Increased width of service pills -->
               <div class="row g-2 justify-content-start">
                 <div class="col-md-4" v-for="service in services.slice(0, 3)" :key="service.path">
                   <NuxtLink :to="service.path" class="btn btn-outline-light rounded-pill w-100">
@@ -40,7 +40,7 @@
           </div>
         </div>
         <div class="col-lg-5 d-flex justify-content-center align-items-center position-relative">
-          <!-- Adjusted consultation form height and width -->
+          <!-- Shifted contact form down by 50px -->
           <div class="consultation-form bg-light rounded-5 shadow-lg">
             <div class="consultation-form-inner p-4">
               <h2 class="text-center text-dark mb-4">Book A Free Consultation Now</h2>
@@ -166,7 +166,7 @@ const handleSubmit = () => {
 
 /* Adjusted width of service pills */
 .header__services .row {
-  max-width: 600px;
+  max-width: 700px; /* Increased from 600px to 700px */
 }
 
 .header__services .btn {
@@ -183,7 +183,7 @@ const handleSubmit = () => {
   color: var(--bs-primary);
 }
 
-/* Adjusted consultation form height and width */
+/* Adjusted consultation form position and size */
 .consultation-form {
   position: relative;
   z-index: 1;
@@ -193,8 +193,9 @@ const handleSubmit = () => {
   border-radius: 2rem;
   display: flex;
   flex-direction: column;
-  height: 100%;
-  max-height: 600px;
+  height: calc(100% - 50px); /* Reduced height by 50px */
+  max-height: 550px; /* Reduced max-height by 50px */
+  margin-top: 50px; /* Added margin-top to shift down */
 }
 
 .consultation-form-inner {
