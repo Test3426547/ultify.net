@@ -21,14 +21,15 @@
               Explore our comprehensive services
             </p>
             <div class="header__services">
-              <div class="row g-2">
+              <!-- Reduced width of service pills -->
+              <div class="row g-2 justify-content-start">
                 <div class="col-md-4" v-for="service in services.slice(0, 3)" :key="service.path">
                   <NuxtLink :to="service.path" class="btn btn-outline-light rounded-pill w-100">
                     {{ service.name }}
                   </NuxtLink>
                 </div>
               </div>
-              <div class="row g-2 mt-2">
+              <div class="row g-2 mt-2 justify-content-start">
                 <div class="col-md-4" v-for="service in services.slice(3)" :key="service.path">
                   <NuxtLink :to="service.path" class="btn btn-outline-light rounded-pill w-100">
                     {{ service.name }}
@@ -39,6 +40,7 @@
           </div>
         </div>
         <div class="col-lg-5 d-flex justify-content-center align-items-center position-relative">
+          <!-- Adjusted consultation form height and width -->
           <div class="consultation-form bg-light rounded-5 shadow-lg">
             <div class="consultation-form-inner p-4">
               <h2 class="text-center text-dark mb-4">Book A Free Consultation Now</h2>
@@ -162,6 +164,11 @@ const handleSubmit = () => {
   flex-direction: column;
 }
 
+/* Adjusted width of service pills */
+.header__services .row {
+  max-width: 600px;
+}
+
 .header__services .btn {
   border-color: var(--bs-white);
   color: var(--bs-white);
@@ -176,15 +183,18 @@ const handleSubmit = () => {
   color: var(--bs-primary);
 }
 
+/* Adjusted consultation form height and width */
 .consultation-form {
   position: relative;
   z-index: 1;
-  width: calc(100% + 200px);
-  max-width: 600px;
+  width: calc(100% + 150px);
+  max-width: 550px;
   background-color: var(--bs-light);
   border-radius: 2rem;
   display: flex;
   flex-direction: column;
+  height: 100%;
+  max-height: 600px;
 }
 
 .consultation-form-inner {
