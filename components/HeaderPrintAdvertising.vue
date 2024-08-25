@@ -15,7 +15,7 @@
           </div>
           <div class="header__bottom content-shift">
             <h2 class="header__subtitle-large fw-bold text-white">
-              Start now and maximise your digital reach!
+              Start now and maximise your<br>digital reach!
             </h2>
             <p class="header__subtitle text-white mb-4">
               Explore our comprehensive services

@@ -10,7 +10,7 @@
               Social Media.
             </h1>
             <p class="header__subtitle text-primary">
-              Utilise organic and free space for a more raw<br>audience base for your business.
+              Utilise organic and free space for a<br>more raw audience base for your business.
             </p>
           </div>
           <div class="header__bottom content-shift">

@@ -15,7 +15,7 @@
           </div>
           <div class="header__bottom content-shift">
             <h2 class="header__subtitle-large fw-bold text-white">
-              Capture visuals that do more than just sell!
+              Capture visuals that do<br>more than just sell!
             </h2>
             <p class="header__subtitle text-white mb-4">
               Explore our comprehensive services
