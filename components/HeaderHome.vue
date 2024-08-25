@@ -21,7 +21,6 @@
               Explore our comprehensive services
             </p>
             <div class="header__services">
-              <!-- Increased width of service pills -->
               <div class="row g-2 justify-content-start">
                 <div class="col-md-4" v-for="service in services.slice(0, 3)" :key="service.path">
                   <NuxtLink :to="service.path" class="btn btn-outline-light rounded-pill w-100">
@@ -40,10 +39,10 @@
           </div>
         </div>
         <div class="col-lg-5 d-flex justify-content-center align-items-center position-relative">
-          <!-- Adjusted contact form height and position -->
           <div class="consultation-form bg-light rounded-5 shadow-lg">
             <div class="consultation-form-inner p-4">
               <h2 class="text-center text-dark mb-4">Book A Free Consultation Now</h2>
+              <div class="spacer"></div>
               <form @submit.prevent="handleSubmit">
                 <div class="form-group mb-3">
                   <input class="form-control" v-model="form.businessName" placeholder="URL/Business Name (if applicable)" type="text" />
@@ -164,9 +163,8 @@ const handleSubmit = () => {
   flex-direction: column;
 }
 
-/* Adjusted width of service pills */
 .header__services .row {
-  max-width: 700px; /* Increased from 600px to 700px to make pills wider */
+  max-width: 700px;
 }
 
 .header__services .btn {
@@ -183,7 +181,6 @@ const handleSubmit = () => {
   color: var(--bs-primary);
 }
 
-/* Adjusted consultation form height and position */
 .consultation-form {
   position: relative;
   z-index: 1;
@@ -193,17 +190,33 @@ const handleSubmit = () => {
   border-radius: 2rem;
   display: flex;
   flex-direction: column;
-  height: calc(100% + 50px); /* Increased height by 50px */
-  max-height: 650px; /* Increased max-height by 50px */
-  margin-top: 50px; /* Shifts the form down by 50px */
-  margin-bottom: -50px; /* Compensates for the increased height */
+  height: calc(100% + 50px);
+  max-height: 650px;
+  margin-top: 50px;
+  margin-bottom: -50px;
 }
 
 .consultation-form-inner {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  overflow-y: auto; /* Added scrolling for potential overflow */
+  overflow-y: auto;
+}
+
+.spacer {
+  height: 50px;
+}
+
+form {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
 }
 
 .form-control {
@@ -211,6 +224,7 @@ const handleSubmit = () => {
   padding: 0.75rem 1.5rem;
   border: none;
   background-color: var(--bs-white);
+  width: 100%;
 }
 
 .btn-block {
@@ -218,6 +232,11 @@ const handleSubmit = () => {
   width: 100%;
   border-radius: 50px;
   padding: 0.75rem 1.5rem;
+  margin-top: auto;
+}
+
+.disclaimer {
+  margin-top: 1rem;
 }
 
 .header__scroll-arrow {
