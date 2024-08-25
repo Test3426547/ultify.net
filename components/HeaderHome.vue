@@ -20,7 +20,6 @@
             <p class="header__subtitle text-white mb-4">
               Explore our comprehensive services
             </p>
-            <!-- Updated service pills layout -->
             <div class="header__services">
               <div class="row g-2">
                 <div class="col-md-4" v-for="service in services.slice(0, 3)" :key="service.path">
@@ -40,29 +39,30 @@
           </div>
         </div>
         <div class="col-lg-5 d-flex justify-content-center align-items-center position-relative">
-          <!-- Updated contact form class for more rounded corners -->
-          <div class="consultation-form bg-light rounded-5 shadow-lg p-4">
-            <h2 class="text-center text-dark mb-4">Book A Free Consultation Now</h2>
-            <form @submit.prevent="handleSubmit">
-              <div class="form-group mb-3">
-                <input class="form-control" v-model="form.businessName" placeholder="URL/Business Name (if applicable)" type="text" />
-              </div>
-              <div class="form-group mb-3">
-                <input class="form-control" v-model="form.name" placeholder="Name" type="text" />
-              </div>
-              <div class="form-group mb-3">
-                <input class="form-control" v-model="form.email" placeholder="Email" type="email" />
-              </div>
-              <div class="form-group mb-3">
-                <input class="form-control" v-model="form.phone" placeholder="Phone" type="tel" />
-              </div>
-              <button type="submit" class="btn btn-primary btn-block">
-                LEAD WITHOUT A SWEAT
-              </button>
-            </form>
-            <p class="disclaimer text-dark mt-3 text-center small">
-              You are booking a free consultation with no maximum time (TnC's apply). We will call you on the given number on our first available time-slot.
-            </p>
+          <div class="consultation-form bg-light rounded-5 shadow-lg">
+            <div class="consultation-form-inner p-4">
+              <h2 class="text-center text-dark mb-4">Book A Free Consultation Now</h2>
+              <form @submit.prevent="handleSubmit">
+                <div class="form-group mb-3">
+                  <input class="form-control" v-model="form.businessName" placeholder="URL/Business Name (if applicable)" type="text" />
+                </div>
+                <div class="form-group mb-3">
+                  <input class="form-control" v-model="form.name" placeholder="Name" type="text" />
+                </div>
+                <div class="form-group mb-3">
+                  <input class="form-control" v-model="form.email" placeholder="Email" type="email" />
+                </div>
+                <div class="form-group mb-3">
+                  <input class="form-control" v-model="form.phone" placeholder="Phone" type="tel" />
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">
+                  LEAD WITHOUT A SWEAT
+                </button>
+              </form>
+              <p class="disclaimer text-dark mt-3 text-center small">
+                You are booking a free consultation with no maximum time (TnC's apply). We will call you on the given number on our first available time-slot.
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -162,7 +162,6 @@ const handleSubmit = () => {
   flex-direction: column;
 }
 
-/* Updated styles for service pills */
 .header__services .btn {
   border-color: var(--bs-white);
   color: var(--bs-white);
@@ -177,14 +176,21 @@ const handleSubmit = () => {
   color: var(--bs-primary);
 }
 
-/* Updated styles for contact form */
 .consultation-form {
   position: relative;
   z-index: 1;
-  width: calc(100% + 200px); /* Increased width by 200px */
+  width: calc(100% + 200px);
   max-width: 600px;
   background-color: var(--bs-light);
-  border-radius: 2rem; /* More rounded corners */
+  border-radius: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.consultation-form-inner {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .form-control {
@@ -253,7 +259,6 @@ const handleSubmit = () => {
     font-size: 1rem;
   }
 
-  /* Adjusted contact form width for smaller screens */
   .consultation-form {
     width: 100%;
     max-width: 500px;
@@ -290,7 +295,6 @@ const handleSubmit = () => {
     padding: 0.4rem 1rem;
   }
 
-  /* Further adjusted contact form width for mobile screens */
   .consultation-form {
     width: 100%;
     max-width: 400px;
