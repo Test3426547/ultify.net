@@ -1,177 +1,347 @@
 <template>
-  <div class="homepage">
-    <div class="top-section">
-      <div class="content">
-        <h1>Rise to Digital Excellence with Your Own Website</h1>
-        <p>We're constantly trying to express ourselves and actualize our dreams. If you have the opportunity to play this game, make the most of it!</p>
-        <NuxtLink to="/consultation" class="get-started-btn">Contact Us</NuxtLink>
+  <header class="header position-relative vh-100 overflow-hidden">
+    <div class="header__background-top"></div>
+    <div class="header__background-bottom"></div>
+    <div class="container-fluid h-100">
+      <div class="row h-100">
+        <div class="col-lg-7 d-flex flex-column py-5 position-relative">
+          <div class="header__top content-shift">
+            <h1 class="header__title fw-bold text-primary">
+              Website.
+            </h1>
+            <p class="header__subtitle text-primary">
+              Our agency boast great expertise in leading edge technologies such as WordPress, NUXT, NEXT and React.
+            </p>
+          </div>
+          <div class="header__bottom content-shift">
+            <h2 class="header__subtitle-large fw-bold text-white">
+              Get a website exactly the<br>way you need!
+            </h2>
+            <p class="header__subtitle text-white mb-4">
+              Explore our website services content
+            </p>
+            <div class="header__services">
+              <div class="row g-2 justify-content-start">
+                <div class="col-md-4" v-for="service in services.slice(0, 3)" :key="service">
+                  <button class="btn btn-outline-light rounded-pill w-100">
+                    {{ service }}
+                  </button>
+                </div>
+              </div>
+              <div class="row g-2 mt-2 justify-content-start">
+                <div class="col-md-4" v-for="service in services.slice(3)" :key="service">
+                  <button class="btn btn-outline-light rounded-pill w-100">
+                    {{ service }}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-5 d-flex justify-content-center align-items-center position-relative">
+          <div class="consultation-form bg-light rounded-5 shadow-lg ms-n50">
+            <div class="consultation-form-inner p-4">
+              <h2 class="text-center text-dark mb-4">Book A Free Consultation Now</h2>
+              <div class="spacer"></div>
+              <div class="form-container">
+                <form @submit.prevent="handleSubmit">
+                  <div class="form-group mb-3">
+                    <input class="form-control" v-model="form.businessName" placeholder="URL/Business Name (if applicable)" type="text" />
+                  </div>
+                  <div class="form-group mb-3">
+                    <input class="form-control" v-model="form.name" placeholder="Name" type="text" />
+                  </div>
+                  <div class="form-group mb-3">
+                    <input class="form-control" v-model="form.email" placeholder="Email" type="email" />
+                  </div>
+                  <div class="form-group mb-3">
+                    <input class="form-control" v-model="form.phone" placeholder="Phone" type="tel" />
+                  </div>
+                  <button type="submit" class="btn btn-primary btn-block btn-lg">
+                    LEAD WITHOUT A SWEAT
+                  </button>
+                </form>
+              </div>
+              <p class="disclaimer text-dark mt-3 text-center">
+                You are booking a free consultation with no maximum time (TnC's apply). We will call you on the given number on our first available time-slot.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="wave-container">
-      <svg class="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 24 150 28" preserveAspectRatio="none">
-        <defs>
-          <path id="wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
-        </defs>
-        <g class="parallax">
-          <use xlink:href="#wave" x="48" y="0" :fill="waveColors[0]" />
-          <use xlink:href="#wave" x="48" y="3" :fill="waveColors[1]" />
-          <use xlink:href="#wave" x="48" y="5" :fill="waveColors[2]" />
-          <use xlink:href="#wave" x="48" y="7" :fill="waveColors[3]" />
-        </g>
-      </svg>
-    </div>
-  </div>
+    <svg class="header__scroll-arrow" width="40" height="35" viewBox="0 0 40 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20 35L36.5 18.5L33.25 15.25L23.5 25V0H16.5V25L6.75 15.25L3.5 18.5L20 35Z" fill="white"/>
+    </svg>
+  </header>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
+import { ref } from 'vue';
 
-const primaryColor = ref(getComputedStyle(document.documentElement).getPropertyValue('--bs-primary').trim());
+const services = [
+  'Website Maintenance',
+  'Website Management',
+  'Website Design & Development',
+  'Mobile Conversion',
+  'Conversion Rate Optimisation',
+  'Website Audit & Strategy'
+];
 
-const waveColors = computed(() => [
-  `${primaryColor.value}B3`, // 70% opacity
-  `${primaryColor.value}80`, // 50% opacity
-  `${primaryColor.value}4D`, // 30% opacity
-  primaryColor.value
-]);
+const form = ref({
+  businessName: '',
+  name: '',
+  email: '',
+  phone: ''
+});
+
+const handleSubmit = () => {
+  // Implement form submission logic here
+  console.log('Form submitted:', form.value);
+};
 </script>
 
 <style scoped>
-.homepage {
-  min-height: 100vh;
-  font-family: Arial, sans-serif;
-  background-color: var(--bs-light);
+.header {
+  position: relative;
 }
 
-.top-section {
-  color: #000000;
-  padding: 4rem 2rem;
-  min-height: calc(100vh - 150px);
+.header__background-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background-color: var(--bs-white);
+}
+
+.header__background-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background-color: var(--bs-primary);
+}
+
+.header__top {
+  position: absolute;
+  top: calc(50% - 260px);
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+.header__bottom {
+  position: absolute;
+  top: calc(50% + 60px);
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+.content-shift {
+  padding-left: 150px;
+}
+
+.header__title {
+  font-size: 3rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.header__subtitle {
+  font-size: 1.1rem;
+}
+
+.header__subtitle-large {
+  font-size: 3rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.header__services {
+  display: flex;
+  flex-direction: column;
+}
+
+.header__services .row {
+  max-width: 700px;
+}
+
+.header__services .btn {
+  border-color: var(--bs-white);
+  color: var(--bs-white);
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  white-space: nowrap;
+}
+
+.header__services .btn:hover, .header__services .btn:focus {
+  background-color: var(--bs-white);
+  color: var(--bs-primary);
+}
+
+.consultation-form {
+  position: relative;
+  z-index: 1;
+  width: calc(100% + 150px);
+  max-width: 550px;
+  background-color: var(--bs-light);
+  border-radius: 2rem;
+  display: flex;
+  flex-direction: column;
+  height: calc(100% + 50px);
+  max-height: 650px;
+  margin-top: 50px;
+  margin-bottom: -50px;
+}
+
+.ms-n50 {
+  margin-left: -50px;
+}
+
+.consultation-form-inner {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.form-container {
+  padding: 0 25px;
+}
+
+.spacer {
+  height: 50px;
+}
+
+form {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  flex-grow: 1;
   display: flex;
   align-items: center;
-  justify-content: center;
 }
 
-.content {
-  max-width: 800px;
-  text-align: center;
-}
-
-.welcome {
-  background-color: var(--bs-primary);
-  color: #ffffff;
+.form-control {
+  border-radius: 50px;
   padding: 0.75rem 1.5rem;
-  border-radius: 30px;
-  font-size: 1.1rem;
-  display: inline-block;
-  margin-bottom: 1.5rem;
-}
-
-h1 {
-  font-size: 3.5rem;
-  line-height: 1.2;
-  color: var(--bs-primary);
-  margin: 1rem 0 1.5rem;
-}
-
-p {
-  font-size: 1.25rem;
-  line-height: 1.6;
-  margin-bottom: 2rem;
-}
-
-.get-started-btn {
-  background-color: var(--bs-primary);
-  color: #ffffff;
   border: none;
-  padding: 1rem 2rem;
-  font-size: 1.1rem;
-  border-radius: 30px;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-  display: inline-block;
-  text-decoration: none;
+  background-color: var(--bs-white);
+  width: 100%;
 }
 
-.get-started-btn:hover {
-  animation: bounce 0.5s;
+.btn-block {
+  display: block;
+  width: 100%;
+  border-radius: 50px;
+  padding: 0.85rem 1.5rem;
+  margin-top: auto;
+  font-size: 1rem;
+}
+
+.disclaimer {
+  margin-top: 1rem;
+  font-size: 0.8rem;
+}
+
+.header__scroll-arrow {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: bounce 3s infinite;
+  z-index: 1;
 }
 
 @keyframes bounce {
-  0%, 100% {
-    transform: translateY(0);
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateX(-50%) translateY(0);
   }
-  50% {
-    transform: translateY(-10px);
+  40% {
+    transform: translateX(-50%) translateY(-20px);
+  }
+  60% {
+    transform: translateX(-50%) translateY(-10px);
   }
 }
 
-.wave-container {
-  position: relative;
-  height: 150px;
-  overflow: hidden;
-  background-color: var(--bs-light);
-}
-
-.waves {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-  min-height: 100px;
-  max-height: 150px;
-}
-
-.parallax > use {
-  animation: move-forever 25s cubic-bezier(.55,.5,.45,.5) infinite;
-}
-.parallax > use:nth-child(1) {
-  animation-delay: -2s;
-  animation-duration: 7s;
-}
-.parallax > use:nth-child(2) {
-  animation-delay: -3s;
-  animation-duration: 10s;
-}
-.parallax > use:nth-child(3) {
-  animation-delay: -4s;
-  animation-duration: 13s;
-}
-.parallax > use:nth-child(4) {
-  animation-delay: -5s;
-  animation-duration: 20s;
-}
-
-@keyframes move-forever {
-  0% {
-    transform: translate3d(-90px,0,0);
+@media (max-width: 1200px) {
+  .content-shift {
+    padding-left: 100px;
   }
-  100% { 
-    transform: translate3d(85px,0,0);
+}
+
+@media (max-width: 992px) {
+  .content-shift {
+    padding-left: 50px;
+  }
+
+  .header__top {
+    top: calc(50% - 220px);
+  }
+
+  .header__bottom {
+    top: calc(50% + 40px);
+  }
+
+  .header__title {
+    font-size: 2.5rem;
+  }
+
+  .header__subtitle-large {
+    font-size: 2.5rem;
+  }
+
+  .header__subtitle {
+    font-size: 1rem;
+  }
+
+  .consultation-form {
+    width: 100%;
+    max-width: 500px;
   }
 }
 
 @media (max-width: 768px) {
-  .top-section {
-    padding: 3rem 1rem;
+  .content-shift {
+    padding-left: 20px;
   }
 
-  h1 {
-    font-size: 2.5rem;
+  .header__top {
+    top: calc(50% - 180px);
   }
 
-  p {
-    font-size: 1.1rem;
+  .header__bottom {
+    top: calc(50% + 20px);
   }
 
-  .welcome {
-    font-size: 1rem;
-    padding: 0.6rem 1.2rem;
+  .header__title {
+    font-size: 2rem;
   }
 
-  .get-started-btn {
-    padding: 0.8rem 1.6rem;
-    font-size: 1rem;
+  .header__subtitle-large {
+    font-size: 2rem;
+  }
+
+  .header__subtitle {
+    font-size: 0.9rem;
+  }
+
+  .header__services .btn {
+    font-size: 0.8rem;
+    padding: 0.4rem 1rem;
+  }
+
+  .consultation-form {
+    width: 100%;
+    max-width: 400px;
   }
 }
 </style>
