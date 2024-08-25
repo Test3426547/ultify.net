@@ -39,7 +39,7 @@
           </div>
         </div>
         <div class="col-lg-5 d-flex justify-content-center align-items-center position-relative">
-          <div class="consultation-form bg-light rounded-5 shadow-lg">
+          <div class="consultation-form bg-light rounded-5 shadow-lg ms-n50">
             <div class="consultation-form-inner p-4">
               <h2 class="text-center text-dark mb-4">Book A Free Consultation Now</h2>
               <div class="spacer"></div>
@@ -57,7 +57,7 @@
                   <div class="form-group mb-3">
                     <input class="form-control" v-model="form.phone" placeholder="Phone" type="tel" />
                   </div>
-                  <button type="submit" class="btn btn-primary btn-block">
+                  <button type="submit" class="btn btn-primary btn-block btn-lg">
                     LEAD WITHOUT A SWEAT
                   </button>
                 </form>
@@ -198,6 +198,10 @@ const handleSubmit = () => {
   margin-bottom: -50px;
 }
 
+.ms-n50 {
+  margin-left: -50px;
+}
+
 .consultation-form-inner {
   flex-grow: 1;
   display: flex;
@@ -237,13 +241,14 @@ form {
   display: block;
   width: 100%;
   border-radius: 50px;
-  padding: 0.75rem 1.5rem;
+  padding: 0.85rem 1.5rem;
   margin-top: auto;
+  font-size: 1rem;
 }
 
 .disclaimer {
   margin-top: 1rem;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
 }
 
 .header__scroll-arrow {
