@@ -40,7 +40,7 @@
           </div>
         </div>
         <div class="col-lg-5 d-flex justify-content-center align-items-center position-relative">
-          <!-- Shifted contact form down by 50px -->
+          <!-- Adjusted contact form height and position -->
           <div class="consultation-form bg-light rounded-5 shadow-lg">
             <div class="consultation-form-inner p-4">
               <h2 class="text-center text-dark mb-4">Book A Free Consultation Now</h2>
@@ -166,7 +166,7 @@ const handleSubmit = () => {
 
 /* Adjusted width of service pills */
 .header__services .row {
-  max-width: 700px; /* Increased from 600px to 700px */
+  max-width: 700px; /* Increased from 600px to 700px to make pills wider */
 }
 
 .header__services .btn {
@@ -183,7 +183,7 @@ const handleSubmit = () => {
   color: var(--bs-primary);
 }
 
-/* Adjusted consultation form position and size */
+/* Adjusted consultation form height and position */
 .consultation-form {
   position: relative;
   z-index: 1;
@@ -193,15 +193,17 @@ const handleSubmit = () => {
   border-radius: 2rem;
   display: flex;
   flex-direction: column;
-  height: calc(100% - 50px); /* Reduced height by 50px */
-  max-height: 550px; /* Reduced max-height by 50px */
-  margin-top: 50px; /* Added margin-top to shift down */
+  height: calc(100% + 50px); /* Increased height by 50px */
+  max-height: 650px; /* Increased max-height by 50px */
+  margin-top: 50px; /* Shifts the form down by 50px */
+  margin-bottom: -50px; /* Compensates for the increased height */
 }
 
 .consultation-form-inner {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+  overflow-y: auto; /* Added scrolling for potential overflow */
 }
 
 .form-control {
