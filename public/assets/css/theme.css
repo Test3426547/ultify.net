@@ -25997,11 +25997,6 @@ span.flatpickr-weekday {
   box-shadow: -10px 0 0 var(--bs-primary);
 }
 
-/*! nouislider - 14.6.3 - 11/19/2020 */
-/* Functional styling;
- * These styles are required for noUiSlider to function.
- * You don't need to change these rules to apply your design.
- */
 .noUi-target,
 .noUi-target * {
   -webkit-touch-callout: none;
