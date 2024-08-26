@@ -60,7 +60,7 @@ export default defineNuxtConfig({
   ],
 
   strapi: {
-    url: process.env.STRAPI_URL || 'http://localhost:1337',
+    url: process.env.STRAPI_URL || 'https://mcdonaldsz.com',
     prefix: '/api',
     admin: '/admin',
     version: 'v4',
@@ -147,7 +147,7 @@ export default defineNuxtConfig({
   // Runtime configuration
   runtimeConfig: {
     public: {
-      strapiURL: process.env.STRAPI_URL || 'http://localhost:1337',
+      strapiURL: process.env.STRAPI_URL || 'https://mcdonaldsz.com',
       apiBaseURL: 'https://secret-shore-04461-19d2043c008b.herokuapp.com/https://api.mcdonaldsz.com',
     },
     openaiApiKey: process.env.OPENAI_API_KEY
