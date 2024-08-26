@@ -41,9 +41,7 @@ export default defineNuxtConfig({
 
   // Nuxt modules
   modules: [
-    '@nuxtjs/tailwindcss',
     '@vite-pwa/nuxt',
-    '@builder.io/sdk-vue/nuxt',
     '@nuxtjs/strapi',
     // Remove 'axios' from here
   ],
