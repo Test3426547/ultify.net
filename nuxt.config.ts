@@ -1,6 +1,6 @@
 export default defineNuxtConfig({
-  // Single Page Application mode
-  ssr: false,
+  // Server-Side Rendering mode
+  ssr: true,
 
   // Global CSS files
   css: [
@@ -17,7 +17,6 @@ export default defineNuxtConfig({
 
   // Import plugins
   plugins: [
-    '~/plugins/axios',
     '~/plugins/analytics.client',
     '~/plugins/fontawesome.js',
   ],
@@ -55,8 +54,19 @@ export default defineNuxtConfig({
   modules: [
     '@nuxtjs/tailwindcss',
     '@vite-pwa/nuxt',
-    '@builder.io/sdk-vue/nuxt'
+    '@builder.io/sdk-vue/nuxt',
+    '@nuxtjs/strapi',
+    // Remove 'axios' from here
   ],
+
+  strapi: {
+    url: process.env.STRAPI_URL || 'http://localhost:1337',
+    prefix: '/api',
+    admin: '/admin',
+    version: 'v4',
+    cookie: {},
+    cookieName: 'strapi_jwt'
+  },
 
   // PostCSS configuration for TailwindCSS and Autoprefixer
   postcss: {
@@ -137,6 +147,7 @@ export default defineNuxtConfig({
   // Runtime configuration
   runtimeConfig: {
     public: {
+      strapiURL: process.env.STRAPI_URL || 'http://localhost:1337',
       apiBaseURL: 'https://secret-shore-04461-19d2043c008b.herokuapp.com/https://api.mcdonaldsz.com',
     },
     openaiApiKey: process.env.OPENAI_API_KEY
