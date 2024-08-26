@@ -7,10 +7,6 @@ export default defineNuxtConfig({
     'bootstrap/dist/css/bootstrap.min.css',
     'bootstrap-icons/font/bootstrap-icons.css',
     '~/assets/css/main.css',
-    '~/assets/css/nucleo-icons.css',
-    '~/assets/css/nucleo-svg.css',
-    '~/assets/css/soft-design-system-pro.css',
-    '~/assets/css/soft-design-system-pro.min.css',
     '~/assets/css/theme.css',
     '@fortawesome/fontawesome-svg-core/styles.css',
   ],
@@ -35,17 +31,10 @@ export default defineNuxtConfig({
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
         { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' },
-        { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/gh/creativetimofficial/public-assets@master/soft-ui-design-system-builder/v1.0.7/assets/css/nucleo-icons.css' },
-        { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/gh/creativetimofficial/public-assets@master/soft-ui-design-system-builder/v1.0.7/assets/css/nucleo-svg.css' }
       ],
       script: [
-        { src: 'https://kit.fontawesome.com/42d5adcbca.js', crossorigin: 'anonymous' },
         { src: 'https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js', crossorigin: 'anonymous' },
         { src: 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js', crossorigin: 'anonymous' },
-        { src: 'https://cdn.jsdelivr.net/gh/creativetimofficial/public-assets@master/soft-ui-design-system-builder/v1.0.7/assets/js/plugins/countup.min.js', type: 'text/javascript' },
-        { src: 'https://cdn.jsdelivr.net/gh/creativetimofficial/public-assets@master/soft-ui-design-system-builder/v1.0.7/assets/js/plugins/flatpickr.min.js', type: 'text/javascript' },
-        { src: 'https://cdn.jsdelivr.net/gh/creativetimofficial/public-assets@master/soft-ui-design-system-builder/v1.0.7/assets/js/plugins/typedjs.js', type: 'text/javascript' },
-        { src: 'https://cdn.jsdelivr.net/gh/creativetimofficial/public-assets@master/soft-ui-design-system-builder/v1.0.7/assets/js/soft-design-system.js', type: 'text/javascript' }
       ]
     }
   },
@@ -148,9 +137,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       strapiURL: process.env.STRAPI_URL || 'https://mcdonaldsz.com',
-      apiBaseURL: 'https://secret-shore-04461-19d2043c008b.herokuapp.com/https://api.mcdonaldsz.com',
     },
-    openaiApiKey: process.env.OPENAI_API_KEY
   },
 
   // Nitro configuration
@@ -165,8 +152,4 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   compatibilityDate: '2024-08-03',
 
-  // Build configuration
-  build: {
-    transpile: ['three']
-  }
 });
