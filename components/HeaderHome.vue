@@ -5,7 +5,7 @@
     <div class="container-fluid h-100">
       <div class="row h-100">
         <div class="col-lg-7 d-flex flex-column py-5 position-relative">
-          <div class="header__top content-shift">
+          <div class="header__top">
             <h1 class="header__title fw-bold text-primary">
               ULTIFY capitalizes on digital<br>resources to elevate your brand.
             </h1>
@@ -13,7 +13,7 @@
               Your Solutions Start With Ultify.
             </p>
           </div>
-          <div class="header__bottom content-shift">
+          <div class="header__bottom">
             <h2 class="header__subtitle-large fw-bold text-white">
               Start now and maximise your<br>digital reach!
             </h2>
@@ -126,22 +126,22 @@ const handleSubmit = () => {
 
 .header__top {
   position: absolute;
-  top: calc(50% - 260px);
-  left: 0;
+  /* Move top heading and body 50px down, and body an additional 20px */
+  top: calc(50% - 210px);
+  /* Move content 50px to the right */
+  left: 50px;
   right: 0;
   z-index: 1;
 }
 
 .header__bottom {
   position: absolute;
-  top: calc(50% + 60px);
-  left: 0;
+  /* Move bottom heading 50px up */
+  top: calc(50% + 10px);
+  /* Move content 50px to the right */
+  left: 50px;
   right: 0;
   z-index: 1;
-}
-
-.content-shift {
-  padding-left: 150px;
 }
 
 .header__title {
@@ -152,6 +152,8 @@ const handleSubmit = () => {
 
 .header__subtitle {
   font-size: 1.1rem;
+  /* Move top body an additional 20px down */
+  margin-top: 20px;
 }
 
 .header__subtitle-large {
@@ -163,10 +165,17 @@ const handleSubmit = () => {
 .header__services {
   display: flex;
   flex-direction: column;
+  /* Move all pills up 20px */
+  margin-top: -20px;
 }
 
 .header__services .row {
   max-width: 700px;
+}
+
+.header__services .row + .row {
+  /* Move bottom 3 pills 20px closer to top 3 pills */
+  margin-top: -18px;
 }
 
 .header__services .btn {
@@ -273,22 +282,18 @@ form {
 }
 
 @media (max-width: 1200px) {
-  .content-shift {
-    padding-left: 100px;
+  .header__top, .header__bottom {
+    left: 30px;
   }
 }
 
 @media (max-width: 992px) {
-  .content-shift {
-    padding-left: 50px;
-  }
-
   .header__top {
-    top: calc(50% - 220px);
+    top: calc(50% - 190px);
   }
 
   .header__bottom {
-    top: calc(50% + 40px);
+    top: calc(50% + 20px);
   }
 
   .header__title {
@@ -310,16 +315,16 @@ form {
 }
 
 @media (max-width: 768px) {
-  .content-shift {
-    padding-left: 20px;
+  .header__top, .header__bottom {
+    left: 20px;
   }
 
   .header__top {
-    top: calc(50% - 180px);
+    top: calc(50% - 170px);
   }
 
   .header__bottom {
-    top: calc(50% + 20px);
+    top: calc(50% + 30px);
   }
 
   .header__title {
