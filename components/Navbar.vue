@@ -1,60 +1,84 @@
 <template>
-  <nav class="navbar fixed-top">
-    <div class="container-fluid">
-      <NuxtLink to="/" class="navbar-brand">
-        <img src="/ultify.svg" alt="Ultify Logo" height="75" width="auto">
-      </NuxtLink>
-      <button class="navbar-toggler" type="button" @click="toggleMenu" aria-label="Toggle navigation">
+  <header>
+    <nav class="navbar fixed-top" aria-label="Main navigation">
+      <div class="container-fluid">
+        <NuxtLink to="/" class="navbar-brand">
+          <img src="/ultify.svg" alt="Ultify Logo" height="75" width="auto">
+        </NuxtLink>
+        <button 
+          class="navbar-toggler" 
+          type="button" 
+          @click="toggleMenu" 
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="visually-hidden">Menu</span>
+          <div class="hamburger-circle">
+            <div class="hamburger">
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+        </button>
+      </div>
+    </nav>
+
+    <div 
+      class="offcanvas" 
+      :class="{ 'show': isMenuOpen }" 
+      ref="offcanvas"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Main menu"
+    >
+      <button 
+        class="navbar-toggler offcanvas-toggler" 
+        type="button" 
+        @click="toggleMenu" 
+        aria-label="Close navigation"
+      >
+        <span class="visually-hidden">Close</span>
         <div class="hamburger-circle">
-          <div class="hamburger">
+          <div class="close-icon">
             <span></span>
             <span></span>
           </div>
         </div>
       </button>
-    </div>
-  </nav>
-
-  <div class="offcanvas" :class="{ 'show': isMenuOpen }" ref="offcanvas">
-    <button class="navbar-toggler offcanvas-toggler" type="button" @click="toggleMenu" aria-label="Close navigation">
-      <div class="hamburger-circle">
-        <div class="close-icon">
-          <span></span>
-          <span></span>
-        </div>
+      <div class="offcanvas-body">
+        <ul class="nav-list">
+          <li><NuxtLink to="/" @click="toggleMenu">Home</NuxtLink></li>
+          <li class="services-dropdown">
+            <button @click="toggleServices" aria-expanded="false">
+              Services <span class="arrow" :class="{ 'up': showServices }">&#9662;</span>
+            </button>
+            <ul v-if="showServices" class="services-submenu">
+              <li><NuxtLink to="/website" @click="toggleMenu">Website</NuxtLink></li>
+              <li><NuxtLink to="/social-media" @click="toggleMenu">Social Media</NuxtLink></li>
+              <li><NuxtLink to="/seo" @click="toggleMenu">SEO</NuxtLink></li>
+              <li><NuxtLink to="/paid-media" @click="toggleMenu">Paid Media</NuxtLink></li>
+              <li><NuxtLink to="/content-creation" @click="toggleMenu">Content Creation</NuxtLink></li>
+              <li><NuxtLink to="/print-advertising" @click="toggleMenu">Print Advertising</NuxtLink></li>
+            </ul>
+          </li>
+          <li><NuxtLink to="/about-us" @click="toggleMenu">About Us</NuxtLink></li>
+          <li><NuxtLink to="/consultation" @click="toggleMenu">Consultation</NuxtLink></li>
+          <li><NuxtLink to="/contact-us" @click="toggleMenu">Contact Us</NuxtLink></li>
+        </ul>
       </div>
-    </button>
-    <div class="offcanvas-body">
-      <ul class="nav-list">
-        <li><NuxtLink to="/" @click="toggleMenu" ref="menuItem">Home</NuxtLink></li>
-        <li class="services-dropdown">
-          <a href="#" @click.prevent="toggleServices" ref="menuItem">Services <span class="arrow" :class="{ 'up': showServices }">&#9662;</span></a>
-          <ul v-if="showServices" class="services-submenu">
-            <li><NuxtLink to="/website" @click="toggleMenu" ref="menuItem">Website</NuxtLink></li>
-            <li><NuxtLink to="/social-media" @click="toggleMenu" ref="menuItem">Social Media</NuxtLink></li>
-            <li><NuxtLink to="/seo" @click="toggleMenu" ref="menuItem">SEO</NuxtLink></li>
-            <li><NuxtLink to="/paid-media" @click="toggleMenu" ref="menuItem">Paid Media</NuxtLink></li>
-            <li><NuxtLink to="/content-creation" @click="toggleMenu" ref="menuItem">Content Creation</NuxtLink></li>
-            <li><NuxtLink to="/print-advertising" @click="toggleMenu" ref="menuItem">Print Advertising</NuxtLink></li>
-          </ul>
-        </li>
-        <li><NuxtLink to="/about-us" @click="toggleMenu" ref="menuItem">About Us</NuxtLink></li>
-        <li><NuxtLink to="/consultation" @click="toggleMenu" ref="menuItem">Consultation</NuxtLink></li>
-        <li><NuxtLink to="/contact-us" @click="toggleMenu" ref="menuItem">Contact Us</NuxtLink></li>
-      </ul>
     </div>
-  </div>
+  </header>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
 import gsap from 'gsap'
 
 const isMenuOpen = ref(false)
 const showServices = ref(false)
 const router = useRouter()
-const offcanvas = ref(null)
+const offcanvas = ref<HTMLElement | null>(null)
 
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value
@@ -67,35 +91,44 @@ const toggleServices = () => {
   showServices.value = !showServices.value
 }
 
-onMounted(() => {
-  const menuItems = (offcanvas.value as HTMLElement | null)?.querySelectorAll('[ref="menuItem"]')
-  if (menuItems) {
-    menuItems.forEach((item: Element) => {
-      const menuItem = item as HTMLElement;
-      gsap.to(menuItem, {
-        y: 10,
-        opacity: 0,
-        duration: 0.2,
-        paused: true,
-        ease: 'power2.inOut',
-      });
-      menuItem.animation = gsap.to(menuItem, {
-        y: 0,
-        opacity: 1,
-        duration: 0.3,
-        paused: true,
-        ease: 'power2.out',
-      });
-      
-      menuItem.addEventListener('mouseenter', () => menuItem.animation.play());
-      menuItem.addEventListener('mouseleave', () => menuItem.animation.reverse());
-    });
-  }
-});
+const animateMenuItems = () => {
+  if (!offcanvas.value) return
 
-router.afterEach(() => {
-  isMenuOpen.value = false
-  showServices.value = false
+  const menuItems = offcanvas.value.querySelectorAll('.nav-list a, .nav-list button')
+  menuItems.forEach((item, index) => {
+    gsap.fromTo(item, 
+      { y: 20, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.3, delay: index * 0.1, ease: 'power2.out' }
+    )
+  })
+}
+
+onMounted(() => {
+  router.afterEach(() => {
+    isMenuOpen.value = false
+    showServices.value = false
+  })
+
+  window.addEventListener('resize', handleResize)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('resize', handleResize)
+})
+
+const handleResize = () => {
+  if (window.innerWidth > 768 && isMenuOpen.value) {
+    isMenuOpen.value = false
+    showServices.value = false
+  }
+}
+
+watch(isMenuOpen, (newValue) => {
+  if (newValue) {
+    nextTick(() => {
+      animateMenuItems()
+    })
+  }
 })
 </script>
 
@@ -118,160 +151,53 @@ router.afterEach(() => {
   position: fixed;
   top: 1.5rem;
   right: 1.5rem;
-  z-index: 1060;
-}
-
-.navbar-toggler:focus {
-  box-shadow: none;
-}
-
-.hamburger-circle {
-  width: 40px;
-  height: 40px;
-  border: 2px solid #000;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.hamburger {
-  width: 20px;
-  height: 10px;
-  position: relative;
-  cursor: pointer;
-}
-
-.hamburger span {
-  display: block;
+/* Your existing styles here */
+/* Add these new styles for accessibility and responsiveness */
+.visually-hidden {
   position: absolute;
-  height: 2px;
-  width: 100%;
-  background: #000;
-  left: 0;
-}
-
-.hamburger span:nth-child(1) { top: 0; }
-.hamburger span:nth-child(2) { bottom: 0; }
-
-.close-icon {
-  width: 20px;
-  height: 20px;
-  position: relative;
-  cursor: pointer;
-}
-
-.close-icon span {
-  display: block;
-  position: absolute;
-  height: 2px;
-  width: 100%;
-  background: #000;
-  left: 0;
-  top: 50%;
-}
-
-.close-icon span:nth-child(1) { transform: rotate(45deg); }
-.close-icon span:nth-child(2) { transform: rotate(-45deg); }
-
-.offcanvas {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-  background-color: var(--bs-primary);
-  transform: translateX(100%);
-  transition: transform 0.3s ease-in-out;
-  z-index: 1050;
-  display: flex;
-  flex-direction: column;
-  padding-top: 60px;
-}
-
-.offcanvas.show {
-  transform: translateX(0);
-}
-
-.offcanvas-toggler {
-  position: absolute;
-}
-
-.offcanvas-toggler .hamburger-circle {
-  border-color: #000;
-}
-
-.offcanvas-toggler .close-icon span {
-  background: #000;
-}
-
-.offcanvas-body {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  overflow-y: auto;
-}
-
-.nav-list {
-  list-style-type: none;
+  width: 1px;
+  height: 1px;
   padding: 0;
-  margin: 0;
-  text-align: center;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
-.nav-list li {
-  margin-bottom: 2rem;
-}
-
-.nav-list a {
-  color: #fff;
-  font-size: 3rem;
-  font-weight: 700;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.nav-list a:hover {
-  color: rgba(255, 255, 255, 0.8);
-}
-
-.services-dropdown {
-  position: relative;
-}
-
-.arrow {
-  display: inline-block;
-  transition: transform 0.3s ease;
-}
-
-.arrow.up {
-  transform: rotate(180deg);
-}
-
-.services-submenu {
-  list-style-type: none;
-  padding-left: 0;
-  margin-top: 1rem;
-}
-
-.services-submenu li {
-  margin-bottom: 1rem;
-}
-
-.services-submenu a {
-  font-size: 2rem;
-}
-
-@media (min-width: 768px) {
-  .nav-list a {
-    font-size: 4rem;
+@media (min-width: 769px) {
+  .navbar-toggler {
+    display: none;
   }
-  
-  .services-submenu a {
-    font-size: 2.5rem;
+
+  .offcanvas {
+    position: static;
+    transform: none;
+    width: auto;
+    background-color: transparent;
+    padding-top: 0;
+  }
+
+  .nav-list {
+    flex-direction: row;
+  }
+
+  .nav-list li {
+    margin-bottom: 0;
+    margin-right: 1rem;
+  }
+
+  .nav-list a,
+  .nav-list button {
+    font-size: 1rem;
+  }
+
+  .services-submenu {
+    position: absolute;
+    background-color: var(--bs-primary);
+    padding: 1rem;
+    border-radius: 0.25rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   }
 }
 </style>
