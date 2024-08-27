@@ -5,6 +5,8 @@
       :description="metaDescription"
       :ogImage="ogImage"
       :ogUrl="ogUrl"
+      :canonicalUrl="canonicalUrl"
+      :robots="robots"
     />
     <StructuredData type="Organization" :data="organizationSchema" />
     <StructuredData type="WebPage" :data="webPageSchema" />
@@ -37,6 +39,8 @@ const metaTitle = ref('About Us | Ultify Solutions')
 const metaDescription = ref('Learn about Ultify Solutions, a leading digital marketing agency in Sydney. Discover our mission, values, and the team behind our innovative strategies.')
 const ogImage = ref('https://ultifysolutions.com/images/about-us-og.jpg')
 const ogUrl = ref('https://ultifysolutions.com/about-us')
+const canonicalUrl = ref('https://ultifysolutions.com/about-us')
+const robots = ref('index, follow')
 
 const organizationSchema = ref(createOrganizationSchema({
   name: 'Ultify Solutions',
@@ -72,6 +76,9 @@ if (pageData.value) {
   metaTitle.value = pageData.value.metaTitle || metaTitle.value
   metaDescription.value = pageData.value.metaDescription || metaDescription.value
   ogImage.value = pageData.value.ogImage || ogImage.value
+  ogUrl.value = pageData.value.ogUrl || ogUrl.value
+  canonicalUrl.value = pageData.value.canonicalUrl || canonicalUrl.value
+  robots.value = pageData.value.robots || robots.value
   
   // Update schema data if needed
   webPageSchema.value = createWebPageSchema({

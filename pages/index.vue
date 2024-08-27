@@ -5,6 +5,8 @@
       :description="metaDescription"
       :ogImage="ogImage"
       :ogUrl="ogUrl"
+      :canonicalUrl="canonicalUrl"
+      :robots="robots"
     />
     <StructuredData type="Organization" :data="organizationSchema" />
     <StructuredData type="WebPage" :data="webPageSchema" />
@@ -39,8 +41,10 @@ const metaTitle = ref('Home | Ultify Solutions')
 const metaDescription = ref('Ultify Solutions is a leading digital marketing agency offering innovative strategies to boost your online presence.')
 const ogImage = ref('https://ultifysolutions.com/images/home-og.jpg')
 const ogUrl = ref('https://ultifysolutions.com')
+const canonicalUrl = ref('https://ultifysolutions.com')
+const robots = ref('index, follow')
 
-const organizationSchema = createOrganizationSchema({
+const organizationSchema = ref(createOrganizationSchema({
   name: 'Ultify Solutions',
   url: 'https://ultifysolutions.com',
   logo: 'https://ultifysolutions.com/logo.png',
@@ -53,26 +57,37 @@ const organizationSchema = createOrganizationSchema({
     'https://www.linkedin.com/company/ultify-solutions',
     'https://twitter.com/UltifySolutions'
   ]
-})
+}))
 
-const webPageSchema = createWebPageSchema({
+const webPageSchema = ref(createWebPageSchema({
   name: 'Ultify Solutions - Digital Marketing Agency',
   description: 'Ultify Solutions is a leading digital marketing agency offering innovative strategies to boost your online presence.',
   url: 'https://ultifysolutions.com'
-})
+}))
 
-const breadcrumbSchema = createBreadcrumbSchema([
+const breadcrumbSchema = ref(createBreadcrumbSchema([
   { name: 'Home', url: 'https://ultifysolutions.com' }
-])
+]))
 
 // If you're planning to fetch data from Strapi in the future, you can add it here
 // For example:
-// const { data: pageData } = await useFetch('/api/home-page')
-// if (pageData.value) {
-//   metaTitle.value = pageData.value.metaTitle
-//   metaDescription.value = pageData.value.metaDescription
-//   // Update other fields as necessary
-// }
+/*
+const { data: pageData } = await useFetch('/api/home-page')
+if (pageData.value) {
+  metaTitle.value = pageData.value.metaTitle || metaTitle.value
+  metaDescription.value = pageData.value.metaDescription || metaDescription.value
+  ogImage.value = pageData.value.ogImage || ogImage.value
+  ogUrl.value = pageData.value.ogUrl || ogUrl.value
+  canonicalUrl.value = pageData.value.canonicalUrl || canonicalUrl.value
+  robots.value = pageData.value.robots || robots.value
+
+  webPageSchema.value = createWebPageSchema({
+    name: pageData.value.title || webPageSchema.value.name,
+    description: pageData.value.description || webPageSchema.value.description,
+    url: webPageSchema.value.url
+  })
+}
+*/
 </script>
 
 <style scoped>

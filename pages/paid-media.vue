@@ -5,6 +5,8 @@
       :description="metaDescription"
       :ogImage="ogImage"
       :ogUrl="ogUrl"
+      :canonicalUrl="canonicalUrl"
+      :robots="robots"
     />
     <StructuredData type="Organization" :data="organizationSchema" />
     <StructuredData type="WebPage" :data="webPageSchema" />
@@ -39,6 +41,8 @@ const metaTitle = ref('Paid Media Services | Ultify Solutions')
 const metaDescription = ref('Maximize your ROI with Ultify Solutions\' expert paid media services. Drive targeted traffic and conversions through strategic PPC, display, and social media advertising campaigns.')
 const ogImage = ref('https://ultifysolutions.com/images/paid-media-og.jpg')
 const ogUrl = ref('https://ultifysolutions.com/services/paid-media')
+const canonicalUrl = ref('https://ultifysolutions.com/services/paid-media')
+const robots = ref('index, follow')
 
 const organizationSchema = ref(createOrganizationSchema({
   name: 'Ultify Solutions',
@@ -140,6 +144,9 @@ if (pageData.value) {
   metaTitle.value = pageData.value.metaTitle || metaTitle.value
   metaDescription.value = pageData.value.metaDescription || metaDescription.value
   ogImage.value = pageData.value.ogImage || ogImage.value
+  ogUrl.value = pageData.value.ogUrl || ogUrl.value
+  canonicalUrl.value = pageData.value.canonicalUrl || canonicalUrl.value
+  robots.value = pageData.value.robots || robots.value
   
   // Update schema data if needed
   webPageSchema.value = createWebPageSchema({

@@ -1,7 +1,5 @@
-<!-- components/SeoMeta.vue -->
-<script setup lang="ts">
-import { computed } from 'vue'
-import { useHead } from '#app'
+<script setup>
+import { useHead } from '#head'
 
 const props = defineProps({
   title: {
@@ -20,20 +18,28 @@ const props = defineProps({
     type: String,
     required: true
   },
-  // Add more props as needed
+  canonicalUrl: {
+    type: String,
+    default: ''
+  },
+  robots: {
+    type: String,
+    default: 'index, follow'
+  }
 })
-
-const metaTags = computed(() => [
-  { name: 'description', content: props.description },
-  { property: 'og:title', content: props.title },
-  { property: 'og:description', content: props.description },
-  { property: 'og:image', content: props.ogImage },
-  { property: 'og:url', content: props.ogUrl },
-  // Add more meta tags as needed
-])
 
 useHead({
   title: props.title,
-  meta: metaTags,
+  meta: [
+    { name: 'description', content: props.description },
+    { property: 'og:title', content: props.title },
+    { property: 'og:description', content: props.description },
+    { property: 'og:image', content: props.ogImage },
+    { property: 'og:url', content: props.ogUrl },
+    { name: 'robots', content: props.robots }
+  ],
+  link: [
+    { rel: 'canonical', href: props.canonicalUrl || props.ogUrl }
+  ]
 })
 </script>

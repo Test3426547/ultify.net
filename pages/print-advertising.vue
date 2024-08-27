@@ -5,6 +5,8 @@
       :description="metaDescription"
       :ogImage="ogImage"
       :ogUrl="ogUrl"
+      :canonicalUrl="canonicalUrl"
+      :robots="robots"
     />
     <StructuredData type="Organization" :data="organizationSchema" />
     <StructuredData type="WebPage" :data="webPageSchema" />
@@ -36,6 +38,8 @@ const metaTitle = ref('Print Advertising Services | Ultify Solutions')
 const metaDescription = ref('Elevate your brand with Ultify Solutions\' expert print advertising services. Create impactful print campaigns that resonate with your target audience.')
 const ogImage = ref('https://ultifysolutions.com/images/print-advertising-og.jpg')
 const ogUrl = ref('https://ultifysolutions.com/services/print-advertising')
+const canonicalUrl = ref('https://ultifysolutions.com/services/print-advertising')
+const robots = ref('index, follow')
 
 const organizationSchema = ref(createOrganizationSchema({
   name: 'Ultify Solutions',
@@ -108,6 +112,9 @@ if (pageData.value) {
   metaTitle.value = pageData.value.metaTitle || metaTitle.value
   metaDescription.value = pageData.value.metaDescription || metaDescription.value
   ogImage.value = pageData.value.ogImage || ogImage.value
+  ogUrl.value = pageData.value.ogUrl || ogUrl.value
+  canonicalUrl.value = pageData.value.canonicalUrl || canonicalUrl.value
+  robots.value = pageData.value.robots || robots.value
   
   // Update schema data if needed
   webPageSchema.value = createWebPageSchema({
