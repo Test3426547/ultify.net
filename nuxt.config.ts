@@ -1,3 +1,5 @@
+import { defineNuxtConfig } from 'nuxt/config'
+
 export default defineNuxtConfig({
   // Server-Side Rendering mode
   ssr: true,
@@ -20,17 +22,28 @@ export default defineNuxtConfig({
   // Application head settings
   app: {
     head: {
-      titleTemplate: '%s - Ultify Solutions',
+      titleTemplate: '%s | Ultify Solutions',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { hid: 'description', name: 'description', content: 'Ultify Solutions - Digital Marketing Made Easy' },
-        { name: 'theme-color', content: '#ffffff' }, // Light mode color
-        { name: 'theme-color', content: '#121212', media: '(prefers-color-scheme: dark)' } // Dark mode color
+        { hid: 'description', name: 'description', content: 'Ultify Solutions offers cutting-edge digital marketing services to boost your online presence and drive growth.' },
+        { hid: 'og:title', property: 'og:title', content: 'Ultify Solutions - Digital Marketing Experts' },
+        { hid: 'og:description', property: 'og:description', content: 'Boost your online presence with Ultify Solutions. We offer tailored digital marketing strategies for businesses of all sizes.' },
+        { hid: 'og:image', property: 'og:image', content: 'https://www.ultifysolutions.com/og-image.jpg' },
+        { hid: 'og:url', property: 'og:url', content: 'https://www.ultifysolutions.com' },
+        { hid: 'og:type', property: 'og:type', content: 'website' },
+        { name: 'twitter:card', content: 'summary_large_image' },
+        { name: 'twitter:site', content: '@ultifysolutions' },
+        { name: 'theme-color', content: '#ffffff' },
+        { name: 'theme-color', content: '#121212', media: '(prefers-color-scheme: dark)' }
       ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-        { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' },
+        { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
+        { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
+        { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
+        { rel: 'manifest', href: '/site.webmanifest' },
+        { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap' },
       ],
       script: [
         { src: 'https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js', crossorigin: 'anonymous' },
@@ -43,7 +56,7 @@ export default defineNuxtConfig({
   modules: [
     '@vite-pwa/nuxt',
     '@nuxtjs/strapi',
-    // Remove 'axios' from here
+    '@nuxtjs/sitemap', // Added sitemap module
   ],
 
   strapi: {
@@ -53,6 +66,54 @@ export default defineNuxtConfig({
     version: 'v4',
     cookie: {},
     cookieName: 'strapi_jwt'
+  },
+
+  // Sitemap configuration
+  sitemap: {
+    hostname: 'https://www.ultifysolutions.com',
+    gzip: true,
+    exclude: [
+      '/admin/**'
+    ],
+    routes: async () => {
+      const { $strapi } = useNuxtApp()
+      
+      // Fetch dynamic routes from Strapi
+      const fetchRoutes = async (contentType) => {
+        const { data } = await $strapi.find(contentType, {
+          fields: ['slug'],
+          pagination: { limit: -1 }
+        })
+        return data.map(item => `/${contentType}/${item.attributes.slug}`)
+      }
+
+      // Fetch blog posts
+      const blogRoutes = await fetchRoutes('posts')
+
+      // Fetch case studies
+      const caseStudyRoutes = await fetchRoutes('case-studies')
+
+      // Fetch service pages
+      const serviceRoutes = await fetchRoutes('services')
+
+      // Combine all dynamic routes
+      const dynamicRoutes = [
+        ...blogRoutes,
+        ...caseStudyRoutes,
+        ...serviceRoutes
+      ]
+
+      // Add any additional static routes
+      const staticRoutes = [
+        '/',
+        '/about-us',
+        '/consultation',
+        '/contact-us',
+        '/services'
+      ]
+
+      return [...staticRoutes, ...dynamicRoutes]
+    }
   },
 
   // PostCSS configuration for TailwindCSS and Autoprefixer
@@ -149,5 +210,4 @@ export default defineNuxtConfig({
   // Devtools settings
   devtools: { enabled: true },
   compatibilityDate: '2024-08-03',
-
 });

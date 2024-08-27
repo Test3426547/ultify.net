@@ -1,25 +1,182 @@
 <template>
-    <div>
-      <HeaderPaidMedia />
-      <PaidMediaTechnology />
-      <PaidMediaDetails />
-      <Consultation />
-      <DigitalWorld />
-      <FAQ />
-      <CTA />
-    </div>
-  </template>
+  <div>
+    <SeoMeta 
+      :title="metaTitle"
+      :description="metaDescription"
+      :ogImage="ogImage"
+      :ogUrl="ogUrl"
+    />
+    <StructuredData type="Organization" :data="organizationSchema" />
+    <StructuredData type="WebPage" :data="webPageSchema" />
+    <StructuredData type="BreadcrumbList" :data="breadcrumbSchema" />
+    <StructuredData type="Service" :data="serviceSchema" />
+    <StructuredData type="FAQPage" :data="faqSchema" />
+    
+    <HeaderPaidMedia />
+    <PaidMediaTechnology />
+    <PaidMediaDetails />
+    <Consultation />
+    <DigitalWorld />
+    <FAQ />
+    <CTA />
+  </div>
+</template>
+
+<script setup>
+import { ref } from 'vue'
+import HeaderPaidMedia from '@/components/HeaderPaidMedia.vue'
+import PaidMediaTechnology from '@/components/PaidMediaTechnology.vue'
+import PaidMediaDetails from '@/components/PaidMediaDetails.vue'
+import Consultation from '@/components/Consultation.vue'
+import DigitalWorld from '@/components/DigitalWorld.vue'
+import FAQ from '@/components/FAQ.vue'
+import CTA from '@/components/CTA.vue'
+import SeoMeta from '@/components/SeoMeta.vue'
+import StructuredData from '@/components/StructuredData.vue'
+import { createOrganizationSchema, createWebPageSchema, createBreadcrumbSchema, createServiceSchema } from '@/utils/structuredData'
+
+const metaTitle = ref('Paid Media Services | Ultify Solutions')
+const metaDescription = ref('Maximize your ROI with Ultify Solutions\' expert paid media services. Drive targeted traffic and conversions through strategic PPC, display, and social media advertising campaigns.')
+const ogImage = ref('https://ultifysolutions.com/images/paid-media-og.jpg')
+const ogUrl = ref('https://ultifysolutions.com/services/paid-media')
+
+const organizationSchema = ref(createOrganizationSchema({
+  name: 'Ultify Solutions',
+  url: 'https://ultifysolutions.com',
+  logo: 'https://ultifysolutions.com/logo.png',
+  contactPoint: {
+    telephone: '+61-2-1234-5678',
+    contactType: 'customer service'
+  },
+  sameAs: [
+    'https://www.facebook.com/UltifySolutions',
+    'https://www.linkedin.com/company/ultify-solutions',
+    'https://twitter.com/UltifySolutions'
+  ]
+}))
+
+const webPageSchema = ref(createWebPageSchema({
+  name: 'Paid Media Services | Ultify Solutions',
+  description: 'Maximize your ROI with Ultify Solutions\' expert paid media services. Drive targeted traffic and conversions through strategic PPC, display, and social media advertising campaigns.',
+  url: 'https://ultifysolutions.com/services/paid-media'
+}))
+
+const breadcrumbSchema = ref(createBreadcrumbSchema([
+  { name: 'Home', url: 'https://ultifysolutions.com' },
+  { name: 'Services', url: 'https://ultifysolutions.com/services' },
+  { name: 'Paid Media', url: 'https://ultifysolutions.com/services/paid-media' }
+]))
+
+const serviceSchema = ref(createServiceSchema({
+  name: 'Paid Media Services',
+  description: 'Comprehensive paid media services to maximize your ROI and drive targeted traffic. We offer strategic PPC, display advertising, and social media advertising campaigns tailored to your business goals.',
+  provider: 'Ultify Solutions',
+  serviceType: 'Paid Media Advertising',
+  areaServed: 'Sydney, Australia',
+  availableChannel: {
+    url: 'https://ultifysolutions.com/services/paid-media',
+    name: 'Ultify Solutions Website'
+  },
+  offers: [
+    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Google Ads Management' } },
+    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Facebook Ads Management' } },
+    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'LinkedIn Ads Management' } },
+    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Display Advertising' } },
+    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Retargeting Campaigns' } }
+  ],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Paid Media Services',
+    itemListElement: [
+      {
+        '@type': 'OfferCatalog',
+        name: 'Paid Media Techniques',
+        itemListElement: [
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Audience Targeting' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Ad Copywriting' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Bid Management' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'A/B Testing' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Performance Analytics' } }
+        ]
+      }
+    ]
+  }
+}))
+
+const faqSchema = ref({
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What is paid media advertising?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Paid media advertising refers to any form of advertising where you pay to place your content in front of a specific audience. This includes platforms like Google Ads, Facebook Ads, LinkedIn Ads, and display advertising networks.'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'How can paid media benefit my business?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Paid media can benefit your business by providing immediate visibility, allowing precise targeting of your ideal audience, offering measurable results, and scaling your marketing efforts quickly. It\'s an effective way to drive traffic, generate leads, and increase conversions.'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'What platforms do you use for paid media advertising?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'We utilize a variety of platforms based on your target audience and business goals. This typically includes Google Ads for search and display advertising, Facebook and Instagram for social media advertising, LinkedIn for B2B marketing, and various programmatic advertising platforms for broader reach.'
+      }
+    }
+  ]
+})
+
+// Strapi data fetching logic for future use
+// Uncomment and adjust when ready to fetch data from Strapi
+/*
+const { data: pageData } = await useFetch('/api/paid-media-page')
+if (pageData.value) {
+  metaTitle.value = pageData.value.metaTitle || metaTitle.value
+  metaDescription.value = pageData.value.metaDescription || metaDescription.value
+  ogImage.value = pageData.value.ogImage || ogImage.value
   
-  <script setup>
-  import HeaderPaidMedia from '@/components/HeaderPaidMedia.vue';
-  import PaidMediaTechnology from '@/components/PaidMediaTechnology.vue';
-  import PaidMediaDetails from '@/components/PaidMediaDetails.vue';
-  import Consultation from '@/components/Consultation.vue';
-  import DigitalWorld from '@/components/DigitalWorld.vue';
-  import FAQ from '@/components/FAQ.vue';
-  import CTA from '@/components/CTA.vue';
-  </script>
-  
-  <style>
-  /* Additional styling specific to the Website page */
-  </style>
+  // Update schema data if needed
+  webPageSchema.value = createWebPageSchema({
+    name: pageData.value.title || webPageSchema.value.name,
+    description: pageData.value.description || webPageSchema.value.description,
+    url: webPageSchema.value.url
+  })
+
+  serviceSchema.value = createServiceSchema({
+    name: pageData.value.serviceName || serviceSchema.value.name,
+    description: pageData.value.serviceDescription || serviceSchema.value.description,
+    provider: serviceSchema.value.provider,
+    serviceType: pageData.value.serviceType || serviceSchema.value.serviceType,
+    areaServed: serviceSchema.value.areaServed,
+    availableChannel: serviceSchema.value.availableChannel,
+    offers: pageData.value.offers || serviceSchema.value.offers,
+    hasOfferCatalog: pageData.value.hasOfferCatalog || serviceSchema.value.hasOfferCatalog
+  })
+
+  if (pageData.value.faq) {
+    faqSchema.value.mainEntity = pageData.value.faq.map(item => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer
+      }
+    }))
+  }
+
+  // You can also update other components' data here if needed
+  // For example:
+  // paidMediaData.value = pageData.value.paidMediaDetails
+}
+*/
+</script>
+
+<style scoped>
+/* Additional styling specific to the Paid Media page */
+</style>
