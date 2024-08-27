@@ -48,7 +48,7 @@ import { Loader } from '@googlemaps/js-api-loader';
 onMounted(async () => {
   // Load Google Maps
   const loader = new Loader({
-    apiKey: 'YOUR_GOOGLE_MAPS_API_KEY',
+    apiKey: 'AIzaSyDy2sx9yUDMLbZvobyGgR-t_8f48OqXPjE',
     version: 'weekly',
   });
 
