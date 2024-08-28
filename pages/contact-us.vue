@@ -13,18 +13,20 @@
     <StructuredData type="BreadcrumbList" :data="breadcrumbSchema" />
     <StructuredData type="ContactPage" :data="contactPageSchema" />
     
-    <HeaderContact />
-    <Contact />
-    <ContactUsMaps />
-    <Consultation />
-    <DigitalWorld />
-    <FAQ />
-    <CTA />
+    <ClientOnly>
+      <HeaderContact />
+      <Contact />
+      <ContactUsMaps />
+      <Consultation />
+      <DigitalWorld />
+      <FAQ />
+      <CTA />
+    </ClientOnly>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import HeaderContact from '~/components/HeaderContact.vue'
 import Contact from '~/components/Contact.vue'
 import ContactUsMaps from '~/components/ContactUsMaps.vue'
@@ -80,6 +82,10 @@ const contactPageSchema = ref(createContactPageSchema({
     addressCountry: 'AU'
   }
 }))
+
+onMounted(() => {
+  // You can add any necessary mounted logic here
+})
 
 // Strapi data fetching logic for future use
 // Uncomment and adjust when ready to fetch data from Strapi

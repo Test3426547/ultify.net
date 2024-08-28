@@ -12,18 +12,20 @@
     <StructuredData type="WebPage" :data="webPageSchema" />
     <StructuredData type="BreadcrumbList" :data="breadcrumbSchema" />
     
-    <HeaderAboutUs />
-    <AboutUs />
-    <AboutUsDetails />
-    <Consultation />
-    <DigitalWorld />
-    <FAQ />
-    <CTA />
+    <ClientOnly>
+      <HeaderAboutUs />
+      <AboutUs />
+      <AboutUsDetails />
+      <Consultation />
+      <DigitalWorld />
+      <FAQ />
+      <CTA />
+    </ClientOnly>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import HeaderAboutUs from '~/components/HeaderAboutUs.vue'
 import AboutUs from '~/components/AboutUs.vue'
 import AboutUsDetails from '~/components/AboutUsDetails.vue'
@@ -67,6 +69,10 @@ const breadcrumbSchema = ref(createBreadcrumbSchema([
   { name: 'Home', url: 'https://ultifysolutions.com' },
   { name: 'About Us', url: 'https://ultifysolutions.com/about-us' }
 ]))
+
+onMounted(() => {
+  // You can add any necessary mounted logic here
+})
 
 // Strapi data fetching logic for future use
 // Uncomment and adjust when ready to fetch data from Strapi

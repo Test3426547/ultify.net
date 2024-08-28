@@ -13,18 +13,20 @@
     <StructuredData type="BreadcrumbList" :data="breadcrumbSchema" />
     <StructuredData type="Service" :data="serviceSchema" />
     
-    <HeaderWebsite />
-    <WebsiteTechnology />
-    <WebsiteDetails />
-    <Consultation />
-    <DigitalWorld />
-    <FAQ />
-    <CTA />
+    <ClientOnly>
+      <HeaderWebsite />
+      <WebsiteTechnology />
+      <WebsiteDetails />
+      <Consultation />
+      <DigitalWorld />
+      <FAQ />
+      <CTA />
+    </ClientOnly>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import HeaderWebsite from '@/components/HeaderWebsite.vue'
 import WebsiteTechnology from '@/components/WebsiteTechnology.vue'
 import WebsiteDetails from '@/components/WebsiteDetails.vue'
@@ -81,6 +83,10 @@ const serviceSchema = ref(createServiceSchema({
     name: 'Ultify Solutions Website'
   }
 }))
+
+onMounted(() => {
+  // You can add any necessary mounted logic here
+})
 
 // Strapi data fetching logic for future use
 // Uncomment and adjust when ready to fetch data from Strapi

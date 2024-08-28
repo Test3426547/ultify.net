@@ -14,18 +14,20 @@
     <StructuredData type="Service" :data="serviceSchema" />
     <StructuredData type="FAQPage" :data="faqSchema" />
     
-    <HeaderPaidMedia />
-    <PaidMediaTechnology />
-    <PaidMediaDetails />
-    <Consultation />
-    <DigitalWorld />
-    <FAQ />
-    <CTA />
+    <ClientOnly>
+      <HeaderPaidMedia />
+      <PaidMediaTechnology />
+      <PaidMediaDetails />
+      <Consultation />
+      <DigitalWorld />
+      <FAQ />
+      <CTA />
+    </ClientOnly>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import HeaderPaidMedia from '@/components/HeaderPaidMedia.vue'
 import PaidMediaTechnology from '@/components/PaidMediaTechnology.vue'
 import PaidMediaDetails from '@/components/PaidMediaDetails.vue'
@@ -134,6 +136,10 @@ const faqSchema = ref({
       }
     }
   ]
+})
+
+onMounted(() => {
+  // You can add any necessary mounted logic here
 })
 
 // Strapi data fetching logic for future use

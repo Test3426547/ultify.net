@@ -13,19 +13,21 @@
     <StructuredData type="BreadcrumbList" :data="breadcrumbSchema" />
     <StructuredData type="Service" :data="serviceSchema" />
     
-    <HeaderSEO />
-    <SEOTechnology />
-    <SEODetails />
-    <SEOServices />
-    <Consultation />
-    <DigitalWorld />
-    <FAQ />
-    <CTA />
+    <ClientOnly>
+      <HeaderSEO />
+      <SEOTechnology />
+      <SEODetails />
+      <SEOServices />
+      <Consultation />
+      <DigitalWorld />
+      <FAQ />
+      <CTA />
+    </ClientOnly>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import HeaderSEO from '@/components/HeaderSEO.vue'
 import SEOTechnology from '@/components/SEOTechnology.vue'
 import SEODetails from '@/components/SEODetails.vue'
@@ -107,6 +109,10 @@ const serviceSchema = ref(createServiceSchema({
     ]
   }
 }))
+
+onMounted(() => {
+  // You can add any necessary mounted logic here
+})
 
 // Strapi data fetching logic for future use
 // Uncomment and adjust when ready to fetch data from Strapi

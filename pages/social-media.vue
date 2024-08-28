@@ -13,17 +13,19 @@
     <StructuredData type="BreadcrumbList" :data="breadcrumbSchema" />
     <StructuredData type="Service" :data="serviceSchema" />
     
-    <HeaderSocialMedia />
-    <SocialMediaDetails />
-    <Consultation />
-    <DigitalWorld />
-    <FAQ />
-    <CTA />
+    <ClientOnly>
+      <HeaderSocialMedia />
+      <SocialMediaDetails />
+      <Consultation />
+      <DigitalWorld />
+      <FAQ />
+      <CTA />
+    </ClientOnly>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import HeaderSocialMedia from '@/components/HeaderSocialMedia.vue'
 import SocialMediaDetails from '@/components/SocialMediaDetails.vue'
 import Consultation from '@/components/Consultation.vue'
@@ -103,6 +105,10 @@ const serviceSchema = ref(createServiceSchema({
     ]
   }
 }))
+
+onMounted(() => {
+  // You can add any necessary mounted logic here
+})
 
 // Strapi data fetching logic for future use
 // Uncomment and adjust when ready to fetch data from Strapi

@@ -14,17 +14,19 @@
     <StructuredData type="Service" :data="serviceSchema" />
     <StructuredData type="FAQPage" :data="faqSchema" />
     
-    <HeaderContentCreation />
-    <ContentCreationDetails />
-    <Consultation />
-    <DigitalWorld />
-    <FAQ />
-    <CTA />
+    <ClientOnly>
+      <HeaderContentCreation />
+      <ContentCreationDetails />
+      <Consultation />
+      <DigitalWorld />
+      <FAQ />
+      <CTA />
+    </ClientOnly>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import HeaderContentCreation from '@/components/HeaderContentCreation.vue'
 import ContentCreationDetails from '@/components/ContentCreationDetails.vue'
 import Consultation from '@/components/Consultation.vue'
@@ -132,6 +134,10 @@ const faqSchema = ref({
       }
     }
   ]
+})
+
+onMounted(() => {
+  // You can add any necessary mounted logic here
 })
 
 // Strapi data fetching logic for future use
