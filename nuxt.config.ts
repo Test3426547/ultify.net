@@ -6,10 +6,13 @@ export default defineNuxtConfig({
 
   // Global CSS files
   css: [
-    '~/assets/scss/custom.scss', // New custom Bootstrap import
-    '~/assets/css/main.css',
-    '~/assets/css/theme.css',
-    '@fortawesome/fontawesome-svg-core/styles.css',
+    // Remove or comment out the SCSS file if it exists
+    // '@/assets/scss/theme.scss',
+    
+    // Add the CSS file
+    '@/assets/css/theme.css',
+    
+    // ... other CSS files ...
   ],
 
   // Import plugins
@@ -133,7 +136,8 @@ export default defineNuxtConfig({
         scss: {
           additionalData: '@use "~/assets/scss/variables.scss" as *;'
         }
-      }
+      },
+      devSourcemap: false,
     },
     build: {
       sourcemap: false, // Disable source maps in production

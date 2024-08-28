@@ -58,7 +58,7 @@ export default {
 
 /* Background image handling */
 .bg-image {
-  background-image: url('@/assets/images/curved5.jpg');
+  background-image: url('/ultify.svg');
   background-size: cover;
   background-position: center;
 }
