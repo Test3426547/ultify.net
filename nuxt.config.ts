@@ -12,6 +12,7 @@ export default defineNuxtConfig({
   css: [
     '@/assets/css/theme.css',
     // ... other CSS files ...
+    '~/assets/css/tailwind.css'
   ],
 
   // Import plugins
@@ -142,6 +143,7 @@ export default defineNuxtConfig({
       sourcemap: false, // Disable source maps in production
       extractCSS: true,
       async: true,
+      transpile: ['nunjucks']
     },
   },
 
@@ -214,9 +216,9 @@ export default defineNuxtConfig({
 
   // Nitro configuration
   nitro: {
-    prerender: {
-      routes: ['/', '/about-us', '/consultation', '/contact-us', '/website']
-    },
+    // prerender: {
+    //   routes: ['/', '/about-us', '/consultation', '/contact-us', '/website']
+    // },
     serveStatic: true
   },
 
@@ -224,5 +226,10 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   compatibilityDate: '2024-08-03',
 })
+
+// Add or update the following options to ensure SSR behavior
+routeRules: {
+  '/**'; { ssr: true }
+}
 
 // Remove the useStrapi composable from this file
