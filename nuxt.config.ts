@@ -4,14 +4,13 @@ export default defineNuxtConfig({
   // Server-Side Rendering mode
   ssr: true,
 
+  render: {
+    extractCSS: false,
+  },
+  
   // Global CSS files
   css: [
-    // Remove or comment out the SCSS file if it exists
-    // '@/assets/scss/theme.scss',
-    
-    // Add the CSS file
     '@/assets/css/theme.css',
-    
     // ... other CSS files ...
   ],
 
@@ -141,6 +140,8 @@ export default defineNuxtConfig({
     },
     build: {
       sourcemap: false, // Disable source maps in production
+      extractCSS: true,
+      async: true,
     },
   },
 
@@ -223,15 +224,5 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   compatibilityDate: '2024-08-03',
 })
-
-// Add these new configurations
-render: {
-  extractCSS: false,
-},
-
-css: {
-  extract: true,
-  async: true,
-},
 
 // Remove the useStrapi composable from this file
