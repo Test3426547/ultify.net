@@ -14,7 +14,7 @@
     <StructuredData type="Service" :data="serviceSchema" />
     
     <ClientOnly>
-      <HeaderWebsite />
+      <HeaderService service-type="website" />
       <WebsiteTechnology />
       <WebsiteDetails />
       <Consultation />
@@ -27,7 +27,7 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import HeaderWebsite from '@/components/HeaderWebsite.vue'
+import HeaderService from '@/components/HeaderService.vue'
 import WebsiteTechnology from '@/components/WebsiteTechnology.vue'
 import WebsiteDetails from '@/components/WebsiteDetails.vue'
 import Consultation from '@/components/Consultation.vue'

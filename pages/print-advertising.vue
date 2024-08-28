@@ -14,7 +14,7 @@
     <StructuredData type="Service" :data="serviceSchema" />
     
     <ClientOnly>
-      <HeaderPrintMedia />
+      <HeaderService service-type="print-advertising" />
       <PrintMediaDetails />
       <Consultation />
       <DigitalWorld />
@@ -26,7 +26,7 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import HeaderPrintMedia from '~/components/HeaderPrintAdvertising.vue'
+import HeaderService from '@/components/HeaderService.vue'
 import PrintMediaDetails from '@/components/PrintMediaDetails.vue'
 import Consultation from '@/components/Consultation.vue'
 import DigitalWorld from '@/components/DigitalWorld.vue'

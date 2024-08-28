@@ -14,7 +14,7 @@
     <StructuredData type="Service" :data="serviceSchema" />
     
     <ClientOnly>
-      <HeaderSocialMedia />
+      <HeaderService service-type="social-media" />
       <SocialMediaDetails />
       <Consultation />
       <DigitalWorld />
@@ -26,7 +26,7 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import HeaderSocialMedia from '@/components/HeaderSocialMedia.vue'
+import HeaderService from '@/components/HeaderService.vue'
 import SocialMediaDetails from '@/components/SocialMediaDetails.vue'
 import Consultation from '@/components/Consultation.vue'
 import DigitalWorld from '@/components/DigitalWorld.vue'

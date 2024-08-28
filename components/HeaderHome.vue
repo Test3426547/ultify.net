@@ -6,19 +6,19 @@
       <div class="row h-100">
         <div class="col-lg-7 d-flex flex-column py-5 position-relative">
           <div class="header__top">
-            <h1 class="header__title fw-bold text-primary">
-              ULTIFY capitalizes on digital<br>resources to elevate your brand.
+            <h1 class="header__title fw-bold text-primary" v-if="headerData">
+              {{ headerData.Title }}
             </h1>
-            <p class="header__subtitle text-primary">
-              Your Solutions Start With Ultify.
+            <p class="header__subtitle text-primary" v-if="headerData">
+              {{ headerData.Subtitle }}
             </p>
           </div>
           <div class="header__bottom">
-            <h2 class="header__subtitle-large fw-bold text-white">
-              Start now and maximise your<br>digital reach!
+            <h2 class="header__subtitle-large fw-bold text-white" v-if="headerData">
+              {{ headerData.Heading }}
             </h2>
-            <p class="header__subtitle text-white mb-4">
-              Explore our comprehensive services
+            <p class="header__subtitle text-white mb-4" v-if="headerData">
+              {{ headerData.Subheading }}
             </p>
             <div class="header__services">
               <div class="row g-2 justify-content-start">
@@ -77,15 +77,27 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import { onMounted, nextTick } from 'vue'
+import { ref, onMounted, nextTick } from 'vue';
+import { useStrapi } from '#imports';
 
-// In the setup function
-onMounted(() => {
+const { find } = useStrapi();
+
+const headerData = ref(null);
+
+onMounted(async () => {
+  try {
+    const response = await find('headers');
+    if (response.data && response.data.length > 0) {
+      headerData.value = response.data[0].attributes;
+    }
+  } catch (error) {
+    console.error('Error fetching header data:', error);
+  }
+
   nextTick(() => {
-    emit('loaded')
-  })
-})
+    emit('loaded');
+  });
+});
 
 const services = [
   { name: 'Paid Media', path: '/paid-media' },

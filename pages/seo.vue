@@ -14,7 +14,7 @@
     <StructuredData type="Service" :data="serviceSchema" />
     
     <ClientOnly>
-      <HeaderSEO />
+      <HeaderService service-type="seo" />
       <SEOTechnology />
       <SEODetails />
       <SEOServices />
@@ -28,7 +28,7 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import HeaderSEO from '@/components/HeaderSEO.vue'
+import HeaderService from '@/components/HeaderService.vue'
 import SEOTechnology from '@/components/SEOTechnology.vue'
 import SEODetails from '@/components/SEODetails.vue'
 import SEOServices from '@/components/SEOServices.vue'

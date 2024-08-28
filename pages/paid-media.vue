@@ -15,7 +15,7 @@
     <StructuredData type="FAQPage" :data="faqSchema" />
     
     <ClientOnly>
-      <HeaderPaidMedia />
+      <HeaderService service-type="paid-media" />
       <PaidMediaTechnology />
       <PaidMediaDetails />
       <Consultation />
@@ -28,7 +28,7 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import HeaderPaidMedia from '@/components/HeaderPaidMedia.vue'
+import HeaderService from '@/components/HeaderService.vue'
 import PaidMediaTechnology from '@/components/PaidMediaTechnology.vue'
 import PaidMediaDetails from '@/components/PaidMediaDetails.vue'
 import Consultation from '@/components/Consultation.vue'
