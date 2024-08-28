@@ -60,7 +60,7 @@ export default defineNuxtConfig({
   ],
 
   strapi: {
-    url: process.env.STRAPI_URL || 'https://mcdonaldsz.com',
+    url: process.env.STRAPI_URL || 'http://localhost:1337',
     prefix: '/api',
     admin: '/admin',
     version: 'v4',
@@ -195,7 +195,7 @@ export default defineNuxtConfig({
   // Runtime configuration
   runtimeConfig: {
     public: {
-      strapiURL: process.env.STRAPI_URL || 'https://mcdonaldsz.com',
+      strapiURL: process.env.STRAPI_URL || 'http://localhost:1337',
     },
   },
 

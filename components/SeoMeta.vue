@@ -1,5 +1,5 @@
 <script setup>
-import { useHead } from '#head'
+import { useHead } from '#app'
 
 const props = defineProps({
   title: {
