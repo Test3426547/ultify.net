@@ -55,7 +55,7 @@ export default defineNuxtConfig({
   ],
 
   strapi: {
-    url: process.env.STRAPI_URL || 'http://localhost:1337',
+    url: process.env.STRAPI_URL || 'https://thoughtful-excitement-c20c2d2b8d.strapiapp.com',
     token: process.env.STRAPI_TOKEN,
     prefix: '/api',
     admin: '/admin',
@@ -184,9 +184,9 @@ export default defineNuxtConfig({
   // Runtime configuration
   runtimeConfig: {
     public: {
-      strapiURL: process.env.STRAPI_URL || 'http://localhost:1337',
+      strapiURL: process.env.STRAPI_URL || 'https://thoughtful-excitement-c20c2d2b8d.strapiapp.com',
       siteUrl: process.env.SITE_URL || 'https://www.ultifysolutions.com',
-      strapiBaseUrl: process.env.STRAPI_BASE_URL || 'http://localhost:1337',
+      strapiBaseUrl: process.env.STRAPI_BASE_URL || 'https://thoughtful-excitement-c20c2d2b8d.strapiapp.com',
     },
   },
 
