@@ -57,7 +57,6 @@ export default defineNuxtConfig({
     '@vite-pwa/nuxt',
     '@nuxtjs/strapi',
     '@nuxtjs/sitemap', // Added sitemap module
-    '@nuxtjs/tailwindcss', // Add TailwindCSS module
   ],
 
   strapi: {
