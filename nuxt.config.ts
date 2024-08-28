@@ -226,12 +226,12 @@ export default defineNuxtConfig({
 
 // Add these new configurations
 render: {
-  extractCSS: false
+  extractCSS: false,
 },
 
 css: {
-  extract: true
-  async: true
+  extract: true,
+  async: true,
 },
 
 // Remove the useStrapi composable from this file
