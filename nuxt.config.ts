@@ -6,8 +6,7 @@ export default defineNuxtConfig({
 
   // Global CSS files
   css: [
-    'bootstrap/dist/css/bootstrap.min.css',
-    'bootstrap-icons/font/bootstrap-icons.css',
+    '~/assets/scss/custom.scss', // New custom Bootstrap import
     '~/assets/css/main.css',
     '~/assets/css/theme.css',
     '@fortawesome/fontawesome-svg-core/styles.css',
@@ -17,6 +16,7 @@ export default defineNuxtConfig({
   plugins: [
     '~/plugins/analytics.client',
     '~/plugins/fontawesome.js',
+    '~/plugins/bootstrap.client.ts',
   ],
 
   // Application head settings
@@ -46,8 +46,9 @@ export default defineNuxtConfig({
         { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap' },
       ],
       script: [
-        { src: 'https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js', crossorigin: 'anonymous' },
-        { src: 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js', crossorigin: 'anonymous' },
+        // Remove or comment out these lines:
+        // { src: 'https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js', crossorigin: 'anonymous' },
+        // { src: 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js', crossorigin: 'anonymous' },
       ]
     }
   },
@@ -61,6 +62,7 @@ export default defineNuxtConfig({
 
   strapi: {
     url: process.env.STRAPI_URL || 'http://localhost:1337',
+    token: process.env.STRAPI_TOKEN,
     prefix: '/api',
     admin: '/admin',
     version: 'v4',
@@ -127,7 +129,11 @@ export default defineNuxtConfig({
   // Vite-specific configurations
   vite: {
     css: {
-      devSourcemap: false, // Disable CSS source maps in development
+      preprocessorOptions: {
+        scss: {
+          additionalData: '@use "~/assets/scss/variables.scss" as *;'
+        }
+      }
     },
     build: {
       sourcemap: false, // Disable source maps in production

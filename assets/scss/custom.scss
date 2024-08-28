@@ -1,0 +1,13 @@
+   // assets/scss/custom.scss
+   @import "variables";
+
+   // Import only the Bootstrap components you need
+   @import "bootstrap/scss/functions";
+   @import "bootstrap/scss/variables";
+   @import "bootstrap/scss/mixins";
+   @import "bootstrap/scss/root";
+   @import "bootstrap/scss/reboot";
+   @import "bootstrap/scss/grid";
+   // Add other component imports as needed
+
+   // Your custom styles can go here
