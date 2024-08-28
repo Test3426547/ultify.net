@@ -4,14 +4,9 @@ export default defineNuxtConfig({
   // Server-Side Rendering mode
   ssr: true,
 
-  render: {
-    extractCSS: false,
-  },
-  
   // Global CSS files
   css: [
     '@/assets/css/theme.css',
-    // ... other CSS files ...
     '~/assets/css/tailwind.css'
   ],
 
@@ -48,11 +43,7 @@ export default defineNuxtConfig({
         { rel: 'manifest', href: '/site.webmanifest' },
         { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap' },
       ],
-      script: [
-        // Remove or comment out these lines:
-        // { src: 'https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js', crossorigin: 'anonymous' },
-        // { src: 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js', crossorigin: 'anonymous' },
-      ]
+      script: []
     }
   },
 
@@ -60,7 +51,7 @@ export default defineNuxtConfig({
   modules: [
     '@vite-pwa/nuxt',
     '@nuxtjs/strapi',
-    '@nuxtjs/sitemap', // Added sitemap module
+    '@nuxtjs/sitemap',
   ],
 
   strapi: {
@@ -92,32 +83,17 @@ export default defineNuxtConfig({
         return data.map(item => `/${contentType}/${item.attributes.slug}`)
       }
 
-      // Fetch blog posts
+      // Fetch all dynamic routes
       const blogRoutes = await fetchRoutes('posts')
-
-      // Fetch case studies
       const caseStudyRoutes = await fetchRoutes('case-studies')
-
-      // Fetch service pages
       const serviceRoutes = await fetchRoutes('services')
 
-      // Combine all dynamic routes
-      const dynamicRoutes = [
+      // Combine all routes
+      return [
         ...blogRoutes,
         ...caseStudyRoutes,
         ...serviceRoutes
       ]
-
-      // Add any additional static routes
-      const staticRoutes = [
-        '/',
-        '/about-us',
-        '/consultation',
-        '/contact-us',
-        '/website'
-      ]
-
-      return [...staticRoutes, ...dynamicRoutes]
     }
   },
 
@@ -140,7 +116,7 @@ export default defineNuxtConfig({
       devSourcemap: false,
     },
     build: {
-      sourcemap: false, // Disable source maps in production
+      sourcemap: false,
       extractCSS: true,
       async: true,
       transpile: ['nunjucks']
@@ -209,27 +185,22 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       strapiURL: process.env.STRAPI_URL || 'http://localhost:1337',
-      siteUrl: process.env.SITE_URL || 'https://www.mcdonaldsz.com', // Add siteUrl
+      siteUrl: process.env.SITE_URL || 'https://www.ultifysolutions.com',
       strapiBaseUrl: process.env.STRAPI_BASE_URL || 'http://localhost:1337',
     },
   },
 
   // Nitro configuration
   nitro: {
-    // prerender: {
-    //   routes: ['/', '/about-us', '/consultation', '/contact-us', '/website']
-    // },
     serveStatic: true
+  },
+
+  // Route rules to ensure SSR for all routes
+  routeRules: {
+    '/**': { ssr: true }
   },
 
   // Devtools settings
   devtools: { enabled: true },
   compatibilityDate: '2024-08-03',
 })
-
-// Add or update the following options to ensure SSR behavior
-routeRules: {
-  '/**'; { ssr: true }
-}
-
-// Remove the useStrapi composable from this file
