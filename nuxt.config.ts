@@ -197,6 +197,7 @@ export default defineNuxtConfig({
     public: {
       strapiURL: process.env.STRAPI_URL || 'http://localhost:1337',
       siteUrl: process.env.SITE_URL || 'https://www.mcdonaldsz.com', // Add siteUrl
+      strapiBaseUrl: process.env.STRAPI_BASE_URL || 'http://localhost:1337',
     },
   },
 

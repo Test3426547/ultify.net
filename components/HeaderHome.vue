@@ -78,9 +78,9 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
-import { useStrapi } from '~/composables/useStrapi';
+import { useStrapi } from '#imports';
 
-const { fetch } = useStrapi();
+const strapi = useStrapi();
 
 const headerData = ref({
   title: '',
@@ -103,22 +103,31 @@ const handleSubmit = () => {
 };
 
 onMounted(async () => {
-  const response = await fetch('api/headers/1');
-  const data = await response.json();
-  headerData.value = {
-    title: data.title,
-    subtitle: data.subtitle,
-    heading: data.heading,
-    subheading: data.subheading,
-    pills: [
-      { name: data.pill1, path: data.pill1Path },
-      { name: data.pill2, path: data.pill2Path },
-      { name: data.pill3, path: data.pill3Path },
-      { name: data.pill4, path: data.pill4Path },
-      { name: data.pill5, path: data.pill5Path },
-      { name: data.pill6, path: data.pill6Path }
-    ]
-  };
+  try {
+    const { data } = await strapi.find('headers', {
+      filters: { id: 1 },
+    });
+    
+    if (data && data.length > 0) {
+      const header = data[0];
+      headerData.value = {
+        title: header.title,
+        subtitle: header.subtitle,
+        heading: header.heading,
+        subheading: header.subheading,
+        pills: [
+          { name: header.pill1, path: header.pill1Path },
+          { name: header.pill2, path: header.pill2Path },
+          { name: header.pill3, path: header.pill3Path },
+          { name: header.pill4, path: header.pill4Path },
+          { name: header.pill5, path: header.pill5Path },
+          { name: header.pill6, path: header.pill6Path }
+        ]
+      };
+    }
+  } catch (error) {
+    console.error('Error fetching header data:', error);
+  }
 });
 </script>
 
