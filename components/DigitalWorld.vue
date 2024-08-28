@@ -24,6 +24,14 @@
 <script setup>
 import { computed } from 'vue';
 import { useRoute } from 'vue-router';
+import { onMounted, nextTick } from 'vue'
+
+// In the setup function
+onMounted(() => {
+  nextTick(() => {
+    emit('loaded')
+  })
+})
 
 const route = useRoute();
 const isConsultationPage = computed(() => route.path === '/consultation');

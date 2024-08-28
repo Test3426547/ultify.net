@@ -78,6 +78,14 @@
 
 <script setup>
 import { ref } from 'vue';
+import { onMounted, nextTick } from 'vue'
+
+// In the setup function
+onMounted(() => {
+  nextTick(() => {
+    emit('loaded')
+  })
+})
 
 const services = [
   { name: 'Paid Media', path: '/paid-media' },

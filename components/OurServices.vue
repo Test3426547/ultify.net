@@ -27,6 +27,14 @@
 
 <script>
 import ServiceCard from './ServiceCard.vue';
+import { onMounted, nextTick } from 'vue'
+
+// In the setup function
+onMounted(() => {
+  nextTick(() => {
+    emit('loaded')
+  })
+})
 
 export default {
   name: 'OurServices',

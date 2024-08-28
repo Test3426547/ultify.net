@@ -22,7 +22,14 @@
 </template>
 
 <script setup>
-// No script needed
+import { onMounted, nextTick } from 'vue'
+
+// In the setup function
+onMounted(() => {
+  nextTick(() => {
+    emit('loaded')
+  })
+})
 </script>
 
 <style scoped>

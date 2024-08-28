@@ -12,14 +12,16 @@
     <StructuredData type="WebPage" :data="webPageSchema" />
     <StructuredData type="BreadcrumbList" :data="breadcrumbSchema" />
     
-    <HeaderHome />
-    <QuickNEasy />
-    <ServiceCards />
-    <OurServices />
-    <Consultation />
-    <DigitalWorld />
-    <FAQ />
-    <CTA />
+    <ClientOnly>
+      <HeaderHome @loaded="componentsLoaded[0] = true" />
+      <QuickNEasy v-if="componentsLoaded[0]" @loaded="componentsLoaded[1] = true" />
+      <ServiceCards v-if="componentsLoaded[1]" @loaded="componentsLoaded[2] = true" />
+      <OurServices v-if="componentsLoaded[2]" @loaded="componentsLoaded[3] = true" />
+      <Consultation v-if="componentsLoaded[3]" @loaded="componentsLoaded[4] = true" />
+      <DigitalWorld v-if="componentsLoaded[4]" @loaded="componentsLoaded[5] = true" />
+      <FAQ v-if="componentsLoaded[5]" @loaded="componentsLoaded[6] = true" />
+      <CTA v-if="componentsLoaded[6]" @loaded="componentsLoaded[7] = true" />
+    </ClientOnly>
   </div>
 </template>
 
@@ -36,6 +38,8 @@ import CTA from '@/components/CTA.vue'
 import SeoMeta from '@/components/SeoMeta.vue'
 import StructuredData from '@/components/StructuredData.vue'
 import { createOrganizationSchema, createWebPageSchema, createBreadcrumbSchema } from '@/utils/structuredData'
+
+const componentsLoaded = ref([false, false, false, false, false, false, false, false])
 
 const metaTitle = ref('Home | Ultify Solutions')
 const metaDescription = ref('Ultify Solutions is a leading digital marketing agency offering innovative strategies to boost your online presence.')

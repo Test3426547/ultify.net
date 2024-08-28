@@ -41,6 +41,15 @@
 </template>
 
 <script>
+import { onMounted, nextTick } from 'vue'
+
+// In the setup function
+onMounted(() => {
+  nextTick(() => {
+    emit('loaded')
+  })
+})
+
 export default {
   name: 'Consultation',
   data() {

@@ -30,6 +30,15 @@
   </template>
   
   <script setup>
+  import { onMounted, nextTick } from 'vue'
+
+  // In the setup function
+  onMounted(() => {
+    nextTick(() => {
+      emit('loaded')
+    })
+})
+
   const steps = [
     "Reach out to us and utilise our free consultation system. We will collaboratively discuss with you about your project requirements, spending, goals and more!",
     "Our team will create a effective strategy that aligns with your discussed requirements and offer you an effective solution.",
