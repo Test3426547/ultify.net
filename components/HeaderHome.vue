@@ -5,61 +5,42 @@
     <div class="container-fluid h-full">
       <div class="flex flex-col lg:flex-row h-full">
         <div class="lg:w-7/12 flex flex-col py-5 relative">
-          <h1 class="text-4xl lg:text-5xl font-bold text-primary mb-4 leading-tight -mt-24 lg:-mt-24 xl:-mt-24 -ml-10 lg:-ml-10 xl:-ml-10">
+          <h1 class="text-4xl lg:text-5xl font-bold text-primary mt-[-100px]">
             ULTIFY capitalizes on digital<br>resources to elevate your
           </h1>
-          <h2 class="text-2xl lg:text-3xl font-bold text-primary mb-4 leading-tight -ml-10 lg:-ml-10 xl:-ml-10 mt-10 lg:mt-10 xl:mt-10">
+          <h2 class="text-2xl lg:text-3xl font-bold text-primary mt-10">
             Your Solutions Start With Ultify
           </h2>
-          <h3 class="text-2xl lg:text-3xl font-bold text-primary mb-4 leading-tight -ml-10 lg:-ml-10 xl:-ml-10 mt-20 lg:mt-20 xl:mt-20">
+          <h3 class="text-2xl lg:text-3xl font-bold text-primary mt-10">
             Com Heading
           </h3>
-          <p class="text-lg lg:text-xl font-normal text-primary mb-4 leading-tight -ml-10 lg:-ml-10 xl:-ml-10 mt-10 lg:mt-10 xl:mt-10">
-            Body Text
+          <p class="text-lg lg:text-xl font-normal text-primary mt-6">
+            Body text
           </p>
-          <div class="flex flex-wrap justify-start mt-10 lg:mt-10 xl:mt-10 -ml-10 lg:-ml-10 xl:-ml-10">
-            <div class="bg-white rounded-full py-2 px-4 mr-4 mb-4">Digital Marketing</div>
-            <div class="bg-white rounded-full py-2 px-4 mr-4 mb-4">Content Creation</div>
-            <div class="bg-white rounded-full py-2 px-4 mr-4 mb-4">Website</div>
-            <div class="bg-white rounded-full py-2 px-4 mr-4 mt-4">Social Media</div>
-            <div class="bg-white rounded-full py-2 px-4 mr-4 mt-4">Print Advertising</div>
-            <div class="bg-white rounded-full py-2 px-4 mr-4 mt-4">Lead Without A Sweat</div>
+          <div class="flex flex-wrap mt-5">
+            <button class="bg-primary text-white py-2 px-4 rounded-lg mr-2">
+              Pill 1
+            </button>
+            <button class="bg-primary text-white py-2 px-4 rounded-lg mr-2">
+              Pill 2
+            </button>
+            <button class="bg-primary text-white py-2 px-4 rounded-lg">
+              Pill 3
+            </button>
           </div>
         </div>
         <div class="lg:w-5/12 flex flex-col py-5 relative">
-          <form class="bg-white rounded-lg shadow-lg p-10 mt-20 lg:mt-20 xl:mt-20 -ml-10 lg:-ml-10 xl:-ml-10 w-96 lg:w-96 xl:w-96">
-            <h2 class="text-2xl lg:text-3xl font-bold text-primary mb-4 leading-tight">
+          <form class="absolute top-1/2 bottom-1/2 w-full p-5 bg-white rounded-lg">
+            <h2 class="text-2xl lg:text-3xl font-bold text-primary mb-4">
               Contact Form
             </h2>
-            <div class="mb-4">
-              <label class="block text-gray-700 text-sm font-bold mb-2" for="businessName">
-                Business Name
-              </label>
-              <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="businessName" type="text" placeholder="Business Name">
-            </div>
-            <div class="mb-4">
-              <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
-                Name
-              </label>
-              <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" type="text" placeholder="Name">
-            </div>
-            <div class="mb-4">
-              <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
-                Email
-              </label>
-              <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="Email">
-            </div>
-            <div class="mb-4">
-              <label class="block text-gray-700 text-sm font-bold mb-2" for="phone">
-                Phone
-              </label>
-              <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="phone" type="text" placeholder="Phone">
-            </div>
-            <div class="flex items-center justify-between">
-              <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
-                Submit
-              </button>
-            </div>
+            <input type="text" class="block w-full p-2 mb-4" placeholder="Business Name">
+            <input type="text" class="block w-full p-2 mb-4" placeholder="Name">
+            <input type="email" class="block w-full p-2 mb-4" placeholder="Email">
+            <input type="tel" class="block w-full p-2 mb-4" placeholder="Phone">
+            <button class="bg-primary text-white py-2 px-4 rounded-lg">
+              Submit
+            </button>
           </form>
         </div>
       </div>
