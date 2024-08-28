@@ -57,6 +57,7 @@ export default defineNuxtConfig({
     '@vite-pwa/nuxt',
     '@nuxtjs/strapi',
     '@nuxtjs/sitemap', // Added sitemap module
+    '@nuxtjs/tailwindcss', // Add TailwindCSS module
   ],
 
   strapi: {
@@ -109,7 +110,7 @@ export default defineNuxtConfig({
         '/about-us',
         '/consultation',
         '/contact-us',
-        '/services'
+        '/website'
       ]
 
       return [...staticRoutes, ...dynamicRoutes]
@@ -196,6 +197,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       strapiURL: process.env.STRAPI_URL || 'http://localhost:1337',
+      siteUrl: process.env.SITE_URL || 'https://www.mcdonaldsz.com', // Add siteUrl
     },
   },
 
@@ -210,4 +212,6 @@ export default defineNuxtConfig({
   // Devtools settings
   devtools: { enabled: true },
   compatibilityDate: '2024-08-03',
-});
+})
+
+// Remove the useStrapi composable from this file

@@ -7,29 +7,29 @@
         <div class="col-lg-7 d-flex flex-column py-5 position-relative">
           <div class="header__top">
             <h1 class="header__title fw-bold text-primary">
-              ULTIFY capitalizes on digital<br>resources to elevate your brand.
+              {{ headerData.title }}
             </h1>
             <p class="header__subtitle text-primary">
-              Your Solutions Start With Ultify.
+              {{ headerData.subtitle }}
             </p>
           </div>
           <div class="header__bottom">
             <h2 class="header__subtitle-large fw-bold text-white">
-              Start now and maximise your<br>digital reach!
+              {{ headerData.heading }}
             </h2>
             <p class="header__subtitle text-white mb-4">
-              Explore our comprehensive services
+              {{ headerData.subheading }}
             </p>
             <div class="header__services">
               <div class="row g-2 justify-content-start">
-                <div class="col-md-4" v-for="service in services.slice(0, 3)" :key="service.path">
+                <div class="col-md-4" v-for="service in headerData.pills.slice(0, 3)" :key="service.path">
                   <NuxtLink :to="service.path" class="btn btn-outline-light rounded-pill w-100">
                     {{ service.name }}
                   </NuxtLink>
                 </div>
               </div>
               <div class="row g-2 mt-2 justify-content-start">
-                <div class="col-md-4" v-for="service in services.slice(3)" :key="service.path">
+                <div class="col-md-4" v-for="service in headerData.pills.slice(3)" :key="service.path">
                   <NuxtLink :to="service.path" class="btn btn-outline-light rounded-pill w-100">
                     {{ service.name }}
                   </NuxtLink>
@@ -77,16 +77,18 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
+import { useStrapi } from '~/composables/useStrapi';
 
-const services = [
-  { name: 'Paid Media', path: '/paid-media' },
-  { name: 'SEO', path: '/seo' },
-  { name: 'Content Creation', path: '/content-creation' },
-  { name: 'Website', path: '/website' },
-  { name: 'Social Media', path: '/social-media' },
-  { name: 'Print Advertising', path: '/print-media' }
-];
+const { fetch } = useStrapi();
+
+const headerData = ref({
+  title: '',
+  subtitle: '',
+  heading: '',
+  subheading: '',
+  pills: []
+});
 
 const form = ref({
   businessName: '',
@@ -99,6 +101,25 @@ const handleSubmit = () => {
   // Implement form submission logic here
   console.log('Form submitted:', form.value);
 };
+
+onMounted(async () => {
+  const response = await fetch('api/headers/1');
+  const data = await response.json();
+  headerData.value = {
+    title: data.title,
+    subtitle: data.subtitle,
+    heading: data.heading,
+    subheading: data.subheading,
+    pills: [
+      { name: data.pill1, path: data.pill1Path },
+      { name: data.pill2, path: data.pill2Path },
+      { name: data.pill3, path: data.pill3Path },
+      { name: data.pill4, path: data.pill4Path },
+      { name: data.pill5, path: data.pill5Path },
+      { name: data.pill6, path: data.pill6Path }
+    ]
+  };
+});
 </script>
 
 <style scoped>
