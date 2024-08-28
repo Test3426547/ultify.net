@@ -224,4 +224,14 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-08-03',
 })
 
+// Add these new configurations
+render: {
+  extractCSS: false
+},
+
+css: {
+  extract: true
+  async: true
+},
+
 // Remove the useStrapi composable from this file
