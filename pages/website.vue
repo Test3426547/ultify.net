@@ -14,14 +14,7 @@
     <StructuredData type="Service" :data="serviceSchema" />
     
     <ClientOnly>
-      <Suspense>
-        <template #default>
-          <HeaderService :service-id="websiteServiceId" />
-        </template>
-        <template #fallback>
-          <div>Loading header...</div>
-        </template>
-      </Suspense>
+      <HeaderWebsite />
       <WebsiteTechnology />
       <WebsiteDetails />
       <Consultation />
@@ -32,10 +25,9 @@
   </div>
 </template>
 
-<script setup>
-import { ref, onMounted, onErrorCaptured } from 'vue'
-import { useAsyncData } from '#app'
-import HeaderService from '@/components/HeaderService.vue'
+<script setup lang="ts">
+import { ref, onMounted } from 'vue'
+import HeaderWebsite from '@/components/HeaderWebsite.vue'
 import WebsiteTechnology from '@/components/WebsiteTechnology.vue'
 import WebsiteDetails from '@/components/WebsiteDetails.vue'
 import Consultation from '@/components/Consultation.vue'
@@ -92,58 +84,41 @@ const serviceSchema = ref(createServiceSchema({
   }
 }))
 
-const websiteServiceId = ref(1)
-
 onMounted(() => {
   // You can add any necessary mounted logic here
 })
 
-onErrorCaptured((err, instance, info) => {
-  console.error('Captured in website.vue:', err, instance, info)
-  // return false if you want to stop the error from propagating
-  return false
-})
+// If you're planning to fetch data from Strapi in the future, you can add it here
+// For example:
+/*
+const { data: pageData } = await useFetch('/api/website-development-page')
+if (pageData.value) {
+  metaTitle.value = pageData.value.metaTitle || metaTitle.value
+  metaDescription.value = pageData.value.metaDescription || metaDescription.value
+  ogImage.value = pageData.value.ogImage || ogImage.value
+  ogUrl.value = pageData.value.ogUrl || ogUrl.value
+  canonicalUrl.value = pageData.value.canonicalUrl || canonicalUrl.value
+  robots.value = pageData.value.robots || robots.value
 
-// Strapi data fetching logic
-// const { data: pageData, error } = await useAsyncData(
-//  'website-development-page',
-//  () => $fetch('/api/website-development-page')
-//)
-//
-//if (error.value) {
-//  console.error('Error fetching page data:', error.value)
-//} else if (pageData.value) {
-//  metaTitle.value = pageData.value.metaTitle || metaTitle.value
-//  metaDescription.value = pageData.value.metaDescription || metaDescription.value
-//  ogImage.value = pageData.value.ogImage || ogImage.value
-//  ogUrl.value = pageData.value.ogUrl || ogUrl.value
-//  canonicalUrl.value = pageData.value.canonicalUrl || canonicalUrl.value
-//  robots.value = pageData.value.robots || robots.value
-  
-  // Update schema data
-//  webPageSchema.value = createWebPageSchema({
-//    name: pageData.value.title || webPageSchema.value.name,
-//    description: pageData.value.description || webPageSchema.value.description,
-//    url: webPageSchema.value.url
-//  })
+  webPageSchema.value = createWebPageSchema({
+    name: pageData.value.title || webPageSchema.value.name,
+    description: pageData.value.description || webPageSchema.value.description,
+    url: webPageSchema.value.url
+  })
 
-//  serviceSchema.value = createServiceSchema({
-//    name: pageData.value.serviceName || serviceSchema.value.name,
-//    description: pageData.value.serviceDescription || serviceSchema.value.description,
-//    provider: serviceSchema.value.provider,
-//    serviceType: pageData.value.serviceType || serviceSchema.value.serviceType,
-//    areaServed: serviceSchema.value.areaServed,
-//    availableChannel: serviceSchema.value.availableChannel,
+  serviceSchema.value = createServiceSchema({
+    name: pageData.value.serviceName || serviceSchema.value.name,
+    description: pageData.value.serviceDescription || serviceSchema.value.description,
+    provider: serviceSchema.value.provider,
+    serviceType: pageData.value.serviceType || serviceSchema.value.serviceType,
+    areaServed: serviceSchema.value.areaServed,
+    availableChannel: serviceSchema.value.availableChannel,
     // Add more fields as needed, such as:
     // offers: pageData.value.offers,
     // hasOfferCatalog: pageData.value.hasOfferCatalog
-//  })
-
-  // You can also update other components' data here if needed
-  // For example:
-  // websiteTechnologyData.value = pageData.value.websiteTechnologyDetails
-  // websiteDetailsData.value = pageData.value.websiteDetails
-//}
+  })
+}
+*/
 </script>
 
 <style scoped>

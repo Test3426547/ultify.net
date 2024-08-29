@@ -1,7 +1,7 @@
 {
   "name": "nuxt-app",
   "private": true,
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
@@ -9,6 +9,7 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "start": "node .output/server/index.mjs",
+    "purgecss": "purgecss --config ./purgecss.config.js",
     "generate-pwa-assets": "pwa-assets-generator --preset minimal-2023 public/pwa-512x512.png"
   },
   "dependencies": {
@@ -51,7 +52,9 @@
     "eslint": "^8.30.0",
     "eslint-plugin-nuxt": "^3.2.0",
     "eslint-plugin-vue": "^9.6.0",
+    "nuxt-purgecss": "^2.0.0",
     "postcss": "^8.4.41",
+    "purgecss": "^6.0.0",
     "sass": "^1.77.8",
     "tailwindcss": "^3.4.10",
     "typescript": "^5.4.5",
