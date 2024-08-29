@@ -1,7 +1,9 @@
 <template>
     <div :class="$style.contactForm">
       <div :class="$style.contactFormInner">
-        <h2 :class="$style.title">Book A Free Consultation Now</h2>
+        <h2 :class="$style.title">
+          Book A Free Consultation<br>Now
+        </h2>
         <div :class="$style.spacer"></div>
         <div :class="$style.formContainer">
           <form @submit.prevent="handleSubmit">
@@ -73,28 +75,33 @@
     z-index: 1;
     width: 100%;
     max-width: 550px;
-    background-color: #f8f9fa;
+    background-color: #e9ecef;
     border-radius: 2rem;
     display: flex;
     flex-direction: column;
-    height: 100%;
-    max-height: 650px;
+    height: calc(100% + 150px);
+    max-height: 800px;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    margin-left: -70px;
+    font-family: 'Poppins', sans-serif;
   }
   
   .contactFormInner {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
     overflow-y: auto;
     padding: 2rem;
   }
   
   .title {
+    font-size: 3rem;
     font-weight: 600;
     text-align: center;
     margin-bottom: 1.5rem;
     color: #212529;
+    line-height: 1.2;
   }
   
   .formContainer {
@@ -129,7 +136,7 @@
     background-color: #fff;
     border-color: #86b7fe;
     outline: 0;
-    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+    box-shadow: 0 0 0 0.25rem rgba(55, 181, 255, 0.25);
   }
   
   .submitButton {
@@ -137,11 +144,11 @@
     width: 100%;
     padding: 0.85rem 1.5rem;
     font-size: 1rem;
-    font-weight: 400;
+    font-weight: 700;
     line-height: 1.5;
     color: #fff;
-    background-color: #0d6efd;
-    border-color: #0d6efd;
+    background-color: #37b5ff;
+    border-color: #37b5ff;
     text-align: center;
     text-decoration: none;
     vertical-align: middle;
@@ -154,8 +161,8 @@
   
   .submitButton:hover {
     color: #fff;
-    background-color: #0b5ed7;
-    border-color: #0a58ca;
+    background-color: #2f9ad9;
+    border-color: #2c91cc;
   }
   
   .formText {
