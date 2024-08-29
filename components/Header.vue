@@ -38,7 +38,8 @@
               </div>
             </div>
           </div>
-          <div>
+          <div class="col-lg-5 d-flex justify-content-center align-items-center position-relative">
+        <div>
             <ContactForm @submit="handleSubmit" />
           </div>
         </div>
@@ -51,7 +52,7 @@
   
   <script setup lang="ts">
   import { computed } from 'vue'
-  import ContactForm from './ContactForm.vue'
+  import ContactForm from '@/components/ContactForm.vue'
   
   const props = defineProps({
     headerData: {
