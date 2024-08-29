@@ -72,16 +72,16 @@
   .contactForm {
     position: relative;
     z-index: 1;
-    width: calc(100% + 120px);
-    max-width: 670px;
+    width: calc(100% + 70px);
+    max-width: 620px;
     background-color: #e9ecef;
     border-radius: 2rem;
     display: flex;
     flex-direction: column;
     height: 100%;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-    margin-left: -60px;
-    margin-right: -60px;
+    margin-left: -35px;
+    margin-right: -35px;
     font-family: 'Poppins', sans-serif;
   }
   
@@ -94,7 +94,7 @@
   }
   
   .title {
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-weight: 600;
     text-align: center;
     margin-bottom: 1.5rem;
@@ -103,17 +103,16 @@
   }
   
   .formContainer {
-    padding: 0 1.5rem;
+    padding: 0 1rem;
   }
   
   .formGroup {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
   }
   
   .formControl {
     display: block;
-    width: calc(100% + 40px);
-    margin-left: -20px;
+    width: 100%;
     padding: 0.75rem 1.5rem;
     font-size: 1rem;
     font-weight: 400;
@@ -136,8 +135,7 @@
   
   .submitButton {
     display: block;
-    width: calc(100% + 40px);
-    margin-left: -20px;
+    width: 100%;
     padding: 0.85rem 1.5rem;
     font-size: 1rem;
     font-weight: 700;
