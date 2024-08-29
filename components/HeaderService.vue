@@ -23,14 +23,14 @@
               <div class="header__pills">
                 <div class="row g-2 justify-content-start">
                   <div class="col-md-4" v-for="pill in props.pills.slice(0, 3)" :key="pill.text">
-                    <span :class="`badge bg-${pill.color} w-100 rounded-pill`">
+                    <span class="badge w-100 rounded-pill pill-outline">
                       {{ pill.text }}
                     </span>
                   </div>
                 </div>
                 <div class="row g-2 mt-2 justify-content-start">
                   <div class="col-md-4" v-for="pill in props.pills.slice(3)" :key="pill.text">
-                    <span :class="`badge bg-${pill.color} w-100 rounded-pill`">
+                    <span class="badge w-100 rounded-pill pill-outline">
                       {{ pill.text }}
                     </span>
                   </div>
@@ -192,11 +192,17 @@
   }
   
   .header__pills .badge {
-    font-size: 0.7rem;
+    font-size: 0.9rem;
     padding: 0.5em 1em;
     white-space: nowrap;
     display: inline-block;
     text-align: center;
+  }
+  
+  .pill-outline {
+    background-color: transparent !important;
+    color: var(--bs-white) !important;
+    border: 1px solid var(--bs-white);
   }
   
   .consultation-form {
@@ -351,7 +357,7 @@
     }
   
     .header__pills .badge {
-      font-size: 0.6rem;
+      font-size: 0.8rem;
       padding: 0.4rem 1rem;
     }
   
@@ -360,4 +366,4 @@
       max-width: 400px;
     }
   }
-  </style>  
+  </style>
