@@ -32,7 +32,7 @@
             </div>
           </div>
           <div class="col-lg-5 d-flex justify-content-center align-items-center position-relative">
-            <div class="ms-n50">
+            <div class="contact-form-wrapper">
               <ContactForm @submit="handleFormSubmit" />
             </div>
           </div>
@@ -80,7 +80,7 @@
   watch(() => props.serviceId, fetchHeaderData);
   
   const handleFormSubmit = (formData) => {
-    // Implement form submission logic here
+    // Handle form submission logic here
     console.log('Form submitted:', formData);
   };
   </script>

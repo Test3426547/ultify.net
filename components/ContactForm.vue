@@ -1,48 +1,48 @@
 <template>
-    <div class="contact-form bg-light rounded-5 shadow-lg">
-      <div class="contact-form-inner p-4">
-        <h2 class="text-center text-dark mb-4" style="font-weight: 600;">Book A Free Consultation Now</h2>
-        <div class="spacer"></div>
-        <div class="form-container">
+    <div :class="$style.contactForm">
+      <div :class="$style.contactFormInner">
+        <h2 :class="$style.title">Book A Free Consultation Now</h2>
+        <div :class="$style.spacer"></div>
+        <div :class="$style.formContainer">
           <form @submit.prevent="handleSubmit">
-            <div class="form-group mb-3">
+            <div :class="$style.formGroup">
               <input
-                class="form-control"
+                :class="$style.formControl"
                 v-model="form.businessName"
                 placeholder="URL/Business Name (if applicable)"
                 type="text"
               />
             </div>
-            <div class="form-group mb-3">
+            <div :class="$style.formGroup">
               <input
-                class="form-control"
+                :class="$style.formControl"
                 v-model="form.name"
                 placeholder="Name"
                 type="text"
               />
             </div>
-            <div class="form-group mb-3">
+            <div :class="$style.formGroup">
               <input
-                class="form-control"
+                :class="$style.formControl"
                 v-model="form.email"
                 placeholder="Email"
                 type="email"
               />
             </div>
-            <div class="form-group mb-3">
+            <div :class="$style.formGroup">
               <input
-                class="form-control"
+                :class="$style.formControl"
                 v-model="form.phone"
                 placeholder="Phone"
                 type="tel"
               />
             </div>
-            <button type="submit" class="btn btn-primary btn-block btn-lg">
+            <button type="submit" :class="$style.submitButton">
               LEAD WITHOUT A SWEAT
             </button>
           </form>
         </div>
-        <p class="form-text text-dark mt-3 text-center">
+        <p :class="$style.formText">
           You are booking a free consultation with no maximum time (TnC's apply).
           We will call you on the given number on our first available time-slot.
         </p>
@@ -67,66 +67,101 @@
   };
   </script>
   
-  <style scoped>
-  .contact-form {
+  <style module>
+  .contactForm {
     position: relative;
     z-index: 1;
     width: 100%;
     max-width: 550px;
-    background-color: var(--bs-light);
+    background-color: #f8f9fa;
     border-radius: 2rem;
     display: flex;
     flex-direction: column;
     height: 100%;
     max-height: 650px;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
   }
   
-  .contact-form-inner {
+  .contactFormInner {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
     overflow-y: auto;
+    padding: 2rem;
   }
   
-  .form-container {
-    padding: 0 25px;
+  .title {
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #212529;
+  }
+  
+  .formContainer {
+    padding: 0 1.5rem;
   }
   
   .spacer {
     height: 20px;
   }
   
-  form {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
+  .formGroup {
+    margin-bottom: 1rem;
   }
   
-  .form-group {
-    flex-grow: 1;
-    display: flex;
-    align-items: center;
-  }
-  
-  .form-control {
-    border-radius: 50px;
-    padding: 0.75rem 1.5rem;
-    border: none;
-    background-color: var(--bs-white);
-    width: 100%;
-  }
-  
-  .btn-block {
+  .formControl {
     display: block;
     width: 100%;
-    border-radius: 50px;
-    padding: 0.85rem 1.5rem;
-    margin-top: auto;
+    padding: 0.75rem 1.5rem;
     font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 50px;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   }
   
-  .form-text {
+  .formControl:focus {
+    color: #212529;
+    background-color: #fff;
+    border-color: #86b7fe;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+  }
+  
+  .submitButton {
+    display: block;
+    width: 100%;
+    padding: 0.85rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #fff;
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    border: 1px solid transparent;
+    border-radius: 50px;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+  
+  .submitButton:hover {
+    color: #fff;
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
+  }
+  
+  .formText {
     margin-top: 1rem;
-    font-size: 0.8rem;
+    font-size: 0.875rem;
+    color: #6c757d;
+    text-align: center;
   }
   </style>

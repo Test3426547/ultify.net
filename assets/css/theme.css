@@ -2012,6 +2012,14 @@ p {
   }
 }
 
+.contact-form-wrapper {
+  /* Reset any global styles that might interfere */
+  all: initial;
+  * {
+    all: unset;
+  }
+}
+
 /* Wrapper for all connect elements.
  */
 
