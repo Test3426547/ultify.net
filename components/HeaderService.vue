@@ -22,14 +22,14 @@
               </p>
               <div class="header__pills">
                 <div class="row g-2 justify-content-start">
-                  <div class="col-md-4" v-for="pill in pills.slice(0, 3)" :key="pill.text">
+                  <div class="col-md-4" v-for="pill in props.pills.slice(0, 3)" :key="pill.text">
                     <span :class="`badge bg-${pill.color} w-100 rounded-pill`">
                       {{ pill.text }}
                     </span>
                   </div>
                 </div>
                 <div class="row g-2 mt-2 justify-content-start">
-                  <div class="col-md-4" v-for="pill in pills.slice(3)" :key="pill.text">
+                  <div class="col-md-4" v-for="pill in props.pills.slice(3)" :key="pill.text">
                     <span :class="`badge bg-${pill.color} w-100 rounded-pill`">
                       {{ pill.text }}
                     </span>
@@ -124,7 +124,72 @@
   </script>
   
   <style scoped>
-  /* Your existing styles remain unchanged */
+  .header {
+    position: relative;
+  }
+  
+  .header__background-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background-color: var(--bs-white);
+  }
+  
+  .header__background-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background-color: var(--bs-primary);
+  }
+  
+  .header__top {
+    position: absolute;
+    top: calc(50% - 260px);
+    left: 0;
+    right: 0;
+    z-index: 1;
+  }
+  
+  .header__bottom {
+    position: absolute;
+    top: calc(50% + 60px);
+    left: 0;
+    right: 0;
+    z-index: 1;
+  }
+  
+  .content-shift {
+    padding-left: 150px;
+  }
+  
+  .header__title {
+    font-size: 3rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+  
+  .header__subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .header__subtitle-large {
+    font-size: 3rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+  
+  .header__pills {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .header__pills .row {
+    max-width: 700px;
+  }
   
   .header__pills .badge {
     font-size: 0.7rem;
@@ -133,247 +198,166 @@
     display: inline-block;
     text-align: center;
   }
-
-.header {
-  position: relative;
-}
-
-.header__background-top {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 50%;
-  background-color: var(--bs-white);
-}
-
-.header__background-bottom {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 50%;
-  background-color: var(--bs-primary);
-}
-
-.header__top {
-  position: absolute;
-  top: calc(50% - 260px);
-  left: 0;
-  right: 0;
-  z-index: 1;
-}
-
-.header__bottom {
-  position: absolute;
-  top: calc(50% + 60px);
-  left: 0;
-  right: 0;
-  z-index: 1;
-}
-
-.content-shift {
-  padding-left: 150px;
-}
-
-.header__title {
-  font-size: 3rem;
-  line-height: 1.2;
-  margin-bottom: 1rem;
-}
-
-.header__subtitle {
-  font-size: 1.1rem;
-}
-
-.header__subtitle-large {
-  font-size: 3rem;
-  line-height: 1.2;
-  margin-bottom: 1rem;
-}
-
-.header__services {
-  display: flex;
-  flex-direction: column;
-}
-
-.header__services .row {
-  max-width: 700px;
-}
-
-.header__services .btn {
-  border-color: var(--bs-white);
-  color: var(--bs-white);
-  transition: all 0.3s ease;
-  font-size: 0.7rem; /* Reduced from 0.9rem to 0.8rem */
-  padding: 0.5rem 1rem;
-  white-space: nowrap;
-}
-
-.header__services .btn:hover, .header__services .btn:focus {
-  background-color: var(--bs-white);
-  color: var(--bs-primary);
-}
-
-.consultation-form {
-  position: relative;
-  z-index: 1;
-  width: calc(100% + 150px);
-  max-width: 550px;
-  background-color: var(--bs-light);
-  border-radius: 2rem;
-  display: flex;
-  flex-direction: column;
-  height: calc(100% + 50px);
-  max-height: 650px;
-  margin-top: 50px;
-  margin-bottom: -50px;
-}
-
-.ms-n50 {
-  margin-left: -50px;
-}
-
-.consultation-form-inner {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  overflow-y: auto;
-}
-
-.form-container {
-  padding: 0 25px;
-}
-
-.spacer {
-  height: 50px;
-}
-
-form {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.form-group {
-  flex-grow: 1;
-  display: flex;
-  align-items: center;
-}
-
-.form-control {
-  border-radius: 50px;
-  padding: 0.75rem 1.5rem;
-  border: none;
-  background-color: var(--bs-white);
-  width: 100%;
-}
-
-.btn-block {
-  display: block;
-  width: 100%;
-  border-radius: 50px;
-  padding: 0.85rem 1.5rem;
-  margin-top: auto;
-  font-size: 1rem;
-}
-
-.disclaimer {
-  margin-top: 1rem;
-  font-size: 0.8rem;
-}
-
-.header__scroll-arrow {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  animation: bounce 3s infinite;
-  z-index: 1;
-}
-
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateX(-50%) translateY(0);
+  
+  .consultation-form {
+    position: relative;
+    z-index: 1;
+    width: calc(100% + 150px);
+    max-width: 550px;
+    background-color: var(--bs-light);
+    border-radius: 2rem;
+    display: flex;
+    flex-direction: column;
+    height: calc(100% + 50px);
+    max-height: 650px;
+    margin-top: 50px;
+    margin-bottom: -50px;
   }
-  40% {
-    transform: translateX(-50%) translateY(-20px);
+  
+  .ms-n50 {
+    margin-left: -50px;
   }
-  60% {
-    transform: translateX(-50%) translateY(-10px);
+  
+  .consultation-form-inner {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
   }
-}
-
-@media (max-width: 1200px) {
-  .content-shift {
-    padding-left: 100px;
+  
+  .form-container {
+    padding: 0 25px;
   }
-}
-
-@media (max-width: 992px) {
-  .content-shift {
-    padding-left: 50px;
+  
+  .spacer {
+    height: 50px;
   }
-
-  .header__top {
-    top: calc(50% - 220px);
+  
+  form {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
   }
-
-  .header__bottom {
-    top: calc(50% + 40px);
+  
+  .form-group {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
   }
-
-  .header__title {
-    font-size: 2.5rem;
+  
+  .form-control {
+    border-radius: 50px;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    background-color: var(--bs-white);
+    width: 100%;
   }
-
-  .header__subtitle-large {
-    font-size: 2.5rem;
-  }
-
-  .header__subtitle {
+  
+  .btn-block {
+    display: block;
+    width: 100%;
+    border-radius: 50px;
+    padding: 0.85rem 1.5rem;
+    margin-top: auto;
     font-size: 1rem;
   }
-
-  .consultation-form {
-    width: 100%;
-    max-width: 500px;
+  
+  .disclaimer {
+    margin-top: 1rem;
+    font-size: 0.8rem;
   }
-}
-
-@media (max-width: 768px) {
-  .content-shift {
-    padding-left: 20px;
+  
+  .header__scroll-arrow {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounce 3s infinite;
+    z-index: 1;
   }
-
-  .header__top {
-    top: calc(50% - 180px);
+  
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateX(-50%) translateY(0);
+    }
+    40% {
+      transform: translateX(-50%) translateY(-20px);
+    }
+    60% {
+      transform: translateX(-50%) translateY(-10px);
+    }
   }
-
-  .header__bottom {
-    top: calc(50% + 20px);
+  
+  @media (max-width: 1200px) {
+    .content-shift {
+      padding-left: 100px;
+    }
   }
-
-  .header__title {
-    font-size: 2rem;
+  
+  @media (max-width: 992px) {
+    .content-shift {
+      padding-left: 50px;
+    }
+  
+    .header__top {
+      top: calc(50% - 220px);
+    }
+  
+    .header__bottom {
+      top: calc(50% + 40px);
+    }
+  
+    .header__title {
+      font-size: 2.5rem;
+    }
+  
+    .header__subtitle-large {
+      font-size: 2.5rem;
+    }
+  
+    .header__subtitle {
+      font-size: 1rem;
+    }
+  
+    .consultation-form {
+      width: 100%;
+      max-width: 500px;
+    }
   }
-
-  .header__subtitle-large {
-    font-size: 2rem;
+  
+  @media (max-width: 768px) {
+    .content-shift {
+      padding-left: 20px;
+    }
+  
+    .header__top {
+      top: calc(50% - 180px);
+    }
+  
+    .header__bottom {
+      top: calc(50% + 20px);
+    }
+  
+    .header__title {
+      font-size: 2rem;
+    }
+  
+    .header__subtitle-large {
+      font-size: 2rem;
+    }
+  
+    .header__subtitle {
+      font-size: 0.9rem;
+    }
+  
+    .header__pills .badge {
+      font-size: 0.6rem;
+      padding: 0.4rem 1rem;
+    }
+  
+    .consultation-form {
+      width: 100%;
+      max-width: 400px;
+    }
   }
-
-  .header__subtitle {
-    font-size: 0.9rem;
-  }
-
-  .header__services .btn {
-    font-size: 0.6rem; /* Reduced from 0.8rem to 0.7rem for smaller screens */
-    padding: 0.4rem 1rem;
-  }
-
-  .consultation-form {
-    width: 100%;
-    max-width: 400px;
-  }
-}
-</style>
+  </style>  
