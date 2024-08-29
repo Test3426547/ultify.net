@@ -39,34 +39,7 @@
             </div>
           </div>
           <div class="col-lg-5 d-flex justify-content-center align-items-center position-relative">
-            <div class="consultation-form bg-light rounded-5 shadow-lg ms-n50">
-              <div class="consultation-form-inner p-4">
-                <h2 class="text-center text-dark mb-4">Book A Free Consultation Now</h2>
-                <div class="spacer"></div>
-                <div class="form-container">
-                  <form @submit.prevent="handleSubmit">
-                    <div class="form-group mb-3">
-                      <input class="form-control" v-model="form.businessName" placeholder="URL/Business Name (if applicable)" type="text" />
-                    </div>
-                    <div class="form-group mb-3">
-                      <input class="form-control" v-model="form.name" placeholder="Name" type="text" />
-                    </div>
-                    <div class="form-group mb-3">
-                      <input class="form-control" v-model="form.email" placeholder="Email" type="email" />
-                    </div>
-                    <div class="form-group mb-3">
-                      <input class="form-control" v-model="form.phone" placeholder="Phone" type="tel" />
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-block btn-lg">
-                      LEAD WITHOUT A SWEAT
-                    </button>
-                  </form>
-                </div>
-                <p class="disclaimer text-dark mt-3 text-center">
-                  You are booking a free consultation with no maximum time (TnC's apply). We will call you on the given number on our first available time-slot.
-                </p>
-              </div>
-            </div>
+            <ContactForm @submit="handleSubmit" />
           </div>
         </div>
       </div>
@@ -77,7 +50,8 @@
   </template>
   
   <script setup lang="ts">
-  import { ref, computed } from 'vue'
+  import { computed } from 'vue'
+  import ContactForm from './ContactForm.vue'
   
   const props = defineProps({
     headerData: {
@@ -90,19 +64,12 @@
     return props.headerData.Services ? props.headerData.Services.split(',').map(service => service.trim()) : []
   })
   
-  const form = ref({
-    businessName: '',
-    name: '',
-    email: '',
-    phone: ''
-  })
-  
-  const handleSubmit = () => {
+  const handleSubmit = (formData) => {
     // Implement form submission logic here
-    console.log('Form submitted:', form.value)
+    console.log('Form submitted:', formData)
   }
   </script>
   
   <style scoped>
   /* You can add your styles here */
-  </style>  
+  </style>
