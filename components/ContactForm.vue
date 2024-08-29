@@ -78,10 +78,10 @@
   border-radius: 2rem;
   display: flex;
   flex-direction: column;
-  height: calc(100% + 50px); /* Increased height by 50px */
+  height: calc(100% + 70px); /* Increased height by 70px */
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-  margin-left: -55px; /* Moved 20px to the left */
-  margin-right: -15px; /* Adjusted to maintain overall width */
+  margin-left: -55px;
+  margin-right: -15px;
   font-family: 'Poppins', sans-serif;
 }
 
@@ -107,7 +107,7 @@
 }
 
 .formGroup {
-  margin-bottom: 20px; /* Increased spacing between form fields */
+  margin-bottom: 30px; /* Increased spacing between form fields */
 }
 
 .formControl {
