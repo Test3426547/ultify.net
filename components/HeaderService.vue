@@ -22,14 +22,7 @@
               </p>
               <div class="header__pills">
                 <div class="row g-2 justify-content-start">
-                  <div class="col-md-4" v-for="pill in props.pills.slice(0, 3)" :key="pill.text">
-                    <span class="badge w-100 rounded-pill pill-outline">
-                      {{ pill.text }}
-                    </span>
-                  </div>
-                </div>
-                <div class="row g-2 mt-2 justify-content-start">
-                  <div class="col-md-4" v-for="pill in props.pills.slice(3)" :key="pill.text">
+                  <div class="col-md-4" v-for="pill in props.pills" :key="pill.text">
                     <span class="badge w-100 rounded-pill pill-outline">
                       {{ pill.text }}
                     </span>
@@ -39,33 +32,8 @@
             </div>
           </div>
           <div class="col-lg-5 d-flex justify-content-center align-items-center position-relative">
-            <div class="consultation-form bg-light rounded-5 shadow-lg ms-n50">
-              <div class="consultation-form-inner p-4">
-                <h2 class="text-center text-dark mb-4">Book A Free Consultation Now</h2>
-                <div class="spacer"></div>
-                <div class="form-container">
-                  <form @submit.prevent="handleSubmit">
-                    <div class="form-group mb-3">
-                      <input class="form-control" v-model="form.businessName" placeholder="URL/Business Name (if applicable)" type="text" />
-                    </div>
-                    <div class="form-group mb-3">
-                      <input class="form-control" v-model="form.name" placeholder="Name" type="text" />
-                    </div>
-                    <div class="form-group mb-3">
-                      <input class="form-control" v-model="form.email" placeholder="Email" type="email" />
-                    </div>
-                    <div class="form-group mb-3">
-                      <input class="form-control" v-model="form.phone" placeholder="Phone" type="tel" />
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-block btn-lg">
-                      LEAD WITHOUT A SWEAT
-                    </button>
-                  </form>
-                </div>
-                <p class="disclaimer text-dark mt-3 text-center">
-                  You are booking a free consultation with no maximum time (TnC's apply). We will call you on the given number on our first available time-slot.
-                </p>
-              </div>
+            <div class="ms-n50">
+              <ContactForm @submit="handleFormSubmit" />
             </div>
           </div>
         </div>
@@ -79,6 +47,7 @@
   <script setup lang="ts">
   import { ref, onMounted, watch } from 'vue';
   import { useStrapi } from '#imports';
+  import ContactForm from '@/components/ContactForm.vue';
   
   const props = defineProps({
     serviceId: {
@@ -110,16 +79,9 @@
   
   watch(() => props.serviceId, fetchHeaderData);
   
-  const form = ref({
-    businessName: '',
-    name: '',
-    email: '',
-    phone: ''
-  });
-  
-  const handleSubmit = () => {
+  const handleFormSubmit = (formData) => {
     // Implement form submission logic here
-    console.log('Form submitted:', form.value);
+    console.log('Form submitted:', formData);
   };
   </script>
   
