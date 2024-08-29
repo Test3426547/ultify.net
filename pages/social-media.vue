@@ -38,7 +38,7 @@ import SeoMeta from '@/components/SeoMeta.vue'
 import StructuredData from '@/components/StructuredData.vue'
 import { createOrganizationSchema, createWebPageSchema, createBreadcrumbSchema, createServiceSchema } from '@/utils/structuredData'
 
-const serviceId = ref(1) // Assuming 1 is the ID for website development
+const serviceId = ref(2) // Assuming 1 is the ID for website development
 const serviceName = 'Website Development'
 const serviceSlug = 'website-development'
 

@@ -14,7 +14,7 @@
     <StructuredData type="Service" :data="serviceSchema" />
     
     <ClientOnly>
-      <HeaderService service-id="3" />
+      <HeaderService :serviceId="serviceId" />
       <SEOTechnology />
       <SEODetails />
       <SEOServices />
@@ -26,8 +26,8 @@
   </div>
 </template>
 
-<script setup>
-import { ref, onMounted } from 'vue'
+<script setup lang="ts">
+import { ref } from 'vue'
 import HeaderService from '@/components/HeaderService.vue'
 import SEOTechnology from '@/components/SEOTechnology.vue'
 import SEODetails from '@/components/SEODetails.vue'
@@ -40,11 +40,15 @@ import SeoMeta from '@/components/SeoMeta.vue'
 import StructuredData from '@/components/StructuredData.vue'
 import { createOrganizationSchema, createWebPageSchema, createBreadcrumbSchema, createServiceSchema } from '@/utils/structuredData'
 
-const metaTitle = ref('SEO Services | Ultify Solutions')
+const serviceId = ref(3) // SEO service ID
+const serviceName = 'SEO'
+const serviceSlug = 'seo'
+
+const metaTitle = ref(`${serviceName} Services | Ultify Solutions`)
 const metaDescription = ref('Boost your website\'s visibility with Ultify Solutions\' expert SEO services. Improve rankings, increase organic traffic, and dominate search results.')
-const ogImage = ref('https://ultifysolutions.com/images/seo-services-og.jpg')
-const ogUrl = ref('https://ultifysolutions.com/services/seo')
-const canonicalUrl = ref('https://ultifysolutions.com/services/seo')
+const ogImage = ref(`https://ultifysolutions.com/images/${serviceSlug}-services-og.jpg`)
+const ogUrl = ref(`https://ultifysolutions.com/services/${serviceSlug}`)
+const canonicalUrl = ref(`https://ultifysolutions.com/services/${serviceSlug}`)
 const robots = ref('index, follow')
 
 const organizationSchema = ref(createOrganizationSchema({
@@ -63,25 +67,25 @@ const organizationSchema = ref(createOrganizationSchema({
 }))
 
 const webPageSchema = ref(createWebPageSchema({
-  name: 'SEO Services | Ultify Solutions',
-  description: 'Boost your website\'s visibility with Ultify Solutions\' expert SEO services. Improve rankings, increase organic traffic, and dominate search results.',
-  url: 'https://ultifysolutions.com/services/seo'
+  name: `${serviceName} Services | Ultify Solutions`,
+  description: metaDescription.value,
+  url: ogUrl.value
 }))
 
 const breadcrumbSchema = ref(createBreadcrumbSchema([
   { name: 'Home', url: 'https://ultifysolutions.com' },
   { name: 'Services', url: 'https://ultifysolutions.com/services' },
-  { name: 'SEO', url: 'https://ultifysolutions.com/services/seo' }
+  { name: serviceName, url: ogUrl.value }
 ]))
 
 const serviceSchema = ref(createServiceSchema({
-  name: 'SEO Services',
+  name: `${serviceName} Services`,
   description: 'Comprehensive SEO services to improve your website\'s visibility in search engines, increase organic traffic, and boost your online presence. We use cutting-edge techniques and tools to deliver measurable results.',
   provider: 'Ultify Solutions',
   serviceType: 'Search Engine Optimization',
   areaServed: 'Sydney, Australia',
   availableChannel: {
-    url: 'https://ultifysolutions.com/services/seo',
+    url: ogUrl.value,
     name: 'Ultify Solutions Website'
   },
   offers: [
@@ -110,51 +114,60 @@ const serviceSchema = ref(createServiceSchema({
   }
 }))
 
-onMounted(() => {
-  // You can add any necessary mounted logic here
-})
+// If you're planning to fetch data from Strapi in the future, you can add it here
+// For example:
+/*
+import { useAsyncData } from '#app'
 
-// Strapi data fetching logic for future use
-if (error.value) {
-  console.error('Error fetching page data:', error.value)
-} else if (pageData.value) {
-  metaTitle.value = pageData.value.metaTitle || metaTitle.value
-  metaDescription.value = pageData.value.metaDescription || metaDescription.value
-  ogImage.value = pageData.value.ogImage || ogImage.value
-  ogUrl.value = pageData.value.ogUrl || ogUrl.value
-  canonicalUrl.value = pageData.value.canonicalUrl || canonicalUrl.value
-  robots.value = pageData.value.robots || robots.value
-  
-  // Update schema data
-  webPageSchema.value = createWebPageSchema({
-    name: pageData.value.title || webPageSchema.value.name,
-    description: pageData.value.description || webPageSchema.value.description,
-    url: webPageSchema.value.url
-  })
+onMounted(async () => {
+  const { data: pageData, error } = await useAsyncData(
+    'seo-page',
+    () => $fetch(`/api/${serviceSlug}-page`)
+  )
 
-  serviceSchema.value = createServiceSchema({
-    name: pageData.value.serviceName || serviceSchema.value.name,
-    description: pageData.value.serviceDescription || serviceSchema.value.description,
-    provider: serviceSchema.value.provider,
-    serviceType: pageData.value.serviceType || serviceSchema.value.serviceType,
-    areaServed: serviceSchema.value.areaServed,
-    availableChannel: serviceSchema.value.availableChannel,
-    offers: pageData.value.offers || serviceSchema.value.offers,
-    hasOfferCatalog: pageData.value.hasOfferCatalog || serviceSchema.value.hasOfferCatalog
-  })
+  if (error.value) {
+    console.error('Error fetching page data:', error.value)
+  } else if (pageData.value) {
+    metaTitle.value = pageData.value.metaTitle || metaTitle.value
+    metaDescription.value = pageData.value.metaDescription || metaDescription.value
+    ogImage.value = pageData.value.ogImage || ogImage.value
+    ogUrl.value = pageData.value.ogUrl || ogUrl.value
+    canonicalUrl.value = pageData.value.canonicalUrl || canonicalUrl.value
+    robots.value = pageData.value.robots || robots.value
+    
+    // Update schema data
+    webPageSchema.value = createWebPageSchema({
+      name: pageData.value.title || webPageSchema.value.name,
+      description: pageData.value.description || webPageSchema.value.description,
+      url: webPageSchema.value.url
+    })
 
-  if (pageData.value.faq) {
-    faqSchema.value.mainEntity = pageData.value.faq.map(item => ({
-      '@type': 'Question',
-      name: item.question,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: item.answer
+    serviceSchema.value = createServiceSchema({
+      name: pageData.value.serviceName || serviceSchema.value.name,
+      description: pageData.value.serviceDescription || serviceSchema.value.description,
+      provider: serviceSchema.value.provider,
+      serviceType: pageData.value.serviceType || serviceSchema.value.serviceType,
+      areaServed: serviceSchema.value.areaServed,
+      availableChannel: serviceSchema.value.availableChannel,
+      offers: pageData.value.offers || serviceSchema.value.offers,
+      hasOfferCatalog: pageData.value.hasOfferCatalog || serviceSchema.value.hasOfferCatalog
+    })
+
+    if (pageData.value.faq) {
+      faqSchema.value = {
+        mainEntity: pageData.value.faq.map(item => ({
+          '@type': 'Question',
+          name: item.question,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: item.answer
+          }
+        }))
       }
-    }))
+    }
   }
-}
-
+})
+*/
 </script>
 
 <style scoped>
