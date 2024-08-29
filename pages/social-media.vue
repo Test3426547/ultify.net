@@ -14,8 +14,10 @@
     <StructuredData type="Service" :data="serviceSchema" />
     
     <ClientOnly>
-      <HeaderService service-id="2" />
+      <HeaderService :serviceId="serviceId" />
+      <SocialMediaTechnology />
       <SocialMediaDetails />
+      <SocialMediaServices />
       <Consultation />
       <DigitalWorld />
       <FAQ />
@@ -24,10 +26,13 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted } from 'vue'
+import { useAsyncData } from '#app'
 import HeaderService from '@/components/HeaderService.vue'
+import SocialMediaTechnology from '@/components/SocialMediaTechnology.vue'
 import SocialMediaDetails from '@/components/SocialMediaDetails.vue'
+import SocialMediaServices from '@/components/SocialMediaServices.vue'
 import Consultation from '@/components/Consultation.vue'
 import DigitalWorld from '@/components/DigitalWorld.vue'
 import FAQ from '@/components/FAQ.vue'
@@ -36,11 +41,15 @@ import SeoMeta from '@/components/SeoMeta.vue'
 import StructuredData from '@/components/StructuredData.vue'
 import { createOrganizationSchema, createWebPageSchema, createBreadcrumbSchema, createServiceSchema } from '@/utils/structuredData'
 
-const metaTitle = ref('Social Media Marketing Services | Ultify Solutions')
+const serviceId = ref(2) // Set to 2 for Social Media
+const serviceName = 'Social Media Marketing'
+const serviceSlug = 'social-media-marketing'
+
+const metaTitle = ref(`${serviceName} Services | Ultify Solutions`)
 const metaDescription = ref('Boost your brand\'s online presence with Ultify Solutions\' expert social media marketing services. Engage your audience and drive growth across all major platforms.')
-const ogImage = ref('https://ultifysolutions.com/images/social-media-marketing-og.jpg')
-const ogUrl = ref('https://ultifysolutions.com/services/social-media-marketing')
-const canonicalUrl = ref('https://ultifysolutions.com/services/social-media-marketing')
+const ogImage = ref(`https://ultifysolutions.com/images/${serviceSlug}-og.jpg`)
+const ogUrl = ref(`https://ultifysolutions.com/services/${serviceSlug}`)
+const canonicalUrl = ref(`https://ultifysolutions.com/services/${serviceSlug}`)
 const robots = ref('index, follow')
 
 const organizationSchema = ref(createOrganizationSchema({
@@ -59,25 +68,25 @@ const organizationSchema = ref(createOrganizationSchema({
 }))
 
 const webPageSchema = ref(createWebPageSchema({
-  name: 'Social Media Marketing Services | Ultify Solutions',
-  description: 'Boost your brand\'s online presence with Ultify Solutions\' expert social media marketing services. Engage your audience and drive growth across all major platforms.',
-  url: 'https://ultifysolutions.com/services/social-media-marketing'
+  name: `${serviceName} Services | Ultify Solutions`,
+  description: metaDescription.value,
+  url: ogUrl.value
 }))
 
 const breadcrumbSchema = ref(createBreadcrumbSchema([
   { name: 'Home', url: 'https://ultifysolutions.com' },
   { name: 'Services', url: 'https://ultifysolutions.com/services' },
-  { name: 'Social Media Marketing', url: 'https://ultifysolutions.com/services/social-media-marketing' }
+  { name: serviceName, url: ogUrl.value }
 ]))
 
 const serviceSchema = ref(createServiceSchema({
-  name: 'Social Media Marketing Services',
+  name: `${serviceName} Services`,
   description: 'Comprehensive social media marketing services to boost your brand\'s online presence, engage your target audience, and drive business growth across all major social media platforms.',
   provider: 'Ultify Solutions',
-  serviceType: 'Social Media Marketing',
+  serviceType: serviceName,
   areaServed: 'Sydney, Australia',
   availableChannel: {
-    url: 'https://ultifysolutions.com/services/social-media-marketing',
+    url: ogUrl.value,
     name: 'Ultify Solutions Website'
   },
   offers: [
@@ -110,7 +119,12 @@ onMounted(() => {
   // You can add any necessary mounted logic here
 })
 
-// Strapi data fetching logic for future use
+// Strapi data fetching logic
+const { data: pageData, error } = await useAsyncData(
+  'social-media-marketing-page',
+  () => $fetch(`/api/${serviceSlug}-page`)
+)
+
 if (error.value) {
   console.error('Error fetching page data:', error.value)
 } else if (pageData.value) {
@@ -139,18 +153,20 @@ if (error.value) {
     hasOfferCatalog: pageData.value.hasOfferCatalog || serviceSchema.value.hasOfferCatalog
   })
 
-  if (pageData.value.faq) {
-    faqSchema.value.mainEntity = pageData.value.faq.map(item => ({
-      '@type': 'Question',
-      name: item.question,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: item.answer
-      }
-    }))
-  }
+  // If you have FAQ data, you can add it here
+  // if (pageData.value.faq) {
+  //   faqSchema.value = {
+  //     mainEntity: pageData.value.faq.map(item => ({
+  //       '@type': 'Question',
+  //       name: item.question,
+  //       acceptedAnswer: {
+  //         '@type': 'Answer',
+  //         text: item.answer
+  //       }
+  //     }))
+  //   }
+  // }
 }
-
 </script>
 
 <style scoped>
