@@ -32,7 +32,7 @@
             </div>
           </div>
           <div class="col-lg-5 d-flex justify-content-center align-items-center position-relative">
-            <div class="contact-form-wrapper">
+            <div>
               <ContactForm @submit="handleFormSubmit" />
             </div>
           </div>
