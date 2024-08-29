@@ -204,4 +204,21 @@ export default defineNuxtConfig({
   // Devtools settings
   devtools: { enabled: true },
   compatibilityDate: '2024-08-03',
+  site: {
+    url: 'https://mcdonaldsz.com', // Replace with your actual website URL
+  },
+  generate: {
+    routes: [
+      '/',
+      '/social-media',
+      '/about-us',
+      '/contact-us',
+      '/consultation',
+      '/paid-media',
+      '/seo',
+      '/print-advertising',
+      '/website',
+      '/content-creation'
+    ]
+  },
 })

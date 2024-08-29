@@ -36,7 +36,7 @@
               <li><NuxtLink to="/website" class="bounce-link">Website</NuxtLink></li>
               <li><NuxtLink to="/social-media" class="bounce-link">Social Media</NuxtLink></li>
               <li><NuxtLink to="/seo" class="bounce-link">SEO</NuxtLink></li>
-              <li><NuxtLink to="/sem" class="bounce-link">SEM</NuxtLink></li>
+              <li><NuxtLink to="/paid-media" class="bounce-link">Paid Media</NuxtLink></li>
               <li><NuxtLink to="/content-creation" class="bounce-link">Content Creation</NuxtLink></li>
               <li><NuxtLink to="/print-advertising" class="bounce-link">Print Advertising</NuxtLink></li>
             </ul>
