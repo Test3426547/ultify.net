@@ -1,35 +1,108 @@
-// components/Header.vue
 <template>
-  <div v-html="headerHtml"></div>
-</template>
-
-<script>
-import { ref, onMounted } from 'vue'
-import nunjucks from 'nunjucks'
-
-export default {
-  props: {
-    headerData: Object
-  },
-  setup(props) {
-    const headerHtml = ref('')
-
-    onMounted(async () => {
-      try {
-        // Fetch the Nunjucks template as a string from the public directory
-        const response = await fetch('/Header.nunjucks')
-        const template = await response.text()
-
-        // Render the template with Nunjucks
-        headerHtml.value = nunjucks.renderString(template, props.headerData)
-      } catch (error) {
-        console.error('Error loading or rendering template:', error)
-      }
-    })
-
-    return {
-      headerHtml
+    <header class="header position-relative vh-100 overflow-hidden" v-if="headerData">
+      <div class="header__background-top"></div>
+      <div class="header__background-bottom"></div>
+      <div class="container-fluid h-100">
+        <div class="row h-100">
+          <div class="col-lg-7 d-flex flex-column py-5 position-relative">
+            <div class="header__top content-shift">
+              <h1 class="header__title fw-bold text-primary">
+                {{ headerData.Title }}
+              </h1>
+              <p class="header__subtitle text-primary">
+                {{ headerData.Subtitle }}
+              </p>
+            </div>
+            <div class="header__bottom content-shift">
+              <h2 class="header__subtitle-large fw-bold text-white">
+                {{ headerData.Heading }}
+              </h2>
+              <p class="header__subtitle text-white mb-4">
+                {{ headerData.Subheading }}
+              </p>
+              <div class="header__services">
+                <div class="row g-2 justify-content-start">
+                  <div class="col-md-4" v-for="service in services.slice(0, 3)" :key="service">
+                    <button class="btn btn-outline-light rounded-pill w-100">
+                      {{ service }}
+                    </button>
+                  </div>
+                </div>
+                <div class="row g-2 mt-2 justify-content-start">
+                  <div class="col-md-4" v-for="service in services.slice(3)" :key="service">
+                    <button class="btn btn-outline-light rounded-pill w-100">
+                      {{ service }}
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-5 d-flex justify-content-center align-items-center position-relative">
+            <div class="consultation-form bg-light rounded-5 shadow-lg ms-n50">
+              <div class="consultation-form-inner p-4">
+                <h2 class="text-center text-dark mb-4">Book A Free Consultation Now</h2>
+                <div class="spacer"></div>
+                <div class="form-container">
+                  <form @submit.prevent="handleSubmit">
+                    <div class="form-group mb-3">
+                      <input class="form-control" v-model="form.businessName" placeholder="URL/Business Name (if applicable)" type="text" />
+                    </div>
+                    <div class="form-group mb-3">
+                      <input class="form-control" v-model="form.name" placeholder="Name" type="text" />
+                    </div>
+                    <div class="form-group mb-3">
+                      <input class="form-control" v-model="form.email" placeholder="Email" type="email" />
+                    </div>
+                    <div class="form-group mb-3">
+                      <input class="form-control" v-model="form.phone" placeholder="Phone" type="tel" />
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block btn-lg">
+                      LEAD WITHOUT A SWEAT
+                    </button>
+                  </form>
+                </div>
+                <p class="disclaimer text-dark mt-3 text-center">
+                  You are booking a free consultation with no maximum time (TnC's apply). We will call you on the given number on our first available time-slot.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <svg class="header__scroll-arrow" width="40" height="35" viewBox="0 0 40 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20 35L36.5 18.5L33.25 15.25L23.5 25V0H16.5V25L6.75 15.25L3.5 18.5L20 35Z" fill="white"/>
+      </svg>
+    </header>
+  </template>
+  
+  <script setup lang="ts">
+  import { ref, computed } from 'vue'
+  
+  const props = defineProps({
+    headerData: {
+      type: Object,
+      required: true
     }
+  })
+  
+  const services = computed(() => {
+    return props.headerData.Services ? props.headerData.Services.split(',').map(service => service.trim()) : []
+  })
+  
+  const form = ref({
+    businessName: '',
+    name: '',
+    email: '',
+    phone: ''
+  })
+  
+  const handleSubmit = () => {
+    // Implement form submission logic here
+    console.log('Form submitted:', form.value)
   }
-}
-</script>
+  </script>
+  
+  <style scoped>
+  /* You can add your styles here */
+  </style>  

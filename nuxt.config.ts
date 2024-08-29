@@ -1,6 +1,8 @@
 import { defineNuxtConfig } from 'nuxt/config'
 
 export default defineNuxtConfig({
+  // Static Site Generation mode
+  target: 'static'
   // Server-Side Rendering mode
   ssr: true,
 
