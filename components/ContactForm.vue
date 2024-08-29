@@ -4,7 +4,6 @@
         <h2 :class="$style.title">
           Book A Free Consultation<br>Now
         </h2>
-        <div :class="$style.spacer"></div>
         <div :class="$style.formContainer">
           <form @submit.prevent="handleSubmit">
             <div :class="$style.formGroup">
@@ -73,16 +72,16 @@
   .contactForm {
     position: relative;
     z-index: 1;
-    width: 100%;
-    max-width: 550px;
+    width: calc(100% + 120px);
+    max-width: 670px;
     background-color: #e9ecef;
     border-radius: 2rem;
     display: flex;
     flex-direction: column;
-    height: calc(100% + 150px);
-    max-height: 800px;
+    height: 100%;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-    margin-left: -70px;
+    margin-left: -60px;
+    margin-right: -60px;
     font-family: 'Poppins', sans-serif;
   }
   
@@ -90,8 +89,7 @@
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    overflow-y: auto;
+    justify-content: space-between;
     padding: 2rem;
   }
   
@@ -108,17 +106,14 @@
     padding: 0 1.5rem;
   }
   
-  .spacer {
-    height: 20px;
-  }
-  
   .formGroup {
-    margin-bottom: 1rem;
+    margin-bottom: 15px;
   }
   
   .formControl {
     display: block;
-    width: 100%;
+    width: calc(100% + 40px);
+    margin-left: -20px;
     padding: 0.75rem 1.5rem;
     font-size: 1rem;
     font-weight: 400;
@@ -141,7 +136,8 @@
   
   .submitButton {
     display: block;
-    width: 100%;
+    width: calc(100% + 40px);
+    margin-left: -20px;
     padding: 0.85rem 1.5rem;
     font-size: 1rem;
     font-weight: 700;
@@ -157,6 +153,8 @@
     border: 1px solid transparent;
     border-radius: 50px;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
   
   .submitButton:hover {
