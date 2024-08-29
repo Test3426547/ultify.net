@@ -40,7 +40,7 @@ import SeoMeta from '@/components/SeoMeta.vue'
 import StructuredData from '@/components/StructuredData.vue'
 import { createOrganizationSchema, createWebPageSchema, createBreadcrumbSchema, createServiceSchema } from '@/utils/structuredData'
 
-const serviceId = ref(3)
+const serviceId = ref(4)
 const serviceName = 'Paid Media'
 const serviceSlug = 'paid-media'
 

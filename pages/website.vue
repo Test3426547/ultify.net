@@ -91,39 +91,39 @@ onMounted(() => {
 })
 
 // Strapi data fetching logic
-const { data: pageData, error } = await useAsyncData(
-  'website-development-page',
-  () => $fetch(`/api/${serviceSlug}-page`)
-)
+// const { data: pageData, error } = await useAsyncData(
+//   'website-development-page',
+//   () => $fetch(`/api/${serviceSlug}-page`)
+// )
 
-if (error.value) {
-  console.error('Error fetching page data:', error.value)
-} else if (pageData.value) {
-  metaTitle.value = pageData.value.metaTitle || metaTitle.value
-  metaDescription.value = pageData.value.metaDescription || metaDescription.value
-  ogImage.value = pageData.value.ogImage || ogImage.value
-  ogUrl.value = pageData.value.ogUrl || ogUrl.value
-  canonicalUrl.value = pageData.value.canonicalUrl || canonicalUrl.value
-  robots.value = pageData.value.robots || robots.value
+// if (error.value) {
+//   console.error('Error fetching page data:', error.value)
+// } else if (pageData.value) {
+//   metaTitle.value = pageData.value.metaTitle || metaTitle.value
+//   metaDescription.value = pageData.value.metaDescription || metaDescription.value
+//   ogImage.value = pageData.value.ogImage || ogImage.value
+//   ogUrl.value = pageData.value.ogUrl || ogUrl.value
+//   canonicalUrl.value = pageData.value.canonicalUrl || canonicalUrl.value
+//   robots.value = pageData.value.robots || robots.value
 
-  webPageSchema.value = createWebPageSchema({
-    name: pageData.value.title || webPageSchema.value.name,
-    description: pageData.value.description || webPageSchema.value.description,
-    url: webPageSchema.value.url
-  })
+//   webPageSchema.value = createWebPageSchema({
+//     name: pageData.value.title || webPageSchema.value.name,
+//     description: pageData.value.description || webPageSchema.value.description,
+//     url: webPageSchema.value.url
+//   })
 
-  serviceSchema.value = createServiceSchema({
-    name: pageData.value.serviceName || serviceSchema.value.name,
-    description: pageData.value.serviceDescription || serviceSchema.value.description,
-    provider: serviceSchema.value.provider,
-    serviceType: pageData.value.serviceType || serviceSchema.value.serviceType,
-    areaServed: serviceSchema.value.areaServed,
-    availableChannel: serviceSchema.value.availableChannel,
-    // Add more fields as needed, such as:
-    // offers: pageData.value.offers,
-    // hasOfferCatalog: pageData.value.hasOfferCatalog
-  })
-}
+//   serviceSchema.value = createServiceSchema({
+//     name: pageData.value.serviceName || serviceSchema.value.name,
+//     description: pageData.value.serviceDescription || serviceSchema.value.description,
+//     provider: serviceSchema.value.provider,
+//     serviceType: pageData.value.serviceType || serviceSchema.value.serviceType,
+//     areaServed: serviceSchema.value.areaServed,
+//     availableChannel: serviceSchema.value.availableChannel,
+//     // Add more fields as needed, such as:
+//     // offers: pageData.value.offers,
+//     // hasOfferCatalog: pageData.value.hasOfferCatalog
+//   })
+// }
 </script>
 
 <style scoped>
