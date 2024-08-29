@@ -21,7 +21,7 @@
                 {{ headerData.Subheading }}
               </p>
               <div class="header__pills">
-                <div class="row g-2 justify-content-center">
+                <div class="row g-2 justify-content-start">
                   <div class="col-md-4" v-for="pill in props.pills" :key="pill.text">
                     <span class="badge w-100 rounded-pill pill-outline">
                       {{ pill.text }}
@@ -86,11 +86,8 @@
   </script>
   
   <style scoped>
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
-  
   .header {
     position: relative;
-    font-family: 'Poppins', sans-serif;
   }
   
   .header__background-top {
@@ -99,7 +96,7 @@
     left: 0;
     right: 0;
     height: 50%;
-    background-color: #ffffff;
+    background-color: var(--bs-white);
   }
   
   .header__background-bottom {
@@ -108,7 +105,7 @@
     left: 0;
     right: 0;
     height: 50%;
-    background-color: #37b5ff;
+    background-color: var(--bs-primary);
   }
   
   .header__top {
@@ -166,24 +163,76 @@
   
   .pill-outline {
     background-color: transparent !important;
-    color: #ffffff !important;
-    border: 1px solid #ffffff;
+    color: var(--bs-white) !important;
+    border: 1px solid var(--bs-white);
   }
   
-  .contact-form-wrapper {
+  .consultation-form {
     position: relative;
     z-index: 1;
-    width: calc(100% + 80px);
+    width: calc(100% + 150px);
     max-width: 550px;
-    background-color: #e9ecef;
+    background-color: var(--bs-light);
     border-radius: 2rem;
     display: flex;
     flex-direction: column;
-    height: calc(100% + 200px);
-    max-height: 800px;
+    height: calc(100% + 50px);
+    max-height: 650px;
     margin-top: 50px;
     margin-bottom: -50px;
-    margin-left: -70px;
+  }
+  
+  .ms-n50 {
+    margin-left: -50px;
+  }
+  
+  .consultation-form-inner {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+  }
+  
+  .form-container {
+    padding: 0 25px;
+  }
+  
+  .spacer {
+    height: 50px;
+  }
+  
+  form {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+  }
+  
+  .form-control {
+    border-radius: 50px;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    background-color: var(--bs-white);
+    width: 100%;
+  }
+  
+  .btn-block {
+    display: block;
+    width: 100%;
+    border-radius: 50px;
+    padding: 0.85rem 1.5rem;
+    margin-top: auto;
+    font-size: 1rem;
+  }
+  
+  .disclaimer {
+    margin-top: 1rem;
+    font-size: 0.8rem;
   }
   
   .header__scroll-arrow {
@@ -238,10 +287,9 @@
       font-size: 1rem;
     }
   
-    .contact-form-wrapper {
+    .consultation-form {
       width: 100%;
       max-width: 500px;
-      margin-left: 0;
     }
   }
   
@@ -275,7 +323,7 @@
       padding: 0.4rem 1rem;
     }
   
-    .contact-form-wrapper {
+    .consultation-form {
       width: 100%;
       max-width: 400px;
     }
