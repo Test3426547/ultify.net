@@ -27,6 +27,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
+import { useAsyncData } from '#app'
 import HeaderService from '@/components/HeaderService.vue'
 import WebsiteTechnology from '@/components/WebsiteTechnology.vue'
 import WebsiteDetails from '@/components/WebsiteDetails.vue'
@@ -38,11 +39,15 @@ import SeoMeta from '@/components/SeoMeta.vue'
 import StructuredData from '@/components/StructuredData.vue'
 import { createOrganizationSchema, createWebPageSchema, createBreadcrumbSchema, createServiceSchema } from '@/utils/structuredData'
 
-const metaTitle = ref('Website Development Services | Ultify Solutions')
+const serviceId = ref(1) // Assuming 1 is the ID for website development
+const serviceName = 'Website Development'
+const serviceSlug = 'website-development'
+
+const metaTitle = ref(`${serviceName} Services | Ultify Solutions`)
 const metaDescription = ref('Expert website development services from Ultify Solutions. Create stunning, responsive, and high-performing websites tailored to your business needs.')
-const ogImage = ref('https://ultifysolutions.com/images/website-development-og.jpg')
-const ogUrl = ref('https://ultifysolutions.com/services/website-development')
-const canonicalUrl = ref('https://ultifysolutions.com/services/website-development')
+const ogImage = ref(`https://ultifysolutions.com/images/${serviceSlug}-og.jpg`)
+const ogUrl = ref(`https://ultifysolutions.com/services/${serviceSlug}`)
+const canonicalUrl = ref(`https://ultifysolutions.com/services/${serviceSlug}`)
 const robots = ref('index, follow')
 
 const organizationSchema = ref(createOrganizationSchema({
@@ -58,25 +63,25 @@ const organizationSchema = ref(createOrganizationSchema({
 }))
 
 const webPageSchema = ref(createWebPageSchema({
-  name: 'Website Development Services | Ultify Solutions',
-  description: 'Expert website development services from Ultify Solutions. Create stunning, responsive, and high-performing websites tailored to your business needs.',
-  url: 'https://ultifysolutions.com/services/website-development'
+  name: `${serviceName} Services | Ultify Solutions`,
+  description: metaDescription.value,
+  url: ogUrl.value
 }))
 
 const breadcrumbSchema = ref(createBreadcrumbSchema([
   { name: 'Home', url: 'https://ultifysolutions.com' },
   { name: 'Services', url: 'https://ultifysolutions.com/services' },
-  { name: 'Website Development', url: 'https://ultifysolutions.com/services/website-development' }
+  { name: serviceName, url: ogUrl.value }
 ]))
 
 const serviceSchema = ref(createServiceSchema({
-  name: 'Website Development Services',
+  name: `${serviceName} Services`,
   description: 'Professional website development services tailored to your business needs. We create responsive, high-performing, and visually appealing websites.',
   provider: 'Ultify Solutions',
-  serviceType: 'Website Development',
+  serviceType: serviceName,
   areaServed: 'Sydney, Australia',
   availableChannel: {
-    url: 'https://ultifysolutions.com/services/website-development',
+    url: ogUrl.value,
     name: 'Ultify Solutions Website'
   }
 }))
@@ -85,11 +90,15 @@ onMounted(() => {
   // You can add any necessary mounted logic here
 })
 
-// If you're planning to fetch data from Strapi in the future, you can add it here
-// For example:
-/*
-const { data: pageData } = await useFetch('/api/website-development-page')
-if (pageData.value) {
+// Strapi data fetching logic
+const { data: pageData, error } = await useAsyncData(
+  'website-development-page',
+  () => $fetch(`/api/${serviceSlug}-page`)
+)
+
+if (error.value) {
+  console.error('Error fetching page data:', error.value)
+} else if (pageData.value) {
   metaTitle.value = pageData.value.metaTitle || metaTitle.value
   metaDescription.value = pageData.value.metaDescription || metaDescription.value
   ogImage.value = pageData.value.ogImage || ogImage.value
@@ -115,7 +124,6 @@ if (pageData.value) {
     // hasOfferCatalog: pageData.value.hasOfferCatalog
   })
 }
-*/
 </script>
 
 <style scoped>
