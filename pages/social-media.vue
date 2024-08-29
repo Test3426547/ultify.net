@@ -14,7 +14,7 @@
     <StructuredData type="Service" :data="serviceSchema" />
     
     <ClientOnly>
-      <HeaderService service-type="social-media" />
+      <HeaderService service-id="2" />
       <SocialMediaDetails />
       <Consultation />
       <DigitalWorld />

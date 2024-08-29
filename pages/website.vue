@@ -14,7 +14,7 @@
     <StructuredData type="Service" :data="serviceSchema" />
     
     <ClientOnly>
-      <HeaderService service-type="website" />
+      <HeaderService service-id="1" />
       <WebsiteTechnology />
       <WebsiteDetails />
       <Consultation />

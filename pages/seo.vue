@@ -14,7 +14,7 @@
     <StructuredData type="Service" :data="serviceSchema" />
     
     <ClientOnly>
-      <HeaderService service-type="seo" />
+      <HeaderService service-id="3" />
       <SEOTechnology />
       <SEODetails />
       <SEOServices />

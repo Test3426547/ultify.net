@@ -15,7 +15,7 @@
     <StructuredData type="FAQPage" :data="faqSchema" />
     
     <ClientOnly>
-      <HeaderService service-type="paid-media" />
+      <HeaderService service-id="4" />
       <PaidMediaTechnology />
       <PaidMediaDetails />
       <Consultation />

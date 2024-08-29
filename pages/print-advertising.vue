@@ -14,7 +14,7 @@
     <StructuredData type="Service" :data="serviceSchema" />
     
     <ClientOnly>
-      <HeaderService service-type="print-advertising" />
+      <HeaderService service-id="6" />
       <PrintMediaDetails />
       <Consultation />
       <DigitalWorld />

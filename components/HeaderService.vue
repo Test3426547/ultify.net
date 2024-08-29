@@ -78,36 +78,31 @@
   
   <script setup>
   import { ref, onMounted } from 'vue';
-  import { useStrapi } from '#imports';
-  
-  const { find } = useStrapi();
-  
-  const props = defineProps({
-    serviceType: {
-      type: String,
-      required: true,
-      validator: (value) => ['website', 'seo', 'social-media', 'content-creation', 'paid-media', 'print-advertising'].includes(value)
+import { useStrapi } from '#imports';
+
+const props = defineProps({
+  serviceId: {
+    type: Number,
+    required: true,
+  }
+});
+
+const { findOne } = useStrapi();
+
+const headerData = ref(null);
+const services = ref([]);
+
+onMounted(async () => {
+  try {
+    const response = await findOne('headers', props.serviceId);
+    if (response.data) {
+      headerData.value = response.data.attributes;
+      services.value = headerData.value.Services ? headerData.value.Services.split(',').map(service => service.trim()) : [];
     }
-  });
-  
-  const headerData = ref(null);
-  const services = ref([]);
-  
-  onMounted(async () => {
-    try {
-      const response = await find('header-services', {
-        filters: {
-          ServiceType: props.serviceType
-        }
-      });
-      if (response.data && response.data.length > 0) {
-        headerData.value = response.data[0].attributes;
-        services.value = headerData.value.Services.split(',').map(service => service.trim());
-      }
-    } catch (error) {
-      console.error('Error fetching header data:', error);
-    }
-  });
+  } catch (error) {
+    console.error('Error fetching header data:', error);
+  }
+});
   
   const form = ref({
     businessName: '',
