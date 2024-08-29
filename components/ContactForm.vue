@@ -2,46 +2,43 @@
     <div :class="$style.contactForm">
       <div :class="$style.contactFormInner">
         <h2 :class="$style.title">Book A Free Consultation Now</h2>
-        <div :class="$style.spacer"></div>
-        <div :class="$style.formContainer">
-          <form @submit.prevent="handleSubmit">
-            <div :class="$style.formGroup">
-              <input
-                :class="$style.formControl"
-                v-model="form.businessName"
-                placeholder="URL/Business Name (if applicable)"
-                type="text"
-              />
-            </div>
-            <div :class="$style.formGroup">
-              <input
-                :class="$style.formControl"
-                v-model="form.name"
-                placeholder="Name"
-                type="text"
-              />
-            </div>
-            <div :class="$style.formGroup">
-              <input
-                :class="$style.formControl"
-                v-model="form.email"
-                placeholder="Email"
-                type="email"
-              />
-            </div>
-            <div :class="$style.formGroup">
-              <input
-                :class="$style.formControl"
-                v-model="form.phone"
-                placeholder="Phone"
-                type="tel"
-              />
-            </div>
-            <button type="submit" :class="$style.submitButton">
-              LEAD WITHOUT A SWEAT
-            </button>
-          </form>
-        </div>
+        <form @submit.prevent="handleSubmit">
+          <div :class="$style.formGroup">
+            <input
+              :class="$style.formControl"
+              v-model="form.businessName"
+              placeholder="URL/Business Name (if applicable)"
+              type="text"
+            />
+          </div>
+          <div :class="$style.formGroup">
+            <input
+              :class="$style.formControl"
+              v-model="form.name"
+              placeholder="Name"
+              type="text"
+            />
+          </div>
+          <div :class="$style.formGroup">
+            <input
+              :class="$style.formControl"
+              v-model="form.email"
+              placeholder="Email"
+              type="email"
+            />
+          </div>
+          <div :class="$style.formGroup">
+            <input
+              :class="$style.formControl"
+              v-model="form.phone"
+              placeholder="Phone"
+              type="tel"
+            />
+          </div>
+          <button type="submit" :class="$style.submitButton">
+            LEAD WITHOUT A SWEAT
+          </button>
+        </form>
         <p :class="$style.formText">
           You are booking a free consultation with no maximum time (TnC's apply).
           We will call you on the given number on our first available time-slot.
@@ -69,98 +66,74 @@
   
   <style module>
   .contactForm {
-    position: relative;
-    z-index: 1;
     width: 100%;
-    max-width: 550px;
+    max-width: 400px;
     background-color: #f8f9fa;
-    border-radius: 2rem;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    max-height: 650px;
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
   }
   
   .contactFormInner {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
-    padding: 2rem;
+    padding: 30px;
   }
   
   .title {
+    font-size: 20px;
     font-weight: 600;
     text-align: center;
-    margin-bottom: 1.5rem;
-    color: #212529;
-  }
-  
-  .formContainer {
-    padding: 0 1.5rem;
-  }
-  
-  .spacer {
-    height: 20px;
+    margin-bottom: 25px;
+    color: #333;
   }
   
   .formGroup {
-    margin-bottom: 1rem;
+    margin-bottom: 15px;
   }
   
   .formControl {
     display: block;
     width: 100%;
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-    font-weight: 400;
+    padding: 12px 20px;
+    font-size: 14px;
     line-height: 1.5;
-    color: #212529;
+    color: #495057;
     background-color: #fff;
     background-clip: padding-box;
     border: 1px solid #ced4da;
-    border-radius: 50px;
+    border-radius: 30px;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   }
   
   .formControl:focus {
-    color: #212529;
+    color: #495057;
     background-color: #fff;
-    border-color: #86b7fe;
+    border-color: #80bdff;
     outline: 0;
-    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
   }
   
   .submitButton {
     display: block;
     width: 100%;
-    padding: 0.85rem 1.5rem;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
     color: #fff;
-    background-color: #0d6efd;
-    border-color: #0d6efd;
-    text-align: center;
-    text-decoration: none;
-    vertical-align: middle;
+    background-color: #007bff;
+    border: none;
+    border-radius: 30px;
     cursor: pointer;
-    user-select: none;
-    border: 1px solid transparent;
-    border-radius: 50px;
-    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: background-color 0.15s ease-in-out;
   }
   
   .submitButton:hover {
-    color: #fff;
-    background-color: #0b5ed7;
-    border-color: #0a58ca;
+    background-color: #0056b3;
   }
   
   .formText {
-    margin-top: 1rem;
-    font-size: 0.875rem;
+    margin-top: 15px;
+    font-size: 12px;
     color: #6c757d;
     text-align: center;
   }
