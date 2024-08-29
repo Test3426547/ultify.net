@@ -39,33 +39,8 @@
           </div>
         </div>
         <div class="col-lg-5 d-flex justify-content-center align-items-center position-relative">
-          <div class="consultation-form bg-light rounded-5 shadow-lg ms-n50">
-            <div class="consultation-form-inner p-4">
-              <h2 class="text-center text-dark mb-4">Book A Free Consultation Now</h2>
-              <div class="spacer"></div>
-              <div class="form-container">
-                <form @submit.prevent="handleSubmit">
-                  <div class="form-group mb-3">
-                    <input class="form-control" v-model="form.businessName" placeholder="URL/Business Name (if applicable)" type="text" />
-                  </div>
-                  <div class="form-group mb-3">
-                    <input class="form-control" v-model="form.name" placeholder="Name" type="text" />
-                  </div>
-                  <div class="form-group mb-3">
-                    <input class="form-control" v-model="form.email" placeholder="Email" type="email" />
-                  </div>
-                  <div class="form-group mb-3">
-                    <input class="form-control" v-model="form.phone" placeholder="Phone" type="tel" />
-                  </div>
-                  <button type="submit" class="btn btn-primary btn-block btn-lg">
-                    LEAD WITHOUT A SWEAT
-                  </button>
-                </form>
-              </div>
-              <p class="disclaimer text-dark mt-3 text-center">
-                You are booking a free consultation with no maximum time (TnC's apply). We will call you on the given number on our first available time-slot.
-              </p>
-            </div>
+          <div class="contact-form-wrapper">
+            <ContactForm @submit="handleSubmit" />
           </div>
         </div>
       </div>
@@ -79,6 +54,7 @@
 <script setup>
 import { ref, onMounted, nextTick } from 'vue';
 import { useStrapi } from '#imports';
+import ContactForm from '@/components/ContactForm.vue';
 
 const { find } = useStrapi();
 
@@ -108,16 +84,9 @@ const services = [
   { name: 'Print Advertising', path: '/print-media' }
 ];
 
-const form = ref({
-  businessName: '',
-  name: '',
-  email: '',
-  phone: ''
-});
-
-const handleSubmit = () => {
+const handleSubmit = (formData) => {
   // Implement form submission logic here
-  console.log('Form submitted:', form.value);
+  console.log('Form submitted:', formData);
 };
 </script>
 
@@ -146,9 +115,7 @@ const handleSubmit = () => {
 
 .header__top {
   position: absolute;
-  /* Move top heading and body 50px down, and body an additional 20px */
   top: calc(50% - 210px);
-  /* Move content 50px to the right */
   left: 50px;
   right: 0;
   z-index: 1;
@@ -156,9 +123,7 @@ const handleSubmit = () => {
 
 .header__bottom {
   position: absolute;
-  /* Move bottom heading 50px up */
   top: calc(50% + 10px);
-  /* Move content 50px to the right */
   left: 50px;
   right: 0;
   z-index: 1;
@@ -172,7 +137,6 @@ const handleSubmit = () => {
 
 .header__subtitle {
   font-size: 1.1rem;
-  /* Move top body an additional 20px down */
   margin-top: 20px;
 }
 
@@ -185,7 +149,6 @@ const handleSubmit = () => {
 .header__services {
   display: flex;
   flex-direction: column;
-  /* Move all pills up 20px */
   margin-top: -20px;
 }
 
@@ -194,7 +157,6 @@ const handleSubmit = () => {
 }
 
 .header__services .row + .row {
-  /* Move bottom 3 pills 20px closer to top 3 pills */
   margin-top: -18px;
 }
 
@@ -212,72 +174,14 @@ const handleSubmit = () => {
   color: var(--bs-primary);
 }
 
-.consultation-form {
+.contact-form-wrapper {
   position: relative;
   z-index: 1;
   width: calc(100% + 150px);
   max-width: 550px;
-  background-color: var(--bs-light);
-  border-radius: 2rem;
-  display: flex;
-  flex-direction: column;
-  height: calc(100% + 50px);
-  max-height: 650px;
   margin-top: 50px;
   margin-bottom: -50px;
-}
-
-.ms-n50 {
   margin-left: -50px;
-}
-
-.consultation-form-inner {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  overflow-y: auto;
-}
-
-.form-container {
-  padding: 0 25px;
-}
-
-.spacer {
-  height: 50px;
-}
-
-form {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.form-group {
-  flex-grow: 1;
-  display: flex;
-  align-items: center;
-}
-
-.form-control {
-  border-radius: 50px;
-  padding: 0.75rem 1.5rem;
-  border: none;
-  background-color: var(--bs-white);
-  width: 100%;
-}
-
-.btn-block {
-  display: block;
-  width: 100%;
-  border-radius: 50px;
-  padding: 0.85rem 1.5rem;
-  margin-top: auto;
-  font-size: 1rem;
-}
-
-.disclaimer {
-  margin-top: 1rem;
-  font-size: 0.8rem;
 }
 
 .header__scroll-arrow {
@@ -328,7 +232,7 @@ form {
     font-size: 1rem;
   }
 
-  .consultation-form {
+  .contact-form-wrapper {
     width: 100%;
     max-width: 500px;
   }
@@ -364,7 +268,7 @@ form {
     padding: 0.4rem 1rem;
   }
 
-  .consultation-form {
+  .contact-form-wrapper {
     width: 100%;
     max-width: 400px;
   }
