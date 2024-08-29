@@ -14,7 +14,7 @@
     <StructuredData type="Service" :data="serviceSchema" />
 
     <ClientOnly>
-      <HeaderService :serviceId="serviceId" />
+      <HeaderService :serviceId="serviceId" :services="services" :pills="pills" />
       <WebsiteTechnology />
       <WebsiteDetails />
       <Consultation />
@@ -26,8 +26,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
-import { useAsyncData } from '#app'
+import { ref } from 'vue'
 import HeaderService from '@/components/HeaderService.vue'
 import WebsiteTechnology from '@/components/WebsiteTechnology.vue'
 import WebsiteDetails from '@/components/WebsiteDetails.vue'
@@ -42,6 +41,20 @@ import { createOrganizationSchema, createWebPageSchema, createBreadcrumbSchema, 
 const serviceId = ref(1) // Assuming 1 is the ID for website development
 const serviceName = 'Website Development'
 const serviceSlug = 'website-development'
+
+const services = ref([
+  'Website Maintenance',
+  'Website Management',
+  'Website Design & Development',
+  'Mobile Conversion',
+  'Conversion Rate Optimisation',
+  'Website Audit & Strategy'
+])
+
+const pills = ref([
+  { text: 'Responsive Design', color: 'primary' },
+  { text: 'User-Friendly Interface', color: 'secondary' }
+])
 
 const metaTitle = ref(`${serviceName} Services | Ultify Solutions`)
 const metaDescription = ref('Expert website development services from Ultify Solutions. Create stunning, responsive, and high-performing websites tailored to your business needs.')
@@ -86,44 +99,9 @@ const serviceSchema = ref(createServiceSchema({
   }
 }))
 
-onMounted(() => {
-  // You can add any necessary mounted logic here
-})
+// Strapi data fetching logic (commented out for now)
+// ...
 
-// Strapi data fetching logic
-// const { data: pageData, error } = await useAsyncData(
-//   'website-development-page',
-//   () => $fetch(`/api/${serviceSlug}-page`)
-// )
-
-// if (error.value) {
-//   console.error('Error fetching page data:', error.value)
-// } else if (pageData.value) {
-//   metaTitle.value = pageData.value.metaTitle || metaTitle.value
-//   metaDescription.value = pageData.value.metaDescription || metaDescription.value
-//   ogImage.value = pageData.value.ogImage || ogImage.value
-//   ogUrl.value = pageData.value.ogUrl || ogUrl.value
-//   canonicalUrl.value = pageData.value.canonicalUrl || canonicalUrl.value
-//   robots.value = pageData.value.robots || robots.value
-
-//   webPageSchema.value = createWebPageSchema({
-//     name: pageData.value.title || webPageSchema.value.name,
-//     description: pageData.value.description || webPageSchema.value.description,
-//     url: webPageSchema.value.url
-//   })
-
-//   serviceSchema.value = createServiceSchema({
-//     name: pageData.value.serviceName || serviceSchema.value.name,
-//     description: pageData.value.serviceDescription || serviceSchema.value.description,
-//     provider: serviceSchema.value.provider,
-//     serviceType: pageData.value.serviceType || serviceSchema.value.serviceType,
-//     areaServed: serviceSchema.value.areaServed,
-//     availableChannel: serviceSchema.value.availableChannel,
-//     // Add more fields as needed, such as:
-//     // offers: pageData.value.offers,
-//     // hasOfferCatalog: pageData.value.hasOfferCatalog
-//   })
-// }
 </script>
 
 <style scoped>

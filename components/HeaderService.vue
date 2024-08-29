@@ -20,19 +20,19 @@
               <p class="header__subtitle text-white mb-4">
                 {{ headerData.Subheading }}
               </p>
-              <div class="header__services">
+              <div class="header__pills">
                 <div class="row g-2 justify-content-start">
-                  <div class="col-md-4" v-for="service in services.slice(0, 3)" :key="service">
-                    <button class="btn btn-outline-light rounded-pill w-100">
-                      {{ service }}
-                    </button>
+                  <div class="col-md-4" v-for="pill in pills.slice(0, 3)" :key="pill.text">
+                    <span :class="`badge bg-${pill.color} w-100 rounded-pill`">
+                      {{ pill.text }}
+                    </span>
                   </div>
                 </div>
                 <div class="row g-2 mt-2 justify-content-start">
-                  <div class="col-md-4" v-for="service in services.slice(3)" :key="service">
-                    <button class="btn btn-outline-light rounded-pill w-100">
-                      {{ service }}
-                    </button>
+                  <div class="col-md-4" v-for="pill in pills.slice(3)" :key="pill.text">
+                    <span :class="`badge bg-${pill.color} w-100 rounded-pill`">
+                      {{ pill.text }}
+                    </span>
                   </div>
                 </div>
               </div>
@@ -84,20 +84,22 @@
     serviceId: {
       type: Number,
       required: true,
+    },
+    pills: {
+      type: Array as () => { text: string, color: string }[],
+      required: true
     }
   });
   
   const { findOne } = useStrapi();
   
   const headerData = ref(null);
-  const services = ref([]);
   
   const fetchHeaderData = async () => {
     try {
       const response = await findOne('header-services', props.serviceId);
       if (response.data && response.data.attributes) {
         headerData.value = response.data.attributes;
-        services.value = headerData.value.Services ? headerData.value.Services.split(',').map(service => service.trim()) : [];
       }
     } catch (error) {
       console.error('Error fetching header data:', error);
@@ -120,8 +122,18 @@
     console.log('Form submitted:', form.value);
   };
   </script>
+  
+  <style scoped>
+  /* Your existing styles remain unchanged */
+  
+  .header__pills .badge {
+    font-size: 0.7rem;
+    padding: 0.5em 1em;
+    white-space: nowrap;
+    display: inline-block;
+    text-align: center;
+  }
 
-<style scoped>
 .header {
   position: relative;
 }

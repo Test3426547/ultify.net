@@ -1,6 +1,6 @@
 <template>
   <div>
-    <SeoMeta 
+    <SeoMeta
       :title="metaTitle"
       :description="metaDescription"
       :ogImage="ogImage"
@@ -12,11 +12,12 @@
     <StructuredData type="WebPage" :data="webPageSchema" />
     <StructuredData type="BreadcrumbList" :data="breadcrumbSchema" />
     <StructuredData type="Service" :data="serviceSchema" />
-    
+
     <ClientOnly>
       <HeaderService :serviceId="serviceId" />
-      <WebsiteTechnology />
-      <WebsiteDetails />
+      <SocialMediaTechnology />
+      <SocialMediaDetails />
+      <SocialMediaServices />
       <Consultation />
       <DigitalWorld />
       <FAQ />
@@ -27,9 +28,11 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useAsyncData } from '#app'
 import HeaderService from '@/components/HeaderService.vue'
-import WebsiteTechnology from '@/components/WebsiteTechnology.vue'
-import WebsiteDetails from '@/components/WebsiteDetails.vue'
+// import SocialMediaTechnology from '@/components/SocialMediaTechnology.vue'
+import SocialMediaDetails from '@/components/SocialMediaDetails.vue'
+// import SocialMediaServices from '@/components/SocialMediaServices.vue'
 import Consultation from '@/components/Consultation.vue'
 import DigitalWorld from '@/components/DigitalWorld.vue'
 import FAQ from '@/components/FAQ.vue'
@@ -38,12 +41,12 @@ import SeoMeta from '@/components/SeoMeta.vue'
 import StructuredData from '@/components/StructuredData.vue'
 import { createOrganizationSchema, createWebPageSchema, createBreadcrumbSchema, createServiceSchema } from '@/utils/structuredData'
 
-const serviceId = ref(2) // Assuming 1 is the ID for website development
-const serviceName = 'Website Development'
-const serviceSlug = 'website-development'
+const serviceId = ref(2) // Set to 2 for Social Media
+const serviceName = 'Social Media Marketing'
+const serviceSlug = 'social-media-marketing'
 
 const metaTitle = ref(`${serviceName} Services | Ultify Solutions`)
-const metaDescription = ref('Expert website development services from Ultify Solutions. Create stunning, responsive, and high-performing websites tailored to your business needs.')
+const metaDescription = ref('Boost your brand\'s online presence with Ultify Solutions\' expert social media marketing services. Engage your audience and drive growth across all major platforms.')
 const ogImage = ref(`https://ultifysolutions.com/images/${serviceSlug}-og.jpg`)
 const ogUrl = ref(`https://ultifysolutions.com/services/${serviceSlug}`)
 const canonicalUrl = ref(`https://ultifysolutions.com/services/${serviceSlug}`)
@@ -75,66 +78,90 @@ const breadcrumbSchema = ref(createBreadcrumbSchema([
 
 const serviceSchema = ref(createServiceSchema({
   name: `${serviceName} Services`,
-  description: 'Professional website development services tailored to your business needs. We create responsive, high-performing, and visually appealing websites.',
+  description: 'Comprehensive social media marketing services to boost your brand\'s online presence, engage your target audience, and drive business growth across all major social media platforms.',
   provider: 'Ultify Solutions',
   serviceType: serviceName,
   areaServed: 'Sydney, Australia',
   availableChannel: {
     url: ogUrl.value,
     name: 'Ultify Solutions Website'
+  },
+  offers: [
+    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Facebook Marketing' } },
+    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Instagram Marketing' } },
+    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'LinkedIn Marketing' } },
+    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Twitter Marketing' } },
+    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'TikTok Marketing' } }
+  ],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Social Media Marketing Services',
+    itemListElement: [
+      {
+        '@type': 'OfferCatalog',
+        name: 'Service Types',
+        itemListElement: [
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Social Media Strategy Development' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Content Creation and Curation' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Community Management' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Social Media Advertising' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Social Media Analytics and Reporting' } }
+        ]
+      }
+    ]
   }
 }))
 
-// If you're planning to fetch data from Strapi in the future, you can add it here
-// For example:
-/*
-import { useAsyncData } from '#app'
+// Strapi data fetching logic
+// const { data: pageData, error } = await useAsyncData(
+//   'social-media-marketing-page',
+//   () => $fetch(`/api/${serviceSlug}-page`)
+// )
 
-onMounted(async () => {
-  const { data: pageData, error } = await useAsyncData(
-    'website-development-page',
-    () => $fetch(`/api/${serviceSlug}-page`)
-  )
+// if (error.value) {
+//   console.error('Error fetching page data:', error.value)
+// } else if (pageData.value) {
+//   metaTitle.value = pageData.value.metaTitle || metaTitle.value
+//   metaDescription.value = pageData.value.metaDescription || metaDescription.value
+//   ogImage.value = pageData.value.ogImage || ogImage.value
+//   ogUrl.value = pageData.value.ogUrl || ogUrl.value
+//   canonicalUrl.value = pageData.value.canonicalUrl || canonicalUrl.value
+//   robots.value = pageData.value.robots || robots.value
 
-  if (error.value) {
-    console.error('Error fetching page data:', error.value)
-  } else if (pageData.value) {
-    metaTitle.value = pageData.value.metaTitle || metaTitle.value
-    metaDescription.value = pageData.value.metaDescription || metaDescription.value
-    ogImage.value = pageData.value.ogImage || ogImage.value
-    ogUrl.value = pageData.value.ogUrl || ogUrl.value
-    canonicalUrl.value = pageData.value.canonicalUrl || canonicalUrl.value
-    robots.value = pageData.value.robots || robots.value
+//   // Update schema data
+//   webPageSchema.value = createWebPageSchema({
+//     name: pageData.value.title || webPageSchema.value.name,
+//     description: pageData.value.description || webPageSchema.value.description,
+//     url: webPageSchema.value.url
+//   })
 
-    webPageSchema.value = createWebPageSchema({
-      name: pageData.value.title || webPageSchema.value.name,
-      description: pageData.value.description || webPageSchema.value.description,
-      url: webPageSchema.value.url
-    })
+//   serviceSchema.value = createServiceSchema({
+//     name: pageData.value.serviceName || serviceSchema.value.name,
+//     description: pageData.value.serviceDescription || serviceSchema.value.description,
+//     provider: serviceSchema.value.provider,
+//     serviceType: pageData.value.serviceType || serviceSchema.value.serviceType,
+//     areaServed: serviceSchema.value.areaServed,
+//     availableChannel: serviceSchema.value.availableChannel,
+//     offers: pageData.value.offers || serviceSchema.value.offers,
+//     hasOfferCatalog: pageData.value.hasOfferCatalog || serviceSchema.value.hasOfferCatalog
+//   })
 
-    serviceSchema.value = createServiceSchema({
-      name: pageData.value.serviceName || serviceSchema.value.name,
-      description: pageData.value.serviceDescription || serviceSchema.value.description,
-      provider: serviceSchema.value.provider,
-      serviceType: pageData.value.serviceType || serviceSchema.value.serviceType,
-      areaServed: serviceSchema.value.areaServed,
-      availableChannel: serviceSchema.value.availableChannel,
-      // Add more fields as needed, such as:
-      // offers: pageData.value.offers,
-      // hasOfferCatalog: pageData.value.hasOfferCatalog
-    })
-  }
-})
-*/
+//   // If you have FAQ data, you can add it here
+//   // if (pageData.value.faq) {
+//   //   faqSchema.value = {
+//   //     mainEntity: pageData.value.faq.map(item => ({
+//   //       '@type': 'Question',
+//   //       name: item.question,
+//   //       acceptedAnswer: {
+//   //         '@type': 'Answer',
+//   //         text: item.answer
+//   //       }
+//   //     }))
+//   //   }
+//   // }
+// }
 </script>
 
 <style scoped>
-/* Additional styling specific to the Website Development page */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
-}
-
-/* Add more specific styles as needed */
+/* Additional styling specific to the Social Media Marketing page */
 </style>
