@@ -327,5 +327,30 @@
       width: 100%;
       max-width: 400px;
     }
+
+    .header__pills {
+      display: flex;
+      flex-direction: column;
+      padding-left: 20px; /* Move pills 20px to the left */
+    }
+
+    .header__pills .row {
+  max-width: 700px;
+  margin-bottom: 10px; /* Add space between rows */
+}
+
+    .header__pills .col-md-4 {
+      padding: 0 5px; /* Add horizontal space between pills */
+    }
+
+    .header__pills .badge {
+      font-size: 0.7rem;
+      padding: 0.5em 1em;
+      white-space: nowrap;
+      display: inline-block;
+      text-align: center;
+      width: 100%;
+    margin-bottom: 10px; /* Add vertical space between pills */
+    }
   }
   </style>
