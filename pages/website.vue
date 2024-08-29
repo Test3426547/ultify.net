@@ -14,7 +14,14 @@
     <StructuredData type="Service" :data="serviceSchema" />
     
     <ClientOnly>
-      <HeaderService :service-id="websiteServiceId" />
+      <Suspense>
+        <template #default>
+          <HeaderService :service-id="websiteServiceId" />
+        </template>
+        <template #fallback>
+          <div>Loading header...</div>
+        </template>
+      </Suspense>
       <WebsiteTechnology />
       <WebsiteDetails />
       <Consultation />
@@ -26,7 +33,8 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onErrorCaptured } from 'vue'
+import { useAsyncData } from '#app'
 import HeaderService from '@/components/HeaderService.vue'
 import WebsiteTechnology from '@/components/WebsiteTechnology.vue'
 import WebsiteDetails from '@/components/WebsiteDetails.vue'
@@ -84,17 +92,27 @@ const serviceSchema = ref(createServiceSchema({
   }
 }))
 
-const websiteServiceId = ref('1')
+const websiteServiceId = ref(1)
 
 onMounted(() => {
   // You can add any necessary mounted logic here
 })
 
-// Strapi data fetching logic for future use
-// Uncomment and adjust when ready to fetch data from Strapi
-/*
-const { data: pageData } = await useFetch('/api/website-development-page')
-if (pageData.value) {
+onErrorCaptured((err, instance, info) => {
+  console.error('Captured in website.vue:', err, instance, info)
+  // return false if you want to stop the error from propagating
+  return false
+})
+
+// Strapi data fetching logic
+const { data: pageData, error } = await useAsyncData(
+  'website-development-page',
+  () => $fetch('/api/website-development-page')
+)
+
+if (error.value) {
+  console.error('Error fetching page data:', error.value)
+} else if (pageData.value) {
   metaTitle.value = pageData.value.metaTitle || metaTitle.value
   metaDescription.value = pageData.value.metaDescription || metaDescription.value
   ogImage.value = pageData.value.ogImage || ogImage.value
@@ -102,7 +120,7 @@ if (pageData.value) {
   canonicalUrl.value = pageData.value.canonicalUrl || canonicalUrl.value
   robots.value = pageData.value.robots || robots.value
   
-  // Update schema data if needed
+  // Update schema data
   webPageSchema.value = createWebPageSchema({
     name: pageData.value.title || webPageSchema.value.name,
     description: pageData.value.description || webPageSchema.value.description,
@@ -126,7 +144,6 @@ if (pageData.value) {
   // websiteTechnologyData.value = pageData.value.websiteTechnologyDetails
   // websiteDetailsData.value = pageData.value.websiteDetails
 }
-*/
 </script>
 
 <style scoped>
