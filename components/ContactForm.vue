@@ -78,7 +78,7 @@
     border-radius: 2rem;
     display: flex;
     flex-direction: column;
-    height: calc(100% + 40px); /* Reduced height by 30px */
+    height: calc(100%); /* Reduced height by 30px */
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
     margin-left: -55px;
     margin-right: -15px;
