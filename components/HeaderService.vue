@@ -94,7 +94,7 @@ const services = ref([]);
 
 onMounted(async () => {
   try {
-    const response = await findOne('headers', props.serviceId);
+    const response = await findOne('header-services', props.serviceId);
     if (response.data) {
       headerData.value = response.data.attributes;
       services.value = headerData.value.Services ? headerData.value.Services.split(',').map(service => service.trim()) : [];
