@@ -14,7 +14,7 @@
     <StructuredData type="Service" :data="serviceSchema" />
     
     <ClientOnly>
-      <HeaderService service-id="6" />
+      <HeaderService :serviceId="serviceId" />
       <PrintMediaDetails />
       <Consultation />
       <DigitalWorld />
@@ -24,8 +24,9 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted } from 'vue'
+import { useAsyncData } from '#app'
 import HeaderService from '@/components/HeaderService.vue'
 import PrintMediaDetails from '@/components/PrintMediaDetails.vue'
 import Consultation from '@/components/Consultation.vue'
@@ -36,11 +37,15 @@ import SeoMeta from '@/components/SeoMeta.vue'
 import StructuredData from '@/components/StructuredData.vue'
 import { createOrganizationSchema, createWebPageSchema, createBreadcrumbSchema, createServiceSchema } from '@/utils/structuredData'
 
-const metaTitle = ref('Print Advertising Services | Ultify Solutions')
+const serviceId = ref(6)
+const serviceName = 'Print Advertising'
+const serviceSlug = 'print-advertising'
+
+const metaTitle = ref(`${serviceName} Services | Ultify Solutions`)
 const metaDescription = ref('Elevate your brand with Ultify Solutions\' expert print advertising services. Create impactful print campaigns that resonate with your target audience.')
-const ogImage = ref('https://ultifysolutions.com/images/print-advertising-og.jpg')
-const ogUrl = ref('https://ultifysolutions.com/services/print-advertising')
-const canonicalUrl = ref('https://ultifysolutions.com/services/print-advertising')
+const ogImage = ref(`https://ultifysolutions.com/images/${serviceSlug}-og.jpg`)
+const ogUrl = ref(`https://ultifysolutions.com/services/${serviceSlug}`)
+const canonicalUrl = ref(`https://ultifysolutions.com/services/${serviceSlug}`)
 const robots = ref('index, follow')
 
 const organizationSchema = ref(createOrganizationSchema({
@@ -59,25 +64,25 @@ const organizationSchema = ref(createOrganizationSchema({
 }))
 
 const webPageSchema = ref(createWebPageSchema({
-  name: 'Print Advertising Services | Ultify Solutions',
-  description: 'Elevate your brand with Ultify Solutions\' expert print advertising services. Create impactful print campaigns that resonate with your target audience.',
-  url: 'https://ultifysolutions.com/services/print-advertising'
+  name: `${serviceName} Services | Ultify Solutions`,
+  description: metaDescription.value,
+  url: ogUrl.value
 }))
 
 const breadcrumbSchema = ref(createBreadcrumbSchema([
   { name: 'Home', url: 'https://ultifysolutions.com' },
   { name: 'Services', url: 'https://ultifysolutions.com/services' },
-  { name: 'Print Advertising', url: 'https://ultifysolutions.com/services/print-advertising' }
+  { name: serviceName, url: ogUrl.value }
 ]))
 
 const serviceSchema = ref(createServiceSchema({
-  name: 'Print Advertising Services',
+  name: `${serviceName} Services`,
   description: 'Comprehensive print advertising services to elevate your brand and create impactful campaigns. We offer creative design, strategic placement, and measurable results for all types of print media.',
   provider: 'Ultify Solutions',
-  serviceType: 'Print Advertising',
+  serviceType: serviceName,
   areaServed: 'Sydney, Australia',
   availableChannel: {
-    url: 'https://ultifysolutions.com/services/print-advertising',
+    url: ogUrl.value,
     name: 'Ultify Solutions Website'
   },
   offers: [
@@ -110,7 +115,12 @@ onMounted(() => {
   // You can add any necessary mounted logic here
 })
 
-// Strapi data fetching logic for future use
+// Strapi data fetching logic
+const { data: pageData, error } = await useAsyncData(
+  'print-advertising-page',
+  () => $fetch(`/api/${serviceSlug}-page`)
+)
+
 if (error.value) {
   console.error('Error fetching page data:', error.value)
 } else if (pageData.value) {
@@ -139,18 +149,20 @@ if (error.value) {
     hasOfferCatalog: pageData.value.hasOfferCatalog || serviceSchema.value.hasOfferCatalog
   })
 
-  if (pageData.value.faq) {
-    faqSchema.value.mainEntity = pageData.value.faq.map(item => ({
-      '@type': 'Question',
-      name: item.question,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: item.answer
-      }
-    }))
-  }
+  // If you have FAQ data, you can add it here
+  // if (pageData.value.faq) {
+  //   faqSchema.value = {
+  //     mainEntity: pageData.value.faq.map(item => ({
+  //       '@type': 'Question',
+  //       name: item.question,
+  //       acceptedAnswer: {
+  //         '@type': 'Answer',
+  //         text: item.answer
+  //       }
+  //     }))
+  //   }
+  // }
 }
-
 </script>
 
 <style scoped>

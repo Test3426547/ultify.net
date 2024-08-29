@@ -15,7 +15,7 @@
     <StructuredData type="FAQPage" :data="faqSchema" />
     
     <ClientOnly>
-      <HeaderContentCreation />
+      <HeaderService :serviceId="serviceId" />
       <ContentCreationDetails />
       <Consultation />
       <DigitalWorld />
@@ -25,10 +25,10 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import { useAsyncData } from '#app'
-import HeaderContentCreation from '@/components/HeaderContentCreation.vue'
+import HeaderService from '@/components/HeaderService.vue'
 import ContentCreationDetails from '@/components/ContentCreationDetails.vue'
 import Consultation from '@/components/Consultation.vue'
 import DigitalWorld from '@/components/DigitalWorld.vue'
@@ -38,11 +38,15 @@ import SeoMeta from '@/components/SeoMeta.vue'
 import StructuredData from '@/components/StructuredData.vue'
 import { createOrganizationSchema, createWebPageSchema, createBreadcrumbSchema, createServiceSchema } from '@/utils/structuredData'
 
-const metaTitle = ref('Content Creation Services | Ultify Solutions')
+const serviceId = ref(4)
+const serviceName = 'Content Creation'
+const serviceSlug = 'content-creation'
+
+const metaTitle = ref(`${serviceName} Services | Ultify Solutions`)
 const metaDescription = ref('Elevate your brand with Ultify Solutions\' expert content creation services. Engage your audience with compelling, SEO-optimized content across all platforms.')
-const ogImage = ref('https://ultifysolutions.com/images/content-creation-og.jpg')
-const ogUrl = ref('https://ultifysolutions.com/services/content-creation')
-const canonicalUrl = ref('https://ultifysolutions.com/services/content-creation')
+const ogImage = ref(`https://ultifysolutions.com/images/${serviceSlug}-og.jpg`)
+const ogUrl = ref(`https://ultifysolutions.com/services/${serviceSlug}`)
+const canonicalUrl = ref(`https://ultifysolutions.com/services/${serviceSlug}`)
 const robots = ref('index, follow')
 
 const organizationSchema = ref(createOrganizationSchema({
@@ -61,25 +65,25 @@ const organizationSchema = ref(createOrganizationSchema({
 }))
 
 const webPageSchema = ref(createWebPageSchema({
-  name: 'Content Creation Services | Ultify Solutions',
-  description: 'Elevate your brand with Ultify Solutions\' expert content creation services. Engage your audience with compelling, SEO-optimized content across all platforms.',
-  url: 'https://ultifysolutions.com/services/content-creation'
+  name: `${serviceName} Services | Ultify Solutions`,
+  description: metaDescription.value,
+  url: ogUrl.value
 }))
 
 const breadcrumbSchema = ref(createBreadcrumbSchema([
   { name: 'Home', url: 'https://ultifysolutions.com' },
   { name: 'Services', url: 'https://ultifysolutions.com/services' },
-  { name: 'Content Creation', url: 'https://ultifysolutions.com/services/content-creation' }
+  { name: serviceName, url: ogUrl.value }
 ]))
 
 const serviceSchema = ref(createServiceSchema({
-  name: 'Content Creation Services',
+  name: `${serviceName} Services`,
   description: 'Comprehensive content creation services to elevate your brand and engage your audience. We offer SEO-optimized content across various formats and platforms, tailored to your business goals and target audience.',
   provider: 'Ultify Solutions',
-  serviceType: 'Content Creation',
+  serviceType: serviceName,
   areaServed: 'Sydney, Australia',
   availableChannel: {
-    url: 'https://ultifysolutions.com/services/content-creation',
+    url: ogUrl.value,
     name: 'Ultify Solutions Website'
   },
   offers: [
@@ -141,10 +145,10 @@ onMounted(() => {
   // You can add any necessary mounted logic here
 })
 
-// Strapi data fetching logic for future use
+// Strapi data fetching logic
 const { data: pageData, error } = await useAsyncData(
   'content-creation-page',
-  () => $fetch('/api/content-creation-page')
+  () => $fetch(`/api/${serviceSlug}-page`)
 )
 
 if (error.value) {
@@ -186,7 +190,6 @@ if (error.value) {
     }))
   }
 }
-
 </script>
 
 <style scoped>

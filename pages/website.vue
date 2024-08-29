@@ -1,6 +1,6 @@
 <template>
   <div>
-    <SeoMeta 
+    <SeoMeta
       :title="metaTitle"
       :description="metaDescription"
       :ogImage="ogImage"
@@ -12,9 +12,9 @@
     <StructuredData type="WebPage" :data="webPageSchema" />
     <StructuredData type="BreadcrumbList" :data="breadcrumbSchema" />
     <StructuredData type="Service" :data="serviceSchema" />
-    
+
     <ClientOnly>
-      <HeaderWebsite />
+      <HeaderService :serviceId="serviceId" />
       <WebsiteTechnology />
       <WebsiteDetails />
       <Consultation />
@@ -49,10 +49,7 @@ const organizationSchema = ref(createOrganizationSchema({
   name: 'Ultify Solutions',
   url: 'https://ultifysolutions.com',
   logo: 'https://ultifysolutions.com/logo.png',
-  contactPoint: {
-    telephone: '+61-2-1234-5678',
-    contactType: 'customer service'
-  },
+  contactPoint: { telephone: '+61-2-1234-5678', contactType: 'customer service' },
   sameAs: [
     'https://www.facebook.com/UltifySolutions',
     'https://www.linkedin.com/company/ultify-solutions',
@@ -123,4 +120,11 @@ if (pageData.value) {
 
 <style scoped>
 /* Additional styling specific to the Website Development page */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Add more specific styles as needed */
 </style>

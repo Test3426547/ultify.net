@@ -15,7 +15,7 @@
     <StructuredData type="FAQPage" :data="faqSchema" />
     
     <ClientOnly>
-      <HeaderService service-id="4" />
+      <HeaderService :serviceId="serviceId" />
       <PaidMediaTechnology />
       <PaidMediaDetails />
       <Consultation />
@@ -26,8 +26,9 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted } from 'vue'
+import { useAsyncData } from '#app'
 import HeaderService from '@/components/HeaderService.vue'
 import PaidMediaTechnology from '@/components/PaidMediaTechnology.vue'
 import PaidMediaDetails from '@/components/PaidMediaDetails.vue'
@@ -39,11 +40,15 @@ import SeoMeta from '@/components/SeoMeta.vue'
 import StructuredData from '@/components/StructuredData.vue'
 import { createOrganizationSchema, createWebPageSchema, createBreadcrumbSchema, createServiceSchema } from '@/utils/structuredData'
 
-const metaTitle = ref('Paid Media Services | Ultify Solutions')
+const serviceId = ref(3)
+const serviceName = 'Paid Media'
+const serviceSlug = 'paid-media'
+
+const metaTitle = ref(`${serviceName} Services | Ultify Solutions`)
 const metaDescription = ref('Maximize your ROI with Ultify Solutions\' expert paid media services. Drive targeted traffic and conversions through strategic PPC, display, and social media advertising campaigns.')
-const ogImage = ref('https://ultifysolutions.com/images/paid-media-og.jpg')
-const ogUrl = ref('https://ultifysolutions.com/services/paid-media')
-const canonicalUrl = ref('https://ultifysolutions.com/services/paid-media')
+const ogImage = ref(`https://ultifysolutions.com/images/${serviceSlug}-og.jpg`)
+const ogUrl = ref(`https://ultifysolutions.com/services/${serviceSlug}`)
+const canonicalUrl = ref(`https://ultifysolutions.com/services/${serviceSlug}`)
 const robots = ref('index, follow')
 
 const organizationSchema = ref(createOrganizationSchema({
@@ -62,25 +67,25 @@ const organizationSchema = ref(createOrganizationSchema({
 }))
 
 const webPageSchema = ref(createWebPageSchema({
-  name: 'Paid Media Services | Ultify Solutions',
-  description: 'Maximize your ROI with Ultify Solutions\' expert paid media services. Drive targeted traffic and conversions through strategic PPC, display, and social media advertising campaigns.',
-  url: 'https://ultifysolutions.com/services/paid-media'
+  name: `${serviceName} Services | Ultify Solutions`,
+  description: metaDescription.value,
+  url: ogUrl.value
 }))
 
 const breadcrumbSchema = ref(createBreadcrumbSchema([
   { name: 'Home', url: 'https://ultifysolutions.com' },
   { name: 'Services', url: 'https://ultifysolutions.com/services' },
-  { name: 'Paid Media', url: 'https://ultifysolutions.com/services/paid-media' }
+  { name: serviceName, url: ogUrl.value }
 ]))
 
 const serviceSchema = ref(createServiceSchema({
-  name: 'Paid Media Services',
+  name: `${serviceName} Services`,
   description: 'Comprehensive paid media services to maximize your ROI and drive targeted traffic. We offer strategic PPC, display advertising, and social media advertising campaigns tailored to your business goals.',
   provider: 'Ultify Solutions',
   serviceType: 'Paid Media Advertising',
   areaServed: 'Sydney, Australia',
   availableChannel: {
-    url: 'https://ultifysolutions.com/services/paid-media',
+    url: ogUrl.value,
     name: 'Ultify Solutions Website'
   },
   offers: [
@@ -142,7 +147,12 @@ onMounted(() => {
   // You can add any necessary mounted logic here
 })
 
-// Strapi data fetching logic for future use
+// Strapi data fetching logic
+const { data: pageData, error } = await useAsyncData(
+  'paid-media-page',
+  () => $fetch(`/api/${serviceSlug}-page`)
+)
+
 if (error.value) {
   console.error('Error fetching page data:', error.value)
 } else if (pageData.value) {
@@ -182,7 +192,6 @@ if (error.value) {
     }))
   }
 }
-
 </script>
 
 <style scoped>
