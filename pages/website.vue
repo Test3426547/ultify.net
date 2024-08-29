@@ -14,7 +14,7 @@
     <StructuredData type="Service" :data="serviceSchema" />
     
     <ClientOnly>
-      <HeaderService service-id="1" />
+      <HeaderService :service-id="websiteServiceId" />
       <WebsiteTechnology />
       <WebsiteDetails />
       <Consultation />
@@ -83,6 +83,8 @@ const serviceSchema = ref(createServiceSchema({
     name: 'Ultify Solutions Website'
   }
 }))
+
+const websiteServiceId = ref('1')
 
 onMounted(() => {
   // You can add any necessary mounted logic here
