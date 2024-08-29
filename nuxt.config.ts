@@ -194,12 +194,11 @@ export default defineNuxtConfig({
 
   // Nitro configuration
   nitro: {
-    serveStatic: true
-  },
-
-  // Route rules to ensure SSR for all routes
-  routeRules: {
-    '/**': { ssr: true }
+    prerender: {
+      crawlLinks: true,
+      routes: ['/'],
+      ignore: ['/admin']
+    }
   },
 
   // Devtools settings
