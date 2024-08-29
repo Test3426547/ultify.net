@@ -7,18 +7,18 @@
           <div class="col-lg-7 d-flex flex-column py-5 position-relative">
             <div class="header__top content-shift">
               <h1 class="header__title fw-bold text-primary" v-if="headerData">
-                {{ headerData.Title }}
+                {{ header-serviceData.Title }}
               </h1>
               <p class="header__subtitle text-primary" v-if="headerData">
-                {{ headerData.Subtitle }}
+                {{ header-serviceData.Subtitle }}
               </p>
             </div>
             <div class="header__bottom content-shift">
               <h2 class="header__subtitle-large fw-bold text-white" v-if="headerData">
-                {{ headerData.Heading }}
+                {{ header-serviceData.Heading }}
               </h2>
               <p class="header__subtitle text-white mb-4" v-if="headerData">
-                {{ headerData.Subheading }}
+                {{ header-serviceData.Subheading }}
               </p>
               <div class="header__services">
                 <div class="row g-2 justify-content-start">
