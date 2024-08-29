@@ -38,7 +38,7 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-5 d-flex justify-content-center align-items-center position-relative">
+          <div>
             <ContactForm @submit="handleSubmit" />
           </div>
         </div>
