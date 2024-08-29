@@ -143,10 +143,9 @@ onMounted(() => {
 })
 
 // Strapi data fetching logic for future use
-// Uncomment and adjust when ready to fetch data from Strapi
-/*
-const { data: pageData } = await useFetch('/api/paid-media-page')
-if (pageData.value) {
+if (error.value) {
+  console.error('Error fetching page data:', error.value)
+} else if (pageData.value) {
   metaTitle.value = pageData.value.metaTitle || metaTitle.value
   metaDescription.value = pageData.value.metaDescription || metaDescription.value
   ogImage.value = pageData.value.ogImage || ogImage.value
@@ -154,7 +153,7 @@ if (pageData.value) {
   canonicalUrl.value = pageData.value.canonicalUrl || canonicalUrl.value
   robots.value = pageData.value.robots || robots.value
   
-  // Update schema data if needed
+  // Update schema data
   webPageSchema.value = createWebPageSchema({
     name: pageData.value.title || webPageSchema.value.name,
     description: pageData.value.description || webPageSchema.value.description,
@@ -182,12 +181,8 @@ if (pageData.value) {
       }
     }))
   }
-
-  // You can also update other components' data here if needed
-  // For example:
-  // paidMediaData.value = pageData.value.paidMediaDetails
 }
-*/
+
 </script>
 
 <style scoped>
