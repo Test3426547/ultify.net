@@ -54,6 +54,7 @@ export default defineNuxtConfig({
     '@vite-pwa/nuxt',
     '@nuxtjs/strapi',
     '@nuxtjs/sitemap',
+    '@pinia/nuxt',
   ],
 
   strapi: {

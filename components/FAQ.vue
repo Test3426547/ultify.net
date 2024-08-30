@@ -21,16 +21,12 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import { onMounted, nextTick } from 'vue'
+import { ref, onMounted } from 'vue';
 
 const emit = defineEmits(['loaded'])
 
-// In the setup function
 onMounted(() => {
-  nextTick(() => {
-    emit('loaded')
-  })
+  emit('loaded')
 })
 
 const faqs = ref([

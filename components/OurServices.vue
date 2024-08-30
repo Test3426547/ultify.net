@@ -12,22 +12,26 @@
     </div>
     <div class="container service-grid">
       <div class="row g-4">
-        <div v-for="(service, index) in services" :key="index" class="col-md-6 col-lg-4">
-          <div class="card h-100">
-            <img :src="service.imgSrc" :alt="service.altText" class="card-img-top">
-            <div class="card-body">
-              <h5 class="card-title">{{ service.title }}</h5>
-              <p class="card-text">{{ service.description }}</p>
-            </div>
-          </div>
-        </div>
+        <ServiceCard
+          v-for="(service, index) in services"
+          :key="index"
+          :title="service.title"
+          :description="service.description"
+          :imgSrc="service.imgSrc"
+          :altText="service.altText"
+        />
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
-const services = [
+import { ref, onMounted } from 'vue'
+import ServiceCard from './ServiceCard.vue'
+
+const emit = defineEmits(['loaded'])
+
+const services = ref([
   {
     title: "Website",
     description: "Our website services include custom design, development, and maintenance to help you establish a strong online presence.",
@@ -64,7 +68,11 @@ const services = [
     imgSrc: "home-14.png",
     altText: "SEM Service"
   },
-]
+])
+
+onMounted(() => {
+  emit('loaded')
+})
 </script>
 
 <style scoped>
@@ -73,9 +81,9 @@ const services = [
 }
 
 .banner {
-  padding-top: 110px !important;
-  padding-bottom: 110px !important;
-  margin-bottom: 100px;
+  padding-top: 110px !important; /* Increased top padding */
+  padding-bottom: 110px !important; /* Increased bottom padding */
+  margin-bottom: 100px; /* Add space below the banner */
 }
 
 .wave-heading {
@@ -89,35 +97,11 @@ const services = [
 
 .service-grid {
   padding-top: 25px;
-  padding-bottom: 100px;
+  padding-bottom: 100px; /* Increased bottom padding */
 }
 
 .row {
-  --bs-gutter-x: 40px;
-}
-
-.card {
-  border: none;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease-in-out;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-}
-
-.card-img-top {
-  height: 200px;
-  object-fit: cover;
-}
-
-.card-title {
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-}
-
-.card-text {
-  color: #6c757d;
+  --bs-gutter-x: 40px; /* Increase horizontal gap between cards */
 }
 
 @media (max-width: 991.98px) {

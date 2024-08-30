@@ -12,20 +12,20 @@
     <StructuredData type="WebPage" :data="webPageSchema" />
     <StructuredData type="BreadcrumbList" :data="breadcrumbSchema" />
     
-      <HeaderHome />
-      <QuickNEasy />
-      <ServiceCards />
-      <OurServices />
-      <Consultation />
-      <DigitalWorld />
-      <FAQ />
-      <CTA />
-      <Footer />
+    <HeaderHome />
+    <QuickNEasy />
+    <ServiceCards @loaded="componentLoaded('ServiceCards')" />
+    <OurServices />
+    <Consultation />
+    <DigitalWorld />
+    <FAQ @loaded="componentLoaded('FAQ')" />
+    <CTA />
+    <Footer />
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, watch } from 'vue'
 import HeaderHome from '@/components/HeaderHome.vue'
 import QuickNEasy from '@/components/QuickNEasy.vue'
 import ServiceCards from '@/components/ServiceCards.vue'
@@ -71,8 +71,25 @@ const breadcrumbSchema = ref(createBreadcrumbSchema([
   { name: 'Home', url: 'https://ultifysolutions.com' }
 ]))
 
-onMounted(() => {
-  // You can add any necessary mounted logic here
+// New code for handling component loading
+const loadedComponents = ref(new Set())
+const allComponentsLoaded = ref(false)
+
+const componentLoaded = (componentName: string) => {
+  loadedComponents.value.add(componentName)
+  checkAllComponentsLoaded()
+}
+
+const checkAllComponentsLoaded = () => {
+  const requiredComponents = ['ServiceCards', 'FAQ']
+  allComponentsLoaded.value = requiredComponents.every(comp => loadedComponents.value.has(comp))
+}
+
+watch(allComponentsLoaded, (newValue) => {
+  if (newValue) {
+    console.log('All components are loaded')
+    // Perform any actions needed when all components are loaded
+  }
 })
 
 // If you're planning to fetch data from Strapi in the future, you can add it here
