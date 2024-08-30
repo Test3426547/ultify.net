@@ -1,7 +1,6 @@
 <template>
   <div class="service-cards-section position-relative bg-light">
     <div class="container-fluid h-100 d-flex flex-column justify-content-center">
-      <!-- Added heading -->
       <h2 class="section-heading text-primary fw-bold mb-5">Our latest work</h2>
       <div class="row w-100 justify-content-between">
         <div class="col-12 col-lg-5 mb-4 mb-lg-0 position-relative">
@@ -22,13 +21,12 @@
 </template>
 
 <script setup>
-import { onMounted, nextTick } from 'vue'
+import { onMounted } from 'vue'
 
-// In the setup function
+const emit = defineEmits(['loaded'])
+
 onMounted(() => {
-  nextTick(() => {
-    emit('loaded')
-  })
+  emit('loaded')
 })
 </script>
 
@@ -47,7 +45,6 @@ onMounted(() => {
   padding: 0 15px;
 }
 
-/* Added styles for the heading */
 .section-heading {
   font-size: 3rem;
   text-align: left;
@@ -115,7 +112,6 @@ onMounted(() => {
     margin-right: 0;
   }
 
-  /* Added responsive font size for smaller screens */
   .section-heading {
     font-size: 2.5rem;
   }
