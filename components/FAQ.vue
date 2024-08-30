@@ -24,6 +24,8 @@
 import { ref } from 'vue';
 import { onMounted, nextTick } from 'vue'
 
+const emit = defineEmits(['loaded'])
+
 // In the setup function
 onMounted(() => {
   nextTick(() => {
