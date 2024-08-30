@@ -1,5 +1,3 @@
-import { defineNuxtConfig } from 'nuxt/config'
-
 export default defineNuxtConfig({
   // Static Site Generation mode
   target: 'static',
@@ -9,7 +7,8 @@ export default defineNuxtConfig({
   // Global CSS files
   css: [
     '@/assets/css/theme.css',
-    '~/assets/css/tailwind.css'
+    '~/assets/css/tailwind.css',
+    'bootstrap-icons/font/bootstrap-icons.css',
   ],
 
   // Import plugins
