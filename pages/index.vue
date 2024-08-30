@@ -12,7 +12,6 @@
     <StructuredData type="WebPage" :data="webPageSchema" />
     <StructuredData type="BreadcrumbList" :data="breadcrumbSchema" />
     
-    <ClientOnly>
       <HeaderHome />
       <QuickNEasy />
       <ServiceCards />
@@ -22,7 +21,6 @@
       <FAQ />
       <CTA />
       <Footer />
-    </ClientOnly>
   </div>
 </template>
 
