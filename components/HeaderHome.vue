@@ -81,7 +81,7 @@ const services = [
   { name: 'Content Creation', path: '/content-creation' },
   { name: 'Website', path: '/website' },
   { name: 'Social Media', path: '/social-media' },
-  { name: 'Print Advertising', path: '/print-media' }
+  { name: 'Print Advertising', path: '/print-advertising' }
 ];
 
 const handleSubmit = (formData) => {
