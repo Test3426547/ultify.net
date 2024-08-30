@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { useHead } from '#app'
 import Navbar from '~/components/Navbar.vue'
-import Footer from '~/components/Footer.vue'
 
 // Define default SEO metadata
 const defaultMeta = {
@@ -61,7 +60,7 @@ defineExpose({ updateSEO })
         </div>
       </ClientOnly>
     </main>
-    <Footer />
+    
   </div>
 </template>
 

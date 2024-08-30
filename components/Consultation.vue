@@ -11,7 +11,7 @@
 
         <!-- Form Section -->
         <div class="col-lg-6 d-flex">
-          <div>
+          <div class="form-container bg-light rounded-lg shadow-lg">
             <h2 class="text-center">Book A Free Consultation Now</h2>
             <form class="p-4" id="contact-form" @submit.prevent="handleSubmit">
               <div class="form-group">
