@@ -49,7 +49,6 @@ useHead({
 <template>
   <div>
     <NuxtPwaAssets />
-    <NuxtLoadingIndicator />
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
