@@ -81,7 +81,7 @@ const componentLoaded = (componentName: string) => {
 }
 
 const checkAllComponentsLoaded = () => {
-  const requiredComponents = ['ServiceCards', 'FAQ']
+  const requiredComponents = ['ServiceCards', 'FAQ', 'OurServices']
   allComponentsLoaded.value = requiredComponents.every(comp => loadedComponents.value.has(comp))
 }
 
