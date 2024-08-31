@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useHead } from '#app'
-import Navbar from '~/components/Navbar.vue'
+import { useHead } from '#imports'
+import Navbar from '@/components/Navbar.vue'
 
 // Define default SEO metadata
 const defaultMeta = {
@@ -60,7 +60,7 @@ defineExpose({ updateSEO })
         </div>
       </ClientOnly>
     </main>
-    
+
   </div>
 </template>
 

@@ -69,7 +69,7 @@ export default defineNuxtConfig({
 
   // Sitemap configuration
   sitemap: {
-    hostname: 'https://www.ultifysolutions.com',
+    hostname: 'https://mcdonaldsz.com',
     gzip: true,
     exclude: [
       '/admin/**'
@@ -77,13 +77,32 @@ export default defineNuxtConfig({
     routes: async () => {
       const { $strapi } = useNuxtApp()
       
+      // Static routes
+      const staticRoutes = [
+        '/',
+        '/about-us',
+        '/contact-us',
+        '/consultation',
+        '/services/website',
+        '/services/social-media',
+        '/services/seo',
+        '/services/paid-media',
+        '/services/content-creation',
+        '/services/print-advertising'
+      ]
+
       // Fetch dynamic routes from Strapi
       const fetchRoutes = async (contentType) => {
-        const { data } = await $strapi.find(contentType, {
-          fields: ['slug'],
-          pagination: { limit: -1 }
-        })
-        return data.map(item => `/${contentType}/${item.attributes.slug}`)
+        try {
+          const { data } = await $strapi.find(contentType, {
+            fields: ['slug'],
+            pagination: { limit: -1 }
+          })
+          return data.map(item => `/${contentType}/${item.attributes.slug}`)
+        } catch (error) {
+          console.error(`Error fetching ${contentType}:`, error)
+          return []
+        }
       }
 
       // Fetch all dynamic routes
@@ -93,10 +112,16 @@ export default defineNuxtConfig({
 
       // Combine all routes
       return [
+        ...staticRoutes,
         ...blogRoutes,
         ...caseStudyRoutes,
         ...serviceRoutes
       ]
+    },
+    defaults: {
+      changefreq: 'daily',
+      priority: 0.7,
+      lastmod: new Date()
     }
   },
 
@@ -119,10 +144,7 @@ export default defineNuxtConfig({
       devSourcemap: false,
     },
     build: {
-      sourcemap: false,
-      extractCSS: true,
-      async: true,
-      transpile: ['nunjucks']
+      // add in content //
     },
   },
 
@@ -188,7 +210,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       strapiURL: process.env.STRAPI_URL || 'https://backend.mcdonaldsz.com',
-      siteUrl: process.env.SITE_URL || 'https://www.ultifysolutions.com',
+      siteUrl: process.env.SITE_URL || 'https://mcdonaldsz.com',
       strapiBaseUrl: process.env.STRAPI_BASE_URL || 'https://backend.mcdonaldsz.com',
     },
   },
